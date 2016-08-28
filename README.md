@@ -1,1 +1,3 @@
-# byggern
+# Byggern
+
+This is the Byggern project...

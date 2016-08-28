@@ -42,16 +42,20 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BUILD_PATH}")
 
 # Files to be compiled
 file(GLOB SRC_FILES "${SRC_PATH}/*.c" "${SRC_PATH}/*.asm")
+file(GLOB INC_FILES "${INC_PATH}/*.h")
 
 set(LIB_SRC_FILES)
+set(LIB_INC_FILES)
 set(LIB_INC_PATH)
 file(GLOB LIBRARIES "${LIB_DIR_PATH}/*")
 foreach(subdir ${LIBRARIES})
-    file(GLOB lib_files "${subdir}/*.c" "${subdir}/*.asm")
+    file(GLOB lib_src_files "${subdir}/*.c" "${subdir}/*.asm")
+    file(GLOB lib_inc_files "${subdir}/*.h")
     if(IS_DIRECTORY ${subdir})
         list(APPEND LIB_INC_PATH  "${subdir}")
     endif()
-    list(APPEND LIB_SRC_FILES "${lib_files}")
+    list(APPEND LIB_SRC_FILES "${lib_src_files}")
+    list(APPEND LIB_INC_FILES "${lib_inc_files}")
 endforeach()
 
 # Compiler flags
@@ -70,7 +74,7 @@ set(CMAKE_ASM_FLAGS   "${CFLAGS}")
 
 # Project setup
 include_directories(${INC_PATH} ${LIB_INC_PATH})
-add_executable(${PROJECT_NAME} ${SRC_FILES} ${LIB_SRC_FILES})
+add_executable(${PROJECT_NAME} ${SRC_FILES} ${INC_FILES} ${LIB_SRC_FILES} ${LIB_INC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}.elf")
 
 # Compiling targets

@@ -5,6 +5,5 @@
 *.exe
 *.hex
 
-.idea/byggern.iml
-.idea/workspace.xml
+.idea/*
 build/*

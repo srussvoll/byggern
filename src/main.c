@@ -8,6 +8,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+// Pin and frequency:
 #define PORT PORTA
 #define DDR  DDRA
 #define PIN  PA0

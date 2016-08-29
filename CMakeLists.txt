@@ -18,6 +18,7 @@ add_definitions(-DF_CPU=${F_CPU})
 
 # program names
 set(AVRC     avr-gcc)
+set(AVRCPP   avr-g++)
 set(AVRSTRIP avr-strip)
 set(OBJCOPY  avr-objcopy)
 set(OBJDUMP  avr-objdump)
@@ -28,9 +29,10 @@ set(AVRDUDE  avrdude)
 # Needs to come before the project function
 set(CMAKE_SYSTEM_NAME  Generic)
 set(CMAKE_C_COMPILER   ${AVRC})
+set(CMAKE_CXX_COMPILER ${AVRCPP})
 set(CMAKE_ASM_COMPILER   ${AVRC})
 
-project(byggern C ASM)
+project(byggern C CXX ASM)
 
 # Important project paths
 set(BASE_PATH    "${${PROJECT_NAME}_SOURCE_DIR}")
@@ -41,7 +43,7 @@ set(BUILD_PATH   "${BASE_PATH}/build")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BUILD_PATH}")
 
 # Files to be compiled
-file(GLOB SRC_FILES "${SRC_PATH}/*.c" "${SRC_PATH}/*.asm")
+file(GLOB SRC_FILES "${SRC_PATH}/*.c" "${SRC_PATH}/*.cpp" "${SRC_PATH}/*.asm")
 file(GLOB INC_FILES "${INC_PATH}/*.h")
 
 set(LIB_SRC_FILES)
@@ -49,7 +51,7 @@ set(LIB_INC_FILES)
 set(LIB_INC_PATH)
 file(GLOB LIBRARIES "${LIB_DIR_PATH}/*")
 foreach(subdir ${LIBRARIES})
-    file(GLOB lib_src_files "${subdir}/*.c" "${subdir}/*.asm")
+    file(GLOB lib_src_files "${subdir}/*.c" "${subdir}/*.cpp" "${subdir}/*.asm")
     file(GLOB lib_inc_files "${subdir}/*.h")
     if(IS_DIRECTORY ${subdir})
         list(APPEND LIB_INC_PATH  "${subdir}")

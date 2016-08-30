@@ -2,11 +2,15 @@
 // Copyright (c) 2016  All rights reserved.
 
 #include "UART.h"
+#include <stdio.h>
+
+static int put(char character, FILE* file);
+static int get(FILE* file);
 
 UART& UART::getInstance(int UARTNumber) {
     // Return lazy initialized instance of the correct UART.
     if (UARTNumber == 0) {
-        struct UARTRegisters registers = {
+        static struct UARTRegisters registers = {
             .UDR   = &UDR0,
             .UCSRA = &UCSR0A,
             .UCSRB = &UCSR0B,
@@ -18,7 +22,7 @@ UART& UART::getInstance(int UARTNumber) {
         static UART instance0(registers);
         return instance0;
     } else {
-        struct UARTRegisters registers = {
+        static struct UARTRegisters registers = {
             .UDR   = &UDR1,
             .UCSRA = &UCSR1A,
             .UCSRB = &UCSR1B,
@@ -129,6 +133,18 @@ void UART::setRXHandler(void (*handler)(char character)) {
     this->RXHandler = handler;
 }
 
+bool UART::sending() {
+    return this->TXBuffer[0] != '\0';
+}
+
+void UART::enablePrintf() {
+    fdevopen(&put, &get);
+}
+
+bool UART::dataToBeReceived() {
+    return this->RXBuffer[0] != '\0';
+}
+
 void USART0_UDRE_vect(void) {
     UART::getInstance(0).sendFromTXBuffer();
 }
@@ -143,4 +159,19 @@ void USART0_RXC_vect(void) {
 
 void USART1_RXC_vect(void) {
     UART::getInstance(1).receiveFromRXBuffer();
+}
+
+
+static int put(char character, FILE* file) {
+    char string[2];
+    string[0] = character;
+    string[1] = '\0';
+    return !UART::getInstance(0).send(string);
+}
+
+static int get(FILE* file) {
+    char character[2];
+    UART::getInstance(0).receive(character, 2);
+    if (character[0] == '\0') return _FDEV_EOF;
+    else return (int) character[0];
 }

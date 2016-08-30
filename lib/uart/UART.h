@@ -18,7 +18,7 @@
 #include <avr/interrupt.h>
 #include <string.h>
 
-#define UART_BUFFER_SIZE 200
+#define UART_BUFFER_SIZE 100
 
 // Define the USART Data Register Empty and RX Complete ISRs
 ISR(USART0_UDRE_vect);
@@ -53,6 +53,7 @@ private:
 
 public:
     static UART& getInstance(int UARTNumber);
+    static void enablePrintf();
 
     void enable(unsigned long baud);
     void disable();
@@ -60,6 +61,10 @@ public:
     bool receive(char* string, size_t length);
     bool chechRXHasOverflowed();
     void setRXHandler(void (* handler)(char character));
+
+    // Use these to implement synchronous sending and waiting for new data:
+    bool sending();
+    bool dataToBeReceived();
 
     friend void USART0_UDRE_vect(void);
     friend void USART1_UDRE_vect(void);
@@ -72,7 +77,7 @@ public:
  * */
 public:
     UART(const UART&) = delete;
-    //void operator=(const UART&) = delete;
+    void operator=(const UART&) = delete;
 };
 
 #endif //BYGGERN_UART_H

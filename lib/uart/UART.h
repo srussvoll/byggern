@@ -4,6 +4,12 @@
 /*
  * This library defines a UART class.
  * The getInstance is a singleton for either UART0 or UART1.
+ *
+ * A singleton could have been avoided by using two global instances of UART, one for each UART.
+ * However global instances are instantiated at "random" times (sequential in each C++ file, but each C++ file in "random" order).
+ * Additionally global variables require at least four extra bytes for addressing compared to the stack (added to the program size).
+ * Potentially some SRAM may also be saved by using a singleton compared to a global instance.
+ * Reference: Atmel AVR4027: Tips and Tricks to Optimize Your C Code for 8-bit AVR Microcontrollers, Tip #2 (http://www.atmel.com/images/doc8453.pdf)
  * */
 
 #ifndef BYGGERN_UART_H

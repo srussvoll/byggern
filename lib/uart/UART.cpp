@@ -105,8 +105,11 @@ bool UART::receive(char* string, size_t length) {
 }
 
 void UART::receiveFromRXBuffer() {
+    if (this->RXHandler != nullptr) {
+        (*this->RXHandler)((char) *this->registers.UDR);
+    }
     // Check that the buffer is large enough. Remember that strings have \0 in addition to the contents.
-    if (strlen(this->RXBuffer) + 1 + 1 <= UART_BUFFER_SIZE) {
+    else if (strlen(this->RXBuffer) + 1 + 1 <= UART_BUFFER_SIZE) {
         // Add the character to the RXBuffer
         char character = (char) *this->registers.UDR;
         strncat(this->RXBuffer, &character, 1);
@@ -120,6 +123,10 @@ bool UART::chechRXHasOverflowed() {
         this->RXHasOverflowed = false;
         return true;
     } else return false;
+}
+
+void UART::setRXHandler(void (*handler)(char character)) {
+    this->RXHandler = handler;
 }
 
 void USART0_UDRE_vect(void) {

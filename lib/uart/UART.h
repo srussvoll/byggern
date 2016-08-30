@@ -43,6 +43,7 @@ private:
     void sendFromTXBuffer();
     void receiveFromRXBuffer();
     bool RXHasOverflowed = false;
+    void (*RXHandler)(char character) = nullptr;
 
 public:
     static UART& getInstance(int UARTNumber);
@@ -52,6 +53,7 @@ public:
     bool send(char* string);
     bool receive(char* string, size_t length);
     bool chechRXHasOverflowed();
+    void setRXHandler(void (* handler)(char character));
 
     friend void USART0_UDRE_vect(void);
     friend void USART1_UDRE_vect(void);

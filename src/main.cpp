@@ -9,6 +9,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "UART.h"
+#include <stdio.h>
 
 // Pin and frequency:
 #define PORT PORTA
@@ -26,6 +27,11 @@ int main(void) {
     UART0.enable(BAUD);
     char string[] = "Hei på deg :)\n";
     UART0.send(string);
+
+    // Test stdio
+    UART::enablePrintf();
+    printf("Tester printf med UART0.");
+
 
     // Set pin to output and turn it on.
     DDR  |= (1 << PIN);

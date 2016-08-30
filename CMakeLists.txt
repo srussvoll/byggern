@@ -5,9 +5,10 @@ set(PROG_TYPE avrisp)
 set(USBPORT /dev/ttyUSB0)
 set(MCU atmega162)
 # The device is shipped with the CKDIV8 Fuse programmed. Shipped frequency is 8MHz -> 1MHz
-set(F_CPU 1000000)
 # We will run the system at 4.9152 MHz. Remember to deprogram the CKDIV8 Fuse before adding the crystal.
-#set(F_CPU 4915200)
+set(FOSC 8000000)
+set(FREQUENCY_DIVIDER 8)
+math(EXPR F_CPU "${FOSC} / ${FREQUENCY_DIVIDER}")
 set(BAUD 9600)
 
 
@@ -15,6 +16,7 @@ set(BAUD 9600)
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.
 set(PROG_ARGS -b 19200 -P ${USBPORT})
 add_definitions(-DF_CPU=${F_CPU})
+add_definitions(-DFOSC=${FOSC})
 
 # program names
 set(AVRC     avr-gcc)
@@ -62,15 +64,17 @@ endforeach()
 
 # Compiler flags
 set(CSTANDARD "-std=gnu11")
+set(CXXSTANDARD "-std=c++11")
 set(CDEBUG    "-gstabs -g -ggdb")
 set(CWARN     "-Wall -Wstrict-prototypes -Wl,--gc-sections -Wl,--relax")
 set(CTUNING   "-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -ffunction-sections -fdata-sections")
 set(COPT      "-Os -lm -lprintf_flt")
 set(CMCU      "-mmcu=${MCU}")
 set(CDEFS     "-DF_CPU=${F_CPU} -DBAUD=${BAUD}")
+set(ENABLE_SINGLETON "-fno-threadsafe-statics") # This isn't implemented in avr-g++ anyway, and without this singletons don't work...
 
 set(CFLAGS   "${CMCU} ${CDEBUG} ${CDEFS} ${COPT} ${CWARN} ${CSTANDARD} ${CTUNING}")
-set(CXXFLAGS "${CMCU} ${CDEBUG} ${CDEFS} ${COPT} ${CTUNING}")
+set(CXXFLAGS "${CMCU} ${CDEBUG} ${CDEFS} ${COPT} ${CXXSTANDARD} ${ENABLE_SINGLETON} ${CTUNING}")
 
 set(CMAKE_C_FLAGS   "${CFLAGS}")
 set(CMAKE_CXX_FLAGS "${CXXFLAGS}")
@@ -89,9 +93,12 @@ add_custom_target(disassemble   ${OBJDUMP} -S "${BUILD_PATH}/${PROJECT_NAME}.elf
 # Flashing targets
 add_custom_target(flash         ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -U flash:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS hex)
 add_custom_target(flash_eeprom  ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -U eeprom:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS eeprom)
+add_custom_target(size          ${AVRSIZE} -C --mcu=${MCU} ${BUILD_PATH}/${PROJECT_NAME}.elf DEPENDS ${PROJECT_NAME})
 # Fuses
 #add_custom_target(fuses_16mhz   ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -U lfuse:w:0xFF:m)
 # Utilities targets
 #add_custom_target(avr_terminal  ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -nt)
 
 set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${BUILD_PATH}/${PROJECT_NAME}.hex;${BUILD_PATH}/${PROJECT_NAME}.eeprom;${BUILD_PATH}/${PROJECT_NAME}.lst")
+
+message(${LIB_SRC_FILES})

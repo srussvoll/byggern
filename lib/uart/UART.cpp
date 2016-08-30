@@ -42,23 +42,16 @@ void UART::enable(unsigned long baud) {
     // Set frame format: 8 data, 2 stop bits
     *this->registers.UCSRC |= (1 << URSEL0) | (1 << USBS0) | (3 << UCSZ00);
 
-    // Enable TX and RX
-    *this->registers.UCSRB |= (1 << RXEN0) | (1 << TXEN0);
+    // Enable TX and RX and RX interrupt
+    *this->registers.UCSRB |= (1 << RXEN0) | (1 << TXEN0) | (1 << RXCIE0);
 
     // Enable interrupts globally
     sei();
-
-    // Enable RX interrupt
-    *this->registers.UCSRB |= (1 << RXCIE0);
 }
 
 void UART::disable() {
-    // Disable TX and RX
-    *this->registers.UCSRB &= ~((1 << RXEN0) | (1 << TXEN0));
-
-    // Disable TX and RX interrupt
-    *this->registers.UCSRB &= ~(1 << RXCIE0);
-    *this->registers.UCSRB &= ~(1 << UDRIE0);
+    // Disable TX, RX, TX interrupt and RX interrupt
+    *this->registers.UCSRB &= ~((1 << RXEN0) | (1 << TXEN0) | (1 << RXCIE0) | (1 << UDRIE0));
 }
 
 bool UART::send(char* string) {

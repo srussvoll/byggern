@@ -17,6 +17,7 @@
 
 #include <avr/interrupt.h>
 #include <string.h>
+#include <stdio.h>
 
 #define UART_BUFFER_SIZE 100
 
@@ -42,6 +43,7 @@ private:
         this->RXBuffer[0] = '\0';
     };
     UARTRegisters registers;
+    static uint8_t printf_UART;
 
     char TXBuffer[UART_BUFFER_SIZE];
     char RXBuffer[UART_BUFFER_SIZE];
@@ -52,8 +54,8 @@ private:
     void (*RXHandler)(char character) = nullptr;
 
 public:
-    static UART& getInstance(int UARTNumber);
-    static void enablePrintf();
+    static UART& getInstance(uint8_t UARTNumber);
+    static void enablePrintf(uint8_t UARTNumber);
 
     void enable(unsigned long baud);
     void disable();
@@ -70,6 +72,9 @@ public:
     friend void USART1_UDRE_vect(void);
     friend void USART0_RXC_vect(void);
     friend void USART1_RXC_vect(void);
+
+    friend int put(char character, FILE* file);
+    friend int get(FILE* file);
 
 
 /*

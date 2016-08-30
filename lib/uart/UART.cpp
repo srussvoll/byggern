@@ -2,12 +2,12 @@
 // Copyright (c) 2016  All rights reserved.
 
 #include "UART.h"
-#include <stdio.h>
 
-static int put(char character, FILE* file);
-static int get(FILE* file);
+// Define put and get for stdio:
+int put(char character, FILE* file);
+int get(FILE* file);
 
-UART& UART::getInstance(int UARTNumber) {
+UART& UART::getInstance(uint8_t UARTNumber) {
     // Return lazy initialized instance of the correct UART.
     if (UARTNumber == 0) {
         static struct UARTRegisters registers = {
@@ -137,7 +137,10 @@ bool UART::sending() {
     return this->TXBuffer[0] != '\0';
 }
 
-void UART::enablePrintf() {
+uint8_t UART::printf_UART = 0;
+
+void UART::enablePrintf(uint8_t UARTNumber) {
+    UART::printf_UART = UARTNumber;
     fdevopen(&put, &get);
 }
 
@@ -161,17 +164,16 @@ void USART1_RXC_vect(void) {
     UART::getInstance(1).receiveFromRXBuffer();
 }
 
-
-static int put(char character, FILE* file) {
+int put(char character, FILE* file) {
     char string[2];
     string[0] = character;
     string[1] = '\0';
-    return !UART::getInstance(0).send(string);
+    return !UART::getInstance(UART::printf_UART).send(string);
 }
 
-static int get(FILE* file) {
+int get(FILE* file) {
     char character[2];
-    UART::getInstance(0).receive(character, 2);
+    UART::getInstance(UART::printf_UART).receive(character, 2);
     if (character[0] == '\0') return _FDEV_EOF;
     else return (int) character[0];
 }

@@ -29,7 +29,7 @@ int main(void) {
     UART0.send(string);
 
     // Test stdio
-    UART::enablePrintf();
+    UART::enablePrintf(0);
     printf("Tester printf med UART0.");
 
 

@@ -6,8 +6,8 @@ set(USBPORT /dev/ttyUSB0)
 set(MCU atmega162)
 # The device is shipped with the CKDIV8 Fuse programmed. Shipped frequency is 8MHz -> 1MHz
 # We will run the system at 4.9152 MHz. Remember to deprogram the CKDIV8 Fuse before adding the crystal.
-set(FOSC 8000000)
-set(FREQUENCY_DIVIDER 8)
+set(FOSC 4195200)
+set(FREQUENCY_DIVIDER 1)
 math(EXPR F_CPU "${FOSC} / ${FREQUENCY_DIVIDER}")
 set(BAUD 9600)
 
@@ -33,7 +33,6 @@ set(CMAKE_SYSTEM_NAME  Generic)
 set(CMAKE_C_COMPILER   ${AVRC})
 set(CMAKE_CXX_COMPILER ${AVRCPP})
 set(CMAKE_ASM_COMPILER   ${AVRC})
-
 project(byggern C CXX ASM)
 
 # Important project paths
@@ -44,20 +43,16 @@ set(LIB_DIR_PATH "${BASE_PATH}/lib")
 set(BUILD_PATH   "${BASE_PATH}/build")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BUILD_PATH}")
 
-# Files to be compiled
+# Find files to be compiled
 file(GLOB SRC_FILES "${SRC_PATH}/*.c" "${SRC_PATH}/*.cpp" "${SRC_PATH}/*.asm")
 file(GLOB INC_FILES "${INC_PATH}/*.h")
 
 set(LIB_SRC_FILES)
 set(LIB_INC_FILES)
-set(LIB_INC_PATH)
 file(GLOB LIBRARIES "${LIB_DIR_PATH}/*")
 foreach(subdir ${LIBRARIES})
     file(GLOB lib_src_files "${subdir}/*.c" "${subdir}/*.cpp" "${subdir}/*.asm")
     file(GLOB lib_inc_files "${subdir}/*.h")
-    if(IS_DIRECTORY ${subdir})
-        list(APPEND LIB_INC_PATH  "${subdir}")
-    endif()
     list(APPEND LIB_SRC_FILES "${lib_src_files}")
     list(APPEND LIB_INC_FILES "${lib_inc_files}")
 endforeach()
@@ -81,8 +76,9 @@ set(CMAKE_CXX_FLAGS "${CXXFLAGS}")
 set(CMAKE_ASM_FLAGS   "${CFLAGS}")
 
 # Project setup
-include_directories(${INC_PATH} ${LIB_INC_PATH})
-add_executable(${PROJECT_NAME} ${SRC_FILES} ${INC_FILES} ${LIB_SRC_FILES} ${LIB_INC_FILES})
+include_directories(${INC_PATH} ${BASE_PATH})
+#add_executable(${PROJECT_NAME} ${SRC_FILES} ${INC_FILES} ${LIB_SRC_FILES} ${LIB_INC_FILES})
+add_executable(${PROJECT_NAME} ${SRC_FILES} ${LIB_SRC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}.elf")
 
 # Compiling targets
@@ -100,5 +96,3 @@ add_custom_target(size          ${AVRSIZE} -C --mcu=${MCU} ${BUILD_PATH}/${PROJE
 #add_custom_target(avr_terminal  ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -nt)
 
 set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${BUILD_PATH}/${PROJECT_NAME}.hex;${BUILD_PATH}/${PROJECT_NAME}.eeprom;${BUILD_PATH}/${PROJECT_NAME}.lst")
-
-message(${LIB_SRC_FILES})

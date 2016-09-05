@@ -8,7 +8,7 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-#include "UART.h"
+#include "lib/uart/UART.h"
 #include <stdio.h>
 
 // Pin and frequency:

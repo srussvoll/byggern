@@ -26,6 +26,7 @@ set(OBJCOPY  avr-objcopy)
 set(OBJDUMP  avr-objdump)
 set(AVRSIZE  avr-size)
 set(AVRDUDE  avrdude)
+set(DOXYGEN  doxygen)
 
 # Sets the compiler
 # Needs to come before the project function
@@ -82,8 +83,9 @@ add_executable(${PROJECT_NAME} ${SRC_FILES} ${LIB_SRC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}.elf")
 
 # Compiling targets
+add_custom_target(doxygen       ${DOXYGEN} ${BASE_PATH}/Doxyfile)
 add_custom_target(strip ALL     ${AVRSTRIP} "${BUILD_PATH}/${PROJECT_NAME}.elf" DEPENDS ${PROJECT_NAME})
-add_custom_target(hex   ALL     ${OBJCOPY} -R .eeprom -O ihex "${BUILD_PATH}/${PROJECT_NAME}.elf" "${BUILD_PATH}/${PROJECT_NAME}.hex" DEPENDS strip)
+add_custom_target(hex   ALL     ${OBJCOPY} -R .eeprom -O ihex "${BUILD_PATH}/${PROJECT_NAME}.elf" "${BUILD_PATH}/${PROJECT_NAME}.hex" DEPENDS strip;doxygen)
 add_custom_target(eeprom        ${OBJCOPY} -j .eeprom --change-section-lma .eeprom=0 -O ihex "${BUILD_PATH}/${PROJECT_NAME}.elf" "${BUILD_PATH}/${PROJECT_NAME}.eeprom" DEPENDS strip)
 add_custom_target(disassemble   ${OBJDUMP} -S "${BUILD_PATH}/${PROJECT_NAME}.elf" > "${BUILD_PATH}/${PROJECT_NAME}.lst" DEPENDS strip)
 # Flashing targets

@@ -20,6 +20,7 @@
 #include <stdio.h>
 
 #define UART_BUFFER_SIZE 100
+#define FOSC 4195200
 
 // Define the USART Data Register Empty and RX Complete ISRs
 ISR(USART0_UDRE_vect);

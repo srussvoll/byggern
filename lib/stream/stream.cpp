@@ -44,3 +44,7 @@ void Stream::Read(uint8_t *string, size_t size) {
 	
 	this->input_stream_start_index = (this->input_stream_start_index + read_size) % this->input_stream_size;
 }
+
+bool Stream::CheckOutputOverflowFlag(){
+	
+}

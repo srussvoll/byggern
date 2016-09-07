@@ -103,4 +103,9 @@ public:
 	 * Writes one byte to the output stream
 	 */
 	virtual void WriteByte(uint8_t byte);
+	
+	/**
+	* Checks whether or not the output overflow flag has been set. If it has, it conducts the nessesary procedures to clear out the overflow
+	*/
+	virtual bool CheckOutputOverflowFlag();
 };

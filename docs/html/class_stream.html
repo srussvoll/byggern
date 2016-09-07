@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Byggern: Member List</title>
+<title>Byggern: Stream Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,7 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('struct_u_a_r_t_registers.html','');});
+$(document).ready(function(){initNavTree('class_stream.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -102,24 +102,121 @@ $(document).ready(function(){initNavTree('struct_u_a_r_t_registers.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="class_stream-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">UARTRegisters Member List</div>  </div>
+<div class="title">Stream Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a3b8a725d2698fe067f65dc70d495fe3d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a3b8a725d2698fe067f65dc70d495fe3d">Write</a> (char *string, size_t size)</td></tr>
+<tr class="separator:a3b8a725d2698fe067f65dc70d495fe3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bae4fba73b6e4e9fa256bae866887c8"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a3bae4fba73b6e4e9fa256bae866887c8">Read</a> (char *string, size_t size)</td></tr>
+<tr class="separator:a3bae4fba73b6e4e9fa256bae866887c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade48d0be8cb9a4fbddea0ae68af689c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade48d0be8cb9a4fbddea0ae68af689c7"></a>
+virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetAvailableWriteBytes</b> ()</td></tr>
+<tr class="separator:ade48d0be8cb9a4fbddea0ae68af689c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0766c270e9cc5b77d4fe34d4a5ac8790"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0766c270e9cc5b77d4fe34d4a5ac8790"></a>
+virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetAvaliableReadBytes</b> ()</td></tr>
+<tr class="separator:a0766c270e9cc5b77d4fe34d4a5ac8790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a3bae4fba73b6e4e9fa256bae866887c8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Stream::Read </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reads data from the input stream and stores in the specified data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>Where the data should be stored </td></tr>
+    <tr><td class="paramname">size</td><td>Size of the data </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>This is the complete list of members for <a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a>, including all inherited members.</p>
-<table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>UBRRH</b> (defined in <a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a>)</td><td class="entry"><a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>UBRRL</b> (defined in <a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a>)</td><td class="entry"><a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>UCSRA</b> (defined in <a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a>)</td><td class="entry"><a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>UCSRB</b> (defined in <a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a>)</td><td class="entry"><a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>UCSRC</b> (defined in <a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a>)</td><td class="entry"><a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>UDR</b> (defined in <a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a>)</td><td class="entry"><a class="el" href="struct_u_a_r_t_registers.html">UARTRegisters</a></td><td class="entry"></td></tr>
-</table></div><!-- contents -->
+</div>
+</div>
+<a class="anchor" id="a3b8a725d2698fe067f65dc70d495fe3d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Stream::Write </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Writes the specified data to the output stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>Input data </td></tr>
+    <tr><td class="paramname">size</td><td>Size of the input data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>lib/stream/<a class="el" href="stream_8h_source.html">stream.h</a></li>
+</ul>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="class_stream.html">Stream</a></li>
     <li class="footer">Generated on Wed Sep 7 2016 10:46:47 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

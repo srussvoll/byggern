@@ -1,0 +1,54 @@
+\hypertarget{class_stream}{\section{Stream Class Reference}
+\label{class_stream}\index{Stream@{Stream}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_stream_a3b8a725d2698fe067f65dc70d495fe3d}{Write} (char $\ast$string, size\-\_\-t size)
+\item 
+virtual bool \hyperlink{class_stream_a3bae4fba73b6e4e9fa256bae866887c8}{Read} (char $\ast$string, size\-\_\-t size)
+\item 
+\hypertarget{class_stream_ade48d0be8cb9a4fbddea0ae68af689c7}{virtual uint8\-\_\-t {\bfseries Get\-Available\-Write\-Bytes} ()}\label{class_stream_ade48d0be8cb9a4fbddea0ae68af689c7}
+
+\item 
+\hypertarget{class_stream_a0766c270e9cc5b77d4fe34d4a5ac8790}{virtual uint8\-\_\-t {\bfseries Get\-Avaliable\-Read\-Bytes} ()}\label{class_stream_a0766c270e9cc5b77d4fe34d4a5ac8790}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_stream_a3bae4fba73b6e4e9fa256bae866887c8}{\index{Stream@{Stream}!Read@{Read}}
+\index{Read@{Read}!Stream@{Stream}}
+\subsubsection[{Read}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Stream\-::\-Read (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_a3bae4fba73b6e4e9fa256bae866887c8}
+Reads data from the input stream and stores in the specified data. 
+\begin{DoxyParams}{Parameters}
+{\em string} & Where the data should be stored \\
+\hline
+{\em size} & Size of the data \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_stream_a3b8a725d2698fe067f65dc70d495fe3d}{\index{Stream@{Stream}!Write@{Write}}
+\index{Write@{Write}!Stream@{Stream}}
+\subsubsection[{Write}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Stream\-::\-Write (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_a3b8a725d2698fe067f65dc70d495fe3d}
+Writes the specified data to the output stream. 
+\begin{DoxyParams}{Parameters}
+{\em string} & Input data \\
+\hline
+{\em size} & Size of the input data \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+lib/stream/\hyperlink{stream_8h}{stream.\-h}\end{DoxyCompactItemize}

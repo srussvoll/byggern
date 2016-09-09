@@ -37,7 +37,7 @@ bool Stream::CheckOutputOverflowFlag(){
 
 void Stream::ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, uint8_t *string, uint16_t &string_size){
     uint16_t read_size = min(string_size, this->CalculateLength(start_index, stop_index, buffer_size));
-    
+
     // Either the read is on one side of index 0, or on both sides:
     if (start_index + read_size > buffer_size) {
         // Two sided read
@@ -49,7 +49,7 @@ void Stream::ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &st
         // One sided read
         memcpy(string, buffer + start_index, read_size);
     }
-    
+
     start_index = (start_index + read_size) % buffer_size;
 }
 
@@ -57,7 +57,7 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
     if (string_size > buffer_size - this->CalculateLength(start_index, stop_index, buffer_size)) {
         overflow_flag = true;
     }
-    
+
     // Either the write is on one side of index 0, or on both sides:
     if(stop_index + 1 + string_size > buffer_size) {
         // Two sided write
@@ -69,7 +69,7 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
         // One sided write
         memcpy(buffer + stop_index + 1, string, string_size);
     }
-    
+
     stop_index = (stop_index + string_size) % buffer_size;
 }
 

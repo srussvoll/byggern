@@ -1,6 +1,6 @@
 var class_stream =
 [
-    [ "Stream", "class_stream.html#a5d29a6cba400ef0d78a6d6e30def93e4", null ],
+    [ "Stream", "class_stream.html#afd83bbd749c467ad3dd85e1b80170c9b", null ],
     [ "CalculateLength", "class_stream.html#a8abdeaae6339d9873842a951843cb386", null ],
     [ "CheckInputOverflowFlag", "class_stream.html#a088c4e68d568acfad715c56f408fe9f8", null ],
     [ "CheckOutputOverflowFlag", "class_stream.html#aee6c201819b874c5934a270592d9d311", null ],

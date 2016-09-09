@@ -124,8 +124,8 @@ Inheritance diagram for Stream:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5d29a6cba400ef0d78a6d6e30def93e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a5d29a6cba400ef0d78a6d6e30def93e4">Stream</a> (uint8_t <a class="el" href="class_stream.html#a8a754b0acc9552d1b78de92b2476f4cb">input_stream_size</a>, uint8_t <a class="el" href="class_stream.html#a3a171d646ab70eeb9c034aecb3a72003">output_stream_size</a>)</td></tr>
-<tr class="separator:a5d29a6cba400ef0d78a6d6e30def93e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd83bbd749c467ad3dd85e1b80170c9b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#afd83bbd749c467ad3dd85e1b80170c9b">Stream</a> (uint8_t *<a class="el" href="class_stream.html#aaa6b266a85844345faee432d0267c6ec">input_stream</a>, uint16_t <a class="el" href="class_stream.html#a8a754b0acc9552d1b78de92b2476f4cb">input_stream_size</a>, uint8_t *<a class="el" href="class_stream.html#ab2d136f405b24e5eb2a6058b24fabfa3">output_stream</a>, uint16_t <a class="el" href="class_stream.html#a3a171d646ab70eeb9c034aecb3a72003">output_stream_size</a>)</td></tr>
+<tr class="separator:afd83bbd749c467ad3dd85e1b80170c9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a508be3423e4d99ab2757275fb723002a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a508be3423e4d99ab2757275fb723002a">Write</a> (uint8_t *string, uint16_t size)</td></tr>
 <tr class="separator:a508be3423e4d99ab2757275fb723002a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f3ec0f7a24ddcfd054566feb614afba"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a4f3ec0f7a24ddcfd054566feb614afba">Read</a> (uint8_t *string, uint16_t size)</td></tr>
@@ -192,7 +192,7 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a91eb40b21c46bd57b61811a890ac047a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a5d29a6cba400ef0d78a6d6e30def93e4"></a>
+<a class="anchor" id="afd83bbd749c467ad3dd85e1b80170c9b"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -202,13 +202,25 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">Stream::Stream </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>input_stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>input_stream_size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>output_stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>output_stream_size</em>&#160;</td>
         </tr>
         <tr>
@@ -1203,7 +1215,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_stream.html">Stream</a></li>
-    <li class="footer">Generated on Fri Sep 9 2016 13:01:48 for Byggern by
+    <li class="footer">Generated on Fri Sep 9 2016 13:17:27 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

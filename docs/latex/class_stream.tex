@@ -10,7 +10,7 @@ Inheritance diagram for Stream\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_stream_a5d29a6cba400ef0d78a6d6e30def93e4}{Stream} (uint8\-\_\-t \hyperlink{class_stream_a8a754b0acc9552d1b78de92b2476f4cb}{input\-\_\-stream\-\_\-size}, uint8\-\_\-t \hyperlink{class_stream_a3a171d646ab70eeb9c034aecb3a72003}{output\-\_\-stream\-\_\-size})
+\hyperlink{class_stream_afd83bbd749c467ad3dd85e1b80170c9b}{Stream} (uint8\-\_\-t $\ast$\hyperlink{class_stream_aaa6b266a85844345faee432d0267c6ec}{input\-\_\-stream}, uint16\-\_\-t \hyperlink{class_stream_a8a754b0acc9552d1b78de92b2476f4cb}{input\-\_\-stream\-\_\-size}, uint8\-\_\-t $\ast$\hyperlink{class_stream_ab2d136f405b24e5eb2a6058b24fabfa3}{output\-\_\-stream}, uint16\-\_\-t \hyperlink{class_stream_a3a171d646ab70eeb9c034aecb3a72003}{output\-\_\-stream\-\_\-size})
 \item 
 virtual void \hyperlink{class_stream_a508be3423e4d99ab2757275fb723002a}{Write} (uint8\-\_\-t $\ast$string, uint16\-\_\-t size)
 \item 
@@ -79,14 +79,16 @@ bool \hyperlink{class_stream_a91eb40b21c46bd57b61811a890ac047a}{output\-\_\-stre
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_stream_a5d29a6cba400ef0d78a6d6e30def93e4}{\index{Stream@{Stream}!Stream@{Stream}}
+\hypertarget{class_stream_afd83bbd749c467ad3dd85e1b80170c9b}{\index{Stream@{Stream}!Stream@{Stream}}
 \index{Stream@{Stream}!Stream@{Stream}}
 \subsubsection[{Stream}]{\setlength{\rightskip}{0pt plus 5cm}Stream\-::\-Stream (
 \begin{DoxyParamCaption}
-\item[{uint8\-\_\-t}]{input\-\_\-stream\-\_\-size, }
-\item[{uint8\-\_\-t}]{output\-\_\-stream\-\_\-size}
+\item[{uint8\-\_\-t $\ast$}]{input\-\_\-stream, }
+\item[{uint16\-\_\-t}]{input\-\_\-stream\-\_\-size, }
+\item[{uint8\-\_\-t $\ast$}]{output\-\_\-stream, }
+\item[{uint16\-\_\-t}]{output\-\_\-stream\-\_\-size}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_stream_a5d29a6cba400ef0d78a6d6e30def93e4}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_stream_afd83bbd749c467ad3dd85e1b80170c9b}
 The constructor. Needed to initialize stream sizes 
 \begin{DoxyParams}{Parameters}
 {\em input\-\_\-stream\-\_\-size} & The size of the input ring buffer. \\

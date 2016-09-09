@@ -17,26 +17,26 @@ class UART: Stream{
 public:
 
     /**
-     * Initializes the whol
-     */
-    UART(uint16_t baud_rate);
+    * A constructor that initializes the UART and sets the baud_rate 
+    * @param baud_rate The baud rate of the uart. Bitshifts in
+    */
+    UART(uint8_t baud_rate);
 
 private:
 
     /**
-     * Stores the baud rate for the uart inferface
+     * A 64 byte output stream. Everything that's sent from the microcontroller is first stored here.
      */
-    uint16_t baud_rate_;
+    uint8_t output_stream[64];
 
+    /**
+     * A 64 byte input stream. Everything that's recieved from the client to the microcontroller is stored here.
+     */
+    uint8_t input_stream[64];
 
-
+    
 
 };
-
-
-void USART_Init( unsigned int ubrr );
-
-uint8_t send_data(char data);
 
 
 #endif

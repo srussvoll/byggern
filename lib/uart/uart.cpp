@@ -6,11 +6,10 @@ static int put(char character, FILE* file) {
 	return 0;
 }
 
-UART::UART(uint16_t baud_rate){
+UART::UART(uint8_t baud_rate): Stream(64,64) {
 
-	this.baud_rate_ = baud_rate;
-	UBRR0H = (uint8_t)(this.baud_rate_ >> 8);
-	UBRR0L = (uint8_t)(this.baud_rate_ >>8);
+	UBRR0H = (uint8_t)(baud_rate >> 8);
+	UBRR0L = (uint8_t)(baud_rate >> 8);
 
 	// Sets the transmitter and receiver register
 	UCSR0B = (1<<RXEN0)|(1<<TXEN0);
@@ -20,12 +19,18 @@ UART::UART(uint16_t baud_rate){
 	UCSR0C = (1<<URSEL0)|(3<<UCSZ00)|(1<<USBS0);
 
 	// To enable printf
+
+	// Set the 
+
 	// fdevopen(&put, 0);
 
 
 }
 
-UART::Write()
+UART::Write(uint8_t *string, uint16_t size) {
+	Stream::Write(string, size);
+
+} 
 
 static int put(char character, FILE* file) {
 	send_data(character);

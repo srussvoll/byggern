@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['stream',['Stream',['../class_stream.html',1,'']]],
-  ['stream_2eh',['stream.h',['../stream_8h.html',1,'']]]
+  ['getavailablereadbytes',['GetAvailableReadBytes',['../class_stream.html#a71cec6c46f3d50cc3ab420e93ae434e1',1,'Stream']]],
+  ['getavailablewritebytes',['GetAvailableWriteBytes',['../class_stream.html#a6a16ddb03d3360cef4daf4d38245091d',1,'Stream']]]
 ];

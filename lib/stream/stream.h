@@ -159,8 +159,11 @@ public:
      * @param input_stream_size The size of the input ring buffer.
      * @param output_stream_size The size of the output ring buffer.
      */
-    Stream(uint8_t input_stream_size, uint8_t output_stream_size) : input_stream_size(input_stream_size),
-                                                                    output_stream_size(output_stream_size){};
+    Stream(uint8_t *input_stream, uint16_t input_stream_size, uint8_t *output_stream, uint16_t output_stream_size) :
+            input_stream(input_stream),
+            input_stream_size(input_stream_size),
+            output_stream(output_stream),
+            output_stream_size(output_stream_size){};
 
     /**
      * Writes the specified data to the output stream.

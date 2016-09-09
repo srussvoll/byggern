@@ -14,7 +14,7 @@ void Stream::Read(uint8_t *string, uint16_t size) {
 }
 
 uint8_t Stream::GetAvailableWriteBytes(){
-    return this->CalculateLength(this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size);
+    return this->output_stream_size - this->CalculateLength(this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size);
 }
 
 uint8_t Stream::GetAvailableReadBytes(){

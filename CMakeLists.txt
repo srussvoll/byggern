@@ -1,22 +1,22 @@
 cmake_minimum_required(VERSION 3.6)
 
 # Options
-set(PROG_TYPE avrisp)
-set(USBPORT /dev/ttyUSB0)
+set(PROG_TYPE jtag3)
+set(USBPORT usb)
 set(MCU atmega162)
 # The device is shipped with the CKDIV8 Fuse programmed. Shipped frequency is 8MHz -> 1MHz
 # We will run the system at 4.9152 MHz. Remember to deprogram the CKDIV8 Fuse before adding the crystal.
-set(FOSC 4195200)
+set(FOSC 4915200)
 set(FREQUENCY_DIVIDER 1)
 math(EXPR F_CPU "${FOSC} / ${FREQUENCY_DIVIDER}")
 set(BAUD 9600)
 
 
-
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.
-set(PROG_ARGS -b 19200 -P ${USBPORT})
+set(PROG_ARGS -P ${USBPORT})
 add_definitions(-DF_CPU=${F_CPU})
 add_definitions(-DFOSC=${FOSC})
+add_definitions(-DBAUD=${BAUD})
 
 # program names
 set(AVRC     avr-gcc)

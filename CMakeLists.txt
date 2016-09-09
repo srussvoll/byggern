@@ -9,14 +9,13 @@ set(MCU atmega162)
 set(FOSC 4195200)
 set(FREQUENCY_DIVIDER 1)
 math(EXPR F_CPU "${FOSC} / ${FREQUENCY_DIVIDER}")
-set(BAUD 9600)
 
 
 
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.
 set(PROG_ARGS -P ${USBPORT})
 add_definitions(-DF_CPU=${F_CPU})
-add_definitions(-DFOSC=${FOSC})
+#add_definitions(-DVAL_FOSC=${FOSC})
 
 # program names
 set(AVRC     avr-gcc)

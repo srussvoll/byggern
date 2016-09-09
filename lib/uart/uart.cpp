@@ -6,19 +6,30 @@ static int put(char character, FILE* file) {
 	return 0;
 }
 
-void USART_Init( unsigned int ubrr )
-{
-	/* Set baud rate */
-	UBRR0H = (unsigned char)(ubrr>>8);
-	UBRR0L = (unsigned char)ubrr;
-	
-	/* Enable receiver and transmitter */
+UART::UART(uint16_t baud_rate){
+
+	this.baud_rate_ = baud_rate;
+	UBRR0H = (uint8_t)(this.baud_rate_ >> 8);
+	UBRR0L = (uint8_t)(this.baud_rate_ >>8);
+
+	// Sets the transmitter and receiver register
 	UCSR0B = (1<<RXEN0)|(1<<TXEN0);
-	
-	/* Set frame format: 8data, 2stop bit */
 	UCSR0C = (1<<URSEL0)|(1<<USBS0)|(3<<UCSZ00);
-	
-	fdevopen(&put, 0);
+
+	// Sets format to eight data bits and two stop bits
+	UCSR0C = (1<<URSEL0)|(3<<UCSZ00)|(1<<USBS0);
+
+	// To enable printf
+	// fdevopen(&put, 0);
+
+
+}
+
+UART::Write()
+
+static int put(char character, FILE* file) {
+	send_data(character);
+	return 0;
 }
 
 uint8_t send_data(char data){
@@ -31,3 +42,5 @@ uint8_t send_data(char data){
 	
 	return 0;
 }
+
+

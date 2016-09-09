@@ -145,13 +145,13 @@ protected:
     * @param stop_index The stop index of the buffer
     * @return Length of valid data
     */
-    virtual uint16_t GetInputStreamSize();
+    virtual uint16_t GetInputStreamLength();
 
     /**
     * Calculates the length of the readable part of the buffer
     * @return Length of valid data
     */
-    virtual uint16_t GetOutputStreamSize();
+    virtual uint16_t GetOutputStreamLength();
     
 public:
     /**

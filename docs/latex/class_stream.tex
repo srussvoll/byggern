@@ -49,9 +49,9 @@ virtual void \hyperlink{class_stream_adce437b86a098710237ac7dcccd5508d}{Read\-Fr
 \item 
 virtual uint16\-\_\-t \hyperlink{class_stream_a8abdeaae6339d9873842a951843cb386}{Calculate\-Length} (uint16\-\_\-t \&start\-\_\-index, uint16\-\_\-t \&stop\-\_\-index, uint16\-\_\-t \&buffer\-\_\-size)
 \item 
-virtual uint16\-\_\-t \hyperlink{class_stream_af502cf8644c8aea119c3f041240161ca}{Get\-Input\-Stream\-Size} ()
+virtual uint16\-\_\-t \hyperlink{class_stream_ac9d4705ce8fe5c9ac473939fcac423f6}{Get\-Input\-Stream\-Length} ()
 \item 
-virtual uint16\-\_\-t \hyperlink{class_stream_accb5b713dd8050198fcd8b6b4f7d60ef}{Get\-Output\-Stream\-Size} ()
+virtual uint16\-\_\-t \hyperlink{class_stream_a6378bb812d0b77890926d1c724140146}{Get\-Output\-Stream\-Length} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -144,13 +144,13 @@ Simply returns the number of bytes available for reading (the actual data availa
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_a6a16ddb03d3360cef4daf4d38245091d}
-Simply returns the number of bytes available in the output buffer. The output depends on the maximum bytes allocated in the implementation. \hypertarget{class_stream_af502cf8644c8aea119c3f041240161ca}{\index{Stream@{Stream}!Get\-Input\-Stream\-Size@{Get\-Input\-Stream\-Size}}
-\index{Get\-Input\-Stream\-Size@{Get\-Input\-Stream\-Size}!Stream@{Stream}}
-\subsubsection[{Get\-Input\-Stream\-Size}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::\-Get\-Input\-Stream\-Size (
+Simply returns the number of bytes available in the output buffer. The output depends on the maximum bytes allocated in the implementation. \hypertarget{class_stream_ac9d4705ce8fe5c9ac473939fcac423f6}{\index{Stream@{Stream}!Get\-Input\-Stream\-Length@{Get\-Input\-Stream\-Length}}
+\index{Get\-Input\-Stream\-Length@{Get\-Input\-Stream\-Length}!Stream@{Stream}}
+\subsubsection[{Get\-Input\-Stream\-Length}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::\-Get\-Input\-Stream\-Length (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_af502cf8644c8aea119c3f041240161ca}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_ac9d4705ce8fe5c9ac473939fcac423f6}
 Calculates the length of the readable part of the buffer 
 \begin{DoxyParams}{Parameters}
 {\em start\-\_\-index} & The start index of the buffer \\
@@ -161,13 +161,13 @@ Calculates the length of the readable part of the buffer
 \begin{DoxyReturn}{Returns}
 Length of valid data 
 \end{DoxyReturn}
-\hypertarget{class_stream_accb5b713dd8050198fcd8b6b4f7d60ef}{\index{Stream@{Stream}!Get\-Output\-Stream\-Size@{Get\-Output\-Stream\-Size}}
-\index{Get\-Output\-Stream\-Size@{Get\-Output\-Stream\-Size}!Stream@{Stream}}
-\subsubsection[{Get\-Output\-Stream\-Size}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::\-Get\-Output\-Stream\-Size (
+\hypertarget{class_stream_a6378bb812d0b77890926d1c724140146}{\index{Stream@{Stream}!Get\-Output\-Stream\-Length@{Get\-Output\-Stream\-Length}}
+\index{Get\-Output\-Stream\-Length@{Get\-Output\-Stream\-Length}!Stream@{Stream}}
+\subsubsection[{Get\-Output\-Stream\-Length}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::\-Get\-Output\-Stream\-Length (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_accb5b713dd8050198fcd8b6b4f7d60ef}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_a6378bb812d0b77890926d1c724140146}
 Calculates the length of the readable part of the buffer \begin{DoxyReturn}{Returns}
 Length of valid data 
 \end{DoxyReturn}

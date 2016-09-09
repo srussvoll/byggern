@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 #include "lib/uart/uart.h"
-#include "lib/testStream/testStream.h"
+#include "lib/TestStream/TestStream.h"
 
 int main(void) {
 	USART_Init(MYUBRR);

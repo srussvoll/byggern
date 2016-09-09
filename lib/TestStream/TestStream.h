@@ -6,12 +6,12 @@
 
 #include "lib/stream/stream.h"
 
-class testStream : public Stream {
+class TestStream : public Stream {
 private:
     uint8_t input_stream[10];
     uint8_t output_stream[10];
 public:
-    testStream() : Stream(10, 10) {};
+    TestStream();
 };
 
 

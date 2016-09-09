@@ -109,3 +109,11 @@ bool Stream::CheckInputOverflowFlag() {
 uint16_t Stream::CalculateLength(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size) {
     return (stop_index - start_index) % buffer_size;
 }
+
+void Stream::ReadFromOutputStream(uint8_t *string, uint16_t size) {
+    this->ReadFromBuffer(this->output_stream, this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size, string, size);
+}
+
+void Stream::WriteToInputStream(uint8_t *string, uint16_t size) {
+    this->WriteToBuffer(this->input_stream, this->input_stream_start_index, this->input_stream_stop_index, this->input_stream_size, this->input_stream_overflowed, string, size);
+}

@@ -117,6 +117,20 @@ protected:
     virtual uint8_t ReadByteFromOutputStream();
 
     /**
+     * Writes the specified data to the output stream.
+     * @param string Input data
+     * @param size Size of the input data
+     */
+    virtual void WriteToInputStream(uint8_t *string, uint16_t size);
+
+    /**
+     * Reads data from the input stream and stores in the specified data.
+     * @param string Where the data should be stored
+     * @param size Size of the data
+     */
+    virtual void ReadFromOutputStream(uint8_t *string, uint16_t size);
+
+    /**
     * Calculates the length of the readable part of the buffer
     * @param start_index The start index of the buffer
     * @param stop_index The stop index of the buffer

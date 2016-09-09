@@ -4,6 +4,6 @@
 #include "TestStream.h"
 
 TestStream::TestStream() : Stream(10, 10) {
-    uint8_t string[4] = "hei!";
-    this->WriteTo
+    char string[5] = "hei!";
+    this->WriteToInputStream((uint8_t*)string, 5);
 }

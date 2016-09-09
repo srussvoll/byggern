@@ -12,9 +12,13 @@
 int main(void) {
 	USART_Init(MYUBRR);
 
-    testStream s();
+    TestStream s = TestStream();
+    uint8_t string[5];
+    s.Read(string, 5);
 
-	printf("Heisann! :)\r\n");
+    send_data(string[1]);
+    //printf((char*)string);
+	//printf("\r\n");
 	
 	while(1)
 	{

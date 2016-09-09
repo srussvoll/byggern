@@ -9,8 +9,6 @@ void Stream::Write(uint8_t *string, uint16_t size) {
 	this->WriteToBuffer(this->output_stream, this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size, this->output_stream_overflowed, string, size);
 }
 
-
-
 void Stream::Read(uint8_t *string, uint16_t size) {
     this->ReadFromBuffer(this->input_stream, this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size, string, size);
 }

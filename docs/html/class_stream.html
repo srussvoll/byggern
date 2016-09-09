@@ -163,6 +163,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:adce437b86a098710237ac7dcccd5508d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8abdeaae6339d9873842a951843cb386"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a8abdeaae6339d9873842a951843cb386">CalculateLength</a> (uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size)</td></tr>
 <tr class="separator:a8abdeaae6339d9873842a951843cb386"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af502cf8644c8aea119c3f041240161ca"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#af502cf8644c8aea119c3f041240161ca">GetInputStreamSize</a> ()</td></tr>
+<tr class="separator:af502cf8644c8aea119c3f041240161ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accb5b713dd8050198fcd8b6b4f7d60ef"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#accb5b713dd8050198fcd8b6b4f7d60ef">GetOutputStreamSize</a> ()</td></tr>
+<tr class="separator:accb5b713dd8050198fcd8b6b4f7d60ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -373,6 +377,63 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Simply returns the number of bytes available in the output buffer. The output depends on the maximum bytes allocated in the implementation. </p>
+
+</div>
+</div>
+<a class="anchor" id="af502cf8644c8aea119c3f041240161ca"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t Stream::GetInputStreamSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Calculates the length of the readable part of the buffer </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start_index</td><td>The start index of the buffer </td></tr>
+    <tr><td class="paramname">stop_index</td><td>The stop index of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Length of valid data </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="accb5b713dd8050198fcd8b6b4f7d60ef"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t Stream::GetOutputStreamSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Calculates the length of the readable part of the buffer </p>
+<dl class="section return"><dt>Returns</dt><dd>Length of valid data </dd></dl>
 
 </div>
 </div>
@@ -1142,7 +1203,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_stream.html">Stream</a></li>
-    <li class="footer">Generated on Fri Sep 9 2016 12:12:48 for Byggern by
+    <li class="footer">Generated on Fri Sep 9 2016 12:56:28 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

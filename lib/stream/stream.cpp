@@ -115,3 +115,11 @@ void Stream::ReadFromOutputStream(uint8_t *string, uint16_t size) {
 void Stream::WriteToInputStream(uint8_t *string, uint16_t size) {
     this->WriteToBuffer(this->input_stream, this->input_stream_start_index, this->input_stream_stop_index, this->input_stream_size, this->input_stream_overflowed, string, size);
 }
+
+uint16_t Stream::GetInputStreamSize() {
+    return this->CalculateLength(this->input_stream_start_index, this->input_stream_stop_index, this->input_stream_size);
+}
+
+uint16_t Stream::GetOutputStreamSize() {
+    return this->CalculateLength(this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size);
+}

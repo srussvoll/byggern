@@ -138,6 +138,20 @@ protected:
     */
     // TODO: Try this with inline
     virtual uint16_t CalculateLength(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size);
+
+    /**
+    * Calculates the length of the readable part of the buffer
+    * @param start_index The start index of the buffer
+    * @param stop_index The stop index of the buffer
+    * @return Length of valid data
+    */
+    virtual uint16_t GetInputStreamSize();
+
+    /**
+    * Calculates the length of the readable part of the buffer
+    * @return Length of valid data
+    */
+    virtual uint16_t GetOutputStreamSize();
     
 public:
     /**

@@ -37,6 +37,8 @@ var NAVTREEINDEX0 =
 "class_stream.html#aff1c899af0d2dea35700d5665f378cd8":[1,0,0,21],
 "class_test_stream.html":[1,0,1],
 "class_test_stream.html#a2e9a2367cfcf1a18b7eede3f922297bb":[1,0,1,0],
+"class_test_stream.html#a4fbf64a4b85e5973859e849bf0799456":[1,0,1,1],
+"class_test_stream.html#aa211bf4c182b5304ee2f841379e23f96":[1,0,1,2],
 "classes.html":[1,1],
 "dir_47f8fe28d1a6fab217e2996b53d6dd11.html":[2,0,0,0],
 "dir_97aefd0d527b934f1d99a682da8fe6a9.html":[2,0,0],

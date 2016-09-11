@@ -1,4 +1,6 @@
 #include "stream.h"
+
+
 namespace{
     inline uint16_t min(uint16_t one, uint16_t two){
         return (one >= two) ? one : two;

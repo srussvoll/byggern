@@ -1,10 +1,11 @@
 #ifndef UART_H_
 #define UART_H_
 
+#define FOSC 4915000 // Clock Speed
+#define BAUD 9600
 #define MYUBRR FOSC/16/BAUD-1
 
 #include <avr/io.h>
-#include "lib/stream/stream.h"
 
 /**
  * @file
@@ -18,8 +19,7 @@ ISR(USART0_UDRE_vect);
 
 class UART: Stream{
 
-public:
-
+void USART_Init( unsigned int ubrr );
     /**
     * A Singleton implementation of this class
     *

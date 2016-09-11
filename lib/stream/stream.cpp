@@ -80,11 +80,11 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
     stop_index = (stop_index + string_size) % buffer_size;
 }
 
-virtual void ReadByteFromOutputStream(uint8_t *byte);{
+virtual void ReadByteFromOutputStream(uint8_t *byte) {
     return this->ReadByteFromBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty);
 }
 
-void Stream::WriteByteToInputStream(uint8_t byte){
+void Stream::WriteByteToInputStream(uint8_t byte) {
     this->WriteByteToBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty, this->input_buffer_overflowed, byte);
 }
 

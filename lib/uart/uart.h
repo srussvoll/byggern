@@ -1,11 +1,11 @@
 #ifndef UART_H_
 #define UART_H_
 
-#define FOSC 4915000 // Clock Speed
-#define BAUD 9600
 #define MYUBRR FOSC/16/BAUD-1
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
+#include "lib/stream/stream.h"
 
 /**
  * @file
@@ -41,11 +41,6 @@ class UART : public Stream {
     void Initialize(uint8_t baud_rate);
 
     /**
-    * The interrupt handler vector. To be run on each DRE interrupt
-    */
-    friend void USART0_UDRE_vect();
-
-    /**
     * Beacause of singleton - makes sure its not copied etc.
     */
     UART(const UART&) = delete;
@@ -71,6 +66,11 @@ private:
      * A 64 byte input stream. Everything that's recieved from the client to the microcontroller is stored here.
      */
     uint8_t input_stream[64];
+
+    /**
+    * The interrupt handler vector. To be run on each DRE interrupt
+    */
+    friend void USART0_UDRE_vect();
 
 };
 

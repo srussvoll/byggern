@@ -49,19 +49,10 @@ void SRAM_test(void)
     printf("SRAM test completed with \n%4d errors in write phase and \n%4d errors in retrieval phase\n\n", write_errors, retrieval_errors);
 }
 
-// Deres
-void handler();
-
-
-// Vår
-void handler() {
-    //bra kode
-}
-
 ISR(USART0_UDRE0_vect);
 
 int main(void) {
-    USART_Init(MYUBRR);
+    //USART_Init(MYUBRR);
 
     char c = 'u';
     //send_data(c);

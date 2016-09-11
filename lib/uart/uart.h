@@ -7,8 +7,6 @@
 
 #include <avr/io.h>
 
-<<<<<<< HEAD
-=======
 /**
  * @file
  * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
@@ -20,14 +18,8 @@
 ISR(USART0_UDRE_vect);
 
 class UART: Stream{
->>>>>>> 13769612f71067b3f81387e650ae5060270b6c33
 
 void USART_Init( unsigned int ubrr );
-
-<<<<<<< HEAD
-uint8_t send_data(char data);
-
-=======
     /**
     * A Singleton implementation of this class
     *
@@ -84,6 +76,5 @@ private:
     uint8_t input_stream[64];
 
 };
->>>>>>> 13769612f71067b3f81387e650ae5060270b6c33
 
 #endif

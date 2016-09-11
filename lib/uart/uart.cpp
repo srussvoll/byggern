@@ -1,12 +1,21 @@
 #include "uart.h"
 #include <stdio.h>
+#include <avr/interrupt.h>
 
 static int put(char character, FILE* file) {
     send_data(character);
     return 0;
 }
 
-UART::UART(uint8_t baud_rate): Stream(64,64) {
+void USART0_UDRE_vect(){
+	UART uart = UART::GetInstance();
+	uint8_t byte = UART.ReadByteFromOutputStream();
+	if(byte != null) {
+		UDR0 = byte;
+	}
+}
+
+UART::Initialize(uint16_t baud_rate) {
 
 	UBRR0H = (uint8_t)(baud_rate >> 8);
 	UBRR0L = (uint8_t)(baud_rate >> 8);
@@ -20,7 +29,11 @@ UART::UART(uint8_t baud_rate): Stream(64,64) {
 	UCSR0C = (1<<URSEL0)|(3<<UCSZ00)|(1<<USBS0);
 
 	// To enable printf
-	// fdevopen(&put, 0);
+	fdevopen(&put, 0);	
+
+}
+
+UART::UART(): Stream(64,64) {
 }
 
 UART::Write(uint8_t *string, uint16_t size) {

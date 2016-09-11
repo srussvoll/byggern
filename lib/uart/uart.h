@@ -13,15 +13,22 @@
  *
  * An interface for handling streams with default methods.
  */
+
+ISR(USART0_UDRE_vect);
+
 class UART: Stream{
 
 public:
 
     /**
-    * A constructor that initializes the UART and sets the baud_rate 
-    * @param baud_rate The baud rate of the uart. Bitshifts in
+    * A Singleton implementation of this class
+    *
     */
-    UART(uint8_t baud_rate);
+    static UART& GetInstance(){
+        static UART instance;
+        return instance;
+    }
+
 
     /**
     * Write the inserted string to output (i.e. write to computer)
@@ -30,8 +37,20 @@ public:
     */
     void Write(uint8_t *string, uint16_t size);
 
+    /**
+    * Initializer because of the singleton implementation.
+    * @param baud_rate The baud rate of the uart
+    */
+    void Initialize(uint8_t baud_rate);
+
+    friend void USART0_UDRE_vect();
 
 private:
+
+    /**
+    * A constructor that initializes the UART to a certain size
+    */
+    UART();
 
     /**
      * A 64 byte output stream. Everything that's sent from the microcontroller is first stored here.
@@ -42,8 +61,6 @@ private:
      * A 64 byte input stream. Everything that's recieved from the client to the microcontroller is stored here.
      */
     uint8_t input_stream[64];
-
-    
 
 };
 

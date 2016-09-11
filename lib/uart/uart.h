@@ -1,50 +1,16 @@
 #ifndef UART_H_
 #define UART_H_
 
+#define FOSC 4915000 // Clock Speed
+#define BAUD 9600
 #define MYUBRR FOSC/16/BAUD-1
 
 #include <avr/io.h>
-#include "lib/stream/stream.h"
-
-/**
- * @file
- * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
- * @version 1.0
- *
- * An interface for handling streams with default methods.
- */
-class UART: Stream{
-
-public:
-
-    /**
-    * A constructor that initializes the UART and sets the baud_rate 
-    * @param baud_rate The baud rate of the uart. Bitshifts in
-    */
-    UART(uint8_t baud_rate);
-
-    /**
-    * Write the inserted string to output (i.e. write to computer)
-    * @param string The "data string" that shall be written to the output
-    * @param size the size of the data string
-    */
-    void Write(uint8_t *string, uint16_t size);
 
 
-private:
+void USART_Init( unsigned int ubrr );
 
-    /**
-     * A 64 byte output stream. Everything that's sent from the microcontroller is first stored here.
-     */
-    uint8_t output_stream[64];
+uint8_t send_data(char data);
 
-    /**
-     * A 64 byte input stream. Everything that's recieved from the client to the microcontroller is stored here.
-     */
-    uint8_t input_stream[64];
-
-    
-
-};
 
 #endif

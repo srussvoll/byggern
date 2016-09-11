@@ -1,11 +1,6 @@
-#include "uart.h"
+#include "lib/uart/uart.h"
 #include <stdio.h>
 #include <avr/interrupt.h>
-
-static int put(char character, FILE* file) {
-	send_data(character);
-	return 0;
-}
 
 void USART0_UDRE_vect(){
 	UART uart = UART::GetInstance();
@@ -22,9 +17,6 @@ UART::Initialize(uint16_t baud_rate) {
 
 	/* Set frame format: 8data, 2stop bit */
 	UCSR0C = (1<<URSEL0)|(1<<USBS0)|(3<<UCSZ00);
-
-	// To enable printf
-	fdevopen(&put, 0);
 
 }
 

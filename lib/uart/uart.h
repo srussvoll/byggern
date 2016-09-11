@@ -17,9 +17,7 @@
 
 ISR(USART0_UDRE_vect);
 
-class UART: Stream{
-
-void USART_Init( unsigned int ubrr );
+class UART : public Stream {
     /**
     * A Singleton implementation of this class
     *
@@ -28,7 +26,6 @@ void USART_Init( unsigned int ubrr );
         static UART instance;
         return instance;
     }
-
 
     /**
     * Write the inserted string to output (i.e. write to computer)

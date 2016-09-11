@@ -6,32 +6,32 @@ namespace{
 }
 
 void Stream::Write(uint8_t *string, uint16_t size) {
-	this->WriteToBuffer(this->output_stream, this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size, this->output_stream_empty, this->output_stream_overflowed, string, size);
+	this->WriteToBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty, this->output_buffer_overflowed, string, size);
 }
 
 void Stream::Read(uint8_t *string, uint16_t size) {
-    this->ReadFromBuffer(this->input_stream, this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size, this->input_stream_empty, string, size);
+    this->ReadFromBuffer(this->input_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->input_buffer_empty, string, size);
 }
 
 uint8_t Stream::GetAvailableWriteBytes(){
-    return this->output_stream_size - this->CalculateLength(this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size, this->output_stream_empty);
+    return this->output_buffer_size - this->CalculateLength(this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty);
 }
 
 uint8_t Stream::GetAvailableReadBytes(){
-    return this->CalculateLength(this->input_stream_start_index, this->input_stream_stop_index, this->input_stream_size, this->input_stream_empty);
+    return this->CalculateLength(this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty);
 }
 
 uint8_t Stream::ReadByte(){
-    return this->ReadByteFromBuffer(this->input_stream, this->input_stream_start_index, this->input_stream_stop_index, this->input_stream_size, this->input_stream_empty);
+    return this->ReadByteFromBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty);
 }
 
 void Stream::WriteByte(uint8_t byte){
-    this->WriteByteToBuffer(this->output_stream, this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size, this->output_stream_empty, this->output_stream_overflowed, byte);
+    this->WriteByteToBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty, this->output_buffer_overflowed, byte);
 }
 
 bool Stream::CheckOutputOverflowFlag(){
-    bool flag = this->output_stream_overflowed;
-	this->output_stream_overflowed = false;
+    bool flag = this->output_buffer_overflowed;
+	this->output_buffer_overflowed = false;
 	return flag;
 }
 
@@ -79,11 +79,11 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
 }
 
 uint8_t Stream::ReadByteFromOutputStream(){
-    return this->ReadByteFromBuffer(this->output_stream, this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size, this->output_stream_empty);
+    return this->ReadByteFromBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty);
 }
 
 void Stream::WriteByteToInputStream(uint8_t byte){
-    this->WriteByteToBuffer(this->input_stream, this->input_stream_start_index, this->input_stream_stop_index, this->input_stream_size, this->input_stream_empty, this->input_stream_overflowed, byte);
+    this->WriteByteToBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty, this->input_buffer_overflowed, byte);
 }
 
 uint8_t Stream::ReadByteFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty) {
@@ -109,8 +109,8 @@ void Stream::WriteByteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t 
 }
 
 bool Stream::CheckInputOverflowFlag() {
-	bool flag = this->input_stream_overflowed;
-	this->input_stream_overflowed = false;
+	bool flag = this->input_buffer_overflowed;
+	this->input_buffer_overflowed = false;
 	return flag;
 }
 
@@ -119,23 +119,23 @@ uint16_t Stream::CalculateLength(uint16_t &start_index, uint16_t &stop_index, ui
 }
 
 void Stream::ReadFromOutputStream(uint8_t *string, uint16_t size) {
-    this->ReadFromBuffer(this->output_stream, this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size, this->output_stream_empty, string, size);
+    this->ReadFromBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty, string, size);
 }
 
 void Stream::WriteToInputStream(uint8_t *string, uint16_t size) {
-    this->WriteToBuffer(this->input_stream, this->input_stream_start_index, this->input_stream_stop_index, this->input_stream_size, this->input_stream_empty, this->input_stream_overflowed, string, size);
+    this->WriteToBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty, this->input_buffer_overflowed, string, size);
 }
 
-uint16_t Stream::GetInputStreamLength() {
-    return this->CalculateLength(this->input_stream_start_index, this->input_stream_stop_index, this->input_stream_size, this->input_stream_empty);
+uint16_t Stream::GetInputBufferLength() {
+    return this->CalculateLength(this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty);
 }
 
-uint16_t Stream::GetOutputStreamLength() {
-    return this->CalculateLength(this->output_stream_start_index, this->output_stream_stop_index, this->output_stream_size, this->output_stream_empty);
+uint16_t Stream::GetOutputBufferLength() {
+    return this->CalculateLength(this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty);
 }
 
-Stream::Stream(uint16_t input_stream_size, uint16_t output_stream_size) : input_stream_size(input_stream_size),
-                                                                          output_stream_size(output_stream_size) {
-    this->input_stream_stop_index  = this->input_stream_size - 1;
-    this->output_stream_stop_index = this->output_stream_size - 1;
+Stream::Stream(uint16_t input_stream_size, uint16_t output_stream_size) : input_buffer_size(input_stream_size),
+                                                                          output_buffer_size(output_stream_size) {
+    this->input_buffer_stop_index  = this->input_buffer_size - 1;
+    this->output_buffer_stop_index = this->output_buffer_size - 1;
 }

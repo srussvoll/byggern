@@ -7,11 +7,11 @@ void USART0_UDRE_vect(){
 	UART& uart = UART::GetInstance();
 	uint8_t byte;
 	if(uart.ReadByteFromOutputStream(byte)) {
-		UDR0 = byte
+		UDR0 = byte;
 	}
 }
 
-void UART::Initialize(uint16_t baud_rate) {
+void UART::Init(uint16_t baud_rate) {
 
 	UBRR0H = (uint8_t)(baud_rate >> 8);
 	UBRR0L = (uint8_t)(baud_rate >> 8);
@@ -33,7 +33,12 @@ void UART::Write(uint8_t *string, uint16_t size) {
 
 	// Check if the data register is ready to receive data
 	// If it is ready, write data to UDR0
+	uint8_t byte;
 	if((UCSR0A & (1 << UDRE0)) == 1 ) {
-		UDR0 = Stream::ReadByteFromOutputStream();
+		if(ReadByteFromOutputStream(byte)){
+			UDR0 = byte;
+		} else {
+
+		}
 	}
 }

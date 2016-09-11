@@ -38,7 +38,7 @@ class UART : public Stream {
     * Initializer because of the singleton implementation.
     * @param baud_rate The baud rate of the uart
     */
-    void Initialize(uint8_t baud_rate);
+    void Init(uint16_t baud_rate);
 
     /**
     * Beacause of singleton - makes sure its not copied etc.

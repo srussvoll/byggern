@@ -20,11 +20,6 @@ UART::UART(uint8_t baud_rate): Stream(64,64) {
 	UCSR0C = (1<<URSEL0)|(3<<UCSZ00)|(1<<USBS0);
 
 	// To enable printf
-
-	// Set the input_stream and output_stream pointers in Stream.
-	input_stream = input_stream_uart;
-	output_stream = output_stream_uart;
-
 	// fdevopen(&put, 0);
 
 

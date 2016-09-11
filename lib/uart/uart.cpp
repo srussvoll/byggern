@@ -1,13 +1,13 @@
-#include "lib/uart/uart.h"
 #include <stdio.h>
 #include <avr/interrupt.h>
 
+#include "lib/uart/uart.h"
+
 void USART0_UDRE_vect(){
 	UART& uart = UART::GetInstance();
-	uint8_t *byte = nullptr;
-	uart.ReadByteFromOutputStream(byte);
-	if(byte != nullptr) {
-		UDR0 = *byte;
+	uint8_t byte;
+	if(uart.ReadByteFromOutputStream(byte)) {
+		UDR0 = byte
 	}
 }
 

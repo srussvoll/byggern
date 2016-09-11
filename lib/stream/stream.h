@@ -29,12 +29,12 @@ protected:
     /**
      * Buffer that stores the input stream data.
      */
-    uint8_t *input_buffer = nullptr;
+    uint8_t *input_buffer;
 
     /**
      * Buffer that stores the output stream data.
      */
-    uint8_t *output_buffer = nullptr;
+    uint8_t *output_buffer;
 
     /**
      * Indicates the first valid data byte in the buffer.
@@ -124,7 +124,7 @@ protected:
      * @param empty Flag indicating whether the buffer is empty or completely full.
      * @return The byte that was read.
      */
-    virtual uint8_t ReadByteFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
+    virtual bool ReadByteFromBuffer(uint8_t& byte, uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
 
     /**
      * Writes a byte to the buffer.
@@ -148,7 +148,7 @@ protected:
      * Reads a byte from the output stream.
      * @return Returns the byte.
      */
-    virtual void ReadByteFromOutputStream(uint8_t *byte);
+    virtual bool ReadByteFromOutputStream(uint8_t& byte);
 
     /**
      * Writes the specified data to the output stream.
@@ -211,7 +211,7 @@ public:
      * Reads one byte from the input stream.
      * @return Returns the read byte.
      */
-    virtual uint8_t ReadByte();
+    virtual bool ReadByte(uint8_t& byte);
 
     /**
      * Writes one byte to the output stream.

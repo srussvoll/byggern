@@ -23,8 +23,12 @@ uint8_t Stream::GetAvailableReadBytes(){
     return this->CalculateLength(this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty);
 }
 
-uint8_t Stream::ReadByte(){
-    return this->ReadByteFromBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty);
+bool Stream::ReadByte(uint8_t& byte){
+    if(this->ReadByteFromBuffer(byte, this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty)){
+		return true;
+	} else {
+		return false;
+	}
 }
 
 void Stream::WriteByte(uint8_t byte){
@@ -80,23 +84,27 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
     stop_index = (stop_index + string_size) % buffer_size;
 }
 
-virtual void ReadByteFromOutputStream(uint8_t *byte) {
-    return this->ReadByteFromBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty);
+bool Stream::ReadByteFromOutputStream(uint8_t& byte) {
+
+	if(this->ReadByteFromBuffer(byte, this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty)){
+		return true;
+	} else {
+		return false;
+	}
 }
 
 void Stream::WriteByteToInputStream(uint8_t byte) {
     this->WriteByteToBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty, this->input_buffer_overflowed, byte);
 }
-
-void Stream::ReadByteFromBuffer(uint8_t *byte, uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty) {
+bool Stream::ReadByteFromBuffer(uint8_t& byte,uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty) {
     uint16_t buffer_length = this->CalculateLength(start_index, stop_index, buffer_size, empty);
     if (buffer_length) {
-        uint8_t value = buffer[start_index];
+        byte = buffer[start_index];
         if (buffer_length == 1) empty = true;
         start_index = (start_index + 1) % buffer_size;
-        *byte = value;
+        return true;
     } else {
-        byte = null;
+        return false;
     }
 }
 

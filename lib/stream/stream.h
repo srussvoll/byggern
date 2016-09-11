@@ -148,7 +148,7 @@ protected:
      * Reads a byte from the output stream.
      * @return Returns the byte.
      */
-    virtual uint8_t ReadByteFromOutputStream();
+    virtual void ReadByteFromOutputStream(uint8_t *byte);
 
     /**
      * Writes the specified data to the output stream.

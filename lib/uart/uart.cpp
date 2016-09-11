@@ -29,10 +29,3 @@ UART::Initialize(uint16_t baud_rate) {
 }
 
 UART::UART(): Stream(64,64) {}
-
-uint8_t send_data(char data){
-	UDR0 = data;
-	while ((UCSR0A & (1 << UDRE0)) == 0) {
-		// do
-	}
-}

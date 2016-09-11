@@ -9,9 +9,10 @@ static int put(char character, FILE* file) {
 
 void USART0_UDRE_vect(){
 	UART uart = UART::GetInstance();
-	uint8_t byte = UART.ReadByteFromOutputStream();
+	uint8_t *byte = null;
+	ReadByteFromOutputStream(byte)
 	if(byte != null) {
-		UDR0 = byte;
+		UDR0 = *byte;
 	}
 }
 

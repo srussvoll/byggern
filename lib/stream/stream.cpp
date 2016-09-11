@@ -80,7 +80,7 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
     stop_index = (stop_index + string_size) % buffer_size;
 }
 
-uint8_t Stream::ReadByteFromOutputStream(){
+virtual void ReadByteFromOutputStream(uint8_t *byte);{
     return this->ReadByteFromBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty);
 }
 
@@ -88,13 +88,15 @@ void Stream::WriteByteToInputStream(uint8_t byte){
     this->WriteByteToBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty, this->input_buffer_overflowed, byte);
 }
 
-uint8_t Stream::ReadByteFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty) {
+void Stream::ReadByteFromBuffer(uint8_t *byte, uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty) {
     uint16_t buffer_length = this->CalculateLength(start_index, stop_index, buffer_size, empty);
     if (buffer_length) {
         uint8_t value = buffer[start_index];
         if (buffer_length == 1) empty = true;
         start_index = (start_index + 1) % buffer_size;
-        return value;
+        *byte = value;
+    } else {
+        byte = null;
     }
 }
 

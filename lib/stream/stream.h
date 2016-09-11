@@ -7,7 +7,21 @@
  * @author  Johan Lofstad, Sondre Baugstø, Sondre Russvoll
  * @version 1.0
  *
- * An interface for handling streams with default methods.
+ * An interface for handling streams.
+ */
+
+/**
+ * This class is an interface for implementing a duplex FIFO stream.
+ *
+ * This class implements a duplex FIFO stream using two circular buffers.
+ * For instance both an RS232 driver and a CAN driver would need to implement a stream.
+ * Inheriting from this interface makes the comunication interface for RS232, CAN and other stream based
+ * classes/drivers the same, meaning the end user does not need to know whether the data being sent is being sent
+ * over a UART or a CAN bus.
+ *
+ * As an example you can set up a CAN bus using a CAN driver inheriting from this interface. Then it can be
+ * passed to a function expecting to send data to an RS232 class also inheriting from this interface, and it will
+ * just work. This interface is in other words written to make it easier to write consistent and driver independent code.
  */
 class Stream {
 protected:

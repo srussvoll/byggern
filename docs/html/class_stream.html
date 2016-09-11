@@ -112,6 +112,8 @@ $(document).ready(function(){initNavTree('class_stream.html','');});
 <div class="title">Stream Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="stream_8h_source.html">stream.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Stream:</div>
 <div class="dyncontent">
@@ -195,7 +197,11 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a149776fead5c56894699da5bfe489b65"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a149776fead5c56894699da5bfe489b65">output_buffer_overflowed</a> = false</td></tr>
 <tr class="separator:a149776fead5c56894699da5bfe489b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class is an interface for implementing a duplex FIFO stream.</p>
+<p>This class implements a duplex FIFO stream using two circular buffers. For instance both an RS232 driver and a CAN driver would need to implement a stream. Inheriting from this interface makes the comunication interface for RS232, CAN and other stream based classes/drivers the same, meaning the end user does not need to know whether the data being sent is being sent over a UART or a CAN bus.</p>
+<p>As an example you can set up a CAN bus using a CAN driver inheriting from this interface. Then it can be passed to a function expecting to send data to an RS232 class also inheriting from this interface, and it will just work. This interface is in other words written to make it easier to write consistent and driver independent code. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a2b738d6f4d3059de2ae3d444d68663bf"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1281,7 +1287,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_stream.html">Stream</a></li>
-    <li class="footer">Generated on Sun Sep 11 2016 11:10:44 for Byggern by
+    <li class="footer">Generated on Sun Sep 11 2016 11:33:48 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

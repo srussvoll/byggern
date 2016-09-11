@@ -1,6 +1,10 @@
 \hypertarget{class_stream}{\section{Stream Class Reference}
 \label{class_stream}\index{Stream@{Stream}}
 }
+
+
+{\ttfamily \#include $<$stream.\-h$>$}
+
 Inheritance diagram for Stream\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -81,6 +85,13 @@ bool \hyperlink{class_stream_ae7300cb8941cec142c14e8fc9baab9d3}{input\-\_\-buffe
 bool \hyperlink{class_stream_a149776fead5c56894699da5bfe489b65}{output\-\_\-buffer\-\_\-overflowed} = false
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+This class is an interface for implementing a duplex F\-I\-F\-O stream.
+
+This class implements a duplex F\-I\-F\-O stream using two circular buffers. For instance both an R\-S232 driver and a C\-A\-N driver would need to implement a stream. Inheriting from this interface makes the comunication interface for R\-S232, C\-A\-N and other stream based classes/drivers the same, meaning the end user does not need to know whether the data being sent is being sent over a U\-A\-R\-T or a C\-A\-N bus.
+
+As an example you can set up a C\-A\-N bus using a C\-A\-N driver inheriting from this interface. Then it can be passed to a function expecting to send data to an R\-S232 class also inheriting from this interface, and it will just work. This interface is in other words written to make it easier to write consistent and driver independent code. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_stream_a2b738d6f4d3059de2ae3d444d68663bf}{\index{Stream@{Stream}!Stream@{Stream}}

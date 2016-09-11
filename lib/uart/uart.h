@@ -43,7 +43,20 @@ public:
     */
     void Initialize(uint8_t baud_rate);
 
+    /**
+    * The interrupt handler vector. To be run on each DRE interrupt
+    */
     friend void USART0_UDRE_vect();
+
+    /**
+    * Beacause of singleton - makes sure its not copied etc.
+    */
+    UART(const UART&) = delete;
+
+    /**
+    * Beacause of singleton - makes sure its not copied etc.
+    */
+    void operator=(const UART&) = delete;
 
 private:
 

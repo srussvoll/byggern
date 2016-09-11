@@ -45,5 +45,4 @@ UART::Write(uint8_t *string, uint16_t size) {
 	if((UCSR0A & (1 << UDRE0)) == 1 ) {
 		UDR0 = ReadByteFromOutputStream();
 	}
-
 }

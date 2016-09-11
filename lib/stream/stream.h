@@ -51,7 +51,19 @@ protected:
      * The size of the current input stream. This has to be set
      */
     uint16_t input_stream_size = 0;
-    
+
+    /**
+     * Flag indicating whether the stream is empty or full.
+     */
+
+    bool input_stream_empty = true;
+
+    /**
+     * Flag indicating whether the stream is empty or full.
+     */
+
+    bool output_stream_empty = true;
+
     /**
      * Flag indicating whether the input stream has overflowed or not.
      */
@@ -72,7 +84,7 @@ protected:
     * @param string The string to read into
     * @param length The length of the string
     */
-    virtual void ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, uint8_t *string, uint16_t &string_size);
+    virtual void ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size);
     /**
     * Writes a string to the given buffer. 
     * @param buffer Buffer to write to
@@ -82,7 +94,7 @@ protected:
     * @param string The string to read from
     * @param length The length of the string
     */
-    virtual void WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &overflow_flag, uint8_t *string, uint16_t &string_size);
+    virtual void WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t *string, uint16_t &string_size);
     
     /**
     * Reads a byte from the given buffer
@@ -92,7 +104,7 @@ protected:
     * @param size The size of the buffer
     * @return The byte that was read
     */
-    virtual uint8_t ReadByteFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size);
+    virtual uint8_t ReadByteFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
     
     /**
     * Writes a byte to the buffer
@@ -103,7 +115,7 @@ protected:
     * @param byte The byte to be written
     * @param overflow_flag A flag indicated an overflow
     */
-    virtual void WriteByteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &overflow_flag, uint8_t &byte);
+    virtual void WriteByteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t &byte);
 
     /**
     * Writes a byte to the input stream
@@ -137,7 +149,7 @@ protected:
     * @return Length of valid data
     */
     // TODO: Try this with inline
-    virtual uint16_t CalculateLength(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size);
+    virtual uint16_t CalculateLength(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
 
     /**
     * Calculates the length of the readable part of the buffer
@@ -159,9 +171,7 @@ public:
      * @param input_stream_size The size of the input ring buffer.
      * @param output_stream_size The size of the output ring buffer.
      */
-    Stream(uint16_t input_stream_size, uint16_t output_stream_size) :
-            input_stream_size(input_stream_size),
-            output_stream_size(output_stream_size){};
+    Stream(uint16_t input_stream_size, uint16_t output_stream_size);
 
     /**
      * Writes the specified data to the output stream.

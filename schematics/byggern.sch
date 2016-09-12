@@ -1,0 +1,168 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:byggern
+LIBS:Untitled-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L 74LS573 U?
+U 1 1 57D67FC4
+P 8000 2350
+F 0 "U?" H 8150 2950 50  0000 C CNN
+F 1 "74LS573" H 8250 1750 50  0000 C CNN
+F 2 "" H 8000 2350 50  0000 C CNN
+F 3 "" H 8000 2350 50  0000 C CNN
+	1    8000 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L CY7C185 IC?
+U 1 1 57D68001
+P 9600 2650
+F 0 "IC?" H 9150 3650 50  0000 L CNN
+F 1 "CY7C185" H 9750 3650 50  0000 L CNN
+F 2 "" H 9600 2550 50  0000 C CNN
+F 3 "" H 9600 2550 50  0000 C CNN
+	1    9600 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8700 1850 9000 1850
+Wire Wire Line
+	8700 1950 9000 1950
+Wire Wire Line
+	8700 2050 9000 2050
+Wire Wire Line
+	8700 2150 9000 2150
+Wire Wire Line
+	8700 2250 9000 2250
+Wire Wire Line
+	8700 2350 9000 2350
+Wire Wire Line
+	8700 2450 9000 2450
+Wire Wire Line
+	8700 2550 9000 2550
+$Comp
+L GND #PWR?
+U 1 1 57D6834E
+P 9600 4000
+F 0 "#PWR?" H 9600 3750 50  0001 C CNN
+F 1 "GND" H 9600 3850 50  0000 C CNN
+F 2 "" H 9600 4000 50  0000 C CNN
+F 3 "" H 9600 4000 50  0000 C CNN
+	1    9600 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 57D6836B
+P 9600 1350
+F 0 "#PWR?" H 9600 1200 50  0001 C CNN
+F 1 "+5V" H 9600 1490 50  0000 C CNN
+F 2 "" H 9600 1350 50  0000 C CNN
+F 3 "" H 9600 1350 50  0000 C CNN
+	1    9600 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9600 1550 9600 1350
+Wire Wire Line
+	9600 3850 9600 4000
+Wire Wire Line
+	6600 1850 7300 1850
+Wire Wire Line
+	7300 1950 6600 1950
+Wire Wire Line
+	7300 2050 6600 2050
+Wire Wire Line
+	7300 2150 6600 2150
+Wire Wire Line
+	7300 2250 6600 2250
+Wire Wire Line
+	7300 2350 6600 2350
+Wire Wire Line
+	7300 2450 6600 2450
+Wire Wire Line
+	7300 2550 6600 2550
+$Comp
+L GAL16V8D U?
+U 1 1 57D696A5
+P 8000 5300
+F 0 "U?" H 8000 6600 60  0001 C CNN
+F 1 "GAL16V8D" H 8000 6700 60  0000 C CNN
+F 2 "" H 6300 5450 60  0001 C CNN
+F 3 "" H 6300 5450 60  0001 C CNN
+	1    8000 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Crystal 4.9MHz
+U 1 1 57D69777
+P 4500 2550
+F 0 "4.9MHz" H 4500 2700 50  0000 C CNN
+F 1 "Crystal" H 4500 2400 50  0000 C CNN
+F 2 "" H 4500 2550 50  0000 C CNN
+F 3 "" H 4500 2550 50  0000 C CNN
+	1    4500 2550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4500 2700 4500 2750
+Wire Wire Line
+	4500 2750 4600 2750
+Wire Wire Line
+	4600 2350 4500 2350
+Wire Wire Line
+	4500 2350 4500 2400
+$Comp
+L ATMEGA162-P IC?
+U 1 1 57D698B6
+P 5600 3500
+F 0 "IC?" H 4750 5330 50  0000 L BNN
+F 1 "ATMEGA162-P" H 6000 1650 50  0000 L BNN
+F 2 "DIL40" H 5600 3500 50  0000 C CIN
+F 3 "" H 5600 3500 50  0000 C CNN
+	1    5600 3500
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC

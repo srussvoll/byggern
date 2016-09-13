@@ -68,6 +68,7 @@ set(COPT      "-Os -lm -lprintf_flt")
 set(CMCU      "-mmcu=${MCU}")
 set(CDEFS     "-DF_CPU=${F_CPU} -DBAUD=${BAUD}")
 set(ENABLE_SINGLETON "-fno-threadsafe-statics") # This isn't implemented in avr-g++ anyway, and without this singletons don't work...
+set(DISABLE_EXCEPTIONS "-fno-exceptions") # This isn't implemented in avr-g++. Turn it off so the code doesn't try to cast an exception.
 
 # Linker flags
 # Moves everything except the stack into external RAM
@@ -78,7 +79,7 @@ set(ENABLE_SINGLETON "-fno-threadsafe-statics") # This isn't implemented in avr-
 set(HEAP_LOCATION "")
 
 set(CFLAGS   "${CMCU} ${CDEBUG} ${CDEFS} ${COPT} ${HEAP_LOCATION} ${CWARN} ${CSTANDARD} ${CTUNING}")
-set(CXXFLAGS "${CMCU} ${CDEBUG} ${CDEFS} ${COPT} ${HEAP_LOCATION} ${CXXSTANDARD} ${ENABLE_SINGLETON} ${CTUNING}")
+set(CXXFLAGS "${CMCU} ${CDEBUG} ${CDEFS} ${COPT} ${HEAP_LOCATION} ${CXXSTANDARD} ${ENABLE_SINGLETON} ${DISABLE_EXCEPTIONS} ${CTUNING}")
 
 set(CMAKE_C_FLAGS   "${CFLAGS}")
 set(CMAKE_CXX_FLAGS "${CXXFLAGS}")

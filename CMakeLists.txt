@@ -69,8 +69,16 @@ set(CMCU      "-mmcu=${MCU}")
 set(CDEFS     "-DF_CPU=${F_CPU} -DBAUD=${BAUD}")
 set(ENABLE_SINGLETON "-fno-threadsafe-statics") # This isn't implemented in avr-g++ anyway, and without this singletons don't work...
 
-set(CFLAGS   "${CMCU} ${CDEBUG} ${CDEFS} ${COPT} ${CWARN} ${CSTANDARD} ${CTUNING}")
-set(CXXFLAGS "${CMCU} ${CDEBUG} ${CDEFS} ${COPT} ${CXXSTANDARD} ${ENABLE_SINGLETON} ${CTUNING}")
+# Linker flags
+# Moves everything except the stack into external RAM
+# The Harvard architecture separates the .text and .data etc. sections offsetting the beginning of .data by 0x800000 in the linker.
+# Thus the heap is in this case located from 0x1800 to 0x1FFF.
+#set(HEAP_LOCATION "-Wl,--section-start,.data=0x801800,--defsym=__heap_end=0x801fff")
+# Does nothing...
+set(HEAP_LOCATION "")
+
+set(CFLAGS   "${CMCU} ${CDEBUG} ${CDEFS} ${COPT} ${HEAP_LOCATION} ${CWARN} ${CSTANDARD} ${CTUNING}")
+set(CXXFLAGS "${CMCU} ${CDEBUG} ${CDEFS} ${COPT} ${HEAP_LOCATION} ${CXXSTANDARD} ${ENABLE_SINGLETON} ${CTUNING}")
 
 set(CMAKE_C_FLAGS   "${CFLAGS}")
 set(CMAKE_CXX_FLAGS "${CXXFLAGS}")

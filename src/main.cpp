@@ -47,10 +47,10 @@ void SRAM_test(void)
 }
 
 int main(void) {
-	USART_Init(MYUBRR);
+	//USART_Init(MYUBRR);
 
     char c = 'u';
-    send_data(c);
+    //send_data(c);
 
     MCUCR |= (1 << SRE);
     SRAM_test();
@@ -69,6 +69,6 @@ int main(void) {
 
 	while(1)
 	{
-		
+
 	}
 }

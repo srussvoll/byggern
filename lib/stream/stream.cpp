@@ -82,7 +82,6 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
 
     // Either the write is on one side of index 0, or on both sides:
     if(((stop_index + 1) % buffer_size) + string_size > buffer_size) {
-        // FIXME: Fix this now!
         // Two sided write
         uint16_t size_one = buffer_size - (stop_index + 1);
         uint16_t size_two = string_size - size_one;
@@ -135,7 +134,6 @@ bool Stream::CheckInputOverflowFlag() {
 }
 
 uint16_t Stream::CalculateLength(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty) {
-    //UDR0 = '0' + ((stop_index - start_index) % buffer_size) + 1;
     return (empty == true) ? 0 : ((stop_index - start_index) % buffer_size) + 1;
 }
 

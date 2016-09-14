@@ -176,18 +176,6 @@ protected:
     // TODO: Try this with inline
     virtual uint16_t CalculateLength(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
 
-    /**
-    * Calculates the length of the readable part of the buffer.
-    * @return Length of valid data.
-    */
-    virtual uint16_t GetInputBufferLength();
-
-    /**
-    * Calculates the length of the readable part of the buffer.
-    * @return Length of valid data
-    */
-    virtual uint16_t GetOutputBufferLength();
-
 public:
     /**
      * Used to initialize the stream sizes and other data members.
@@ -245,4 +233,16 @@ public:
      * @return Returns flag value.
      */
     virtual bool CheckOutputOverflowFlag();
+
+    /**
+    * Calculates the length of the readable part of the buffer.
+    * @return Length of valid data.
+    */
+    virtual uint16_t GetInputBufferLength();
+
+    /**
+    * Calculates the length of the readable part of the buffer.
+    * @return Length of valid data
+    */
+    virtual uint16_t GetOutputBufferLength();
 };

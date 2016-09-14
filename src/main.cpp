@@ -62,7 +62,7 @@ int main(void) {
 
     UART& uart = UART::GetInstance();
     uart.Init(9600);
-    const char* string = "hei\n";
+    char string[] = "hei\n";
     uart.Write((uint8_t *) string, 5);
 
 

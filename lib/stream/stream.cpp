@@ -67,7 +67,7 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
     }
 
     // Either the write is on one side of index 0, or on both sides:
-    if(stop_index + 1 + string_size > buffer_size) {
+    if(((stop_index + 1) % buffer_size) + string_size > buffer_size) {
         // Two sided write
         uint16_t size_one = buffer_size - (stop_index + 1);
         uint16_t size_two = string_size - size_one;

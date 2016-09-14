@@ -11,9 +11,9 @@ void USART0_UDRE_vect(){
 		UDR0 = byte;
 	} else {
         // Turn off interrupts.
-		UCSR0B &= ~(1 << UDRIE0);
+        UCSR0B &= ~(1 << UDRIE0);
         uart.ongoing_transmission = false;
-	}
+    }
 }
 
 void UART::Init(uint16_t baud_rate) {
@@ -36,18 +36,17 @@ UART::UART(): Stream(64,64) {
 }
 
 void UART::Write(uint8_t *string, uint16_t size) {
-    bool stream_empty = (Stream::GetOutputBufferLength() == 0);
-
     Stream::Write(string, size);
 
-    if (stream_empty) {
-		// Initialize transmission
-		this->initialize_transmission();
-	}
+    // Initialize transmission
+    this->initialize_transmission();
 }
 
 void UART::initialize_transmission() {
     if (!this->ongoing_transmission) {
+        this->ongoing_transmission = true;
+
+        // Read byte
         uint8_t byte;
         Stream::ReadByteFromOutputStream(byte);
 
@@ -56,7 +55,5 @@ void UART::initialize_transmission() {
 
         // Enable interrupts
         UCSR0B |= (1 << UDRIE0);
-
-        this->ongoing_transmission = true;
     }
 }

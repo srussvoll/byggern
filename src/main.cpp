@@ -24,10 +24,10 @@ int main(void) {
     char string[] = "Test av en litt lengre string som mest sannsynlig overflower..\n";
 
 	while(1) {
-        while(uart.GetOutputBufferLength() != 0) {}
-        uart.Write((uint8_t *) string, sizeof(string));
+        /*while(uart.GetOutputBufferLength() != 0) {}
+        uart.Write((uint8_t *) string, sizeof(string));*/
 
-        //printf("Hei.\n");
+        printf("Hei.\n");
 	}
 }
 #pragma clang diagnostic pop

@@ -1,5 +1,17 @@
 #include "stream.h"
+#define memcpy custom_memcpy
 
+void * custom_memcpy(void * dst, void const * src, size_t len) {
+    char * pDst = (char *) dst;
+    char const * pSrc = (char const *) src;
+
+    while (len--)
+    {
+        *pDst++ = *pSrc++;
+    }
+
+    return (dst);
+}
 
 namespace{
     inline uint16_t min(uint16_t one, uint16_t two){
@@ -60,14 +72,16 @@ uint16_t Stream::ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t
 }
 
 void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t *string, uint16_t &string_size){
-    uint16_t buffer_avaliable = buffer_size - this->CalculateLength(start_index, stop_index, buffer_size, empty);
-    if (string_size > buffer_avaliable) {
+    uint16_t buffer_available = buffer_size - this->CalculateLength(start_index, stop_index, buffer_size, empty);
+
+    if (string_size > buffer_available) {
         overflow_flag = true;
-        start_index = (start_index + (string_size - buffer_avaliable)) % buffer_size;
+        start_index = (start_index + (string_size - buffer_available)) % buffer_size;
     }
 
     // Either the write is on one side of index 0, or on both sides:
     if(((stop_index + 1) % buffer_size) + string_size > buffer_size) {
+        // FIXME: Fix this now!
         // Two sided write
         uint16_t size_one = buffer_size - (stop_index + 1);
         uint16_t size_two = string_size - size_one;
@@ -75,10 +89,17 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
         memcpy(buffer, string + size_one, size_two);
     } else {
         // One sided write
-        memcpy(buffer + stop_index + 1, string, string_size);
+        uint16_t next = stop_index + 1;
+        uint16_t offset = (next) % buffer_size;
+        uint16_t *dest = (uint16_t *) ((uint16_t) buffer + offset);
+        uint16_t *dest2 = dest;
+        //uint16_t *dest = (uint16_t *) ((uint16_t) buffer + ((stop_index + 1) % buffer_size));
+        memcpy(dest2, string, string_size);
+        buffer[4] = 'm';
+        UDR0 = stop_index;
     }
 
-    if (string_size && empty) empty = false;
+    if (string_size > 0 && empty) empty = false;
     stop_index = (stop_index + string_size) % buffer_size;
 }
 
@@ -120,6 +141,7 @@ bool Stream::CheckInputOverflowFlag() {
 }
 
 uint16_t Stream::CalculateLength(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty) {
+    //UDR0 = '0' + ((stop_index - start_index) % buffer_size) + 1;
     return (empty == true) ? 0 : ((stop_index - start_index) % buffer_size) + 1;
 }
 

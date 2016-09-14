@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <avr/interrupt.h>
 
+
 #include "lib/uart/uart.h"
 
 void USART0_UDRE_vect(){
@@ -34,23 +35,22 @@ UART::UART(): Stream(64,64) {
 }
 
 void UART::Write(uint8_t *string, uint16_t size) {
-	bool stream_empty = (Stream::GetOutputBufferLength() > 0);
+    bool stream_empty = (Stream::GetOutputBufferLength() == 0);
 
     Stream::Write(string, size);
+    Stream::GetOutputBufferLength();
 
-    UDR0 = Stream::GetOutputBufferLength() + '0';
-
-    if (stream_empty == 0) {
+    if (stream_empty) {
 
 
 		// Initialize transmission
-		uint8_t byte;
-		Stream::ReadByteFromOutputStream(byte);
-		
-		// Enable interrupts
-		UCSR0B |= (1 << UDRIE0);
+		///uint8_t byte;
+		//Stream::ReadByteFromOutputStream(byte);
 
-		// Write data 
-		UDR0 = byte;
+		// Enable interrupts
+		//UCSR0B |= (1 << UDRIE0);
+
+		// Write data
+		//UDR0 = byte;
 	}
 }

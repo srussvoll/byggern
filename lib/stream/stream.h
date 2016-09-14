@@ -10,6 +10,9 @@
  * An interface for handling streams.
  */
 
+void * amemcpy(void * dst, void const * src, size_t len);
+
+
 /**
  * This class is an interface for implementing a duplex FIFO stream.
  *

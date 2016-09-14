@@ -101,7 +101,7 @@ protected:
      * @param string The string to read into.
      * @param string_size The size of the string.
      */
-    virtual void ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size);
+    virtual uint16_t ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size);
     /**
      * Writes a string to the given buffer.
      * @param buffer Buffer to write to.
@@ -162,7 +162,7 @@ protected:
      * @param string String to store the read data in.
      * @param size Size of the string.
      */
-    virtual void ReadFromOutputStream(uint8_t *string, uint16_t size);
+    virtual uint16_t ReadFromOutputStream(uint8_t *string, uint16_t size);
 
     /**
      * Calculates the length of the valid part of the buffer.
@@ -205,7 +205,7 @@ public:
      * @param string String to store read data in.
      * @param size Size of the string.
      */
-    virtual void Read(uint8_t *string, uint16_t size);
+    virtual uint16_t Read(uint8_t *string, uint16_t size);
 
     /**
      * Reads one byte from the input stream.

@@ -59,16 +59,6 @@ private:
     UART();
 
     /**
-     * A 64 byte output stream. Everything that's sent from the microcontroller is first stored here.
-     */
-    uint8_t output_stream[64];
-
-    /**
-     * A 64 byte input stream. Everything that's recieved from the client to the microcontroller is stored here.
-     */
-    uint8_t input_stream[64];
-
-    /**
     * The interrupt handler vector. To be run on each DRE interrupt
     */
     friend void USART0_UDRE_vect();

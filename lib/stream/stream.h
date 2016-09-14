@@ -10,6 +10,9 @@
  * An interface for handling streams.
  */
 
+void * amemcpy(void * dst, void const * src, size_t len);
+
+
 /**
  * This class is an interface for implementing a duplex FIFO stream.
  *
@@ -29,12 +32,12 @@ protected:
     /**
      * Buffer that stores the input stream data.
      */
-    uint8_t *input_buffer = nullptr;
+    uint8_t *input_buffer;
 
     /**
      * Buffer that stores the output stream data.
      */
-    uint8_t *output_buffer = nullptr;
+    uint8_t *output_buffer;
 
     /**
      * Indicates the first valid data byte in the buffer.
@@ -101,7 +104,7 @@ protected:
      * @param string The string to read into.
      * @param string_size The size of the string.
      */
-    virtual void ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size);
+    virtual uint16_t ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size);
     /**
      * Writes a string to the given buffer.
      * @param buffer Buffer to write to.
@@ -124,7 +127,7 @@ protected:
      * @param empty Flag indicating whether the buffer is empty or completely full.
      * @return The byte that was read.
      */
-    virtual uint8_t ReadByteFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
+    virtual bool ReadByteFromBuffer(uint8_t& byte, uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
 
     /**
      * Writes a byte to the buffer.
@@ -148,7 +151,7 @@ protected:
      * Reads a byte from the output stream.
      * @return Returns the byte.
      */
-    virtual uint8_t ReadByteFromOutputStream();
+    virtual bool ReadByteFromOutputStream(uint8_t& byte);
 
     /**
      * Writes the specified data to the output stream.
@@ -162,7 +165,7 @@ protected:
      * @param string String to store the read data in.
      * @param size Size of the string.
      */
-    virtual void ReadFromOutputStream(uint8_t *string, uint16_t size);
+    virtual uint16_t ReadFromOutputStream(uint8_t *string, uint16_t size);
 
     /**
      * Calculates the length of the valid part of the buffer.
@@ -205,13 +208,13 @@ public:
      * @param string String to store read data in.
      * @param size Size of the string.
      */
-    virtual void Read(uint8_t *string, uint16_t size);
+    virtual uint16_t Read(uint8_t *string, uint16_t size);
 
     /**
      * Reads one byte from the input stream.
      * @return Returns the read byte.
      */
-    virtual uint8_t ReadByte();
+    virtual bool ReadByte(uint8_t& byte);
 
     /**
      * Writes one byte to the output stream.

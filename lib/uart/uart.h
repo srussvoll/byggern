@@ -4,6 +4,7 @@
 #define MYUBRR FOSC/16/BAUD-1
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include "lib/stream/stream.h"
 
 /**
@@ -13,15 +14,19 @@
  *
  * An interface for handling streams with default methods.
  */
-class UART: Stream{
 
+ISR(USART0_UDRE_vect);
+
+class UART : public Stream {
 public:
-
     /**
-    * A constructor that initializes the UART and sets the baud_rate 
-    * @param baud_rate The baud rate of the uart. Bitshifts in
+    * A Singleton implementation of this class
+    *
     */
-    UART(uint8_t baud_rate);
+    static UART& GetInstance(){
+        static UART instance;
+        return instance;
+    }
 
     /**
     * Write the inserted string to output (i.e. write to computer)
@@ -30,8 +35,28 @@ public:
     */
     void Write(uint8_t *string, uint16_t size);
 
+    /**
+    * Initializer because of the singleton implementation.
+    * @param baud_rate The baud rate of the uart
+    */
+    void Init(uint16_t baud_rate);
+
+    /**
+    * Beacause of singleton - makes sure its not copied etc.
+    */
+    UART(const UART&) = delete;
+
+    /**
+    * Beacause of singleton - makes sure its not copied etc.
+    */
+    void operator=(const UART&) = delete;
 
 private:
+
+    /**
+    * A constructor that initializes the UART to a certain size
+    */
+    UART();
 
     /**
      * A 64 byte output stream. Everything that's sent from the microcontroller is first stored here.
@@ -43,7 +68,10 @@ private:
      */
     uint8_t input_stream[64];
 
-    
+    /**
+    * The interrupt handler vector. To be run on each DRE interrupt
+    */
+    friend void USART0_UDRE_vect();
 
 };
 

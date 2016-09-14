@@ -38,19 +38,16 @@ void UART::Write(uint8_t *string, uint16_t size) {
     bool stream_empty = (Stream::GetOutputBufferLength() == 0);
 
     Stream::Write(string, size);
-    Stream::GetOutputBufferLength();
 
     if (stream_empty) {
-
-
 		// Initialize transmission
-		///uint8_t byte;
-		//Stream::ReadByteFromOutputStream(byte);
-
-		// Enable interrupts
-		//UCSR0B |= (1 << UDRIE0);
+		uint8_t byte;
+		Stream::ReadByteFromOutputStream(byte);
 
 		// Write data
-		//UDR0 = byte;
+		UDR0 = byte;
+
+		// Enable interrupts
+		UCSR0B |= (1 << UDRIE0);
 	}
 }

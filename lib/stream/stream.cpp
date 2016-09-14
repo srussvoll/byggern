@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "stream.h"
 #define memcpy custom_memcpy
 
@@ -89,14 +90,7 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
         memcpy(buffer, string + size_one, size_two);
     } else {
         // One sided write
-        uint16_t next = stop_index + 1;
-        uint16_t offset = (next) % buffer_size;
-        uint16_t *dest = (uint16_t *) ((uint16_t) buffer + offset);
-        uint16_t *dest2 = dest;
-        //uint16_t *dest = (uint16_t *) ((uint16_t) buffer + ((stop_index + 1) % buffer_size));
-        memcpy(dest2, string, string_size);
-        buffer[4] = 'm';
-        UDR0 = stop_index;
+        memcpy(buffer + ((stop_index + 1) % buffer_size), string, string_size);
     }
 
     if (string_size > 0 && empty) empty = false;
@@ -165,4 +159,7 @@ Stream::Stream(uint16_t input_stream_size, uint16_t output_stream_size) : input_
                                                                           output_buffer_size(output_stream_size) {
     this->input_buffer_stop_index  = this->input_buffer_size - 1;
     this->output_buffer_stop_index = this->output_buffer_size - 1;
+
+    this->input_buffer = (uint8_t *) malloc(this->input_buffer_size);
+    this->output_buffer = (uint8_t *) malloc(this->output_buffer_size);
 }

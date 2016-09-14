@@ -17,7 +17,7 @@ void USART0_UDRE_vect(){
 }
 
 void UART::Init(uint16_t baud_rate) {
-    baud_rate = FOSC / 16 / baud_rate - 1;
+    baud_rate = (uint16_t) (FOSC / 16 / baud_rate - 1);
 	UBRR0H = (uint8_t)(baud_rate >> 8);
 	UBRR0L = (uint8_t)(baud_rate);
 

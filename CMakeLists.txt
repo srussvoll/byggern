@@ -74,7 +74,7 @@ set(DISABLE_EXCEPTIONS "-fno-exceptions") # This isn't implemented in avr-g++. T
 # Moves everything except the stack into external RAM
 # The Harvard architecture separates the .text and .data etc. sections offsetting the beginning of .data by 0x800000 in the linker.
 # Thus the heap is in this case located from 0x1800 to 0x1FFF.
-#set(HEAP_LOCATION "-Wl,--section-start,.data=0x801800,--defsym=__heap_end=0x801fff")
+set(HEAP_LOCATION "-Wl,--section-start,.data=0x801800,--defsym=__heap_end=0x801fff")
 # Does nothing...
 set(HEAP_LOCATION "")
 

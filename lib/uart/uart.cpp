@@ -7,7 +7,7 @@
 void USART0_UDRE_vect(){
 	UART& uart = UART::GetInstance();
 	uint8_t byte;
-	
+
 	if (uart.ReadByteFromOutputStream(byte)) {
 		UDR0 = byte;
 	} else {
@@ -30,7 +30,7 @@ void UART::Init(uint16_t baud_rate) {
 
 }
 
-UART::UART(): Stream(64,64) {
+UART::UART(): Stream(1,300) {
 	sei();
 }
 

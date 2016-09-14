@@ -54,13 +54,17 @@ void SRAM_test(void)
 int main(void) {
     //USART_Init(MYUBRR);
 
-    char c = 'u';
     //send_data(c);
 
-    MCUCR |= (1 << SRE);
+    //MCUCR |= (1 << SRE);
     //EMCUCR |= (1 << SRW10) | (1 << SRW11);
 
-    
+
+    UART& uart = UART::GetInstance();
+    uart.Init(9600);
+    const char* string = "hei\n";
+    uart.Write((uint8_t *) string, 5);
+
 
 
 

@@ -18,6 +18,7 @@
 ISR(USART0_UDRE_vect);
 
 class UART : public Stream {
+public:
     /**
     * A Singleton implementation of this class
     *

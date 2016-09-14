@@ -15,7 +15,7 @@ void USART0_UDRE_vect(){
 }
 
 void UART::Init(uint16_t baud_rate) {
-
+    baud_rate = FOSC / 16 / baud_rate - 1;
 	UBRR0H = (uint8_t)(baud_rate >> 8);
 	UBRR0L = (uint8_t)(baud_rate);
 
@@ -34,10 +34,15 @@ UART::UART(): Stream(64,64) {
 }
 
 void UART::Write(uint8_t *string, uint16_t size) {
-	bool stream_empty = Stream::GetOutputBufferLength();
-	Stream::Write(string, size);
+	bool stream_empty = (Stream::GetOutputBufferLength() > 0);
 
-	if (stream_empty) {
+    Stream::Write(string, size);
+
+    UDR0 = Stream::GetOutputBufferLength() + '0';
+
+    if (stream_empty == 0) {
+
+
 		// Initialize transmission
 		uint8_t byte;
 		Stream::ReadByteFromOutputStream(byte);

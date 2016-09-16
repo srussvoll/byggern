@@ -2,47 +2,43 @@
 #define FOSC 4915200
 #define BAUD 9600
 
-#include <stdio.h>
 #include <avr/io.h>
-
+#include <util/delay.h>
+#include <stdio.h>
+#include "lib/utilities/memory.h"
+#include "lib/utilities/printf.h"
 #include "lib/uart/uart.h"
+#include "lib/adc/adc.h"
 
 
-int put(char c, FILE* f) {
+void init_hardware() __attribute__((naked)) __attribute__((section(".init8")));
+
+void init_hardware(){
+    Utilities::initialize_memory();
     UART& uart = UART::GetInstance();
-    uart.Write((uint8_t *) &c, 1);
-    while (uart.GetOutputBufferLength() != 0) {}
-    return 0;
+    uart.Init(9600);
+    Utilities::enable_printf(uart);
 }
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
 
-
-    MCUCR |= (1 << SRE);
-
-    UART& uart = UART::GetInstance();
-    uart.Init(9600);
-    //UDR0 = 'a';
-    //char string[] = "hoi\n";
-    //uart.Write((uint8_t *) string, sizeof(string));
-
-    fdevopen(&put, NULL);
-
-    //SRAM_test();
-
-
-    UART& uart = UART::GetInstance();
-    uart.Init(9600);
-    fdevopen(&put, NULL);
-
-    char string[] = "Test av en litt lengre string som mest sannsynlig overflower..\n";
-
+    printf("\n\n");
+    //printf("Test av en litt lengre string som mest sannsynlig overflower..\n");
+    ADC &myAdc = ADC::GetInstance(0x1405, 2);
 
 	while(1) {
-        /*while(uart.GetOutputBufferLength() != 0) {}
-        uart.Write((uint8_t *) string, sizeof(string));*/
+        myAdc.request_sample();
+        while(myAdc.GetAvailableReadBytes()==0){
+            //printf("wait\n");
+        }
+
+        uint8_t string;
+        myAdc.ReadByte(string);
+        printf("%d\n", string);
+
+        _delay_ms(50);
 
 	}
 }

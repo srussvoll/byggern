@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <avr/interrupt.h>
 
 #include "lib/uart/uart.h"

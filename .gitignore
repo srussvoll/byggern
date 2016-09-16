@@ -4,6 +4,7 @@
 *.a
 *.exe
 *.hex
+*.gch
 
 .idea/*
 build/*

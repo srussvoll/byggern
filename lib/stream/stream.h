@@ -145,7 +145,7 @@ protected:
      * Writes a byte to the input stream.
      * @param byte The byte to be written.
      */
-    virtual void WriteByteToInputStream(uint8_t byte);
+    virtual void WriteByteToInputStream(uint8_t &byte);
 
     /**
      * Reads a byte from the output stream.

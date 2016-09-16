@@ -185,18 +185,6 @@ public:
     Stream(uint16_t input_stream_size, uint16_t output_stream_size);
 
     /**
-    * Calculates the length of the readable part of the buffer.
-    * @return Length of valid data.
-    */
-    virtual uint16_t GetInputBufferLength();
-
-    /**
-    * Calculates the length of the readable part of the buffer.
-    * @return Length of valid data
-    */
-    virtual uint16_t GetOutputBufferLength();
-    
-    /**
      * Writes the specified data to the output stream.
      * @param string Input data.
      * @param size Size of the input data string.
@@ -245,4 +233,16 @@ public:
      * @return Returns flag value.
      */
     virtual bool CheckOutputOverflowFlag();
+
+    /**
+    * Calculates the length of the readable part of the buffer.
+    * @return Length of valid data.
+    */
+    virtual uint16_t GetInputBufferLength();
+
+    /**
+    * Calculates the length of the readable part of the buffer.
+    * @return Length of valid data
+    */
+    virtual uint16_t GetOutputBufferLength();
 };

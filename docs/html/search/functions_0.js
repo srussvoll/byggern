@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['calculatelength',['CalculateLength',['../class_stream.html#a8047b62e7dcfe0e50210b3e40c7aa6eb',1,'Stream']]],
-  ['checkinputoverflowflag',['CheckInputOverflowFlag',['../class_stream.html#a088c4e68d568acfad715c56f408fe9f8',1,'Stream']]],
-  ['checkoutputoverflowflag',['CheckOutputOverflowFlag',['../class_stream.html#aee6c201819b874c5934a270592d9d311',1,'Stream']]]
+  ['adc',['ADC',['../class_a_d_c.html#a0818050dee0dd8789966db0f429ef0bd',1,'ADC::ADC(uint16_t address, uint8_t int_pin)'],['../class_a_d_c.html#a50cb1d4e5bb8e3812732d9efdde4af67',1,'ADC::ADC(const ADC &amp;)=delete']]]
 ];

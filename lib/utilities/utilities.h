@@ -1,8 +1,6 @@
-//
-// Created by sondre on 20.09.16.
-//
+#pragma once
 
-#ifndef BYGGERN_UTILITIES_H
-#define BYGGERN_UTILITIES_H
-
-#endif //BYGGERN_UTILITIES_H
+/**
+ * \namespace Utilities
+ * \brief Contains useful utilities for both the main program and libraries.
+ * */

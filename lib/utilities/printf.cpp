@@ -14,6 +14,7 @@ namespace{
         return 0;
     }
 }
+
 namespace Utilities{
     void enable_printf(Stream &stream){
         output_stream = &stream;

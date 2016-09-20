@@ -2,8 +2,7 @@
 #include <avr/io.h>
 namespace Utilities{
     /**
-    * Sets the required bits for the external memory to work as intended
-    *
+    * Sets the required bits for the external memory to work as intended.
     */
     void initialize_memory(){
         // Enable external memory

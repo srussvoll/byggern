@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['teststream',['TestStream',['../class_test_stream.html',1,'']]]
+  ['stream',['Stream',['../class_stream.html',1,'']]]
 ];

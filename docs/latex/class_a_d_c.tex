@@ -1,0 +1,123 @@
+\hypertarget{class_a_d_c}{}\section{A\+DC Class Reference}
+\label{class_a_d_c}\index{A\+DC@{A\+DC}}
+Inheritance diagram for A\+DC\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_d_c}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_d_c_a50cb1d4e5bb8e3812732d9efdde4af67}{A\+DC} (const \hyperlink{class_a_d_c}{A\+DC} \&)=delete
+\item 
+void \hyperlink{class_a_d_c_a8cc7efa85ad7492480bdfd9f49039150}{operator=} (const \hyperlink{class_a_d_c}{A\+DC} \&)=delete
+\item 
+bool \hyperlink{class_a_d_c_a8264cbf9141f229f5117718e78f01173}{request\+\_\+sample} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_a_d_c}{A\+DC} \& \hyperlink{class_a_d_c_aa9294ebc0b114898aa33d9e09537bdb5}{Get\+Instance} (uint16\+\_\+t adc\+\_\+number, uint8\+\_\+t int\+\_\+pin)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{class_a_d_c_a861d0d9bd4dc73f9811c129548fb9a48}{adc\+\_\+in\+\_\+use} = false
+\item 
+static volatile uint8\+\_\+t $\ast$ {\bfseries adc\+\_\+waiting} = nullptr\hypertarget{class_a_d_c_a472fee5492ee8e10d5baf38b67db18af}{}\label{class_a_d_c_a472fee5492ee8e10d5baf38b67db18af}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_d_c_a0818050dee0dd8789966db0f429ef0bd}{A\+DC} (uint16\+\_\+t address, uint8\+\_\+t int\+\_\+pin)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint8\+\_\+t $\ast$ {\bfseries address}\hypertarget{class_a_d_c_aa58c27581281db4bd8537df9ea2b49f2}{}\label{class_a_d_c_aa58c27581281db4bd8537df9ea2b49f2}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t {\bfseries int\+\_\+pin} = 0\hypertarget{class_a_d_c_a6e0562436e7b39f0e53435ed5cc393a3}{}\label{class_a_d_c_a6e0562436e7b39f0e53435ed5cc393a3}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_a_d_c_a8f7964aad4550f29972483135452c811}{I\+N\+T2\+\_\+vect} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{A\+DC@{A\+DC}!A\+DC@{A\+DC}}
+\index{A\+DC@{A\+DC}!A\+DC@{A\+DC}}
+\subsubsection[{\texorpdfstring{A\+D\+C(uint16\+\_\+t address, uint8\+\_\+t int\+\_\+pin)}{ADC(uint16_t address, uint8_t int_pin)}}]{\setlength{\rightskip}{0pt plus 5cm}A\+D\+C\+::\+A\+DC (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{address, }
+\item[{uint8\+\_\+t}]{int\+\_\+pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_a_d_c_a0818050dee0dd8789966db0f429ef0bd}{}\label{class_a_d_c_a0818050dee0dd8789966db0f429ef0bd}
+Constructor for \hyperlink{class_a_d_c}{A\+DC} class. Singleton implementation 
+\begin{DoxyParams}{Parameters}
+{\em address} & The address the \hyperlink{class_a_d_c}{A\+DC} is located at. Channel on the adc is determined by the L\+SB. We use 0x1404 for channel 1 and 0x1405 for channel 2 \\
+\hline
+\end{DoxyParams}
+\index{A\+DC@{A\+DC}!A\+DC@{A\+DC}}
+\index{A\+DC@{A\+DC}!A\+DC@{A\+DC}}
+\subsubsection[{\texorpdfstring{A\+D\+C(const A\+D\+C \&)=delete}{ADC(const ADC &)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}A\+D\+C\+::\+A\+DC (
+\begin{DoxyParamCaption}
+\item[{const {\bf A\+DC} \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [delete]}}\hypertarget{class_a_d_c_a50cb1d4e5bb8e3812732d9efdde4af67}{}\label{class_a_d_c_a50cb1d4e5bb8e3812732d9efdde4af67}
+Beacause of singleton -\/ makes sure its not copied etc. 
+
+\subsection{Member Function Documentation}
+\index{A\+DC@{A\+DC}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!A\+DC@{A\+DC}}
+\subsubsection[{\texorpdfstring{Get\+Instance(uint16\+\_\+t adc\+\_\+number, uint8\+\_\+t int\+\_\+pin)}{GetInstance(uint16_t adc_number, uint8_t int_pin)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf A\+DC}\& A\+D\+C\+::\+Get\+Instance (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{adc\+\_\+number, }
+\item[{uint8\+\_\+t}]{int\+\_\+pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_a_d_c_aa9294ebc0b114898aa33d9e09537bdb5}{}\label{class_a_d_c_aa9294ebc0b114898aa33d9e09537bdb5}
+A Singleton implementation of this class. See \hyperlink{class_a_d_c}{A\+D\+C(uint16\+\_\+t address)} for more information. \index{A\+DC@{A\+DC}!operator=@{operator=}}
+\index{operator=@{operator=}!A\+DC@{A\+DC}}
+\subsubsection[{\texorpdfstring{operator=(const A\+D\+C \&)=delete}{operator=(const ADC &)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}void A\+D\+C\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf A\+DC} \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [delete]}}\hypertarget{class_a_d_c_a8cc7efa85ad7492480bdfd9f49039150}{}\label{class_a_d_c_a8cc7efa85ad7492480bdfd9f49039150}
+Beacause of singleton -\/ makes sure its not copied etc. \index{A\+DC@{A\+DC}!request\+\_\+sample@{request\+\_\+sample}}
+\index{request\+\_\+sample@{request\+\_\+sample}!A\+DC@{A\+DC}}
+\subsubsection[{\texorpdfstring{request\+\_\+sample()}{request_sample()}}]{\setlength{\rightskip}{0pt plus 5cm}bool A\+D\+C\+::request\+\_\+sample (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_a_d_c_a8264cbf9141f229f5117718e78f01173}{}\label{class_a_d_c_a8264cbf9141f229f5117718e78f01173}
+Request the \hyperlink{class_a_d_c}{A\+DC} to get a sample. This sample can be read from the buffer using \hyperlink{class_stream_a6db4180f5834073f992608b856bddca2}{Read\+Byte(uint8\+\_\+t\& byte)}; 
+
+\subsection{Friends And Related Function Documentation}
+\index{A\+DC@{A\+DC}!I\+N\+T2\+\_\+vect@{I\+N\+T2\+\_\+vect}}
+\index{I\+N\+T2\+\_\+vect@{I\+N\+T2\+\_\+vect}!A\+DC@{A\+DC}}
+\subsubsection[{\texorpdfstring{I\+N\+T2\+\_\+vect}{INT2_vect}}]{\setlength{\rightskip}{0pt plus 5cm}void I\+N\+T2\+\_\+vect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{class_a_d_c_a8f7964aad4550f29972483135452c811}{}\label{class_a_d_c_a8f7964aad4550f29972483135452c811}
+The interrupt vector for \hyperlink{class_a_d_c}{A\+DC} done 
+
+\subsection{Member Data Documentation}
+\index{A\+DC@{A\+DC}!adc\+\_\+in\+\_\+use@{adc\+\_\+in\+\_\+use}}
+\index{adc\+\_\+in\+\_\+use@{adc\+\_\+in\+\_\+use}!A\+DC@{A\+DC}}
+\subsubsection[{\texorpdfstring{adc\+\_\+in\+\_\+use}{adc_in_use}}]{\setlength{\rightskip}{0pt plus 5cm}bool A\+D\+C\+::adc\+\_\+in\+\_\+use = false\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_a_d_c_a861d0d9bd4dc73f9811c129548fb9a48}{}\label{class_a_d_c_a861d0d9bd4dc73f9811c129548fb9a48}
+A flag indicating if the \hyperlink{class_a_d_c}{A\+DC} is currently used 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/adc/adc.\+h\item 
+lib/adc/adc.\+cpp\end{DoxyCompactItemize}

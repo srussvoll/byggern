@@ -14,8 +14,9 @@ namespace{
         return 0;
     }
 }
+
 namespace Utilities{
-    void enable_printf(Stream &stream){
+    void EnablePrintf(Stream &stream){
         output_stream = &stream;
         fdevopen(&put, NULL);
     }

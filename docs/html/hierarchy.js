@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "Stream", "class_stream.html", [
-      [ "TestStream", "class_test_stream.html", null ]
+      [ "ADC", "class_a_d_c.html", null ],
+      [ "UART", "class_u_a_r_t.html", null ]
     ] ]
 ];

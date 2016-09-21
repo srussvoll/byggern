@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['output_5fbuffer',['output_buffer',['../class_stream.html#a3cd072a10ad5c1b6308dd2da2cdbec71',1,'Stream']]],
-  ['output_5fbuffer_5fempty',['output_buffer_empty',['../class_stream.html#a54b21caaee0001e44968fb70d0a591f5',1,'Stream']]],
-  ['output_5fbuffer_5foverflowed',['output_buffer_overflowed',['../class_stream.html#a149776fead5c56894699da5bfe489b65',1,'Stream']]],
-  ['output_5fbuffer_5fsize',['output_buffer_size',['../class_stream.html#a0e9fd6570bafb97ab76ebd37158e78ff',1,'Stream']]],
-  ['output_5fbuffer_5fstart_5findex',['output_buffer_start_index',['../class_stream.html#a1b2d63accede402e5c4c7fd3747d4c33',1,'Stream']]],
-  ['output_5fbuffer_5fstop_5findex',['output_buffer_stop_index',['../class_stream.html#a39d177eedd4d5ff28a95cca9131daf4c',1,'Stream']]]
+  ['getavailablereadbytes',['GetAvailableReadBytes',['../class_stream.html#a71cec6c46f3d50cc3ab420e93ae434e1',1,'Stream']]],
+  ['getavailablewritebytes',['GetAvailableWriteBytes',['../class_stream.html#a6a16ddb03d3360cef4daf4d38245091d',1,'Stream']]],
+  ['getinputbufferlength',['GetInputBufferLength',['../class_stream.html#a4860b9602c68ab437520d321e4e97212',1,'Stream']]],
+  ['getinstance',['GetInstance',['../class_a_d_c.html#aa9294ebc0b114898aa33d9e09537bdb5',1,'ADC::GetInstance()'],['../class_u_a_r_t.html#a745c8f35f3ca3ab6359cedda3e640777',1,'UART::GetInstance()']]],
+  ['getoutputbufferlength',['GetOutputBufferLength',['../class_stream.html#ad8aea9131dbc1b422bdba2408d63492a',1,'Stream']]]
 ];

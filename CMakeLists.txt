@@ -77,8 +77,8 @@ set(DEBUG_FLAG "-DDEBUG=${DEBUG}")
 # Linker flags
 # Moves everything except the stack into external RAM
 # The Harvard architecture separates the .text and .data etc. sections offsetting the beginning of .data by 0x800000 in the linker.
-# Thus the heap is in this case located from 0x1800 to 0x1FFF.
-set(HEAP_LOCATION "-Wl,--section-start,.data=0x801800,--defsym=__heap_end=0x801fff")
+# Thus the heap is in this case located from 0x4800 to 0x4FFF.
+set(HEAP_LOCATION "-Wl,--section-start,.data=0x804800,--defsym=__heap_end=0x804fff")
 # Does nothing...
 set(HEAP_LOCATION "")
 
@@ -96,7 +96,7 @@ add_executable(${PROJECT_NAME} ${SRC_FILES} ${LIB_SRC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}.elf")
 
 # Compiling targets
-add_custom_target(doxygen       ${DOXYGEN} ${BASE_PATH}/Doxyfile)
+add_custom_target(doxygen       ${DOXYGEN} ${BASE_PATH}/Doxyfile WORKING_DIRECTORY ${BASE_PATH})
 add_custom_target(strip ALL     ${AVRSTRIP} "${BUILD_PATH}/${PROJECT_NAME}.elf" DEPENDS ${PROJECT_NAME})
 add_custom_target(hex   ALL     ${OBJCOPY} -R .eeprom -O ihex "${BUILD_PATH}/${PROJECT_NAME}.elf" "${BUILD_PATH}/${PROJECT_NAME}.hex" DEPENDS strip)
 add_custom_target(eeprom        ${OBJCOPY} -j .eeprom --change-section-lma .eeprom=0 -O ihex "${BUILD_PATH}/${PROJECT_NAME}.elf" "${BUILD_PATH}/${PROJECT_NAME}.eeprom" DEPENDS strip)

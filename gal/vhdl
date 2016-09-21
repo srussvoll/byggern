@@ -25,7 +25,7 @@ entity address_decoder is
 end address_decoder;
 architecture behave of address_decoder is begin
  -- implement the functionality here
-    oled_cs <= (a10 or a11);
+    oled_cs <=  (a10 or a11);
     adc_cs <= (not a10 or a11);
     ram_cs <= a11;
 end behave;

@@ -1,7 +1,7 @@
 #include "printf.h"
 #include <avr/interrupt.h>
 
-namespace{
+namespace {
     Stream *output_stream;
     int put(char c, FILE* f) {
         // Enforce printf when debugging!

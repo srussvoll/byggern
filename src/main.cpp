@@ -8,7 +8,7 @@
 
 void SRAM_test(void)
 {
-    volatile char *ext_ram = (char *) 0x1800; // Start address for the SRAM
+    volatile char *ext_ram = (char *) 0x4800; // Start address for the SRAM
     uint16_t ext_ram_size       = 0x800;
     uint16_t write_errors       = 0;
     uint16_t retrieval_errors   = 0;
@@ -50,9 +50,9 @@ void SRAM_test(void)
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
     //printf("\n\n");
-    //printf("Test av en litt lengre string som ikke skal overflowe...\n");
+    printf("Test av en litt lengre string som ikke skal overflowe :)\n");
 
-    /*char string[] = "Test av en litt lengre string som ikke skal overflowe...\n";
+    /*char string[] = "Test av en litt lengre string som ikke skal overflowe :)\n";
     UART::GetInstance().Write((uint8_t *) string, sizeof(string));*/
 
     //SRAM_test();

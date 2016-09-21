@@ -12,5 +12,5 @@ void init_memory() {
 void init_hardware_drivers() {
     UART& uart = UART::GetInstance();
     uart.Init(9600);
-    //Utilities::EnablePrintf(uart);
+    Utilities::EnablePrintf(uart);
 }

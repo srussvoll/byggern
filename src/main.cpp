@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include "init.h"
 #include "lib/uart/uart.h"
-#include "lib/utilities/fonts.h"
 
 #include <stdlib.h>
 
@@ -50,7 +49,7 @@ void SRAM_test(void)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
-    
+
     printf("Test av en litt lengre string som ikke skal overflowe :)\n");
 
     printf("\n\n");
@@ -83,7 +82,8 @@ int main(void) {
     *oled_command = 0xaf; // display on
 
     while(true) {
-        *oled_data = 0xAA;
+        *oled_data = 0x30AA;
+        _delay_us(500);
     }
 
     //printf("\n\n");

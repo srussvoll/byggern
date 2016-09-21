@@ -1,3 +1,4 @@
+/*
 #include "fonts.h"
 namespace{
 	const unsigned char PROGMEM font4x6m[95][4] = {
@@ -99,3 +100,4 @@ namespace{
 	};
 	Fonts::font4x6 = font4x6m;
 }
+*/

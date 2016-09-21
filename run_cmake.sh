@@ -4,5 +4,5 @@ rm -r build
 rm -r CMakeFiles
 cmake .
 clear
-cmake --build . --target size
+cmake --build . --target flash
 

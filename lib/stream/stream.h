@@ -69,6 +69,10 @@ protected:
      */
     uint16_t output_buffer_size;
 
+    void (*event_input_buffer_not_empty)() = nullptr;
+
+    void (*event_output_buffer_not_empty)() = nullptr;
+
     /**
      * Flag indicating whether the buffer is empty or full.
      */
@@ -116,7 +120,7 @@ protected:
      * @param string The string to read from.
      * @param string_size The size of the string.
      */
-    virtual void WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t *string, uint16_t &string_size);
+    virtual void WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t *string, uint16_t &string_size, void (*cb)());
 
     /**
      * Reads a byte from the given buffer.
@@ -139,7 +143,7 @@ protected:
      * @param overflow_flag A flag indicating whether or not the buffer has overflowed.
      * @param byte The byte to be written.
      */
-    virtual void WriteByteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t &byte);
+    virtual void WriteByteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t &byte, void (*cb)());
 
     /**
      * Writes a byte to the input stream.
@@ -175,6 +179,15 @@ protected:
      */
     // TODO: Try this with inline
     virtual uint16_t CalculateLength(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
+    /**
+    * Flushes the given buffer
+    * @param buffer Reference to the buffer which is to be flushed
+    * @param start_index Start index of the buffer which is to be flushed
+    * @param stop_index Stop index of the buffer which is to be flushed
+    * @param buffer_size The size of the given buffer
+    * @param empty Reference to the empty flag of the given buffer
+    */
+    virtual void FlushBuffer(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
 
 public:
     /**
@@ -245,4 +258,14 @@ public:
     * @return Length of valid data
     */
     virtual uint16_t GetOutputBufferLength();
+
+    /**
+    * Flushes the input buffer
+    */
+    virtual void FlushInputBuffer();
+
+    /**
+    * Flushes the output buffer
+    */
+    virtual void FlushOutputBuffer();
 };

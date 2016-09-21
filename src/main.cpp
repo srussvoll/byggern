@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "init.h"
 #include "lib/uart/uart.h"
+#include "lib/utilities/fonts.h"
 
 #include <stdlib.h>
 
@@ -49,6 +50,8 @@ void SRAM_test(void)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
+    
+    printf("Test av en litt lengre string som ikke skal overflowe :)\n");
 
     printf("\n\n");
 
@@ -84,14 +87,9 @@ int main(void) {
     }
 
     //printf("\n\n");
-    printf("Test av en litt lengre string som ikke skal overflowe :)\n");
 
     /*char string[] = "Test av en litt lengre string som ikke skal overflowe :)\n";
     UART::GetInstance().Write((uint8_t *) string, sizeof(string));*/
-
-    //SRAM_test();
-
-	while(1) {
 
 }
 #pragma clang diagnostic pop

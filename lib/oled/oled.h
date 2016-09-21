@@ -1,4 +1,4 @@
-#include "lib/stream.h"
+#include "../stream/stream.h"
 
 /**
  * @file
@@ -17,5 +17,14 @@ public:
         static OLED instance;
         return instance;
     }
+
+    /**
+     * Write the inserted string to output (i.e. write to computer)
+     * @param string The "data string" that shall be written to the output
+     * @param size the size of the data string
+     */
+
+private:
+    OLED();
 
 };

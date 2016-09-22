@@ -73,6 +73,10 @@ protected:
 
     void (*event_output_buffer_not_empty)() = nullptr;
 
+    void (*event_input_buffer_empty)() = nullptr;
+
+    void (*event_output_buffer_empty)() = nullptr;
+
     /**
      * Flag indicating whether the buffer is empty or full.
      */
@@ -108,7 +112,7 @@ protected:
      * @param string The string to read into.
      * @param string_size The size of the string.
      */
-    virtual uint16_t ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size);
+    virtual uint16_t ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size, void (*cb)());
     /**
      * Writes a string to the given buffer.
      * @param buffer Buffer to write to.
@@ -131,7 +135,7 @@ protected:
      * @param empty Flag indicating whether the buffer is empty or completely full.
      * @return The byte that was read.
      */
-    virtual bool ReadByteFromBuffer(uint8_t& byte, uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
+    virtual bool ReadByteFromBuffer(uint8_t& byte, uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, void (*cb)());
 
     /**
      * Writes a byte to the buffer.
@@ -187,7 +191,7 @@ protected:
     * @param buffer_size The size of the given buffer
     * @param empty Reference to the empty flag of the given buffer
     */
-    virtual void FlushBuffer(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
+    virtual void FlushStream(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
 
 public:
     /**

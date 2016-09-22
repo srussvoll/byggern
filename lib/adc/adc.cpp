@@ -17,6 +17,7 @@ bool ADC::request_sample(){
         // ADC busy
         return false;
     } else{
+        // Get the address and write the address to the address
         ADC::adc_waiting = this->address;
         ADC::adc_in_use = true;
         *(this->address) = (uint8_t)(uint16_t) (this->address);
@@ -24,6 +25,7 @@ bool ADC::request_sample(){
 }
 
 void INT2_vect(){
+    // Data now valid. Put the data into the stream
     ADC &adc = ADC::GetInstance((uint16_t) ADC::adc_waiting, ADC::int_pin);
     uint8_t data = *adc.address;
     adc.WriteByteToInputStream(data);

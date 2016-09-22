@@ -1,6 +1,8 @@
 #include "fonts.h"
+#include <avr/pgmspace.h>
+
 namespace {
-    const unsigned char PROGMEM f4x6[95][4] = {
+    const unsigned char f4x6[95][4] PROGMEM = {
             {0b00000000,0b00000000,0b00000000,0b00000000}, //
             {0b00000000,0b01011100,0b00000000,0b00000000}, // !
             {0b00001100,0b00000000,0b00001100,0b00000000}, // "
@@ -98,7 +100,7 @@ namespace {
             {0b00001000,0b00000100,0b00001000,0b00000100}, // ~
     };
 
-    const unsigned char PROGMEM f5x7[95][5] = {
+    const unsigned char f5x7[95][5] PROGMEM = {
             {0b00000000,0b00000000,0b00000000,0b00000000,0b00000000}, //
             {0b00000000,0b00000000,0b01011110,0b00000000,0b00000000}, // !
             {0b00000000,0b00001110,0b00000000,0b00001110,0b00000000}, // "
@@ -196,7 +198,7 @@ namespace {
             {0b00000100,0b00000010,0b00000100,0b00000010,0b00000000}, // ~
     };
 
-    unsigned char PROGMEM f5x7w[95][5] = {
+    const unsigned char f5x7w[95][5] PROGMEM = {
             {0b00000000,0b00000000,0b00000000,0b00000000,0b00000000}, //
             {0b00000000,0b00000000,0b01011111,0b00000000,0b00000000}, // !
             {0b00000000,0b00000111,0b00000000,0b00000111,0b00000000}, // "
@@ -294,7 +296,7 @@ namespace {
             {0b00000010,0b00000001,0b00000011,0b00000010,0b00000001}, // ~
     };
 
-    unsigned char PROGMEM f8x8[95][8] = {
+    const unsigned char f8x8[95][8] PROGMEM = {
             {0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000}, //
             {0b00000000,0b00000110,0b01011111,0b01011111,0b00000110,0b00000000,0b00000000,0b00000000}, // !
             {0b00000000,0b00000111,0b00000111,0b00000000,0b00000111,0b00000111,0b00000000,0b00000000}, // "
@@ -394,8 +396,8 @@ namespace {
 }
 
 namespace Fonts {
-    f5x7 = ::f5x7;
-    f5x7 = ::f5x7w;
-    f8x8 = ::f8x8;
-    f4x6 = ::f4x6;
+    const unsigned char *f5x7  = (const unsigned char *) ::f5x7;
+    const unsigned char *f5x7w = (const unsigned char *) ::f5x7w;
+    const unsigned char *f8x8  = (const unsigned char *) ::f8x8;
+    const unsigned char *f4x6  = (const unsigned char *) ::f4x6;
 }

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['enable_5fprintf',['enable_printf',['../namespace_utilities.html#a7326a682c7601e10c4787e488d9976fb',1,'Utilities']]]
+  ['enableprintf',['EnablePrintf',['../namespace_utilities.html#a7175bc91000cbd130685885c6a24ea9a',1,'Utilities']]]
 ];

@@ -99,7 +99,7 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
     stop_index = (stop_index + string_size) % buffer_size;
     if (string_size > 0 && empty) {
         empty = false;
-        if (cb != nullptr) (*cb)();
+        //if (cb != nullptr) (*cb)();
     }
 }
 
@@ -137,7 +137,7 @@ void Stream::WriteByteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t 
     stop_index = to_write;
     if (empty) {
         empty = false;
-        if (cb != nullptr) (*cb)();
+        //if (cb != nullptr) (*cb)();
     }
 }
 

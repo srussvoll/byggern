@@ -29,9 +29,9 @@ OLED::OLED(): Stream(1,64){
 
 
     // Malloc the Matrix
-    this->matrix = malloc(8 * sizeof(uint8_t*));
+    this->matrix = (uint8_t **) malloc(8 * sizeof(uint8_t*));
     for(int i = 0; i < 8; ++i){
-        if ((this->matrix[i] = malloc(128*sizeof(uint8_t))) == NULL){printf("ERROR: Ran out of space on the heap! \n");}
+        if ((this->matrix[i] = (uint8_t *) malloc(128 * sizeof(uint8_t))) == NULL){printf("ERROR: Ran out of space on the heap! \n");}
     }
 
 

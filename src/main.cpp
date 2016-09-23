@@ -9,8 +9,9 @@
 
 void SRAM_test(void)
 {
-    volatile char *ext_ram = (char *) 0x4800; // Start address for the SRAM
-    uint16_t ext_ram_size       = 0x800;
+    volatile char *ext_ram = (char *) malloc(0x1D00 * sizeof(char)); // Start address for the SRAM
+    //volatile char *ext_ram = (char *) 0x8000; // Start address for the SRAM
+    uint16_t ext_ram_size       = 0x1D00;
     uint16_t write_errors       = 0;
     uint16_t retrieval_errors   = 0;
 
@@ -27,7 +28,7 @@ void SRAM_test(void)
         ext_ram[i] = some_value;
         uint8_t retreived_value = ext_ram[i];
         if (retreived_value != some_value) {
-            printf("Write phase error: ext_ram[%4d] = %02X (should be %02X)\n", i, retreived_value, some_value);
+            //printf("Write phase error: ext_ram[%4d] = %02X (should be %02X)\n", i, retreived_value, some_value);
             write_errors++;
         }
     }
@@ -38,7 +39,7 @@ void SRAM_test(void)
         uint8_t some_value = rand();
         uint8_t retreived_value = ext_ram[i];
         if (retreived_value != some_value) {
-            printf("Retrieval phase error: ext_ram[%4d] = %02X (should be %02X)\n", i, retreived_value, some_value);
+            //printf("Retrieval phase error: ext_ram[%4d] = %02X (should be %02X)\n", i, retreived_value, some_value);
             retrieval_errors++;
         }
     }
@@ -50,13 +51,14 @@ void SRAM_test(void)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
-
+    printf("Test av en litt lengre string som ikke skal overflowe :)\n");
     printf("Test av en litt lengre string som ikke skal overflowe :)\n");
 
     OLED &my_oled = OLED::GetInstance();
 
-    my_oled.GoToLine(0);
-    my_oled.ClearLine();
+    my_oled.Clear();
+
+    //SRAM_test();
 
 }
 #pragma clang diagnostic pop

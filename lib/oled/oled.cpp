@@ -7,8 +7,6 @@ OLED::OLED(): Stream(1,1){
     *this->oled_command = 0xda; //common pads hardware: alternative
     *this->oled_command = 0x10;
     *this->oled_command = 0x00;
-    //*this->oled_command = 0xc8; //common output scan direction:com63~com0
-    //*this->oled_command = 0xa8; //multiplex ration mode:63
     *this->oled_command = 0xd5; //display divide ratio/osc. freq. mode
     *this->oled_command = 0x80;
     *this->oled_command = 0x81; //contrast control
@@ -35,7 +33,7 @@ OLED::OLED(): Stream(1,1){
 void OLED::Clear(){
     for(int i = 0; i < 8; i++){
         for(int j = 0; j < 128; j++){
-            this->matrix[i][j] = 0xAA;
+            this->matrix[i][j] = 0x00;
         }
     }
 

@@ -26,7 +26,7 @@ void Stream::Write(uint8_t *string, uint16_t size) {
 
 
 uint16_t Stream::Read(uint8_t *string, uint16_t size) {
-    return this->ReadFromBuffer(this->input_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->input_buffer_empty, string, size, this->event_output_buffer_empty);
+    return this->ReadFromBuffer(this->input_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->input_buffer_empty, string, size);
 }
 
 uint8_t Stream::GetAvailableWriteBytes(){
@@ -38,7 +38,7 @@ uint8_t Stream::GetAvailableReadBytes(){
 }
 
 bool Stream::ReadByte(uint8_t& byte){
-    return this->ReadByteFromBuffer(byte, this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty, this->event_input_buffer_empty);
+    return this->ReadByteFromBuffer(byte, this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty);
 }
 
 void Stream::WriteByte(uint8_t byte){
@@ -51,7 +51,7 @@ bool Stream::CheckOutputOverflowFlag(){
 	return flag;
 }
 
-uint16_t Stream::ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size, void (*cb)()){
+uint16_t Stream::ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size){
     uint16_t buffer_length = this->CalculateLength(start_index, stop_index, buffer_size, empty);
     uint16_t read_size = min(string_size, buffer_length);
 
@@ -71,7 +71,6 @@ uint16_t Stream::ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t
     start_index = (start_index + read_size) % buffer_size;
     if (read_size == buffer_length) {
         empty = true;
-        if (cb != nullptr) (*cb)();
     }
     return read_size;
 }
@@ -105,20 +104,19 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
 }
 
 bool Stream::ReadByteFromOutputStream(uint8_t &byte) {
-	return this->ReadByteFromBuffer(byte, this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty, this->event_output_buffer_empty);
+	return this->ReadByteFromBuffer(byte, this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty);
 }
 
 void Stream::WriteByteToInputStream(uint8_t &byte) {
     this->WriteByteToBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty, this->input_buffer_overflowed, byte, this->event_input_buffer_not_empty);
 }
-bool Stream::ReadByteFromBuffer(uint8_t& byte,uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, void (*cb)()) {
+bool Stream::ReadByteFromBuffer(uint8_t& byte,uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty) {
     uint16_t buffer_length = this->CalculateLength(start_index, stop_index, buffer_size, empty);
     if (buffer_length) {
         byte = buffer[start_index];
         start_index = (start_index + 1) % buffer_size;
         if (buffer_length == 1) {
             empty = true;
-            if (cb != nullptr) (*cb)();
         }
         return true;
     } else {
@@ -154,7 +152,7 @@ uint16_t Stream::CalculateLength(uint16_t &start_index, uint16_t &stop_index, ui
 }
 
 uint16_t Stream::ReadFromOutputStream(uint8_t *string, uint16_t size) {
-    return this->ReadFromBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty, string, size, this->event_output_buffer_empty);
+    return this->ReadFromBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty, string, size);
 }
 
 void Stream::WriteToInputStream(uint8_t *string, uint16_t size) {

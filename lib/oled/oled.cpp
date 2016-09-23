@@ -28,6 +28,7 @@ OLED::OLED(): Stream(1,64){
 
     // Bind callback here
     while(true) {
+        printf("Write");
         *this->oled_data = 0xAA;
         _delay_us(500);
     }

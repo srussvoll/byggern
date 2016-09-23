@@ -119,6 +119,8 @@ protected:
      * @param overflow_flag A flag indicating whether or not the buffer has overflowed.
      * @param string The string to read from.
      * @param string_size The size of the string.
+     * @param cb_flag A flag indicating wether or not the cb function should be called
+     * @param cb Callback function to be called if cb_flag is true
      */
     virtual void WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t *string, uint16_t &string_size, void (*cb)());
 
@@ -142,6 +144,8 @@ protected:
      * @param empty Flag indicating whether the buffer is empty or completely full.
      * @param overflow_flag A flag indicating whether or not the buffer has overflowed.
      * @param byte The byte to be written.
+     * @param cb_flag A flag indicating wether or not the cb function should be called
+     * @param cb Callback function to be called if cb_flag is true
      */
     virtual void WriteByteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t &byte, void (*cb)());
 

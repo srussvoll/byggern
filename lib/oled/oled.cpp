@@ -1,6 +1,7 @@
 #include "oled.h"
 #include <stdio.h>
-void OLED::Init(unsigned char c){
+#include <util/delay.h>
+OLED::OLED(): Stream(1,64){
     printf("Init oled");
     *this->oled_command = 0xae; // display off
     *this->oled_command = 0xa1; //segment remap
@@ -25,7 +26,11 @@ void OLED::Init(unsigned char c){
     *this->oled_command = 0xa6; //set normal display
     *this->oled_command = 0xaf; // display on
 
-    //this->event_output_buffer_not_empty = this->OutputBufferNotEmptyEvent;
+    // Bind callback here
+    while(true) {
+        *this->oled_data = 0xAA;
+        _delay_us(500);
+    }
 }
 
 void OLED::Clear(){

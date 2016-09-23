@@ -57,13 +57,6 @@ int main(void) {
 
     OLED &my_oled = OLED::GetInstance();
 
-    // INIT OLED
-uint8_t *oled_data    = (uint8_t*)0x3100;
-    while(true) {
-        *oled_data = 0xAA;
-        _delay_us(500);
-    }
-
     //printf("\n\n");
 
     /*char string[] = "Test av en litt lengre string som ikke skal overflowe :)\n";

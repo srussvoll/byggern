@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include "init.h"
 #include "lib/uart/uart.h"
-#include "lib/oled/oled.h"
 
 #include <stdlib.h>
 
@@ -55,7 +54,7 @@ int main(void) {
 
     printf("\n\n");
 
-    OLED &my_oled = OLED::GetInstance();
+//    OLED &my_oled = OLED::GetInstance();
 
     // INIT OLED
 uint8_t *oled_data    = (uint8_t*)0x3100;

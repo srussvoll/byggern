@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "init.h"
 #include "lib/uart/uart.h"
+#include "lib/oled/oled.h"
 
 #include <stdlib.h>
 
@@ -54,35 +55,12 @@ int main(void) {
 
     printf("\n\n");
 
-    uint8_t *oled_command = (uint8_t*)0x3100;
-    uint8_t *oled_data    = (uint8_t*)0x3000;
+    OLED &my_oled = OLED::GetInstance();
 
     // INIT OLED
-    *oled_command = 0xae; // display off
-    *oled_command = 0xa1; //segment remap
-    *oled_command = 0xda; //common pads hardware: alternative
-    *oled_command = 0x12;
-    *oled_command = 0xc8; //common output scan direction:com63~com0
-    *oled_command = 0xa8; //multiplex ration mode:63
-    *oled_command = 0x3f;
-    *oled_command = 0xd5; //display divide ratio/osc. freq. mode
-    *oled_command = 0x80;
-    *oled_command = 0x81; //contrast control
-    *oled_command = 0x50;
-    *oled_command = 0xd9; //set pre-charge period
-    *oled_command = 0x21;
-    *oled_command = 0x20; //Set Memory Addressing Mode
-    *oled_command = 0x02;
-    *oled_command = 0xdb; //VCOM deselect level mode
-    *oled_command = 0x30;
-    *oled_command = 0xad; //master configuration
-    *oled_command = 0x00;
-    *oled_command = 0xa4; //out follows RAM content
-    *oled_command = 0xa6; //set normal display
-    *oled_command = 0xaf; // display on
-
+uint8_t *oled_data    = (uint8_t*)0x3100;
     while(true) {
-        *oled_data = 0x30AA;
+        *oled_data = 0xAA;
         _delay_us(500);
     }
 

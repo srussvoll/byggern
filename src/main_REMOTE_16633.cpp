@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "init.h"
 #include "lib/uart/uart.h"
+#include "lib/oled/oled.h"
 
 #include <stdlib.h>
 

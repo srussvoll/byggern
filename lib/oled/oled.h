@@ -40,22 +40,21 @@ public:
      */
      void Init(unsigned char font);
 
+     /**
+     *
+     */
+
 
 private:
     /**
-    * Useless constructor because of singleton implementation
+    * Singleton constructor
     */
     OLED();
 
     /**
     * The current line used by the driver
     */
-    uint8_t current_line;
-
-    /**
-    * Start index for the memory of the OLED
-    */
-    volatile uint8_t *oled_data_memory_start = (uint8_t *) 0x4800;
+    uint8_t current_line = 0;
 
     /**
     * The event callback when the output buffer is not empty
@@ -65,9 +64,20 @@ private:
     /**
     * A pointer to where the OLED_COMMAND address space starts
     */
-    uint8_t *oled_command = (uint8_t*)0x3000;
+    volatile uint8_t *oled_command = (volatile uint8_t*)0x4000;
+
     /**
     * A pointer to where the OLED_DATA address space starts
     */
-    uint8_t *oled_data    = (uint8_t*)0x3100;
+    volatile uint8_t *oled_data = (volatile uint8_t*)0x4100;
+
+    /**
+    *
+    */
+    uint8_t refresh_rate = 60;
+
+    /**
+    *
+    */
+    uint8_t **matrix;
 };

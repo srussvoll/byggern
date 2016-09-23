@@ -52,10 +52,21 @@ int main(void) {
 
     printf("Test av en litt lengre string som ikke skal overflowe :)\n");
 
-    OLED &my_oled = OLED::GetInstance();
+    printf("\n\n");
 
-    my_oled.GoToLine(0);
-    my_oled.ClearLine();
+//    OLED &my_oled = OLED::GetInstance();
+
+    // INIT OLED
+uint8_t *oled_data    = (uint8_t*)0x3100;
+    while(true) {
+        *oled_data = 0xAA;
+        _delay_us(500);
+    }
+
+    //printf("\n\n");
+
+    /*char string[] = "Test av en litt lengre string som ikke skal overflowe :)\n";
+    UART::GetInstance().Write((uint8_t *) string, sizeof(string));*/
 
 }
 #pragma clang diagnostic pop

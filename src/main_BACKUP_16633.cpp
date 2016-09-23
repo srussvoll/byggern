@@ -52,7 +52,13 @@ int main(void) {
 
     printf("Test av en litt lengre string som ikke skal overflowe :)\n");
 
+<<<<<<< HEAD
+    printf("\n\n");
+
+//    OLED &my_oled = OLED::GetInstance();
+=======
     OLED &my_oled = OLED::GetInstance();
+>>>>>>> baba90094c26b26935b22d7443fdb359a3ee8a8d
 
     my_oled.GoToLine(0);
     my_oled.ClearLine();

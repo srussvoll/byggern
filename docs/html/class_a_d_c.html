@@ -160,6 +160,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4860b9602c68ab437520d321e4e97212 inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8aea9131dbc1b422bdba2408d63492a inherit pub_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#ad8aea9131dbc1b422bdba2408d63492a">GetOutputBufferLength</a> ()</td></tr>
 <tr class="separator:ad8aea9131dbc1b422bdba2408d63492a inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7e3629626c1ea4d9cba88db1e048132 inherit pub_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#ac7e3629626c1ea4d9cba88db1e048132">FlushInputBuffer</a> ()</td></tr>
+<tr class="separator:ac7e3629626c1ea4d9cba88db1e048132 inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0af6193f98fcf7bcd60eef84fce8699c inherit pub_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a0af6193f98fcf7bcd60eef84fce8699c">FlushOutputBuffer</a> ()</td></tr>
+<tr class="separator:a0af6193f98fcf7bcd60eef84fce8699c inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -199,14 +203,14 @@ Friends</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_stream"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_stream')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_stream.html">Stream</a></td></tr>
-<tr class="memitem:a752930f620aed4a3a80b243ce66e57ca inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a752930f620aed4a3a80b243ce66e57ca">ReadFromBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, uint8_t *string, uint16_t &amp;string_size)</td></tr>
-<tr class="separator:a752930f620aed4a3a80b243ce66e57ca inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a169dfecda6018bbe74b04e051f6d6d6d inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a169dfecda6018bbe74b04e051f6d6d6d">WriteToBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, bool &amp;overflow_flag, uint8_t *string, uint16_t &amp;string_size)</td></tr>
-<tr class="separator:a169dfecda6018bbe74b04e051f6d6d6d inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32e449304f65b5571fe848a503fc9d68 inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a32e449304f65b5571fe848a503fc9d68">ReadByteFromBuffer</a> (uint8_t &amp;byte, uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty)</td></tr>
-<tr class="separator:a32e449304f65b5571fe848a503fc9d68 inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06af5437ca096ddc331bdce168ea4085 inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a06af5437ca096ddc331bdce168ea4085">WriteByteToBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, bool &amp;overflow_flag, uint8_t &amp;byte)</td></tr>
-<tr class="separator:a06af5437ca096ddc331bdce168ea4085 inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5108546d239c4f43d34f27e1e7aaa412 inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a5108546d239c4f43d34f27e1e7aaa412">ReadFromBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, uint8_t *string, uint16_t &amp;string_size, void(*cb)())</td></tr>
+<tr class="separator:a5108546d239c4f43d34f27e1e7aaa412 inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4444f4f2a111a304bb0e25efc3a2cb2 inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#ad4444f4f2a111a304bb0e25efc3a2cb2">WriteToBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, bool &amp;overflow_flag, uint8_t *string, uint16_t &amp;string_size, void(*cb)())</td></tr>
+<tr class="separator:ad4444f4f2a111a304bb0e25efc3a2cb2 inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a36f41b0b3965c3e7813a865ac86bae inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a8a36f41b0b3965c3e7813a865ac86bae">ReadByteFromBuffer</a> (uint8_t &amp;byte, uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, void(*cb)())</td></tr>
+<tr class="separator:a8a36f41b0b3965c3e7813a865ac86bae inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0da4122369b2e625c8e4a224cc598a04 inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a0da4122369b2e625c8e4a224cc598a04">WriteByteToBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, bool &amp;overflow_flag, uint8_t &amp;byte, void(*cb)())</td></tr>
+<tr class="separator:a0da4122369b2e625c8e4a224cc598a04 inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0784d377cc92ddde7cc730be17a1a3aa inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a0784d377cc92ddde7cc730be17a1a3aa">WriteByteToInputStream</a> (uint8_t &amp;byte)</td></tr>
 <tr class="separator:a0784d377cc92ddde7cc730be17a1a3aa inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f8e3c5513c6b8605c0fed74a3ed22bc inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a3f8e3c5513c6b8605c0fed74a3ed22bc">ReadByteFromOutputStream</a> (uint8_t &amp;byte)</td></tr>
@@ -217,6 +221,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ab458be72cc54330f518f5ab35ab84106 inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8047b62e7dcfe0e50210b3e40c7aa6eb inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a8047b62e7dcfe0e50210b3e40c7aa6eb">CalculateLength</a> (uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty)</td></tr>
 <tr class="separator:a8047b62e7dcfe0e50210b3e40c7aa6eb inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a435b1b065846d3b24969cfc6dacabc6b inherit pro_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a435b1b065846d3b24969cfc6dacabc6b">FlushStream</a> (uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty)</td></tr>
+<tr class="separator:a435b1b065846d3b24969cfc6dacabc6b inherit pro_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_stream"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_stream')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_stream.html">Stream</a></td></tr>
 <tr class="memitem:a81139fc126566f9d42470fdb405ed26a inherit pro_attribs_class_stream"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a81139fc126566f9d42470fdb405ed26a">input_buffer</a></td></tr>
 <tr class="separator:a81139fc126566f9d42470fdb405ed26a inherit pro_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -234,6 +240,18 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a7373b1d6580a2d5dc74e788b3bb6a596 inherit pro_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e9fd6570bafb97ab76ebd37158e78ff inherit pro_attribs_class_stream"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a0e9fd6570bafb97ab76ebd37158e78ff">output_buffer_size</a></td></tr>
 <tr class="separator:a0e9fd6570bafb97ab76ebd37158e78ff inherit pro_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab76320116c828e383ef680090718ea inherit pro_attribs_class_stream"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ab76320116c828e383ef680090718ea"></a>
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_input_buffer_not_empty</b> )() = nullptr</td></tr>
+<tr class="separator:a3ab76320116c828e383ef680090718ea inherit pro_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a358e5b988d3ccb204f4d544a24be9e65 inherit pro_attribs_class_stream"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a358e5b988d3ccb204f4d544a24be9e65"></a>
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer_not_empty</b> )() = nullptr</td></tr>
+<tr class="separator:a358e5b988d3ccb204f4d544a24be9e65 inherit pro_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a243989d3685da8518601dd901f72dcc1 inherit pro_attribs_class_stream"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a243989d3685da8518601dd901f72dcc1"></a>
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_input_buffer_empty</b> )() = nullptr</td></tr>
+<tr class="separator:a243989d3685da8518601dd901f72dcc1 inherit pro_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d2e1d5b0cb7b6fb8ed1cff1f264192a inherit pro_attribs_class_stream"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d2e1d5b0cb7b6fb8ed1cff1f264192a"></a>
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer_empty</b> )() = nullptr</td></tr>
+<tr class="separator:a0d2e1d5b0cb7b6fb8ed1cff1f264192a inherit pro_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff1c899af0d2dea35700d5665f378cd8 inherit pro_attribs_class_stream"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#aff1c899af0d2dea35700d5665f378cd8">input_buffer_empty</a> = true</td></tr>
 <tr class="separator:aff1c899af0d2dea35700d5665f378cd8 inherit pro_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54b21caaee0001e44968fb70d0a591f5 inherit pro_attribs_class_stream"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a54b21caaee0001e44968fb70d0a591f5">output_buffer_empty</a> = true</td></tr>
@@ -443,7 +461,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_a_d_c.html">ADC</a></li>
-    <li class="footer">Generated on Tue Sep 20 2016 21:20:03 for Byggern by
+    <li class="footer">Generated on Thu Sep 22 2016 21:11:27 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

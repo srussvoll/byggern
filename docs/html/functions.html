@@ -88,6 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="#index_a"><span>a</span></a></li>
       <li><a href="#index_c"><span>c</span></a></li>
+      <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
@@ -149,6 +150,28 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>CheckOutputOverflowFlag()
 : <a class="el" href="class_stream.html#aee6c201819b874c5934a270592d9d311">Stream</a>
 </li>
+<li>Clear()
+: <a class="el" href="class_o_l_e_d.html#a6c7bb1fc91b3e574a275f90643da140a">OLED</a>
+</li>
+<li>ClearLine()
+: <a class="el" href="class_o_l_e_d.html#a3a571f5ea7a183fa14932cd5b2c423eb">OLED</a>
+</li>
+<li>current_line
+: <a class="el" href="class_o_l_e_d.html#aebd62601be5e2ceef6295721f17fc013">OLED</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
+<li>FlushInputBuffer()
+: <a class="el" href="class_stream.html#ac7e3629626c1ea4d9cba88db1e048132">Stream</a>
+</li>
+<li>FlushOutputBuffer()
+: <a class="el" href="class_stream.html#a0af6193f98fcf7bcd60eef84fce8699c">Stream</a>
+</li>
+<li>FlushStream()
+: <a class="el" href="class_stream.html#a435b1b065846d3b24969cfc6dacabc6b">Stream</a>
+</li>
 </ul>
 
 
@@ -164,17 +187,22 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>GetInstance()
 : <a class="el" href="class_a_d_c.html#aa9294ebc0b114898aa33d9e09537bdb5">ADC</a>
+, <a class="el" href="class_o_l_e_d.html#a7b261492679b5e67d346e97ed575332e">OLED</a>
 , <a class="el" href="class_u_a_r_t.html#a745c8f35f3ca3ab6359cedda3e640777">UART</a>
 </li>
 <li>GetOutputBufferLength()
 : <a class="el" href="class_stream.html#ad8aea9131dbc1b422bdba2408d63492a">Stream</a>
+</li>
+<li>GoToLine()
+: <a class="el" href="class_o_l_e_d.html#a8d314130676b104ed959b92ab4bac25e">OLED</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
 <li>Init()
-: <a class="el" href="class_u_a_r_t.html#aed659ee8bc31ba966144d1a522506a7b">UART</a>
+: <a class="el" href="class_o_l_e_d.html#a65c17f32b27117aa5ba03cdce01fbe11">OLED</a>
+, <a class="el" href="class_u_a_r_t.html#aed659ee8bc31ba966144d1a522506a7b">UART</a>
 </li>
 <li>input_buffer
 : <a class="el" href="class_stream.html#a81139fc126566f9d42470fdb405ed26a">Stream</a>
@@ -201,6 +229,12 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
+<li>OLED()
+: <a class="el" href="class_o_l_e_d.html#a8eabf371b5642d99800adb759dab27fd">OLED</a>
+</li>
+<li>oled_data_memory_start
+: <a class="el" href="class_o_l_e_d.html#a4dd5aaffc752c78e0bdb7c524e32217b">OLED</a>
+</li>
 <li>operator=()
 : <a class="el" href="class_a_d_c.html#a8cc7efa85ad7492480bdfd9f49039150">ADC</a>
 , <a class="el" href="class_u_a_r_t.html#a843ab7fc20f5ce5f030d2ca5ee98d6b6">UART</a>
@@ -234,13 +268,13 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="class_stream.html#a6db4180f5834073f992608b856bddca2">Stream</a>
 </li>
 <li>ReadByteFromBuffer()
-: <a class="el" href="class_stream.html#a32e449304f65b5571fe848a503fc9d68">Stream</a>
+: <a class="el" href="class_stream.html#a8a36f41b0b3965c3e7813a865ac86bae">Stream</a>
 </li>
 <li>ReadByteFromOutputStream()
 : <a class="el" href="class_stream.html#a3f8e3c5513c6b8605c0fed74a3ed22bc">Stream</a>
 </li>
 <li>ReadFromBuffer()
-: <a class="el" href="class_stream.html#a752930f620aed4a3a80b243ce66e57ca">Stream</a>
+: <a class="el" href="class_stream.html#a5108546d239c4f43d34f27e1e7aaa412">Stream</a>
 </li>
 <li>ReadFromOutputStream()
 : <a class="el" href="class_stream.html#ab458be72cc54330f518f5ab35ab84106">Stream</a>
@@ -277,13 +311,13 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="class_stream.html#aeaed767b3a8d946c6f81465fa83ff17f">Stream</a>
 </li>
 <li>WriteByteToBuffer()
-: <a class="el" href="class_stream.html#a06af5437ca096ddc331bdce168ea4085">Stream</a>
+: <a class="el" href="class_stream.html#a0da4122369b2e625c8e4a224cc598a04">Stream</a>
 </li>
 <li>WriteByteToInputStream()
 : <a class="el" href="class_stream.html#a0784d377cc92ddde7cc730be17a1a3aa">Stream</a>
 </li>
 <li>WriteToBuffer()
-: <a class="el" href="class_stream.html#a169dfecda6018bbe74b04e051f6d6d6d">Stream</a>
+: <a class="el" href="class_stream.html#ad4444f4f2a111a304bb0e25efc3a2cb2">Stream</a>
 </li>
 <li>WriteToInputStream()
 : <a class="el" href="class_stream.html#aa2f020721d273ce821ccf626e5eb773c">Stream</a>
@@ -294,7 +328,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Sep 20 2016 21:20:03 for Byggern by
+    <li class="footer">Generated on Thu Sep 22 2016 21:11:27 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

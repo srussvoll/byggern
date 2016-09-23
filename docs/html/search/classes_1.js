@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stream',['Stream',['../class_stream.html',1,'']]]
+  ['oled',['OLED',['../class_o_l_e_d.html',1,'']]]
 ];

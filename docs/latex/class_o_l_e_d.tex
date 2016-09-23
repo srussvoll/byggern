@@ -1,0 +1,109 @@
+\hypertarget{class_o_l_e_d}{}\section{O\+L\+ED Class Reference}
+\label{class_o_l_e_d}\index{O\+L\+ED@{O\+L\+ED}}
+Inheritance diagram for O\+L\+ED\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_o_l_e_d}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_o_l_e_d_a8d314130676b104ed959b92ab4bac25e}{Go\+To\+Line} (uint8\+\_\+t line)
+\item 
+void \hyperlink{class_o_l_e_d_a3a571f5ea7a183fa14932cd5b2c423eb}{Clear\+Line} ()
+\item 
+void \hyperlink{class_o_l_e_d_a6c7bb1fc91b3e574a275f90643da140a}{Clear} ()
+\item 
+void \hyperlink{class_o_l_e_d_a65c17f32b27117aa5ba03cdce01fbe11}{Init} (unsigned char font)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_o_l_e_d}{O\+L\+ED} \& \hyperlink{class_o_l_e_d_a7b261492679b5e67d346e97ed575332e}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_o_l_e_d_a8eabf371b5642d99800adb759dab27fd}{O\+L\+ED} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{class_o_l_e_d_aebd62601be5e2ceef6295721f17fc013}{current\+\_\+line}
+\item 
+volatile uint8\+\_\+t $\ast$ \hyperlink{class_o_l_e_d_a4dd5aaffc752c78e0bdb7c524e32217b}{oled\+\_\+data\+\_\+memory\+\_\+start} = (uint8\+\_\+t $\ast$) 0x4800
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{O\+L\+ED@{O\+L\+ED}!O\+L\+ED@{O\+L\+ED}}
+\index{O\+L\+ED@{O\+L\+ED}!O\+L\+ED@{O\+L\+ED}}
+\subsubsection[{\texorpdfstring{O\+L\+E\+D()}{OLED()}}]{\setlength{\rightskip}{0pt plus 5cm}O\+L\+E\+D\+::\+O\+L\+ED (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_o_l_e_d_a8eabf371b5642d99800adb759dab27fd}{}\label{class_o_l_e_d_a8eabf371b5642d99800adb759dab27fd}
+Useless constructor because of singleton implementation 
+
+\subsection{Member Function Documentation}
+\index{O\+L\+ED@{O\+L\+ED}!Clear@{Clear}}
+\index{Clear@{Clear}!O\+L\+ED@{O\+L\+ED}}
+\subsubsection[{\texorpdfstring{Clear()}{Clear()}}]{\setlength{\rightskip}{0pt plus 5cm}void O\+L\+E\+D\+::\+Clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_o_l_e_d_a6c7bb1fc91b3e574a275f90643da140a}{}\label{class_o_l_e_d_a6c7bb1fc91b3e574a275f90643da140a}
+Clears the whole screen \index{O\+L\+ED@{O\+L\+ED}!Clear\+Line@{Clear\+Line}}
+\index{Clear\+Line@{Clear\+Line}!O\+L\+ED@{O\+L\+ED}}
+\subsubsection[{\texorpdfstring{Clear\+Line()}{ClearLine()}}]{\setlength{\rightskip}{0pt plus 5cm}void O\+L\+E\+D\+::\+Clear\+Line (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_o_l_e_d_a3a571f5ea7a183fa14932cd5b2c423eb}{}\label{class_o_l_e_d_a3a571f5ea7a183fa14932cd5b2c423eb}
+Clears the current line selected \index{O\+L\+ED@{O\+L\+ED}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!O\+L\+ED@{O\+L\+ED}}
+\subsubsection[{\texorpdfstring{Get\+Instance()}{GetInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf O\+L\+ED}\& O\+L\+E\+D\+::\+Get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_o_l_e_d_a7b261492679b5e67d346e97ed575332e}{}\label{class_o_l_e_d_a7b261492679b5e67d346e97ed575332e}
+A Singleton implementation of this class \index{O\+L\+ED@{O\+L\+ED}!Go\+To\+Line@{Go\+To\+Line}}
+\index{Go\+To\+Line@{Go\+To\+Line}!O\+L\+ED@{O\+L\+ED}}
+\subsubsection[{\texorpdfstring{Go\+To\+Line(uint8\+\_\+t line)}{GoToLine(uint8_t line)}}]{\setlength{\rightskip}{0pt plus 5cm}void O\+L\+E\+D\+::\+Go\+To\+Line (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{line}
+\end{DoxyParamCaption}
+)}\hypertarget{class_o_l_e_d_a8d314130676b104ed959b92ab4bac25e}{}\label{class_o_l_e_d_a8d314130676b104ed959b92ab4bac25e}
+Sets the line pointer. This line pointer is used by functions such as Write\+Line() to determine which line to write to. 
+\begin{DoxyParams}{Parameters}
+{\em line} & Which line to be set. \\
+\hline
+\end{DoxyParams}
+\index{O\+L\+ED@{O\+L\+ED}!Init@{Init}}
+\index{Init@{Init}!O\+L\+ED@{O\+L\+ED}}
+\subsubsection[{\texorpdfstring{Init(unsigned char font)}{Init(unsigned char font)}}]{\setlength{\rightskip}{0pt plus 5cm}void O\+L\+E\+D\+::\+Init (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{font}
+\end{DoxyParamCaption}
+)}\hypertarget{class_o_l_e_d_a65c17f32b27117aa5ba03cdce01fbe11}{}\label{class_o_l_e_d_a65c17f32b27117aa5ba03cdce01fbe11}
+Initializes the whole screen. 
+\begin{DoxyParams}{Parameters}
+{\em font} & The font that is to be used at the \hyperlink{class_o_l_e_d}{O\+L\+ED} display \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{O\+L\+ED@{O\+L\+ED}!current\+\_\+line@{current\+\_\+line}}
+\index{current\+\_\+line@{current\+\_\+line}!O\+L\+ED@{O\+L\+ED}}
+\subsubsection[{\texorpdfstring{current\+\_\+line}{current_line}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t O\+L\+E\+D\+::current\+\_\+line\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_o_l_e_d_aebd62601be5e2ceef6295721f17fc013}{}\label{class_o_l_e_d_aebd62601be5e2ceef6295721f17fc013}
+The current line used by the driver \index{O\+L\+ED@{O\+L\+ED}!oled\+\_\+data\+\_\+memory\+\_\+start@{oled\+\_\+data\+\_\+memory\+\_\+start}}
+\index{oled\+\_\+data\+\_\+memory\+\_\+start@{oled\+\_\+data\+\_\+memory\+\_\+start}!O\+L\+ED@{O\+L\+ED}}
+\subsubsection[{\texorpdfstring{oled\+\_\+data\+\_\+memory\+\_\+start}{oled_data_memory_start}}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\+\_\+t$\ast$ O\+L\+E\+D\+::oled\+\_\+data\+\_\+memory\+\_\+start = (uint8\+\_\+t $\ast$) 0x4800\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_o_l_e_d_a4dd5aaffc752c78e0bdb7c524e32217b}{}\label{class_o_l_e_d_a4dd5aaffc752c78e0bdb7c524e32217b}
+Start index for the memory of the \hyperlink{class_o_l_e_d}{O\+L\+ED} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/oled/\hyperlink{oled_8h}{oled.\+h}\item 
+lib/oled/oled.\+cpp\end{DoxyCompactItemize}

@@ -24,7 +24,6 @@ void Stream::Write(uint8_t *string, uint16_t size) {
 	this->WriteToBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty, this->output_buffer_overflowed, string, size, this->event_output_buffer_not_empty);
 }
 
-
 uint16_t Stream::Read(uint8_t *string, uint16_t size) {
     return this->ReadFromBuffer(this->input_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->input_buffer_empty, string, size, this->event_output_buffer_empty);
 }

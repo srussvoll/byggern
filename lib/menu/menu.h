@@ -17,7 +17,9 @@ namespace Menu {
 
     class Controller {
     private:
-        Menu *current_menu_control = nullptr;
+        Menu *top;
+
+        Menu *current_menu_control;
         Item *current_item_control = nullptr;
 
         Menu    *current_menu_navigate = nullptr;

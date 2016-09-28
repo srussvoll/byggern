@@ -77,8 +77,8 @@ set(DEBUG_FLAG "-DDEBUG=${DEBUG}")
 # Linker flags
 # Moves everything except the stack into external RAM
 # The Harvard architecture separates the .text and .data etc. sections offsetting the beginning of .data by 0x800000 in the linker.
-# Thus the heap is in this case located from 0x8000 to 0xA000.
-set(HEAP_LOCATION "-Wl,--section-start,.data=0x808001,--defsym=__heap_end=0x809FFF")
+# Thus the heap is in this case located from 0x8000 to 0x9FFF.
+set(HEAP_LOCATION "-Wl,--section-start,.data=0x808000,--defsym=__heap_end=0x809FFF")
 # Does nothing...
 #set(HEAP_LOCATION "")
 

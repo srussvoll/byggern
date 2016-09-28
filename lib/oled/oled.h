@@ -36,14 +36,28 @@ public:
 
      /**
      * Initializes the whole screen.
-     * @param font The font that is to be used at the OLED display
      */
-     void Init(unsigned char font);
+     void Init(uint8_t height, uint8_t width);
 
      /**
      *
      */
+     void WriteByte(uint8_t page, uint8_t column, uint8_t byte);
 
+     /**
+     *
+     */
+     void WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uint8_t length);
+
+     /*
+     *
+     */
+     void WriteBitmap(uint8_t x, uint8_t y, uint8_t** bitmap, uint8_t bitmap_height, uint8_t bitmap_width);
+
+     /**
+     *
+     */
+     uint8_t* GetBitmap(uint8_t character, uint8_t **font);
 
 
 private:
@@ -56,6 +70,21 @@ private:
     * The current line used by the driver
     */
     uint8_t current_line = 0;
+
+    /**
+    * Width of display
+    */
+    uint16_t display_width = 0;
+
+    /**
+    * Height of display
+    */
+    uint16_t display_height = 0;
+
+    /**
+    *
+    */
+    uint8_t number_of_pages = 0;
 
 
     /**
@@ -82,4 +111,6 @@ private:
     *
     */
     void Repaint();
+
+
 };

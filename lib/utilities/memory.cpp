@@ -9,5 +9,7 @@ namespace Utilities {
         EMCUCR |= (4 << SRL0);
         // Enable wait state for sector 1. Wait one cycle during read/write strobe
         EMCUCR |= (1 << SRW01);
+        // MCUCR |= (1 << SRW10);
+        // EMCUCR |= (1 << SRW11);
     }
 }

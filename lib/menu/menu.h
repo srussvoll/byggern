@@ -28,13 +28,13 @@ namespace Menu {
         Controller();
 
         void FindTop();
-        bool Find(uint8_t index);
-        bool FindSubMenu();
-        bool FindSubMenu(uint8_t index);
+        bool FindItem(uint8_t index);
+        bool EnterSubMenu();
+        bool EnterSubMenu(uint8_t index);
         bool FindParent();
 
         void AddMenu(Item *items, uint8_t length);
-        void AddMenuItem(Item item);
+        void AddMenuItem(Item &item);
 
         bool GoTo(Menu *menu, uint8_t index);
         bool ExecuteAction(void *action);

@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.6)
 set(DEBUG "1")
 
 # Options
-set(PROG_TYPE jtag3)
+set(PROG_TYPE jtag3isp)
 set(USBPORT usb)
 set(MCU atmega162)
 # The device is shipped with the CKDIV8 Fuse programmed. Shipped frequency is 8MHz -> 1MHz
@@ -16,7 +16,7 @@ set(BAUD 9600)
 
 
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.
-set(PROG_ARGS -P ${USBPORT})
+set(PROG_ARGS -P ${USBPORT} -B 1)
 add_definitions(-DF_CPU=${F_CPU})
 add_definitions(-DFOSC=${FOSC})
 add_definitions(-DBAUD=${BAUD})
@@ -77,8 +77,8 @@ set(DEBUG_FLAG "-DDEBUG=${DEBUG}")
 # Linker flags
 # Moves everything except the stack into external RAM
 # The Harvard architecture separates the .text and .data etc. sections offsetting the beginning of .data by 0x800000 in the linker.
-# Thus the heap is in this case located from 0x4860 to 0x4FFF.
-set(HEAP_LOCATION "-Wl,--section-start,.data=0x804860,--defsym=__heap_end=0x804fff")
+# Thus the heap is in this case located from 0x8000 to 0xA000.
+set(HEAP_LOCATION "-Wl,--section-start,.data=0x808001,--defsym=__heap_end=0x809FFF")
 # Does nothing...
 #set(HEAP_LOCATION "")
 

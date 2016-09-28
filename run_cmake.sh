@@ -4,5 +4,5 @@ rm -r build
 rm -r CMakeFiles
 cmake .
 clear
-cmake --build . --target flash
+cmake --build . --target $1 
 

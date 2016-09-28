@@ -30,7 +30,7 @@ void UART::Init(uint16_t baud_rate) {
 
 }
 
-UART::UART(): Stream(1,300) {
+UART::UART(): Stream(1,128) {
 	sei();
 }
 

@@ -68,7 +68,9 @@ public:
      *
      */
      void SetNumberOfLines(uint8_t number_of_lines);
-     void WriteColumn(uint8_t *pixels, uint8_t num_pixels, uint8_t x, uint8_t y);
+
+     
+     void WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y);
 
 private:
     /**

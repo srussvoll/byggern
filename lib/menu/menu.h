@@ -17,9 +17,9 @@ namespace Menu {
 
     class Controller {
     private:
-        Menu *top;
+        Menu *root;
 
-        Menu *current_menu_control;
+        Menu *current_menu_control = nullptr;
         Item *current_item_control = nullptr;
 
         Menu    *current_menu_navigate = nullptr;
@@ -27,16 +27,22 @@ namespace Menu {
     public:
         Controller();
 
-        void FindTop();
-        bool FindItem(uint8_t index);
-        bool EnterSubMenu();
-        bool EnterSubMenu(uint8_t index);
-        bool FindParent();
+        void FindRoot();
+        void FindItem(uint8_t index);
+        void EnterSubMenu();
+        void EnterSubMenu(uint8_t index);
+        void FindParent();
 
         void AddMenu(Item *items, uint8_t length);
         void AddMenuItem(Item &item);
+        void AddMenuItem(Item &item, uint8_t index);
 
-        bool GoTo(Menu *menu, uint8_t index);
-        bool ExecuteAction(void *action);
+        void GoTo(Menu *menu);
+        void GoToRoot();
+        void GoToParent();
+
+        void ExecuteItem(Menu *menu, uint8_t index);
+
+        void render();
     };
 }

@@ -43,7 +43,6 @@ void OLED::Init(uint8_t width, uint8_t height){
         if ((this->matrix[i] = (uint8_t *) malloc(width * sizeof(uint8_t))) == NULL){printf("ERROR: Ran out of space on the heap! \n");}
     }
 
-
     this->SetNumberOfLines(pages);
     printf("%d\n", pages);
 }
@@ -155,4 +154,8 @@ void OLED::SetNumberOfLines(uint8_t number_of_lines){
     this->Clear();
     this->number_of_lines = number_of_lines;
     this->pixels_per_line = this->display_height/number_of_lines;
+}
+
+void OLED::WriteLine(char *string, uint8_t len, uint8_t line, uint8_t offset) {
+
 }

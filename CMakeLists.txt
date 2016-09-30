@@ -47,7 +47,7 @@ set(LIB_DIR_PATH "${BASE_PATH}/lib")
 set(BUILD_PATH   "${BASE_PATH}/build")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BUILD_PATH}")
 
-# FindItem files to be compiled
+# ControlGoToItem files to be compiled
 file(GLOB SRC_FILES "${SRC_PATH}/*.c" "${SRC_PATH}/*.cpp" "${SRC_PATH}/*.asm")
 file(GLOB INC_FILES "${INC_PATH}/*.h")
 

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../stream/stream.h"
 #include <avr/io.h>
 /**
@@ -9,6 +11,7 @@
  */
 class OLED: Stream {
 public:
+    void WriteLine(char* string, uint8_t len, uint8_t line, uint8_t offset);
     /**
      * A Singleton implementation of this class
      *

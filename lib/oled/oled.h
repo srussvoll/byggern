@@ -61,12 +61,13 @@ public:
      uint8_t* GetBitmapForCharacter(uint8_t character, uint8_t font);
 
      /**
-     *
+     * Repaints the OLED
      */
      void Repaint();
 
      /**
-     *
+     * Sets the number of lines. Not to be confused with number of pages
+     * @param number_of_lines The number of lines.
      */
      void SetNumberOfLines(uint8_t number_of_lines);
      void WriteColumn(uint8_t *pixels, uint8_t num_pixels, uint8_t x, uint8_t y);
@@ -103,16 +104,14 @@ private:
     uint16_t display_height = 0;
 
     /**
-    *
+    * Number of pages
     */
     uint8_t number_of_pages = 0;
 
     /**
-    *
+    * Number of lines. Not to be confused with number of pages
     */
-
     uint8_t number_of_lines = 0;
-
 
     /**
     * A pointer to where the OLED_COMMAND address space starts
@@ -125,18 +124,12 @@ private:
     volatile uint8_t *oled_data = (volatile uint8_t*)0x3100;
 
     /**
-    *
+    * A buffer where the entierty of the OLED data is stored
     */
     uint8_t **matrix;
 
     /**
-    *
-    */
-
-
-
-    /**
-    *
+    * How many pixels there are per line
     */
     uint8_t pixels_per_line;
 

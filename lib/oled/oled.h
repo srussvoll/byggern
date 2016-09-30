@@ -68,7 +68,7 @@ public:
      *
      */
      void SetNumberOfLines(uint8_t number_of_lines);
-     void WriteColumnToPages(uint8_t *pixels, uint8_t line, uint8_t column);
+     void WriteColumnToPages(uint8_t *pixels, uint8_t num_pixels, uint8_t row, uint8_t column);
 
 private:
     /**

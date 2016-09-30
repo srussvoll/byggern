@@ -59,10 +59,11 @@ int main(void) {
      OLED &my_oled = OLED::GetInstance();
     //
      my_oled.Init(128,64);
-    // my_oled.SetNumberOfLines(8);
-     uint8_t pixels = 0xFF;
+     my_oled.SetNumberOfLines(1);
+     uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
+     my_oled.WriteColumnToPages((uint8_t *)pixels,24, 0, 0);
+
      my_oled.Repaint();
-     //my_oled.WriteColumnToPages(&pixels, 4, 100);
     //
     // /*
     // for(int j = 0; j<7; j++){
@@ -101,7 +102,7 @@ int main(void) {
     //     SRAM_test(i);
      //}
 
-    printf("SRAM test completed with \n%4d errors in write phase and \n%4d errors in retrieval phase\n\n", write_errors, retrieval_errors);
+//    printf("SRAM test completed with \n%4d errors in write phase and \n%4d errors in retrieval phase\n\n", write_errors, retrieval_errors);
     // //SRAM_test(2);
         // volatile uint8_t *p1 = (uint8_t *)0x8f00;
         // volatile uint8_t *p2 = (uint8_t *)0x8fff;

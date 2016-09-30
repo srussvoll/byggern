@@ -8,7 +8,6 @@ OLED::OLED(): Stream(1,1){
 }
 
 void OLED::Init(uint8_t width, uint8_t height){
-    printf("Init oled\n");
     *this->oled_command = 0xae; // display off
     *this->oled_command = 0xa1; //segment remap
     *this->oled_command = 0xda; //common pads hardware: alternative
@@ -50,7 +49,6 @@ void OLED::Init(uint8_t width, uint8_t height){
 }
 
 void OLED::Clear(){
-    printf("Clearing, %d \n", this->number_of_pages);
     for(int i = 0; i < this->number_of_pages; i++){
         for(int j = 0; j < this->display_width; j++){
             this->matrix[i][j] = 0x00;
@@ -74,7 +72,7 @@ void OLED::Repaint(){
     for(int i = 0; i < this->number_of_pages; i++){
         page_address = 0xB0 + i;
         *this->oled_command = page_address;
-        for(int j = 0; j < this->display_height; j++){
+        for(int j = 0; j < this->display_width; j++){
             column_address = 0x00 + j;
             // Set lower nibble
             *this->oled_command = 0x00 + (column_address & 0xF);
@@ -83,7 +81,9 @@ void OLED::Repaint(){
             *this->oled_command = 0x10 + (column_address>>4);
             //printf("\ni = %d, j = %d, page = %02X, h_n = %02X, l_n = %02X",i,j,page_address,  0x10 + (column_address>>4), 0x00 + (column_address & 0xF));
             *this->oled_data = this->matrix[i][j];
+            //printf("%2X", this->matrix[i][j]);
         }
+        //printf("\n");
     }
 }
 
@@ -114,16 +114,34 @@ uint8_t* OLED::GetBitmap(uint8_t character, uint8_t **font){
     return font[character-32];
 }
 
-void OLED::WriteColumnToPages(uint8_t *pixels, uint8_t line, uint8_t column){
+void OLED::WriteColumnToPages(uint8_t *pixels, uint8_t num_pixels, uint8_t row, uint8_t column){
     // Assume that num_pixels <= line_height
-    uint8_t page_line_starts_at = (line)*this->pixels_per_line/8;
-    uint8_t page_line_ends_at = (line+1)*this->pixels_per_line/8;
+    uint8_t page_column_starts_at = row/8;
+    uint8_t page_column_ends_at = ceil(((float)row + num_pixels)/8 - 1);
     // Case 1 : The entire line is on the same page
-    if(page_line_starts_at == page_line_ends_at){
-        uint8_t upper_offset = line*this->pixels_per_line - page_line_starts_at*8;
-        uint8_t lower_offset = (page_line_ends_at + 1)*8 - (line + 1)*this->pixels_per_line;
-        uint8_t bitmask = (0xFF >> upper_offset) & (0xFF << lower_offset);
-        this->matrix[page_line_starts_at][column] = (pixels[0] & bitmask) | (this->matrix[page_line_starts_at][column] & ~(bitmask));
+
+    uint8_t upper_offset = row - page_column_starts_at*8;
+    uint8_t lower_offset = (page_column_ends_at + 1)*8 - (num_pixels + row);
+    printf("UO: %2X, LO: %2x\n", upper_offset, lower_offset);
+    printf("PLSA : %d, PLEA : %d \n", page_column_starts_at, page_column_ends_at);
+
+    if(page_column_starts_at == page_column_ends_at){
+        uint8_t bitmask = (0xFF << upper_offset) & (0xFF >> lower_offset);
+        this->matrix[page_column_starts_at][column] = ((pixels[0] << upper_offset) & bitmask) | (this->matrix[page_column_starts_at][column] & ~(bitmask));
+    }else{
+        // First page
+        uint8_t upper_bitmask = (0xFF << upper_offset);
+        this->matrix[page_column_starts_at][column] = ((pixels[0] << upper_offset) & upper_bitmask) | (this->matrix[page_column_starts_at][column] & ~(upper_bitmask));
+
+        // Between Pages
+        for(int i = 1; i < (page_column_ends_at-page_column_starts_at); ++i){
+            this->matrix[page_column_starts_at + i][column] = ((pixels[i - 1] >> (8-upper_offset) & ~upper_bitmask) | (this->matrix[page_column_starts_at + i][column] & upper_bitmask));
+            this->matrix[page_column_starts_at + i][column] = ((pixels[i] << (upper_offset) & upper_bitmask) | (this->matrix[page_column_starts_at + i][column] & ~upper_bitmask));
+        }
+
+        // Last page
+        uint8_t lower_bitmask = (0xFF >> lower_offset);
+        this->matrix[page_column_ends_at][column] = ((pixels[num_pixels/8 - 1] >> lower_offset) & lower_bitmask) | (this->matrix[page_column_ends_at][column] & ~(lower_bitmask));
     }
 }
 

@@ -37,7 +37,7 @@ public:
      /**
      * Initializes the whole screen.
      */
-     void Init(uint8_t height, uint8_t width);
+     void Init(uint8_t width, uint8_t height);
 
      /**
      *
@@ -59,6 +59,16 @@ public:
      */
      uint8_t* GetBitmap(uint8_t character, uint8_t **font);
 
+     /**
+     *
+     */
+     void Repaint();
+
+     /**
+     *
+     */
+     void SetNumberOfLines(uint8_t number_of_lines);
+     void WriteColumnToPages(uint8_t *pixels, uint8_t line, uint8_t column);
 
 private:
     /**
@@ -86,6 +96,12 @@ private:
     */
     uint8_t number_of_pages = 0;
 
+    /**
+    *
+    */
+
+    uint8_t number_of_lines = 0;
+
 
     /**
     * A pointer to where the OLED_COMMAND address space starts
@@ -100,17 +116,18 @@ private:
     /**
     *
     */
-    uint8_t refresh_rate = 60;
-
-    /**
-    *
-    */
     uint8_t **matrix;
 
     /**
     *
     */
-    void Repaint();
+
+
+
+    /**
+    *
+    */
+    uint8_t pixels_per_line;
 
 
 };

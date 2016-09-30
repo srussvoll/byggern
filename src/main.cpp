@@ -55,38 +55,41 @@ void SRAM_test(uint16_t seed)
 int main(void) {
     //printf("Test av en litt lengre string som ikke skal overflowe :)\n");
     printf("Test av en litt lengre string som ikke skal overflowe :)\n");
-
-    OLED &my_oled = OLED::GetInstance();
-
-    my_oled.Init(64,128);
-
-    my_oled.Clear();
-    /*
-    for(int j = 0; j<7; j++){
-        my_oled.GoToLine(j);
-        my_oled.ClearLine();
-        _delay_ms(1000);
-    }
-    */
-
-    //my_oled.WriteByte(3,4,0xAA);
-
-    uint8_t testFont = pgm_read_byte(&(f5x7[0][1]));
-
-    //printf("verideliksom %d\n", testFont[5]);
-
-    uint8_t test_array[1][5] = {{0b01111110,0b01001010,0b01001010,0b00110100,0b00000000}};
-    uint8_t *dummy[1] = { test_array[0] };
-    uint8_t **ptr = dummy;
-
-    // my_oled.WriteByte(0,0,0b01111110);
-    // my_oled.WriteByte(0,1,0b01001010);
-    // my_oled.WriteByte(0,2,0b01001010);
-    // my_oled.WriteByte(0,3,0b00110100);
-    // my_oled.WriteByte(0,4,0b00000000);
-
-    my_oled.WriteBitmap(0, 0, (uint8_t**) ptr, 1, 5);
-    my_oled.WriteBitmap(0, 8, (uint8_t**) ptr, 1, 5);
+    //
+     OLED &my_oled = OLED::GetInstance();
+    //
+     my_oled.Init(128,64);
+    // my_oled.SetNumberOfLines(8);
+     uint8_t pixels = 0xFF;
+     my_oled.Repaint();
+     //my_oled.WriteColumnToPages(&pixels, 4, 100);
+    //
+    // /*
+    // for(int j = 0; j<7; j++){
+    //     my_oled.GoToLine(j);
+    //     my_oled.ClearLine();
+    //     _delay_ms(1000);
+    // }
+    // */
+    //
+    // //my_oled.WriteByte(3,4,0xAA);
+    //
+    // uint8_t testFont = pgm_read_byte(&(f5x7[0][1]));
+    //
+    // //printf("verideliksom %d\n", testFont[5]);
+    //
+    // uint8_t test_array[1][5] = {{0b01111110,0b01001010,0b01001010,0b00110100,0b00000000}};
+    // uint8_t *dummy[1] = { test_array[0] };
+    // uint8_t **ptr = dummy;
+    //
+    // // my_oled.WriteByte(0,0,0b01111110);
+    // // my_oled.WriteByte(0,1,0b01001010);
+    // // my_oled.WriteByte(0,2,0b01001010);
+    // // my_oled.WriteByte(0,3,0b00110100);
+    // // my_oled.WriteByte(0,4,0b00000000);
+    //
+    // my_oled.WriteBitmap(0, 0, (uint8_t**) ptr, 1, 5);
+    // my_oled.WriteBitmap(0, 8, (uint8_t**) ptr, 1, 5);
 
 
     //my_oled.WriteByte(5,2,0xFF);
@@ -94,11 +97,11 @@ int main(void) {
     //uint8_t aa[4] = {0b01111000,0b00010100,0b01111000,0b00000000};
     //my_oled.WriteByteArray(0,0,aa,4);
 
-    // for (int i = 0; i < 10; ++i) {
+     //for (int i = 0; i < 10; ++i) {
     //     SRAM_test(i);
-    // }
+     //}
 
-    // printf("SRAM test completed with \n%4d errors in write phase and \n%4d errors in retrieval phase\n\n", write_errors, retrieval_errors);
+    printf("SRAM test completed with \n%4d errors in write phase and \n%4d errors in retrieval phase\n\n", write_errors, retrieval_errors);
     // //SRAM_test(2);
         // volatile uint8_t *p1 = (uint8_t *)0x8f00;
         // volatile uint8_t *p2 = (uint8_t *)0x8fff;

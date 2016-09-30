@@ -61,9 +61,11 @@ int main(void) {
      my_oled.Init(128,64);
      my_oled.SetNumberOfLines(1);
      uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
-     my_oled.WriteColumnToPages((uint8_t *)pixels,24, 0, 0);
-
+     my_oled.WriteColumn((uint8_t *)pixels,24, 0, 0);
      my_oled.Repaint();
+    // my_oled.Repaint();
+    // my_oled.Clear();
+     //my_oled.Repaint();
     //
     // /*
     // for(int j = 0; j<7; j++){

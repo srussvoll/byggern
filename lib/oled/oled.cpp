@@ -98,15 +98,21 @@ void OLED::WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uin
 }
 
 void OLED::WriteBitmap(uint8_t x, uint8_t y, uint8_t** bitmap, uint8_t bitmap_height, uint8_t bitmap_width){
+    // for(int i = 0; i < bitmap_width; i++){
+    //     // Get the number of pages
+    //     for(int j = 0; j < (uint8_t) ceil( (float) bitmap_height / 8); j++) {
+    //         // Check that it's not out of bounds
+    //         if((x + i < this->display_width) && (y + j < this->display_height)){
+    //             // assume bitmap is indexed by row then column
+    //             printf("y is %d, x is %d \n", (uint8_t) ceil((float) y / 8),x+i);
+    //             this->matrix[(uint8_t) ceil((float) y / 8)+j][x + i] |= bitmap[j][i];
+    //         }
+    //     }
+    // }
     for(int i = 0; i < bitmap_width; i++){
-        for(int j = 0; j < (uint8_t) ceil( (float) bitmap_height / 8); j++) {
-            if((x + i < this->display_width) && (y + j < this->display_height)){
-                // assume bitmap is indexed by row then column
-                printf("y is %d, x is %d \n", (uint8_t) ceil((float) y / 8),x+i);
-                this->matrix[(uint8_t) ceil((float) y / 8)+j][x + i] |= bitmap[j][i];
-            }
-        }
+        uint8_t *column = bitmap[i];
     }
+
 }
 
 uint8_t* OLED::GetBitmap(uint8_t character, uint8_t **font){
@@ -114,34 +120,34 @@ uint8_t* OLED::GetBitmap(uint8_t character, uint8_t **font){
     return font[character-32];
 }
 
-void OLED::WriteColumnToPages(uint8_t *pixels, uint8_t num_pixels, uint8_t row, uint8_t column){
+void OLED::WriteColumn(uint8_t *pixels, uint8_t num_pixels, uint8_t x, uint8_t y){
     // Assume that num_pixels <= line_height
-    uint8_t page_column_starts_at = row/8;
-    uint8_t page_column_ends_at = ceil(((float)row + num_pixels)/8 - 1);
+    uint8_t page_x_starts_at = y/8;
+    uint8_t page_x_ends_at = ceil(((float)y + num_pixels)/8 - 1);
     // Case 1 : The entire line is on the same page
 
-    uint8_t upper_offset = row - page_column_starts_at*8;
-    uint8_t lower_offset = (page_column_ends_at + 1)*8 - (num_pixels + row);
+    uint8_t upper_offset = y - page_x_starts_at*8;
+    uint8_t lower_offset = (page_x_ends_at + 1)*8 - (num_pixels + y);
     printf("UO: %2X, LO: %2x\n", upper_offset, lower_offset);
-    printf("PLSA : %d, PLEA : %d \n", page_column_starts_at, page_column_ends_at);
+    printf("PLSA : %d, PLEA : %d \n", page_x_starts_at, page_x_ends_at);
 
-    if(page_column_starts_at == page_column_ends_at){
+    if(page_x_starts_at == page_x_ends_at){
         uint8_t bitmask = (0xFF << upper_offset) & (0xFF >> lower_offset);
-        this->matrix[page_column_starts_at][column] = ((pixels[0] << upper_offset) & bitmask) | (this->matrix[page_column_starts_at][column] & ~(bitmask));
+        this->matrix[page_x_starts_at][x] = ((pixels[0] << upper_offset) & bitmask) | (this->matrix[page_x_starts_at][x] & ~(bitmask));
     }else{
         // First page
         uint8_t upper_bitmask = (0xFF << upper_offset);
-        this->matrix[page_column_starts_at][column] = ((pixels[0] << upper_offset) & upper_bitmask) | (this->matrix[page_column_starts_at][column] & ~(upper_bitmask));
+        this->matrix[page_x_starts_at][x] = ((pixels[0] << upper_offset) & upper_bitmask) | (this->matrix[page_x_starts_at][x] & ~(upper_bitmask));
 
         // Between Pages
-        for(int i = 1; i < (page_column_ends_at-page_column_starts_at); ++i){
-            this->matrix[page_column_starts_at + i][column] = ((pixels[i - 1] >> (8-upper_offset) & ~upper_bitmask) | (this->matrix[page_column_starts_at + i][column] & upper_bitmask));
-            this->matrix[page_column_starts_at + i][column] = ((pixels[i] << (upper_offset) & upper_bitmask) | (this->matrix[page_column_starts_at + i][column] & ~upper_bitmask));
+        for(int i = 1; i < (page_x_ends_at-page_x_starts_at); ++i){
+            this->matrix[page_x_starts_at + i][x] = ((pixels[i - 1] >> (8-upper_offset) & ~upper_bitmask) | (this->matrix[page_x_starts_at + i][x] & upper_bitmask));
+            this->matrix[page_x_starts_at + i][x] = ((pixels[i] << (upper_offset) & upper_bitmask) | (this->matrix[page_x_starts_at + i][x] & ~upper_bitmask));
         }
 
         // Last page
         uint8_t lower_bitmask = (0xFF >> lower_offset);
-        this->matrix[page_column_ends_at][column] = ((pixels[num_pixels/8 - 1] >> lower_offset) & lower_bitmask) | (this->matrix[page_column_ends_at][column] & ~(lower_bitmask));
+        this->matrix[page_x_ends_at][x] = ((pixels[num_pixels/8 - 1] >> lower_offset) & lower_bitmask) | (this->matrix[page_x_ends_at][x] & ~(lower_bitmask));
     }
 }
 

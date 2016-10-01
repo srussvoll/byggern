@@ -47,7 +47,7 @@ set(LIB_DIR_PATH "${BASE_PATH}/lib")
 set(BUILD_PATH   "${BASE_PATH}/build")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BUILD_PATH}")
 
-# FindItem files to be compiled
+# ControlGoToItem files to be compiled
 file(GLOB SRC_FILES "${SRC_PATH}/*.c" "${SRC_PATH}/*.cpp" "${SRC_PATH}/*.asm")
 file(GLOB INC_FILES "${INC_PATH}/*.h")
 
@@ -78,7 +78,7 @@ set(DEBUG_FLAG "-DDEBUG=${DEBUG}")
 # Moves everything except the stack into external RAM
 # The Harvard architecture separates the .text and .data etc. sections offsetting the beginning of .data by 0x800000 in the linker.
 # Thus the heap is in this case located from 0x8000 to 0x9FFF.
-set(HEAP_LOCATION "-Wl,--section-start,.data=0x808000,--defsym=__heap_end=0x809FFF")
+set(HEAP_LOCATION "-Wl,--section-start,.data=0x804000,--defsym=__heap_end=0x805FFF")
 # Does nothing...
 #set(HEAP_LOCATION "")
 

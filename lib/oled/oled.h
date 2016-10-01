@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../stream/stream.h"
 #include <avr/io.h>
 /**
@@ -9,6 +11,7 @@
  */
 class OLED: Stream {
 public:
+    void WriteLine(char* string, uint8_t len, uint8_t line, uint8_t offset);
     /**
      * A Singleton implementation of this class
      *
@@ -52,13 +55,13 @@ public:
      /*
      *
      */
-     void WriteBitmap(uint8_t x, uint8_t y, uint8_t** bitmap, uint8_t bitmap_height, uint8_t bitmap_width);
+    // void WriteBitmap(uint8_t x, uint8_t y, uint8_t** bitmap, uint8_t bitmap_height, uint8_t bitmap_width, uint8_t is_progmem);
 
      /**
      * Returns a pointer to PROGMEM for the bitmap for the given font and character. Emphasis on that it points to PROGMEM.
      * http://www.nongnu.org/avr-libc/user-manual/pgmspace.html
      */
-     uint8_t* GetBitmapForCharacter(uint8_t character, uint8_t font);
+     uint8_t** GetBitmapForCharacter(uint8_t character, uint8_t ***font);
 
      /**
      * Repaints the OLED
@@ -70,7 +73,9 @@ public:
      * @param number_of_lines The number of lines.
      */
      void SetNumberOfLines(uint8_t number_of_lines);
-     void WriteColumn(uint8_t *pixels, uint8_t num_pixels, uint8_t x, uint8_t y);
+
+
+     void WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, uint8_t is_progmem);
 
      /**
      * Writes the given string to the line set by current line. Uses the supplied font. Assumes that the given font is not higher than the line height.
@@ -80,7 +85,7 @@ public:
      * @param font_height The height in pixels of the font.
      * @param font_width The width in pixels of the font
      */
-     void WriteLine(uint8_t *string, uint8_t length_of_string, uint8_t font, uint8_t font_height, uint8_t font_width, uint8_t offset = 0);
+     void WriteLine(uint8_t *string, uint8_t length_of_string, uint8_t ***font, uint8_t font_height, uint8_t font_width, uint8_t offset = 0);
 
 private:
     /**
@@ -116,12 +121,12 @@ private:
     /**
     * A pointer to where the OLED_COMMAND address space starts
     */
-    volatile uint8_t *oled_command = (volatile uint8_t*)0x3000;
+    volatile uint8_t *oled_command = (volatile uint8_t*)0x8000;
 
     /**
     * A pointer to where the OLED_DATA address space starts
     */
-    volatile uint8_t *oled_data = (volatile uint8_t*)0x3100;
+    volatile uint8_t *oled_data = (volatile uint8_t*)0x8100;
 
     /**
     * A buffer where the entierty of the OLED data is stored

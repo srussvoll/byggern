@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oled',['OLED',['../class_o_l_e_d.html',1,'']]]
+  ['controller',['Controller',['../class_menu_1_1_controller.html',1,'Menu']]]
 ];

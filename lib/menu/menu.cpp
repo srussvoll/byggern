@@ -52,7 +52,28 @@ namespace Menu {
     }
 
     void Controller::AddMenu(Item *items, uint8_t length) {
+        if (this->current_item_control != nullptr) {
+            Menu *menu = new Menu();
+            menu->parent = this->current_menu_control;
+            this->current_item_control->action = menu;
+            this->current_item_control->has_sub_menu = true;
+        }
 
+        if (length > 0) {
+            // Remember current state.
+            Menu *current_menu = this->current_menu_control;
+            Item *current_item = this->current_item_control;
+
+            this->ControlEnterSubMenu();
+            for (uint8_t i = 0; i < length; ++i) {
+                this->AddMenuItem(items[i]);
+                this->ControlGoToItem(i);
+            }
+
+            // Set the state back to the original state.
+            this->current_menu_control = current_menu;
+            this->current_item_control = current_item;
+        }
     }
 
     void Controller::AddMenuItem(Item &item) {
@@ -60,8 +81,6 @@ namespace Menu {
         if (this->current_item_control == nullptr) {
             i->next = this->current_menu_control->first;
             this->current_menu_control->first = i;
-            this->current_item_control = i;
-
         } else {
             i->next = this->current_item_control->next;
             this->current_item_control->next = i;
@@ -73,7 +92,6 @@ namespace Menu {
         if (index == 0) {
             i->next = this->current_menu_control->first;
             this->current_menu_control->first = i;
-
         } else {
             this->ControlGoToItem(index - 1);
             i->next = this->current_item_control->next;
@@ -84,6 +102,7 @@ namespace Menu {
     void Controller::GoToMenu(Menu *menu) {
         this->current_menu_navigate = menu;
         this->current_index_navigate = 0;
+        this->current_index_selected = 0;
     }
 
     void Controller::GoToItem(uint8_t index) {
@@ -96,7 +115,10 @@ namespace Menu {
 
     void Controller::ExecuteItem() {
         this->GoToItem(this->current_index_selected);
-        if (this->current_item_navigate->has_sub_menu) this->GoToMenu((Menu *) this->current_item_navigate->action);
+        if (this->current_item_navigate->has_sub_menu) {
+            this->GoToMenu((Menu *) this->current_item_navigate->action);
+            this->render();
+        }
         else (*((void (*)()) this->current_item_navigate->action))();
     }
 
@@ -104,12 +126,14 @@ namespace Menu {
         this->current_menu_navigate = this->root;
         this->current_index_navigate = 0;
         this->current_index_selected = 0;
+        this->render();
     }
 
     void Controller::GoToParent() {
         this->current_menu_navigate = this->current_menu_control->parent;
         this->current_index_navigate = 0;
         this->current_index_selected = 0;
+        this->render();
     }
 
     void Controller::render() {
@@ -129,9 +153,11 @@ namespace Menu {
         uint8_t selected_index_relative = this->current_index_selected - this->current_index_navigate;
         do {
             oled->WriteLine(this->current_item_navigate->label, this->current_item_navigate->label_length, i, 2);
-            if (i == selected_index_relative)
+            if (i == selected_index_relative) {
+                // FIXME: Insert code to add an arrow on this line. This if clause runs if the current line is selected.
+            }
             i++;
-        } while (this->GoToNext());
+        } while (this->GoToNextItem());
 
         oled->Repaint();
     }
@@ -146,7 +172,7 @@ namespace Menu {
         }
     }
 
-    bool Controller::GoToNext() {
+    bool Controller::GoToNextItem() {
         if (this->current_item_navigate->next == nullptr) return false;
         else {
             this->current_item_navigate = this->current_item_navigate->next;
@@ -156,9 +182,11 @@ namespace Menu {
 
     void Controller::SelectNext() {
         this->current_index_selected = max(this->GetMenuLength(this->current_menu_navigate), this->current_index_selected + 1);
+        this->render();
     }
 
     void Controller::SelectPrevious() {
         this->current_index_selected = min(0, this->current_index_selected - 1);
+        this->render();
     }
 }

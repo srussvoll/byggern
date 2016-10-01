@@ -160,12 +160,12 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a5108546d239c4f43d34f27e1e7aaa412"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a5108546d239c4f43d34f27e1e7aaa412">ReadFromBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, uint8_t *string, uint16_t &amp;string_size, void(*cb)())</td></tr>
-<tr class="separator:a5108546d239c4f43d34f27e1e7aaa412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a752930f620aed4a3a80b243ce66e57ca"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a752930f620aed4a3a80b243ce66e57ca">ReadFromBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, uint8_t *string, uint16_t &amp;string_size)</td></tr>
+<tr class="separator:a752930f620aed4a3a80b243ce66e57ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4444f4f2a111a304bb0e25efc3a2cb2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#ad4444f4f2a111a304bb0e25efc3a2cb2">WriteToBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, bool &amp;overflow_flag, uint8_t *string, uint16_t &amp;string_size, void(*cb)())</td></tr>
 <tr class="separator:ad4444f4f2a111a304bb0e25efc3a2cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a36f41b0b3965c3e7813a865ac86bae"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a8a36f41b0b3965c3e7813a865ac86bae">ReadByteFromBuffer</a> (uint8_t &amp;byte, uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, void(*cb)())</td></tr>
-<tr class="separator:a8a36f41b0b3965c3e7813a865ac86bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32e449304f65b5571fe848a503fc9d68"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a32e449304f65b5571fe848a503fc9d68">ReadByteFromBuffer</a> (uint8_t &amp;byte, uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty)</td></tr>
+<tr class="separator:a32e449304f65b5571fe848a503fc9d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0da4122369b2e625c8e4a224cc598a04"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a0da4122369b2e625c8e4a224cc598a04">WriteByteToBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, bool &amp;overflow_flag, uint8_t &amp;byte, void(*cb)())</td></tr>
 <tr class="separator:a0da4122369b2e625c8e4a224cc598a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0784d377cc92ddde7cc730be17a1a3aa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a0784d377cc92ddde7cc730be17a1a3aa">WriteByteToInputStream</a> (uint8_t &amp;byte)</td></tr>
@@ -205,12 +205,6 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_input_buffer_
 <tr class="memitem:a358e5b988d3ccb204f4d544a24be9e65"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a358e5b988d3ccb204f4d544a24be9e65"></a>
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer_not_empty</b> )() = nullptr</td></tr>
 <tr class="separator:a358e5b988d3ccb204f4d544a24be9e65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a243989d3685da8518601dd901f72dcc1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a243989d3685da8518601dd901f72dcc1"></a>
-void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_input_buffer_empty</b> )() = nullptr</td></tr>
-<tr class="separator:a243989d3685da8518601dd901f72dcc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d2e1d5b0cb7b6fb8ed1cff1f264192a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d2e1d5b0cb7b6fb8ed1cff1f264192a"></a>
-void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer_empty</b> )() = nullptr</td></tr>
-<tr class="separator:a0d2e1d5b0cb7b6fb8ed1cff1f264192a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff1c899af0d2dea35700d5665f378cd8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#aff1c899af0d2dea35700d5665f378cd8">input_buffer_empty</a> = true</td></tr>
 <tr class="separator:aff1c899af0d2dea35700d5665f378cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54b21caaee0001e44968fb70d0a591f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a54b21caaee0001e44968fb70d0a591f5">output_buffer_empty</a> = true</td></tr>
@@ -627,7 +621,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 
 </div>
 </div>
-<a class="anchor" id="a8a36f41b0b3965c3e7813a865ac86bae"></a>
+<a class="anchor" id="a32e449304f65b5571fe848a503fc9d68"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -668,13 +662,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>empty</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void(*)()&#160;</td>
-          <td class="paramname"><em>cb</em>&#160;</td>
+          <td class="paramname"><em>empty</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -727,7 +715,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 
 </div>
 </div>
-<a class="anchor" id="a5108546d239c4f43d34f27e1e7aaa412"></a>
+<a class="anchor" id="a752930f620aed4a3a80b243ce66e57ca"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -774,13 +762,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint16_t &amp;&#160;</td>
-          <td class="paramname"><em>string_size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void(*)()&#160;</td>
-          <td class="paramname"><em>cb</em>&#160;</td>
+          <td class="paramname"><em>string_size</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -999,6 +981,8 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
     <tr><td class="paramname">empty</td><td>Flag indicating whether the buffer is empty or completely full. </td></tr>
     <tr><td class="paramname">overflow_flag</td><td>A flag indicating whether or not the buffer has overflowed. </td></tr>
     <tr><td class="paramname">byte</td><td>The byte to be written. </td></tr>
+    <tr><td class="paramname">cb_flag</td><td>A flag indicating wether or not the cb function should be called </td></tr>
+    <tr><td class="paramname">cb</td><td>Callback function to be called if cb_flag is true </td></tr>
   </table>
   </dd>
 </dl>
@@ -1118,6 +1102,8 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
     <tr><td class="paramname">overflow_flag</td><td>A flag indicating whether or not the buffer has overflowed. </td></tr>
     <tr><td class="paramname">string</td><td>The string to read from. </td></tr>
     <tr><td class="paramname">string_size</td><td>The size of the string. </td></tr>
+    <tr><td class="paramname">cb_flag</td><td>A flag indicating wether or not the cb function should be called </td></tr>
+    <tr><td class="paramname">cb</td><td>Callback function to be called if cb_flag is true </td></tr>
   </table>
   </dd>
 </dl>
@@ -1428,7 +1414,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_stream.html">Stream</a></li>
-    <li class="footer">Generated on Thu Sep 22 2016 21:11:27 for Byggern by
+    <li class="footer">Generated on Sat Oct 1 2016 15:37:40 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

@@ -55,7 +55,7 @@ void SRAM_test(uint16_t seed)
 int main(void) {
     //printf("Test av en litt lengre string som ikke skal overflowe :)\n");
     printf("Test av en litt lengre string som ikke skal overflowe :)\n");
-    //
+    /*//
      OLED &my_oled = OLED::GetInstance();
     //
     my_oled.Init(128,64);
@@ -66,7 +66,7 @@ int main(void) {
     uint8_t **ptr = dummy;
     uint8_t myString[] =  "Hello";
 
-    my_oled.GoToLine(3);
+    my_oled.GoToLine(3);*/
 
     /*
      * VIKTIG!
@@ -81,8 +81,8 @@ int main(void) {
     uint8_t x = 4;
     uint8_t y = 2;
     uint8_t num_columns = 4;
-    uint8_t *character = (uint8_t *) font[sizeof(uint8_t) * 4 * x];
-    uint8_t column = font[sizeof(uint8_t) * 4 * x + y];
+    uint8_t *character = &font[4 * x];
+    uint8_t column = font[4 * x + y];
     // Denne skal være helt lik
     column = character[y];
     // For å sende inn 2D array til WriteBitmap:

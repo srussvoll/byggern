@@ -128,14 +128,34 @@ Inheritance diagram for OLED:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ae565a0831cb79bb7c8840170a50e006b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae565a0831cb79bb7c8840170a50e006b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>WriteLine</b> (char *string, uint8_t len, uint8_t line, uint8_t offset)</td></tr>
+<tr class="separator:ae565a0831cb79bb7c8840170a50e006b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d314130676b104ed959b92ab4bac25e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a8d314130676b104ed959b92ab4bac25e">GoToLine</a> (uint8_t line)</td></tr>
 <tr class="separator:a8d314130676b104ed959b92ab4bac25e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a571f5ea7a183fa14932cd5b2c423eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a3a571f5ea7a183fa14932cd5b2c423eb">ClearLine</a> ()</td></tr>
 <tr class="separator:a3a571f5ea7a183fa14932cd5b2c423eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c7bb1fc91b3e574a275f90643da140a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a6c7bb1fc91b3e574a275f90643da140a">Clear</a> ()</td></tr>
 <tr class="separator:a6c7bb1fc91b3e574a275f90643da140a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65c17f32b27117aa5ba03cdce01fbe11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a65c17f32b27117aa5ba03cdce01fbe11">Init</a> (unsigned char font)</td></tr>
-<tr class="separator:a65c17f32b27117aa5ba03cdce01fbe11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c8205c8eac9d7a2b181657561e9b4d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a2c8205c8eac9d7a2b181657561e9b4d2">Init</a> (uint8_t width, uint8_t height)</td></tr>
+<tr class="separator:a2c8205c8eac9d7a2b181657561e9b4d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fa307269dbd2e80a6e48a1442df83d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fa307269dbd2e80a6e48a1442df83d2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>WriteByte</b> (uint8_t page, uint8_t column, uint8_t byte)</td></tr>
+<tr class="separator:a7fa307269dbd2e80a6e48a1442df83d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fffc17a5439300d361414c15a7a2dbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fffc17a5439300d361414c15a7a2dbe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>WriteByteArray</b> (uint8_t page, uint8_t column, uint8_t *byte_array, uint8_t length)</td></tr>
+<tr class="separator:a7fffc17a5439300d361414c15a7a2dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5b96cbf30cf3ad632942bf78c14ca3a"><td class="memItemLeft" align="right" valign="top">uint8_t **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#aa5b96cbf30cf3ad632942bf78c14ca3a">GetBitmapForCharacter</a> (uint8_t character, uint8_t ***font)</td></tr>
+<tr class="separator:aa5b96cbf30cf3ad632942bf78c14ca3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3efa34861b4ae0bc5323f6b7cf1d8a01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a3efa34861b4ae0bc5323f6b7cf1d8a01">Repaint</a> ()</td></tr>
+<tr class="separator:a3efa34861b4ae0bc5323f6b7cf1d8a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3c88e19f05340036ea5ac9e2d1ea5dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#aa3c88e19f05340036ea5ac9e2d1ea5dc">SetNumberOfLines</a> (uint8_t <a class="el" href="class_o_l_e_d.html#a9ea1c55112deede1a61142af276a6bc9">number_of_lines</a>)</td></tr>
+<tr class="separator:aa3c88e19f05340036ea5ac9e2d1ea5dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a541cf3d3db343ab33e4830b7dde05ca3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a541cf3d3db343ab33e4830b7dde05ca3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>WriteBitmap</b> (uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, uint8_t is_progmem)</td></tr>
+<tr class="separator:a541cf3d3db343ab33e4830b7dde05ca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dad2faf86ce52ee5a6601ec54533c89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a2dad2faf86ce52ee5a6601ec54533c89">WriteLine</a> (uint8_t *string, uint8_t length_of_string, uint8_t ***font, uint8_t font_height, uint8_t font_width, uint8_t offset=0)</td></tr>
+<tr class="separator:a2dad2faf86ce52ee5a6601ec54533c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -173,12 +193,12 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:ac7e3629626c1ea4d9cba88db1e048132 inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0af6193f98fcf7bcd60eef84fce8699c inherit pub_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a0af6193f98fcf7bcd60eef84fce8699c">FlushOutputBuffer</a> ()</td></tr>
 <tr class="separator:a0af6193f98fcf7bcd60eef84fce8699c inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5108546d239c4f43d34f27e1e7aaa412 inherit pub_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a5108546d239c4f43d34f27e1e7aaa412">ReadFromBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, uint8_t *string, uint16_t &amp;string_size, void(*cb)())</td></tr>
-<tr class="separator:a5108546d239c4f43d34f27e1e7aaa412 inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a752930f620aed4a3a80b243ce66e57ca inherit pub_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a752930f620aed4a3a80b243ce66e57ca">ReadFromBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, uint8_t *string, uint16_t &amp;string_size)</td></tr>
+<tr class="separator:a752930f620aed4a3a80b243ce66e57ca inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4444f4f2a111a304bb0e25efc3a2cb2 inherit pub_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#ad4444f4f2a111a304bb0e25efc3a2cb2">WriteToBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, bool &amp;overflow_flag, uint8_t *string, uint16_t &amp;string_size, void(*cb)())</td></tr>
 <tr class="separator:ad4444f4f2a111a304bb0e25efc3a2cb2 inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a36f41b0b3965c3e7813a865ac86bae inherit pub_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a8a36f41b0b3965c3e7813a865ac86bae">ReadByteFromBuffer</a> (uint8_t &amp;byte, uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, void(*cb)())</td></tr>
-<tr class="separator:a8a36f41b0b3965c3e7813a865ac86bae inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32e449304f65b5571fe848a503fc9d68 inherit pub_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a32e449304f65b5571fe848a503fc9d68">ReadByteFromBuffer</a> (uint8_t &amp;byte, uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty)</td></tr>
+<tr class="separator:a32e449304f65b5571fe848a503fc9d68 inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0da4122369b2e625c8e4a224cc598a04 inherit pub_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a0da4122369b2e625c8e4a224cc598a04">WriteByteToBuffer</a> (uint8_t *buffer, uint16_t &amp;start_index, uint16_t &amp;stop_index, uint16_t &amp;buffer_size, bool &amp;empty, bool &amp;overflow_flag, uint8_t &amp;byte, void(*cb)())</td></tr>
 <tr class="separator:a0da4122369b2e625c8e4a224cc598a04 inherit pub_methods_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0784d377cc92ddde7cc730be17a1a3aa inherit pub_methods_class_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a0784d377cc92ddde7cc730be17a1a3aa">WriteByteToInputStream</a> (uint8_t &amp;byte)</td></tr>
@@ -196,10 +216,24 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aebd62601be5e2ceef6295721f17fc013"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#aebd62601be5e2ceef6295721f17fc013">current_line</a></td></tr>
+<tr class="memitem:aebd62601be5e2ceef6295721f17fc013"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#aebd62601be5e2ceef6295721f17fc013">current_line</a> = 0</td></tr>
 <tr class="separator:aebd62601be5e2ceef6295721f17fc013"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dd5aaffc752c78e0bdb7c524e32217b"><td class="memItemLeft" align="right" valign="top">volatile uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a4dd5aaffc752c78e0bdb7c524e32217b">oled_data_memory_start</a> = (uint8_t *) 0x4800</td></tr>
-<tr class="separator:a4dd5aaffc752c78e0bdb7c524e32217b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae88ab3d6d63a7ead982a3b7cc673eefe"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#ae88ab3d6d63a7ead982a3b7cc673eefe">display_width</a> = 0</td></tr>
+<tr class="separator:ae88ab3d6d63a7ead982a3b7cc673eefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa14ebb59666d7822288115a04ac0a34b"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#aa14ebb59666d7822288115a04ac0a34b">display_height</a> = 0</td></tr>
+<tr class="separator:aa14ebb59666d7822288115a04ac0a34b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaac99b0eb4e9dfe92b8571488dc89288"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#aaac99b0eb4e9dfe92b8571488dc89288">number_of_pages</a> = 0</td></tr>
+<tr class="separator:aaac99b0eb4e9dfe92b8571488dc89288"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ea1c55112deede1a61142af276a6bc9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a9ea1c55112deede1a61142af276a6bc9">number_of_lines</a> = 0</td></tr>
+<tr class="separator:a9ea1c55112deede1a61142af276a6bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0a85ccd0274347b8c1ac77d298a14cf"><td class="memItemLeft" align="right" valign="top">volatile uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#af0a85ccd0274347b8c1ac77d298a14cf">oled_command</a> = (volatile uint8_t*)0x8000</td></tr>
+<tr class="separator:af0a85ccd0274347b8c1ac77d298a14cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bc54d49808f92ddfc354511b692df6f"><td class="memItemLeft" align="right" valign="top">volatile uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a1bc54d49808f92ddfc354511b692df6f">oled_data</a> = (volatile uint8_t*)0x8100</td></tr>
+<tr class="separator:a1bc54d49808f92ddfc354511b692df6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d32e21189940afba24deab0a2bc0126"><td class="memItemLeft" align="right" valign="top">uint8_t **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a9d32e21189940afba24deab0a2bc0126">matrix</a></td></tr>
+<tr class="separator:a9d32e21189940afba24deab0a2bc0126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ddac7b826eccac8c682c5246ef52b29"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_l_e_d.html#a6ddac7b826eccac8c682c5246ef52b29">pixels_per_line</a></td></tr>
+<tr class="separator:a6ddac7b826eccac8c682c5246ef52b29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_stream')"><img src="closed.png" alt="-"/>&#160;Private Attributes inherited from <a class="el" href="class_stream.html">Stream</a></td></tr>
 <tr class="memitem:a81139fc126566f9d42470fdb405ed26a inherit pub_attribs_class_stream"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a81139fc126566f9d42470fdb405ed26a">input_buffer</a></td></tr>
 <tr class="separator:a81139fc126566f9d42470fdb405ed26a inherit pub_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -223,12 +257,6 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_input_buffer_
 <tr class="memitem:a358e5b988d3ccb204f4d544a24be9e65 inherit pub_attribs_class_stream"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a358e5b988d3ccb204f4d544a24be9e65"></a>
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer_not_empty</b> )() = nullptr</td></tr>
 <tr class="separator:a358e5b988d3ccb204f4d544a24be9e65 inherit pub_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a243989d3685da8518601dd901f72dcc1 inherit pub_attribs_class_stream"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a243989d3685da8518601dd901f72dcc1"></a>
-void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_input_buffer_empty</b> )() = nullptr</td></tr>
-<tr class="separator:a243989d3685da8518601dd901f72dcc1 inherit pub_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d2e1d5b0cb7b6fb8ed1cff1f264192a inherit pub_attribs_class_stream"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d2e1d5b0cb7b6fb8ed1cff1f264192a"></a>
-void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer_empty</b> )() = nullptr</td></tr>
-<tr class="separator:a0d2e1d5b0cb7b6fb8ed1cff1f264192a inherit pub_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff1c899af0d2dea35700d5665f378cd8 inherit pub_attribs_class_stream"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#aff1c899af0d2dea35700d5665f378cd8">input_buffer_empty</a> = true</td></tr>
 <tr class="separator:aff1c899af0d2dea35700d5665f378cd8 inherit pub_attribs_class_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54b21caaee0001e44968fb70d0a591f5 inherit pub_attribs_class_stream"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stream.html#a54b21caaee0001e44968fb70d0a591f5">output_buffer_empty</a> = true</td></tr>
@@ -259,7 +287,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Useless constructor because of singleton implementation </p>
+<p>Singleton constructor </p>
 
 </div>
 </div>
@@ -293,6 +321,33 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
       </table>
 </div><div class="memdoc">
 <p>Clears the current line selected </p>
+
+</div>
+</div>
+<a class="anchor" id="aa5b96cbf30cf3ad632942bf78c14ca3a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ** OLED::GetBitmapForCharacter </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>character</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t ***&#160;</td>
+          <td class="paramname"><em>font</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns a pointer to PROGMEM for the bitmap for the given font and character. Emphasis on that it points to PROGMEM. <a href="http://www.nongnu.org/avr-libc/user-manual/pgmspace.html">http://www.nongnu.org/avr-libc/user-manual/pgmspace.html</a> </p>
 
 </div>
 </div>
@@ -342,22 +397,125 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 
 </div>
 </div>
-<a class="anchor" id="a65c17f32b27117aa5ba03cdce01fbe11"></a>
+<a class="anchor" id="a2c8205c8eac9d7a2b181657561e9b4d2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void OLED::Init </td>
           <td>(</td>
-          <td class="paramtype">unsigned char&#160;</td>
-          <td class="paramname"><em>font</em></td><td>)</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initializes the whole screen. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3efa34861b4ae0bc5323f6b7cf1d8a01"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OLED::Repaint </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes the whole screen. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Repaints the <a class="el" href="class_o_l_e_d.html">OLED</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="aa3c88e19f05340036ea5ac9e2d1ea5dc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OLED::SetNumberOfLines </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>number_of_lines</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the number of lines. Not to be confused with number of pages </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">font</td><td>The font that is to be used at the <a class="el" href="class_o_l_e_d.html">OLED</a> display </td></tr>
+    <tr><td class="paramname">number_of_lines</td><td>The number of lines. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a2dad2faf86ce52ee5a6601ec54533c89"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OLED::WriteLine </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>length_of_string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t ***&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>font_height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>font_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>offset</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Writes the given string to the line set by current line. Uses the supplied font. Assumes that the given font is not higher than the line height. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The string to be written </td></tr>
+    <tr><td class="paramname">length_of_string</td><td>The length of the string </td></tr>
+    <tr><td class="paramname">font</td><td>The font as an double array. ASCII ordering with an offset of 32 </td></tr>
+    <tr><td class="paramname">font_height</td><td>The height in pixels of the font. </td></tr>
+    <tr><td class="paramname">font_width</td><td>The width in pixels of the font </td></tr>
   </table>
   </dd>
 </dl>
@@ -373,7 +531,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t OLED::current_line</td>
+          <td class="memname">uint8_t OLED::current_line = 0</td>
         </tr>
       </table>
   </td>
@@ -386,7 +544,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 
 </div>
 </div>
-<a class="anchor" id="a4dd5aaffc752c78e0bdb7c524e32217b"></a>
+<a class="anchor" id="aa14ebb59666d7822288115a04ac0a34b"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -394,7 +552,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">volatile uint8_t* OLED::oled_data_memory_start = (uint8_t *) 0x4800</td>
+          <td class="memname">uint16_t OLED::display_height = 0</td>
         </tr>
       </table>
   </td>
@@ -403,7 +561,154 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Start index for the memory of the <a class="el" href="class_o_l_e_d.html">OLED</a> </p>
+<p>Height of display </p>
+
+</div>
+</div>
+<a class="anchor" id="ae88ab3d6d63a7ead982a3b7cc673eefe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t OLED::display_width = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Width of display </p>
+
+</div>
+</div>
+<a class="anchor" id="a9d32e21189940afba24deab0a2bc0126"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t** OLED::matrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>A buffer where the entierty of the <a class="el" href="class_o_l_e_d.html">OLED</a> data is stored </p>
+
+</div>
+</div>
+<a class="anchor" id="a9ea1c55112deede1a61142af276a6bc9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t OLED::number_of_lines = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Number of lines. Not to be confused with number of pages </p>
+
+</div>
+</div>
+<a class="anchor" id="aaac99b0eb4e9dfe92b8571488dc89288"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t OLED::number_of_pages = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Number of pages </p>
+
+</div>
+</div>
+<a class="anchor" id="af0a85ccd0274347b8c1ac77d298a14cf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t* OLED::oled_command = (volatile uint8_t*)0x8000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>A pointer to where the OLED_COMMAND address space starts </p>
+
+</div>
+</div>
+<a class="anchor" id="a1bc54d49808f92ddfc354511b692df6f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t* OLED::oled_data = (volatile uint8_t*)0x8100</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>A pointer to where the OLED_DATA address space starts </p>
+
+</div>
+</div>
+<a class="anchor" id="a6ddac7b826eccac8c682c5246ef52b29"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t OLED::pixels_per_line</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>How many pixels there are per line </p>
 
 </div>
 </div>
@@ -417,7 +722,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_l_e_d.html">OLED</a></li>
-    <li class="footer">Generated on Thu Sep 22 2016 21:11:27 for Byggern by
+    <li class="footer">Generated on Sat Oct 1 2016 15:37:40 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

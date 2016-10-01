@@ -1,5 +1,6 @@
 var annotated_dup =
 [
+    [ "Menu", "namespace_menu.html", "namespace_menu" ],
     [ "ADC", "class_a_d_c.html", "class_a_d_c" ],
     [ "OLED", "class_o_l_e_d.html", "class_o_l_e_d" ],
     [ "Stream", "class_stream.html", "class_stream" ],

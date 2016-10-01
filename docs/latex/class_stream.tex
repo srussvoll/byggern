@@ -42,11 +42,11 @@ virtual void \hyperlink{class_stream_a0af6193f98fcf7bcd60eef84fce8699c}{Flush\+O
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual uint16\+\_\+t \hyperlink{class_stream_a5108546d239c4f43d34f27e1e7aaa412}{Read\+From\+Buffer} (uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, uint8\+\_\+t $\ast$string, uint16\+\_\+t \&string\+\_\+size, void($\ast$cb)())
+virtual uint16\+\_\+t \hyperlink{class_stream_a752930f620aed4a3a80b243ce66e57ca}{Read\+From\+Buffer} (uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, uint8\+\_\+t $\ast$string, uint16\+\_\+t \&string\+\_\+size)
 \item 
 virtual void \hyperlink{class_stream_ad4444f4f2a111a304bb0e25efc3a2cb2}{Write\+To\+Buffer} (uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, bool \&overflow\+\_\+flag, uint8\+\_\+t $\ast$string, uint16\+\_\+t \&string\+\_\+size, void($\ast$cb)())
 \item 
-virtual bool \hyperlink{class_stream_a8a36f41b0b3965c3e7813a865ac86bae}{Read\+Byte\+From\+Buffer} (uint8\+\_\+t \&byte, uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, void($\ast$cb)())
+virtual bool \hyperlink{class_stream_a32e449304f65b5571fe848a503fc9d68}{Read\+Byte\+From\+Buffer} (uint8\+\_\+t \&byte, uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty)
 \item 
 virtual void \hyperlink{class_stream_a0da4122369b2e625c8e4a224cc598a04}{Write\+Byte\+To\+Buffer} (uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, bool \&overflow\+\_\+flag, uint8\+\_\+t \&byte, void($\ast$cb)())
 \item 
@@ -85,12 +85,6 @@ void($\ast$ {\bfseries event\+\_\+input\+\_\+buffer\+\_\+not\+\_\+empty} )() = n
 
 \item 
 void($\ast$ {\bfseries event\+\_\+output\+\_\+buffer\+\_\+not\+\_\+empty} )() = nullptr\hypertarget{class_stream_a358e5b988d3ccb204f4d544a24be9e65}{}\label{class_stream_a358e5b988d3ccb204f4d544a24be9e65}
-
-\item 
-void($\ast$ {\bfseries event\+\_\+input\+\_\+buffer\+\_\+empty} )() = nullptr\hypertarget{class_stream_a243989d3685da8518601dd901f72dcc1}{}\label{class_stream_a243989d3685da8518601dd901f72dcc1}
-
-\item 
-void($\ast$ {\bfseries event\+\_\+output\+\_\+buffer\+\_\+empty} )() = nullptr\hypertarget{class_stream_a0d2e1d5b0cb7b6fb8ed1cff1f264192a}{}\label{class_stream_a0d2e1d5b0cb7b6fb8ed1cff1f264192a}
 
 \item 
 bool \hyperlink{class_stream_aff1c899af0d2dea35700d5665f378cd8}{input\+\_\+buffer\+\_\+empty} = true
@@ -273,17 +267,16 @@ Returns the read byte.
 \end{DoxyReturn}
 \index{Stream@{Stream}!Read\+Byte\+From\+Buffer@{Read\+Byte\+From\+Buffer}}
 \index{Read\+Byte\+From\+Buffer@{Read\+Byte\+From\+Buffer}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Read\+Byte\+From\+Buffer(uint8\+\_\+t \&byte, uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, void($\ast$cb)())}{ReadByteFromBuffer(uint8_t &byte, uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, void(*cb)())}}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\+::\+Read\+Byte\+From\+Buffer (
+\subsubsection[{\texorpdfstring{Read\+Byte\+From\+Buffer(uint8\+\_\+t \&byte, uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty)}{ReadByteFromBuffer(uint8_t &byte, uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\+::\+Read\+Byte\+From\+Buffer (
 \begin{DoxyParamCaption}
 \item[{uint8\+\_\+t \&}]{byte, }
 \item[{uint8\+\_\+t $\ast$}]{buffer, }
 \item[{uint16\+\_\+t \&}]{start\+\_\+index, }
 \item[{uint16\+\_\+t \&}]{stop\+\_\+index, }
 \item[{uint16\+\_\+t \&}]{buffer\+\_\+size, }
-\item[{bool \&}]{empty, }
-\item[{void($\ast$)()}]{cb}
+\item[{bool \&}]{empty}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a8a36f41b0b3965c3e7813a865ac86bae}{}\label{class_stream_a8a36f41b0b3965c3e7813a865ac86bae}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a32e449304f65b5571fe848a503fc9d68}{}\label{class_stream_a32e449304f65b5571fe848a503fc9d68}
 Reads a byte from the given buffer. 
 \begin{DoxyParams}{Parameters}
 {\em buffer} & The buffer to read from. \\
@@ -312,7 +305,7 @@ Returns the byte.
 \end{DoxyReturn}
 \index{Stream@{Stream}!Read\+From\+Buffer@{Read\+From\+Buffer}}
 \index{Read\+From\+Buffer@{Read\+From\+Buffer}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Read\+From\+Buffer(uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, uint8\+\_\+t $\ast$string, uint16\+\_\+t \&string\+\_\+size, void($\ast$cb)())}{ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size, void(*cb)())}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::\+Read\+From\+Buffer (
+\subsubsection[{\texorpdfstring{Read\+From\+Buffer(uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, uint8\+\_\+t $\ast$string, uint16\+\_\+t \&string\+\_\+size)}{ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size)}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::\+Read\+From\+Buffer (
 \begin{DoxyParamCaption}
 \item[{uint8\+\_\+t $\ast$}]{buffer, }
 \item[{uint16\+\_\+t \&}]{start\+\_\+index, }
@@ -320,10 +313,9 @@ Returns the byte.
 \item[{uint16\+\_\+t \&}]{buffer\+\_\+size, }
 \item[{bool \&}]{empty, }
 \item[{uint8\+\_\+t $\ast$}]{string, }
-\item[{uint16\+\_\+t \&}]{string\+\_\+size, }
-\item[{void($\ast$)()}]{cb}
+\item[{uint16\+\_\+t \&}]{string\+\_\+size}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a5108546d239c4f43d34f27e1e7aaa412}{}\label{class_stream_a5108546d239c4f43d34f27e1e7aaa412}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a752930f620aed4a3a80b243ce66e57ca}{}\label{class_stream_a752930f620aed4a3a80b243ce66e57ca}
 Reads a string from the given buffer. 
 \begin{DoxyParams}{Parameters}
 {\em buffer} & Buffer to read from. \\
@@ -417,6 +409,10 @@ Writes a byte to the buffer.
 \hline
 {\em byte} & The byte to be written. \\
 \hline
+{\em cb\+\_\+flag} & A flag indicating wether or not the cb function should be called \\
+\hline
+{\em cb} & Callback function to be called if cb\+\_\+flag is true \\
+\hline
 \end{DoxyParams}
 \index{Stream@{Stream}!Write\+Byte\+To\+Input\+Stream@{Write\+Byte\+To\+Input\+Stream}}
 \index{Write\+Byte\+To\+Input\+Stream@{Write\+Byte\+To\+Input\+Stream}!Stream@{Stream}}
@@ -462,6 +458,10 @@ Writes a string to the given buffer.
 {\em string} & The string to read from. \\
 \hline
 {\em string\+\_\+size} & The size of the string. \\
+\hline
+{\em cb\+\_\+flag} & A flag indicating wether or not the cb function should be called \\
+\hline
+{\em cb} & Callback function to be called if cb\+\_\+flag is true \\
 \hline
 \end{DoxyParams}
 \index{Stream@{Stream}!Write\+To\+Input\+Stream@{Write\+To\+Input\+Stream}}

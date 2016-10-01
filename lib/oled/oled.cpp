@@ -4,6 +4,13 @@
 #include <stdlib.h>
 #include <math.h>
 #include <avr/pgmspace.h>
+
+namespace {
+    inline uint8_t min(uint8_t a, uint8_t b) {
+        return (a < b) ? a : b;
+    }
+}
+
 OLED::OLED(): Stream(1,1){
 }
 
@@ -96,59 +103,44 @@ void OLED::WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uin
     }
 }
 
-void OLED::WriteBitmap(uint8_t x, uint8_t y, uint8_t** bitmap, uint8_t bitmap_height, uint8_t bitmap_width){
-    // for(int i = 0; i < bitmap_width; i++){
-    //     // Get the number of pages
-    //     for(int j = 0; j < (uint8_t) ceil( (float) bitmap_height / 8); j++) {
-    //         // Check that it's not out of bounds
-    //         if((x + i < this->display_width) && (y + j < this->display_height)){
-    //             // assume bitmap is indexed by row then column
-    //             printf("y is %d, x is %d \n", (uint8_t) ceil((float) y / 8),x+i);
-    //             this->matrix[(uint8_t) ceil((float) y / 8)+j][x + i] |= bitmap[j][i];
-    //         }
-    //     }
-    // }
-    for(int i = 0; i < bitmap_width; i++){
-        uint8_t *column = bitmap[i];
-    }
 
+uint8_t** OLED::GetBitmapForCharacter(uint8_t character, uint8_t ***font){
+    return font[character-32];
 }
 
-uint8_t* OLED::GetBitmapForCharacter(uint8_t character, uint8_t font){
-    // Get the pointer from PROGMEM (which also points to PROGMEM)
-    uint8_t *bitmap = pgm_read_byte(&(font[character-32]))
-    // 32 is the ASCII offset
-    return bitmap;
-}
+void OLED::WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, uint8_t is_progmem){
 
-void OLED::WriteColumn(uint8_t *pixels, uint8_t num_pixels, uint8_t x, uint8_t y){
-    // Assume that num_pixels <= line_height
-    uint8_t page_x_starts_at = y/8;
-    uint8_t page_x_ends_at = ceil(((float)y + num_pixels)/8 - 1);
-    // Case 1 : The entire line is on the same page
+    uint8_t columns_to_write = min(bitmap_width, this->display_width - x);
 
-    uint8_t upper_offset = y - page_x_starts_at*8;
-    uint8_t lower_offset = (page_x_ends_at + 1)*8 - (num_pixels + y);
-    printf("UO: %2X, LO: %2x\n", upper_offset, lower_offset);
-    printf("PLSA : %d, PLEA : %d \n", page_x_starts_at, page_x_ends_at);
+    for(int j = 0; j < (uint8_t) columns_to_write; j++){
+        // Assume that bitmap_height <= line_height
+        uint8_t page_x_starts_at = y/8;
+        uint8_t page_x_ends_at = ceil(((float)y + bitmap_height)/8 - 1);
+        // Case 1 : The entire line is on the same page
 
-    if(page_x_starts_at == page_x_ends_at){
-        uint8_t bitmask = (0xFF << upper_offset) & (0xFF >> lower_offset);
-        this->matrix[page_x_starts_at][x] = ((pixels[0] << upper_offset) & bitmask) | (this->matrix[page_x_starts_at][x] & ~(bitmask));
-    }else{
-        // First page
-        uint8_t upper_bitmask = (0xFF << upper_offset);
-        this->matrix[page_x_starts_at][x] = ((pixels[0] << upper_offset) & upper_bitmask) | (this->matrix[page_x_starts_at][x] & ~(upper_bitmask));
+        uint8_t upper_offset = y - page_x_starts_at*8;
+        uint8_t lower_offset = (page_x_ends_at + 1)*8 - (bitmap_height + y);
+        //printf("UO: %2X, LO: %2x\n", upper_offset, lower_offset);
+        //printf("PLSA : %d, PLEA : %d \n", page_x_starts_at, page_x_ends_at);
 
-        // Between Pages
-        for(int i = 1; i < (page_x_ends_at-page_x_starts_at); ++i){
-            this->matrix[page_x_starts_at + i][x] = ((pixels[i - 1] >> (8-upper_offset) & ~upper_bitmask) | (this->matrix[page_x_starts_at + i][x] & upper_bitmask));
-            this->matrix[page_x_starts_at + i][x] = ((pixels[i] << (upper_offset) & upper_bitmask) | (this->matrix[page_x_starts_at + i][x] & ~upper_bitmask));
+        if(page_x_starts_at == page_x_ends_at){
+            uint8_t bitmask = (0xFF << upper_offset) & (0xFF >> lower_offset);
+            this->matrix[page_x_starts_at][x + j] = ((pixels[0][j] << upper_offset) & bitmask) | (this->matrix[page_x_starts_at][x + j] & ~(bitmask));
+        }else{
+            // First page
+            uint8_t upper_bitmask = (0xFF << upper_offset);
+            this->matrix[page_x_starts_at][x + j] = ((pixels[0][j] << upper_offset) & upper_bitmask) | (this->matrix[page_x_starts_at][x + j] & ~(upper_bitmask));
+
+            // Between Pages
+            for(int i = 1; i < (page_x_ends_at-page_x_starts_at); ++i){
+                this->matrix[page_x_starts_at + i][x + j] = ((pixels[i - 1][j] >> (8-upper_offset) & ~upper_bitmask) | (this->matrix[page_x_starts_at + i][x + j] & upper_bitmask));
+                this->matrix[page_x_starts_at + i][x + j] = ((pixels[i][j] << (upper_offset) & upper_bitmask) | (this->matrix[page_x_starts_at + i][x + j] & ~upper_bitmask));
+            }
+
+            // Last page
+            uint8_t lower_bitmask = (0xFF >> lower_offset);
+            this->matrix[page_x_ends_at][x + j] = ((pixels[bitmap_height/8 - 1][j] >> lower_offset) & lower_bitmask) | (this->matrix[page_x_ends_at][x + j] & ~(lower_bitmask));
         }
-
-        // Last page
-        uint8_t lower_bitmask = (0xFF >> lower_offset);
-        this->matrix[page_x_ends_at][x] = ((pixels[num_pixels/8 - 1] >> lower_offset) & lower_bitmask) | (this->matrix[page_x_ends_at][x] & ~(lower_bitmask));
     }
 }
 
@@ -158,15 +150,15 @@ void OLED::SetNumberOfLines(uint8_t number_of_lines){
     this->pixels_per_line = this->display_height/number_of_lines;
 }
 
-void OLED::WriteLine(uint8_t *string, uint8_t length_of_string, uint8_t font, uint8_t font_height, uint8_t font_width, uint8_t offset = 0){
-      // Clear the line
-      this->ClearLine();
-      uint8_t x = offset;
-      uint8_t y = this->current_line * this->number_of_lines;
-      // For each character, write it to the current line
-      for(int i = 0; i < length_of_string; ++i){
-          uint8_t *bitmap = this->GetBitmapForCharacter(string[i], font);
-          this->WriteBitmap(x,y,bitmap,font_height, font_width, true);
-          x += font_width;
-      }
+void OLED::WriteLine(uint8_t *string, uint8_t length_of_string, uint8_t ***font, uint8_t font_height, uint8_t font_width, uint8_t offset){
+    // Clear the line
+    this->ClearLine();
+    uint8_t x = offset;
+    uint8_t y = this->current_line * this->number_of_lines;
+    // For each character, write it to the current line
+    for(int i = 0; i < length_of_string; ++i){
+        uint8_t **bitmap = this->GetBitmapForCharacter(string[i], font);
+        this->WriteBitmap(bitmap,font_width, font_height,x,y, true);
+        x += font_width;
+    }
 }

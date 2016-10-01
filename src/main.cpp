@@ -58,24 +58,41 @@ int main(void) {
     //
      OLED &my_oled = OLED::GetInstance();
     //
-     my_oled.Init(128,64);
-     my_oled.SetNumberOfLines(8);
-     uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
-     uint8_t test_array[3][5] = {{0b01111110,0b00001100,0b00110000,0b01111110,0b00000000},{0b00000000,0b00000010,0b01111110,0b00000010,0b00000000}, {0b01111110,0b00001000,0b00001000,0b01111110,0b00000000}};
-     uint8_t *dummy[3] = { test_array[0], test_array[1], test_array[2] };
-     uint8_t **ptr = dummy;
-      uint8_t myString[] =  "Hello";
+    my_oled.Init(128,64);
+    my_oled.SetNumberOfLines(8);
+    uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
+    uint8_t test_array[3][5] = {{0b01111110,0b00001100,0b00110000,0b01111110,0b00000000},{0b00000000,0b00000010,0b01111110,0b00000010,0b00000000}, {0b01111110,0b00001000,0b00001000,0b01111110,0b00000000}};
+    uint8_t *dummy[3] = { test_array[0], test_array[1], test_array[2] };
+    uint8_t **ptr = dummy;
+    uint8_t myString[] =  "Hello";
 
-       my_oled.GoToLine(3);
+    my_oled.GoToLine(3);
 
-       void ****characters = (void****) f4x6;
-       void ***character = (void***) characters[4];
-       void **row = (void**) character[0];
-       uint8_t *col = (uint8_t*) row[0];
-       uint8_t c = *((uint8_t) col);
-       printf("%2x \n", c);
-    //   my_oled.WriteLine(myString, sizeof(myString), (char ***)f4x6, 4,6, 95);
-      my_oled.Repaint();
+    /*
+     * VIKTIG!
+     * Her har jeg skrevet litt eksempelkode som forhåpentligvis skal fungere med litt tweaking.
+     * Dette viser også at vi kan legge fontene tilbake i sitt eget namespace. Grunnen til at det ikke
+     * fungerte, var at vi prøvde å lagre en uint8_t* som en dobbelpointer...
+     * */
+
+    // Siden alle bytene i fonten er 1D, må vi hente dem ut slik som vist under. Jeg har ikke testet dette på AVRen...
+    uint8_t *font = (uint8_t*) f4x6;
+    // font[x][y] er ikke mulig fordi det er en 1D array. Derfor må vi bruke:
+    uint8_t x = 4;
+    uint8_t y = 2;
+    uint8_t num_columns = 4;
+    uint8_t *character = (uint8_t *) font[sizeof(uint8_t) * 4 * x];
+    uint8_t column = font[sizeof(uint8_t) * 4 * x + y];
+    // Denne skal være helt lik
+    column = character[y];
+    // For å sende inn 2D array til WriteBitmap:
+    uint8_t **b_character = &character;
+    printf("%2x \n", column);
+
+
+
+    //my_oled.WriteLine(myString, sizeof(myString), , 4,6, 95);
+      //my_oled.Repaint();
     //  for(int i = 120; true; ++i){
     //     my_oled.WriteBitmap(ptr,5,24,i % 128,16,false);
     //     my_oled.Repaint();

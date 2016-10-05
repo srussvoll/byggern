@@ -55,104 +55,29 @@ void SRAM_test(uint16_t seed)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
-    //printf("Test av en litt lengre string som ikke skal overflowe :)\n");
     printf("Test av en litt lengre string som ikke skal overflowe :)\n");
-    /*//
-     OLED &my_oled = OLED::GetInstance();
-    //
+
+    OLED &my_oled = OLED::GetInstance();
     my_oled.Init(128,64);
     my_oled.SetNumberOfLines(8);
-    uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
+    /*uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
     uint8_t test_array[3][5] = {{0b01111110,0b00001100,0b00110000,0b01111110,0b00000000},{0b00000000,0b00000010,0b01111110,0b00000010,0b00000000}, {0b01111110,0b00001000,0b00001000,0b01111110,0b00000000}};
     uint8_t *dummy[3] = { test_array[0], test_array[1], test_array[2] };
     uint8_t **ptr = dummy;
-    uint8_t myString[] =  "Hello";
-
     my_oled.GoToLine(3);*/
 
-    /*
-     * VIKTIG!
-     * Her har jeg skrevet litt eksempelkode som forhåpentligvis skal fungere med litt tweaking.
-     * Dette viser også at vi kan legge fontene tilbake i sitt eget namespace. Grunnen til at det ikke
-     * fungerte, var at vi prøvde å lagre en uint8_t* som en dobbelpointer...
-     * */
-
-    // Siden alle bytene i fonten er 1D, må vi hente dem ut slik som vist under. Jeg har ikke testet dette på AVRen...
-    uint8_t *font = (uint8_t*) f4x6;
-    // font[x][y] er ikke mulig fordi det er en 1D array. Derfor må vi bruke:
-    uint8_t x = 4;
+    uint8_t *font = (uint8_t*) Fonts::f8x8;
+    uint8_t x = 34;
     uint8_t y = 2;
-    uint8_t num_columns = 4;
-    uint8_t *character = &font[4 * x];
-    uint8_t column = font[4 * x + y];
-    // Denne skal være helt lik
-    column = character[y];
+    uint8_t num_columns = 8;
+    uint8_t *character = &font[num_columns * x];
+    uint8_t column = pgm_read_byte(&font[num_columns * x + y]);
     // For å sende inn 2D array til WriteBitmap:
-    uint8_t **b_character = &character;
-    printf("%2x \n", column);
+    uint8_t **bitmap_character = &character;
+    printf("%d \n", column);
 
+    my_oled.WriteBitmap(bitmap_character, 8,8,3,3,true);
+    my_oled.Repaint();
 
-
-    //my_oled.WriteLine(myString, sizeof(myString), , 4,6, 95);
-      //my_oled.Repaint();
-    //  for(int i = 120; true; ++i){
-    //     my_oled.WriteBitmap(ptr,5,24,i % 128,16,false);
-    //     my_oled.Repaint();
-    //     //_delay_ms(50);
-    //     my_oled.Clear();
-    //  }
-
-    // my_oled.Repaint();
-    // my_oled.Clear();
-     //my_oled.Repaint();
-    //
-    // /*
-    // for(int j = 0; j<7; j++){
-    //     my_oled.GoToLine(j);
-    //     my_oled.ClearLine();
-    //     _delay_ms(1000);
-    // }
-    // */
-    //
-    // //my_oled.WriteByte(3,4,0xAA);
-    //
-    // uint8_t testFont = pgm_read_byte(&(f5x7[0][1]));
-    //
-    // //printf("verideliksom %d\n", testFont[5]);
-    //
-    // uint8_t test_array[1][5] = {{0b01111110,0b01001010,0b01001010,0b00110100,0b00000000}};
-    // uint8_t *dummy[1] = { test_array[0] };
-    // uint8_t **ptr = dummy;
-    //
-    // // my_oled.WriteByte(0,0,0b01111110);
-    // // my_oled.WriteByte(0,1,0b01001010);
-    // // my_oled.WriteByte(0,2,0b01001010);
-    // // my_oled.WriteByte(0,3,0b00110100);
-    // // my_oled.WriteByte(0,4,0b00000000);
-    //
-    // my_oled.WriteBitmap(0, 0, (uint8_t**) ptr, 1, 5);
-    // my_oled.WriteBitmap(0, 8, (uint8_t**) ptr, 1, 5);
-
-
-    //my_oled.WriteByte(5,2,0xFF);
-
-    //uint8_t aa[4] = {0b01111000,0b00010100,0b01111000,0b00000000};
-    //my_oled.WriteByteArray(0,0,aa,4);
-
-     //for (int i = 0; i < 10; ++i) {
-    //     SRAM_test(i);
-     //}
-
-//    printf("SRAM test completed with \n%4d errors in write phase and \n%4d errors in retrieval phase\n\n", write_errors, retrieval_errors);
-    // //SRAM_test(2);
-        // volatile uint8_t *p1 = (uint8_t *)0x8f00;
-        // volatile uint8_t *p2 = (uint8_t *)0x8fff;
-        // uint8_t dummy;
-        // while(1){
-        //     //*p1 = 0xAA;
-        //     *p2 = 0x10;
-        //     dummy = *p2;
-        //     printf("%4X - %2X\n",p2, dummy);
-        // }
 }
 #pragma clang diagnostic pop

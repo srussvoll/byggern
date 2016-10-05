@@ -10,8 +10,12 @@
  * An interface to communicate with the oled display
  */
 class OLED: Stream {
+private:
+    char *font = nullptr;
+    uint8_t font_width;
+    uint8_t font_height;
+
 public:
-    void WriteLine(char* string, uint8_t len, uint8_t line, uint8_t offset);
     /**
      * A Singleton implementation of this class
      *
@@ -22,70 +26,64 @@ public:
     }
 
     /**
+    * Initializes the whole screen.
+     * @param width The width of the screen in pixels
+     * @param height The height of the screen in pixels
+    */
+    void Init(uint8_t width, uint8_t height);
+
+    /**
     * Sets the line pointer. This line pointer is used by functions such as WriteLine() to determine which line to write to.
     * @param line Which line to be set.
     */
-     void GoToLine(uint8_t line);
+    void GoToLine(uint8_t line);
 
-     /**
-     * Clears the current line selected
-     */
-     void ClearLine();
+    /**
+    * Clears the current line selected
+    */
+    void ClearLine();
 
-     /**
-     * Clears the whole screen
-     */
-     void Clear();
+    /**
+    * Clears the whole screen
+    */
+    void Clear();
 
-     /**
-     * Initializes the whole screen.
-     */
-     void Init(uint8_t width, uint8_t height);
+    /**
+    * Writes a byte to the given page and column. This is a helper function mainly used for debugging
+    * @param page Which page to be written to
+    * @param page Which column to be written to
+    * @param byte Which byte to be written
+    */
+    void WriteByte(uint8_t page, uint8_t column, uint8_t byte);
 
-     /**
-     *
-     */
-     void WriteByte(uint8_t page, uint8_t column, uint8_t byte);
+    /**
+    *
+    */
+    void WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uint8_t length);
 
-     /**
-     *
-     */
-     void WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uint8_t length);
+    /**
+    * Returns a pointer to PROGMEM for the bitmap for the given font and character. Emphasis on that it points to PROGMEM.
+    * http://www.nongnu.org/avr-libc/user-manual/pgmspace.html
+    */
+    uint8_t** GetBitmapForCharacter(uint8_t character, uint8_t ***font);
 
-     /*
-     *
-     */
-    // void WriteBitmap(uint8_t x, uint8_t y, uint8_t** bitmap, uint8_t bitmap_height, uint8_t bitmap_width, uint8_t is_progmem);
+    /**
+    * Repaints the OLED
+    */
+    void Repaint();
 
-     /**
-     * Returns a pointer to PROGMEM for the bitmap for the given font and character. Emphasis on that it points to PROGMEM.
-     * http://www.nongnu.org/avr-libc/user-manual/pgmspace.html
-     */
-     uint8_t** GetBitmapForCharacter(uint8_t character, uint8_t ***font);
-
-     /**
-     * Repaints the OLED
-     */
-     void Repaint();
-
-     /**
-     * Sets the number of lines. Not to be confused with number of pages
-     * @param number_of_lines The number of lines.
-     */
-     void SetNumberOfLines(uint8_t number_of_lines);
+    /**
+    * Sets the number of lines. Not to be confused with number of pages
+    * @param number_of_lines The number of lines.
+    */
+    void SetNumberOfLines(uint8_t number_of_lines);
 
 
-     void WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, uint8_t is_progmem);
+    void WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, uint8_t is_progmem);
 
-     /**
-     * Writes the given string to the line set by current line. Uses the supplied font. Assumes that the given font is not higher than the line height.
-     * @param string The string to be written
-     * @param length_of_string The length of the string
-     * @param font The font as an double array. ASCII ordering with an offset of 32
-     * @param font_height The height in pixels of the font.
-     * @param font_width The width in pixels of the font
-     */
-     void WriteLine(uint8_t *string, uint8_t length_of_string, uint8_t ***font, uint8_t font_height, uint8_t font_width, uint8_t offset = 0);
+    void setFont(char *font, uint8_t width, uint8_t height);
+
+    void WriteLine(char* string, uint8_t len, uint8_t line, uint8_t offset);
 
 private:
     /**

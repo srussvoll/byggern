@@ -60,6 +60,7 @@ void OLED::Clear(){
             this->matrix[i][j] = 0x00;
         }
     }
+    Repaint();
 }
 
 void OLED::ClearLine(){
@@ -125,23 +126,29 @@ void OLED::WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_he
 
         if(page_x_starts_at == page_x_ends_at){
             uint8_t bitmask = (0xFF << upper_offset) & (0xFF >> lower_offset);
-            this->matrix[page_x_starts_at][x + j] = ((pixels[0][j] << upper_offset) & bitmask) | (this->matrix[page_x_starts_at][x + j] & ~(bitmask));
+            uint8_t col = (is_progmem) ? (pgm_read_byte(&pixels[0][j])) : ( pixels[0][j] );
+            this->matrix[page_x_starts_at][x + j] = ((col << upper_offset) & bitmask) | (this->matrix[page_x_starts_at][x + j] & ~(bitmask));
         }else{
             // First page
+            uint8_t col = (is_progmem) ? (pgm_read_byte(&pixels[0][j])) : ( pixels[0][j] );
             uint8_t upper_bitmask = (0xFF << upper_offset);
-            this->matrix[page_x_starts_at][x + j] = ((pixels[0][j] << upper_offset) & upper_bitmask) | (this->matrix[page_x_starts_at][x + j] & ~(upper_bitmask));
+            this->matrix[page_x_starts_at][x + j] = ((col << upper_offset) & upper_bitmask) | (this->matrix[page_x_starts_at][x + j] & ~(upper_bitmask));
 
             // Between Pages
             for(int i = 1; i < (page_x_ends_at-page_x_starts_at); ++i){
-                this->matrix[page_x_starts_at + i][x + j] = ((pixels[i - 1][j] >> (8-upper_offset) & ~upper_bitmask) | (this->matrix[page_x_starts_at + i][x + j] & upper_bitmask));
-                this->matrix[page_x_starts_at + i][x + j] = ((pixels[i][j] << (upper_offset) & upper_bitmask) | (this->matrix[page_x_starts_at + i][x + j] & ~upper_bitmask));
+                col = (is_progmem) ? (pgm_read_byte(&pixels[i - 1][j])) : ( pixels[i - 1][j] );
+                this->matrix[page_x_starts_at + i][x + j] = ((col >> (8-upper_offset) & ~upper_bitmask) | (this->matrix[page_x_starts_at + i][x + j] & upper_bitmask));
+                col = (is_progmem) ? (pgm_read_byte(&pixels[i][j])) : ( pixels[i][j] );
+                this->matrix[page_x_starts_at + i][x + j] = ((col << (upper_offset) & upper_bitmask) | (this->matrix[page_x_starts_at + i][x + j] & ~upper_bitmask));
             }
 
             // Last page
             uint8_t lower_bitmask = (0xFF >> lower_offset);
-            this->matrix[page_x_ends_at][x + j] = ((pixels[bitmap_height/8 - 1][j] >> lower_offset) & lower_bitmask) | (this->matrix[page_x_ends_at][x + j] & ~(lower_bitmask));
+            col = (is_progmem) ? (pgm_read_byte(&pixels[bitmap_height/8 - 1][j])) : ( pixels[bitmap_height/8 - 1][j] );
+            this->matrix[page_x_ends_at][x + j] = ((col >> lower_offset) & lower_bitmask) | (this->matrix[page_x_ends_at][x + j] & ~(lower_bitmask));
         }
     }
+
 }
 
 void OLED::SetNumberOfLines(uint8_t number_of_lines){
@@ -150,15 +157,13 @@ void OLED::SetNumberOfLines(uint8_t number_of_lines){
     this->pixels_per_line = this->display_height/number_of_lines;
 }
 
-void OLED::WriteLine(uint8_t *string, uint8_t length_of_string, uint8_t ***font, uint8_t font_height, uint8_t font_width, uint8_t offset){
-    // Clear the line
-    this->ClearLine();
-    uint8_t x = offset;
-    uint8_t y = this->current_line * this->number_of_lines;
-    // For each character, write it to the current line
-    for(int i = 0; i < length_of_string; ++i){
-        uint8_t **bitmap = this->GetBitmapForCharacter(string[i], font);
-        this->WriteBitmap(bitmap,font_width, font_height,x,y, true);
-        x += font_width;
-    }
+void OLED::WriteLine(char *string, uint8_t len, uint8_t line, uint8_t offset) {
+
 }
+
+void OLED::setFont(char *font, uint8_t width, uint8_t height) {
+    this->font = font;
+    this->font_height = height;
+    this->font_width = width;
+}
+

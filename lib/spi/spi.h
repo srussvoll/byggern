@@ -14,7 +14,7 @@ public:
         return instance;
     }
 
-    void write_byte(uint8_t byte);
+
 
     /**
      * Because of singleton - makes sure its not copied etc.
@@ -28,4 +28,7 @@ public:
 private:
     SPI();
     void init(bool clock_polarity_falling, bool clock_phase_trailing);
+    void InitializeTransmission();
+    bool ongoing_transmission;
+    friend void SPI_STC_vect();
 };

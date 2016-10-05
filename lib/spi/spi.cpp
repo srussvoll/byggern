@@ -1,4 +1,11 @@
 #include "spi.h"
+#include <avr/interrupt.h>
+
+void SPI_STC_vect(){
+    // SPI transfer complete
+    
+}
+
 void SPI::init(bool clock_polarity_falling = 0, bool clock_phase_trailing = 0) {
     // Set registers
     SPCR |= (1<<SPE); // Enable SPI
@@ -34,9 +41,16 @@ void SPI::init(bool clock_polarity_falling = 0, bool clock_phase_trailing = 0) {
     SPCR &= ~(1<<DORD);
 }
 
-void write_byte(uint8_t byte){
-    SPDR = byte;
-    while(!(SPSR & (1<<SPIF))){}
+
+void SPI::InitializeTransmission() {
+    if(!this->ongoing_transmission){
+        this->ongoing_transmission = true;
+
+        uint8_t byte;
+        Stream::ReadByteFromOutputStream(byte);
+
+        SPDR = byte;
+    }
 }
 
 SPI::SPI(): Stream(1,1){

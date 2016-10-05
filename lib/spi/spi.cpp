@@ -1,18 +1,34 @@
 #include "spi.h"
-#include <avr/interrupt.h>
+#include <stdio.h>
+#include <util/delay.h>
 namespace SPI_N{
     void SPI_STC_vect(){
         // SPI transfer complete
         SPI& spi = SPI::GetInstance();
-        uint8_t byte;
 
-        if(spi.ReadByteFromOutputStream(byte)){
-            SPDR = byte;
-        }else{
-            // Turn off interrupts
-            SPCR &= ~(1<<SPIE);
-            spi.ongoing_transmission = false;
+        if(SPSR & (1<<WCOL)){
+            // SPDR written to during a data transfer.
+            // TODO: We might have to handle this. Should not be needed if used correctly
+            printf("!!SPI ERR:!! Please see SPI_STC_vect() implementation. Now sleeping for 1000ms so I'm sure you saw this \n");
+            _delay_ms(1000);
         }
+
+        if(spi.ongoing_transmission){
+            // Sending data. More to send?
+            uint8_t byte;
+            if(spi.ReadByteFromOutputStream(byte)){
+                SPDR = byte;
+            }else{
+                spi.ongoing_transmission = false;
+
+                // Turn of SS pin. Active low
+                *spi.current_pin.ddr |= (1<<spi.current_pin.pin);
+            }
+        }else{
+            // Data is incoming. Handle it
+            spi.ReadAndInsertIntoInputBuffer();
+        }
+
     }
 
     SPI::SPI(): Stream(1,128){
@@ -50,6 +66,9 @@ namespace SPI_N{
         // Set MSB first
         SPCR &= ~(1<<DORD);
 
+        // Enable interrupts
+        SPCR |= (1<<SPIE);
+
         // Remember that you need to run SetDevice in order to select a device.
 
         for(int i = 0; i < number_of_pins; ++i){
@@ -63,26 +82,27 @@ namespace SPI_N{
 
     void SPI::InitializeTransmission() {
         if(!this->ongoing_transmission){
+            // Set SS line. Active low
+            *this->current_pin.ddr &= ~(1<<current_pin.pin);
+
             this->ongoing_transmission = true;
 
             uint8_t byte;
             Stream::ReadByteFromOutputStream(byte);
 
             SPDR = byte;
-
-            // Enable interrupts
-            SPCR |= (1<<SPIE);
         }
     }
 
     void SPI::ReadAndInsertIntoInputBuffer(){
-        // TODO: Implement read in SPI
+        uint8_t byte = SPDR;
+        this->WriteByteToInputStream(byte);
     }
 
     void SPI::SetDevice(PIN &pin){
         this->current_pin = pin;
-        // Flush output buffer
+        // Flush output and input buffer
         this->FlushOutputBuffer();
+        this->FlushInputBuffer();
     }
-
 }

@@ -1,4 +1,4 @@
-#include <avr/interrupt.h>
+
 #include "lib/uart/uart.h"
 
 void USART0_UDRE_vect(){

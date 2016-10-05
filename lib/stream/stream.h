@@ -157,7 +157,7 @@ protected:
 
     /**
      * Reads a byte from the output stream.
-     * @return Returns the byte.
+     * @return Returns true if there are more bytes
      */
     virtual bool ReadByteFromOutputStream(uint8_t& byte);
 

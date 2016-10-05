@@ -194,6 +194,13 @@ namespace Menu {
         void AddMenu(Item *items, uint8_t length);
 
         /**
+         * Internally invokes AddMenuItem to add the items. Adds to the selected item.
+         * @param items An array of items to add to the menu.
+         * @param length The length of the array.
+         */
+        void AddMenuItems(Item *items, uint8_t length);
+
+        /**
          * Adds the item after the currently selected item. If no item is selected, the item
          * is inserted as the first item.
          * @param item The item to insert.

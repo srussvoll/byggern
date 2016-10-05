@@ -189,4 +189,16 @@ namespace Menu {
         this->current_index_selected = min(0, this->current_index_selected - 1);
         this->render();
     }
+
+    void Controller::AddMenuItems(Item *items, uint8_t length) {
+        Item *current_item = this->current_item_control;
+
+        for (uint8_t i = 0; i < length; ++i) {
+            this->AddMenuItem(items[i]);
+            this->ControlGoToItem(i);
+        }
+
+        // Set the state back to the original state.
+        this->current_item_control = current_item;
+    }
 }

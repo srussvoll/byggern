@@ -1,12 +1,13 @@
 #include <avr/io.h>
-#include <util/delay.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <avr/pgmspace.h>
+
 #include "lib/utilities/fonts.h"
 #include "init.h"
 #include "lib/uart/uart.h"
 #include "lib/oled/oled.h"
+#include "test_menu.h"
 
 uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;
@@ -50,23 +51,27 @@ void SRAM_test(uint16_t seed) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
-    printf("Test av en litt lengre string som ikke skal overflowe :)\n");
+    printf("\n\n\n----------------------------------------\n");
+    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
 
     OLED &my_oled = OLED::GetInstance();
     my_oled.Init(128,64);
-    my_oled.SetNumberOfLines(8);
+    //my_oled.SetNumberOfLines(8);
     my_oled.SetFont(Fonts::f8x8, 8, 8);
-    /*uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
+    uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
     uint8_t test_array[3][5] = {{0b01111110,0b00001100,0b00110000,0b01111110,0b00000000},{0b00000000,0b00000010,0b01111110,0b00000010,0b00000000}, {0b01111110,0b00001000,0b00001000,0b01111110,0b00000000}};
     uint8_t *dummy[3] = { test_array[0], test_array[1], test_array[2] };
     uint8_t **ptr = dummy;
-    my_oled.GoToLine(3);*/
+    my_oled.GoToLine(3);
+
+    test_menu(my_oled);
 
     //my_oled.WriteBitmap(bitmap_character, 8,8,3,3,true);
-    char in[] = "Test av en litt lengre string som ikke skal overflowe :)";
-    printf("sizeof: %d \n", sizeof(in) - 1);
-    my_oled.WriteLine(in, 40, 1, 0);
-    my_oled.Repaint();
+    /*char in[] = "nissen";
+    my_oled.WriteLine(in, sizeof(in) - 1, 0, 0);
+    my_oled.Repaint();*/
+
+    while(true) {};
 
 }
 #pragma clang diagnostic pop

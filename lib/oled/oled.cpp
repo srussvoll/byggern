@@ -1,6 +1,5 @@
 #include "oled.h"
 #include <stdio.h>
-#include <util/delay.h>
 #include <stdlib.h>
 #include <math.h>
 #include <avr/pgmspace.h>
@@ -45,13 +44,12 @@ void OLED::Init(uint8_t width, uint8_t height){
     // Malloc the Matrix
     uint8_t pages = (uint8_t) ceil( (float) height / 8);
     this->number_of_pages = pages;
-    this->matrix = (uint8_t **) malloc(pages * sizeof(uint8_t*));
+    this->matrix = (volatile uint8_t *volatile *volatile) malloc(pages * sizeof(uint8_t*));
     for(int i = 0; i < pages; i++){
-        if ((this->matrix[i] = (uint8_t *) malloc(width * sizeof(uint8_t))) == NULL){printf("ERROR: Ran out of space on the heap! \n");}
+        if ((this->matrix[i] = (volatile uint8_t *volatile) malloc(width * sizeof(uint8_t))) == NULL){printf("ERROR: Ran out of space on the heap! \n");}
     }
 
     this->SetNumberOfLines(pages);
-    printf("%d\n", pages);
 
     this->Clear();
 }
@@ -66,7 +64,6 @@ void OLED::Clear(){
             this->matrix[i][j] = 0x00;
         }
     }
-    Repaint();
 }
 
 void OLED::ClearLine(){
@@ -88,21 +85,20 @@ void OLED::WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uin
 void OLED::Repaint(){
     uint8_t page_address;
     uint8_t column_address;
-    for(int i = 0; i < this->number_of_pages; i++){
-        page_address = 0xB0 + i;
+    for(uint8_t i = 0; i < this->number_of_pages; i++){
+        page_address = (uint8_t) 0xB0 + i;
         *this->oled_command = page_address;
         for(int j = 0; j < this->display_width; j++){
-            column_address = 0x00 + j;
+            column_address = (uint8_t) 0x00 + j;
             // Set lower nibble
             *this->oled_command = 0x00 + (column_address & 0xF);
 
             // Set higher nibble
             *this->oled_command = 0x10 + (column_address>>4);
-            //printf("\ni = %d, j = %d, page = %02X, h_n = %02X, l_n = %02X",i,j,page_address,  0x10 + (column_address>>4), 0x00 + (column_address & 0xF));
             *this->oled_data = this->matrix[i][j];
-            //printf("%2X", this->matrix[i][j]);
+            printf("%x", this->matrix[i][j]);
         }
-        //printf("\n");
+        printf("\n");
     }
 }
 
@@ -111,14 +107,15 @@ void OLED::SetNumberOfLines(uint8_t number_of_lines){
     this->pixels_per_line = this->display_height/number_of_lines;
 }
 
-void OLED::GetBitmapForCharacter(char character, uint8_t** &character_bitmap){
+void OLED::GetBitmapForCharacter(char character, volatile uint8_t *volatile *volatile &character_bitmap){
     uint8_t x = (uint8_t) (character - 32);
     *character_bitmap = &this->font[this->font_width* x];
 }
 
-void OLED::WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, bool is_progmem){
+void OLED::WriteBitmap(volatile uint8_t *volatile *volatile pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, bool is_progmem){
 
     uint8_t columns_to_write = min(bitmap_width,  (x < this->display_width) ? this->display_width - x : 0);
+    bitmap_height = min(bitmap_height, this->display_height - y);
 
     for(int j = 0; j < (uint8_t) columns_to_write; j++){
         // Assume that bitmap_height <= line_height
@@ -165,15 +162,22 @@ void OLED::SetFont(uint8_t *font, uint8_t width, uint8_t height) {
 }
 
 void OLED::WriteLine(char *string, uint8_t length, uint8_t line, uint8_t offset) {
+    if (line >= this->number_of_lines) return;
+
     uint8_t y = line*pixels_per_line;
 
-    uint8_t available_length = (this->display_width - (offset*this->font_width)) / this->font_width;
+    uint8_t available_length = min(length, (this->display_width - offset*this->font_width) / this->font_width);
+
+    printf("%1d: %11s, length %d \n", line, string, 11);
 
     for(int i = 0; i < available_length; i++){
-
-        uint8_t **bitmap;
+        volatile uint8_t *volatile *volatile bitmap;
         GetBitmapForCharacter(string[i], bitmap);
+
+        if(string[i] == '2') {
+            printf("Byte: %2x\n", pgm_read_byte(&bitmap[0][2]));
+        }
+
         WriteBitmap(bitmap, this->font_width, this->font_height, (offset + i)*this->font_width, y, true);
     }
-    Repaint();
 }

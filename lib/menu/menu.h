@@ -43,12 +43,15 @@ namespace Menu {
          * This is a pointer to the next menu item in the menu (linked list).
          */
         Item *next = nullptr;
+
+        Item(char *label, uint8_t label_length) : label(label), label_length(label_length) {}
     };
 
     /**
      * Contains all necessary information about a menu (which could be a sub menu).
      */
     struct Menu {
+
         /**
          * If it is a sub menu, this points to its parent menu. Else it is nullptr.
          */

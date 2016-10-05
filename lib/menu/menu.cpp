@@ -1,6 +1,7 @@
 #include "menu.h"
 #include <avr/io.h>
 #include <math.h>
+#include <stdio.h>
 #include "../utilities/new.h"
 #include "../oled/oled.h"
 
@@ -181,12 +182,14 @@ namespace Menu {
     }
 
     void Controller::SelectNext() {
-        this->current_index_selected = max(this->GetMenuLength(this->current_menu_navigate), this->current_index_selected + 1);
+        printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
+        this->current_index_selected = min(this->GetMenuLength(this->current_menu_navigate), this->current_index_selected + 1);
         this->render();
+        printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
     }
 
     void Controller::SelectPrevious() {
-        this->current_index_selected = min(0, this->current_index_selected - 1);
+        this->current_index_selected = max(0, this->current_index_selected - 1);
         this->render();
     }
 

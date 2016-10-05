@@ -52,6 +52,12 @@ void OLED::Init(uint8_t width, uint8_t height){
 
     this->SetNumberOfLines(pages);
     printf("%d\n", pages);
+
+    this->Clear();
+}
+
+void OLED::GoToLine(uint8_t line){
+    this->current_line = line;
 }
 
 void OLED::Clear(){
@@ -69,8 +75,14 @@ void OLED::ClearLine(){
     }
 }
 
-void OLED::GoToLine(uint8_t line){
-    this->current_line = line;
+void OLED::WriteByte(uint8_t page, uint8_t column, uint8_t byte){
+    this->matrix[page][column] = byte;
+}
+
+void OLED::WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uint8_t length){
+    for(int j = 0; j < length; j++){
+        this->matrix[page][column + j] = byte_array[j];
+    }
 }
 
 void OLED::Repaint(){
@@ -94,24 +106,19 @@ void OLED::Repaint(){
     }
 }
 
-void OLED::WriteByte(uint8_t page, uint8_t column, uint8_t byte){
-    this->matrix[page][column] = byte;
+void OLED::SetNumberOfLines(uint8_t number_of_lines){
+    this->number_of_lines = number_of_lines;
+    this->pixels_per_line = this->display_height/number_of_lines;
 }
 
-void OLED::WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uint8_t length){
-    for(int j = 0; j < length; j++){
-        this->matrix[page][column + j] = byte_array[j];
-    }
+void OLED::GetBitmapForCharacter(char character, uint8_t** &character_bitmap){
+    uint8_t x = (uint8_t) (character - 32);
+    *character_bitmap = &this->font[this->font_width* x];
 }
 
+void OLED::WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, bool is_progmem){
 
-uint8_t** OLED::GetBitmapForCharacter(uint8_t character, uint8_t ***font){
-    return font[character-32];
-}
-
-void OLED::WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, uint8_t is_progmem){
-
-    uint8_t columns_to_write = min(bitmap_width, this->display_width - x);
+    uint8_t columns_to_write = min(bitmap_width,  (x < this->display_width) ? this->display_width - x : 0);
 
     for(int j = 0; j < (uint8_t) columns_to_write; j++){
         // Assume that bitmap_height <= line_height
@@ -151,19 +158,22 @@ void OLED::WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_he
 
 }
 
-void OLED::SetNumberOfLines(uint8_t number_of_lines){
-    this->Clear();
-    this->number_of_lines = number_of_lines;
-    this->pixels_per_line = this->display_height/number_of_lines;
-}
-
-void OLED::WriteLine(char *string, uint8_t len, uint8_t line, uint8_t offset) {
-
-}
-
-void OLED::setFont(char *font, uint8_t width, uint8_t height) {
+void OLED::SetFont(uint8_t *font, uint8_t width, uint8_t height) {
     this->font = font;
     this->font_height = height;
     this->font_width = width;
 }
 
+void OLED::WriteLine(char *string, uint8_t length, uint8_t line, uint8_t offset) {
+    uint8_t y = line*pixels_per_line;
+
+    uint8_t available_length = (this->display_width - (offset*this->font_width)) / this->font_width;
+
+    for(int i = 0; i < available_length; i++){
+
+        uint8_t **bitmap;
+        GetBitmapForCharacter(string[i], bitmap);
+        WriteBitmap(bitmap, this->font_width, this->font_height, (offset + i)*this->font_width, y, true);
+    }
+    Repaint();
+}

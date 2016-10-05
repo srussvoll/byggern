@@ -12,8 +12,7 @@ uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;
 // volatile char *ext_ram = (char *) malloc(0x1D00 * sizeof(char)); // Start address for the SRAMuint8_t
 
-void SRAM_test(uint16_t seed)
-{
+void SRAM_test(uint16_t seed) {
     //volatile char *ext_ram = (char *) malloc(0x0500 * sizeof(char)); // Start address for the SRAMuint8_t
     volatile char *ext_ram = (char *) 0x8000; // Start address for the SRAM
     uint16_t ext_ram_size       = 0x1D00;
@@ -48,8 +47,6 @@ void SRAM_test(uint16_t seed)
     //printf("SRAM test completed with \n%4d errors in write phase and \n%4d errors in retrieval phase\n\n", write_errors, retrieval_errors);
 }
 
-
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
@@ -58,23 +55,17 @@ int main(void) {
     OLED &my_oled = OLED::GetInstance();
     my_oled.Init(128,64);
     my_oled.SetNumberOfLines(8);
+    my_oled.SetFont(Fonts::f8x8, 8, 8);
     /*uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
     uint8_t test_array[3][5] = {{0b01111110,0b00001100,0b00110000,0b01111110,0b00000000},{0b00000000,0b00000010,0b01111110,0b00000010,0b00000000}, {0b01111110,0b00001000,0b00001000,0b01111110,0b00000000}};
     uint8_t *dummy[3] = { test_array[0], test_array[1], test_array[2] };
     uint8_t **ptr = dummy;
     my_oled.GoToLine(3);*/
 
-    uint8_t *font = (uint8_t*) Fonts::f8x8;
-    uint8_t x = 34;
-    uint8_t y = 2;
-    uint8_t num_columns = 8;
-    uint8_t *character = &font[num_columns * x];
-    uint8_t column = pgm_read_byte(&font[num_columns * x + y]);
-    // For å sende inn 2D array til WriteBitmap:
-    uint8_t **bitmap_character = &character;
-    printf("%d \n", column);
-
-    my_oled.WriteBitmap(bitmap_character, 8,8,3,3,true);
+    //my_oled.WriteBitmap(bitmap_character, 8,8,3,3,true);
+    char in[] = "Test av en litt lengre string som ikke skal overflowe :)";
+    printf("sizeof: %d \n", sizeof(in) - 1);
+    my_oled.WriteLine(in, 40, 1, 0);
     my_oled.Repaint();
 
 }

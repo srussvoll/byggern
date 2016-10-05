@@ -20,6 +20,8 @@ void SRAM_test(uint16_t seed)
 
     printf("Starting SRAM test...\n");
 
+
+
     // rand() stores some internal state, so calling this function in a loop will
     // yield different seeds each time (unless srand() is called before this function)
 

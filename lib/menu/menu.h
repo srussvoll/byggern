@@ -1,6 +1,7 @@
 #pragma once
 
 #include <avr/io.h>
+#include <stdio.h>
 #include "../oled/oled.h"
 
 /**
@@ -44,7 +45,7 @@ namespace Menu {
          */
         Item *next = nullptr;
 
-        Item(char *label, uint8_t label_length) : label(label), label_length(label_length) {}
+        Item(char *label, uint8_t label_length);
     };
 
     /**
@@ -194,21 +195,21 @@ namespace Menu {
          * @param items An array of items to add to the newly created menu.
          * @param length The length of the array.
          */
-        void AddMenu(Item *items, uint8_t length);
+        void AddMenu(Item **items, uint8_t length);
 
         /**
          * Internally invokes AddMenuItem to add the items. Adds to the selected item.
          * @param items An array of items to add to the menu.
          * @param length The length of the array.
          */
-        void AddMenuItems(Item *items, uint8_t length);
+        void AddMenuItems(Item **items, uint8_t length);
 
         /**
          * Adds the item after the currently selected item. If no item is selected, the item
          * is inserted as the first item.
          * @param item The item to insert.
          */
-        void AddMenuItem(Item &item);
+        void AddMenuItem(Item *item);
 
         /**
          * Adds the item at the specified index. Thus index 0 will place
@@ -216,7 +217,7 @@ namespace Menu {
          * @param item The item to insert.
          * @param index The index the inserted item should have.
          */
-        void AddMenuItem(Item &item, uint8_t index);
+        void AddMenuItem(Item *item, uint8_t index);
 
         /**
          * Sets the specified menu as the current navigate menu. Thus calling this and rendering the menu

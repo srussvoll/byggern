@@ -16,6 +16,12 @@ namespace {
 }
 
 namespace Menu {
+    Item::Item(char *label, uint8_t label_length) : label_length(label_length) {
+        printf("Placing the label on the heap.\n");
+        this->label = (char *) malloc(label_length * sizeof(char));
+        memcpy(this->label, label, label_length);
+    }
+
     Controller::Controller(OLED& oled, uint8_t num_lines) : oled(&oled), num_lines(num_lines) {
         this->root = new Menu;
         this->current_menu_control = this->root;
@@ -52,7 +58,7 @@ namespace Menu {
         this->current_item_control = nullptr;
     }
 
-    void Controller::AddMenu(Item *items, uint8_t length) {
+    void Controller::AddMenu(Item **items, uint8_t length) {
         if (this->current_item_control != nullptr) {
             Menu *menu = new Menu();
             menu->parent = this->current_menu_control;
@@ -77,26 +83,24 @@ namespace Menu {
         }
     }
 
-    void Controller::AddMenuItem(Item &item) {
-        Item *i = new Item(item);
+    void Controller::AddMenuItem(Item *item) {
         if (this->current_item_control == nullptr) {
-            i->next = this->current_menu_control->first;
-            this->current_menu_control->first = i;
+            item->next = this->current_menu_control->first;
+            this->current_menu_control->first = item;
         } else {
-            i->next = this->current_item_control->next;
-            this->current_item_control->next = i;
+            item->next = this->current_item_control->next;
+            this->current_item_control->next = item;
         }
     }
 
-    void Controller::AddMenuItem(Item &item, uint8_t index) {
-        Item *i = new Item(item);
+    void Controller::AddMenuItem(Item *item, uint8_t index) {
         if (index == 0) {
-            i->next = this->current_menu_control->first;
-            this->current_menu_control->first = i;
+            item->next = this->current_menu_control->first;
+            this->current_menu_control->first = item;
         } else {
             this->ControlGoToItem(index - 1);
-            i->next = this->current_item_control->next;
-            this->current_item_control->next = i;
+            item->next = this->current_item_control->next;
+            this->current_item_control->next = item;
         }
     }
 
@@ -156,6 +160,12 @@ namespace Menu {
             oled->WriteLine(this->current_item_navigate->label, this->current_item_navigate->label_length, i, 2);
             if (i == selected_index_relative) {
                 // FIXME: Insert code to add an arrow on this line. This if clause runs if the current line is selected.
+                static uint8_t arrow[1][4] = {{0b00011000, 0b00011000, 0b00111100, 0b00011000}};
+                uint8_t *dummy[1] = { arrow[0] };
+                uint8_t **arrow_ptr = dummy;
+                uint8_t x = 0;
+                uint8_t y = oled->GetYCoordinateFromLineNumber(i);
+                oled->WriteBitmap(arrow_ptr, 4, 8, x, y, false);
             }
             i++;
         } while (this->GoToNextItem());
@@ -182,10 +192,10 @@ namespace Menu {
     }
 
     void Controller::SelectNext() {
-        printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
-        this->current_index_selected = min(this->GetMenuLength(this->current_menu_navigate), this->current_index_selected + 1);
+        //printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
+        this->current_index_selected = min(this->GetMenuLength(this->current_menu_navigate) - 1, this->current_index_selected + 1);
         this->render();
-        printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
+        //printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
     }
 
     void Controller::SelectPrevious() {
@@ -193,9 +203,10 @@ namespace Menu {
         this->render();
     }
 
-    void Controller::AddMenuItems(Item *items, uint8_t length) {
+    void Controller::AddMenuItems(Item **items, uint8_t length) {
         Item *current_item = this->current_item_control;
 
+        //printf("len: %d", length);
         for (uint8_t i = 0; i < length; ++i) {
             this->AddMenuItem(items[i]);
             this->ControlGoToItem(i);

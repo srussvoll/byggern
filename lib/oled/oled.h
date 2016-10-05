@@ -80,7 +80,7 @@ public:
     * @param y The starting position, y direction
     * @param is_progmem A bool that indicates where the pixel array is located
     */
-    void WriteBitmap(volatile uint8_t *volatile *volatile pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, bool is_progmem);
+    void WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, bool is_progmem);
 
     /**
      *
@@ -90,13 +90,27 @@ public:
      */
     void SetFont(uint8_t *font, uint8_t width, uint8_t height);
 
+    /**
+    * Writes the string to the given line. Erases everything on the line
+    * @param string The string
+    * @param length Length of the string. No newline of course.
+    * @param line The line to be written to
+    * @param offset The offset from the left, in characters
+    */
     void WriteLine(char* string, uint8_t length, uint8_t line, uint8_t offset);
+
+    /**
+     *
+     * @param line
+     * @return
+     */
+    uint8_t GetYCoordinateFromLineNumber(uint8_t line);
 
     /**
     * Returns a pointer to PROGMEM for the bitmap for the given font and character. Emphasis on that it points to PROGMEM.
     * http://www.nongnu.org/avr-libc/user-manual/pgmspace.html
     */
-    void GetBitmapForCharacter(char character, volatile uint8_t*volatile *volatile &character_bitmap);
+    void GetBitmapForCharacter(char character, uint8_t* &character_bitmap);
 
 private:
     /**
@@ -142,7 +156,7 @@ private:
     /**
     * A matrix for the display
     */
-    volatile uint8_t *volatile *volatile matrix;
+    uint8_t **matrix;
 
     /**
     * The amount of pixels per line

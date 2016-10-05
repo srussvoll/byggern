@@ -1,18 +1,5 @@
 #include <stdlib.h>
 #include "stream.h"
-#define memcpy custom_memcpy
-
-void * custom_memcpy(void * dst, void const * src, size_t len) {
-    char * pDst = (char *) dst;
-    char const * pSrc = (char const *) src;
-
-    while (len--)
-    {
-        *pDst++ = *pSrc++;
-    }
-
-    return (dst);
-}
 
 namespace{
     inline uint16_t min(uint16_t one, uint16_t two){

@@ -44,9 +44,9 @@ void OLED::Init(uint8_t width, uint8_t height){
     // Malloc the Matrix
     uint8_t pages = (uint8_t) ceil( (float) height / 8);
     this->number_of_pages = pages;
-    this->matrix = (volatile uint8_t *volatile *volatile) malloc(pages * sizeof(uint8_t*));
+    this->matrix = (uint8_t**) malloc(pages * sizeof(uint8_t*));
     for(int i = 0; i < pages; i++){
-        if ((this->matrix[i] = (volatile uint8_t *volatile) malloc(width * sizeof(uint8_t))) == NULL){printf("ERROR: Ran out of space on the heap! \n");}
+        if ((this->matrix[i] = (uint8_t *) malloc(width * sizeof(uint8_t))) == NULL){printf("ERROR: Ran out of space on the heap! \n");}
     }
 
     this->SetNumberOfLines(pages);
@@ -96,9 +96,13 @@ void OLED::Repaint(){
             // Set higher nibble
             *this->oled_command = 0x10 + (column_address>>4);
             *this->oled_data = this->matrix[i][j];
-            printf("%x", this->matrix[i][j]);
+            //printf("%x", this->matrix[i][j]);
+            //volatile uint8_t u = this->matrix[i][j];
         }
-        printf("\n");
+        /*volatile uint8_t *volatile e = this->matrix[i];
+        volatile uint8_t *volatile *volatile o = this->matrix;
+        volatile uint8_t u = this->matrix[0][0];*/
+        //printf("\n");
     }
 }
 
@@ -107,13 +111,12 @@ void OLED::SetNumberOfLines(uint8_t number_of_lines){
     this->pixels_per_line = this->display_height/number_of_lines;
 }
 
-void OLED::GetBitmapForCharacter(char character, volatile uint8_t *volatile *volatile &character_bitmap){
+void OLED::GetBitmapForCharacter(char character, uint8_t* &character_bitmap){
     uint8_t x = (uint8_t) (character - 32);
-    *character_bitmap = &this->font[this->font_width* x];
+    character_bitmap = &this->font[this->font_width * x];
 }
 
-void OLED::WriteBitmap(volatile uint8_t *volatile *volatile pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, bool is_progmem){
-
+void OLED::WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, bool is_progmem){
     uint8_t columns_to_write = min(bitmap_width,  (x < this->display_width) ? this->display_width - x : 0);
     bitmap_height = min(bitmap_height, this->display_height - y);
 
@@ -168,16 +171,15 @@ void OLED::WriteLine(char *string, uint8_t length, uint8_t line, uint8_t offset)
 
     uint8_t available_length = min(length, (this->display_width - offset*this->font_width) / this->font_width);
 
-    printf("%1d: %11s, length %d \n", line, string, 11);
-
     for(int i = 0; i < available_length; i++){
-        volatile uint8_t *volatile *volatile bitmap;
-        GetBitmapForCharacter(string[i], bitmap);
-
-        if(string[i] == '2') {
-            printf("Byte: %2x\n", pgm_read_byte(&bitmap[0][2]));
-        }
+        uint8_t *bitmap_row;
+        this->GetBitmapForCharacter(string[i], bitmap_row);
+        uint8_t **bitmap = &bitmap_row;
 
         WriteBitmap(bitmap, this->font_width, this->font_height, (offset + i)*this->font_width, y, true);
     }
+}
+
+uint8_t OLED::GetYCoordinateFromLineNumber(uint8_t line) {
+    return line*this->pixels_per_line;
 }

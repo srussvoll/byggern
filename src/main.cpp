@@ -2,12 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <avr/pgmspace.h>
+#include <util/delay.h>
 
 #include "lib/utilities/fonts.h"
 #include "init.h"
 #include "lib/uart/uart.h"
 #include "lib/oled/oled.h"
-#include "test_menu.h"
+#include "lib/menu/menu.h"
 
 uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;
@@ -56,20 +57,62 @@ int main(void) {
 
     OLED &my_oled = OLED::GetInstance();
     my_oled.Init(128,64);
-    //my_oled.SetNumberOfLines(8);
+    my_oled.SetNumberOfLines(8);
     my_oled.SetFont(Fonts::f8x8, 8, 8);
-    uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
+    /*uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
     uint8_t test_array[3][5] = {{0b01111110,0b00001100,0b00110000,0b01111110,0b00000000},{0b00000000,0b00000010,0b01111110,0b00000010,0b00000000}, {0b01111110,0b00001000,0b00001000,0b01111110,0b00000000}};
     uint8_t *dummy[3] = { test_array[0], test_array[1], test_array[2] };
     uint8_t **ptr = dummy;
-    my_oled.GoToLine(3);
+    my_oled.GoToLine(3);*/
 
-    test_menu(my_oled);
+    //test_menu(my_oled);
 
+    Menu::Controller controller(my_oled, 4);
+
+    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
+
+    char item0[] = "Menylinje 1";
+    char item1[] = "Menylinje 2";
+    char item2[] = "Menylinje 3";
+    char item3[] = "Menylinje 4";
+    char item4[] = "Menylinje 5";
+    char item5[] = "Menylinje 6";
+    char item6[] = "Menylinje 7";
+    char item7[] = "Menylinje 8";
+
+    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
+
+    Menu::Item *i0 = new Menu::Item(item0, sizeof(item0) - 1);
+    Menu::Item *i1 = new Menu::Item(item1, sizeof(item1) - 1);
+    Menu::Item *i2 = new Menu::Item(item2, sizeof(item2) - 1);
+    Menu::Item *i3 = new Menu::Item(item3, sizeof(item3) - 1);
+    Menu::Item *i4 = new Menu::Item(item4, sizeof(item4) - 1);
+    Menu::Item *i5 = new Menu::Item(item5, sizeof(item5) - 1);
+    Menu::Item *i6 = new Menu::Item(item6, sizeof(item6) - 1);
+    Menu::Item *i7 = new Menu::Item(item7, sizeof(item7) - 1);
+
+
+    Menu::Item* main_items[] = {i0, i1, i2, i3, i4, i5, i6, i7};
+
+
+    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
+
+    controller.AddMenuItems(main_items, (sizeof(main_items)) / sizeof(main_items[0]));
+
+    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
+
+    controller.render();
+
+    for (int i = 0; i < 15; ++i) {
+        _delay_ms(1000);
+        controller.SelectNext();
+    }
+
+    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
     //my_oled.WriteBitmap(bitmap_character, 8,8,3,3,true);
-    /*char in[] = "nissen";
-    my_oled.WriteLine(in, sizeof(in) - 1, 0, 0);
-    my_oled.Repaint();*/
+/*    char item0[] = "Hallo Verden";
+    my_oled.WriteLine(item0, sizeof(item0) - 1, 0, 0);*/
+    my_oled.Repaint();
 
     while(true) {};
 

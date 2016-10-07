@@ -52,6 +52,21 @@ namespace SPI_N{
          * @param clock_phase_trailing If enabled, samples on the trailing edge of SCK: Defaults to disabled (sample on the leading edge)
          */
         void init(PIN **pins, uint8_t number_of_pins, bool clock_polarity_falling, bool clock_phase_trailing);
+
+        /**
+         * Write the inserted string to output (i.e. write to SPI selected by SetDevice)
+         * @param string The "data string" that shall be written to the output
+         * @param size the size of the data string
+        */
+        void Write(uint8_t *string, uint16_t size);
+
+        void WriteByte(uint8_t byte, bool wait);
+
+        void WriteByteAndThrowAwayData(uint8_t byte, bool wait);
+
+        bool ReadByte(uint8_t &data);
+
+        void ResetSSPin();
     private:
         /**
          * Initializer for SPI. Not used because of singleton
@@ -76,6 +91,9 @@ namespace SPI_N{
         /**
          * The interrupt vector for when a transmission is complete. According to the data sheet this is both incoming and outgoing
          */
+
+        bool throw_away_data;
+
         friend void SPI_STC_vect();
     };
 }

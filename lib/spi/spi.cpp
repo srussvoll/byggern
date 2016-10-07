@@ -6,6 +6,12 @@ namespace SPI_N{
         // SPI transfer complete
         SPI& spi = SPI::GetInstance();
 
+        // Put data into the buffer
+        if(!spi.throw_away_data){
+            spi.ReadAndInsertIntoInputBuffer();
+            spi.throw_away_data = false;
+        }
+
         if(SPSR & (1<<WCOL)){
             // SPDR written to during a data transfer.
             // TODO: We might have to handle this. Should not be needed if used correctly
@@ -22,11 +28,8 @@ namespace SPI_N{
                 spi.ongoing_transmission = false;
 
                 // Turn of SS pin. Active low
-                *spi.current_pin.ddr |= (1<<spi.current_pin.pin);
+                *spi.current_pin.port |= (1<<spi.current_pin.pin);
             }
-        }else{
-            // Data is incoming. Handle it
-            spi.ReadAndInsertIntoInputBuffer();
         }
 
     }
@@ -83,7 +86,7 @@ namespace SPI_N{
     void SPI::InitializeTransmission() {
         if(!this->ongoing_transmission){
             // Set SS line. Active low
-            *this->current_pin.ddr &= ~(1<<current_pin.pin);
+            *this->current_pin.port &= ~(1<<current_pin.pin);
 
             this->ongoing_transmission = true;
 
@@ -104,5 +107,45 @@ namespace SPI_N{
         // Flush output and input buffer
         this->FlushOutputBuffer();
         this->FlushInputBuffer();
+    }
+
+    void SPI::Write(uint8_t *string, uint16_t size) {
+        Stream::Write(string, size);
+
+        // Initialize Transmission
+        this->InitializeTransmission();
+    }
+
+    void SPI::ResetSSPin() {
+        if(*this->current_pin.port & (1<<current_pin.pin)){
+            // Pin is high, turn off them on again
+            *this->current_pin.port &= ~(1<<current_pin.pin);
+            _delay_us(100); // Wait 100 us for good measure
+            *this->current_pin.port |= (1<<current_pin.pin);
+        }else{
+            // Pin is low, turn on then off again
+            *this->current_pin.port |= (1<<current_pin.pin);
+            _delay_us(100); // Wait 100 us for good measure
+            *this->current_pin.port &= ~(1<<current_pin.pin);
+        }
+    }
+
+    void SPI::WriteByte(uint8_t byte, bool wait) {
+        Stream::WriteByte(byte);
+        if(!wait){
+            this->InitializeTransmission();
+        }
+    }
+
+    void SPI::WriteByteAndThrowAwayData(uint8_t byte, bool wait) {
+        Stream::WriteByte(byte);
+        this->throw_away_data = true;
+        if(!wait){
+            this->InitializeTransmission();
+        }
+    }
+
+    bool SPI::ReadByte(uint8_t &data) {
+        Stream::ReadByte(data);
     }
 }

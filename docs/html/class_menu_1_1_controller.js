@@ -1,9 +1,10 @@
 var class_menu_1_1_controller =
 [
     [ "Controller", "class_menu_1_1_controller.html#afcbda47e43a9753875631f0d4106f604", null ],
-    [ "AddMenu", "class_menu_1_1_controller.html#a49696644ab887bb0e3c4d272b914d2a2", null ],
-    [ "AddMenuItem", "class_menu_1_1_controller.html#af93dbfeff28602f68705ade90f0757fc", null ],
-    [ "AddMenuItem", "class_menu_1_1_controller.html#aed44f5a995f14772d8d99f663942ab30", null ],
+    [ "AddMenu", "class_menu_1_1_controller.html#ab530ec11f04b96254b93961d26152d3c", null ],
+    [ "AddMenuItem", "class_menu_1_1_controller.html#a777d65ba4f168aed6c1c44022ca4c658", null ],
+    [ "AddMenuItem", "class_menu_1_1_controller.html#a9e5366f182975680e88749f03d249a0a", null ],
+    [ "AddMenuItems", "class_menu_1_1_controller.html#ad28e732923bf111fd26a7ea031885f70", null ],
     [ "ControlEnterSubMenu", "class_menu_1_1_controller.html#a9a4c0ccd822f485834ec9abb4133a059", null ],
     [ "ControlEnterSubMenu", "class_menu_1_1_controller.html#a8bc1d62574e86a08d5a60652370dd21a", null ],
     [ "ControlGoToItem", "class_menu_1_1_controller.html#a0dae623388e9bb9e651385d0ef9a2394", null ],

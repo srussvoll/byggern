@@ -1,7 +1,7 @@
 var NAVTREE =
 [
   [ "Byggern", "index.html", [
-    [ "Byggern", "md_README.html", null ],
+    [ "Byggern", "md__r_e_a_d_m_e.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -28,7 +28,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"adc_8h_source.html"
+".html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

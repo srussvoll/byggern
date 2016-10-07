@@ -1,0 +1,84 @@
+\hypertarget{class_m_c_p2515}{}\section{M\+C\+P2515 Class Reference}
+\label{class_m_c_p2515}\index{M\+C\+P2515@{M\+C\+P2515}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_c_p2515_a8cd4111604b740feb758bd4d077f4fb8}{M\+C\+P2515} (const \hyperlink{class_m_c_p2515}{M\+C\+P2515} \&)=delete
+\item 
+void \hyperlink{class_m_c_p2515_a41921933b4f2595e8935f8432dd8d65b}{Initialize} (\hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+P\+I\+\_\+\+N\+::\+S\+PI} $\ast$spi)
+\item 
+void \hyperlink{class_m_c_p2515_a7aac5fdb713b83933391348f1188f2b9}{Set\+Loopback} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_m_c_p2515}{M\+C\+P2515} \& \hyperlink{class_m_c_p2515_a3f53839a9258086fd21e2fc4190de60d}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_m_c_p2515_a5a218199ca1dfcb25cb95890bc0220fc}{}\label{class_m_c_p2515_a5a218199ca1dfcb25cb95890bc0220fc} 
+void {\bfseries Request\+To\+Send} ()
+\item 
+\hypertarget{class_m_c_p2515_adbc005a5975b77b0aef74363f3832f9b}{}\label{class_m_c_p2515_adbc005a5975b77b0aef74363f3832f9b} 
+void {\bfseries Write\+To\+Register} (uint8\+\_\+t register\+\_\+address, uint8\+\_\+t byte)
+\item 
+\hypertarget{class_m_c_p2515_aafa4540f951a661dd68aa128baf5ee6b}{}\label{class_m_c_p2515_aafa4540f951a661dd68aa128baf5ee6b} 
+uint8\+\_\+t {\bfseries Read\+From\+Register} (uint8\+\_\+t register\+\_\+address)
+\item 
+\hypertarget{class_m_c_p2515_aa4d4138b984dc87116cf72ae104acb70}{}\label{class_m_c_p2515_aa4d4138b984dc87116cf72ae104acb70} 
+void {\bfseries Reset} ()
+\item 
+\hypertarget{class_m_c_p2515_aa9a35fe139adf1fccaaceec561544c14}{}\label{class_m_c_p2515_aa9a35fe139adf1fccaaceec561544c14} 
+void {\bfseries Bit\+Modify} (uint8\+\_\+t register\+\_\+address, uint8\+\_\+t mask, uint8\+\_\+t data)
+\item 
+\hypertarget{class_m_c_p2515_a966931bda84094f18672039cc8e06e18}{}\label{class_m_c_p2515_a966931bda84094f18672039cc8e06e18} 
+uint8\+\_\+t {\bfseries Read\+Status} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_m_c_p2515_a3a5ca0d606115f1551a06d871606540e}{}\label{class_m_c_p2515_a3a5ca0d606115f1551a06d871606540e} 
+\hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+P\+I\+\_\+\+N\+::\+S\+PI} $\ast$ {\bfseries spi\+\_\+driver}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_m_c_p2515_a8cd4111604b740feb758bd4d077f4fb8}{}\label{class_m_c_p2515_a8cd4111604b740feb758bd4d077f4fb8} 
+\index{M\+C\+P2515@{M\+C\+P2515}!M\+C\+P2515@{M\+C\+P2515}}
+\index{M\+C\+P2515@{M\+C\+P2515}!M\+C\+P2515@{M\+C\+P2515}}
+\subsubsection{\texorpdfstring{M\+C\+P2515()}{MCP2515()}}
+{\footnotesize\ttfamily M\+C\+P2515\+::\+M\+C\+P2515 (\begin{DoxyParamCaption}\item[{const \hyperlink{class_m_c_p2515}{M\+C\+P2515} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_m_c_p2515_a3f53839a9258086fd21e2fc4190de60d}{}\label{class_m_c_p2515_a3f53839a9258086fd21e2fc4190de60d} 
+\index{M\+C\+P2515@{M\+C\+P2515}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!M\+C\+P2515@{M\+C\+P2515}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily static \hyperlink{class_m_c_p2515}{M\+C\+P2515}\& M\+C\+P2515\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+A Singleton implementation of this class \hypertarget{class_m_c_p2515_a41921933b4f2595e8935f8432dd8d65b}{}\label{class_m_c_p2515_a41921933b4f2595e8935f8432dd8d65b} 
+\index{M\+C\+P2515@{M\+C\+P2515}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!M\+C\+P2515@{M\+C\+P2515}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void M\+C\+P2515\+::\+Initialize (\begin{DoxyParamCaption}\item[{\hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+P\+I\+\_\+\+N\+::\+S\+PI} $\ast$}]{spi }\end{DoxyParamCaption})}
+
+Initializes the \hyperlink{class_m_c_p2515}{M\+C\+P2515} driver. 
+\begin{DoxyParams}{Parameters}
+{\em spi} & The singleton instance of the S\+PI driver \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_m_c_p2515_a7aac5fdb713b83933391348f1188f2b9}{}\label{class_m_c_p2515_a7aac5fdb713b83933391348f1188f2b9} 
+\index{M\+C\+P2515@{M\+C\+P2515}!Set\+Loopback@{Set\+Loopback}}
+\index{Set\+Loopback@{Set\+Loopback}!M\+C\+P2515@{M\+C\+P2515}}
+\subsubsection{\texorpdfstring{Set\+Loopback()}{SetLoopback()}}
+{\footnotesize\ttfamily void M\+C\+P2515\+::\+Set\+Loopback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initiates the loopback mode of the \hyperlink{class_m_c_p2515}{M\+C\+P2515}. Please consult the \href{http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf}{\tt M\+C\+P2515 datasheet} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/mcp2515/mcp2515.\+h\item 
+lib/mcp2515/mcp2515.\+cpp\end{DoxyCompactItemize}

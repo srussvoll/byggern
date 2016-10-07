@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stream',['Stream',['../class_stream.html',1,'']]]
+  ['pin',['PIN',['../struct_s_p_i___n_1_1_p_i_n.html',1,'SPI_N']]]
 ];

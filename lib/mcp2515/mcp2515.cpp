@@ -16,8 +16,7 @@ void MCP2515::BitModify(uint8_t register_address, uint8_t mask, uint8_t data) {
     this->spi_driver->WriteByteAndThrowAwayData(data, 0);
 }
 
-void MCP2515::initialize(SPI_N::SPI *spi, SPI_N::PIN ss_pin) {
-    this->ss_pin = ss_pin;
+void MCP2515::Initialize(SPI_N::SPI *spi) {
     this->spi_driver = spi;
 
     // Assuming the SPI is already initialized

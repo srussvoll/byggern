@@ -16,8 +16,16 @@ public:
      */
     MCP2515(const MCP2515&) = delete;
 
-    void initialize(SPI_N::SPI *spi, SPI_N::PIN ss_pin);
+    /**
+     * Initializes the MCP2515 driver.
+     * @param spi The singleton instance of the SPI driver
+     */
+    void Initialize(SPI_N::SPI *spi);
 
+    /**
+     * Initiates the loopback mode of the MCP2515. Please consult the
+     * <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf">MCP2515 datasheet</a>
+     */
     void SetLoopback();
 
 private:
@@ -28,6 +36,5 @@ private:
     void Reset();
     void BitModify(uint8_t register_address, uint8_t mask, uint8_t data);
     uint8_t ReadStatus();
-    SPI_N::PIN ss_pin;
     SPI_N::SPI *spi_driver;
 };

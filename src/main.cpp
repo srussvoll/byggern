@@ -21,6 +21,8 @@ void SRAM_test(uint16_t seed) {
 
     printf("Starting SRAM test...\n");
 
+
+
     // rand() stores some internal state, so calling this function in a loop will
     // yield different seeds each time (unless srand() is called before this function)
 
@@ -52,69 +54,29 @@ void SRAM_test(uint16_t seed) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
-    printf("\n\n\n----------------------------------------\n");
-    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
+    printf("Test av en litt lengre string som ikke skal overflowe :)\n");
 
     OLED &my_oled = OLED::GetInstance();
     my_oled.Init(128,64);
     my_oled.SetNumberOfLines(8);
-    my_oled.SetFont(Fonts::f8x8, 8, 8);
     /*uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
     uint8_t test_array[3][5] = {{0b01111110,0b00001100,0b00110000,0b01111110,0b00000000},{0b00000000,0b00000010,0b01111110,0b00000010,0b00000000}, {0b01111110,0b00001000,0b00001000,0b01111110,0b00000000}};
     uint8_t *dummy[3] = { test_array[0], test_array[1], test_array[2] };
     uint8_t **ptr = dummy;
     my_oled.GoToLine(3);*/
 
-    //test_menu(my_oled);
+    uint8_t *font = (uint8_t*) Fonts::f8x8;
+    uint8_t x = 34;
+    uint8_t y = 2;
+    uint8_t num_columns = 8;
+    uint8_t *character = &font[num_columns * x];
+    uint8_t column = pgm_read_byte(&font[num_columns * x + y]);
+    // For å sende inn 2D array til WriteBitmap:
+    uint8_t **bitmap_character = &character;
+    printf("%d \n", column);
 
-    Menu::Controller controller(my_oled, 4);
-
-    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
-
-    char item0[] = "Menylinje 1";
-    char item1[] = "Menylinje 2";
-    char item2[] = "Menylinje 3";
-    char item3[] = "Menylinje 4";
-    char item4[] = "Menylinje 5";
-    char item5[] = "Menylinje 6";
-    char item6[] = "Menylinje 7";
-    char item7[] = "Menylinje 8";
-
-    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
-
-    Menu::Item *i0 = new Menu::Item(item0, sizeof(item0) - 1);
-    Menu::Item *i1 = new Menu::Item(item1, sizeof(item1) - 1);
-    Menu::Item *i2 = new Menu::Item(item2, sizeof(item2) - 1);
-    Menu::Item *i3 = new Menu::Item(item3, sizeof(item3) - 1);
-    Menu::Item *i4 = new Menu::Item(item4, sizeof(item4) - 1);
-    Menu::Item *i5 = new Menu::Item(item5, sizeof(item5) - 1);
-    Menu::Item *i6 = new Menu::Item(item6, sizeof(item6) - 1);
-    Menu::Item *i7 = new Menu::Item(item7, sizeof(item7) - 1);
-
-
-    Menu::Item* main_items[] = {i0, i1, i2, i3, i4, i5, i6, i7};
-
-
-    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
-
-    controller.AddMenuItems(main_items, (sizeof(main_items)) / sizeof(main_items[0]));
-
-    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
-
-    controller.render();
-
-    for (int i = 0; i < 15; ++i) {
-        _delay_ms(1000);
-        controller.SelectNext();
-    }
-
-    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
-    //my_oled.WriteBitmap(bitmap_character, 8,8,3,3,true);
-/*    char item0[] = "Hallo Verden";
-    my_oled.WriteLine(item0, sizeof(item0) - 1, 0, 0);*/
+    my_oled.WriteBitmap(bitmap_character, 8,8,3,3,true);
     my_oled.Repaint();
-
-    while(true) {};
 
 }
 #pragma clang diagnostic pop

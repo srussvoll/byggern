@@ -6,6 +6,8 @@
 *.hex
 *.gch
 
+*.DS_Store
+
 .idea/*
 build/*
 CMakeFiles/*

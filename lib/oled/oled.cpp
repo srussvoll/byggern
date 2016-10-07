@@ -64,6 +64,7 @@ void OLED::Clear(){
             this->matrix[i][j] = 0x00;
         }
     }
+    Repaint();
 }
 
 void OLED::ClearLine(){
@@ -164,22 +165,13 @@ void OLED::SetFont(uint8_t *font, uint8_t width, uint8_t height) {
     this->font_width = width;
 }
 
-void OLED::WriteLine(char *string, uint8_t length, uint8_t line, uint8_t offset) {
-    if (line >= this->number_of_lines) return;
+void OLED::WriteLine(char *string, uint8_t len, uint8_t line, uint8_t offset) {
 
-    uint8_t y = line*pixels_per_line;
-
-    uint8_t available_length = min(length, (this->display_width - offset*this->font_width) / this->font_width);
-
-    for(int i = 0; i < available_length; i++){
-        uint8_t *bitmap_row;
-        this->GetBitmapForCharacter(string[i], bitmap_row);
-        uint8_t **bitmap = &bitmap_row;
-
-        WriteBitmap(bitmap, this->font_width, this->font_height, (offset + i)*this->font_width, y, true);
-    }
 }
 
-uint8_t OLED::GetYCoordinateFromLineNumber(uint8_t line) {
-    return line*this->pixels_per_line;
+void OLED::setFont(char *font, uint8_t width, uint8_t height) {
+    this->font = font;
+    this->font_height = height;
+    this->font_width = width;
 }
+

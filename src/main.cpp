@@ -52,6 +52,7 @@ void SRAM_test(uint16_t seed) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
+    _delay_ms(500);
     printf("\n\n\n----------------------------------------\n");
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
 
@@ -67,7 +68,7 @@ int main(void) {
 
     //test_menu(my_oled);
 
-    Menu::Controller controller(my_oled, 4);
+    Menu::Controller controller(my_oled, 5);
 
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
 
@@ -75,10 +76,12 @@ int main(void) {
     char item1[] = "Menylinje 2";
     char item2[] = "Menylinje 3";
     char item3[] = "Menylinje 4";
-    char item4[] = "Menylinje 5";
-    char item5[] = "Menylinje 6";
-    char item6[] = "Menylinje 7";
-    char item7[] = "Menylinje 8";
+    char item5[] = "Menylinje 5";
+    char item7[] = "Menylinje 6";
+    char item4[] = "Menylinje 7";
+    char item6[] = "Menylinje 8";
+    char item8[] = "Submeny 1";
+    char item9[] = "Submeny 2";
 
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
 
@@ -91,28 +94,42 @@ int main(void) {
     Menu::Item *i6 = new Menu::Item(item6, sizeof(item6) - 1);
     Menu::Item *i7 = new Menu::Item(item7, sizeof(item7) - 1);
 
+    Menu::Item *i8 = new Menu::Item(item8, sizeof(item8) - 1);
+    Menu::Item *i9 = new Menu::Item(item8, sizeof(item9) - 1);
+
 
     Menu::Item* main_items[] = {i0, i1, i2, i3, i4, i5, i6, i7};
-
-
-    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
+    Menu::Item* sub_main_items[] = {i8,i9};
 
     controller.AddMenuItems(main_items, (sizeof(main_items)) / sizeof(main_items[0]));
 
-    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
+    controller.ControlGoToItem(4);
+    controller.AddMenu(sub_main_items, (sizeof(sub_main_items)) / sizeof(sub_main_items[0]));
+
+    //printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
 
     controller.render();
 
-    for (int i = 0; i < 15; ++i) {
-        _delay_ms(1000);
+    for (int i = 0; i < 4; ++i) {
+        _delay_ms(50);
         controller.SelectNext();
     }
+
+    controller.ExecuteItem();
+    controller.render();
+
+    for (int i = 0; i < 1; ++i) {
+        _delay_ms(50);
+        controller.SelectNext();
+    }
+
+    controller.GoToParent();
 
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
     //my_oled.WriteBitmap(bitmap_character, 8,8,3,3,true);
 /*    char item0[] = "Hallo Verden";
     my_oled.WriteLine(item0, sizeof(item0) - 1, 0, 0);*/
-    my_oled.Repaint();
+    // my_oled.Repaint();
 
     while(true) {};
 

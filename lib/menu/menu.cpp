@@ -1,7 +1,9 @@
-#include "menu.h"
 #include <avr/io.h>
 #include <math.h>
 #include <stdio.h>
+#include <util/delay.h>
+
+#include "menu.h"
 #include "../utilities/new.h"
 #include "../oled/oled.h"
 
@@ -23,6 +25,7 @@ namespace Menu {
     }
 
     Controller::Controller(OLED& oled, uint8_t num_lines) : oled(&oled), num_lines(num_lines) {
+        oled.Clear();
         this->root = new Menu;
         this->current_menu_control = this->root;
         this->current_menu_navigate = this->root;
@@ -60,6 +63,7 @@ namespace Menu {
 
     void Controller::AddMenu(Item **items, uint8_t length) {
         if (this->current_item_control != nullptr) {
+            _delay_ms(1000);
             Menu *menu = new Menu();
             menu->parent = this->current_menu_control;
             this->current_item_control->action = menu;
@@ -120,7 +124,9 @@ namespace Menu {
 
     void Controller::ExecuteItem() {
         this->GoToItem(this->current_index_selected);
+        printf("item to be executed: %s \n", this->current_item_navigate->label);
         if (this->current_item_navigate->has_sub_menu) {
+            printf("I have submeny \n");
             this->GoToMenu((Menu *) this->current_item_navigate->action);
             this->render();
         }
@@ -144,6 +150,7 @@ namespace Menu {
     void Controller::render() {
         oled->SetNumberOfLines(this->num_lines);
         oled->Clear();
+        _delay_ms(1000);
 
         // Make sure that, if possible, the selected item is not the top or bottom one.
         if (this->current_index_selected - this->current_index_navigate < 1) {
@@ -158,8 +165,10 @@ namespace Menu {
         uint8_t selected_index_relative = this->current_index_selected - this->current_index_navigate;
         do {
             oled->WriteLine(this->current_item_navigate->label, this->current_item_navigate->label_length, i, 2);
+            printf("String is %s \n", this->current_item_navigate->label);
             if (i == selected_index_relative) {
-                // FIXME: Insert code to add an arrow on this line. This if clause runs if the current line is selected.
+
+                // Paints an arrow on the currently selected line
                 static uint8_t arrow[1][4] = {{0b00011000, 0b00011000, 0b00111100, 0b00011000}};
                 uint8_t *dummy[1] = { arrow[0] };
                 uint8_t **arrow_ptr = dummy;
@@ -169,7 +178,7 @@ namespace Menu {
             }
             i++;
         } while (this->GoToNextItem());
-
+        printf("--- \n");
         oled->Repaint();
     }
 

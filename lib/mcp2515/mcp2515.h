@@ -38,7 +38,7 @@ public:
 private:
     MCP2515(){};
     /**
-     * Sends a RTS (Request to Send) signal to the MCP2515. This
+     * Sends a RTS (Request to Send) signal to the MCP2515. This is
      */
     void RequestToSend();
     void WriteToRegister(uint8_t register_address, uint8_t byte);

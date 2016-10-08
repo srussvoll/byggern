@@ -264,6 +264,6 @@ namespace Menu {
          * Then bind listeners to the menu controls (e.g. buttons or joystick)
          * and render the menu when you want to display it.
          */
-        void render();
+        void Render();
     };
 }

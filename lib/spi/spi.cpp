@@ -38,7 +38,7 @@ namespace SPI_N{
         sei();
     }
 
-    void SPI::init(PIN **pins, uint8_t number_of_pins, bool clock_polarity_falling = 0, bool clock_phase_trailing = 0) {
+    void SPI::Intiialize(PIN **pins, uint8_t number_of_pins, bool clock_polarity_falling = 0, bool clock_phase_trailing = 0) {
         // Set registers
         SPCR |= (1<<SPE); // Enable SPI
         SPCR |= (1<<MSTR); // Set master mode

@@ -25,11 +25,16 @@ void MCP2515::Initialize(SPI_N::SPI *spi) {
 
     // MCP2515 is now in config mode.
 
-    // TODO: Set F_SCK
+
+
+
 }
 
 void MCP2515::SetLoopback() {
     // TODO: Implement
+    uint8_t bitmask = (1<<MCP_REQOP1) | (1<<MCP_REQOP0) | (1<<MCP_REQOP2);
+    uint8_t data = (1<<MCP_REQOP1); // MCP_REQOP1 = 1, rest = 0
+    this->BitModify(MCP_CANCTRL, bitmask, data);
 }
 
 void MCP2515::WriteToRegister(uint8_t register_address, uint8_t byte) {
@@ -39,18 +44,20 @@ void MCP2515::WriteToRegister(uint8_t register_address, uint8_t byte) {
     this->spi_driver->WriteByteAndThrowAwayData(byte, 0);
 }
 
-uint8_t MCP2515::ReadFromRegister(uint8_t register_address) {
-    uint8_t data;
+void MCP2515::ReadFromRegister(uint8_t register_address, uint8_t &byte) {
     this->spi_driver->WriteByteAndThrowAwayData(MCP_READ, 1); // Instruction
     this->spi_driver->WriteByteAndThrowAwayData(register_address, 1);
     this->spi_driver->WriteByte(MCP_DC, 0);
-    this->spi_driver->ReadByte(data);
-    return data;
+    this->spi_driver->ReadByte(byte);
 }
 
-uint8_t MCP2515::ReadStatus() {
+void MCP2515::ReadStatus(uint8_t &byte) {
     this->spi_driver->WriteByte(MCP_READ_STATUS, 1);
-    uint8_t data;
-    this->spi_driver->ReadByte(data);
-    return data;
+    this->spi_driver->ReadByte(byte);
+}
+
+void MCP2515::SetNormal() {
+    uint8_t bitmask = (1<<MCP_REQOP1) | (1<<MCP_REQOP0) | (1<<MCP_REQOP2);
+    uint8_t data = 0x00; // All 0
+    this->BitModify(MCP_CANCTRL, bitmask, data);
 }

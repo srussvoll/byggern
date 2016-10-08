@@ -72,14 +72,14 @@ int main(void) {
 
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
 
-    char item0[] = "Menylinje 1";
-    char item1[] = "Menylinje 2";
-    char item2[] = "Menylinje 3";
-    char item3[] = "Menylinje 4";
+    char item0[] = "Menylinje 0";
+    char item1[] = "Menylinje 1";
+    char item2[] = "Menylinje 2";
+    char item3[] = "Menylinje 3";
+    char item4[] = "Menylinje 4";
     char item5[] = "Menylinje 5";
-    char item7[] = "Menylinje 6";
-    char item4[] = "Menylinje 7";
-    char item6[] = "Menylinje 8";
+    char item6[] = "Menylinje 6";
+    char item7[] = "Menylinje 7";
     char item8[] = "Submeny 1";
     char item9[] = "Submeny 2";
 
@@ -95,7 +95,7 @@ int main(void) {
     Menu::Item *i7 = new Menu::Item(item7, sizeof(item7) - 1);
 
     Menu::Item *i8 = new Menu::Item(item8, sizeof(item8) - 1);
-    Menu::Item *i9 = new Menu::Item(item8, sizeof(item9) - 1);
+    Menu::Item *i9 = new Menu::Item(item9, sizeof(item9) - 1);
 
 
     Menu::Item* main_items[] = {i0, i1, i2, i3, i4, i5, i6, i7};
@@ -106,12 +106,8 @@ int main(void) {
     controller.ControlGoToItem(4);
     controller.AddMenu(sub_main_items, (sizeof(sub_main_items)) / sizeof(sub_main_items[0]));
 
-    //printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
-
-    controller.render();
-
     for (int i = 0; i < 4; ++i) {
-        _delay_ms(50);
+        _delay_ms(200);
         controller.SelectNext();
     }
 
@@ -119,11 +115,15 @@ int main(void) {
     controller.render();
 
     for (int i = 0; i < 1; ++i) {
-        _delay_ms(50);
+        _delay_ms(200);
         controller.SelectNext();
     }
 
     controller.GoToParent();
+    for (int i = 0; i < 4; ++i) {
+        _delay_ms(200);
+        controller.SelectNext();
+    }
 
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
     //my_oled.WriteBitmap(bitmap_character, 8,8,3,3,true);

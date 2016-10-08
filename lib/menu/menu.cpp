@@ -8,11 +8,11 @@
 #include "../oled/oled.h"
 
 namespace {
-    inline uint8_t min(uint8_t a, uint8_t b) {
+    inline int8_t min(int8_t a, int8_t b) {
         return (a < b) ? a : b;
     }
 
-    inline uint8_t max(uint8_t a, uint8_t b) {
+    inline int8_t max(int8_t a, int8_t b) {
         return (a > b) ? a : b;
     }
 }
@@ -63,7 +63,6 @@ namespace Menu {
 
     void Controller::AddMenu(Item **items, uint8_t length) {
         if (this->current_item_control != nullptr) {
-            _delay_ms(1000);
             Menu *menu = new Menu();
             menu->parent = this->current_menu_control;
             this->current_item_control->action = menu;
@@ -141,7 +140,7 @@ namespace Menu {
     }
 
     void Controller::GoToParent() {
-        this->current_menu_navigate = this->current_menu_control->parent;
+        this->current_menu_navigate = this->current_menu_navigate->parent;
         this->current_index_navigate = 0;
         this->current_index_selected = 0;
         this->render();
@@ -150,14 +149,14 @@ namespace Menu {
     void Controller::render() {
         oled->SetNumberOfLines(this->num_lines);
         oled->Clear();
-        _delay_ms(1000);
+        _delay_ms(500);
 
         // Make sure that, if possible, the selected item is not the top or bottom one.
-        if (this->current_index_selected - this->current_index_navigate < 1) {
-            this->current_index_navigate = min(0, this->current_index_selected - 1);
-        } else if (this->current_index_navigate + this->num_lines - this->current_index_selected < 1) {
-            this->current_index_navigate = max(this->GetMenuLength(this->current_menu_navigate) - this->num_lines,
-                                               this->current_index_selected - this->num_lines + 1);
+        if (this->current_index_selected <= this->current_index_navigate) {
+            this->current_index_navigate = (uint8_t) max((int8_t) 0, (int8_t) this->current_index_selected - (int8_t) 1);
+        } else if (this->current_index_selected >= this->current_index_navigate + this->num_lines - 1) {
+            this->current_index_navigate = (uint8_t) min((int8_t) this->GetMenuLength(this->current_menu_navigate) - (int8_t) this->num_lines,
+                                               (int8_t) this->current_index_selected - (int8_t) this->num_lines + 2);
         }
         this->GoToItem(this->current_index_navigate);
 
@@ -165,7 +164,12 @@ namespace Menu {
         uint8_t selected_index_relative = this->current_index_selected - this->current_index_navigate;
         do {
             oled->WriteLine(this->current_item_navigate->label, this->current_item_navigate->label_length, i, 2);
-            printf("String is %s \n", this->current_item_navigate->label);
+
+            for(int j = 0; j < current_item_navigate->label_length; j++){
+                printf("%c", this->current_item_navigate->label[j]);
+            }
+            printf("\n");
+
             if (i == selected_index_relative) {
 
                 // Paints an arrow on the currently selected line
@@ -202,13 +206,23 @@ namespace Menu {
 
     void Controller::SelectNext() {
         //printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
-        this->current_index_selected = min(this->GetMenuLength(this->current_menu_navigate) - 1, this->current_index_selected + 1);
+        if(this->current_index_selected == (this->GetMenuLength(this->current_menu_navigate) - 1)){
+            this->current_index_selected = 0;
+            this->current_item_navigate = 0;
+        } else {
+            this->current_index_selected = this->current_index_selected + 1;
+        }
         this->render();
         //printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
     }
 
     void Controller::SelectPrevious() {
-        this->current_index_selected = max(0, this->current_index_selected - 1);
+        if(current_index_selected == 0){
+            this->current_index_selected = this->GetMenuLength(this->current_menu_navigate) - 1;
+            this->current_index_navigate = this->GetMenuLength(this->current_menu_navigate) - 1;
+        } else {
+            this->current_index_selected = this->current_index_selected - 1;
+        }
         this->render();
     }
 

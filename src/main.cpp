@@ -9,6 +9,7 @@
 #include "lib/uart/uart.h"
 #include "lib/oled/oled.h"
 #include "lib/menu/menu.h"
+#include "lib/joystick/joystick.h"
 
 uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;
@@ -58,7 +59,7 @@ int main(void) {
     printf("\n\n\n----------------------------------------\n");
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
 
-    OLED &my_oled = OLED::GetInstance();
+    /* OLED &my_oled = OLED::GetInstance();
     my_oled.Init(128,64);
     my_oled.SetFont(Fonts::f8x8, 8, 8);
 
@@ -119,7 +120,28 @@ int main(void) {
     for (int i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
+    } */
+
+    // ADC and joystick testing
+    Joystick& my_joystick = Joystick::GetInstance();
+    ADC& adc_x = ADC::GetInstance(ADC_ADDRESS1);
+    ADC& adc_y = ADC::GetInstance(ADC_ADDRESS2);
+
+    Quantization levels;
+    levels.x_max = 255;
+    levels.x_min = 0;
+    levels.y_max = 255;
+    levels.y_min = 0;
+    float percentage = 0.7;
+    my_joystick.Init(levels, percentage, &adc_x, &adc_y);
+
+    while(true){
+        if(my_joystick.IsRight()){
+            printf("i am right \n");
+        }
+        _delay_ms(1000);
     }
+
 
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
 }

@@ -33,6 +33,8 @@ public:
      */
     void SetLoopback();
 
+    void SetNormal();
+
 private:
     MCP2515(){};
     /**
@@ -40,9 +42,9 @@ private:
      */
     void RequestToSend();
     void WriteToRegister(uint8_t register_address, uint8_t byte);
-    uint8_t ReadFromRegister(uint8_t register_address);
+    void ReadFromRegister(uint8_t register_address, uint8_t &byte);
     void Reset();
     void BitModify(uint8_t register_address, uint8_t mask, uint8_t data);
-    uint8_t ReadStatus();
+    void ReadStatus(uint8_t &byte);
     SPI_N::SPI *spi_driver;
 };

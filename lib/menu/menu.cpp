@@ -127,7 +127,7 @@ namespace Menu {
         if (this->current_item_navigate->has_sub_menu) {
             printf("I have submeny \n");
             this->GoToMenu((Menu *) this->current_item_navigate->action);
-            this->render();
+            this->Render();
         }
         else (*((void (*)()) this->current_item_navigate->action))();
     }
@@ -136,17 +136,17 @@ namespace Menu {
         this->current_menu_navigate = this->root;
         this->current_index_navigate = 0;
         this->current_index_selected = 0;
-        this->render();
+        this->Render();
     }
 
     void Controller::GoToParent() {
         this->current_menu_navigate = this->current_menu_navigate->parent;
         this->current_index_navigate = 0;
         this->current_index_selected = 0;
-        this->render();
+        this->Render();
     }
 
-    void Controller::render() {
+    void Controller::Render() {
         oled->SetNumberOfLines(this->num_lines);
         oled->Clear();
         _delay_ms(500);
@@ -156,7 +156,7 @@ namespace Menu {
             this->current_index_navigate = (uint8_t) max((int8_t) 0, (int8_t) this->current_index_selected - (int8_t) 1);
         } else if (this->current_index_selected >= this->current_index_navigate + this->num_lines - 1) {
             this->current_index_navigate = (uint8_t) min((int8_t) this->GetMenuLength(this->current_menu_navigate) - (int8_t) this->num_lines,
-                                               (int8_t) this->current_index_selected - (int8_t) this->num_lines + 2);
+                                                         (int8_t) this->current_index_selected - (int8_t) this->num_lines + 2);
         }
         this->GoToItem(this->current_index_navigate);
 
@@ -212,7 +212,7 @@ namespace Menu {
         } else {
             this->current_index_selected = this->current_index_selected + 1;
         }
-        this->render();
+        this->Render();
         //printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
     }
 
@@ -223,7 +223,7 @@ namespace Menu {
         } else {
             this->current_index_selected = this->current_index_selected - 1;
         }
-        this->render();
+        this->Render();
     }
 
     void Controller::AddMenuItems(Item **items, uint8_t length) {

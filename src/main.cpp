@@ -60,6 +60,7 @@ int main(void) {
 
     OLED &my_oled = OLED::GetInstance();
     my_oled.Init(128,64);
+    my_oled.SetFont(Fonts::f8x8, 8, 8);
 
     Menu::Controller controller(my_oled, 5);
 
@@ -99,13 +100,15 @@ int main(void) {
     controller.ControlGoToItem(4);
     controller.AddMenu(sub_main_items, (sizeof(sub_main_items)) / sizeof(sub_main_items[0]));
 
+    controller.Render();
+
     for (int i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
     }
 
     controller.ExecuteItem();
-    controller.render();
+    controller.Render();
 
     for (int i = 0; i < 1; ++i) {
         _delay_ms(200);

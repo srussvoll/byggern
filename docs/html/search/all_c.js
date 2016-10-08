@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['oled',['OLED',['../class_o_l_e_d.html',1,'OLED'],['../class_o_l_e_d.html#a8eabf371b5642d99800adb759dab27fd',1,'OLED::OLED()'],['../class_menu_1_1_controller.html#aaa0388123d9e3bb0d4f546336e2b502d',1,'Menu::Controller::oled()']]],
+  ['oled',['OLED',['../class_o_l_e_d.html',1,'OLED'],['../class_menu_1_1_controller.html#aaa0388123d9e3bb0d4f546336e2b502d',1,'Menu::Controller::oled()'],['../class_o_l_e_d.html#a8eabf371b5642d99800adb759dab27fd',1,'OLED::OLED()']]],
   ['oled_2eh',['oled.h',['../oled_8h.html',1,'']]],
   ['oled_5fcommand',['oled_command',['../class_o_l_e_d.html#af0a85ccd0274347b8c1ac77d298a14cf',1,'OLED']]],
   ['oled_5fdata',['oled_data',['../class_o_l_e_d.html#a1bc54d49808f92ddfc354511b692df6f',1,'OLED']]],

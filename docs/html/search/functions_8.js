@@ -7,7 +7,7 @@ var searchData=
   ['readbytefromoutputstream',['ReadByteFromOutputStream',['../class_stream.html#a3f8e3c5513c6b8605c0fed74a3ed22bc',1,'Stream']]],
   ['readfrombuffer',['ReadFromBuffer',['../class_stream.html#a752930f620aed4a3a80b243ce66e57ca',1,'Stream']]],
   ['readfromoutputstream',['ReadFromOutputStream',['../class_stream.html#ab458be72cc54330f518f5ab35ab84106',1,'Stream']]],
-  ['render',['render',['../class_menu_1_1_controller.html#ac35f61a344381d3420cae49e2fec829d',1,'Menu::Controller']]],
+  ['render',['Render',['../class_menu_1_1_controller.html#af46abb3d242c76822c0e8ea8ab777fa5',1,'Menu::Controller']]],
   ['repaint',['Repaint',['../class_o_l_e_d.html#a3efa34861b4ae0bc5323f6b7cf1d8a01',1,'OLED']]],
   ['request_5fsample',['request_sample',['../class_a_d_c.html#a8264cbf9141f229f5117718e78f01173',1,'ADC']]],
   ['requesttosend',['RequestToSend',['../class_m_c_p2515.html#a5a218199ca1dfcb25cb95890bc0220fc',1,'MCP2515']]],

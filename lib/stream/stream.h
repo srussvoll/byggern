@@ -16,7 +16,7 @@
  *
  * This class implements a duplex FIFO stream using two circular buffers.
  * For instance both an RS232 driver and a CAN driver would need to implement a stream.
- * Inheriting from this interface makes the comunication interface for RS232, CAN and other stream based
+ * Inheriting from this interface makes the communication interface for RS232, CAN and other stream based
  * classes/drivers the same, meaning the end user does not need to know whether the data being sent is being sent
  * over a UART or a CAN bus.
  *
@@ -155,7 +155,7 @@ protected:
 
     /**
      * Reads a byte from the output stream.
-     * @return Returns the byte.
+     * @return Returns true if there are more bytes
      */
     virtual bool ReadByteFromOutputStream(uint8_t& byte);
 

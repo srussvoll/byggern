@@ -1,0 +1,217 @@
+\hypertarget{class_s_p_i___n_1_1_s_p_i}{}\section{S\+P\+I\+\_\+N\+:\+:S\+PI Class Reference}
+\label{class_s_p_i___n_1_1_s_p_i}\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+Inheritance diagram for S\+P\+I\+\_\+N\+:\+:S\+PI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_s_p_i___n_1_1_s_p_i}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_s_p_i___n_1_1_s_p_i_ab486ba0f0d9ec880520e568762cc6c7d}{S\+PI} (const \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI} \&)=delete
+\item 
+\hypertarget{class_s_p_i___n_1_1_s_p_i_ad04a79c8e9139545a96af71245ce8d18}{}\label{class_s_p_i___n_1_1_s_p_i_ad04a79c8e9139545a96af71245ce8d18} 
+void {\bfseries Set\+Device} (\hyperlink{struct_s_p_i___n_1_1_p_i_n}{P\+IN} \&pin)
+\item 
+void \hyperlink{class_s_p_i___n_1_1_s_p_i_aabc66612d396c2b70e5cbdba405dbfe5}{operator=} (const \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI} \&)=delete
+\item 
+void \hyperlink{class_s_p_i___n_1_1_s_p_i_a9812909f119712e57e2d452b859509ee}{init} (\hyperlink{struct_s_p_i___n_1_1_p_i_n}{P\+IN} $\ast$$\ast$pins, uint8\+\_\+t number\+\_\+of\+\_\+pins, bool clock\+\_\+polarity\+\_\+falling, bool clock\+\_\+phase\+\_\+trailing)
+\item 
+void \hyperlink{class_s_p_i___n_1_1_s_p_i_a3e2e2a7f02ffa5003548a1b9d820ce9a}{Write} (uint8\+\_\+t $\ast$string, uint16\+\_\+t size)
+\item 
+void \hyperlink{class_s_p_i___n_1_1_s_p_i_a542dc8e88203de7040ce9926d06b9463}{Write\+Byte} (uint8\+\_\+t byte, bool wait)
+\item 
+void \hyperlink{class_s_p_i___n_1_1_s_p_i_a05bcca2e033422b2e6ad570320d03fcb}{Write\+Byte\+And\+Throw\+Away\+Data} (uint8\+\_\+t byte, bool wait)
+\item 
+bool \hyperlink{class_s_p_i___n_1_1_s_p_i_a57ee9af74ec6a2d37001674f37f46344}{Read\+Byte} (uint8\+\_\+t \&data)
+\item 
+void \hyperlink{class_s_p_i___n_1_1_s_p_i_a6daa4720c8710e177f71ac318b96a3f8}{Reset\+S\+S\+Pin} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI} \& \hyperlink{class_s_p_i___n_1_1_s_p_i_abc266ff9d817b8d4437d1da47fe8e7ae}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_s_p_i___n_1_1_s_p_i_a8fec1a6e642a5758acf974b92e28a9e6}{S\+PI} ()
+\item 
+void \hyperlink{class_s_p_i___n_1_1_s_p_i_af973a5b4a970c3c01430037d578151ef}{Initialize\+Transmission} ()
+\item 
+void \hyperlink{class_s_p_i___n_1_1_s_p_i_a5f2091bd02e8adbe6814b12fb6e2057f}{Read\+And\+Insert\+Into\+Input\+Buffer} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_s_p_i___n_1_1_s_p_i_aff61d4bfc6a6e0088c3653898b1e91b8}{ongoing\+\_\+transmission}
+\item 
+\hyperlink{struct_s_p_i___n_1_1_p_i_n}{P\+IN} \hyperlink{class_s_p_i___n_1_1_s_p_i_ac016c4eaed2db3f8b5523bf0d472ddd2}{current\+\_\+pin}
+\item 
+bool \hyperlink{class_s_p_i___n_1_1_s_p_i_a7b2d300478662920e6911cea751e1094}{throw\+\_\+away\+\_\+data}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_s_p_i___n_1_1_s_p_i_a96543550133e0b0c6ae83faad5c0d68d}{S\+P\+I\+\_\+\+S\+T\+C\+\_\+vect} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_s_p_i___n_1_1_s_p_i_ab486ba0f0d9ec880520e568762cc6c7d}{}\label{class_s_p_i___n_1_1_s_p_i_ab486ba0f0d9ec880520e568762cc6c7d} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!S\+PI@{S\+PI}}
+\index{S\+PI@{S\+PI}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{S\+P\+I()}{SPI()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::\+S\+PI (\begin{DoxyParamCaption}\item[{const \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. \hypertarget{class_s_p_i___n_1_1_s_p_i_a8fec1a6e642a5758acf974b92e28a9e6}{}\label{class_s_p_i___n_1_1_s_p_i_a8fec1a6e642a5758acf974b92e28a9e6} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!S\+PI@{S\+PI}}
+\index{S\+PI@{S\+PI}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{S\+P\+I()}{SPI()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::\+S\+PI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Initializer for \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI}. Not used because of singleton 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_s_p_i___n_1_1_s_p_i_abc266ff9d817b8d4437d1da47fe8e7ae}{}\label{class_s_p_i___n_1_1_s_p_i_abc266ff9d817b8d4437d1da47fe8e7ae} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily static \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI}\& S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+A Singleton implementation of this class \hypertarget{class_s_p_i___n_1_1_s_p_i_a9812909f119712e57e2d452b859509ee}{}\label{class_s_p_i___n_1_1_s_p_i_a9812909f119712e57e2d452b859509ee} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!init@{init}}
+\index{init@{init}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::init (\begin{DoxyParamCaption}\item[{\hyperlink{struct_s_p_i___n_1_1_p_i_n}{P\+IN} $\ast$$\ast$}]{pins,  }\item[{uint8\+\_\+t}]{number\+\_\+of\+\_\+pins,  }\item[{bool}]{clock\+\_\+polarity\+\_\+falling = {\ttfamily 0},  }\item[{bool}]{clock\+\_\+phase\+\_\+trailing = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Initializes the I\+SP. 
+\begin{DoxyParams}{Parameters}
+{\em pins} & An array with \hyperlink{struct_s_p_i___n_1_1_p_i_n}{P\+IN} structs, where each struct is a pin that is used by the \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI} \\
+\hline
+{\em number\+\_\+of\+\_\+pins} & Number of \hyperlink{struct_s_p_i___n_1_1_p_i_n}{P\+IN} structs in the pins array \\
+\hline
+{\em clock\+\_\+polarity\+\_\+falling} & If enabled, S\+CK is high when idle. Defaults to disabled (S\+CK low when idle) \\
+\hline
+{\em clock\+\_\+phase\+\_\+trailing} & If enabled, samples on the trailing edge of S\+CK\+: Defaults to disabled (sample on the leading edge) \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_s_p_i___n_1_1_s_p_i_af973a5b4a970c3c01430037d578151ef}{}\label{class_s_p_i___n_1_1_s_p_i_af973a5b4a970c3c01430037d578151ef} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!Initialize\+Transmission@{Initialize\+Transmission}}
+\index{Initialize\+Transmission@{Initialize\+Transmission}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{Initialize\+Transmission()}{InitializeTransmission()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::\+Initialize\+Transmission (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Send the data in the output buffer onto the \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI}. \hypertarget{class_s_p_i___n_1_1_s_p_i_aabc66612d396c2b70e5cbdba405dbfe5}{}\label{class_s_p_i___n_1_1_s_p_i_aabc66612d396c2b70e5cbdba405dbfe5} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!operator=@{operator=}}
+\index{operator=@{operator=}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. \hypertarget{class_s_p_i___n_1_1_s_p_i_a5f2091bd02e8adbe6814b12fb6e2057f}{}\label{class_s_p_i___n_1_1_s_p_i_a5f2091bd02e8adbe6814b12fb6e2057f} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!Read\+And\+Insert\+Into\+Input\+Buffer@{Read\+And\+Insert\+Into\+Input\+Buffer}}
+\index{Read\+And\+Insert\+Into\+Input\+Buffer@{Read\+And\+Insert\+Into\+Input\+Buffer}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{Read\+And\+Insert\+Into\+Input\+Buffer()}{ReadAndInsertIntoInputBuffer()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::\+Read\+And\+Insert\+Into\+Input\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Reads the data from the \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI} and puts it inot the input buffer \hypertarget{class_s_p_i___n_1_1_s_p_i_a57ee9af74ec6a2d37001674f37f46344}{}\label{class_s_p_i___n_1_1_s_p_i_a57ee9af74ec6a2d37001674f37f46344} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!Read\+Byte@{Read\+Byte}}
+\index{Read\+Byte@{Read\+Byte}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{Read\+Byte()}{ReadByte()}}
+{\footnotesize\ttfamily bool S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::\+Read\+Byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Reads a byte from the input stream 
+\begin{DoxyParams}{Parameters}
+{\em data} & Byte to insert the byte into \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_stream_a6db4180f5834073f992608b856bddca2}{Stream}.
+
+\hypertarget{class_s_p_i___n_1_1_s_p_i_a6daa4720c8710e177f71ac318b96a3f8}{}\label{class_s_p_i___n_1_1_s_p_i_a6daa4720c8710e177f71ac318b96a3f8} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!Reset\+S\+S\+Pin@{Reset\+S\+S\+Pin}}
+\index{Reset\+S\+S\+Pin@{Reset\+S\+S\+Pin}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{Reset\+S\+S\+Pin()}{ResetSSPin()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::\+Reset\+S\+S\+Pin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Resets the SS pin. That is, if the SS pin is high, put it low and then high again. If it is low, put it high and then low again \hypertarget{class_s_p_i___n_1_1_s_p_i_a3e2e2a7f02ffa5003548a1b9d820ce9a}{}\label{class_s_p_i___n_1_1_s_p_i_a3e2e2a7f02ffa5003548a1b9d820ce9a} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!Write@{Write}}
+\index{Write@{Write}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{Write()}{Write()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{string,  }\item[{uint16\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Write the inserted string to output (i.\+e. write to \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI} selected by Set\+Device) 
+\begin{DoxyParams}{Parameters}
+{\em string} & The \char`\"{}data string\char`\"{} that shall be written to the output \\
+\hline
+{\em size} & the size of the data string \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_stream_a508be3423e4d99ab2757275fb723002a}{Stream}.
+
+\hypertarget{class_s_p_i___n_1_1_s_p_i_a542dc8e88203de7040ce9926d06b9463}{}\label{class_s_p_i___n_1_1_s_p_i_a542dc8e88203de7040ce9926d06b9463} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!Write\+Byte@{Write\+Byte}}
+\index{Write\+Byte@{Write\+Byte}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{Write\+Byte()}{WriteByte()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::\+Write\+Byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte,  }\item[{bool}]{wait }\end{DoxyParamCaption})}
+
+Writes a byte to the output stream. Puts the returned data into the input stream 
+\begin{DoxyParams}{Parameters}
+{\em byte} & The byte to be sent \\
+\hline
+{\em wait} & If set, the \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI} driver will not start the transmission of the output buffer \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_s_p_i___n_1_1_s_p_i_a05bcca2e033422b2e6ad570320d03fcb}{}\label{class_s_p_i___n_1_1_s_p_i_a05bcca2e033422b2e6ad570320d03fcb} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!Write\+Byte\+And\+Throw\+Away\+Data@{Write\+Byte\+And\+Throw\+Away\+Data}}
+\index{Write\+Byte\+And\+Throw\+Away\+Data@{Write\+Byte\+And\+Throw\+Away\+Data}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{Write\+Byte\+And\+Throw\+Away\+Data()}{WriteByteAndThrowAwayData()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::\+Write\+Byte\+And\+Throw\+Away\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte,  }\item[{bool}]{wait }\end{DoxyParamCaption})}
+
+Writes a byte to the output stream. Throws away the returned data 
+\begin{DoxyParams}{Parameters}
+{\em byte} & The byte to be sent \\
+\hline
+{\em wait} & If set, the \hyperlink{class_s_p_i___n_1_1_s_p_i}{S\+PI} driver will not start the transmission of the output buffer \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_s_p_i___n_1_1_s_p_i_a96543550133e0b0c6ae83faad5c0d68d}{}\label{class_s_p_i___n_1_1_s_p_i_a96543550133e0b0c6ae83faad5c0d68d} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!S\+P\+I\+\_\+\+S\+T\+C\+\_\+vect@{S\+P\+I\+\_\+\+S\+T\+C\+\_\+vect}}
+\index{S\+P\+I\+\_\+\+S\+T\+C\+\_\+vect@{S\+P\+I\+\_\+\+S\+T\+C\+\_\+vect}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{S\+P\+I\+\_\+\+S\+T\+C\+\_\+vect}{SPI\_STC\_vect}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+\+S\+T\+C\+\_\+vect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+The interrupt vector for when a transmission is complete. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_s_p_i___n_1_1_s_p_i_ac016c4eaed2db3f8b5523bf0d472ddd2}{}\label{class_s_p_i___n_1_1_s_p_i_ac016c4eaed2db3f8b5523bf0d472ddd2} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!current\+\_\+pin@{current\+\_\+pin}}
+\index{current\+\_\+pin@{current\+\_\+pin}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{current\+\_\+pin}{current\_pin}}
+{\footnotesize\ttfamily \hyperlink{struct_s_p_i___n_1_1_p_i_n}{P\+IN} S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::current\+\_\+pin\hspace{0.3cm}{\ttfamily [private]}}
+
+A struct of the type \hyperlink{struct_s_p_i___n_1_1_p_i_n}{P\+IN} which indicates which pin is currently selected. \hypertarget{class_s_p_i___n_1_1_s_p_i_aff61d4bfc6a6e0088c3653898b1e91b8}{}\label{class_s_p_i___n_1_1_s_p_i_aff61d4bfc6a6e0088c3653898b1e91b8} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!ongoing\+\_\+transmission@{ongoing\+\_\+transmission}}
+\index{ongoing\+\_\+transmission@{ongoing\+\_\+transmission}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{ongoing\+\_\+transmission}{ongoing\_transmission}}
+{\footnotesize\ttfamily bool S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::ongoing\+\_\+transmission\hspace{0.3cm}{\ttfamily [private]}}
+
+A bool indicating wether or not an outgoing transmission is ongoing \hypertarget{class_s_p_i___n_1_1_s_p_i_a7b2d300478662920e6911cea751e1094}{}\label{class_s_p_i___n_1_1_s_p_i_a7b2d300478662920e6911cea751e1094} 
+\index{S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}!throw\+\_\+away\+\_\+data@{throw\+\_\+away\+\_\+data}}
+\index{throw\+\_\+away\+\_\+data@{throw\+\_\+away\+\_\+data}!S\+P\+I\+\_\+\+N\+::\+S\+PI@{S\+P\+I\+\_\+\+N\+::\+S\+PI}}
+\subsubsection{\texorpdfstring{throw\+\_\+away\+\_\+data}{throw\_away\_data}}
+{\footnotesize\ttfamily bool S\+P\+I\+\_\+\+N\+::\+S\+P\+I\+::throw\+\_\+away\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
+
+A flag indicating whether or not to keep the next recieved byte 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/spi/\hyperlink{spi_8h}{spi.\+h}\item 
+lib/spi/spi.\+cpp\end{DoxyCompactItemize}

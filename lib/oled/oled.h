@@ -10,6 +10,10 @@
  * An interface to communicate with the oled display
  */
 class OLED: Stream {
+private:
+    char *font = nullptr;
+    uint8_t font_width;
+    uint8_t font_height;
 
 public:
     /**
@@ -34,14 +38,14 @@ public:
     void GoToLine(uint8_t line);
 
     /**
-    * Clears the whole screen
-    */
-    void Clear();
-
-    /**
     * Clears the current line selected
     */
     void ClearLine();
+
+    /**
+    * Clears the whole screen
+    */
+    void Clear();
 
     /**
     * Writes a byte to the given page and column. This is a helper function mainly used for debugging
@@ -52,13 +56,15 @@ public:
     void WriteByte(uint8_t page, uint8_t column, uint8_t byte);
 
     /**
-    * Writes a bytearray starting at the given page and column. This is a helper function mainly used for debugging
-    * @param page Which page to be written to
-    * @param page Which column to be written to first
-    * @param byte_array Which byte to be written
-    * @param length The length of the byte array (number of columns)
+    *
     */
     void WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uint8_t length);
+
+    /**
+    * Returns a pointer to PROGMEM for the bitmap for the given font and character. Emphasis on that it points to PROGMEM.
+    * http://www.nongnu.org/avr-libc/user-manual/pgmspace.html
+    */
+    uint8_t** GetBitmapForCharacter(uint8_t character, uint8_t ***font);
 
     /**
     * Repaints the OLED
@@ -71,46 +77,12 @@ public:
     */
     void SetNumberOfLines(uint8_t number_of_lines);
 
-    /**
-    * Writes a pixel-matrix to the given x and y position on the display
-    * @param pixels A double pointer to the matrix
-    * @param bitmap_width The width of the bitmap, in pixels
-    * @param bitmap_height The height of the bitmap, in pixels
-    * @param x The starting position, x direction
-    * @param y The starting position, y direction
-    * @param is_progmem A bool that indicates where the pixel array is located
-    */
-    void WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, bool is_progmem);
 
-    /**
-     *
-     * @param font A pointer to the font, usually in progmem
-     * @param width The width of the font in pixels
-     * @param height The height of the font in pixels
-     */
-    void SetFont(uint8_t *font, uint8_t width, uint8_t height);
+    void WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_height, uint8_t x, uint8_t y, uint8_t is_progmem);
 
-    /**
-    * Writes the string to the given line. Erases everything on the line
-    * @param string The string
-    * @param length Length of the string. No newline of course.
-    * @param line The line to be written to
-    * @param offset The offset from the left, in characters
-    */
-    void WriteLine(char* string, uint8_t length, uint8_t line, uint8_t offset);
+    void setFont(char *font, uint8_t width, uint8_t height);
 
-    /**
-     *
-     * @param line
-     * @return
-     */
-    uint8_t GetYCoordinateFromLineNumber(uint8_t line);
-
-    /**
-    * Returns a pointer to PROGMEM for the bitmap for the given font and character. Emphasis on that it points to PROGMEM.
-    * http://www.nongnu.org/avr-libc/user-manual/pgmspace.html
-    */
-    void GetBitmapForCharacter(char character, uint8_t* &character_bitmap);
+    void WriteLine(char* string, uint8_t len, uint8_t line, uint8_t offset);
 
 private:
     /**

@@ -122,6 +122,5 @@ int main(void) {
     }
 
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
-
 }
 #pragma clang diagnostic pop

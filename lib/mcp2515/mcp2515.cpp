@@ -23,7 +23,7 @@ void MCP2515::Initialize(SPI_N::SPI *spi) {
 
     this->Reset();
 
-    // MCP2515 is now in config mode.
+    // MCP2515 is now in config mode. Must manually be set to another mode
 
 
 

@@ -35,16 +35,19 @@ public:
 
     void SetNormal();
 
-private:
-    MCP2515(){};
     /**
-     * Sends a RTS (Request to Send) signal to the MCP2515. This
-     */
+ * Sends a RTS (Request to Send) signal to the MCP2515. This
+ */
     void RequestToSend();
     void WriteToRegister(uint8_t register_address, uint8_t byte);
     void ReadFromRegister(uint8_t register_address, uint8_t &byte);
     void Reset();
     void BitModify(uint8_t register_address, uint8_t mask, uint8_t data);
     void ReadStatus(uint8_t &byte);
+
+private:
+    MCP2515(){};
+
+    // TODO: Implement Interrupts
     SPI_N::SPI *spi_driver;
 };

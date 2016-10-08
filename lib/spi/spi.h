@@ -69,7 +69,7 @@ namespace SPI_N{
          * @param clock_polarity_falling If enabled, SCK is high when idle. Defaults to disabled (SCK low when idle)
          * @param clock_phase_trailing If enabled, samples on the trailing edge of SCK: Defaults to disabled (sample on the leading edge)
          */
-        void Intiialize(PIN **pins, uint8_t number_of_pins, bool clock_polarity_falling, bool clock_phase_trailing);
+        void Initialize(PIN **pins, uint8_t number_of_pins, bool clock_polarity_falling, bool clock_phase_trailing);
 
         /**
          * Write the inserted string to output (i.e. write to SPI selected by SetDevice)
@@ -119,7 +119,7 @@ namespace SPI_N{
         /**
          * A bool indicating wether or not an outgoing transmission is ongoing
          */
-        bool ongoing_transmission;
+        bool ongoing_transmission = false;
         /**
          * A struct of the type PIN which indicates which pin is currently selected.
          */

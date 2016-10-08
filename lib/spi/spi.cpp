@@ -3,6 +3,7 @@
 #include <util/delay.h>
 namespace SPI_N{
     void SPI_STC_vect(){
+        printf("INT\n");
         // SPI transfer complete
         SPI& spi = SPI::GetInstance();
 
@@ -25,6 +26,7 @@ namespace SPI_N{
             if(spi.ReadByteFromOutputStream(byte)){
                 SPDR = byte;
             }else{
+                printf("NO MORE\n");
                 spi.ongoing_transmission = false;
 
                 // Turn of SS pin. Active low
@@ -38,7 +40,7 @@ namespace SPI_N{
         sei();
     }
 
-    void SPI::Intiialize(PIN **pins, uint8_t number_of_pins, bool clock_polarity_falling = 0, bool clock_phase_trailing = 0) {
+    void SPI::Initialize(PIN **pins, uint8_t number_of_pins, bool clock_polarity_falling = 0, bool clock_phase_trailing = 0) {
         // Set registers
         SPCR |= (1<<SPE); // Enable SPI
         SPCR |= (1<<MSTR); // Set master mode
@@ -64,7 +66,7 @@ namespace SPI_N{
 
         // Set SCK = f_osc/128
         SPCR |= (1<<SPR1) | (1<<SPR0);
-        SPCR &= ~(1<<SPI2X);
+        SPSR &= ~(1<<SPI2X);
 
         // Set MSB first
         SPCR &= ~(1<<DORD);
@@ -85,6 +87,7 @@ namespace SPI_N{
 
     void SPI::InitializeTransmission() {
         if(!this->ongoing_transmission){
+            printf("initi trans\n");
             // Set SS line. Active low
             *this->current_pin.port &= ~(1<<current_pin.pin);
 
@@ -94,6 +97,7 @@ namespace SPI_N{
             Stream::ReadByteFromOutputStream(byte);
 
             SPDR = byte;
+            printf("BYTE IS = %2x",byte);
         }
     }
 

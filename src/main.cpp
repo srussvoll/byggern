@@ -9,6 +9,9 @@
 #include "lib/uart/uart.h"
 #include "lib/oled/oled.h"
 #include "lib/menu/menu.h"
+#include "lib/mcp2515/mcp2515.h"
+#include "lib/mcp2515/mcp2515_regisers.h"
+#include "lib/spi/spi.h"
 
 uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;
@@ -53,7 +56,35 @@ void SRAM_test(uint16_t seed) {
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
+
+void SPITest();
+
 int main(void) {
+    SPITest();
+}
+
+void SPITest(){
+    _delay_ms(10);
+    SPI_N::SPI &my_spi = SPI_N::SPI::GetInstance();
+    MCP2515 &my_mcp = MCP2515::GetInstance();
+
+    SPI_N::PIN ss = SPI_N::PIN(&PORTD, &DDRD, 5);
+    SPI_N::PIN ss_a[] = {ss};
+
+    my_spi.Initialize((SPI_N::PIN **)ss_a, 1, 0,0);
+    my_mcp.Initialize(&my_spi);
+
+    while(1){
+        uint8_t byte;
+        //my_mcp.SetLoopback();
+        //my_mcp.ReadFromRegister(MCP_CANCTRL, byte);
+        my_spi.WriteByte(0xFF,0);
+        _delay_ms(100);
+        //printf("My byte = %2x \n", byte);
+    }
+};
+
+void OledTest(){
     _delay_ms(500);
     printf("\n\n\n----------------------------------------\n");
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);

@@ -136,10 +136,16 @@ int main(void) {
     my_joystick.Init(levels, percentage, &adc_x, &adc_y);
 
     while(true){
+        /*adc_x.request_sample();
+        uint8_t byte;
+        while(!adc_x.ReadByte(byte)){
+            ;
+        }
+        printf("tall %d \n", byte);*/
         if(my_joystick.IsRight()){
             printf("i am right \n");
         }
-        _delay_ms(1000);
+        _delay_ms(10);
     }
 
 

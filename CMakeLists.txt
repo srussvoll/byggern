@@ -51,7 +51,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BUILD_PATH}")
 file(GLOB SRC_FILES "${SRC_PATH}/*.c" "${SRC_PATH}/*.cpp" "${SRC_PATH}/*.asm")
 file(GLOB INC_FILES "${INC_PATH}/*.h")
 
-set(LIB_SRC_FILES)
+set(LIB_SRC_FILES lib/joystick/joystick.cpp lib/joystick/joystick.h)
 set(LIB_INC_FILES)
 file(GLOB LIBRARIES "${LIB_DIR_PATH}/*")
 foreach(subdir ${LIBRARIES})

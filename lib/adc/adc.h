@@ -1,6 +1,9 @@
 #pragma once
 
+// x direction on the joystick
 #define ADC_ADDRESS1 (uint8_t *)0x2004
+
+// y direction on the joystick
 #define ADC_ADDRESS2 (uint8_t *)0x2005
 #define ADC_INT      INT2_vect
 
@@ -19,7 +22,7 @@ private:
     /**
     * Constructor for ADC class. Singleton implementation
     * @param address The address the ADC is located at. Channel on the adc is determined by the LSB.
-    * We use 0x1404 for channel 1 and 0x1405 for channel 2
+    * We use 0x2004 for channel 1 and 0x2005 for channel 2
     */
     ADC(uint8_t *address);
 
@@ -28,7 +31,6 @@ public:
 
     /**
      * A Singleton implementation of this class. See ADC(uint16_t address) for more information.
-     *
      */
     static ADC& GetInstance(uint8_t *address) {
         if(address == ADC_ADDRESS1) {
@@ -41,12 +43,12 @@ public:
     }
 
     /**
-     * Beacause of singleton - makes sure its not copied etc.
+     * Because of singleton - makes sure its not copied etc.
      */
     ADC(const ADC&) = delete;
 
     /**
-    * Beacause of singleton - makes sure its not copied etc.
+    * Because of singleton - makes sure its not copied etc.
     */
     void operator=(const ADC&) = delete;
 
@@ -66,7 +68,6 @@ public:
     /**
     * A flag indicating if the ADC is currently used
     */
-
     volatile static bool adc_in_use;
 
     volatile static uint8_t *adc_waiting;

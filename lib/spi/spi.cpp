@@ -36,7 +36,7 @@ namespace SPI_N{
 
     }
 
-    SPI::SPI(): Stream(1,128){
+    SPI::SPI(): Stream(128,128){
         sei();
     }
 

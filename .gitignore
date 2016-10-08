@@ -4,7 +4,9 @@
 *.a
 *.exe
 *.hex
+*.gch
+
+*.DS_Store
 
 .idea/*
 build/*
-.DS_Store

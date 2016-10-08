@@ -21,6 +21,8 @@ void SRAM_test(uint16_t seed) {
 
     printf("Starting SRAM test...\n");
 
+
+
     // rand() stores some internal state, so calling this function in a loop will
     // yield different seeds each time (unless srand() is called before this function)
 
@@ -58,15 +60,6 @@ int main(void) {
 
     OLED &my_oled = OLED::GetInstance();
     my_oled.Init(128,64);
-    my_oled.SetNumberOfLines(8);
-    my_oled.SetFont(Fonts::f8x8, 8, 8);
-    /*uint8_t pixels[] = {0xAA, 0xAA, 0xAA};
-    uint8_t test_array[3][5] = {{0b01111110,0b00001100,0b00110000,0b01111110,0b00000000},{0b00000000,0b00000010,0b01111110,0b00000010,0b00000000}, {0b01111110,0b00001000,0b00001000,0b01111110,0b00000000}};
-    uint8_t *dummy[3] = { test_array[0], test_array[1], test_array[2] };
-    uint8_t **ptr = dummy;
-    my_oled.GoToLine(3);*/
-
-    //test_menu(my_oled);
 
     Menu::Controller controller(my_oled, 5);
 
@@ -126,12 +119,6 @@ int main(void) {
     }
 
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
-    //my_oled.WriteBitmap(bitmap_character, 8,8,3,3,true);
-/*    char item0[] = "Hallo Verden";
-    my_oled.WriteLine(item0, sizeof(item0) - 1, 0, 0);*/
-    // my_oled.Repaint();
-
-    while(true) {};
 
 }
 #pragma clang diagnostic pop

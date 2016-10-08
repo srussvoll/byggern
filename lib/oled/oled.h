@@ -9,7 +9,7 @@
  *
  * An interface to communicate with the oled display
  */
-class OLED: Stream {
+class OLED : public Stream {
 
 public:
     /**

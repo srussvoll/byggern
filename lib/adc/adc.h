@@ -1,7 +1,7 @@
 #pragma once
 
-#define ADC_ADDRESS1 (uint8_t*)0x2004
-#define ADC_ADDRESS2 (uint8_t*)0x2005
+#define ADC_ADDRESS1 (uint8_t *)0x2004
+#define ADC_ADDRESS2 (uint8_t *)0x2005
 #define ADC_INT      INT2_vect
 
 #include "../stream/stream.h"
@@ -30,7 +30,7 @@ public:
      * A Singleton implementation of this class. See ADC(uint16_t address) for more information.
      *
      */
-    static ADC& GetInstance(uint16_t *address) {
+    static ADC& GetInstance(uint8_t *address) {
         if(address == ADC_ADDRESS1) {
             static ADC instance(ADC_ADDRESS1);
             return instance;

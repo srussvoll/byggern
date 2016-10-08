@@ -4,7 +4,7 @@ volatile bool ADC::adc_in_use = false;
 
 volatile uint8_t *ADC::adc_waiting = nullptr;
 
-ADC::ADC(uint16_t *address) : address(address), Stream(1,1){
+ADC::ADC(uint8_t *address) : address(address), Stream(1,1){
     sei();
     GICR |= (1 << INT2);
     EMCUCR &= ~(1 << ISC2);
@@ -26,7 +26,7 @@ bool ADC::request_sample(){
 
 void ADC_INT(){
     // Data now valid. Put the data into the stream
-    ADC &adc = ADC::GetInstance(ADC::adc_waiting);
+    ADC &adc = ADC::GetInstance((uint8_t *) ADC::adc_waiting);
     uint8_t data = *adc.address;
     adc.WriteByteToInputStream(data);
     ADC::adc_in_use = false;

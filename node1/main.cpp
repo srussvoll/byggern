@@ -15,10 +15,14 @@
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
     _delay_ms(500);
-    /*printf("\n\n\n----------------------------------------\n");
-    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
+    printf("\n\n\n----------------------------------------\n");
 
-    *//* OLED &my_oled = OLED::GetInstance();
+    while (true) {}
+}
+#pragma clang diagnostic pop
+
+
+/* OLED &my_oled = OLED::GetInstance();
     my_oled.Init(128,64);
     my_oled.SetFont(Fonts::f8x8, 8, 8);
 
@@ -106,11 +110,3 @@ int main(void) {
         }
         _delay_ms(10);
     }*/
-
-    while (true){
-
-    }
-
-    printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
-}
-#pragma clang diagnostic pop

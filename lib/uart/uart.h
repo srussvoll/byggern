@@ -52,14 +52,14 @@ public:
     void operator=(const UART&) = delete;
 
 private:
+    /**
+    * A constructor that initializes the UART to a certain size
+    */
+    UART();
+
     bool ongoing_transmission = false;
 
-    void initialize_transmission();
-
-    /**
-     * A constructor that initializes the UART to a certain size
-     */
-    UART();
+    void StartTransmission();
 
     /**
      * The interrupt handler vector. To be run on each DRE interrupt

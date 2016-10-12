@@ -56,10 +56,10 @@ void SRAM_test(uint16_t seed) {
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(void) {
     _delay_ms(500);
-    printf("\n\n\n----------------------------------------\n");
+    /*printf("\n\n\n----------------------------------------\n");
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
 
-    /* OLED &my_oled = OLED::GetInstance();
+    *//* OLED &my_oled = OLED::GetInstance();
     my_oled.Init(128,64);
     my_oled.SetFont(Fonts::f8x8, 8, 8);
 
@@ -120,7 +120,7 @@ int main(void) {
     for (int i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
-    } */
+    } *//*
 
     // ADC and joystick testing
     Joystick& my_joystick = Joystick::GetInstance();
@@ -136,18 +136,26 @@ int main(void) {
     my_joystick.Init(levels, percentage, &adc_x, &adc_y);
 
     while(true){
-        /*adc_x.request_sample();
+        *//*adc_x.request_sample();
         uint8_t byte;
         while(!adc_x.ReadByte(byte)){
             ;
         }
-        printf("tall %d \n", byte);*/
+        printf("tall %d \n", byte);*//*
         if(my_joystick.IsRight()){
             printf("i am right \n");
         }
         _delay_ms(10);
-    }
+    }*/
 
+    DDRA |= (1 << DDA0);
+    while (true){
+        PORTA |= (1 << PORTA0);
+        _delay_ms(1000);
+        PORTA |= (0 << PORTA0);
+        _delay_ms(1000);
+
+    }
 
     printf("SP: %d %% used\n", ((0x4FF - SP) * 100) / 0x400);
 }

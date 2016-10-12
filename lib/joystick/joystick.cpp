@@ -20,13 +20,28 @@ bool Joystick::IsRight() {
 }
 
 bool Joystick::IsLeft() {
-
+    adc_x->request_sample();
+    uint8_t x_value;
+    while(!adc_x->ReadByte(x_value)){
+        ;
+    }
+    return x_value < uint8_t ( (uint8_t ) (levels.x_max - levels.x_min)/2 * (1.0 - threshold));
 }
 
 bool Joystick::IsDown() {
-
+    adc_y->request_sample();
+    uint8_t y_value;
+    while(!adc_y->ReadByte((y_value))){
+        ;
+    }
+    return y_value < uint8_t ( (uint8_t ) (levels.y_max - levels.y_min)/2 * (1.0 - threshold));
 }
 
 bool Joystick::IsUp() {
-
+    adc_y->request_sample();
+    uint8_t y_value;
+    while(!adc_y->ReadByte((y_value))){
+        ;
+    }
+    return y_value < uint8_t (threshold*levels.y_max);
 }

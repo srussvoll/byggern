@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.6)
 
 # Debug flag
 set(DEBUG "1")
+#set(CMAKE_VERBOSE_MAKEFILE on)
 
 # Names
 set(NODE1_NAME "node1")
@@ -73,7 +74,7 @@ set(CSTANDARD          "-std=gnu11")
 set(CXXSTANDARD        "-std=c++11")
 set(CDEBUG             "-gstabs -g -ggdb")
 set(CWARN              "-Wall -Wstrict-prototypes -Wl,--gc-sections -Wl,--relax")
-set(CTUNING            "-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -Wl,--gc-sections -ffunction-sections -fdata-sections")
+set(CTUNING            "-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -ffunction-sections -fdata-sections")
 set(COPT               "-Os -lm -lprintf_flt")
 set(ENABLE_SINGLETON   "-fno-threadsafe-statics") # This isn't implemented in avr-g++ anyway, and without this singletons don't work...
 set(DISABLE_EXCEPTIONS "-fno-exceptions") # This isn't implemented in avr-g++. Turn it off so the code doesn't try to cast an exception.
@@ -100,8 +101,8 @@ set(CMAKE_ASM_FLAGS   "${CFLAGS}")
 include_directories(${INC_PATH} ${BASE_PATH} ${LIB_INC_PATHS})
 add_executable(${NODE1_NAME} ${SRC_FILES} ${LIB_SRC_FILES} ${NODE1_SRC_FILES})
 add_executable(${NODE2_NAME} ${SRC_FILES} ${LIB_SRC_FILES})
-set_target_properties(${NODE1_NAME} PROPERTIES OUTPUT_NAME "${NODE1_NAME}.elf")
-set_target_properties(${NODE2_NAME} PROPERTIES OUTPUT_NAME "${NODE2_NAME}.elf")
+set_target_properties(${NODE1_NAME} PROPERTIES OUTPUT_NAME "${BUILD_PATH}/${NODE1_NAME}.elf")
+set_target_properties(${NODE2_NAME} PROPERTIES OUTPUT_NAME "${BUILD_PATH}/${NODE2_NAME}.elf")
 
 # Set defines
 add_definitions(-DDEBUG=${DEBUG})
@@ -111,7 +112,8 @@ target_compile_definitions(${NODE1_NAME} PUBLIC -DFOSC=${NODE1_FOSC})
 target_compile_definitions(${NODE1_NAME} PUBLIC -DBAUD=${NODE1_BAUD})
 target_compile_definitions(${NODE1_NAME} PUBLIC -DMCU=${NODE1_MCU})
 target_compile_options(${NODE1_NAME} PUBLIC ${CNODE1_MCU})
-target_compile_options(${NODE1_NAME} PUBLIC ${NODE1_HEAP_LOCATION})
+target_link_libraries(${NODE1_NAME} PUBLIC ${CNODE1_MCU})
+target_link_libraries(${NODE1_NAME} PUBLIC ${NODE1_HEAP_LOCATION})
 
 target_compile_definitions(${NODE2_NAME} PUBLIC -DF_CPU=${NODE2_F_CPU})
 target_compile_definitions(${NODE2_NAME} PUBLIC -DFOSC=${NODE2_FOSC})

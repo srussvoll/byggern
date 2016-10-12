@@ -61,8 +61,8 @@ void SPITest();
 void OLEDTest();
 
 int main(void) {
-    //SPITest();
-    OLEDTest();
+    SPITest();
+    //OLEDTest();
 }
 
 void SPITest(){
@@ -76,7 +76,7 @@ void SPITest(){
     my_spi.SetDevice(ss);
 
     MCP2515 &my_mcp = MCP2515::GetInstance();
-    my_mcp.Initialize(&my_spi);
+    my_mcp.Initialize(&my_spi, nullptr);
 
     printf("start\n");
 
@@ -84,6 +84,11 @@ void SPITest(){
     while(1){
         uint8_t byte;
         my_mcp.ReadFromRegister(MCP_CANCTRL,byte);
+        //my_mcp.RxStatus(byte);
+        _delay_ms(100);
+        printf("BYTE = %2x \n", byte);
+        my_mcp.ReadFromRegister(MCP_CANCTRL,byte);
+        //my_mcp.RxStatus(byte);
         _delay_ms(100);
         printf("BYTE = %2x \n", byte);
         break;

@@ -39,7 +39,7 @@ namespace SPI_N{
     /**
      * This class is an SPI driver which uses the
      */
-    class SPI: Stream{
+    class SPI: public Stream {
     public:
         /**
         * A Singleton implementation of this class
@@ -69,7 +69,7 @@ namespace SPI_N{
          * @param clock_polarity_falling If enabled, SCK is high when idle. Defaults to disabled (SCK low when idle)
          * @param clock_phase_trailing If enabled, samples on the trailing edge of SCK: Defaults to disabled (sample on the leading edge)
          */
-        void Intiialize(PIN **pins, uint8_t number_of_pins, bool clock_polarity_falling, bool clock_phase_trailing);
+        void Initialize(PIN *pins, uint8_t number_of_pins, bool clock_polarity_falling, bool clock_phase_trailing);
 
         /**
          * Write the inserted string to output (i.e. write to SPI selected by SetDevice)
@@ -92,17 +92,6 @@ namespace SPI_N{
          */
         void WriteByteAndThrowAwayData(uint8_t byte, bool wait);
 
-        /**
-         * Reads a byte from the input stream
-         * @param data Byte to insert the byte into
-         */
-        bool ReadByte(uint8_t &data);
-
-        /**
-         * Resets the SS pin. That is, if the SS pin is high, put it low and then high again.
-         * If it is low, put it high and then low again
-         */
-        void ResetSSPin();
     private:
         /**
          * Initializer for SPI. Not used because of singleton
@@ -113,21 +102,15 @@ namespace SPI_N{
          */
         void InitializeTransmission();
         /**
-         * Reads the data from the SPI and puts it inot the input buffer
-         */
-        void ReadAndInsertIntoInputBuffer();
-        /**
          * A bool indicating wether or not an outgoing transmission is ongoing
          */
-        bool ongoing_transmission;
+        bool ongoing_transmission = false;
         /**
          * A struct of the type PIN which indicates which pin is currently selected.
          */
         PIN current_pin;
-        /**
-         * A flag indicating whether or not to keep the next recieved byte
-         */
-        bool throw_away_data;
+
+        uint8_t throw_away_data_count = 0;
 
         /**
          * The interrupt vector for when a transmission is complete.

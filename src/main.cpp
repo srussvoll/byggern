@@ -64,24 +64,29 @@ int main(void) {
 }
 
 void SPITest(){
-    _delay_ms(10);
+    _delay_ms(100);
     SPI_N::SPI &my_spi = SPI_N::SPI::GetInstance();
-    MCP2515 &my_mcp = MCP2515::GetInstance();
 
     SPI_N::PIN ss = SPI_N::PIN(&PORTD, &DDRD, 5);
     SPI_N::PIN ss_a[] = {ss};
 
-    my_spi.Initialize((SPI_N::PIN **)ss_a, 1, 0,0);
+    my_spi.Initialize(ss_a, 1, 0,0);
+    my_spi.SetDevice(ss);
+
+    MCP2515 &my_mcp = MCP2515::GetInstance();
     my_mcp.Initialize(&my_spi);
 
+    printf("start\n");
+
+    my_mcp.SetLoopback();
     while(1){
         uint8_t byte;
-        //my_mcp.SetLoopback();
-        //my_mcp.ReadFromRegister(MCP_CANCTRL, byte);
-        my_spi.WriteByte(0xFF,0);
+        my_mcp.ReadFromRegister(MCP_CANCTRL,byte);
         _delay_ms(100);
-        //printf("My byte = %2x \n", byte);
+        printf("BYTE = %2x \n", byte);
+        break;
     }
+
 };
 
 void OledTest(){

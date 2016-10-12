@@ -19,7 +19,7 @@ bool Joystick::IsRight() {
     while(!adc_x->ReadByte(x_value)){
         ;
     }
-    return x_value > uint8_t (threshold*levels.x_max);
+    return x_value > (uint8_t) (threshold*(levels.x_max - levels.x_min));
 }
 
 bool Joystick::IsLeft() {
@@ -28,7 +28,7 @@ bool Joystick::IsLeft() {
     while(!adc_x->ReadByte(x_value)){
         ;
     }
-    return x_value < uint8_t ( (uint8_t ) (levels.x_max - levels.x_min)/2 * (1.0 - threshold));
+    return x_value < (uint8_t) ((levels.x_max - levels.x_min) * (1.0 - threshold)) ;
 }
 
 bool Joystick::IsDown() {
@@ -37,7 +37,7 @@ bool Joystick::IsDown() {
     while(!adc_y->ReadByte((y_value))){
         ;
     }
-    return y_value < uint8_t ( (uint8_t ) (levels.y_max - levels.y_min)/2 * (1.0 - threshold));
+    return y_value < (uint8_t) ((levels.y_max - levels.y_min) * (1.0 - threshold)) ;
 }
 
 bool Joystick::IsUp() {
@@ -46,7 +46,7 @@ bool Joystick::IsUp() {
     while(!adc_y->ReadByte((y_value))){
         ;
     }
-    return y_value < uint8_t (threshold*levels.y_max);
+    return y_value < (uint8_t) (threshold*(levels.y_max - levels.y_min));
 }
 
 bool Joystick::ButtonIsDown() {

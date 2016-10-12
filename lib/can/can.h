@@ -1,5 +1,6 @@
 #pragma once
 #include "../mcp2515/mcp2515.h"
+#include "../stream/stream.h"
 class CAN{
 public:
     /**

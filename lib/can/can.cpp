@@ -10,6 +10,4 @@ void CAN::SendMessage(uint16_t id, uint8_t *message, uint8_t message_length) {
     uint8_t upper_id = (uint8_t) (id >> 8);
 }
 
-CAN::CAN(): Stream(128,128) {
-
-}
+CAN::CAN(){}

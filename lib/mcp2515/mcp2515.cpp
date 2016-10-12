@@ -27,9 +27,6 @@ void MCP2515::Initialize(SPI_N::SPI *spi) {
 
     // MCP2515 is now in config mode. Must manually be set to another mode
 
-
-
-
 }
 
 void MCP2515::SetLoopback() {
@@ -54,7 +51,9 @@ void MCP2515::ReadFromRegister(uint8_t register_address, uint8_t &byte) {
 }
 
 void MCP2515::ReadStatus(uint8_t &byte) {
-    this->spi_driver->WriteByte(MCP_READ_STATUS, 1);
+    this->spi_driver->WriteByteAndThrowAwayData(MCP_READ_STATUS, 1);
+    this->spi_driver->WriteByte(MCP_DC,0);
+    this->spi_driver->WriteByteAndThrowAwayData(MCP_DC, 0);
     this->spi_driver->ReadByte(byte);
 }
 

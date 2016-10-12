@@ -50,6 +50,7 @@ public:
     void operator=(const UART&) = delete;
 
 private:
+
     /**
     * A constructor that initializes the UART to a certain size
     */

@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 namespace {
-    const unsigned char f4x6[95][4] PROGMEM = {
+/*    const unsigned char f4x6[95][4] PROGMEM = {
             {0b00000000,0b00000000,0b00000000,0b00000000}, //
             {0b00000000,0b01011100,0b00000000,0b00000000}, // !
             {0b00001100,0b00000000,0b00001100,0b00000000}, // "
@@ -296,7 +296,7 @@ namespace {
             {0b00000000,0b00000000,0b01111111,0b00000000,0b00000000}, // |
             {0b00000000,0b01000001,0b00110110,0b00001000,0b00000000}, // }
             {0b00000010,0b00000001,0b00000011,0b00000010,0b00000001}, // ~
-    };
+    };*/
 
     const unsigned char f8x8[95][8] PROGMEM = {
             {0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000}, //
@@ -398,29 +398,9 @@ namespace {
 }
 
 namespace Fonts{
-    void run() {
-        uint8_t *font = (uint8_t*) Fonts::f4x6;
-        // font[x][y] er ikke mulig fordi det er en 1D array. Derfor må vi bruke:
-        uint8_t x = 4;
-        uint8_t y = 2;
-        uint8_t num_columns = 4;
-        uint8_t *character = &font[num_columns * x];
-        uint8_t column = pgm_read_byte(&font[num_columns * x + y]);
-        // Denne skal være helt lik
-        column = pgm_read_byte(&character[y]);
-        // For å sende inn 2D array til WriteBitmap:
-        uint8_t **b_character = &character;
-
-        //printf("%2x \n", pgm_read_byte(column));
-        printf("%d \n", column);
-
-        printf("%4x \n", (uint8_t*) ::f4x6);
-        printf("%4x \n", (uint8_t*) Fonts::f4x6);
-    }
-
-    uint8_t *f4x6 = (uint8_t*) ::f4x6;
+/*    uint8_t *f4x6 = (uint8_t*) ::f4x6;
     uint8_t *f5x7 = (uint8_t*) ::f5x7;
-    uint8_t *f5x7w = (uint8_t*) ::f5x7w;
+    uint8_t *f5x7w = (uint8_t*) ::f5x7w;*/
     uint8_t *f8x8 = (uint8_t*) ::f8x8;
 
 }

@@ -121,19 +121,6 @@ namespace SPI_N{
         this->InitializeTransmission();
     }
 
-    void SPI::ResetSSPin() {
-        if(*this->current_pin.port & (1<<current_pin.pin)){
-            // Pin is high, turn off them on again
-            *this->current_pin.port &= ~(1<<current_pin.pin);
-            _delay_us(100); // Wait 100 us for good measure
-            *this->current_pin.port |= (1<<current_pin.pin);
-        }else{
-            // Pin is low, turn on then off again
-            *this->current_pin.port |= (1<<current_pin.pin);
-            _delay_us(100); // Wait 100 us for good measure
-            *this->current_pin.port &= ~(1<<current_pin.pin);
-        }
-    }
 
     void SPI::WriteByte(uint8_t byte, bool wait) {
         Stream::WriteByte(byte);

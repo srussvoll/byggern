@@ -92,12 +92,6 @@ namespace SPI_N{
          */
         void WriteByteAndThrowAwayData(uint8_t byte, bool wait);
 
-
-        /**
-         * Resets the SS pin. That is, if the SS pin is high, put it low and then high again.
-         * If it is low, put it high and then low again
-         */
-        void ResetSSPin();
     private:
         /**
          * Initializer for SPI. Not used because of singleton

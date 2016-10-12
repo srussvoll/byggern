@@ -62,3 +62,15 @@ void MCP2515::SetNormal() {
     uint8_t data = 0x00; // All 0
     this->BitModify(MCP_CANCTRL, bitmask, data);
 }
+
+void MCP2515::LoadTxFrame(uint16_t id, uint8_t byte, uint8_t buffer_number) {
+    // We need the first 11 bits of ID
+    uint8_t upper_id = (uint8_t) (id >> 3);
+    uint8_t lower_id = (uint8_t) id & 0b111;
+    // Get the two addresses.
+    uint8_t address_sidh = 0x40 | (buffer_number);
+    uint8_t address_data = 0x40 | (buffer_number + 1);
+
+    uint8_t address_sidl = ((0b11 + buffer_number) << 4) + 0b10;
+
+}

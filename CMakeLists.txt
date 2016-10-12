@@ -64,7 +64,7 @@ endforeach()
 # Compiler flags
 set(CSTANDARD "-std=gnu11")
 set(CXXSTANDARD "-std=c++11")
-set(CDEBUG    "-gstabs -g -ggdb")
+set(CDEBUG    "-gstabs -g -ggdb -Wl,-Map=${BUILD_PATH}/${PROJECT_NAME}.map")
 set(CWARN     "-Wall -Wstrict-prototypes -Wl,--gc-sections -Wl,--relax")
 set(CTUNING   "-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -ffunction-sections -fdata-sections")
 set(COPT      "-Os -lm -lprintf_flt")

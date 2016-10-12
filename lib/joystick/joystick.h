@@ -75,23 +75,28 @@ public:
     Joystick(const Joystick&) = delete;
 
     /**
-    * Return true if the joystick controller is to the right
+    * Returns true if the joystick controller is to the right
     */
     bool IsRight();
 
     /**
-    * Return true if the joystick controller is to the left
+    * Returns true if the joystick controller is to the left
     */
     bool IsLeft();
 
     /**
-    *Return true if the joystick controller is down
+    *Returns true if the joystick controller is down
     */
     bool IsDown();
 
     /**
-    * Return true if the joystick controller is up
+    * Returns true if the joystick controller is up
     */
     bool IsUp();
+
+    /**
+    * Returns true if the button is pushed down
+    */
+    bool ButtonIsDown();
 
 };

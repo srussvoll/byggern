@@ -8,6 +8,9 @@ void Joystick::Init(Quantization levels, float threshold, ADC* adc_x, ADC* adc_y
     this->adc_x = adc_y;
     this->threshold = threshold;
     this->levels = levels;
+
+    // Init PORTE2 as write for button
+    DDRE &= ~(1 << DDE2);
 }
 
 bool Joystick::IsRight() {
@@ -44,4 +47,8 @@ bool Joystick::IsUp() {
         ;
     }
     return y_value < uint8_t (threshold*levels.y_max);
+}
+
+bool Joystick::ButtonIsDown() {
+    return (((PORTE >> PORTE2) & 1) == 0);
 }

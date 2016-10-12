@@ -113,6 +113,7 @@ target_compile_definitions(${NODE1_NAME} PUBLIC -DBAUD=${NODE1_BAUD})
 target_compile_definitions(${NODE1_NAME} PUBLIC -DMCU=${NODE1_MCU})
 target_compile_options(${NODE1_NAME} PUBLIC ${CNODE1_MCU})
 target_link_libraries(${NODE1_NAME} PUBLIC ${CNODE1_MCU})
+target_link_libraries(${NODE1_NAME} PUBLIC "-Wl,-Map=${BUILD_PATH}/${NODE1_NAME}.map")
 target_link_libraries(${NODE1_NAME} PUBLIC ${NODE1_HEAP_LOCATION})
 
 target_compile_definitions(${NODE2_NAME} PUBLIC -DF_CPU=${NODE2_F_CPU})
@@ -120,6 +121,8 @@ target_compile_definitions(${NODE2_NAME} PUBLIC -DFOSC=${NODE2_FOSC})
 target_compile_definitions(${NODE2_NAME} PUBLIC -DBAUD=${NODE2_BAUD})
 target_compile_definitions(${NODE2_NAME} PUBLIC -DMCU=${NODE2_MCU})
 target_compile_options(${NODE2_NAME} PUBLIC ${CNODE2_MCU})
+target_link_libraries(${NODE2_NAME} PUBLIC ${CNODE2_MCU})
+target_link_libraries(${NODE2_NAME} PUBLIC "-Wl,-Map=${BUILD_PATH}/${NODE2_NAME}.map")
 
 # Compiling targets
 add_custom_target(doxygen       ${DOXYGEN} ${BASE_PATH}/Doxyfile WORKING_DIRECTORY ${BASE_PATH})

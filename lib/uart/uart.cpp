@@ -42,9 +42,11 @@ void UART::Write(uint8_t *string, uint16_t size) {
 
     // Start the transmission
     this->StartTransmission();
+
+
 }
 
-void UART::StartTransmission() {
+inline void UART::StartTransmission() {
     if (!this->ongoing_transmission) {
         this->ongoing_transmission = true;
 

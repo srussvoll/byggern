@@ -1,6 +1,4 @@
-#ifndef UART_H_
-#define UART_H_
-
+#pragma once
 #define MYUBRR FOSC/16/BAUD-1
 
 #include <avr/io.h>
@@ -10,7 +8,7 @@
 /**
  * @file
  * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
- * @version 1.0
+ * @version 1.1
  *
  * An interface for handling streams with default methods.
  */
@@ -57,15 +55,19 @@ private:
     */
     UART();
 
+    /**
+    * A bool to indicate whether or not a transmission is going on
+    */
     bool ongoing_transmission = false;
 
-    void StartTransmission();
+    /**
+    * Starts the transmission. Just a void-void function to modulize
+    */
+    inline void StartTransmission();
 
     /**
-     * The interrupt handler vector. To be run on each DRE interrupt
-     */
+    * The interrupt handler vector. To be run on each DRE interrupt
+    */
     friend void USART0_UDRE_vect();
 
 };
-
-#endif

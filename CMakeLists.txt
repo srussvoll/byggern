@@ -139,7 +139,7 @@ add_custom_target(size1          ${AVRSIZE} -C --mcu=${NODE1_MCU} ${BUILD_PATH}/
 add_custom_target(strip2 ALL     ${AVRSTRIP} "${BUILD_PATH}/${NODE2_NAME}.elf" DEPENDS ${NODE2_NAME})
 add_custom_target(hex2   ALL     ${OBJCOPY} -R .eeprom -O ihex "${BUILD_PATH}/${NODE2_NAME}.elf" "${BUILD_PATH}/${NODE2_NAME}.hex" DEPENDS strip2)
 add_custom_target(eeprom2        ${OBJCOPY} -j .eeprom --change-section-lma .eeprom=0 -O ihex "${BUILD_PATH}/${NODE2_NAME}.elf" "${BUILD_PATH}/${NODE2_NAME}.eeprom" DEPENDS strip2)
-add_custom_target(disassemble1   ${OBJDUMP} -S "${BUILD_PATH}/${NODE2_NAME}.elf" > "${BUILD_PATH}/${NODE2_NAME}.lst" DEPENDS ${NODE2_NAME})
+add_custom_target(disassemble2   ${OBJDUMP} -S "${BUILD_PATH}/${NODE2_NAME}.elf" > "${BUILD_PATH}/${NODE2_NAME}.lst" DEPENDS ${NODE2_NAME})
 # Flashing targets
 add_custom_target(flash2         ${AVRDUDE} -c ${NODE2_PROG_TYPE} -p ${NODE2_MCU} -P ${NODE2_USBPORT} -B ${NODE2_BITCLOCK} -U flash:w:${BUILD_PATH}/${NODE2_NAME}.hex DEPENDS hex2)
 add_custom_target(flash_eeprom2  ${AVRDUDE} -c ${NODE2_PROG_TYPE} -p ${NODE2_MCU} -P ${NODE2_USBPORT} -B ${NODE2_BITCLOCK} -U eeprom:w:${BUILD_PATH}/${NODE2_NAME}.hex DEPENDS eeprom2)

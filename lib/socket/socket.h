@@ -11,7 +11,7 @@ public:
      */
     static SOCKET& GetInstance(uint8_t id){
         if(id == 1){
-            static SOCKET instance;
+gk             static SOCKET instance;
             return instance;
         }else if (id == 2){
             static SOCKET instance;

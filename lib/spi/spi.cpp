@@ -39,6 +39,7 @@ namespace SPI_N{
                 *spi.current_pin.port |= (1<<spi.current_pin.pin);
                 // Disable interrupts
                 SPCR &= ~(1<<SPIE);
+
             }
         }
 
@@ -114,15 +115,10 @@ namespace SPI_N{
         this->FlushInputBuffer();
     }
 
-    void SPI::Write(uint8_t *string, uint16_t size) {
-        Stream::Write(string, size);
-
-        // Initialize Transmission
-        this->InitializeTransmission();
-    }
 
 
     void SPI::WriteByte(uint8_t byte, bool wait) {
+        while(this->ongoing_transmission){}
         Stream::WriteByte(byte);
         if(!wait){
             this->InitializeTransmission();
@@ -130,6 +126,7 @@ namespace SPI_N{
     }
 
     void SPI::WriteByteAndThrowAwayData(uint8_t byte, bool wait) {
+        while(this->ongoing_transmission){}
         Stream::WriteByte(byte);
         this->throw_away_data_count += 1;
         if(!wait){

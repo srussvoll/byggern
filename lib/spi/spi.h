@@ -72,13 +72,6 @@ namespace SPI_N{
         void Initialize(PIN *pins, uint8_t number_of_pins, bool clock_polarity_falling, bool clock_phase_trailing);
 
         /**
-         * Write the inserted string to output (i.e. write to SPI selected by SetDevice)
-         * @param string The "data string" that shall be written to the output
-         * @param size the size of the data string
-        */
-        void Write(uint8_t *string, uint16_t size);
-
-        /**
          * Writes a byte to the output stream. Puts the returned data into the input stream
          * @param byte The byte to be sent
          * @param wait If set, the SPI driver will not start the transmission of the output buffer
@@ -104,7 +97,7 @@ namespace SPI_N{
         /**
          * A bool indicating wether or not an outgoing transmission is ongoing
          */
-        bool ongoing_transmission = false;
+        volatile bool ongoing_transmission = false;
         /**
          * A struct of the type PIN which indicates which pin is currently selected.
          */

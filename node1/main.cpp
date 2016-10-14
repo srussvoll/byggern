@@ -12,6 +12,7 @@
 #include "lib/mcp2515/mcp2515.h"
 #include "lib/mcp2515/mcp2515_regisers.h"
 #include "lib/spi/spi.h"
+#include "lib/can/can.h"
 
 uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;
@@ -61,10 +62,10 @@ void SPITest();
 void OLEDTest();
 
 int main(void) {
-    SPITest();
+    //SPITest();
     //OLEDTest();
 }
-
+/*
 void SPITest(){
     _delay_ms(100);
     SPI_N::SPI &my_spi = SPI_N::SPI::GetInstance();
@@ -76,25 +77,35 @@ void SPITest(){
     my_spi.SetDevice(ss);
 
     MCP2515 &my_mcp = MCP2515::GetInstance();
-    my_mcp.Initialize(&my_spi, nullptr);
+    my_mcp.Initialize(&my_spi, nullptr, 0x01);
 
     printf("start\n");
 
     my_mcp.SetLoopback();
-    while(1){
+    uint8_t data_to_send[] = {0x23, 0x59, 0xaa};
+    CAN_MESSAGE message = CAN_MESSAGE(3, data_to_send, 0x01);
+    my_mcp.LoadTxFrame(message);
+    my_mcp.RequestToSend();
+    printf("Sent\n");
+    _delay_ms(100);
+    uint8_t byte;
+    my_mcp.RxStatus(byte);
+    printf("RX STATUS = %2x \n", byte);
+    uint8_t data_to_rec[8];
+    CAN_MESSAGE rec_mess = CAN_MESSAGE(0,data_to_rec,0);
+    my_mcp.ReadRxFrame(rec_mess);
+    for(int i = 0; i < rec_mess.size; i++){
+        printf("%d - BYTE = %2x \n", i, rec_mess.data[i]);
+    }
+*//*    while(1){
         uint8_t byte;
-        my_mcp.ReadFromRegister(MCP_CANCTRL,byte);
-        //my_mcp.RxStatus(byte);
-        _delay_ms(100);
-        printf("BYTE = %2x \n", byte);
-        my_mcp.ReadFromRegister(MCP_CANCTRL,byte);
-        //my_mcp.RxStatus(byte);
-        _delay_ms(100);
+        //my_mcp.ReadFromRegister(MCP_TXB0CTRL,byte);
+        my_mcp.RxStatus(byte);
         printf("BYTE = %2x \n", byte);
         break;
-    }
+    }*//*
 
-};
+};*/
 
 void OLEDTest(){
     _delay_ms(500);

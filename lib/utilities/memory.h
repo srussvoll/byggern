@@ -1,3 +1,4 @@
+#if MCU=='atmega162'
 #pragma once
 
 namespace Utilities {
@@ -6,3 +7,4 @@ namespace Utilities {
     */
     void InitializeMemory();
 }
+#endif

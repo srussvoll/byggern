@@ -27,8 +27,8 @@ set(NODE1_USBPORT usb)
 set(NODE1_BITCLOCK 1)
 
 set(NODE2_PROG_TYPE wiring)
-set(NODE2_USBPORT usb)
-set(NODE2_BITCLOCK 1)
+set(NODE2_USBPORT /dev/ttyACM0)
+set(NODE2_BITCLOCK 10)
 
 # Program names
 set(AVRC     avr-gcc)

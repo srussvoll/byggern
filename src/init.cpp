@@ -17,4 +17,8 @@ void init_hardware_drivers() {
     Utilities::EnablePrintf(uart);
 }
 
+#elseif __AVR_ATMega2560_
+
+// Add the init for  node2
+
 #endif

@@ -1,3 +1,4 @@
+#ifdef __AVR_ATMega162__
 #include "joystick.h"
 
 Joystick::Joystick() {
@@ -54,3 +55,5 @@ bool Joystick::IsUp() {
 bool Joystick::ButtonIsDown() {
     return (((PORTE >> PORTE2) & 1) == 0);
 }
+
+#endif

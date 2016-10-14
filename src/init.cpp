@@ -1,3 +1,5 @@
+#ifdef __AVR_ATMega162__
+
 #include "init.h"
 
 #include <avr/io.h>
@@ -14,3 +16,5 @@ void init_hardware_drivers() {
     uart.Init(9600);
     Utilities::EnablePrintf(uart);
 }
+
+#endif

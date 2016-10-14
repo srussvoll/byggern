@@ -8,6 +8,6 @@ private:
     uint16_t min;
     uint16_t max;
 public:
-    Servo(uint8_t pin, uint16_t min, uint16_t max);
+    Servo(uint16_t min, uint16_t max);
     void SetAngle(int16_t angle);
 };

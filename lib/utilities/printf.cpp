@@ -5,7 +5,7 @@ namespace {
     Stream *output_stream;
     int put(char c, FILE* f) {
         // Enforce printf when debugging!
-        #if DEBUG
+        #ifdef DEBUG
         sei();
         #endif
 

@@ -1,3 +1,9 @@
+// Make the syntax highlighter highlight the preferred device code.
+// FIXME: (finish) Remove this.
+#if DEBUG
+#define __AVR_ATmega2560__
+#endif
+
 #ifdef __AVR_ATmega2560__
 
 #include "servo.h"

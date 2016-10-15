@@ -83,7 +83,7 @@ namespace SPI_N{
 
         // Remember that you need to run SetDevice in order to select a device.
 
-        for(int i = 0; i < number_of_pins; ++i){
+        for(uint8_t i = 0; i < number_of_pins; ++i){
             // Set direction of pin
             *pins[i].ddr |= (1<<pins[i].pin);
             // Set the pin default to high

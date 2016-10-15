@@ -12,6 +12,7 @@
 #include "lib/mcp2515/mcp2515.h"
 #include "lib/mcp2515/mcp2515_regisers.h"
 #include "lib/spi/spi.h"
+#include "lib/joystick/joystick.h"
 
 uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;
@@ -95,12 +96,7 @@ void OLEDTest(){
     _delay_ms(500);
     printf("\n\n\n----------------------------------------\n");
 
-    while (true) {}
-}
-#pragma clang diagnostic pop
-
-
-/* OLED &my_oled = OLED::GetInstance();
+    OLED &my_oled = OLED::GetInstance();
     my_oled.Init(128,64);
     my_oled.SetFont(Fonts::f8x8, 8, 8);
 
@@ -148,7 +144,7 @@ void OLEDTest(){
 
     controller.Render();
 
-    for (int i = 0; i < 4; ++i) {
+    for (uint8_t i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
     }
@@ -156,16 +152,16 @@ void OLEDTest(){
     controller.ExecuteItem();
     controller.Render();
 
-    for (int i = 0; i < 1; ++i) {
+    for (uint8_t i = 0; i < 1; ++i) {
         _delay_ms(200);
         controller.SelectNext();
     }
 
     controller.GoToParent();
-    for (int i = 0; i < 4; ++i) {
+    for (uint8_t i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
-    } *//*
+    }
 
     // ADC and joystick testing
     Joystick& my_joystick = Joystick::GetInstance();
@@ -181,14 +177,21 @@ void OLEDTest(){
     my_joystick.Init(levels, percentage, &adc_x, &adc_y);
 
     while(true){
-        *//*adc_x.request_sample();
+        adc_x.request_sample();
         uint8_t byte;
         while(!adc_x.ReadByte(byte)){
             ;
         }
-        printf("tall %d \n", byte);*//*
+        printf("tall %d \n", byte);
         if(my_joystick.IsRight()){
             printf("i am right \n");
         }
         _delay_ms(10);
-    }*/
+    }
+
+
+    while (true) {}
+}
+#pragma clang diagnostic pop
+
+

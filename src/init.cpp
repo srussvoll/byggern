@@ -1,4 +1,4 @@
-#ifdef __AVR_ATMega162__
+#ifdef __AVR_ATmega162__
 
 #include "init.h"
 
@@ -17,7 +17,7 @@ void init_hardware_drivers() {
     Utilities::EnablePrintf(uart);
 }
 
-#elseif __AVR_ATMega2560_
+#elif __AVR_ATmega2560__
 
 // Add the init for  node2
 

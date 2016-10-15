@@ -1,4 +1,4 @@
-#ifdef __AVR_ATMega162_
+#ifdef __AVR_ATmega162__
 
 #include "memory.h"
 #include <avr/io.h>

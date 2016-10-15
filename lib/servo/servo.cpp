@@ -1,3 +1,5 @@
+#ifdef __AVR_ATmega2560__
+
 #include "servo.h"
 #include <avr/io.h>
 
@@ -15,3 +17,5 @@ Servo::Servo(uint16_t min, uint16_t max) : min(min), max(max) {
 void Servo::SetAngle(int16_t angle) {
 
 }
+
+#endif

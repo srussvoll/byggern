@@ -1,5 +1,5 @@
 #pragma once
-#ifdef __AVR_ATMega162__
+#ifdef __AVR_ATmega162__
 #include "../adc/adc.h"
 
 struct Quantization{

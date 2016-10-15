@@ -4,7 +4,7 @@
 * Pins used to port the UART from ATMega162 to ATMega2560
 */
 
-#ifdef __AVR_ATMega162__
+#ifdef __AVR_ATmega162__
 
 #define DATA_REGISTER                       UDR0
 #define BAUD_RATE_HIGHER                    UBRR0H

@@ -25,9 +25,9 @@ void UART::Init(uint16_t baud_rate) {
 
 
 	// Sets format to eight data bits and two stop bits
-#ifdef __AVR_ATMega162__
+#ifdef __AVR_ATmega162__
     USART_CONTROL_STATUS_REGISTER_0C = (1<<REGISTER_SELECT_0)|(3<<CHARATCER_SIZE_0)|(1<<STOP_BIT_SELECT_0);
-#elseif __AVR_ATMega2560_
+#elif __AVR_ATmega2560__
     USART_CONTROL_STATUS_REGISTER_0C = (3<<CHARATCER_SIZE_0)|(1<<STOP_BIT_SELECT_0);
 #endif
 

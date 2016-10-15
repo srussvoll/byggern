@@ -1,5 +1,5 @@
-#if MCU=='atmega162'
 #pragma once
+#ifdef __AVR_ATmega162__
 
 namespace Utilities {
     /**

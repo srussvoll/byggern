@@ -40,7 +40,7 @@ namespace Menu {
     void Controller::ControlGoToItem(uint8_t index) {
         this->current_item_control = this->current_menu_control->first;
 
-        for (int i = 0; i < index; ++i) {
+        for (uint8_t i = 0; i < index; ++i) {
             this->current_item_control = this->current_item_control->next;
         }
     }
@@ -116,7 +116,7 @@ namespace Menu {
     void Controller::GoToItem(uint8_t index) {
         this->current_item_navigate = this->current_menu_navigate->first;
 
-        for (int i = 0; i < index; ++i) {
+        for (uint8_t i = 0; i < index; ++i) {
             this->current_item_navigate = this->current_item_navigate->next;
         }
     }
@@ -165,7 +165,7 @@ namespace Menu {
         do {
             oled->WriteLine(this->current_item_navigate->label, this->current_item_navigate->label_length, i, 2);
 
-            for(int j = 0; j < current_item_navigate->label_length; j++){
+            for(uint8_t j = 0; j < current_item_navigate->label_length; j++){
                 printf("%c", this->current_item_navigate->label[j]);
             }
             printf("\n");

@@ -17,6 +17,7 @@
 #define REGISTER_SELECT_0                   URSEL0
 #define STOP_BIT_SELECT_0                   USBS0
 #define CHARATCER_SIZE_0                    UCSZ00
+#define MYUBRR                              FOSC/16/BAUD-1
 
 #else
 

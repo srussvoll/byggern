@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['selectnext',['SelectNext',['../class_menu_1_1_controller.html#a9aabc6ba652c29efa7a02e12f51ce0b1',1,'Menu::Controller']]],
-  ['selectprevious',['SelectPrevious',['../class_menu_1_1_controller.html#a04e3448cfe4341ad7209a9f16bbcb449',1,'Menu::Controller']]],
-  ['setfont',['SetFont',['../class_o_l_e_d.html#abe6073c961cadc4c9b693eb8dc8198bd',1,'OLED']]],
-  ['setloopback',['SetLoopback',['../class_m_c_p2515.html#a7aac5fdb713b83933391348f1188f2b9',1,'MCP2515']]],
-  ['setnumberoflines',['SetNumberOfLines',['../class_o_l_e_d.html#aa3c88e19f05340036ea5ac9e2d1ea5dc',1,'OLED']]],
-  ['spi',['SPI',['../class_s_p_i___n_1_1_s_p_i.html#ab486ba0f0d9ec880520e568762cc6c7d',1,'SPI_N::SPI::SPI(const SPI &amp;)=delete'],['../class_s_p_i___n_1_1_s_p_i.html#a8fec1a6e642a5758acf974b92e28a9e6',1,'SPI_N::SPI::SPI()']]],
-  ['stream',['Stream',['../class_stream.html#a2b738d6f4d3059de2ae3d444d68663bf',1,'Stream']]]
+  ['read',['Read',['../class_stream.html#a851572e5787cd98383d5118de378724b',1,'Stream']]],
+  ['readbyte',['ReadByte',['../class_stream.html#a6db4180f5834073f992608b856bddca2',1,'Stream']]],
+  ['readbytefrombuffer',['ReadByteFromBuffer',['../class_stream.html#a32e449304f65b5571fe848a503fc9d68',1,'Stream']]],
+  ['readbytefromoutputstream',['ReadByteFromOutputStream',['../class_stream.html#a3f8e3c5513c6b8605c0fed74a3ed22bc',1,'Stream']]],
+  ['readfrombuffer',['ReadFromBuffer',['../class_stream.html#a752930f620aed4a3a80b243ce66e57ca',1,'Stream']]],
+  ['readfromoutputstream',['ReadFromOutputStream',['../class_stream.html#ab458be72cc54330f518f5ab35ab84106',1,'Stream']]],
+  ['render',['Render',['../class_menu_1_1_controller.html#af46abb3d242c76822c0e8ea8ab777fa5',1,'Menu::Controller']]],
+  ['repaint',['Repaint',['../class_o_l_e_d.html#a3efa34861b4ae0bc5323f6b7cf1d8a01',1,'OLED']]],
+  ['requesttosend',['RequestToSend',['../class_m_c_p2515.html#a5a218199ca1dfcb25cb95890bc0220fc',1,'MCP2515']]]
 ];

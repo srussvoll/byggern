@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['int2_5fvect',['INT2_vect',['../class_a_d_c.html#a8f7964aad4550f29972483135452c811',1,'ADC']]]
+  ['spi_5fstc_5fvect',['SPI_STC_vect',['../class_s_p_i___n_1_1_s_p_i.html#a96543550133e0b0c6ae83faad5c0d68d',1,'SPI_N::SPI']]]
 ];

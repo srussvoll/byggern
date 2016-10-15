@@ -5,6 +5,7 @@ var class_m_c_p2515 =
     [ "BitModify", "class_m_c_p2515.html#aa9a35fe139adf1fccaaceec561544c14", null ],
     [ "GetInstance", "class_m_c_p2515.html#a3f53839a9258086fd21e2fc4190de60d", null ],
     [ "Initialize", "class_m_c_p2515.html#a41921933b4f2595e8935f8432dd8d65b", null ],
+    [ "LoadTxFrame", "class_m_c_p2515.html#af52ebd6ba07f580b2be8facbe8039855", null ],
     [ "ReadFromRegister", "class_m_c_p2515.html#a09ef6973daccbf868d89986e727cfa1b", null ],
     [ "ReadStatus", "class_m_c_p2515.html#ae466f10eea5ccf0f36439757d4baf6b5", null ],
     [ "RequestToSend", "class_m_c_p2515.html#a5a218199ca1dfcb25cb95890bc0220fc", null ],

@@ -1,4 +1,4 @@
-#ifdef __AVR_ATMega162__
+#ifdef __AVR_ATmega162__
 #include "joystick.h"
 
 Joystick::Joystick() {

@@ -74,8 +74,10 @@ file(GLOB NODE2_SRC_FILES "${NODE2_NAME}/*.c" "${NODE2_NAME}/*.cpp" "${NODE2_NAM
 set(CSTANDARD          "-std=gnu11")
 set(CXXSTANDARD        "-std=c++11")
 set(CDEBUG             "-gstabs -g -ggdb")
-set(CWARN              "-Wall -Wstrict-prototypes -Wl,--gc-sections -Wl,--relax")
-set(CTUNING            "-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -ffunction-sections -fdata-sections")
+set(CONLYWARN          "-Wstrict-prototypes")
+set(CWARN              "-Wall -Wno-unknown-pragmas")
+set(CLINKER            #[[-Wl,--gc-sections -Wl,--relax]] "")
+set(CTUNING            "-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -ffunction-sections -fdata-sections" #[[-mrelax]])
 set(COPT               "-Os -lm -lprintf_flt")
 set(ENABLE_SINGLETON   "-fno-threadsafe-statics") # This isn't implemented in avr-g++ anyway, and without this singletons don't work...
 set(DISABLE_EXCEPTIONS "-fno-exceptions") # This isn't implemented in avr-g++. Turn it off so the code doesn't try to cast an exception.
@@ -91,8 +93,8 @@ set(NODE1_HEAP_LOCATION "-Wl,--section-start,.data=0x804000,--defsym=__heap_end=
 #set(NODE1_HEAP_LOCATION "")
 
 # Set the flags in the toolchain
-set(CFLAGS   "${CDEBUG} ${COPT} ${HEAP_LOCATION} ${CWARN} ${CSTANDARD} ${CTUNING}")
-set(CXXFLAGS "${CDEBUG} ${COPT} ${HEAP_LOCATION} ${CXXSTANDARD} ${ENABLE_SINGLETON} ${DISABLE_EXCEPTIONS} ${CTUNING}")
+set(CFLAGS   "${CDEBUG} ${COPT} ${CLINKER} ${HEAP_LOCATION} ${CWARN} ${CSTANDARD} ${CTUNING} ${CONLYWARN}")
+set(CXXFLAGS "${CDEBUG} ${COPT} ${CLINKER} ${HEAP_LOCATION} ${CWARN} ${CXXSTANDARD} ${CTUNING} ${ENABLE_SINGLETON} ${DISABLE_EXCEPTIONS}")
 
 set(CMAKE_C_FLAGS   "${CFLAGS}")
 set(CMAKE_CXX_FLAGS "${CXXFLAGS}")

@@ -1,3 +1,11 @@
+// Make the syntax highlighter highlight the preferred device code.
+// FIXME: (finish) Remove this.
+#if DEBUG
+#define __AVR_ATmega2560__
+#endif
+
+#ifdef __AVR_ATmega2560__
+
 #include "servo.h"
 #include <avr/io.h>
 
@@ -15,3 +23,5 @@ Servo::Servo(uint16_t min, uint16_t max) : min(min), max(max) {
 void Servo::SetAngle(int16_t angle) {
 
 }
+
+#endif

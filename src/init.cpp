@@ -1,4 +1,4 @@
-#ifdef __AVR_ATMega162__
+#ifdef __AVR_ATmega162__
 
 #include "init.h"
 
@@ -16,5 +16,9 @@ void init_hardware_drivers() {
     uart.Init(9600);
     Utilities::EnablePrintf(uart);
 }
+
+#elif __AVR_ATmega2560__
+
+// Add the init for  node2
 
 #endif

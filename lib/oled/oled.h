@@ -126,12 +126,12 @@ private:
     /**
     * Width of display
     */
-    uint16_t display_width = 0;
+    uint8_t display_width = 0;
 
     /**
     * Height of display
     */
-    uint16_t display_height = 0;
+    uint8_t display_height = 0;
 
     /**
     * Number of pages

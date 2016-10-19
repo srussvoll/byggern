@@ -1,6 +1,6 @@
 #include "adc.h"
 
-#ifdef __AVR_ATMega162__
+#ifdef __AVR_ATmega162__
 
 volatile bool ADC::adc_in_use = false;
 

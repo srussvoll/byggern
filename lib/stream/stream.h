@@ -67,9 +67,9 @@ protected:
      */
     uint16_t output_buffer_size;
 
-    void (*event_input_buffer_not_empty)() = nullptr;
+    void (*event_input_buffer_not_empty)(Stream *stream) = nullptr;
 
-    void (*event_output_buffer_not_empty)() = nullptr;
+    void (*event_output_buffer_not_empty)(Stream *stream) = nullptr;
 
     /**
      * Flag indicating whether the buffer is empty or full.
@@ -120,7 +120,7 @@ protected:
      * @param cb_flag A flag indicating wether or not the cb function should be called
      * @param cb Callback function to be called if cb_flag is true
      */
-    virtual void WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t *string, uint16_t &string_size, void (*cb)());
+    virtual void WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t *string, uint16_t &string_size, void (*cb)(Stream *stream));
 
     /**
      * Reads a byte from the given buffer.
@@ -145,7 +145,7 @@ protected:
      * @param cb_flag A flag indicating wether or not the cb function should be called
      * @param cb Callback function to be called if cb_flag is true
      */
-    virtual void WriteByteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t &byte, void (*cb)());
+    virtual void WriteByteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t &byte, void (*cb)(Stream *stream));
 
     /**
      * Writes a byte to the input stream.

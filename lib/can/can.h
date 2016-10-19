@@ -1,5 +1,4 @@
 #pragma once
-#include "../stream/stream.h"
 
 struct CAN_MESSAGE{
     uint8_t size;
@@ -9,8 +8,7 @@ struct CAN_MESSAGE{
 };
 class CAN{
 public:
-    void SendMessage(CAN_MESSAGE &message);
-
+    virtual void SendMessage(CAN_MESSAGE &message) = 0;
 
     void SetUpperLevel(void (*handler)(CAN_MESSAGE &data)) {
         this->upper_level = handler;

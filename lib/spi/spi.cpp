@@ -13,6 +13,7 @@ namespace SPI_N{
 
         // Put data into the buffer
         if(spi.throw_away_data_count == 0){
+            printf("here");
             uint8_t byte = SPDR;
             spi.WriteByteToInputStream(byte);
 
@@ -90,6 +91,7 @@ namespace SPI_N{
             // Set the pin default to high
             *pins[i].port |= (1<<pins[i].pin);
         }
+        printf("SPI DONE \n");
     }
 
 

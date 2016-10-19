@@ -60,12 +60,19 @@ void SRAM_test(uint16_t seed) {
 
 void SPITest();
 void OLEDTest();
-
+void CanTest();
 int main(void) {
-    //SPITest();
+    SPITest();
     //OLEDTest();
+    //CanTest();
 }
-/*
+
+void CanTest(){
+    MCP2515 &mcp = MCP2515::GetInstance();
+    SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
+
+}
+
 void SPITest(){
     _delay_ms(100);
     SPI_N::SPI &my_spi = SPI_N::SPI::GetInstance();
@@ -77,18 +84,19 @@ void SPITest(){
     my_spi.SetDevice(ss);
 
     MCP2515 &my_mcp = MCP2515::GetInstance();
-    my_mcp.Initialize(&my_spi, nullptr, 0x01);
+    my_mcp.Initialize(&my_spi, 0x01);
 
-    printf("start\n");
-
+    printf("\nstart\n");
     my_mcp.SetLoopback();
     uint8_t data_to_send[] = {0x23, 0x59, 0xaa};
     CAN_MESSAGE message = CAN_MESSAGE(3, data_to_send, 0x01);
     my_mcp.LoadTxFrame(message);
+    _delay_ms(10);
     my_mcp.RequestToSend();
-    printf("Sent\n");
+    _delay_ms(10);
+    printf("Sekt\n");
     _delay_ms(100);
-    uint8_t byte;
+    /*uint8_t byte;
     my_mcp.RxStatus(byte);
     printf("RX STATUS = %2x \n", byte);
     uint8_t data_to_rec[8];
@@ -96,16 +104,9 @@ void SPITest(){
     my_mcp.ReadRxFrame(rec_mess);
     for(int i = 0; i < rec_mess.size; i++){
         printf("%d - BYTE = %2x \n", i, rec_mess.data[i]);
-    }
-*//*    while(1){
-        uint8_t byte;
-        //my_mcp.ReadFromRegister(MCP_TXB0CTRL,byte);
-        my_mcp.RxStatus(byte);
-        printf("BYTE = %2x \n", byte);
-        break;
-    }*//*
-
-};*/
+    }*/
+    printf("done\n");
+};
 
 void OLEDTest(){
     _delay_ms(500);

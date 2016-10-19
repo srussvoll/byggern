@@ -2,46 +2,54 @@
 #include "mcp2515.h"
 #include "mcp2515_regisers.h"
 #include "../utilities/printf.h"
-void MCP2515_INT(){
-    printf("MCP INT");
+#include "../uart/uart.h"
+#include <util/delay.h>
+void INT0_vect(){
+    char nn[] = "SSS\n";
+    UART::GetInstance().Write((uint8_t *)nn, 4);
+    _delay_ms(10);
     MCP2515 &mcp = MCP2515::GetInstance();
     uint8_t interrupt_flags;
     mcp.ReadFromRegister(MCP_CANINTF, interrupt_flags);
+    /*
 
-    if(interrupt_flags & (1<<MCP_TX0IF)){
+
+    if(interrupt_flags & (MCP_TX0IF)){
         // Transmission complete
         mcp.clear_to_send = true;
         // Clear the interrupt
-        uint8_t bitmask = (1<<MCP_TX0IF);
+        uint8_t bitmask = (MCP_TX0IF);
         mcp.BitModify(MCP_CANINTF, bitmask, 0x00);
+        char nn[] = "ADD\n";
+        UART::GetInstance().Write((uint8_t *)nn, 4);
     }
-    if(interrupt_flags & (1<<MCP_RX0IF)){
+
+    if(interrupt_flags & (MCP_RX0IF)){
         // We got a new message
-        //mcp.InterruptHandler();
         uint8_t data_to_rec[8];
         CAN_MESSAGE rec_mess = CAN_MESSAGE(0,data_to_rec,0);
         mcp.ReadRxFrame(rec_mess);
-        (*mcp.upper_level)(rec_mess);
+        //(*mcp.upper_level)(rec_mess);
         // Clear the interrupt
-        uint8_t bitmask = (1<<MCP_RX0IF);
+        uint8_t bitmask = (MCP_RX0IF);
         mcp.BitModify(MCP_CANINTF, bitmask, 0x00);
-    }
+
+        char nn[] = "KKK\n";
+        UART::GetInstance().Write((uint8_t *)nn, 4);
+    }*/
 }
 
-void MCP2515::Initialize(SPI_N::SPI *spi, SPI_N::PIN *interrupt_pin, uint16_t identifier) {
+void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
     this->spi_driver = spi;
-    this->interrupt_pin = interrupt_pin;
-    sei();
-    *this->interrupt_pin->ddr &= ~(1<<this->interrupt_pin->pin);
-    GICR |= (1 << INT0);
-    MCUCR |= (1<<ISC01);
-    MCUCR &= ~(1<<ISC00);
 
+    sei();
+
+    GICR |= (1 << INT0);
+    MCUCR |= (2<<ISC00);
 
     // Assuming the SPI is already initialized
 
     this->Reset();
-
     // Set interrupts
     this->WriteToRegister(MCP_CANINTE, 0b00000101);
 
@@ -111,6 +119,11 @@ void MCP2515::SetNormal() {
 }
 
 void MCP2515::LoadTxFrame(CAN_MESSAGE &message) {
+    // TODO: Use sequential writes fully
+    /*
+     * We cannot load another TX buffer if we are not clear to send, since we only use one buffer. We therefor need to
+     * wait in order to send a new one.
+     */
     while(!this->clear_to_send);
     this->clear_to_send = false;
     // We need the first 11 bits of ID

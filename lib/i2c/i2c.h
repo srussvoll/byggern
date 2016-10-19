@@ -110,5 +110,6 @@ public:
      * @return The I2C error code
      */
     uint8_t GetDataFromTransceiver(uint8_t *message, uint8_t message_size);
+
 };
 

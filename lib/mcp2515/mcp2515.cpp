@@ -5,13 +5,14 @@
 #include "../uart/uart.h"
 #include <util/delay.h>
 void INT0_vect(){
+    sei();
     char nn[] = "SSS\n";
     UART::GetInstance().Write((uint8_t *)nn, 4);
     _delay_ms(10);
     MCP2515 &mcp = MCP2515::GetInstance();
     uint8_t interrupt_flags;
     mcp.ReadFromRegister(MCP_CANINTF, interrupt_flags);
-    /*
+
 
 
     if(interrupt_flags & (MCP_TX0IF)){
@@ -36,7 +37,7 @@ void INT0_vect(){
 
         char nn[] = "KKK\n";
         UART::GetInstance().Write((uint8_t *)nn, 4);
-    }*/
+    }
 }
 
 void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {

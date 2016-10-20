@@ -20,3 +20,8 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
         this->can->SendMessage(message);
     }
 }
+
+void SOCKET::WriteByte(uint8_t byte) {
+    uint8_t string[] = {byte};
+    this->Write(string,8);
+}

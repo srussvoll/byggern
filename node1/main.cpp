@@ -12,7 +12,7 @@
 #include "lib/mcp2515/mcp2515.h"
 #include "lib/mcp2515/mcp2515_regisers.h"
 #include "lib/spi/spi.h"
-#include "lib/can/can.h"
+#include "lib/socket/socket.h"
 
 uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;
@@ -61,6 +61,7 @@ void SRAM_test(uint16_t seed) {
 void SPITest();
 void OLEDTest();
 void CanTest();
+void SocketTest();
 int main(void) {
     SPITest();
     //OLEDTest();
@@ -107,6 +108,31 @@ void SPITest(){
     }*/
     printf("done\n");
 };
+
+void SocketTest(){
+    // Get instance of all the modules
+    SOCKET &s = SOCKET::GetInstance(1);
+    MCP2515 &mcp = MCP2515::GetInstance();
+    SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
+
+    // Initialize SPI
+    SPI_N::PIN ss = SPI_N::PIN(&PORTD, &DDRD, 5);
+    SPI_N::PIN ss_a[] = {ss};
+    spi.Initialize(ss_a, 1, 0, 0);
+    spi.SetDevice(ss);
+
+    // Initialize MCP
+    mcp.Initialize(&spi, 0x01);
+
+    // Initialize the socket
+    s.Initialize(&mcp);
+    char test_string[] = "Hello can";
+    s.Write((uint8_t *)test_string, sizeof(test_string));
+    _delay_ms(10);
+    char rec_mes[30];
+    s.Read((uint8_t *)rec_mes,30);
+    printf("Message is %s", rec_mes);
+}
 
 void OLEDTest(){
     _delay_ms(500);

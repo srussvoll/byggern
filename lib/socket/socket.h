@@ -40,6 +40,8 @@ public:
 
     void Write(uint8_t *string, uint16_t size);
 
+    void WriteByte(uint8_t byte);
+
 private:
     uint8_t id;
 

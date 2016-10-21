@@ -1,11 +1,9 @@
 #include "socket.h"
 #include "../utilities/printf.h"
 
-void SOCKET::Write(uint8_t *string, uint16_t size, uint8_t target_id) {
+void SOCKET::Write(uint8_t *string, uint16_t size) {
     uint16_t data_left = size;
     while(data_left > 0){
-        //printf("New loop, size = %d\n",data_left);
-        // Generate message
         uint8_t can_size;
         uint8_t data[8];
         if(data_left >= 8){
@@ -22,17 +20,13 @@ void SOCKET::Write(uint8_t *string, uint16_t size, uint8_t target_id) {
                 data_left -= 8;
             }
         }
-/*        for(int i = 0; i < can_size; i++){
-            printf("SEND BYTE = %c\n",data[i]);
-        }*/
-        //printf("\nEND OF FRAME \n");
-        CAN_MESSAGE message = CAN_MESSAGE(can_size,data,target_id);
+        CAN_MESSAGE message = CAN_MESSAGE(can_size,data,this->target_id);
         this->can->SendMessage(message);
     }
 }
 
-void SOCKET::WriteByte(uint8_t byte, uint8_t target_id) {
+void SOCKET::WriteByte(uint8_t byte) {
     uint8_t data[] = {byte};
-    CAN_MESSAGE message = CAN_MESSAGE(8,data,target_id);
+    CAN_MESSAGE message = CAN_MESSAGE(8,data,this->target_id);
     this->can->SendMessage(message);
 }

@@ -130,9 +130,9 @@ void SocketTest(){
     mcp.SetLoopback();
 
     // Initialize the socket
-    s.Initialize(&mcp);
+    s.Initialize(&mcp, 1);
     char test_string[] = "This is a long string even longer?";
-    s.Write((uint8_t *)test_string, sizeof(test_string), 1);
+    s.Write((uint8_t *)test_string, sizeof(test_string));
     uint8_t rec_mes[128];
     s.Read(rec_mes,128);
     for(int i = 0; i < sizeof(test_string); i++){
@@ -144,7 +144,7 @@ void SocketTest(){
     s.ReadByte(rec_data);
     printf("Message is %2x", rec_data);*/
 }
-
+/*
 void OLEDTest(){
     _delay_ms(500);
     printf("\n\n\n----------------------------------------\n");
@@ -244,7 +244,7 @@ void OLEDTest(){
 
 
     while (true) {}
-}
+}*/
 #pragma clang diagnostic pop
 
 

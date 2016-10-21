@@ -34,17 +34,20 @@ public:
     SOCKET(uint8_t id) : Stream(128,1), id(id){
     }
 
-    void Initialize(CAN *can){
+    void Initialize(CAN *can, uint8_t target_id){
+        this->target_id = target_id;
         SOCKET::can = can;
         SOCKET::can->SetUpperLevel(&SOCKET::HandleDataFromLowerLevel);
     }
 
-    void Write(uint8_t *string, uint16_t size, uint8_t target_id);
+    void Write(uint8_t *string, uint16_t size);
 
-    void WriteByte(uint8_t byte, uint8_t target_id);
+    void WriteByte(uint8_t byte);
 
 private:
     uint8_t id;
+
+    uint8_t target_id;
 
 
 };

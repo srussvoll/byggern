@@ -55,7 +55,6 @@ void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
     // Set the mask
     this->WriteToRegister(MCP_RXM0SIDH, 0xFF);
     this->WriteToRegister(MCP_RXM0SIDL, (0xFF << 5));
-    printf("Done init!");
 }
 
 void MCP2515::RequestToSend() {

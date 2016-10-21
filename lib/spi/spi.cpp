@@ -13,7 +13,6 @@ namespace SPI_N{
 
         // Put data into the buffer
         if(spi.throw_away_data_count == 0){
-            printf("here");
             uint8_t byte = SPDR;
             spi.WriteByteToInputStream(byte);
 

@@ -18,6 +18,7 @@ uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;
 // volatile char *ext_ram = (char *) malloc(0x1D00 * sizeof(char)); // Start address for the SRAMuint8_t
 
+/*
 void SRAM_test(uint16_t seed) {
     //volatile char *ext_ram = (char *) malloc(0x0500 * sizeof(char)); // Start address for the SRAMuint8_t
     volatile char *ext_ram = (char *) 0x8000; // Start address for the SRAM
@@ -54,6 +55,7 @@ void SRAM_test(uint16_t seed) {
     }
     //printf("SRAM test completed with \n%4d errors in write phase and \n%4d errors in retrieval phase\n\n", write_errors, retrieval_errors);
 }
+*/
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
@@ -63,18 +65,19 @@ void OLEDTest();
 void CanTest();
 void SocketTest();
 int main(void) {
-    SPITest();
+    SocketTest();
+    //SPITest();
     //OLEDTest();
     //CanTest();
 }
 
-void CanTest(){
+/*void CanTest(){
     MCP2515 &mcp = MCP2515::GetInstance();
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
 
-}
+}*/
 
-void SPITest(){
+/*void SPITest(){
     _delay_ms(100);
     SPI_N::SPI &my_spi = SPI_N::SPI::GetInstance();
 
@@ -97,7 +100,7 @@ void SPITest(){
     _delay_ms(10);
     printf("Sekt\n");
     _delay_ms(100);
-    /*uint8_t byte;
+    *//*uint8_t byte;
     my_mcp.RxStatus(byte);
     printf("RX STATUS = %2x \n", byte);
     uint8_t data_to_rec[8];
@@ -105,9 +108,9 @@ void SPITest(){
     my_mcp.ReadRxFrame(rec_mess);
     for(int i = 0; i < rec_mess.size; i++){
         printf("%d - BYTE = %2x \n", i, rec_mess.data[i]);
-    }*/
+    }*//*
     printf("done\n");
-};
+};*/
 
 void SocketTest(){
     // Get instance of all the modules
@@ -123,15 +126,22 @@ void SocketTest(){
 
     // Initialize MCP
     mcp.Initialize(&spi, 0x01);
+    mcp.SetLoopback();
 
     // Initialize the socket
     s.Initialize(&mcp);
-    char test_string[] = "Hello can";
-    s.Write((uint8_t *)test_string, sizeof(test_string));
+    char test_string[] = "This is a long string even longer?";
+    s.Write((uint8_t *)test_string, sizeof(test_string), 1);
+    uint8_t rec_mes[128];
+    s.Read(rec_mes,128);
+    for(int i = 0; i < sizeof(test_string); i++){
+        printf("BYTE = %c\n",rec_mes[i]);
+    }
+/*    s.WriteByte(0xaf, 1);
     _delay_ms(10);
-    char rec_mes[30];
-    s.Read((uint8_t *)rec_mes,30);
-    printf("Message is %s", rec_mes);
+    uint8_t rec_data;
+    s.ReadByte(rec_data);
+    printf("Message is %2x", rec_data);*/
 }
 
 void OLEDTest(){

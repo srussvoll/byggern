@@ -2,6 +2,7 @@
 #include "avr/io.h"
 #include "../can/can.h"
 #include "../stream/stream.h"
+#include <stdio.h>
 
 
 class SOCKET : public Stream {
@@ -30,7 +31,7 @@ public:
 
     SOCKET(const SOCKET&) = delete;
 
-    SOCKET(uint8_t id) : Stream(1,10), id(id){
+    SOCKET(uint8_t id) : Stream(128,1), id(id){
     }
 
     void Initialize(CAN *can){
@@ -38,9 +39,9 @@ public:
         SOCKET::can->SetUpperLevel(&SOCKET::HandleDataFromLowerLevel);
     }
 
-    void Write(uint8_t *string, uint16_t size);
+    void Write(uint8_t *string, uint16_t size, uint8_t target_id);
 
-    void WriteByte(uint8_t byte);
+    void WriteByte(uint8_t byte, uint8_t target_id);
 
 private:
     uint8_t id;

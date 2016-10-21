@@ -6,14 +6,10 @@
 #include <util/delay.h>
 void INT0_vect(){
     sei();
-    char nn[] = "SSS\n";
-    UART::GetInstance().Write((uint8_t *)nn, 4);
     _delay_ms(10);
     MCP2515 &mcp = MCP2515::GetInstance();
     uint8_t interrupt_flags;
     mcp.ReadFromRegister(MCP_CANINTF, interrupt_flags);
-
-
 
     if(interrupt_flags & (MCP_TX0IF)){
         // Transmission complete
@@ -21,8 +17,6 @@ void INT0_vect(){
         // Clear the interrupt
         uint8_t bitmask = (MCP_TX0IF);
         mcp.BitModify(MCP_CANINTF, bitmask, 0x00);
-        char nn[] = "ADD\n";
-        UART::GetInstance().Write((uint8_t *)nn, 4);
     }
 
     if(interrupt_flags & (MCP_RX0IF)){
@@ -30,13 +24,11 @@ void INT0_vect(){
         uint8_t data_to_rec[8];
         CAN_MESSAGE rec_mess = CAN_MESSAGE(0,data_to_rec,0);
         mcp.ReadRxFrame(rec_mess);
-        //(*mcp.upper_level)(rec_mess);
+        (*mcp.upper_level)(rec_mess);
         // Clear the interrupt
         uint8_t bitmask = (MCP_RX0IF);
         mcp.BitModify(MCP_CANINTF, bitmask, 0x00);
 
-        char nn[] = "KKK\n";
-        UART::GetInstance().Write((uint8_t *)nn, 4);
     }
 }
 
@@ -204,6 +196,13 @@ void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
 }
 
 void MCP2515::SendMessage(CAN_MESSAGE &message) {
+    GICR &= (1 << INT0);
     this->LoadTxFrame(message);
     this->RequestToSend();
+    // Check if interrupt ever happened
+    if(!(PORTD & (1 << PORTD2))){
+        // If it ever happened during the no interrupt period, run the interrupt vector.
+        INT0_vect();
+    }
+    GICR |= (1 << INT0);
 }

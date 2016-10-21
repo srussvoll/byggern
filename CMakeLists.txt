@@ -59,8 +59,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${NODE1_BUILD_PATH}")
 file(GLOB SRC_FILES "${SRC_PATH}/*.c" "${SRC_PATH}/*.cpp" "${SRC_PATH}/*.asm")
 
 set(LIB_SRC_FILES)
-set(LIB_INC_PATHS subdir ${LIBRARIES})
+
 file(GLOB LIBRARIES "${LIB_DIR_PATH}/*")
+set(LIB_INC_PATHS subdir ${LIBRARIES})
 foreach(subdir ${LIBRARIES})
     file(GLOB lib_src_files "${subdir}/*.c" "${subdir}/*.cpp" "${subdir}/*.asm")
     list(APPEND LIB_SRC_FILES "${lib_src_files}")

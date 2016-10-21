@@ -1,5 +1,7 @@
 #include "adc.h"
 
+#ifdef __AVR_ATmega162__
+
 volatile bool ADC::adc_in_use = false;
 
 volatile uint8_t *ADC::adc_waiting = nullptr;
@@ -31,3 +33,5 @@ void ADC_INT(){
     adc.WriteByteToInputStream(data);
     ADC::adc_in_use = false;
 }
+
+#endif

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spi_5fstc_5fvect',['SPI_STC_vect',['../class_s_p_i___n_1_1_s_p_i.html#a96543550133e0b0c6ae83faad5c0d68d',1,'SPI_N::SPI']]]
+  ['usart0_5fudre_5fvect',['USART0_UDRE_vect',['../class_u_a_r_t.html#accc13d37cd82c841e387e1d5cf4d9a94',1,'UART']]]
 ];

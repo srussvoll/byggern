@@ -1,5 +1,7 @@
 #pragma once
 
+#ifdef __AVR_ATmega162__
+
 // x direction on the joystick
 #define ADC_ADDRESS1 (uint8_t *)0x2004
 
@@ -73,3 +75,5 @@ public:
     volatile static uint8_t *adc_waiting;
 
 };
+
+#endif

@@ -1,5 +1,5 @@
 #pragma once
-
+#ifdef __AVR_ATmega162__
 #include "../adc/adc.h"
 
 struct Quantization{
@@ -100,3 +100,4 @@ public:
     bool ButtonIsDown();
 
 };
+#endif

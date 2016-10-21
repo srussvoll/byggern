@@ -45,7 +45,7 @@ void OLED::Init(uint8_t width, uint8_t height){
     uint8_t pages = (uint8_t) ceil( (float) height / 8);
     this->number_of_pages = pages;
     this->matrix = (uint8_t**) malloc(pages * sizeof(uint8_t*));
-    for(int i = 0; i < pages; i++){
+    for(uint8_t i = 0; i < pages; i++){
         if ((this->matrix[i] = (uint8_t *) malloc(width * sizeof(uint8_t))) == NULL){printf("ERROR: Ran out of space on the heap! \n");}
     }
 
@@ -59,15 +59,15 @@ void OLED::GoToLine(uint8_t line){
 }
 
 void OLED::Clear(){
-    for(int i = 0; i < this->number_of_pages; i++){
-        for(int j = 0; j < this->display_width; j++){
+    for(uint8_t i = 0; i < this->number_of_pages; i++){
+        for(uint8_t j = 0; j < this->display_width; j++){
             this->matrix[i][j] = 0x00;
         }
     }
 }
 
 void OLED::ClearLine(){
-    for(int j = 0; j < 128; j++){
+    for(uint8_t j = 0; j < 128; j++){
         this->matrix[this->current_line][j] = 0x00;
     }
 }
@@ -77,7 +77,7 @@ void OLED::WriteByte(uint8_t page, uint8_t column, uint8_t byte){
 }
 
 void OLED::WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uint8_t length){
-    for(int j = 0; j < length; j++){
+    for(uint8_t j = 0; j < length; j++){
         this->matrix[page][column + j] = byte_array[j];
     }
 }
@@ -88,7 +88,7 @@ void OLED::Repaint(){
     for(uint8_t i = 0; i < this->number_of_pages; i++){
         page_address = (uint8_t) 0xB0 + i;
         *this->oled_command = page_address;
-        for(int j = 0; j < this->display_width; j++){
+        for(uint8_t j = 0; j < this->display_width; j++){
             column_address = (uint8_t) 0x00 + j;
             // Set lower nibble
             *this->oled_command = 0x00 + (column_address & 0xF);
@@ -120,10 +120,10 @@ void OLED::WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_he
     uint8_t columns_to_write = min(bitmap_width,  (x < this->display_width) ? this->display_width - x : 0);
     bitmap_height = min(bitmap_height, this->display_height - y);
 
-    for(int j = 0; j < (uint8_t) columns_to_write; j++){
+    for(uint8_t j = 0; j < columns_to_write; j++){
         // Assume that bitmap_height <= line_height
         uint8_t page_x_starts_at = y/8;
-        uint8_t page_x_ends_at = ceil(((float)y + bitmap_height)/8 - 1);
+        uint8_t page_x_ends_at = (uint8_t)ceil(((float)y + bitmap_height)/8 - 1);
         // Case 1 : The entire line is on the same page
 
         uint8_t upper_offset = y - page_x_starts_at*8;
@@ -142,7 +142,7 @@ void OLED::WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_he
             this->matrix[page_x_starts_at][x + j] = ((col << upper_offset) & upper_bitmask) | (this->matrix[page_x_starts_at][x + j] & ~(upper_bitmask));
 
             // Between Pages
-            for(int i = 1; i < (page_x_ends_at-page_x_starts_at); ++i){
+            for(uint8_t i = 1; i < (page_x_ends_at-page_x_starts_at); ++i){
                 col = (is_progmem) ? (pgm_read_byte(&pixels[i - 1][j])) : ( pixels[i - 1][j] );
                 this->matrix[page_x_starts_at + i][x + j] = ((col >> (8-upper_offset) & ~upper_bitmask) | (this->matrix[page_x_starts_at + i][x + j] & upper_bitmask));
                 col = (is_progmem) ? (pgm_read_byte(&pixels[i][j])) : ( pixels[i][j] );
@@ -171,7 +171,7 @@ void OLED::WriteLine(char *string, uint8_t length, uint8_t line, uint8_t offset)
 
     uint8_t available_length = min(length, (this->display_width - offset*this->font_width) / this->font_width);
 
-    for(int i = 0; i < available_length; i++){
+    for(uint8_t i = 0; i < available_length; i++){
         uint8_t *bitmap_row;
         this->GetBitmapForCharacter(string[i], bitmap_row);
         uint8_t **bitmap = &bitmap_row;

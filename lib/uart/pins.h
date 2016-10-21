@@ -1,6 +1,10 @@
 #pragma once
 
-#if MCU == ATMega162
+/**
+* Pins used to port the UART from ATMega162 to ATMega2560
+*/
+
+#ifdef __AVR_ATmega162__
 
 #define DATA_REGISTER                       UDR0
 #define BAUD_RATE_HIGHER                    UBRR0H
@@ -13,8 +17,9 @@
 #define REGISTER_SELECT_0                   URSEL0
 #define STOP_BIT_SELECT_0                   USBS0
 #define CHARATCER_SIZE_0                    UCSZ00
+#define MYUBRR                              FOSC/16/BAUD-1
 
-#elif MCU == ATMega2560
+#else
 
 #define DATA_REGISTER                       UDR0
 #define BAUD_RATE_HIGHER                    UBRR0H
@@ -27,6 +32,5 @@
 #define REGISTER_SELECT_0                   -1
 #define STOP_BIT_SELECT_0                   USBS0
 #define CHARATCER_SIZE_0                    UCSZ00
-
 
 #endif

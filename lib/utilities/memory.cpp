@@ -1,3 +1,5 @@
+#ifdef __AVR_ATmega162__
+
 #include "memory.h"
 #include <avr/io.h>
 
@@ -16,3 +18,5 @@ namespace Utilities {
         SFIOR |= (1 << XMM0);
     }
 }
+
+#endif

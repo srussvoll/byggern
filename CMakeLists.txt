@@ -146,6 +146,6 @@ add_custom_target(disassemble2   ${OBJDUMP} -S "${BUILD_PATH}/${NODE2_NAME}.elf"
 
 # Flashing targets
 add_custom_target(flash2         ${AVRDUDE} -c ${NODE2_PROG_TYPE} -p ${NODE2_MCU} -P ${NODE2_USBPORT} -b ${NODE2_BITCLOCK} -D -U flash:w:${BUILD_PATH}/${NODE2_NAME}.hex DEPENDS hex2)
-add_custom_command(TARGET flash2 POST_BUILD COMMAND minicom)
+add_custom_command(TARGET flash2 POST_BUILD COMMAND minicom node2)
 add_custom_target(flash_eeprom2  ${AVRDUDE} -c ${NODE2_PROG_TYPE} -p ${NODE2_MCU} -P ${NODE2_USBPORT} -b ${NODE2_BITCLOCK} -D -U eeprom:w:${BUILD_PATH}/${NODE2_NAME}.hex DEPENDS eeprom2)
 add_custom_target(size2          ${AVRSIZE} -C --mcu=${NODE2_MCU} ${BUILD_PATH}/${NODE2_NAME}.elf DEPENDS ${NODE2_NAME})

@@ -115,7 +115,7 @@ int main(void) {
 
 void SocketTest(){
     // Get instance of all the modules
-    SOCKET &s = SOCKET::GetInstance(1);
+    SOCKET &s = SOCKET::GetInstance(0x01);
     MCP2515 &mcp = MCP2515::GetInstance();
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
 
@@ -127,17 +127,19 @@ void SocketTest(){
 
     // Initialize MCP
     mcp.Initialize(&spi, 0x01);
-    mcp.SetLoopback();
+    //mcp.SetLoopback();
+    mcp.SetNormal();
 
     // Initialize the socket
-    s.Initialize(&mcp, 1);
-    char test_string[] = "This is a long string even longer?";
+    s.Initialize(&mcp, 0x02);
+    char test_string[] = "Test av masse rart...";
     s.Write((uint8_t *)test_string, sizeof(test_string));
-    uint8_t rec_mes[128];
+    //while (true);
+    /*uint8_t rec_mes[128];
     s.Read(rec_mes,128);
     for(int i = 0; i < sizeof(test_string); i++){
         printf("BYTE = %c\n",rec_mes[i]);
-    }
+    }*/
 /*    s.WriteByte(0xaf, 1);
     _delay_ms(10);
     uint8_t rec_data;

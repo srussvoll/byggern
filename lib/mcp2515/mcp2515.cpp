@@ -6,6 +6,8 @@
 #include <util/delay.h>
 void INT0_vect(){
     sei();
+
+    printf("I RAN!\n");
     _delay_ms(10);
     MCP2515 &mcp = MCP2515::GetInstance();
     uint8_t interrupt_flags;
@@ -116,7 +118,7 @@ void MCP2515::ReadStatus(uint8_t &byte) {
 }
 
 void MCP2515::SetNormal() {
-    uint8_t bitmask = (1<<MCP_REQOP1) | (1<<MCP_REQOP0) | (1<<MCP_REQOP2);
+    uint8_t bitmask = (1 << MCP_REQOP1) | (1 << MCP_REQOP0) | (1 << MCP_REQOP2);
     uint8_t data = 0x00; // All 0
     this->BitModify(MCP_CANCTRL, bitmask, data);
 }

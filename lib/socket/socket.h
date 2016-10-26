@@ -18,7 +18,7 @@ public:
      * A Singleton implementation of this class
      * @param id The socket ID
      */
-    static SOCKET& GetInstance(uint8_t id){
+    static SOCKET& GetInstance(uint8_t id = 1){
         if(id == 1){
             static SOCKET instance(1);
             return instance;
@@ -32,6 +32,7 @@ public:
      * @param message The recieved CAN_MESSAGE
      */
     static void HandleDataFromLowerLevel(CAN_MESSAGE &message) {
+        printf("Handler from lower \n");
         SOCKET &socket = SOCKET::GetInstance(message.id);
         socket.WriteToInputStream(message.data, message.size);
     }

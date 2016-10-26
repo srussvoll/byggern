@@ -18,7 +18,7 @@ void init_hardware_drivers() {
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
     // Get instance of all the modules
-    SOCKET &s = SOCKET::GetInstance(1);
+    SOCKET &s = SOCKET::GetInstance(0x02);
     MCP2515 &mcp = MCP2515::GetInstance();
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
 
@@ -29,20 +29,25 @@ int main(){
     spi.SetDevice(ss);
 
     // Initialize MCP
-    mcp.Initialize(&spi, 0x01);
-    mcp.SetLoopback();
+    mcp.Initialize(&spi, 0x02);
+    //mcp.SetLoopback();
+    mcp.SetNormal();
 
     // Initialize the socket
-    s.Initialize(&mcp, 1);
-    char test_string[] = "En";
-    s.Write((uint8_t *)test_string, sizeof(test_string));
-    uint8_t rec_mes[128];
-    s.Read(rec_mes,128);
-    for(int i = 0; i < sizeof(test_string); i++){
-        printf("%c",rec_mes[i]);
-    }   printf("\n");
+    s.Initialize(&mcp, 0x01);
+    /*char test_string[] = "En";
+    s.Write((uint8_t *)test_string, sizeof(test_string));*/
 
-    while(true);
+    _delay_ms(100);
+
+    while(true) {
+        uint8_t rec_mes[128];
+        printf("Waiting for data...\n");
+        while(s.GetAvailableReadBytes() == 0);
+        s.Read(rec_mes,128);
+        printf("Received: %s\n", (char *) rec_mes);
+        _delay_ms(100);
+    }
 }
 /*int main(){
 *//*    Servo servo(900, 2100);

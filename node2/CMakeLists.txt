@@ -16,7 +16,7 @@ math(EXPR F_CPU "${FOSC} / ${FREQUENCY_DIVIDER}")
 set(BAUD 9600)
 
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.
-set(PROG_ARGS -P ${USBPORT} -B 1)
+# set(PROG_ARGS -P ${USBPORT} -B 1)
 add_definitions(-DF_CPU=${F_CPU})
 add_definitions(-DFOSC=${FOSC})
 add_definitions(-DBAUD=${BAUD})
@@ -102,8 +102,8 @@ add_custom_target(hex   ALL     ${OBJCOPY} -R .eeprom -O ihex "${BUILD_PATH}/${P
 add_custom_target(eeprom        ${OBJCOPY} -j .eeprom --change-section-lma .eeprom=0 -O ihex "${BUILD_PATH}/${PROJECT_NAME}.elf" "${BUILD_PATH}/${PROJECT_NAME}.eeprom" DEPENDS strip)
 add_custom_target(disassemble   ${OBJDUMP} -S "${BUILD_PATH}/${PROJECT_NAME}.elf" > "${BUILD_PATH}/${PROJECT_NAME}.lst" DEPENDS strip)
 # Flashing targets
-add_custom_target(flash         ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -U flash:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS hex)
-add_custom_target(flash_eeprom  ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -U eeprom:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS eeprom)
+add_custom_target(flash         ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -P ${USBPORT} -b ${BITCLOCK} -D -U flash:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS hex)
+add_custom_target(flash_eeprom  ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -P ${USBPORT} -b ${BITCLOCK} -D -U eeprom:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS eeprom)
 add_custom_target(size          ${AVRSIZE} -C --mcu=${MCU} ${BUILD_PATH}/${PROJECT_NAME}.elf DEPENDS ${PROJECT_NAME})
 # Fuses
 #add_custom_target(fuses_16mhz   ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -U lfuse:w:0xFF:m)

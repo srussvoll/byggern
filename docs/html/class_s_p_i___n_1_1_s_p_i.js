@@ -7,11 +7,10 @@ var class_s_p_i___n_1_1_s_p_i =
     [ "InitializeTransmission", "class_s_p_i___n_1_1_s_p_i.html#af973a5b4a970c3c01430037d578151ef", null ],
     [ "operator=", "class_s_p_i___n_1_1_s_p_i.html#aabc66612d396c2b70e5cbdba405dbfe5", null ],
     [ "SetDevice", "class_s_p_i___n_1_1_s_p_i.html#ad04a79c8e9139545a96af71245ce8d18", null ],
-    [ "Write", "class_s_p_i___n_1_1_s_p_i.html#a3e2e2a7f02ffa5003548a1b9d820ce9a", null ],
     [ "WriteByte", "class_s_p_i___n_1_1_s_p_i.html#a542dc8e88203de7040ce9926d06b9463", null ],
     [ "WriteByteAndThrowAwayData", "class_s_p_i___n_1_1_s_p_i.html#a05bcca2e033422b2e6ad570320d03fcb", null ],
     [ "SPI_STC_vect", "class_s_p_i___n_1_1_s_p_i.html#a96543550133e0b0c6ae83faad5c0d68d", null ],
     [ "current_pin", "class_s_p_i___n_1_1_s_p_i.html#ac016c4eaed2db3f8b5523bf0d472ddd2", null ],
-    [ "ongoing_transmission", "class_s_p_i___n_1_1_s_p_i.html#aff61d4bfc6a6e0088c3653898b1e91b8", null ],
+    [ "ongoing_transmission", "class_s_p_i___n_1_1_s_p_i.html#a89115bf64f31cd26d0b6ed3292decabb", null ],
     [ "throw_away_data_count", "class_s_p_i___n_1_1_s_p_i.html#aaed8cc6f36275c3e33fcada1b9172742", null ]
 ];

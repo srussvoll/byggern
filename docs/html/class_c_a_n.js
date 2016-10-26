@@ -1,10 +1,6 @@
 var class_c_a_n =
 [
-    [ "CAN", "class_c_a_n.html#aa6e0f61963909bcd5634982c13b22616", null ],
-    [ "CAN", "class_c_a_n.html#a8b18facc3048f178aa0218c4274c47af", null ],
-    [ "GetInstance", "class_c_a_n.html#a19fc4b805fcebf3c465c3b3d8b7dc4f3", null ],
-    [ "Initialize", "class_c_a_n.html#ab3ae9848787c8e22c38d576ff110782c", null ],
-    [ "SendByte", "class_c_a_n.html#a0fffe8876d333d8bd6849d030bfe0449", null ],
-    [ "SendMessage", "class_c_a_n.html#a70606c6cd99462eb6f8272cce52fc1ab", null ],
-    [ "mcp2515_driver", "class_c_a_n.html#ad77067ce0ef340a9de391f6782b0d07a", null ]
+    [ "SendMessage", "class_c_a_n.html#a9149d0118ae9de4a8dc0b807f7c34b1a", null ],
+    [ "SetUpperLevel", "class_c_a_n.html#ac68e0152514d39c43e9406b19031af89", null ],
+    [ "upper_level", "class_c_a_n.html#adcc6669e9bbaf8609352b878268dc9d1", null ]
 ];

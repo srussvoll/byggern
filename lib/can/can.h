@@ -1,5 +1,11 @@
 #pragma once
 
+/**
+ * Defines the CAN_MESSAGE.
+ * @param size The size of the can message
+ * @param The can data
+ * @param The can message id
+ */
 struct CAN_MESSAGE{
     uint8_t size;
     uint8_t *data;

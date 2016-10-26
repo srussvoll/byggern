@@ -35,11 +35,22 @@ void INT0_vect(){
 void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
     this->spi_driver = spi;
 
+
+    // Initialize the interrupt
     sei();
+#ifdef __AVR__ATmega162__
 
     GICR |= (1 << INT0);
     MCUCR |= (2<<ISC00);
 
+#else
+    // Falling edge
+    EICRA |= (1<<ISC01);
+    EICRA &= ~(1<<ISC00);
+
+    // Enable the interrupt
+    EIMSK |= (1<<INT0);
+#endif
     // Assuming the SPI is already initialized
 
     this->Reset();
@@ -195,6 +206,7 @@ void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
 }
 
 void MCP2515::SendMessage(CAN_MESSAGE &message) {
+#ifdef __AVR__ATmega162__
     GICR &= (1 << INT0);
     this->LoadTxFrame(message);
     this->RequestToSend();
@@ -204,4 +216,15 @@ void MCP2515::SendMessage(CAN_MESSAGE &message) {
         INT0_vect();
     }
     GICR |= (1 << INT0);
+#else
+    EIMSK &= (1<<INT0);
+    this->LoadTxFrame(message);
+    this->RequestToSend();
+    // Check if the interrupt ever happened
+    if(!(PORTD & (1 << PORTD0))){
+        // If it ever happened during the no interrupt period, run the interrupt vector.
+        INT0_vect();
+    }
+    EIMSK |= (1<<INT0);
+#endif
 }

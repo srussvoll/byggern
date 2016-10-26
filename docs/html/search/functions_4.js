@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['flushinputbuffer',['FlushInputBuffer',['../class_stream.html#ac7e3629626c1ea4d9cba88db1e048132',1,'Stream']]],
-  ['flushoutputbuffer',['FlushOutputBuffer',['../class_stream.html#a0af6193f98fcf7bcd60eef84fce8699c',1,'Stream']]],
-  ['flushstream',['FlushStream',['../class_stream.html#a435b1b065846d3b24969cfc6dacabc6b',1,'Stream']]]
+  ['enableprintf',['EnablePrintf',['../namespace_utilities.html#a7175bc91000cbd130685885c6a24ea9a',1,'Utilities']]],
+  ['executeitem',['ExecuteItem',['../class_menu_1_1_controller.html#a0dda40652b8802a8fe39c1ce61a66f1a',1,'Menu::Controller']]]
 ];

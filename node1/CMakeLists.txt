@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.6)
 
 # Debug flag
 set(DEBUG "1")
-set(CMAKE_VERBOSE_MAKEFILE ON)
+#set(CMAKE_VERBOSE_MAKEFILE ON)
 
 # Options
 set(PROG_TYPE jtag3isp)

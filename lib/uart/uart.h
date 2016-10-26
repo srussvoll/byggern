@@ -10,7 +10,7 @@
  * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
  * @version 1.1
  *
- * An interface for handling streams with default methods.
+ * An interface for communicating through UART
  */
 
 ISR(USART0_UDRE_vect);
@@ -19,7 +19,6 @@ class UART : public Stream {
 public:
     /**
      * A Singleton implementation of this class
-     *
      */
     static UART& GetInstance(){
         static UART instance;
@@ -45,30 +44,30 @@ public:
     UART(const UART&) = delete;
 
     /**
-    * Beacause of singleton - makes sure its not copied etc.
-    */
+     * Beacause of singleton - makes sure its not copied etc.
+     */
     void operator=(const UART&) = delete;
 
 private:
 
     /**
-    * A constructor that initializes the UART to a certain size
-    */
+     * A constructor that initializes the UART to a certain size
+     */
     UART();
 
     /**
-    * A bool to indicate whether or not a transmission is going on
-    */
+     * A bool to indicate whether or not a transmission is going on
+     */
     bool ongoing_transmission = false;
 
     /**
-    * Starts the transmission. Just a void-void function to modulize
-    */
+     * Starts the transmission. Just a void-void function to modulize
+     */
     inline void StartTransmission();
 
     /**
-    * The interrupt handler vector. To be run on each DRE interrupt
-    */
+     * The interrupt handler vector. To be run on each DRE interrupt
+     */
     friend void USART0_UDRE_vect();
 
 };

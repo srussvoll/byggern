@@ -4,7 +4,7 @@ var searchData=
   ['oled_2eh',['oled.h',['../oled_8h.html',1,'']]],
   ['oled_5fcommand',['oled_command',['../class_o_l_e_d.html#af0a85ccd0274347b8c1ac77d298a14cf',1,'OLED']]],
   ['oled_5fdata',['oled_data',['../class_o_l_e_d.html#a1bc54d49808f92ddfc354511b692df6f',1,'OLED']]],
-  ['ongoing_5ftransmission',['ongoing_transmission',['../class_s_p_i___n_1_1_s_p_i.html#aff61d4bfc6a6e0088c3653898b1e91b8',1,'SPI_N::SPI::ongoing_transmission()'],['../class_u_a_r_t.html#ae98e7d277a1833478aa85dc9e686150a',1,'UART::ongoing_transmission()']]],
+  ['ongoing_5ftransmission',['ongoing_transmission',['../class_s_p_i___n_1_1_s_p_i.html#a89115bf64f31cd26d0b6ed3292decabb',1,'SPI_N::SPI::ongoing_transmission()'],['../class_u_a_r_t.html#ae98e7d277a1833478aa85dc9e686150a',1,'UART::ongoing_transmission()']]],
   ['operator_3d',['operator=',['../class_d_a_c.html#a9e16a3d53b57588cba0ff2f9ade78e6b',1,'DAC::operator=()'],['../class_s_p_i___n_1_1_s_p_i.html#aabc66612d396c2b70e5cbdba405dbfe5',1,'SPI_N::SPI::operator=()'],['../class_u_a_r_t.html#a843ab7fc20f5ce5f030d2ca5ee98d6b6',1,'UART::operator=()']]],
   ['output_5fbuffer',['output_buffer',['../class_stream.html#a3cd072a10ad5c1b6308dd2da2cdbec71',1,'Stream']]],
   ['output_5fbuffer_5fempty',['output_buffer_empty',['../class_stream.html#a54b21caaee0001e44968fb70d0a591f5',1,'Stream']]],

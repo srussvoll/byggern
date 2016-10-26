@@ -15,6 +15,8 @@
 #include "lib/socket/socket.h"
 #include "lib/joystick/joystick.h"
 
+#include "lib/state_machine/state_machine.h"
+
 uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;
 // volatile char *ext_ram = (char *) malloc(0x1D00 * sizeof(char)); // Start address for the SRAMuint8_t

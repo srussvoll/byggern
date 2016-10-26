@@ -5,8 +5,8 @@ set(DEBUG "1")
 #set(CMAKE_VERBOSE_MAKEFILE on)
 
 # Names
-set(NODE1_NAME "node1")
-set(NODE2_NAME "node2")
+set(NODE1_NAME ".")
+set(NODE2_NAME "../node2")
 
 # Options
 set(NODE1_MCU atmega162)
@@ -108,7 +108,7 @@ set_target_properties(${NODE1_NAME} PROPERTIES OUTPUT_NAME "${BUILD_PATH}/${NODE
 set_target_properties(${NODE2_NAME} PROPERTIES OUTPUT_NAME "${BUILD_PATH}/${NODE2_NAME}.elf")
 
 # Set defines
-add_definitions(-DDEBUG=${DEBUG})
+add_definitions(-DDEBUG=${DEBUG}) # Use
 
 target_compile_definitions(${NODE1_NAME} PUBLIC -DF_CPU=${NODE1_F_CPU})
 target_compile_definitions(${NODE1_NAME} PUBLIC -DFOSC=${NODE1_FOSC})

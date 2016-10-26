@@ -4,7 +4,7 @@
 #include <avr/pgmspace.h>
 #include <util/delay.h>
 
-#include "lib/utilities/fonts.h"
+#include "../lib/utilities/fonts.h"
 #include "init.h"
 #include "lib/uart/uart.h"
 #include "lib/oled/oled.h"
@@ -246,5 +246,3 @@ void OLEDTest(){
     while (true) {}
 }*/
 #pragma clang diagnostic pop
-
-

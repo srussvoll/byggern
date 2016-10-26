@@ -3,7 +3,6 @@
 #ifdef __AVR_ATmega2560__
 
 #include "servo.h"
-#include <avr/io.h>
 
 namespace {
     uint16_t mod(int16_t a, int16_t b) {

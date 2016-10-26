@@ -2,19 +2,13 @@
 
 #include <stdint.h>
 
-namespace StateMachine {
-    extern uint8_t current_state;
+class StateMachine {
+private:
+    uint8_t current_state;
+    void (*(*transitions))();
 
-    typedef void (*transitions[][2])(void);
-
-    bool transition(uint8_t state, transitions transitions, reenter = 0) {
-        if (state != current_state || state == current_state && reenter) {
-            uint8_t old_state = current_state;
-            current_state = state;
-
-            (*transitions[old_state][1])();
-            (*transitions[current_state][0])();
-            return true;
-        } else return false;
-    }
-}
+public:
+    StateMachine(void (*(*transitions))(void), uint8_t initial_state = 0) : transitions((void (**)(void)) transitions), current_state(initial_state) {};
+    bool Transition(uint8_t state, bool reenter);
+    uint8_t GetCurrentState();
+};

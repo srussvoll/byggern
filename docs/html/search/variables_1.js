@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['clear_5fto_5fsend',['clear_to_send',['../class_m_c_p2515.html#a2cdd8da004f1f17e1f17d426071d80b9',1,'MCP2515']]],
   ['current_5findex_5fnavigate',['current_index_navigate',['../class_menu_1_1_controller.html#a86055b66afbad89c5a0b8a0a1713f9d3',1,'Menu::Controller']]],
   ['current_5findex_5fselected',['current_index_selected',['../class_menu_1_1_controller.html#ab3bdee08f22d55f8fa0cb9e29bb27d66',1,'Menu::Controller']]],
   ['current_5fitem_5fcontrol',['current_item_control',['../class_menu_1_1_controller.html#a288e26b1efe4fd953b5514de72a1c508',1,'Menu::Controller']]],

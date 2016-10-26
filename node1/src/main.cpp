@@ -6,18 +6,22 @@
 
 #include "../lib/utilities/fonts.h"
 #include "init.h"
-#include "../lib/uart/uart.h"
-#include "../lib/oled/oled.h"
-#include "../lib/menu/menu.h"
-#include "../lib/mcp2515/mcp2515.h"
-#include "../lib/mcp2515/mcp2515_regisers.h"
-#include "../lib/spi/spi.h"
-#include "../lib/joystick/joystick.h"
+#include "lib/uart/uart.h"
+#include "lib/oled/oled.h"
+#include "lib/menu/menu.h"
+#include "lib/mcp2515/mcp2515.h"
+#include "lib/mcp2515/mcp2515_regisers.h"
+#include "lib/spi/spi.h"
+#include "lib/socket/socket.h"
+#include "lib/joystick/joystick.h"
+
+#include "lib/state_machine/state_machine.h"
 
 uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;
 // volatile char *ext_ram = (char *) malloc(0x1D00 * sizeof(char)); // Start address for the SRAMuint8_t
 
+/*
 void SRAM_test(uint16_t seed) {
     //volatile char *ext_ram = (char *) malloc(0x0500 * sizeof(char)); // Start address for the SRAMuint8_t
     volatile char *ext_ram = (char *) 0x8000; // Start address for the SRAM
@@ -54,19 +58,29 @@ void SRAM_test(uint16_t seed) {
     }
     //printf("SRAM test completed with \n%4d errors in write phase and \n%4d errors in retrieval phase\n\n", write_errors, retrieval_errors);
 }
+*/
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
 void SPITest();
 void OLEDTest();
-
+void CanTest();
+void SocketTest();
 int main(void) {
+    SocketTest();
     //SPITest();
-    OLEDTest();
+    //OLEDTest();
+    //CanTest();
 }
 
-void SPITest(){
+/*void CanTest(){
+    MCP2515 &mcp = MCP2515::GetInstance();
+    SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
+
+}*/
+
+/*void SPITest(){
     _delay_ms(100);
     SPI_N::SPI &my_spi = SPI_N::SPI::GetInstance();
 
@@ -77,21 +91,64 @@ void SPITest(){
     my_spi.SetDevice(ss);
 
     MCP2515 &my_mcp = MCP2515::GetInstance();
-    my_mcp.Initialize(&my_spi);
+    my_mcp.Initialize(&my_spi, 0x01);
 
-    printf("start\n");
-
+    printf("\nstart\n");
     my_mcp.SetLoopback();
-    while(1){
-        uint8_t byte;
-        my_mcp.ReadFromRegister(MCP_CANCTRL,byte);
-        _delay_ms(100);
-        printf("BYTE = %2x \n", byte);
-        break;
-    }
+    uint8_t data_to_send[] = {0x23, 0x59, 0xaa};
+    CAN_MESSAGE message = CAN_MESSAGE(3, data_to_send, 0x01);
+    my_mcp.LoadTxFrame(message);
+    _delay_ms(10);
+    my_mcp.RequestToSend();
+    _delay_ms(10);
+    printf("Sekt\n");
+    _delay_ms(100);
+    *//*uint8_t byte;
+    my_mcp.RxStatus(byte);
+    printf("RX STATUS = %2x \n", byte);
+    uint8_t data_to_rec[8];
+    CAN_MESSAGE rec_mess = CAN_MESSAGE(0,data_to_rec,0);
+    my_mcp.ReadRxFrame(rec_mess);
+    for(int i = 0; i < rec_mess.size; i++){
+        printf("%d - BYTE = %2x \n", i, rec_mess.data[i]);
+    }*//*
+    printf("done\n");
+};*/
 
-};
+void SocketTest(){
+    // Get instance of all the modules
+    SOCKET &s = SOCKET::GetInstance(0x01);
+    MCP2515 &mcp = MCP2515::GetInstance();
+    SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
 
+    // Initialize SPI
+    SPI_N::PIN ss = SPI_N::PIN(&PORTD, &DDRD, 5);
+    SPI_N::PIN ss_a[] = {ss};
+    spi.Initialize(ss_a, 1, 0, 0);
+    spi.SetDevice(ss);
+
+    // Initialize MCP
+    mcp.Initialize(&spi, 0x01);
+    //mcp.SetLoopback();
+    mcp.SetNormal();
+
+    // Initialize the socket
+    s.Initialize(&mcp, 0x02);
+    char test_string[] = "Test av masse rart...";
+    s.Write((uint8_t *)test_string, sizeof(test_string));
+    //while (true);
+    /*uint8_t rec_mes[128];
+    s.Read(rec_mes,128);
+    for(int i = 0; i < sizeof(test_string); i++){
+        printf("BYTE = %c\n",rec_mes[i]);
+    }*/
+/*    s.WriteByte(0xaf, 1);
+    _delay_ms(10);
+    uint8_t rec_data;
+    s.ReadByte(rec_data);
+    printf("Message is %2x", rec_data);*/
+}
+/*
 void OLEDTest(){
     _delay_ms(500);
     printf("\n\n\n----------------------------------------\n");
@@ -191,7 +248,5 @@ void OLEDTest(){
 
 
     while (true) {}
-}
+}*/
 #pragma clang diagnostic pop
-
-

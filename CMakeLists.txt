@@ -16,7 +16,7 @@ math(EXPR NODE1_F_CPU "${NODE1_FOSC} / ${NODE1_FREQUENCY_DIVIDER}")
 set(NODE1_BAUD 9600)
 
 set(NODE2_MCU atmega2560)
-set(NODE2_FOSC 4915200)
+set(NODE2_FOSC 16000000)
 set(NODE2_FREQUENCY_DIVIDER 1)
 math(EXPR NODE2_F_CPU "${NODE2_FOSC} / ${NODE2_FREQUENCY_DIVIDER}")
 set(NODE2_BAUD 9600)
@@ -146,5 +146,6 @@ add_custom_target(disassemble2   ${OBJDUMP} -S "${BUILD_PATH}/${NODE2_NAME}.elf"
 
 # Flashing targets
 add_custom_target(flash2         ${AVRDUDE} -c ${NODE2_PROG_TYPE} -p ${NODE2_MCU} -P ${NODE2_USBPORT} -b ${NODE2_BITCLOCK} -D -U flash:w:${BUILD_PATH}/${NODE2_NAME}.hex DEPENDS hex2)
+add_custom_command(TARGET flash2 POST_BUILD COMMAND minicom)
 add_custom_target(flash_eeprom2  ${AVRDUDE} -c ${NODE2_PROG_TYPE} -p ${NODE2_MCU} -P ${NODE2_USBPORT} -b ${NODE2_BITCLOCK} -D -U eeprom:w:${BUILD_PATH}/${NODE2_NAME}.hex DEPENDS eeprom2)
 add_custom_target(size2          ${AVRSIZE} -C --mcu=${NODE2_MCU} ${BUILD_PATH}/${NODE2_NAME}.elf DEPENDS ${NODE2_NAME})

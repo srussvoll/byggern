@@ -5,10 +5,17 @@
 #include "lib/mcp2515/mcp2515.h"
 #include "lib/socket/socket.h"
 #include "lib/uart/uart.h"
+#include "lib/utilities/printf.h"
+
+void init_hardware_drivers() __attribute__((naked)) __attribute((used)) __attribute__((section(".init8")));
+void init_hardware_drivers() {
+    UART& uart = UART::GetInstance();
+    uart.Init(9600);
+    Utilities::EnablePrintf(uart);
+}
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
-
 int main(){
     // Get instance of all the modules
     SOCKET &s = SOCKET::GetInstance(1);
@@ -27,13 +34,15 @@ int main(){
 
     // Initialize the socket
     s.Initialize(&mcp, 1);
-    char test_string[] = "This is a long string even longer?";
+    char test_string[] = "En";
     s.Write((uint8_t *)test_string, sizeof(test_string));
     uint8_t rec_mes[128];
     s.Read(rec_mes,128);
     for(int i = 0; i < sizeof(test_string); i++){
-        printf("BYTE = %c\n",rec_mes[i]);
-    }
+        printf("%c",rec_mes[i]);
+    }   printf("\n");
+
+    while(true);
 }
 /*int main(){
 *//*    Servo servo(900, 2100);

@@ -38,12 +38,12 @@ void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
 
     // Initialize the interrupt
     sei();
-#ifdef __AVR__ATmega162__
+#ifdef __AVR_ATmega162__
 
     GICR |= (1 << INT0);
     MCUCR |= (2<<ISC00);
 
-#else
+#elif __AVR_ATmega2560__
     // Falling edge
     EICRA |= (1<<ISC01);
     EICRA &= ~(1<<ISC00);
@@ -206,7 +206,7 @@ void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
 }
 
 void MCP2515::SendMessage(CAN_MESSAGE &message) {
-#ifdef __AVR__ATmega162__
+#ifdef __AVR_ATmega162__
     GICR &= (1 << INT0);
     this->LoadTxFrame(message);
     this->RequestToSend();
@@ -216,8 +216,8 @@ void MCP2515::SendMessage(CAN_MESSAGE &message) {
         INT0_vect();
     }
     GICR |= (1 << INT0);
-#else
-    EIMSK &= (1<<INT0);
+#elif __AVR_ATmega2560__
+    EIMSK &= (1 << INT0);
     this->LoadTxFrame(message);
     this->RequestToSend();
     // Check if the interrupt ever happened

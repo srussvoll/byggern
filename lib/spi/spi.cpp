@@ -1,6 +1,7 @@
 #include "spi.h"
 #include <stdio.h>
 #include <util/delay.h>
+#include "pins.h"
 namespace SPI_N{
     void SPI_STC_vect(){
 
@@ -49,10 +50,10 @@ namespace SPI_N{
         }
 
         // Set MOSI and SCK to output and all others to input
-        DDRB |= (1<<DDB5); // PB5 / MOSI to output
-        DDRB |= (1<<DDB7); // PB7 / SCK to to output
-        DDRB &= ~(1<<DDB6); // MISO to input
-        DDRB |= (1<<DDB4);
+        MOSI_DDR |= (1<<MOSI_PIN); // PB5 / MOSI to output
+        SCK_DDR |= (1<<SCK_PIN); // PB7 / SCK to to output
+        MISO_DDR &= ~(1<<MISO_PIN); // MISO to input
+        SS_DDR |= (1<<SS_PIN); // Set SS high
 
         // Set SCK = f_osc/128
         SPCR |= (1<<SPR1) | (1<<SPR0);

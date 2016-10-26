@@ -19,7 +19,7 @@
 #define CHARATCER_SIZE_0                    UCSZ00
 #define MYUBRR                              FOSC/16/BAUD-1
 
-#else
+#elif __AVR_ATmega2560__
 
 #define DATA_REGISTER                       UDR0
 #define BAUD_RATE_HIGHER                    UBRR0H

@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <lib/utilities/printf.h>
 #include "stream.h"
 
 namespace{
@@ -11,9 +12,12 @@ void Stream::Write(uint8_t *string, uint16_t size) {
 	this->WriteToBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty, this->output_buffer_overflowed, string, size, this->event_output_buffer_not_empty);
 }
 
+void Stream::WriteToInputStream(uint8_t *string, uint16_t size) {
+    this->WriteToBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty, this->input_buffer_overflowed, string, size, this->event_input_buffer_not_empty);
+}
 
 uint16_t Stream::Read(uint8_t *string, uint16_t size) {
-    return this->ReadFromBuffer(this->input_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->input_buffer_empty, string, size);
+    return this->ReadFromBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty, string, size);
 }
 
 uint8_t Stream::GetAvailableWriteBytes(){
@@ -139,10 +143,6 @@ uint16_t Stream::CalculateLength(uint16_t &start_index, uint16_t &stop_index, ui
 
 uint16_t Stream::ReadFromOutputStream(uint8_t *string, uint16_t size) {
     return this->ReadFromBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty, string, size);
-}
-
-void Stream::WriteToInputStream(uint8_t *string, uint16_t size) {
-    this->WriteToBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty, this->input_buffer_overflowed, string, size, this->event_input_buffer_not_empty);
 }
 
 uint16_t Stream::GetInputBufferLength() {

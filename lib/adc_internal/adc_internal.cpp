@@ -1,3 +1,4 @@
+/*
 #include "adc_internal.h"
 
 #ifdef __AVR_ATmega2560__
@@ -35,3 +36,4 @@ void ADC_internal_INT(){
 }
 
 #endif
+*/

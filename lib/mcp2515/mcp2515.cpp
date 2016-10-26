@@ -6,6 +6,8 @@
 #include <util/delay.h>
 void INT0_vect(){
     sei();
+
+    printf("I RAN!\n");
     _delay_ms(10);
     MCP2515 &mcp = MCP2515::GetInstance();
     uint8_t interrupt_flags;
@@ -35,11 +37,22 @@ void INT0_vect(){
 void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
     this->spi_driver = spi;
 
+
+    // Initialize the interrupt
     sei();
+#ifdef __AVR_ATmega162__
 
     GICR |= (1 << INT0);
     MCUCR |= (2<<ISC00);
 
+#elif __AVR_ATmega2560__
+    // Falling edge
+    EICRA |= (1<<ISC01);
+    EICRA &= ~(1<<ISC00);
+
+    // Enable the interrupt
+    EIMSK |= (1<<INT0);
+#endif
     // Assuming the SPI is already initialized
 
     this->Reset();
@@ -105,7 +118,7 @@ void MCP2515::ReadStatus(uint8_t &byte) {
 }
 
 void MCP2515::SetNormal() {
-    uint8_t bitmask = (1<<MCP_REQOP1) | (1<<MCP_REQOP0) | (1<<MCP_REQOP2);
+    uint8_t bitmask = (1 << MCP_REQOP1) | (1 << MCP_REQOP0) | (1 << MCP_REQOP2);
     uint8_t data = 0x00; // All 0
     this->BitModify(MCP_CANCTRL, bitmask, data);
 }
@@ -195,6 +208,7 @@ void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
 }
 
 void MCP2515::SendMessage(CAN_MESSAGE &message) {
+#ifdef __AVR_ATmega162__
     GICR &= (1 << INT0);
     this->LoadTxFrame(message);
     this->RequestToSend();
@@ -204,4 +218,15 @@ void MCP2515::SendMessage(CAN_MESSAGE &message) {
         INT0_vect();
     }
     GICR |= (1 << INT0);
+#elif __AVR_ATmega2560__
+    EIMSK &= (1 << INT0);
+    this->LoadTxFrame(message);
+    this->RequestToSend();
+    // Check if the interrupt ever happened
+    if(!(PORTD & (1 << PORTD0))){
+        // If it ever happened during the no interrupt period, run the interrupt vector.
+        INT0_vect();
+    }
+    EIMSK |= (1<<INT0);
+#endif
 }

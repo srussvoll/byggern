@@ -37,7 +37,7 @@ namespace SPI_N{
 
     ISR(SPI_STC_vect);
     /**
-     * This class is an SPI driver which uses the
+     * This class is an SPI driver which uses the STREAM class as an input and output buffer.
      */
     class SPI: public Stream {
     public:

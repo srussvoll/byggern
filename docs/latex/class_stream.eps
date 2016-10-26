@@ -174,8 +174,8 @@
 boxfont setfont
 1 boundaspect scale
 (Stream) cw
-(CAN) cw
 (OLED) cw
+(SOCKET) cw
 (SPI_N::SPI) cw
 (UART) cw
 /boxwidth boxwidth marginwidth 2 mul add def
@@ -190,8 +190,8 @@ boundx scalefactor div boundy scalefactor div scale
 % ----- classes -----
 
  (Stream) 1.500000 1.000000 box
- (CAN) 0.000000 0.000000 box
- (OLED) 1.000000 0.000000 box
+ (OLED) 0.000000 0.000000 box
+ (SOCKET) 1.000000 0.000000 box
  (SPI_N::SPI) 2.000000 0.000000 box
  (UART) 3.000000 0.000000 box
 
@@ -201,7 +201,7 @@ solid
 1 1.500000 0.250000 out
 solid
 0.000000 3.000000 1.000000 conn
-dotted
+solid
 0 0.000000 0.750000 in
 solid
 0 1.000000 0.750000 in

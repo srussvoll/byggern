@@ -4,15 +4,15 @@
 #include <avr/pgmspace.h>
 #include <util/delay.h>
 
-#include "lib/utilities/fonts.h"
+#include "../lib/utilities/fonts.h"
 #include "init.h"
-#include "lib/uart/uart.h"
-#include "lib/oled/oled.h"
-#include "lib/menu/menu.h"
-#include "lib/mcp2515/mcp2515.h"
-#include "lib/mcp2515/mcp2515_regisers.h"
-#include "lib/spi/spi.h"
-#include "lib/joystick/joystick.h"
+#include "../lib/uart/uart.h"
+#include "../lib/oled/oled.h"
+#include "../lib/menu/menu.h"
+#include "../lib/mcp2515/mcp2515.h"
+#include "../lib/mcp2515/mcp2515_regisers.h"
+#include "../lib/spi/spi.h"
+#include "../lib/joystick/joystick.h"
 
 uint16_t write_errors       = 0;
 uint16_t retrieval_errors   = 0;

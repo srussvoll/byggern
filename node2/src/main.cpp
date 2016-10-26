@@ -23,6 +23,8 @@ int main(){
     while(true) {
         PORTL |= 1 << PORTL1;
         _delay_ms(1000);
+        PORTL &= 0 << PORTL1;
+        _delay_ms(1000);
     }
 /*    // Get instance of all the modules
     SOCKET &s = SOCKET::GetInstance(0x02);

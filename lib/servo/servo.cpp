@@ -1,5 +1,3 @@
-
-
 #ifdef __AVR_ATmega2560__
 
 #include "servo.h"

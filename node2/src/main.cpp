@@ -17,15 +17,14 @@ void init_hardware_drivers() {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
-    //Servo servo(900, 2100);
-    DDRA |= 1 << DDA7;
-    while(true){
-        PORTA |= 1 << PORTA7;
+    Servo servo(900, 2100);
+    servo.SetAngle(0);
+    DDRL |= 1 << DDL1;
+    while(true) {
+        PORTL |= 1 << PORTL1;
         _delay_ms(1000);
-        PORTA |= 0 << PORTA7;
-        _delay_ms(1000);
-
-    // Get instance of all the modules
+    }
+/*    // Get instance of all the modules
     SOCKET &s = SOCKET::GetInstance(0x02);
     MCP2515 &mcp = MCP2515::GetInstance();
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
@@ -43,8 +42,8 @@ int main(){
 
     // Initialize the socket
     s.Initialize(&mcp, 0x01);
-    /*char test_string[] = "En";
-    s.Write((uint8_t *)test_string, sizeof(test_string));*/
+    *//*char test_string[] = "En";
+    s.Write((uint8_t *)test_string, sizeof(test_string));*//*
 
     _delay_ms(100);
 
@@ -55,7 +54,7 @@ int main(){
         s.Read(rec_mes,128);
         printf("Received: %s\n", (char *) rec_mes);
         _delay_ms(100);
-    }
+    } */
 }
 /*int main(){
 *//*    Servo servo(900, 2100);

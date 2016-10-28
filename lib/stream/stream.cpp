@@ -4,7 +4,7 @@
 
 namespace{
     inline uint16_t min(uint16_t one, uint16_t two){
-        return (one >= two) ? one : two;
+        return (one <= two) ? one : two;
     }
 }
 
@@ -60,6 +60,7 @@ uint16_t Stream::ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t
 
 
     start_index = (start_index + read_size) % buffer_size;
+    printf("%d, %d\n", read_size, buffer_length);
     if (read_size == buffer_length) {
         empty = true;
     }

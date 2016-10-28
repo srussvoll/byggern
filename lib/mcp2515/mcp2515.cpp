@@ -6,8 +6,6 @@
 #include <util/delay.h>
 void INT0_vect(){
     sei();
-
-    printf("I RAN! DDA\n");
     MCP2515 &mcp = MCP2515::GetInstance();
     uint8_t interrupt_flags;
     mcp.ReadFromRegister(MCP_CANINTF, interrupt_flags);

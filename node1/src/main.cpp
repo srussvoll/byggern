@@ -68,10 +68,11 @@ void OLEDTest();
 void CanTest();
 void SocketTest();
 int main(void) {
-    SocketTest();
-    //SPITest();
+    //SocketTest();
+    SPITest();
     //OLEDTest();
     //CanTest();
+    while(1);
 }
 
 /*void CanTest(){
@@ -80,7 +81,7 @@ int main(void) {
 
 }*/
 
-/*void SPITest(){
+void SPITest(){
     _delay_ms(100);
     SPI_N::SPI &my_spi = SPI_N::SPI::GetInstance();
 
@@ -93,7 +94,7 @@ int main(void) {
     MCP2515 &my_mcp = MCP2515::GetInstance();
     my_mcp.Initialize(&my_spi, 0x01);
 
-    printf("\nstart\n");
+    printf("\nstart of spi\n");
     my_mcp.SetLoopback();
     uint8_t data_to_send[] = {0x23, 0x59, 0xaa};
     CAN_MESSAGE message = CAN_MESSAGE(3, data_to_send, 0x01);
@@ -103,7 +104,7 @@ int main(void) {
     _delay_ms(10);
     printf("Sekt\n");
     _delay_ms(100);
-    *//*uint8_t byte;
+    uint8_t byte;
     my_mcp.RxStatus(byte);
     printf("RX STATUS = %2x \n", byte);
     uint8_t data_to_rec[8];
@@ -111,11 +112,12 @@ int main(void) {
     my_mcp.ReadRxFrame(rec_mess);
     for(int i = 0; i < rec_mess.size; i++){
         printf("%d - BYTE = %2x \n", i, rec_mess.data[i]);
-    }*//*
+    }
     printf("done\n");
-};*/
+};
 
 void SocketTest(){
+    printf("START OF TEST \n");
     // Get instance of all the modules
     SOCKET &s = SOCKET::GetInstance(0x01);
     MCP2515 &mcp = MCP2515::GetInstance();
@@ -133,19 +135,15 @@ void SocketTest(){
     //mcp.SetNormal();
 
     // Initialize the socket
-    s.Initialize(&mcp, 0x02);
+    s.Initialize(&mcp, 0x01);
     char test_string[] = "Test av masse rart...";
     s.Write((uint8_t *)test_string, sizeof(test_string));
     _delay_ms(100);
-    uint8_t errordata;
-    mcp.ReadFromRegister(MCP_TXB0CTRL,errordata);
-    printf("ERR = %2x", errordata);
-    //while (true);
-    /*uint8_t rec_mes[128];
+    uint8_t rec_mes[128];
     s.Read(rec_mes,128);
     for(int i = 0; i < sizeof(test_string); i++){
         printf("BYTE = %c\n",rec_mes[i]);
-    }*/
+    }
 /*    s.WriteByte(0xaf, 1);
     _delay_ms(10);
     uint8_t rec_data;

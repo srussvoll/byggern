@@ -2,7 +2,7 @@
 #include "../utilities/printf.h"
 
 void SOCKET::Write(uint8_t *string, uint16_t size) {
-    printf("WRITE \n");
+    printf("SOCKET WRITE \n");
     uint16_t data_left = size;
     while(data_left > 0){
         uint8_t can_size;

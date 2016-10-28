@@ -17,6 +17,7 @@ void init_hardware_drivers() {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
+/*    printf("START OF TEST \n");
     // Get instance of all the modules
     SOCKET &s = SOCKET::GetInstance(0x02);
     MCP2515 &mcp = MCP2515::GetInstance();
@@ -30,13 +31,41 @@ int main(){
 
     // Initialize MCP
     mcp.Initialize(&spi, 0x02);
-    //mcp.SetLoopback();
-    mcp.SetNormal();
+    mcp.SetLoopback();
+    //mcp.SetNormal();
 
     // Initialize the socket
-    s.Initialize(&mcp, 0x01);
-    /*char test_string[] = "En";
-    s.Write((uint8_t *)test_string, sizeof(test_string));*/
+    s.Initialize(&mcp, 0x02);
+    char test_string[] = "Test";
+    s.Write((uint8_t *)test_string, sizeof(test_string));
+    while(s.GetAvailableReadBytes() == 0);
+    printf("here \n");
+    uint8_t rec_mes[128];
+    s.Read(rec_mes,128);
+    for(int i = 0; i < sizeof(test_string); i++){
+        printf("BYTE = %c\n",rec_mes[i]);
+    }*/
+    printf("Hello there mr\n");
+    // Get instance of all the modules
+    SOCKET &s = SOCKET::GetInstance(0x02);
+    MCP2515 &mcp = MCP2515::GetInstance();
+    SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
+
+    // Initialize SPI
+    SPI_N::PIN ss = SPI_N::PIN(&PORTB, &DDRB, 7);
+    SPI_N::PIN ss_a[] = {ss};
+    spi.Initialize(ss_a, 1, 0, 0);
+    spi.SetDevice(ss);
+
+    // Initialize MCP
+    mcp.Initialize(&spi, 0x02);
+    mcp.SetLoopback();
+    //mcp.SetNormal();
+
+    // Initialize the socket
+    s.Initialize(&mcp, 0x02);
+    char test_string[] = "En test hei hei der";
+    s.Write((uint8_t *)test_string, sizeof(test_string));
 
     _delay_ms(100);
 
@@ -46,7 +75,7 @@ int main(){
         while(s.GetAvailableReadBytes() == 0);
         s.Read(rec_mes,128);
         printf("Received: %s\n", (char *) rec_mes);
-        _delay_ms(100);
+        _delay_ms(1000);
     }
 }
 /*int main(){

@@ -128,6 +128,7 @@ void MCP2515::LoadTxFrame(CAN_MESSAGE &message) {
      * We cannot load another TX buffer if we are not clear to send, since we only use one buffer. We therefor need to
      * wait in order to send a new one.
      */
+    printf("HEREasd asdasdasd\n");
     while(!this->clear_to_send);
     this->clear_to_send = false;
     // We need the first 11 bits of ID

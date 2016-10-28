@@ -23,7 +23,9 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
         }
         CAN_MESSAGE message = CAN_MESSAGE(can_size,data,this->target_id);
         this->can->SendMessage(message);
+        printf("SEND MSG\n");
     }
+    printf("LOOP DONE \n");
 }
 
 void SOCKET::WriteByte(uint8_t byte) {

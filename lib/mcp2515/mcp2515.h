@@ -118,7 +118,7 @@ public:
     /**
      * Flag indicating wether or not you can load the TX frame.
      */
-    bool clear_to_send = true;
+    volatile bool clear_to_send = true;
 
 
 };

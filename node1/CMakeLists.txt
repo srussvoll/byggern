@@ -13,7 +13,7 @@ set(BAUD 9600)
 # Programmer options
 set(PROG_TYPE jtag3isp)
 set(USBPORT usb)
-# set(BITCLOCK 115200)
+set(BITCLOCK 1)
 
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.
 # set(PROG_ARGS -P ${USBPORT} -B 1)
@@ -106,8 +106,11 @@ add_custom_target(hex   ALL     ${OBJCOPY} -R .eeprom -O ihex "${BUILD_PATH}/${P
 add_custom_target(eeprom        ${OBJCOPY} -j .eeprom --change-section-lma .eeprom=0 -O ihex "${BUILD_PATH}/${PROJECT_NAME}.elf" "${BUILD_PATH}/${PROJECT_NAME}.eeprom" DEPENDS strip)
 add_custom_target(disassemble   ${OBJDUMP} -S "${BUILD_PATH}/${PROJECT_NAME}.elf" > "${BUILD_PATH}/${PROJECT_NAME}.lst" DEPENDS strip)
 # Flashing targets
-add_custom_target(flash         ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -P ${USBPORT} -b ${BITCLOCK} -D -U flash:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS hex)
-add_custom_target(flash_eeprom  ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -P ${USBPORT} -b ${BITCLOCK} -D -U eeprom:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS eeprom)
+set(MINICOM minicom node1)
+add_custom_target(flash         ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -P ${USBPORT} -B ${BITCLOCK} -U flash:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS hex)
+add_custom_command(TARGET flash POST_BUILD COMMAND ${MINICOM})
+add_custom_target(minicom ${MINICOM})
+add_custom_target(flash_eeprom  ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -P ${USBPORT} -B ${BITCLOCK} -U eeprom:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS eeprom)
 add_custom_target(size          ${AVRSIZE} -C --mcu=${MCU} ${BUILD_PATH}/${PROJECT_NAME}.elf DEPENDS ${PROJECT_NAME})
 # Fuses
 #add_custom_target(fuses_16mhz   ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -U lfuse:w:0xFF:m)

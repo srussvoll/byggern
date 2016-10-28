@@ -68,8 +68,8 @@ void OLEDTest();
 void CanTest();
 void SocketTest();
 int main(void) {
-    //SocketTest();
-    SPITest();
+    SocketTest();
+    //SPITest();
     //OLEDTest();
     //CanTest();
     while(1);
@@ -131,14 +131,15 @@ void SocketTest(){
 
     // Initialize MCP
     mcp.Initialize(&spi, 0x01);
-    mcp.SetLoopback();
-    //mcp.SetNormal();
+    //mcp.SetLoopback();
+    mcp.SetNormal();
 
     // Initialize the socket
     s.Initialize(&mcp, 0x01);
-    char test_string[] = "Test av masse rart...";
+    char test_string[] = "Test";
     s.Write((uint8_t *)test_string, sizeof(test_string));
-    _delay_ms(100);
+    while(s.GetAvailableReadBytes() == 0);
+    printf("here \n");
     uint8_t rec_mes[128];
     s.Read(rec_mes,128);
     for(int i = 0; i < sizeof(test_string); i++){

@@ -1,11 +1,5 @@
-// FIXME: (finish) Remove this.
-#if DEBUG
-#define __AVR_ATmega2560__
-#endif
-
-#ifdef __AVR_ATmega2560__
-
 #include "i2c.h"
+#ifdef __AVR_ATmega2560__
 
 I2C::I2C() : Stream(64, 64){
     this->TWI_state = TWI_NO_STATE;
@@ -166,5 +160,4 @@ uint8_t I2C::GetDataFromTransceiver(uint8_t *message, uint8_t message_size) {
     }
     return( this->TWI_statusReg.lastTransOK );
 }
-
 #endif

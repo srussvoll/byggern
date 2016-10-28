@@ -1,6 +1,7 @@
 #include "lib/servo/servo.h"
 #include <avr/io.h>
 #include <util/delay.h>
+#include <lib/dac/dac.h>
 #include "lib/spi/spi.h"
 #include "lib/mcp2515/mcp2515.h"
 #include "lib/socket/socket.h"
@@ -17,16 +18,7 @@ void init_hardware_drivers() {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
-    Servo servo(900, 2100);
-    servo.SetAngle(0);
-    DDRL |= 1 << DDL1;
-    while(true) {
-        PORTL |= 1 << PORTL1;
-        _delay_ms(1000);
-        PORTL &= 0 << PORTL1;
-        _delay_ms(1000);
-    }
-/*    // Get instance of all the modules
+    // Get instance of all the modules
     SOCKET &s = SOCKET::GetInstance(0x02);
     MCP2515 &mcp = MCP2515::GetInstance();
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
@@ -44,10 +36,6 @@ int main(){
 
     // Initialize the socket
     s.Initialize(&mcp, 0x01);
-    *//*char test_string[] = "En";
-    s.Write((uint8_t *)test_string, sizeof(test_string));*//*
-
-    _delay_ms(100);
 
     while(true) {
         uint8_t rec_mes[128];
@@ -56,8 +44,27 @@ int main(){
         s.Read(rec_mes,128);
         printf("Received: %s\n", (char *) rec_mes);
         _delay_ms(100);
+    }
+
+
+
+
+
+    /*printf("Tester \n\r");
+    I2C& i2c = I2C::GetInstance();
+    i2c.Initialize(0x0C);
+    DAC& dac = DAC::GetInstance();
+    dac.Initialize();
+    dac.WriteAnalogSigal(5);*/
+    /*while(true){
+        dac.WriteAnalogSigal(5);
+        _delay_ms(1000);
+        dac.WriteAnalogSigal(0);
+        _delay_ms(1000);
     } */
 }
+
+
 /*int main(){
 *//*    Servo servo(900, 2100);
 
@@ -94,4 +101,5 @@ int main(){
     // Initialize the socket
     s.Initialize(&mcp, 1);*//*
 }*/
+
 #pragma clang diagnostic pop

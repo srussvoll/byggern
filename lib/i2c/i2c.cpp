@@ -1,13 +1,8 @@
-// FIXME: (finish) Remove this.
-#if DEBUG
-#define __AVR_ATmega2560__
-#endif
-
-#ifdef __AVR_ATmega2560__
-
 #include "i2c.h"
+#include "lib/utilities/printf.h"
 
 I2C::I2C() : Stream(64, 64){
+    sei();
     this->TWI_state = TWI_NO_STATE;
     this->TWI_statusReg = {0};
 }
@@ -16,6 +11,7 @@ void TWI_vect() {
     static unsigned char TWI_bufPtr;
 
     I2C& i2c = I2C::GetInstance();
+    printf("I am in interrupt...\n\r");
 
     switch (TWSR)
     {
@@ -93,6 +89,8 @@ void I2C::Initialize(uint8_t baudrate) {
     // Default content = SDA released.
     TWDR = 0xFF;
 
+    printf("Initing I2C \n\r");
+
     // Enable TWI-interface and release TWI pins. Disable Interupt. No Signal requests.
     TWCR = (1<<TWEN)|(0<<TWIE)|(0<<TWINT)|(0<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|(0<<TWWC);
 }
@@ -122,10 +120,12 @@ void I2C::SendData(uint8_t *message, uint8_t message_size) {
 
     // Store slave address with R/W setting.
     this->I2C_output_buffer[0]  = message[0];
+    printf("Sending message %d \n\r", message[0]);
 
     if (!( message[0] & (TRUE<<TWI_READ_BIT) ))       // If it is a write operation, then also copy data.
     {
         for ( temp = 1; temp < message_size; temp++ )
+            printf("Sending message %d \n\r", message[ temp ]);
             this->I2C_output_buffer[ temp ] = message[ temp ];
     }
     TWI_statusReg.all = 0;
@@ -166,5 +166,3 @@ uint8_t I2C::GetDataFromTransceiver(uint8_t *message, uint8_t message_size) {
     }
     return( this->TWI_statusReg.lastTransOK );
 }
-
-#endif

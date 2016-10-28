@@ -106,8 +106,9 @@ add_custom_target(disassemble   ${OBJDUMP} -S "${BUILD_PATH}/${PROJECT_NAME}.elf
 add_custom_target(flash         ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -U flash:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS hex)
 add_custom_target(flash_eeprom  ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -U eeprom:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS eeprom)
 add_custom_target(size          ${AVRSIZE} -C --mcu=${MCU} ${BUILD_PATH}/${PROJECT_NAME}.elf DEPENDS ${PROJECT_NAME})
-add_custom_target(open_serial   minicom ${PROJECT_NAME})
-add_custom_command(TARGET flash POST_BUILD COMMAND minicom ${PROJECT_NAME})
+set(MINICOM minicom ${PROJECT_NAME})
+add_custom_target(open_serial   ${MINICOM})
+add_custom_command(TARGET flash POST_BUILD COMMAND ${MINICOM})
 # Fuses
 #add_custom_target(fuses_16mhz   ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -U lfuse:w:0xFF:m)
 # Utilities targets

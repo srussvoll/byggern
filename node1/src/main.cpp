@@ -129,13 +129,17 @@ void SocketTest(){
 
     // Initialize MCP
     mcp.Initialize(&spi, 0x01);
-    //mcp.SetLoopback();
-    mcp.SetNormal();
+    mcp.SetLoopback();
+    //mcp.SetNormal();
 
     // Initialize the socket
     s.Initialize(&mcp, 0x02);
     char test_string[] = "Test av masse rart...";
     s.Write((uint8_t *)test_string, sizeof(test_string));
+    _delay_ms(100);
+    uint8_t errordata;
+    mcp.ReadFromRegister(MCP_TXB0CTRL,errordata);
+    printf("ERR = %2x", errordata);
     //while (true);
     /*uint8_t rec_mes[128];
     s.Read(rec_mes,128);

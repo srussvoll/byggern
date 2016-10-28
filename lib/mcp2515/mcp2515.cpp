@@ -7,13 +7,13 @@
 void INT0_vect(){
     sei();
 
-    printf("I RAN!\n");
-    _delay_ms(10);
+    printf("I RAN! DDA\n");
     MCP2515 &mcp = MCP2515::GetInstance();
     uint8_t interrupt_flags;
     mcp.ReadFromRegister(MCP_CANINTF, interrupt_flags);
 
     if(interrupt_flags & (MCP_TX0IF)){
+        //printf("MCPTX0IF\n");
         // Transmission complete
         mcp.clear_to_send = true;
         // Clear the interrupt
@@ -22,6 +22,7 @@ void INT0_vect(){
     }
 
     if(interrupt_flags & (MCP_RX0IF)){
+        //printf("MCP_RX0IF\n");
         // We got a new message
         uint8_t data_to_rec[8];
         CAN_MESSAGE rec_mess = CAN_MESSAGE(0,data_to_rec,0);

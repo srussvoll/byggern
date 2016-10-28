@@ -5,11 +5,13 @@
 #include "../uart/uart.h"
 #include <util/delay.h>
 void INT0_vect(){
+
     sei();
+//    printf("INT\n");
+//    sei();
     MCP2515 &mcp = MCP2515::GetInstance();
     uint8_t interrupt_flags;
     mcp.ReadFromRegister(MCP_CANINTF, interrupt_flags);
-
     if(interrupt_flags & (MCP_TX0IF)){
         //printf("MCPTX0IF\n");
         // Transmission complete
@@ -46,11 +48,11 @@ void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
 
 #elif __AVR_ATmega2560__
     // Falling edge
-    EICRA |= (1<<ISC01);
-    EICRA &= ~(1<<ISC00);
+    EICRA |= (2<<ISC00);
 
     // Enable the interrupt
     EIMSK |= (1<<INT0);
+
 #endif
     // Assuming the SPI is already initialized
 
@@ -128,7 +130,6 @@ void MCP2515::LoadTxFrame(CAN_MESSAGE &message) {
      * We cannot load another TX buffer if we are not clear to send, since we only use one buffer. We therefor need to
      * wait in order to send a new one.
      */
-    printf("HEREasd asdasdasd\n");
     while(!this->clear_to_send);
     this->clear_to_send = false;
     // We need the first 11 bits of ID
@@ -212,21 +213,12 @@ void MCP2515::SendMessage(CAN_MESSAGE &message) {
     GICR &= (1 << INT0);
     this->LoadTxFrame(message);
     this->RequestToSend();
-    // Check if interrupt ever happened
-    if(!(PORTD & (1 << PORTD2))){
-        // If it ever happened during the no interrupt period, run the interrupt vector.
-        INT0_vect();
-    }
+
     GICR |= (1 << INT0);
 #elif __AVR_ATmega2560__
     EIMSK &= (1 << INT0);
     this->LoadTxFrame(message);
     this->RequestToSend();
-    // Check if the interrupt ever happened
-    if(!(PORTD & (1 << PORTD0))){
-        // If it ever happened during the no interrupt period, run the interrupt vector.
-        INT0_vect();
-    }
     EIMSK |= (1<<INT0);
 #endif
 }

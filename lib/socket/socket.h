@@ -32,7 +32,6 @@ public:
      * @param message The recieved CAN_MESSAGE
      */
     static void HandleDataFromLowerLevel(CAN_MESSAGE &message) {
-        printf("Handler from lower \n");
         SOCKET &socket = SOCKET::GetInstance(message.id);
         socket.WriteToInputStream(message.data, message.size);
     }

@@ -60,7 +60,6 @@ uint16_t Stream::ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t
 
 
     start_index = (start_index + read_size) % buffer_size;
-    printf("%d, %d\n", read_size, buffer_length);
     if (read_size == buffer_length) {
         empty = true;
     }

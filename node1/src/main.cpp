@@ -116,6 +116,14 @@ void SPITest(){
     printf("done\n");
 };
 
+
+
+
+
+
+
+
+
 void SocketTest(){
     printf("START OF TEST \n");
     // Get instance of all the modules
@@ -136,15 +144,22 @@ void SocketTest(){
 
     // Initialize the socket
     s.Initialize(&mcp, 0x01);
-    char test_string[] = "Test";
+    char test_string[] = "Hello there mister. \n This is a tale of a man that killed a dragon. Yes, he was very brave.\n I wonder how long time it took to kill the dragon. It was a big dragon \n He got the girl and he was very happy and enjoyed life. Lol\n";
     s.Write((uint8_t *)test_string, sizeof(test_string));
+/*    while(true) {
+        for (int i = 0; i < 50; ++i) {
+            s.Write((uint8_t *)test_string, sizeof(test_string));
+        }
+        printf("Wrote many times.\n");
+    }*/
+/*
     while(s.GetAvailableReadBytes() == 0);
     printf("here \n");
     uint8_t rec_mes[128];
     s.Read(rec_mes,128);
     for(int i = 0; i < sizeof(test_string); i++){
         printf("BYTE = %c\n",rec_mes[i]);
-    }
+    }*/
 /*    s.WriteByte(0xaf, 1);
     _delay_ms(10);
     uint8_t rec_data;

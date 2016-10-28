@@ -1,6 +1,7 @@
 var dir_97aefd0d527b934f1d99a682da8fe6a9 =
 [
     [ "adc", "dir_17d2bf5118ca03033a758691016eeb9a.html", "dir_17d2bf5118ca03033a758691016eeb9a" ],
+    [ "adc_internal", "dir_3cc4d89cbb969bbca88f1ef184f1adad.html", "dir_3cc4d89cbb969bbca88f1ef184f1adad" ],
     [ "can", "dir_c926ccd25fde7939feebe163e20903e5.html", "dir_c926ccd25fde7939feebe163e20903e5" ],
     [ "dac", "dir_941a4331ff30ad8c2334400926407dba.html", "dir_941a4331ff30ad8c2334400926407dba" ],
     [ "i2c", "dir_048b5c8740c2855c7721552ee93efcec.html", "dir_048b5c8740c2855c7721552ee93efcec" ],
@@ -9,7 +10,9 @@ var dir_97aefd0d527b934f1d99a682da8fe6a9 =
     [ "menu", "dir_272b57e86a33352289e8933a3b869038.html", "dir_272b57e86a33352289e8933a3b869038" ],
     [ "oled", "dir_43acfda8ae2a7dc79d6ffc7268040542.html", "dir_43acfda8ae2a7dc79d6ffc7268040542" ],
     [ "servo", "dir_7a728fc3a8bd03b50aea281e54349c6f.html", "dir_7a728fc3a8bd03b50aea281e54349c6f" ],
+    [ "socket", "dir_e17dec1d132ad7ed461be9444000b405.html", "dir_e17dec1d132ad7ed461be9444000b405" ],
     [ "spi", "dir_54039fda600ac562dd03ed75913a326a.html", "dir_54039fda600ac562dd03ed75913a326a" ],
+    [ "state_machine", "dir_d2e57318d5adef90542a8df15206bbb9.html", "dir_d2e57318d5adef90542a8df15206bbb9" ],
     [ "stream", "dir_47f8fe28d1a6fab217e2996b53d6dd11.html", "dir_47f8fe28d1a6fab217e2996b53d6dd11" ],
     [ "uart", "dir_b4d6f175b33edcf901b87ee260cccf25.html", "dir_b4d6f175b33edcf901b87ee260cccf25" ],
     [ "utilities", "dir_3a2f33b0f26bc6229d595c2c354e6333.html", "dir_3a2f33b0f26bc6229d595c2c354e6333" ]

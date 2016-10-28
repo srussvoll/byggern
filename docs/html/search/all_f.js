@@ -2,6 +2,7 @@ var searchData=
 [
   ['selectnext',['SelectNext',['../class_menu_1_1_controller.html#a9aabc6ba652c29efa7a02e12f51ce0b1',1,'Menu::Controller']]],
   ['selectprevious',['SelectPrevious',['../class_menu_1_1_controller.html#a04e3448cfe4341ad7209a9f16bbcb449',1,'Menu::Controller']]],
+  ['senddata',['SendData',['../class_i2_c.html#a6b0a26e4ebcae7eee8920a70b77fd5c2',1,'I2C']]],
   ['sendmessage',['SendMessage',['../class_m_c_p2515.html#aa8c9fe944f7e6e99feb3f56a1c099a29',1,'MCP2515']]],
   ['servo',['Servo',['../class_servo.html',1,'']]],
   ['setfont',['SetFont',['../class_o_l_e_d.html#abe6073c961cadc4c9b693eb8dc8198bd',1,'OLED']]],
@@ -14,7 +15,9 @@ var searchData=
   ['spi_2eh',['spi.h',['../spi_8h.html',1,'']]],
   ['spi_5fdriver',['spi_driver',['../class_m_c_p2515.html#a3a5ca0d606115f1551a06d871606540e',1,'MCP2515']]],
   ['spi_5fstc_5fvect',['SPI_STC_vect',['../class_s_p_i___n_1_1_s_p_i.html#a96543550133e0b0c6ae83faad5c0d68d',1,'SPI_N::SPI']]],
+  ['starttransceiver',['StartTransceiver',['../class_i2_c.html#af8c970cb20a2b5bdcf80ef35c662658f',1,'I2C']]],
   ['starttransmission',['StartTransmission',['../class_u_a_r_t.html#a0569d0267f8045907cedb527b5082fe0',1,'UART']]],
+  ['statemachine',['StateMachine',['../class_state_machine.html',1,'']]],
   ['stream',['Stream',['../class_stream.html',1,'Stream'],['../class_stream.html#a2b738d6f4d3059de2ae3d444d68663bf',1,'Stream::Stream()']]],
   ['stream_2eh',['stream.h',['../stream_8h.html',1,'']]]
 ];

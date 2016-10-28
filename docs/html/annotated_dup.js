@@ -6,11 +6,15 @@ var annotated_dup =
       [ "SPI", "class_s_p_i___n_1_1_s_p_i.html", "class_s_p_i___n_1_1_s_p_i" ]
     ] ],
     [ "CAN", "class_c_a_n.html", "class_c_a_n" ],
+    [ "CAN_MESSAGE", "struct_c_a_n___m_e_s_s_a_g_e.html", "struct_c_a_n___m_e_s_s_a_g_e" ],
     [ "DAC", "class_d_a_c.html", "class_d_a_c" ],
-    [ "I2C", "class_i2_c.html", null ],
+    [ "I2C", "class_i2_c.html", "class_i2_c" ],
     [ "MCP2515", "class_m_c_p2515.html", "class_m_c_p2515" ],
     [ "OLED", "class_o_l_e_d.html", "class_o_l_e_d" ],
     [ "Servo", "class_servo.html", "class_servo" ],
+    [ "SOCKET", "class_s_o_c_k_e_t.html", "class_s_o_c_k_e_t" ],
+    [ "StateMachine", "class_state_machine.html", "class_state_machine" ],
     [ "Stream", "class_stream.html", "class_stream" ],
+    [ "TWI_statusReg", "union_t_w_i__status_reg.html", "union_t_w_i__status_reg" ],
     [ "UART", "class_u_a_r_t.html", "class_u_a_r_t" ]
 ];

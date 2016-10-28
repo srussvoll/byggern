@@ -1,8 +1,155 @@
-\hypertarget{class_i2_c}{\section{I2\-C Class Reference}
-\label{class_i2_c}\index{I2\-C@{I2\-C}}
-}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\hypertarget{class_i2_c}{}\section{I2C Class Reference}
+\label{class_i2_c}\index{I2C@{I2C}}
+Inheritance diagram for I2C\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i2_c}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-lib/i2c/i2c.\-h\end{DoxyCompactItemize}
+void \hyperlink{class_i2_c_acfdd142a63b224f178f3edda5f30f2aa}{Initialize} (uint8\+\_\+t baudrate)
+\item 
+bool \hyperlink{class_i2_c_a3e6747576e7d4abf506296f8675ec3b5}{Transceiver\+Is\+Busy} ()
+\item 
+uint8\+\_\+t \hyperlink{class_i2_c_ac46dd0197fdfbea2ff6d24b45f2ec67b}{Get\+State\+Info} ()
+\item 
+void \hyperlink{class_i2_c_a6b0a26e4ebcae7eee8920a70b77fd5c2}{Send\+Data} (uint8\+\_\+t $\ast$message, uint8\+\_\+t message\+\_\+size)
+\item 
+void \hyperlink{class_i2_c_af8c970cb20a2b5bdcf80ef35c662658f}{Start\+Transceiver} ()
+\item 
+uint8\+\_\+t \hyperlink{class_i2_c_a2023e5108a9bfb4ac09f509f74137307}{Get\+Data\+From\+Transceiver} (uint8\+\_\+t $\ast$message, uint8\+\_\+t message\+\_\+size)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_i2_c}{I2C} \& \hyperlink{class_i2_c_ade3b5d971432c82867201123965cf3fd}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t {\bfseries message\+\_\+size}\hypertarget{class_i2_c_a88add0edd8c518054944a8188ab11d0c}{}\label{class_i2_c_a88add0edd8c518054944a8188ab11d0c}
+
+\item 
+uint8\+\_\+t {\bfseries T\+W\+I\+\_\+state}\hypertarget{class_i2_c_aeb2f95017c3d3440a3fc27a20994fac7}{}\label{class_i2_c_aeb2f95017c3d3440a3fc27a20994fac7}
+
+\item 
+uint8\+\_\+t {\bfseries I2\+C\+\_\+output\+\_\+buffer} \mbox{[}4\mbox{]}\hypertarget{class_i2_c_a4de289c8a3651d7b6aaca518844bb3f1}{}\label{class_i2_c_a4de289c8a3651d7b6aaca518844bb3f1}
+
+\item 
+union \hyperlink{union_t_w_i__status_reg}{T\+W\+I\+\_\+status\+Reg} {\bfseries T\+W\+I\+\_\+status\+Reg}\hypertarget{class_i2_c_a07cc6b21ede25e6b3ef1e9b3131108e6}{}\label{class_i2_c_a07cc6b21ede25e6b3ef1e9b3131108e6}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_i2_c_a7a9a84fccdacb3346ff97d6f3e158850}{I2C} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_i2_c_a9d6ec6457f300cca833eb7193feabfbc}{T\+W\+I\+\_\+vect} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{I2C@{I2C}!I2C@{I2C}}
+\index{I2C@{I2C}!I2C@{I2C}}
+\subsubsection[{\texorpdfstring{I2\+C()}{I2C()}}]{\setlength{\rightskip}{0pt plus 5cm}I2\+C\+::\+I2C (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_i2_c_a7a9a84fccdacb3346ff97d6f3e158850}{}\label{class_i2_c_a7a9a84fccdacb3346ff97d6f3e158850}
+Default constructor. Private due to singleton 
+
+\subsection{Member Function Documentation}
+\index{I2C@{I2C}!Get\+Data\+From\+Transceiver@{Get\+Data\+From\+Transceiver}}
+\index{Get\+Data\+From\+Transceiver@{Get\+Data\+From\+Transceiver}!I2C@{I2C}}
+\subsubsection[{\texorpdfstring{Get\+Data\+From\+Transceiver(uint8\+\_\+t $\ast$message, uint8\+\_\+t message\+\_\+size)}{GetDataFromTransceiver(uint8_t *message, uint8_t message_size)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t I2\+C\+::\+Get\+Data\+From\+Transceiver (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{message, }
+\item[{uint8\+\_\+t}]{message\+\_\+size}
+\end{DoxyParamCaption}
+)}\hypertarget{class_i2_c_a2023e5108a9bfb4ac09f509f74137307}{}\label{class_i2_c_a2023e5108a9bfb4ac09f509f74137307}
+Call this function to read out the requested data from the T\+WI transceiver buffer. I.\+e. first call T\+W\+I\+\_\+\+Start\+\_\+\+Transceiver to send a request for data to the slave. Then Run this function to collect the data when they have arrived. Include a pointer to where to place the data and the number of bytes requested (including the address field) in the function call. The function will hold execution (loop) until the T\+W\+I\+\_\+\+I\+SR has completed with the previous operation, before reading out the data and returning. If there was an error in the previous transmission the function will return the T\+WI error code. 
+\begin{DoxyParams}{Parameters}
+{\em message} & A pointer to where to place the data \\
+\hline
+{\em message\+\_\+size} & Number of bytes requested \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{class_i2_c}{I2C} error code 
+\end{DoxyReturn}
+\index{I2C@{I2C}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!I2C@{I2C}}
+\subsubsection[{\texorpdfstring{Get\+Instance()}{GetInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf I2C}\& I2\+C\+::\+Get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_i2_c_ade3b5d971432c82867201123965cf3fd}{}\label{class_i2_c_ade3b5d971432c82867201123965cf3fd}
+A Singleton implementation of this class \index{I2C@{I2C}!Get\+State\+Info@{Get\+State\+Info}}
+\index{Get\+State\+Info@{Get\+State\+Info}!I2C@{I2C}}
+\subsubsection[{\texorpdfstring{Get\+State\+Info()}{GetStateInfo()}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t I2\+C\+::\+Get\+State\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_i2_c_ac46dd0197fdfbea2ff6d24b45f2ec67b}{}\label{class_i2_c_ac46dd0197fdfbea2ff6d24b45f2ec67b}
+Call this function to fetch the state information of the previous operation. The function will hold execution (loop) until the T\+W\+I\+\_\+\+I\+SR has completed with the previous operation. If there was an error, then the function will return the T\+WI State code. \index{I2C@{I2C}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!I2C@{I2C}}
+\subsubsection[{\texorpdfstring{Initialize(uint8\+\_\+t baudrate)}{Initialize(uint8_t baudrate)}}]{\setlength{\rightskip}{0pt plus 5cm}void I2\+C\+::\+Initialize (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{baudrate}
+\end{DoxyParamCaption}
+)}\hypertarget{class_i2_c_acfdd142a63b224f178f3edda5f30f2aa}{}\label{class_i2_c_acfdd142a63b224f178f3edda5f30f2aa}
+Call this function to set up the T\+WI master to its initial standby state. Remember to enable interrupts from the main application after initializing the T\+WI. 
+\begin{DoxyParams}{Parameters}
+{\em baudrate} & The baudrate of the system. Should be set to 0x0C \\
+\hline
+\end{DoxyParams}
+\index{I2C@{I2C}!Send\+Data@{Send\+Data}}
+\index{Send\+Data@{Send\+Data}!I2C@{I2C}}
+\subsubsection[{\texorpdfstring{Send\+Data(uint8\+\_\+t $\ast$message, uint8\+\_\+t message\+\_\+size)}{SendData(uint8_t *message, uint8_t message_size)}}]{\setlength{\rightskip}{0pt plus 5cm}void I2\+C\+::\+Send\+Data (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{message, }
+\item[{uint8\+\_\+t}]{message\+\_\+size}
+\end{DoxyParamCaption}
+)}\hypertarget{class_i2_c_a6b0a26e4ebcae7eee8920a70b77fd5c2}{}\label{class_i2_c_a6b0a26e4ebcae7eee8920a70b77fd5c2}
+Call this function to send a prepared message. The first byte must contain the slave address and the read/write bit. Consecutive bytes contain the data to be sent, or empty locations for data to be read from the slave. Also include how many bytes that should be sent/read including the address byte. The function will hold execution (loop) until the T\+W\+I\+\_\+\+I\+SR has completed with the previous operation, 
+\begin{DoxyParams}{Parameters}
+{\em message} & The bytes to be sent \\
+\hline
+{\em message\+\_\+size} & The size of the byte package then initialize the next operation and return. \\
+\hline
+\end{DoxyParams}
+\index{I2C@{I2C}!Start\+Transceiver@{Start\+Transceiver}}
+\index{Start\+Transceiver@{Start\+Transceiver}!I2C@{I2C}}
+\subsubsection[{\texorpdfstring{Start\+Transceiver()}{StartTransceiver()}}]{\setlength{\rightskip}{0pt plus 5cm}void I2\+C\+::\+Start\+Transceiver (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_i2_c_af8c970cb20a2b5bdcf80ef35c662658f}{}\label{class_i2_c_af8c970cb20a2b5bdcf80ef35c662658f}
+Call this function to resend the last message. The driver will reuse the data previously put in the transceiver buffers. The function will hold execution (loop) until the T\+W\+I\+\_\+\+I\+SR has completed with the previous operation, then initialize the next operation and return. \index{I2C@{I2C}!Transceiver\+Is\+Busy@{Transceiver\+Is\+Busy}}
+\index{Transceiver\+Is\+Busy@{Transceiver\+Is\+Busy}!I2C@{I2C}}
+\subsubsection[{\texorpdfstring{Transceiver\+Is\+Busy()}{TransceiverIsBusy()}}]{\setlength{\rightskip}{0pt plus 5cm}bool I2\+C\+::\+Transceiver\+Is\+Busy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_i2_c_a3e6747576e7d4abf506296f8675ec3b5}{}\label{class_i2_c_a3e6747576e7d4abf506296f8675ec3b5}
+Call this function to test if the T\+W\+I\+\_\+\+I\+SR is busy transmitting. 
+
+\subsection{Friends And Related Function Documentation}
+\index{I2C@{I2C}!T\+W\+I\+\_\+vect@{T\+W\+I\+\_\+vect}}
+\index{T\+W\+I\+\_\+vect@{T\+W\+I\+\_\+vect}!I2C@{I2C}}
+\subsubsection[{\texorpdfstring{T\+W\+I\+\_\+vect}{TWI_vect}}]{\setlength{\rightskip}{0pt plus 5cm}void T\+W\+I\+\_\+vect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{class_i2_c_a9d6ec6457f300cca833eb7193feabfbc}{}\label{class_i2_c_a9d6ec6457f300cca833eb7193feabfbc}
+The interrupt handler vector. To be run on each D\+RE interrupt 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/i2c/\hyperlink{i2c_8h}{i2c.\+h}\end{DoxyCompactItemize}

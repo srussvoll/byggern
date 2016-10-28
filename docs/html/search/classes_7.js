@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uart',['UART',['../class_u_a_r_t.html',1,'']]]
+  ['twi_5fstatusreg',['TWI_statusReg',['../union_t_w_i__status_reg.html',1,'']]]
 ];

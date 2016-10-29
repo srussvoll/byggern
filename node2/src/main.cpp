@@ -3,6 +3,7 @@
 #include <util/delay.h>
 #include <lib/menu/menu.h>
 #include <lib/utilities/fonts.h>
+#include <lib/oled_scp/oled_scp.h>
 #include "lib/spi/spi.h"
 #include "lib/mcp2515/mcp2515.h"
 #include "lib/socket/socket.h"
@@ -19,7 +20,8 @@ void init_hardware_drivers() {
 }
 void InitializeNetworkStack(){
     // Get instance of all the modules
-    SOCKET &s = SOCKET::GetInstance(0x01);
+    SOCKET &high = SOCKET::GetInstance(0x00);
+    SOCKET &low = SOCKET::GetInstance(0x01);
     MCP2515 &mcp = MCP2515::GetInstance();
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
 
@@ -30,21 +32,29 @@ void InitializeNetworkStack(){
     spi.SetDevice(ss);
 
     // Initialize MCP
-    mcp.Initialize(&spi, 0x01);
+    mcp.Initialize(&spi, 0x00);
     //mcp.SetLoopback();
     mcp.SetNormal();
 
     // Initialize the socket
-    s.Initialize(&mcp, 0x01);
+    high.Initialize(&mcp);
+    low.Initialize(&mcp);
 }
 
 void test_oled() {
-    SOCKET &sock = SOCKET::GetInstance(0x01);
-
     printf("\nTesting menu.\n");
 
-    OLED &my_oled = OLED_CAN::GetInstance();
-    my_oled.Init(128,64);
+
+    SOCKET* sockets[] = {
+            &SOCKET::GetInstance(0),
+            &SOCKET::GetInstance(1)
+    };
+    SCP channel((SOCKET *) sockets);
+
+    OLED_SCP &scp_oled = OLED_SCP::GetInstance();
+    scp_oled.Init(128,64, channel);
+    OLED &my_oled = (OLED&) scp_oled;
+
     my_oled.SetFont(Fonts::f8x8, 8, 8);
 
     Menu::Controller controller(my_oled, 5);

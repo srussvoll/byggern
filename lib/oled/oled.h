@@ -17,7 +17,7 @@ public:
      * @param width The width of the screen in pixels
      * @param height The height of the screen in pixels
     */
-    virtual void Init(uint8_t width, uint8_t height);
+    void Init(uint8_t width, uint8_t height);
 
     /**
     * Sets the line pointer. This line pointer is used by functions such as WriteLine() to determine which line to write to.
@@ -110,7 +110,7 @@ protected:
     */
     OLED();
 
-    virtual void WriteByteToOLED(volatile uint8_t *address, uint8_t data) = 0;
+    virtual void WriteByteToOLED(volatile uint8_t *address, uint8_t data) {};
 
     /**
     * The current line used by the driver

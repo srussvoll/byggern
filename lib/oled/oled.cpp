@@ -180,5 +180,5 @@ void OLED::WriteLine(char *string, uint8_t length, uint8_t line, uint8_t offset)
 }
 
 uint8_t OLED::GetYCoordinateFromLineNumber(uint8_t line) {
-    return line*this->pixels_per_line;
+    return line * this->pixels_per_line;
 }

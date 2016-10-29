@@ -68,9 +68,9 @@ void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
     this->WriteToRegister(MCP_RXF0SIDL, (lower_id<<5));
     this->WriteToRegister(MCP_RXF0SIDH, upper_id);
 
-    // Set the mask
-    this->WriteToRegister(MCP_RXM0SIDH, 0xFF);
-    this->WriteToRegister(MCP_RXM0SIDL, (0xFF << 5));
+    // Set the mask. Currently 0x00, aka broadcast.
+    this->WriteToRegister(MCP_RXM0SIDH, 0x00);
+    this->WriteToRegister(MCP_RXM0SIDL, (0x00 << 5));
 }
 
 void MCP2515::RequestToSend() {

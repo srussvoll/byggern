@@ -14,8 +14,8 @@ bool \hyperlink{class_d_a_c_ae7d843a3795822e893fb2b2d996b0666}{Write\+Analog\+Si
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{class_d_a_c}{D\+AC} \& {\bfseries Get\+Instance} ()\hypertarget{class_d_a_c_aa97df751677eb0db87b3e3a5a1cb6049}{}\label{class_d_a_c_aa97df751677eb0db87b3e3a5a1cb6049}
-
+\hypertarget{class_d_a_c_aa97df751677eb0db87b3e3a5a1cb6049}{}\label{class_d_a_c_aa97df751677eb0db87b3e3a5a1cb6049} 
+static \hyperlink{class_d_a_c}{D\+AC} \& {\bfseries Get\+Instance} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
@@ -25,57 +25,52 @@ static \hyperlink{class_d_a_c}{D\+AC} \& {\bfseries Get\+Instance} ()\hypertarge
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_i2_c}{I2C} \& {\bfseries i2c} = \hyperlink{class_i2_c_ade3b5d971432c82867201123965cf3fd}{I2\+C\+::\+Get\+Instance}()\hypertarget{class_d_a_c_a6517e861453f7b7f6108c7a6ed2825ac}{}\label{class_d_a_c_a6517e861453f7b7f6108c7a6ed2825ac}
-
+\hypertarget{class_d_a_c_a6517e861453f7b7f6108c7a6ed2825ac}{}\label{class_d_a_c_a6517e861453f7b7f6108c7a6ed2825ac} 
+\hyperlink{class_i2_c}{I2C} \& {\bfseries i2c} = \hyperlink{class_i2_c_ade3b5d971432c82867201123965cf3fd}{I2\+C\+::\+Get\+Instance}()
 \item 
 uint8\+\_\+t \hyperlink{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425}{max}
 \item 
 uint8\+\_\+t \hyperlink{class_d_a_c_aa4f21cf166374cfc6edcd412f4d2072b}{min}
 \item 
-uint8\+\_\+t {\bfseries address\+\_\+and\+\_\+write\+\_\+byte}\hypertarget{class_d_a_c_a1dd1e9c4a63f493da44d7208e59cc83e}{}\label{class_d_a_c_a1dd1e9c4a63f493da44d7208e59cc83e}
-
+\hypertarget{class_d_a_c_a1dd1e9c4a63f493da44d7208e59cc83e}{}\label{class_d_a_c_a1dd1e9c4a63f493da44d7208e59cc83e} 
+uint8\+\_\+t {\bfseries address\+\_\+and\+\_\+write\+\_\+byte}
 \end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_d_a_c_a9908e07a5c096380eeb4c4061d58476d}{}\label{class_d_a_c_a9908e07a5c096380eeb4c4061d58476d} 
 \index{D\+AC@{D\+AC}!D\+AC@{D\+AC}}
 \index{D\+AC@{D\+AC}!D\+AC@{D\+AC}}
-\subsubsection[{\texorpdfstring{D\+A\+C()}{DAC()}}]{\setlength{\rightskip}{0pt plus 5cm}D\+A\+C\+::\+D\+AC (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_d_a_c_a9908e07a5c096380eeb4c4061d58476d}{}\label{class_d_a_c_a9908e07a5c096380eeb4c4061d58476d}
-A constructor that initializes the \hyperlink{class_d_a_c}{D\+AC}. Private because of singleton \index{D\+AC@{D\+AC}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{D\+A\+C()}{DAC()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily D\+A\+C\+::\+D\+AC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+A constructor that initializes the \hyperlink{class_d_a_c}{D\+AC}. Private because of singleton \hypertarget{class_d_a_c_af656669246f70c7ccbbd05d0e65088d4}{}\label{class_d_a_c_af656669246f70c7ccbbd05d0e65088d4} 
 \index{D\+AC@{D\+AC}!D\+AC@{D\+AC}}
-\subsubsection[{\texorpdfstring{D\+A\+C(const D\+A\+C \&)=delete}{DAC(const DAC &)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}D\+A\+C\+::\+D\+AC (
-\begin{DoxyParamCaption}
-\item[{const {\bf D\+AC} \&}]{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [delete]}}\hypertarget{class_d_a_c_af656669246f70c7ccbbd05d0e65088d4}{}\label{class_d_a_c_af656669246f70c7ccbbd05d0e65088d4}
+\index{D\+AC@{D\+AC}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{D\+A\+C()}{DAC()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily D\+A\+C\+::\+D\+AC (\begin{DoxyParamCaption}\item[{const \hyperlink{class_d_a_c}{D\+AC} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
 Because of singleton -\/ makes sure its not copied etc. 
 
 \subsection{Member Function Documentation}
+\hypertarget{class_d_a_c_a834456c539ee1936f7da8e4bfaa407f0}{}\label{class_d_a_c_a834456c539ee1936f7da8e4bfaa407f0} 
 \index{D\+AC@{D\+AC}!Initialize@{Initialize}}
 \index{Initialize@{Initialize}!D\+AC@{D\+AC}}
-\subsubsection[{\texorpdfstring{Initialize()}{Initialize()}}]{\setlength{\rightskip}{0pt plus 5cm}void D\+A\+C\+::\+Initialize (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{class_d_a_c_a834456c539ee1936f7da8e4bfaa407f0}{}\label{class_d_a_c_a834456c539ee1936f7da8e4bfaa407f0}
-Initializes the dac by giving it an address (the one used by \hyperlink{class_i2_c}{I2C} to access it) In our project it is already grounded, so the adress is set as 0x50 \index{D\+AC@{D\+AC}!operator=@{operator=}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void D\+A\+C\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initializes the dac by giving it an address (the one used by \hyperlink{class_i2_c}{I2C} to access it) In our project it is already grounded, so the adress is set as 0x50 \hypertarget{class_d_a_c_a9e16a3d53b57588cba0ff2f9ade78e6b}{}\label{class_d_a_c_a9e16a3d53b57588cba0ff2f9ade78e6b} 
+\index{D\+AC@{D\+AC}!operator=@{operator=}}
 \index{operator=@{operator=}!D\+AC@{D\+AC}}
-\subsubsection[{\texorpdfstring{operator=(const D\+A\+C \&)=delete}{operator=(const DAC &)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}void D\+A\+C\+::operator= (
-\begin{DoxyParamCaption}
-\item[{const {\bf D\+AC} \&}]{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [delete]}}\hypertarget{class_d_a_c_a9e16a3d53b57588cba0ff2f9ade78e6b}{}\label{class_d_a_c_a9e16a3d53b57588cba0ff2f9ade78e6b}
-Because of singleton -\/ makes sure its not copied etc. \index{D\+AC@{D\+AC}!Write\+Analog\+Sigal@{Write\+Analog\+Sigal}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void D\+A\+C\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_d_a_c}{D\+AC} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. \hypertarget{class_d_a_c_ae7d843a3795822e893fb2b2d996b0666}{}\label{class_d_a_c_ae7d843a3795822e893fb2b2d996b0666} 
+\index{D\+AC@{D\+AC}!Write\+Analog\+Sigal@{Write\+Analog\+Sigal}}
 \index{Write\+Analog\+Sigal@{Write\+Analog\+Sigal}!D\+AC@{D\+AC}}
-\subsubsection[{\texorpdfstring{Write\+Analog\+Sigal(uint8\+\_\+t value)}{WriteAnalogSigal(uint8_t value)}}]{\setlength{\rightskip}{0pt plus 5cm}bool D\+A\+C\+::\+Write\+Analog\+Sigal (
-\begin{DoxyParamCaption}
-\item[{uint8\+\_\+t}]{value}
-\end{DoxyParamCaption}
-)}\hypertarget{class_d_a_c_ae7d843a3795822e893fb2b2d996b0666}{}\label{class_d_a_c_ae7d843a3795822e893fb2b2d996b0666}
+\subsubsection{\texorpdfstring{Write\+Analog\+Sigal()}{WriteAnalogSigal()}}
+{\footnotesize\ttfamily bool D\+A\+C\+::\+Write\+Analog\+Sigal (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
 Returns a bool indicating whether or not the value is valid. Writes the value to the \hyperlink{class_d_a_c}{D\+AC} 
 \begin{DoxyParams}{Parameters}
 {\em value} & The voltage value to be output \\
@@ -84,12 +79,18 @@ Returns a bool indicating whether or not the value is valid. Writes the value to
 
 
 \subsection{Member Data Documentation}
+\hypertarget{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425}{}\label{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425} 
 \index{D\+AC@{D\+AC}!max@{max}}
 \index{max@{max}!D\+AC@{D\+AC}}
-\subsubsection[{\texorpdfstring{max}{max}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t D\+A\+C\+::max\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425}{}\label{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425}
-The maximum voltage value the \hyperlink{class_d_a_c}{D\+AC} can output \index{D\+AC@{D\+AC}!min@{min}}
+\subsubsection{\texorpdfstring{max}{max}}
+{\footnotesize\ttfamily uint8\+\_\+t D\+A\+C\+::max\hspace{0.3cm}{\ttfamily [private]}}
+
+The maximum voltage value the \hyperlink{class_d_a_c}{D\+AC} can output \hypertarget{class_d_a_c_aa4f21cf166374cfc6edcd412f4d2072b}{}\label{class_d_a_c_aa4f21cf166374cfc6edcd412f4d2072b} 
+\index{D\+AC@{D\+AC}!min@{min}}
 \index{min@{min}!D\+AC@{D\+AC}}
-\subsubsection[{\texorpdfstring{min}{min}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t D\+A\+C\+::min\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_d_a_c_aa4f21cf166374cfc6edcd412f4d2072b}{}\label{class_d_a_c_aa4f21cf166374cfc6edcd412f4d2072b}
+\subsubsection{\texorpdfstring{min}{min}}
+{\footnotesize\ttfamily uint8\+\_\+t D\+A\+C\+::min\hspace{0.3cm}{\ttfamily [private]}}
+
 The minimum voltage value the \hyperlink{class_d_a_c}{D\+AC} can output 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -18,12 +18,12 @@ public:
      * A Singleton implementation of this class
      * @param id The socket ID
      */
-    static SOCKET& GetInstance(uint8_t id = 1){
-        if(id == 1){
-            static SOCKET instance(1);
+    static SOCKET& GetInstance(uint8_t id = 0){
+        if(id == 0){
+            static SOCKET instance(0);
             return instance;
-        }else if (id == 2){
-            static SOCKET instance(2);
+        }else if (id == 1){
+            static SOCKET instance(1);
             return instance;
         }
     }
@@ -46,8 +46,7 @@ public:
      * @param can A can controller which implements the interface defined in the can class in this project
      * @param target_id The target node id
      */
-    void Initialize(CAN *can, uint8_t target_id){
-        this->target_id = target_id;
+    void Initialize(CAN *can){
         SOCKET::can = can;
         SOCKET::can->SetUpperLevel(&SOCKET::HandleDataFromLowerLevel);
     }
@@ -70,10 +69,6 @@ private:
      * This sockets identifier
      */
     uint8_t id;
-    /**
-     * Target sockets identifier
-     */
-    uint8_t target_id;
 
 
 };

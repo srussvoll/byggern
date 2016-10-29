@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <lib/utilities/printf.h>
+
 #include "stream.h"
 
 namespace{

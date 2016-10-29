@@ -6,6 +6,14 @@
 #include "lib/stream/stream.h"
 #include "lib/i2c/pins.h"
 
+/**
+ * @file
+ * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
+ * @version 1.0
+ *
+ * An interface for handling streams with default methods.
+ */
+
 // Status byte holding flags.
 union TWI_statusReg
 {
@@ -18,14 +26,6 @@ union TWI_statusReg
 };
 
 extern union TWI_statusReg TWI_statusReg;
-
-/**
- * @file
- * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
- * @version 1.0
- *
- * An interface for handling streams with default methods.
- */
 
 ISR(TWI_vect);
 
@@ -89,7 +89,7 @@ public:
      * @param message_size The size of the byte package
      * then initialize the next operation and return.
      */
-    void SendData( uint8_t *message, uint8_t message_size );
+    void SendData(uint8_t *message, uint8_t message_size);
 
     /**
      * Call this function to resend the last message. The driver will reuse the data previously put in the transceiver buffers.

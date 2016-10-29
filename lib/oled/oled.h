@@ -13,19 +13,11 @@ class OLED : public Stream {
 
 public:
     /**
-     * A Singleton implementation of this class
-     */
-    static OLED& GetInstance(){
-        static OLED instance;
-        return instance;
-    }
-
-    /**
     * Initializes the whole screen.
      * @param width The width of the screen in pixels
      * @param height The height of the screen in pixels
     */
-    void Init(uint8_t width, uint8_t height);
+    virtual void Init(uint8_t width, uint8_t height);
 
     /**
     * Sets the line pointer. This line pointer is used by functions such as WriteLine() to determine which line to write to.
@@ -112,11 +104,13 @@ public:
     */
     void GetBitmapForCharacter(char character, uint8_t* &character_bitmap);
 
-private:
+protected:
     /**
     * Singleton constructor
     */
     OLED();
+
+    virtual void WriteByteToOLED(volatile uint8_t *address, uint8_t data) = 0;
 
     /**
     * The current line used by the driver

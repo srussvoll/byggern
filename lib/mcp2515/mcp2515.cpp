@@ -47,11 +47,13 @@ void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
     MCUCR |= (2<<ISC00);
 
 #elif __AVR_ATmega2560__
+
     // Falling edge
-    EICRA |= (2<<ISC00);
+    EICRA |= (1<<ISC21);
+    EICRA &= (1<<ISC20);
 
     // Enable the interrupt
-    EIMSK |= (1<<INT0);
+    EIMSK |= (1<<INT2);
 
 #endif
     // Assuming the SPI is already initialized

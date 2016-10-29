@@ -104,7 +104,7 @@ add_custom_target(doxygen       ${DOXYGEN} ${BASE_PATH}/Doxyfile WORKING_DIRECTO
 add_custom_target(strip ALL     ${AVRSTRIP} "${BUILD_PATH}/${PROJECT_NAME}.elf" DEPENDS ${PROJECT_NAME})
 add_custom_target(hex   ALL     ${OBJCOPY} -R .eeprom -O ihex "${BUILD_PATH}/${PROJECT_NAME}.elf" "${BUILD_PATH}/${PROJECT_NAME}.hex" DEPENDS strip)
 add_custom_target(eeprom        ${OBJCOPY} -j .eeprom --change-section-lma .eeprom=0 -O ihex "${BUILD_PATH}/${PROJECT_NAME}.elf" "${BUILD_PATH}/${PROJECT_NAME}.eeprom" DEPENDS strip)
-add_custom_target(disassemble   ${OBJDUMP} -S "${BUILD_PATH}/${PROJECT_NAME}.elf" > "${BUILD_PATH}/${PROJECT_NAME}.lst" DEPENDS strip)
+add_custom_target(disassemble   ${OBJDUMP} -S "${BUILD_PATH}/${PROJECT_NAME}.elf" > "${BUILD_PATH}/${PROJECT_NAME}.lst" DEPENDS ${PROJECT_NAME})
 # Flashing targets
 add_custom_target(flash         ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -P ${USBPORT} -B ${BITCLOCK} -U flash:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS hex)
 add_custom_target(flash_eeprom  ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -P ${USBPORT} -B ${BITCLOCK} -U eeprom:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS eeprom)

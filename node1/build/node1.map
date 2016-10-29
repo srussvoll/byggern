@@ -1453,9 +1453,9 @@ END GROUP
  .stab          0x000000000001011c      0x480 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(ultoa_invert.o)
                                         0x48c (size before relaxing)
 
-.stabstr        0x0000000000000000     0xac34
+.stabstr        0x0000000000000000     0xac33
  *(.stabstr)
- .stabstr       0x0000000000000000     0xac34 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm162.o
+ .stabstr       0x0000000000000000     0xac33 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm162.o
 
 .stab.excl
  *(.stab.excl)

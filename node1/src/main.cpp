@@ -15,7 +15,7 @@
 #include "lib/socket/socket.h"
 #include "lib/joystick/joystick.h"
 
-#include "state_machine.cpp"
+#include "state_machine.h"
 
 
 #pragma clang diagnostic push

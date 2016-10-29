@@ -1286,9 +1286,9 @@ END GROUP
                 0x0000000000804377                _ZGVZN5SPI_N3SPI11GetInstanceEvE8instance
  .bss.fsm       0x000000000080437f        0x3 CMakeFiles/node1.dir/src/state_machine.cpp.obj
                 0x000000000080437f                fsm
- .bss.transitions
+ .bss.state_functions
                 0x0000000000804382       0x28 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x0000000000804382                transitions
+                0x0000000000804382                state_functions
  .bss._ZZN3ADC11GetInstanceEPhE8instance_0
                 0x00000000008043aa       0x1c CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
                 0x00000000008043aa                _ZZN3ADC11GetInstanceEPhE8instance_0

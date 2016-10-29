@@ -1,17 +1,26 @@
 #include "../lib/state_machine/state_machine.h"
+#include "../lib/uart/uart.h"
+#include <util/delay.h>
+void MenuLoop(){
+    char msg[] = "Menu loop is so fun\n";
+    UART::GetInstance().Write((uint8_t *)msg, sizeof(msg));
+    _delay_ms(1000);
+}
+void MenuEnter(){
 
-void (*transitions[][2])(void) = {
-/*                                   enter                                    leave                                   */
-/* state0                        */ {nullptr                                 ,nullptr                                 },
-/* state1                        */ {nullptr                                 ,nullptr                                 },
-/* state2                        */ {nullptr                                 ,nullptr                                 },
-/* state3                        */ {nullptr                                 ,nullptr                                 },
-/* state4                        */ {nullptr                                 ,nullptr                                 },
-/* state5                        */ {nullptr                                 ,nullptr                                 },
-/* state6                        */ {nullptr                                 ,nullptr                                 },
-/* state7                        */ {nullptr                                 ,nullptr                                 },
-/* state8                        */ {nullptr                                 ,nullptr                                 },
-/* state9                        */ {nullptr                                 ,nullptr                                 },
+}
+void MenuLeave(){
+
+}
+void (*state_functions[][2])(void) = {
+/* 0. Menu                       */ {&MenuEnter,&MenuLoop, &MenuLeave},
+/* 1. Play Game                  */ {nullptr,nullptr, nullptr},
+/* 2. Highscore Scree            */ {nullptr,nullptr, nullptr},
 };
 
-StateMachine fsm((void (**)(void)) transitions);
+
+
+void InitializeStateMachine(){
+    StateMachine fsm((void (**)(void)) state_functions, 0);
+    fsm.Start();
+}

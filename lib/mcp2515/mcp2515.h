@@ -38,17 +38,10 @@ public:
      */
     void SendMessage(CAN_MESSAGE &message);
 
-//private:
     /**
-    * Initializes the MCP2515 driver.
-    * @param spi The singleton instance of the SPI driver
+    * Initiates the loopback mode of the MCP2515. Please consult the
+    * <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf">MCP2515 datasheet</a>
     */
-    void Initialize(SPI_N::SPI *spi, uint16_t identifier);
-
-    /**
-     * Initiates the loopback mode of the MCP2515. Please consult the
-     * <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf">MCP2515 datasheet</a>
-     */
     void SetLoopback();
 
     /**
@@ -57,6 +50,14 @@ public:
      */
 
     void SetNormal();
+    /**
+    * Initializes the MCP2515 driver.
+    * @param spi The singleton instance of the SPI driver
+    */
+    void Initialize(SPI_N::SPI *spi, uint16_t identifier);
+
+
+private:
 
     /**
      * Sends a RTS (Request to Send) signal to the MCP2515. This is

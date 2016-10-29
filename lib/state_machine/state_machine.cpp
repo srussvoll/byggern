@@ -1,7 +1,7 @@
 #include <lib/utilities/printf.h>
 #include "state_machine.h"
 
-bool StateMachine::Transition(uint8_t state, bool reenter = 0) {
+bool StateMachine::Transition(uint8_t state, bool reenter = false) {
     if (state != this->current_state || state == this->current_state && reenter) {
         uint8_t old_state = this->current_state;
         this->current_state = state;

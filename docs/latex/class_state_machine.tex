@@ -3,26 +3,35 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries State\+Machine} (void($\ast$($\ast$transitions))(void), uint8\+\_\+t initial\+\_\+state=0)\hypertarget{class_state_machine_a93dc36ab30f26854dcf2d8556a487d1e}{}\label{class_state_machine_a93dc36ab30f26854dcf2d8556a487d1e}
-
+\hypertarget{class_state_machine_ad9c6bdaca444710f77fc12d7e1af8fdc}{}\label{class_state_machine_ad9c6bdaca444710f77fc12d7e1af8fdc} 
+{\bfseries State\+Machine} (void($\ast$($\ast$state\+\_\+functions))(void), uint8\+\_\+t initial\+\_\+state=0)
 \item 
-bool {\bfseries Transition} (uint8\+\_\+t state, bool reenter)\hypertarget{class_state_machine_a1597799edc5a89006f164e52fd72d02b}{}\label{class_state_machine_a1597799edc5a89006f164e52fd72d02b}
-
+\hypertarget{class_state_machine_a1597799edc5a89006f164e52fd72d02b}{}\label{class_state_machine_a1597799edc5a89006f164e52fd72d02b} 
+bool {\bfseries Transition} (uint8\+\_\+t state, bool reenter)
 \item 
-uint8\+\_\+t {\bfseries Get\+Current\+State} ()\hypertarget{class_state_machine_a62fd24666d16a2425c8397ce2d326dae}{}\label{class_state_machine_a62fd24666d16a2425c8397ce2d326dae}
-
+\hypertarget{class_state_machine_a62fd24666d16a2425c8397ce2d326dae}{}\label{class_state_machine_a62fd24666d16a2425c8397ce2d326dae} 
+uint8\+\_\+t {\bfseries Get\+Current\+State} ()
+\item 
+\hypertarget{class_state_machine_a94c93f8203bab4f5a3784eba7445b582}{}\label{class_state_machine_a94c93f8203bab4f5a3784eba7445b582} 
+void {\bfseries Start} ()
+\item 
+\hypertarget{class_state_machine_a2eb142249e4c483c8a329b1a18b4383f}{}\label{class_state_machine_a2eb142249e4c483c8a329b1a18b4383f} 
+void {\bfseries Stop} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void {\bfseries transitions} ()\hypertarget{class_state_machine_ad15834b0fa8f6e036f74c9b65aadb7be}{}\label{class_state_machine_ad15834b0fa8f6e036f74c9b65aadb7be}
-
+\hypertarget{class_state_machine_acc87359cd98c436f5b891ffe6cb67160}{}\label{class_state_machine_acc87359cd98c436f5b891ffe6cb67160} 
+void {\bfseries state\+\_\+functions} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-uint8\+\_\+t {\bfseries current\+\_\+state}\hypertarget{class_state_machine_abdcd9426d9a2ec9e2d703c74cd3299df}{}\label{class_state_machine_abdcd9426d9a2ec9e2d703c74cd3299df}
-
+\hypertarget{class_state_machine_abdcd9426d9a2ec9e2d703c74cd3299df}{}\label{class_state_machine_abdcd9426d9a2ec9e2d703c74cd3299df} 
+uint8\+\_\+t {\bfseries current\+\_\+state}
+\item 
+\hypertarget{class_state_machine_adc6939485a12a6250df3cc65aa172d2a}{}\label{class_state_machine_adc6939485a12a6250df3cc65aa172d2a} 
+bool {\bfseries running} = false
 \end{DoxyCompactItemize}
 
 

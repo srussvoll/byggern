@@ -23,12 +23,12 @@ void InitializeNetworkStack(){
     spi.SetDevice(ss);
 
     // Initialize MCP
-    mcp.Initialize(&spi, 0x01);
+    mcp.Initialize(&spi, 0x00);
     //mcp.SetLoopback();
     mcp.SetNormal();
 
     // Initialize the socket
-    s.Initialize(&mcp, 0x01);
+    s.Initialize(&mcp);
 }
 
 void init_memory() {

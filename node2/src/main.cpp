@@ -21,7 +21,7 @@ void init_hardware_drivers() {
 }
 void InitializeNetworkStack(){
     // Get instance of all the modules
-    SOCKET &high = SOCKET::GetInstance(0x00);
+    //SOCKET &high = SOCKET::GetInstance(0x00);
     SOCKET &low = SOCKET::GetInstance(0x01);
     MCP2515 &mcp = MCP2515::GetInstance();
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
@@ -33,12 +33,12 @@ void InitializeNetworkStack(){
     spi.SetDevice(ss);
 
     // Initialize MCP
-    mcp.Initialize(&spi, 0x00);
+    mcp.Initialize(&spi, 0x01);
     //mcp.SetLoopback();
     mcp.SetNormal();
 
     // Initialize the socket
-    high.Initialize(&mcp);
+    //high.Initialize(&mcp);
     low.Initialize(&mcp);
 }
 
@@ -53,6 +53,8 @@ void test_oled() {
     OLED_SCP &scp_oled = OLED_SCP::GetInstance();
     scp_oled.Init(128, 64, channel, WRITE_TO_ADDRESS);
     OLED &my_oled = (OLED&) scp_oled;
+
+    printf("Done.\n");
 
     my_oled.SetFont(Fonts::f8x8, 8, 8);
 
@@ -124,9 +126,9 @@ void test_oled() {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
-    //test_oled();
+    test_oled();
 
-    SOCKET &socket = SOCKET::GetInstance(0);
+    /*SOCKET &socket = SOCKET::GetInstance(1);
 
 
     while(true) {
@@ -134,6 +136,6 @@ int main(){
         char s[20];
         socket.Read((uint8_t *) s, 20);
         printf(s);
-    }
+    }*/
 }
 #pragma clang diagnostic pop

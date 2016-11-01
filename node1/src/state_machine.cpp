@@ -26,6 +26,7 @@ void InitializeLoop(){
     uint8_t command;
     uint8_t length;
     uint8_t data[3];
+
     if(channel->Receive(command, data, length)) {
         printf("Hmm\n");
         if (command == WRITE_TO_ADDRESS) {

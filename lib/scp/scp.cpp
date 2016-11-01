@@ -7,6 +7,7 @@ bool SCP::Receive(uint8_t &command, uint8_t *data, uint8_t &length_of_data) {
     // Return the highest priority command.
     for (int i = 0; i < this->number_of_sockets; ++i) {
         if (this->sockets[i]->GetAvailableReadBytes() > 0) {
+            printf("oeu\n");
             while (this->sockets[i]->GetAvailableReadBytes() < 2)
             this->sockets[i]->ReadByte(command);
             this->sockets[i]->ReadByte(length_of_data);

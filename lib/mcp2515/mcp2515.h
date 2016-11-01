@@ -5,7 +5,7 @@
 
 #define MCP2515_INT INT0_vect
 
-ISR(INT0_vect);
+ISR(INT4_vect);
 /**
  * A singleton class which implements the communication between the AVR and the MCP2515. Throughout the documentation
  * of this class, we will refer to the datasheet of the chip. This can be found at
@@ -30,7 +30,7 @@ public:
     /**
      * The MCP2515 interrupt handler
      */
-    friend void INT0_vect();
+    friend void INT4_vect();
 
     /**
      * Sends a CAN message

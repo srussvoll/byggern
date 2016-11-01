@@ -6,33 +6,44 @@
 #include "../lib/menu/menu.h"
 #include "../lib/utilities/fonts.h"
 #include "../lib/joystick/joystick.h"
+#include "lib/scp/scp.h"
 
 #define STATE_MENU                  1
 #define STATE_GAME                  2
 #define STATE_HIGHSCORE             3
 
-StateMachine *fsmP;
-void InitializeLoop(){
-    fsmP->Transition(STATE_MENU,0);
-}
-void MenuLoop(){
-}
-void MenuEnter(){
-}
-void MenuLeave(){
+StateMachine *fsm;
+SCP          *channel;
+SOCKET* sockets[] = {
+        &SOCKET::GetInstance(0),
+        &SOCKET::GetInstance(1)
+};
+
+/* States: enter, loops and leaves */
+void Initialize(){
+    uint8_t command;
+    uint8_t length;
+    uint8_t data[3];
+    if(channel->Receive(command, data, length)) {
+        if (command == )
+    }
 }
 
+void MenuLoop() {}
+void MenuEnter() {}
+void MenuLeave() {}
+
+/* State functions table */
 void (*state_functions[][3])(void) = {
-/* 0. Initialize                 */ {nullptr, nullptr, nullptr},
+/* 0. Initialize                 */ {&Initialize, nullptr, nullptr},
 /* 1. Menu                       */ {&MenuEnter, &MenuLoop, &MenuLeave},
 /* 2. Play Game                  */ {nullptr,nullptr, nullptr},
 /* 3. Highscore Scree            */ {nullptr,nullptr, nullptr},
 };
 
-
-
+/* Initialize and start the state machine */
 void InitializeStateMachine(){
-    StateMachine fsm((void (**)(void)) state_functions, 0);
-    fsmP = &fsm;
-    fsm.Start();
+    channel = new SCP((SOCKET *) sockets, 2);
+    fsm = new StateMachine((void (**)(void)) state_functions, 0);
+    fsm->Start();
 }

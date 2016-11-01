@@ -7,9 +7,11 @@
  */
 class SCP{
 public:
-    SCP(SOCKET *sockets);
+    SCP(SOCKET *sockets, uint8_t number_of_sockets);
 
-    void Send(uint8_t priority, uint8_t command,uint8_t *data, uint8_t length_of_data);
+    void Send(uint8_t priority, uint8_t command, uint8_t *data, uint8_t length_of_data);
+    bool Receive(uint8_t &command, uint8_t *data, uint8_t &length_of_data);
 private:
     SOCKET *sockets;
+    uint8_t number_of_sockets;
 };

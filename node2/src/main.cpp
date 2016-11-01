@@ -49,7 +49,7 @@ void test_oled() {
             &SOCKET::GetInstance(0),
             &SOCKET::GetInstance(1)
     };
-    SCP channel((SOCKET *) sockets);
+    SCP channel((SOCKET *) sockets, 2);
 
     OLED_SCP &scp_oled = OLED_SCP::GetInstance();
     scp_oled.Init(128,64, channel);

@@ -12,6 +12,6 @@ void OLED_SCP::WriteByteToOLED(volatile uint8_t *address, uint8_t data) {
             (uint8_t)(((uint16_t)address & 0xFF)),
             data
     };
-    this->channel->Send(4, 0x00, payload, sizeof(payload) / sizeof(payload[0]));
+    this->channel->Send(1, 0x00, payload, sizeof(payload) / sizeof(payload[0]));
 }
 

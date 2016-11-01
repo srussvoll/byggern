@@ -62,7 +62,7 @@ set(CXXSTANDARD "-std=c++11")
 set(CDEBUG    "-gstabs -g -ggdb")
 set(CWARN     "-Wall -Wno-unknown-pragmas")
 set(CONLYWARN "-Wstrict-prototypes")
-set(CTUNING   "-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -ffunction-sections -fdata-sections")
+set(CTUNING   "-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -Wl,--gc-sections")
 set(COPT      "-Os -lm -lprintf_flt")
 set(ENABLE_SINGLETON "-fno-threadsafe-statics") # This isn't implemented in avr-g++ anyway, and without this singletons don't work...
 set(DISABLE_EXCEPTIONS "-fno-exceptions") # This isn't implemented in avr-g++. Turn it off so the code doesn't try to cast an exception.

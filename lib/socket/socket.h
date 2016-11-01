@@ -14,6 +14,8 @@ public:
 
     CAN *can;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-return-type"
     /**
      * A Singleton implementation of this class
      * @param id The socket ID
@@ -27,6 +29,8 @@ public:
             return instance;
         }
     }
+#pragma clang diagnostic pop
+
     /**
      * Called when a new CAN_MESSAGE from the can controller has arrived. Puts the message into the stream
      * @param message The recieved CAN_MESSAGE

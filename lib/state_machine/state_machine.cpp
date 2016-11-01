@@ -6,8 +6,10 @@ bool StateMachine::Transition(uint8_t state, bool reenter = false) {
         uint8_t old_state = this->current_state;
         this->current_state = state;
 
-        (*(this->state_functions[(3 * old_state + 1) * sizeof(this->state_functions[0])]))();
-        (*(this->state_functions[(3 * this->current_state + 0) * sizeof(this->state_functions[0])]))();
+        void (*leave_fn)(void) = this->state_functions[(3 * old_state           + 2)];
+        void (*enter_fn)(void) = this->state_functions[(3 * this->current_state + 0)];
+        if (leave_fn != nullptr) (*leave_fn)();
+        if (enter_fn != nullptr) (*enter_fn)();
         return true;
     } else return false;
 }
@@ -21,8 +23,8 @@ void StateMachine::Start(){
     #pragma clang diagnostic push
     #pragma clang diagnostic ignored "-Wmissing-noreturn"
     while(this->running){
-        uint8_t function_key = 1;
-        this->state_functions[3 * this->current_state + function_key]();
+        void (*loop_fn)(void) = this->state_functions[(3 * this->current_state + 0)];
+        if (loop_fn != nullptr) (*loop_fn)();
     }
     #pragma clang diagnostic pop
 }

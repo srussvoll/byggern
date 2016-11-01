@@ -29,7 +29,7 @@ public:
      * @param height The height of the screen in pixels
      * @param socket Socket to write through.
     */
-    void Init(uint8_t width, uint8_t height, SCP &channel);
+    void Init(uint8_t width, uint8_t height, SCP &channel, uint8_t command);
 
 protected:
     /**
@@ -38,6 +38,7 @@ protected:
     OLED_SCP() : OLED() {}
 
     SCP *channel = nullptr;
+    uint8_t command;
 
     virtual void WriteByteToOLED(volatile uint8_t *address, uint8_t data);
 };

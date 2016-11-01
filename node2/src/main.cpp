@@ -9,6 +9,7 @@
 #include "lib/socket/socket.h"
 #include "lib/uart/uart.h"
 #include "lib/utilities/printf.h"
+#include "lib/scp/commands.h"
 
 void init_hardware_drivers() __attribute__((naked)) __attribute((used)) __attribute__((section(".init8")));
 void InitializeNetworkStack();
@@ -52,7 +53,7 @@ void test_oled() {
     SCP channel((SOCKET *) sockets, 2);
 
     OLED_SCP &scp_oled = OLED_SCP::GetInstance();
-    scp_oled.Init(128,64, channel);
+    scp_oled.Init(128,64, channel, WRITE_TO_ADDRESS);
     OLED &my_oled = (OLED&) scp_oled;
 
     my_oled.SetFont(Fonts::f8x8, 8, 8);

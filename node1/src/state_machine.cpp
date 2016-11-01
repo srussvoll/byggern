@@ -7,6 +7,7 @@
 #include "../lib/utilities/fonts.h"
 #include "../lib/joystick/joystick.h"
 #include "lib/scp/scp.h"
+#include "lib/scp/commands.h"
 
 #define STATE_MENU                  1
 #define STATE_GAME                  2
@@ -20,12 +21,14 @@ SOCKET* sockets[] = {
 };
 
 /* States: enter, loops and leaves */
-void Initialize(){
+void InitializeLoop(){
     uint8_t command;
     uint8_t length;
     uint8_t data[3];
     if(channel->Receive(command, data, length)) {
-        if (command == )
+        if (command == WRITE_TO_ADDRESS) {
+            *((uint8_t*)(((uint16_t)data[0] << 8) + data[1])) = data[2];
+        }
     }
 }
 
@@ -35,7 +38,7 @@ void MenuLeave() {}
 
 /* State functions table */
 void (*state_functions[][3])(void) = {
-/* 0. Initialize                 */ {&Initialize, nullptr, nullptr},
+/* 0. Initialize                 */ {nullptr, InitializeLoop, nullptr},
 /* 1. Menu                       */ {&MenuEnter, &MenuLoop, &MenuLeave},
 /* 2. Play Game                  */ {nullptr,nullptr, nullptr},
 /* 3. Highscore Scree            */ {nullptr,nullptr, nullptr},

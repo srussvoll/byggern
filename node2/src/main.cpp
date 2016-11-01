@@ -47,11 +47,11 @@ void test_oled() {
     _delay_ms(1000);
 
     SOCKET* sockets[] = {
-            &(SOCKET::GetInstance(0)),
-            &(SOCKET::GetInstance(1)),
+            &SOCKET::GetInstance(0),
+            &SOCKET::GetInstance(1),
     };
+    printf("%4x\n", (uint16_t)sockets);
     SCP channel(sockets, 2);
-
     OLED_SCP &scp_oled = OLED_SCP::GetInstance();
     scp_oled.Init(128, 64, channel, WRITE_TO_ADDRESS);
     //printf("eou");

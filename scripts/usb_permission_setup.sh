@@ -11,7 +11,4 @@ fi
 
 
 ArduinoMegaPort="/dev/ttyACM0"
-if [ -f "$ArduinoMegaPort" ]
-then
-    chmod 777 "$ArduinoMegaPort"
-fi
+chmod 777 "$ArduinoMegaPort"

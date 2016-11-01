@@ -44,16 +44,17 @@ void InitializeNetworkStack(){
 
 void test_oled() {
     printf("\nTesting menu.\n");
-
+    _delay_ms(1000);
 
     SOCKET* sockets[] = {
-            &SOCKET::GetInstance(0),
-            &SOCKET::GetInstance(1)
+            &(SOCKET::GetInstance(0)),
+            &(SOCKET::GetInstance(1)),
     };
-    SCP channel((SOCKET *) sockets, 2);
+    SCP channel(sockets, 2);
 
     OLED_SCP &scp_oled = OLED_SCP::GetInstance();
-    scp_oled.Init(128,64, channel, WRITE_TO_ADDRESS);
+    scp_oled.Init(128, 64, channel, WRITE_TO_ADDRESS);
+    //printf("eou");
     OLED &my_oled = (OLED&) scp_oled;
 
     my_oled.SetFont(Fonts::f8x8, 8, 8);
@@ -128,5 +129,6 @@ void test_oled() {
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
     test_oled();
+    while(true);
 }
 #pragma clang diagnostic pop

@@ -8,6 +8,8 @@ void INT0_vect(){
 
     sei();
 //    printf("INT\n");
+    char ch[] = "INT\n";
+    UART::GetInstance().Write((uint8_t *) ch, sizeof(ch));
 //    sei();
     MCP2515 &mcp = MCP2515::GetInstance();
     uint8_t interrupt_flags;
@@ -47,6 +49,8 @@ void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
     MCUCR |= (2<<ISC00);
 
 #elif __AVR_ATmega2560__
+    DDRB &= ~(1 << DDB6);
+    PORTB &= ~(1 << PORTB6);
 
     // Falling edge
     EICRA |= (1<<ISC21);

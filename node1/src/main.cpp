@@ -19,7 +19,16 @@
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
 int main(void) {
-    InitializeStateMachine(); // This will call an endless loop.
+    //InitializeStateMachine(); // This will call an endless loop.
+
+    printf("Trying to write.\n");
+    char s[] = "Heisann...";
+    SOCKET::GetInstance(0).Write((uint8_t *) s, sizeof(s));
+    printf("Done writing.\n");
+
+    while (true) {
+
+    }
 }
 
 #pragma clang diagnostic pop

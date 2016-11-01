@@ -20,6 +20,7 @@ private:
     /**
     *
     */
+    /* FIXME: SOOOOOONDREEEEE!!!!!!!!!!!! Dette er ikke greit... */
     I2C& i2c = I2C::GetInstance();
 
     /**

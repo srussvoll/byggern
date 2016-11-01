@@ -12,7 +12,7 @@
 
 void InitializeNetworkStack(){
     // Get instance of all the modules
-    SOCKET &s = SOCKET::GetInstance(0x01);
+    SOCKET &s = SOCKET::GetInstance(0);
     MCP2515 &mcp = MCP2515::GetInstance();
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
 
@@ -23,7 +23,7 @@ void InitializeNetworkStack(){
     spi.SetDevice(ss);
 
     // Initialize MCP
-    mcp.Initialize(&spi, 0x00);
+    mcp.Initialize(&spi, 0);
     //mcp.SetLoopback();
     mcp.SetNormal();
 

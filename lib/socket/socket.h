@@ -15,7 +15,7 @@ public:
     CAN *can;
 
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wmissing-return-type"
+#pragma clang diagnostic ignored "-Wreturn-type"
     /**
      * A Singleton implementation of this class
      * @param id The socket ID

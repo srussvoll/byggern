@@ -1,4 +1,3 @@
-#include "lib/servo/servo.h"
 #include <avr/io.h>
 #include <util/delay.h>
 #include <lib/menu/menu.h>
@@ -10,6 +9,12 @@
 #include "lib/uart/uart.h"
 #include "lib/utilities/printf.h"
 #include "lib/scp/commands.h"
+#include <lib/dac/dac.h>
+#include "lib/socket/socket.h"
+#include "lib/uart/uart.h"
+#include "lib/utilities/printf.h"
+#include "lib/motor/motor.h"
+#include "lib/adc_internal/adc_internal.h"
 
 void init_hardware_drivers() __attribute__((naked)) __attribute((used)) __attribute__((section(".init8")));
 void InitializeNetworkStack();
@@ -132,8 +137,5 @@ int main(){
     char test_string[] = "Small string that ends\n";
     printf("Sending string with size = %d\n", sizeof(test_string));
 
-    while(true) {
-        s.Write((uint8_t *)test_string, sizeof(test_string));
-    }
 }
 #pragma clang diagnostic pop

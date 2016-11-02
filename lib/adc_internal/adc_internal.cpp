@@ -1,6 +1,6 @@
 #include "adc_internal.h"
 
-ADC_internal::ADC_internal() : address(address), Stream(1,1){
+ADC_internal::ADC_internal(): Stream(1,1){
     sei();
 
     // Initialize ADC
@@ -23,11 +23,11 @@ ADC_internal::ADC_internal() : address(address), Stream(1,1){
 }
 
 bool ADC_internal::request_sample(){
-    if(ADC_internal::adc_in_use){
+    if(this->adc_in_use){
         // ADC_internal busy
         return false;
     } else{
-        ADC_internal::adc_in_use = true;
+        this->adc_in_use = true;
 
         // Start Conversion
         ADCSRA |= ( 1 << ADSC );
@@ -44,10 +44,9 @@ void ADC_vect(){
     //Get the data from the conversion
     uint8_t data = ADCL;
 
+    adc.WriteByteToInputStream(data);
     uart.WriteByte(data);
 
-    ADC_internal::adc_in_use = false;
-
-
+    adc.adc_in_use = false;
 }
 

@@ -11,13 +11,15 @@ ISR(ADC_vect);
 class ADC_internal : public Stream {
 private:
 
-    volatile uint8_t *address;
+    /**
+    * A flag indicating if the ADC is currently used
+    */
+    volatile bool adc_in_use;
 
     /**
     * Constructor for ADC class. Singleton implementation
     */
     ADC_internal();
-
 
 public:
 
@@ -48,11 +50,5 @@ public:
     * Request the ADC to get a sample. This sample can be read from the buffer using ReadByte(uint8_t& byte);
     */
     bool request_sample();
-
-    /**
-    * A flag indicating if the ADC is currently used
-    */
-    volatile static bool adc_in_use;
-
 
 };

@@ -1,3 +1,5 @@
+#ifdef __AVR_ATmega2560__
+
 #include "adc_internal.h"
 
 ADC_internal::ADC_internal(): Stream(1,1){
@@ -49,4 +51,6 @@ void ADC_vect(){
 
     adc.adc_in_use = false;
 }
+
+#endif
 

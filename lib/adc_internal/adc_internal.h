@@ -1,3 +1,5 @@
+#ifdef __AVR_ATmega2560__
+
 #pragma once
 
 #include <avr/io.h>
@@ -52,3 +54,5 @@ public:
     bool request_sample();
 
 };
+
+#endif

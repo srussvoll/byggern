@@ -1,5 +1,6 @@
-#pragma once
+#ifdef __AVR_ATmega2560__
 
+#pragma once
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <lib/adc_internal/adc_internal.h>
@@ -53,4 +54,6 @@ public:
      */
     void operator=(const IR_DETECTOR&) = delete;
 };
+
+#endif
 

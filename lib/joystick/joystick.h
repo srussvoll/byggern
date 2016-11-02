@@ -7,7 +7,7 @@ struct Quantization{
     uint8_t x_min;
     uint8_t y_max;
     uint8_t y_min;
-    Quantization();
+    Quantization(){};
     Quantization(uint8_t x_max, uint8_t x_min, uint8_t y_max, uint8_t y_min): x_max(x_max), x_min(x_min), y_max(y_max),y_min(y_min){}
 };
 

@@ -1,7 +1,6 @@
-/*
 #include "adc_internal.h"
 
-#ifdef __AVR_ATmega2560__
+#include <avr/io.h>
 
 volatile bool ADC_internal::adc_in_use = false;
 
@@ -35,5 +34,3 @@ void ADC_internal_INT(){
     ADC_internal::adc_in_use = false;
 }
 
-#endif
-*/

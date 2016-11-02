@@ -1,7 +1,18 @@
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+#include <lib/uart/uart.h>
+
 #include "i2c.h"
-#ifdef __AVR_ATmega2560__
+#include "lib/utilities/printf.h"
 
 I2C::I2C() : Stream(64, 64){
+    sei();
+
+    for(int i = 0; i < 3;i++){
+        printf("Value for init is:... %d \n\r", this->output_buffer[i]);
+    }
+
     this->TWI_state = TWI_NO_STATE;
     this->TWI_statusReg = {0};
 }
@@ -15,28 +26,35 @@ void TWI_vect() {
     {
         case TWI_START:             // START has been transmitted
         case TWI_REP_START:         // Repeated START has been transmitted
-            TWI_bufPtr = 0;                                     // Set buffer pointer to the TWI Address location
+            // Set buffer pointer to the TWI Address location
+            TWI_bufPtr = 0;
         case TWI_MTX_ADR_ACK:       // SLA+W has been tramsmitted and ACK received
-        case TWI_MTX_DATA_ACK:      // Data byte has been tramsmitted and ACK received
-            if (TWI_bufPtr < i2c.message_size)
+        case TWI_MTX_DATA_ACK:    // Data byte has been tramsmitted and ACK received
+            if (TWI_bufPtr < i2c.message_size) {
+                TWI_bufPtr++;
+
+                uint8_t byte;
+                i2c.ReadByteFromOutputStream(byte);
+                TWDR = byte;
+
+                TWCR = (1 << TWEN) |                                // TWI Interface enabled
+                       (1 << TWIE) | (1 << TWINT) |                 // Enable TWI Interupt and clear the flag to send byte
+                       (0 << TWEA) | (0 << TWSTA) | (0 << TWSTO) |  //
+                       (0 << TWWC);                                 //
+            } else                    // Send STOP after last byte
             {
-                TWDR = i2c.I2C_output_buffer[TWI_bufPtr++];
-                TWCR = (1<<TWEN)|                                 // TWI Interface enabled
-                       (1<<TWIE)|(1<<TWINT)|                      // Enable TWI Interupt and clear the flag to send byte
-                       (0<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           //
-                       (0<<TWWC);                                 //
-            }else                    // Send STOP after last byte
-            {
-                i2c.TWI_statusReg.lastTransOK = TRUE;                 // Set status bits to completed successfully.
-                TWCR = (1<<TWEN)|                                 // TWI Interface enabled
-                       (0<<TWIE)|(1<<TWINT)|                      // Disable TWI Interrupt and clear the flag
-                       (0<<TWEA)|(0<<TWSTA)|(1<<TWSTO)|           // Initiate a STOP condition.
-                       (0<<TWWC);                                 //
+                i2c.TWI_statusReg.lastTransOK = TRUE;               // Set status bits to completed successfully.
+                TWCR = (1 << TWEN) |                                // TWI Interface enabled
+                       (0 << TWIE) | (1 << TWINT) |                 // Disable TWI Interrupt and clear the flag
+                       (0 << TWEA) | (0 << TWSTA) | (1 << TWSTO) |  // Initiate a STOP condition.
+                       (0 << TWWC);                                 //
             }
             break;
+
         case TWI_MRX_DATA_ACK:      // Data byte has been received and ACK tramsmitted
             i2c.I2C_output_buffer[TWI_bufPtr++] = TWDR;
         case TWI_MRX_ADR_ACK:       // SLA+R has been tramsmitted and ACK received
+
             if (TWI_bufPtr < (i2c.message_size-1) )                  // Detect the last byte to NACK it.
             {
                 TWCR = (1<<TWEN)|                                 // TWI Interface enabled
@@ -72,11 +90,12 @@ void TWI_vect() {
         case TWI_BUS_ERROR:         // Bus error due to an illegal START or STOP condition
         default:
         i2c.TWI_state = TWSR;                                 // Store TWSR and automatically sets clears noErrors bit.
-            // Reset TWI Interface
-            TWCR = (1<<TWEN)|                                 // Enable TWI-interface and release TWI pins
-                   (0<<TWIE)|(0<<TWINT)|                      // Disable Interupt
-                   (0<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           // No Signal requests
-                   (0<<TWWC);                                 //
+
+        // Reset TWI Interface
+        TWCR = (1<<TWEN)|                                 // Enable TWI-interface and release TWI pins
+               (0<<TWIE)|(0<<TWINT)|                      // Disable Interupt
+               (0<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           // No Signal requests
+               (0<<TWWC);                                 //
     }
 }
 
@@ -106,6 +125,10 @@ uint8_t I2C::GetStateInfo() {
 
 void I2C::SendData(uint8_t *message, uint8_t message_size) {
 
+    /* for(int i = 0; i < 4;i++){
+        printf("Value for data is:... %d \n\r", this->I2C_output_buffer[i]);
+    } */
+
     uint8_t temp;
 
     // Wait until TWI is ready for next transmission.
@@ -116,17 +139,26 @@ void I2C::SendData(uint8_t *message, uint8_t message_size) {
 
     // Store slave address with R/W setting.
     this->I2C_output_buffer[0]  = message[0];
+    this->Write(message,3);
 
-    if (!( message[0] & (TRUE<<TWI_READ_BIT) ))       // If it is a write operation, then also copy data.
+    /*if (!( message[0] & (TRUE<<TWI_READ_BIT) ))       // If it is a write operation, then also copy data.
     {
         for ( temp = 1; temp < message_size; temp++ )
-            this->I2C_output_buffer[ temp ] = message[ temp ];
-    }
+            printf("Sending message %d \n\r", message[temp]);
+    } */
+
     TWI_statusReg.all = 0;
     TWI_state         = TWI_NO_STATE ;
 
-    // TWI Interface enabled. Enable TWI Interupt and clear the flag. Initiate a START condition.
-    TWCR = (1<<TWEN)|(1<<TWIE)|(1<<TWINT)|(0<<TWEA)|(1<<TWSTA)|(0<<TWSTO)|(0<<TWWC);
+    TWCR = (1<<TWEN)|                             // TWI Interface enabled.
+           (1<<TWIE)|(1<<TWINT)|                  // Enable TWI Interupt and clear the flag.
+           (0<<TWEA)|(1<<TWSTA)|(0<<TWSTO)|       // Initiate a START condition.
+           (0<<TWWC);                             //
+
+    /*while(!(TWCR & (1<<TWINT))){
+        printf("Venter \r\n");
+        _delay_ms(1000);
+    } */
 }
 
 void I2C::StartTransceiver() {
@@ -160,4 +192,3 @@ uint8_t I2C::GetDataFromTransceiver(uint8_t *message, uint8_t message_size) {
     }
     return( this->TWI_statusReg.lastTransOK );
 }
-#endif

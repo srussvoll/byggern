@@ -5,7 +5,8 @@
 #include "dac.h"
 
 DAC::DAC(){
-    i2c.Initialize(0x0C);
+    this->i2c = &I2C::GetInstance();
+    i2c->Initialize(0x0C);
     this->dac_number = 1;
 };
 
@@ -16,7 +17,7 @@ bool DAC::WriteAnalogSignalRaw(uint8_t value) {
         message[0] = this->address_and_write_byte;
         message[1] = this->GetCommandForDAC();
         message[2] = value;
-        i2c.SendData(message, 3);
+        i2c->SendData(message, 3);
         return true;
     } else {
         return false;
@@ -27,7 +28,7 @@ void DAC::Reset(){
     uint8_t message[2];
     message[0] = this->address_and_write_byte;
     message[1] = 0x10;
-    i2c.SendData(message, 2);
+    i2c->SendData(message, 2);
 }
 
 void DAC::SetDAC(uint8_t dac_number){
@@ -67,7 +68,7 @@ bool DAC::WriteAnalogSignalPercentage(float percentage) {
     message[0] = this->address_and_write_byte;
     message[1] = this->GetCommandForDAC();
     message[2] = value_uint8;
-    i2c.SendData(message,3);
+    i2c->SendData(message,3);
     return true;
 }
 

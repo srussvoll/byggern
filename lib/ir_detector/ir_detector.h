@@ -26,7 +26,7 @@ private:
      */
     uint8_t threshold;
 
-    ADC_internal& adc = ADC_internal::GetInstance();
+    ADC_internal* adc;
 
 public:
     /**

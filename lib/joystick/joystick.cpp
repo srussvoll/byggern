@@ -75,8 +75,5 @@ uint8_t Joystick::YValue() {
     return y_value;
 }
 
-uint8_t Joystick::GetDirection() {
-    
-}
 
 #endif

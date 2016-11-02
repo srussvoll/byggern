@@ -39,8 +39,8 @@ void OngoingLoop() {
     uint8_t command;
     uint8_t length;
     uint8_t data[2];
-    uint8_t x_direction = UNDEFINED;
-    uint8_t y_direction = UNDEFINED;
+    uint8_t x_direction = 22;
+    uint8_t y_direction = 22;
     Motor &motor = Motor::GetInstance();
 
     if(channel->Receive(command, data, length)) {
@@ -50,15 +50,7 @@ void OngoingLoop() {
             y_direction = data[1];
         }
     }
-
-    if(x_direction != current_direction){
-        motor.ChangeDirection();
-        if(current_direction == RIGHT){
-            current_direction = LEFT;
-        }else{
-            current_direction = RIGHT;
-        }
-    }
+    printf("X: %d, Y:%d \n", x_direction, y_direction);
 }
 
 void IdleLoop() {

@@ -23,27 +23,41 @@ SOCKET* sockets[] = {
 
 /* States: enter, loops and leaves */
 void InitializeLoop(){
-    uint8_t command;
-    uint8_t length;
-    uint8_t data[3];
-
-    if(channel->Receive(command, data, length)) {
-        printf("Hmm\n");
-        if (command == WRITE_TO_ADDRESS) {
-            *((uint8_t*)(((uint16_t)data[0] << 8) + data[1])) = data[2];
-        }
-    }
+    // Initialize joystick
+    Joystick &joystick = Joystick::GetInstance();
+    Quantization q(0,0,0,0); //TODO: Enter values for quantization
 }
 
 void MenuLoop() {}
 void MenuEnter() {}
 void MenuLeave() {}
 
+void PlayGameLoop() {
+    Joystick &joystick = Joystick::GetInstance();
+
+    // Generate command message
+    uint8_t x[] = {joystick.XValue(), joystick.YValue()};
+    channel->Send(1, CMD_JOYSTICK_VALUES, x, 2);
+
+}
+void PlayGameEnter() {
+    Joystick &joystick = Joystick::GetInstance();
+
+    // Send start of game command
+    channel->Send(0, CMD_GAME_START, nullptr, 0);
+}
+void PlayGameLeave() {
+    Joystick &joystick = Joystick::GetInstance();
+
+    // Send end of game command
+    channel->Send(0, CMD_GAME_STOP, nullptr, 0);
+}
+
 /* State functions table */
 void (*state_functions[][3])(void) = {
-/* 0. Initialize                 */ {nullptr, InitializeLoop, nullptr},
+/* 0. Initialize                 */ {nullptr, &InitializeLoop, nullptr},
 /* 1. Menu                       */ {&MenuEnter, &MenuLoop, &MenuLeave},
-/* 2. Play Game                  */ {nullptr,nullptr, nullptr},
+/* 2. Play Game                  */ {&PlayGameLoop,&PlayGameEnter, &PlayGameLeave},
 /* 3. Highscore Score            */ {nullptr,nullptr, nullptr},
 };
 

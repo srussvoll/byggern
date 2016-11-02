@@ -19,9 +19,9 @@
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
 int main(void) {
-    //InitializeStateMachine(); // This will call an endless loop.
+    InitializeStateMachine(); // This will call an endless loop.
 
-
+/*
     DDRB |= (1 << DDB0);
     DDRB |= (1 << DDB3);
 
@@ -36,7 +36,7 @@ int main(void) {
         socket.Read((uint8_t *) s, 40);
         printf("%s",s);
     }
-
+*/
 }
 
 #pragma clang diagnostic pop

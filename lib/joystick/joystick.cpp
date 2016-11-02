@@ -56,4 +56,24 @@ bool Joystick::ButtonIsDown() {
     return (((PORTE >> PORTE2) & 1) == 0);
 }
 
+uint8_t Joystick::XValue(){
+    if(this->IsLeft()){
+        return 1;
+    } else if(this->IsRight()){
+        return 2;
+    } else{
+        return 0;
+    }
+}
+
+uint8_t Joystick::YValue() {
+    if(this->IsUp()){
+        return 1;
+    } else if(this->IsDown()){
+        return 2;
+    } else{
+        return 0;
+    }
+}
+
 #endif

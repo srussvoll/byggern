@@ -7,6 +7,8 @@ struct Quantization{
     uint8_t x_min;
     uint8_t y_max;
     uint8_t y_min;
+    Quantization();
+    Quantization(uint8_t x_max, uint8_t x_min, uint8_t y_max, uint8_t y_min): x_max(x_max), x_min(x_min), y_max(y_max),y_min(y_min){}
 };
 
 /**
@@ -98,6 +100,16 @@ public:
     * Returns true if the button is pushed down
     */
     bool ButtonIsDown();
+
+    /**
+     * Returns 0 for undefined, 1 for left and 2 for right
+     */
+    uint8_t XValue();
+
+    /**
+     * Returns 0 for undefined, 1 for up and 2 for down
+     */
+    uint8_t YValue();
 
 };
 #endif

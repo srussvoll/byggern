@@ -15,6 +15,7 @@
 #include "lib/utilities/printf.h"
 #include "lib/motor/motor.h"
 #include "lib/adc_internal/adc_internal.h"
+#include "state_machine.h"
 
 void init_hardware_drivers() __attribute__((naked)) __attribute((used)) __attribute__((section(".init8")));
 void InitializeNetworkStack();
@@ -131,11 +132,6 @@ void test_oled() {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
-    //test_oled();
-
-    SOCKET &s = SOCKET::GetInstance(0);
-    char test_string[] = "Small string that ends\n";
-    printf("Sending string with size = %d\n", sizeof(test_string));
-''
+    InitializeStateMachine();
 }
 #pragma clang diagnostic pop

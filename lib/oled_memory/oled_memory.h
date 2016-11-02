@@ -12,14 +12,14 @@
  *
  * An interface to communicate with the oled display
  */
-class OLED_SCP : public OLED {
+class OLED_memory : public OLED {
 
 public:
     /**
      * A Singleton implementation of this class
      */
-    static OLED_SCP& GetInstance(){
-        static OLED_SCP instance;
+    static OLED_memory& GetInstance(){
+        static OLED_memory instance;
         return instance;
     }
 
@@ -29,20 +29,16 @@ public:
      * @param height The height of the screen in pixels
      * @param socket Socket to write through.
     */
-    void Init(uint8_t width, uint8_t height, SCP &channel, uint8_t command);
+    void Init(uint8_t width, uint8_t height);
 
 protected:
     /**
     * Singleton constructor
     */
-    OLED_SCP() : OLED() {}
+    OLED_memory() : OLED() {}
 
     SCP *channel = nullptr;
     uint8_t command;
-
-    volatile uint8_t *last_address;
-    uint8_t *bytes_to_send;
-    uint8_t bytes_to_send_index = 0;
 
     virtual void WriteByteToOLED(volatile uint8_t *address, uint8_t data);
 };

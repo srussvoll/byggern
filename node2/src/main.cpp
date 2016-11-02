@@ -102,7 +102,7 @@ void test_oled() {
 
     controller.Render();
 
-    /*for (uint8_t i = 0; i < 4; ++i) {
+    for (uint8_t i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
     }
@@ -119,21 +119,21 @@ void test_oled() {
     for (uint8_t i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
-    }*/
+    }
 }
 
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
-    //test_oled();
+    test_oled();
 
-    SOCKET &s = SOCKET::GetInstance(0);
+    /*SOCKET &s = SOCKET::GetInstance(0);
     char test_string[] = "Small string that ends\n";
     printf("Sending string with size = %d\n", sizeof(test_string));
 
     while(true) {
         s.Write((uint8_t *)test_string, sizeof(test_string));
-    }
+    }*/
 }
 #pragma clang diagnostic pop

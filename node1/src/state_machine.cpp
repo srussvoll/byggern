@@ -25,12 +25,14 @@ SOCKET* sockets[] = {
 void InitializeLoop(){
     uint8_t command;
     uint8_t length;
-    uint8_t data[3];
+    uint8_t data[128];
 
     if(channel->Receive(command, data, length)) {
-        printf("Hmm\n");
         if (command == WRITE_TO_ADDRESS) {
-            *((uint8_t*)(((uint16_t)data[0] << 8) + data[1])) = data[2];
+            //printf("Data: %2x\n", data[2]);
+            for (int i = 0; i < length; ++i) {
+                *((volatile uint8_t*)(((uint16_t)data[0] << 8) + data[1])) = data[2 + i];
+            }
         }
     }
 }
@@ -41,7 +43,7 @@ void MenuLeave() {}
 
 /* State functions table */
 void (*state_functions[][3])(void) = {
-/* 0. Initialize                 */ {nullptr, InitializeLoop, nullptr},
+/* 0. Initialize                 */ {nullptr, &InitializeLoop, nullptr},
 /* 1. Menu                       */ {&MenuEnter, &MenuLoop, &MenuLeave},
 /* 2. Play Game                  */ {nullptr,nullptr, nullptr},
 /* 3. Highscore Score            */ {nullptr,nullptr, nullptr},

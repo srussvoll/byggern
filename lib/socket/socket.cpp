@@ -21,9 +21,9 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
                 data_left -= 8;
             }
         }
-        _delay_ms(12);
         CAN_MESSAGE message = CAN_MESSAGE(can_size,data,this->id);
         this->can->SendMessage(message);
+        _delay_ms(15);
     }
 }
 

@@ -10,7 +10,6 @@ bool SCP::Receive(uint8_t &command, uint8_t *data, uint8_t &length_of_data) {
             while (this->sockets[i]->GetAvailableReadBytes() < 2);
             this->sockets[i]->ReadByte(command);
             this->sockets[i]->ReadByte(length_of_data);
-
             while (this->sockets[i]->GetAvailableReadBytes() < length_of_data);
             this->sockets[i]->Read(data, length_of_data);
 

@@ -17,6 +17,6 @@ var class_m_c_p2515 =
     [ "SetNormal", "class_m_c_p2515.html#a58601a9d30863ebac441d641ddfac44e", null ],
     [ "WriteToRegister", "class_m_c_p2515.html#adbc005a5975b77b0aef74363f3832f9b", null ],
     [ "INT0_vect", "class_m_c_p2515.html#aee50ec5936d22b665b9a06ff6bafd1b9", null ],
-    [ "clear_to_send", "class_m_c_p2515.html#a2cdd8da004f1f17e1f17d426071d80b9", null ],
+    [ "clear_to_send", "class_m_c_p2515.html#a1418f0f66d9a57659809192552d5ac37", null ],
     [ "spi_driver", "class_m_c_p2515.html#a3a5ca0d606115f1551a06d871606540e", null ]
 ];

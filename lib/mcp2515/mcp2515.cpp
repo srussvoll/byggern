@@ -4,16 +4,17 @@
 #include "../utilities/printf.h"
 #include "../uart/uart.h"
 #include <util/delay.h>
-void INT0_vect(){
-    sei();
+//TODO: Fix if def for interrupt number.
+void INT4_vect(){
 
-    printf("I RAN!\n");
-    _delay_ms(10);
+    sei();
+    printf("INT\n");
+
     MCP2515 &mcp = MCP2515::GetInstance();
     uint8_t interrupt_flags;
     mcp.ReadFromRegister(MCP_CANINTF, interrupt_flags);
-
     if(interrupt_flags & (MCP_TX0IF)){
+        //printf("MCPTX0IF\n");
         // Transmission complete
         mcp.clear_to_send = true;
         // Clear the interrupt
@@ -22,6 +23,7 @@ void INT0_vect(){
     }
 
     if(interrupt_flags & (MCP_RX0IF)){
+        //printf("MCP_RX0IF\n");
         // We got a new message
         uint8_t data_to_rec[8];
         CAN_MESSAGE rec_mess = CAN_MESSAGE(0,data_to_rec,0);
@@ -46,12 +48,13 @@ void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
     MCUCR |= (2<<ISC00);
 
 #elif __AVR_ATmega2560__
+
     // Falling edge
-    EICRA |= (1<<ISC01);
-    EICRA &= ~(1<<ISC00);
+    EICRB |= (2<<ISC40);
 
     // Enable the interrupt
-    EIMSK |= (1<<INT0);
+    EIMSK |= (1<<INT4);
+
 #endif
     // Assuming the SPI is already initialized
 
@@ -65,9 +68,9 @@ void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
     this->WriteToRegister(MCP_RXF0SIDL, (lower_id<<5));
     this->WriteToRegister(MCP_RXF0SIDH, upper_id);
 
-    // Set the mask
-    this->WriteToRegister(MCP_RXM0SIDH, 0xFF);
-    this->WriteToRegister(MCP_RXM0SIDL, (0xFF << 5));
+    // Set the mask. Currently 0x00, aka broadcast.
+    this->WriteToRegister(MCP_RXM0SIDH, 0x00);
+    this->WriteToRegister(MCP_RXM0SIDL, (0x00 << 5));
 }
 
 void MCP2515::RequestToSend() {
@@ -212,21 +215,12 @@ void MCP2515::SendMessage(CAN_MESSAGE &message) {
     GICR &= (1 << INT0);
     this->LoadTxFrame(message);
     this->RequestToSend();
-    // Check if interrupt ever happened
-    if(!(PORTD & (1 << PORTD2))){
-        // If it ever happened during the no interrupt period, run the interrupt vector.
-        INT0_vect();
-    }
+
     GICR |= (1 << INT0);
 #elif __AVR_ATmega2560__
     EIMSK &= (1 << INT0);
     this->LoadTxFrame(message);
     this->RequestToSend();
-    // Check if the interrupt ever happened
-    if(!(PORTD & (1 << PORTD0))){
-        // If it ever happened during the no interrupt period, run the interrupt vector.
-        INT0_vect();
-    }
     EIMSK |= (1<<INT0);
 #endif
 }

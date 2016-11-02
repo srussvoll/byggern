@@ -1,0 +1,41 @@
+\hypertarget{class_state_machine}{}\section{State\+Machine Class Reference}
+\label{class_state_machine}\index{State\+Machine@{State\+Machine}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_state_machine_ad9c6bdaca444710f77fc12d7e1af8fdc}{}\label{class_state_machine_ad9c6bdaca444710f77fc12d7e1af8fdc} 
+{\bfseries State\+Machine} (void($\ast$($\ast$state\+\_\+functions))(void), uint8\+\_\+t initial\+\_\+state=0)
+\item 
+\hypertarget{class_state_machine_a1597799edc5a89006f164e52fd72d02b}{}\label{class_state_machine_a1597799edc5a89006f164e52fd72d02b} 
+bool {\bfseries Transition} (uint8\+\_\+t state, bool reenter)
+\item 
+\hypertarget{class_state_machine_a62fd24666d16a2425c8397ce2d326dae}{}\label{class_state_machine_a62fd24666d16a2425c8397ce2d326dae} 
+uint8\+\_\+t {\bfseries Get\+Current\+State} ()
+\item 
+\hypertarget{class_state_machine_a94c93f8203bab4f5a3784eba7445b582}{}\label{class_state_machine_a94c93f8203bab4f5a3784eba7445b582} 
+void {\bfseries Start} ()
+\item 
+\hypertarget{class_state_machine_a2eb142249e4c483c8a329b1a18b4383f}{}\label{class_state_machine_a2eb142249e4c483c8a329b1a18b4383f} 
+void {\bfseries Stop} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_state_machine_acc87359cd98c436f5b891ffe6cb67160}{}\label{class_state_machine_acc87359cd98c436f5b891ffe6cb67160} 
+void {\bfseries state\+\_\+functions} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_state_machine_abdcd9426d9a2ec9e2d703c74cd3299df}{}\label{class_state_machine_abdcd9426d9a2ec9e2d703c74cd3299df} 
+uint8\+\_\+t {\bfseries current\+\_\+state}
+\item 
+\hypertarget{class_state_machine_adc6939485a12a6250df3cc65aa172d2a}{}\label{class_state_machine_adc6939485a12a6250df3cc65aa172d2a} 
+bool {\bfseries running} = false
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/state\+\_\+machine/state\+\_\+machine.\+h\item 
+lib/state\+\_\+machine/state\+\_\+machine.\+cpp\end{DoxyCompactItemize}

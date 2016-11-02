@@ -14,25 +14,28 @@ public:
 
     CAN *can;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreturn-type"
     /**
      * A Singleton implementation of this class
      * @param id The socket ID
      */
-    static SOCKET& GetInstance(uint8_t id = 1){
-        if(id == 1){
-            static SOCKET instance(1);
+    static SOCKET& GetInstance(uint8_t id = 0){
+        if(id == 0){
+            static SOCKET instance(0);
             return instance;
-        }else if (id == 2){
-            static SOCKET instance(2);
+        }else if (id == 1){
+            static SOCKET instance(1);
             return instance;
         }
     }
+#pragma clang diagnostic pop
+
     /**
      * Called when a new CAN_MESSAGE from the can controller has arrived. Puts the message into the stream
      * @param message The recieved CAN_MESSAGE
      */
     static void HandleDataFromLowerLevel(CAN_MESSAGE &message) {
-        printf("Handler from lower \n");
         SOCKET &socket = SOCKET::GetInstance(message.id);
         socket.WriteToInputStream(message.data, message.size);
     }
@@ -47,8 +50,7 @@ public:
      * @param can A can controller which implements the interface defined in the can class in this project
      * @param target_id The target node id
      */
-    void Initialize(CAN *can, uint8_t target_id){
-        this->target_id = target_id;
+    void Initialize(CAN *can){
         SOCKET::can = can;
         SOCKET::can->SetUpperLevel(&SOCKET::HandleDataFromLowerLevel);
     }
@@ -71,10 +73,6 @@ private:
      * This sockets identifier
      */
     uint8_t id;
-    /**
-     * Target sockets identifier
-     */
-    uint8_t target_id;
 
 
 };

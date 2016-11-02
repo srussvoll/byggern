@@ -10,7 +10,7 @@
 
 */.idea/*
 .idea/*
-build/*
+*/build/*
 CMakeFiles/*
 Makefile
 CMakeCache.txt

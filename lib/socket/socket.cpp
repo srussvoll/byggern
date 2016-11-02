@@ -2,7 +2,6 @@
 #include "../utilities/printf.h"
 
 void SOCKET::Write(uint8_t *string, uint16_t size) {
-    printf("WRITE \n");
     uint16_t data_left = size;
     while(data_left > 0){
         uint8_t can_size;
@@ -21,13 +20,14 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
                 data_left -= 8;
             }
         }
-        CAN_MESSAGE message = CAN_MESSAGE(can_size,data,this->target_id);
+
+        CAN_MESSAGE message = CAN_MESSAGE(can_size,data,this->id);
         this->can->SendMessage(message);
     }
 }
 
 void SOCKET::WriteByte(uint8_t byte) {
     uint8_t data[] = {byte};
-    CAN_MESSAGE message = CAN_MESSAGE(8,data,this->target_id);
+    CAN_MESSAGE message = CAN_MESSAGE(8,data,this->id);
     this->can->SendMessage(message);
 }

@@ -5,7 +5,7 @@
 
 #define MCP2515_INT INT0_vect
 
-ISR(INT0_vect);
+ISR(INT4_vect);
 /**
  * A singleton class which implements the communication between the AVR and the MCP2515. Throughout the documentation
  * of this class, we will refer to the datasheet of the chip. This can be found at
@@ -30,7 +30,7 @@ public:
     /**
      * The MCP2515 interrupt handler
      */
-    friend void INT0_vect();
+    friend void INT4_vect();
 
     /**
      * Sends a CAN message
@@ -38,17 +38,10 @@ public:
      */
     void SendMessage(CAN_MESSAGE &message);
 
-//private:
     /**
-    * Initializes the MCP2515 driver.
-    * @param spi The singleton instance of the SPI driver
+    * Initiates the loopback mode of the MCP2515. Please consult the
+    * <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf">MCP2515 datasheet</a>
     */
-    void Initialize(SPI_N::SPI *spi, uint16_t identifier);
-
-    /**
-     * Initiates the loopback mode of the MCP2515. Please consult the
-     * <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf">MCP2515 datasheet</a>
-     */
     void SetLoopback();
 
     /**
@@ -57,6 +50,14 @@ public:
      */
 
     void SetNormal();
+    /**
+    * Initializes the MCP2515 driver.
+    * @param spi The singleton instance of the SPI driver
+    */
+    void Initialize(SPI_N::SPI *spi, uint16_t identifier);
+
+
+private:
 
     /**
      * Sends a RTS (Request to Send) signal to the MCP2515. This is
@@ -118,7 +119,7 @@ public:
     /**
      * Flag indicating wether or not you can load the TX frame.
      */
-    bool clear_to_send = true;
+    volatile bool clear_to_send = true;
 
 
 };

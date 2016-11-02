@@ -13,14 +13,6 @@ class OLED : public Stream {
 
 public:
     /**
-     * A Singleton implementation of this class
-     */
-    static OLED& GetInstance(){
-        static OLED instance;
-        return instance;
-    }
-
-    /**
     * Initializes the whole screen.
      * @param width The width of the screen in pixels
      * @param height The height of the screen in pixels
@@ -112,11 +104,13 @@ public:
     */
     void GetBitmapForCharacter(char character, uint8_t* &character_bitmap);
 
-private:
+protected:
     /**
     * Singleton constructor
     */
     OLED();
+
+    virtual void WriteByteToOLED(volatile uint8_t *address, uint8_t data) {};
 
     /**
     * The current line used by the driver

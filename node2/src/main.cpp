@@ -136,6 +136,6 @@ int main(){
     SOCKET &s = SOCKET::GetInstance(0);
     char test_string[] = "Small string that ends\n";
     printf("Sending string with size = %d\n", sizeof(test_string));
-
+''
 }
 #pragma clang diagnostic pop

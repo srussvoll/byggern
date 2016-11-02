@@ -1,5 +1,4 @@
 #pragma once
-#define MYUBRR FOSC/16/BAUD-1
 
 #include <avr/io.h>
 #include <avr/interrupt.h>

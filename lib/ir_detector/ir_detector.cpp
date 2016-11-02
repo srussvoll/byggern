@@ -1,3 +1,5 @@
+#ifdef __AVR_ATmega2560__
+
 #include "ir_detector.h"
 
 IR_DETECTOR::IR_DETECTOR(uint8_t threshold) : threshold(threshold) {
@@ -24,3 +26,5 @@ bool IR_DETECTOR::Sample() {
         return false;
     }
 }
+
+#endif

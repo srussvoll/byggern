@@ -1,3 +1,5 @@
+#ifdef __AVR_ATmega2560__
+
 #include <math.h>
 
 #include "dac.h"
@@ -68,3 +70,5 @@ bool DAC::WriteAnalogSignalPercentage(float percentage) {
     i2c.SendData(message,3);
     return true;
 }
+
+#endif

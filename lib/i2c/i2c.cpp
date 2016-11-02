@@ -1,3 +1,5 @@
+#ifdef __AVR_ATmega2560__
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
@@ -192,3 +194,5 @@ uint8_t I2C::GetDataFromTransceiver(uint8_t *message, uint8_t message_size) {
     }
     return( this->TWI_statusReg.lastTransOK );
 }
+
+#endif

@@ -1,3 +1,5 @@
+#ifdef __AVR_ATmega2560__
+
 #pragma once
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -111,4 +113,6 @@ public:
     uint8_t GetDataFromTransceiver(uint8_t *message, uint8_t message_size);
 
 };
+
+#endif
 

@@ -1,3 +1,5 @@
+#ifdef __AVR_ATmega2560__
+
 #pragma once
 #include <avr/io.h>
 #include "lib/i2c/i2c.h"
@@ -100,3 +102,5 @@ public:
      */
     bool WriteAnalogSignalPercentage(float percentage);
 };
+
+#endif

@@ -4,8 +4,9 @@
 #include <avr/interrupt.h>
 
 #include "../stream/stream.h"
+#include "../uart/uart.h"
 
-ISR(ADC_INT);
+ISR(ADC_vect);
 
 class ADC_internal : public Stream {
 private:
@@ -14,10 +15,8 @@ private:
 
     /**
     * Constructor for ADC class. Singleton implementation
-    * @param address The address the ADC is located at. Channel on the adc is determined by the LSB.
-    * We use 0x2004 for channel 1 and 0x2005 for channel 2
     */
-    ADC_internal(uint8_t *address);
+    ADC_internal();
 
 
 public:
@@ -25,8 +24,8 @@ public:
     /**
      * A Singleton implementation of this class. See ADC(uint16_t address) for more information.
      */
-    static ADC_internal& GetInstance(uint8_t *address) {
-            static ADC_internal instance(nullptr);
+    static ADC_internal& GetInstance() {
+            static ADC_internal instance;
             return instance;
     }
 
@@ -43,7 +42,7 @@ public:
     /**
     * The interrupt vector for ADC done
     */
-    friend void INT2_vect();
+    friend void ADC_vect();
 
     /**
     * Request the ADC to get a sample. This sample can be read from the buffer using ReadByte(uint8_t& byte);
@@ -55,9 +54,5 @@ public:
     */
     volatile static bool adc_in_use;
 
-    /**
-     * A flag indicating if the ADC is waiting
-     */
-    volatile static uint8_t *adc_waiting;
 
 };

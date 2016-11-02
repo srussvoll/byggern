@@ -29,9 +29,10 @@ void InitializeLoop(){
 
     if(channel->Receive(command, data, length)) {
         if (command == WRITE_TO_ADDRESS) {
+            volatile uint8_t *address = (volatile uint8_t*)(((uint16_t)data[0] << 8) + data[1]);
             for (int i = 0; i < length; ++i) {
-                printf("Command, data: %4x, %2x\n", command, data[2 + i]);
-                *((volatile uint8_t*)(((uint16_t)data[0] << 8) + data[1])) = data[2 + i];
+                //printf("Address, data: %4x, %2x\n", ((uint16_t)data[0] << 8) + data[1], data[2 + i]);
+                *address = data[2 + i];
             }
         }
     }

@@ -55,9 +55,14 @@ namespace SPI_N{
         MISO_DDR &= ~(1<<MISO_PIN); // MISO to input
         SS_DDR |= (1<<SS_PIN); // Set SS high
 
-        // Set SCK = f_osc/128
+/*        // Set SCK = f_osc/128
         SPCR |= (1<<SPR1) | (1<<SPR0);
         SPSR &= ~(1<<SPI2X);
+*/
+        SPSR |= (1<<SPI2X);
+        SPCR &= ~(1<<SPR0);
+        SPCR &= ~(1<<SPR1);
+
 
         // Set MSB first
         SPCR &= ~(1<<DORD);

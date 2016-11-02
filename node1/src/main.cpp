@@ -19,16 +19,24 @@
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
 int main(void) {
-    InitializeStateMachine(); // This will call an endless loop.
+    //InitializeStateMachine(); // This will call an endless loop.
 
-/*    printf("Trying to write.\n");
-    char s[] = "Heisann...";
-    SOCKET::GetInstance(0).Write((uint8_t *) s, sizeof(s));
-    printf("Done writing.\n");*/
 
-    while (true) {
+    DDRB |= (1 << DDB0);
+    DDRB |= (1 << DDB3);
 
+
+    SOCKET &socket = SOCKET::GetInstance(0);
+    printf("Starting \n");
+
+
+    while(true) {
+        while (socket.GetAvailableReadBytes() < 24);
+        char s[40];
+        socket.Read((uint8_t *) s, 40);
+        printf("%s",s);
     }
+
 }
 
 #pragma clang diagnostic pop

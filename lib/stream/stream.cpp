@@ -115,7 +115,7 @@ bool Stream::ReadByteFromBuffer(uint8_t& byte,uint8_t *buffer, uint16_t &start_i
 }
 
 void Stream::WriteByteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t &byte, void (*cb)(Stream *stream)) {
-    if (buffer_size - this->CalculateLength(start_index, stop_index, buffer_size, empty) < 1) {
+        if (buffer_size - this->CalculateLength(start_index, stop_index, buffer_size, empty) < 1) {
         overflow_flag = true;
         start_index = (start_index + 1) % buffer_size;
     }
@@ -138,6 +138,7 @@ bool Stream::CheckInputOverflowFlag() {
 }
 
 uint16_t Stream::CalculateLength(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty) {
+
     return (empty == true) ? 0 : ((stop_index - start_index) % buffer_size) + 1;
 }
 

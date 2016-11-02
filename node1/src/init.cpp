@@ -17,7 +17,7 @@ void InitializeNetworkStack(){
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
 
     // Initialize SPI
-    SPI_N::PIN ss = SPI_N::PIN(&PORTB, &DDRB, 7);
+    SPI_N::PIN ss = SPI_N::PIN(&PORTD, &DDRD, 5);
     SPI_N::PIN ss_a[] = {ss};
     spi.Initialize(ss_a, 1, 0, 0);
     spi.SetDevice(ss);
@@ -29,12 +29,14 @@ void InitializeNetworkStack(){
 
     // Initialize the socket
     s.Initialize(&mcp);
+    printf("Initialized \n");
 }
 
 void init_memory() {
     Utilities::InitializeMemory();
 }
-
+// FIXME: REMOVE THIS!
+extern "C" void __cxa_pure_virtual() {  }
 void init_hardware_drivers() {
     UART& uart = UART::GetInstance();
     uart.Init(9600);

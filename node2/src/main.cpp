@@ -21,7 +21,7 @@ void init_hardware_drivers() {
 }
 void InitializeNetworkStack(){
     // Get instance of all the modules
-    //SOCKET &high = SOCKET::GetInstance(0x00);
+    SOCKET &high = SOCKET::GetInstance(0x00);
     SOCKET &low = SOCKET::GetInstance(0x01);
     MCP2515 &mcp = MCP2515::GetInstance();
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
@@ -33,12 +33,12 @@ void InitializeNetworkStack(){
     spi.SetDevice(ss);
 
     // Initialize MCP
-    mcp.Initialize(&spi, 0x01);
+    mcp.Initialize(&spi, 0x00);
     //mcp.SetLoopback();
     mcp.SetNormal();
 
     // Initialize the socket
-    //high.Initialize(&mcp);
+    high.Initialize(&mcp);
     low.Initialize(&mcp);
 }
 
@@ -102,7 +102,7 @@ void test_oled() {
 
     controller.Render();
 
-    for (uint8_t i = 0; i < 4; ++i) {
+    /*for (uint8_t i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
     }
@@ -119,23 +119,21 @@ void test_oled() {
     for (uint8_t i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
-    }
+    }*/
 }
 
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
-    test_oled();
+    //test_oled();
 
-    /*SOCKET &socket = SOCKET::GetInstance(1);
-
+    SOCKET &s = SOCKET::GetInstance(0);
+    char test_string[] = "Small string that ends\n";
+    printf("Sending string with size = %d\n", sizeof(test_string));
 
     while(true) {
-        while (socket.GetAvailableReadBytes() == 0);
-        char s[20];
-        socket.Read((uint8_t *) s, 20);
-        printf(s);
-    }*/
+        s.Write((uint8_t *)test_string, sizeof(test_string));
+    }
 }
 #pragma clang diagnostic pop

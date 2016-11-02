@@ -3,9 +3,12 @@
 #include "avr/interrupt.h"
 #include "../can/can.h"
 
+#ifdef __AVR_ATmega162__
 #define MCP2515_INT INT0_vect
-
-ISR(INT4_vect);
+#else
+#define MCP2515_INT INT4_vect
+#endif
+ISR(MCP2515_INT);
 /**
  * A singleton class which implements the communication between the AVR and the MCP2515. Throughout the documentation
  * of this class, we will refer to the datasheet of the chip. This can be found at
@@ -30,7 +33,8 @@ public:
     /**
      * The MCP2515 interrupt handler
      */
-    friend void INT4_vect();
+    friend void MCP2515_INT();
+
 
     /**
      * Sends a CAN message

@@ -4,12 +4,12 @@
 #include "../utilities/printf.h"
 #include "../uart/uart.h"
 #include <util/delay.h>
-//TODO: Fix if def for interrupt number.
-void INT4_vect(){
+void MCP2515_INT(){
 
+    /*char ch[] = "Hei\n";
+    UART::GetInstance().Write((uint8_t *) ch, sizeof(ch));*/
     sei();
-    printf("INT\n");
-
+    //printf("INT RAN\n");
     MCP2515 &mcp = MCP2515::GetInstance();
     uint8_t interrupt_flags;
     mcp.ReadFromRegister(MCP_CANINTF, interrupt_flags);
@@ -26,19 +26,18 @@ void INT4_vect(){
         //printf("MCP_RX0IF\n");
         // We got a new message
         uint8_t data_to_rec[8];
+        //printf("Before\n");
         CAN_MESSAGE rec_mess = CAN_MESSAGE(0,data_to_rec,0);
         mcp.ReadRxFrame(rec_mess);
         (*mcp.upper_level)(rec_mess);
         // Clear the interrupt
         uint8_t bitmask = (MCP_RX0IF);
         mcp.BitModify(MCP_CANINTF, bitmask, 0x00);
-
     }
 }
 
 void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
     this->spi_driver = spi;
-
 
     // Initialize the interrupt
     sei();
@@ -179,6 +178,7 @@ void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
     // Read length
     uint8_t size;
     this->ReadFromRegister(address_dlc, size);
+
     message.size = (size & 0x0F);
 
     // Read ID
@@ -186,6 +186,7 @@ void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
     uint8_t lower_id;
     this->spi_driver->WriteByteAndThrowAwayData(address_sidh, 1);
     this->spi_driver->WriteByte(MCP_DC, 0);
+
     while(spi_driver->GetAvailableReadBytes() == 0);
     this->spi_driver->ReadByte(upper_id);
 
@@ -206,21 +207,19 @@ void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
     for(int i = 0; i < size; i++){
         this->spi_driver->ReadByte(message.data[i]);
     }
-
-
 }
 
 void MCP2515::SendMessage(CAN_MESSAGE &message) {
+
 #ifdef __AVR_ATmega162__
-    GICR &= (1 << INT0);
+    GICR &= ~(1 << INT0);
     this->LoadTxFrame(message);
     this->RequestToSend();
-
     GICR |= (1 << INT0);
 #elif __AVR_ATmega2560__
-    EIMSK &= (1 << INT0);
+    EIMSK &= ~(1 << INT4);
     this->LoadTxFrame(message);
     this->RequestToSend();
-    EIMSK |= (1<<INT0);
+    EIMSK |= (1<<INT4);
 #endif
 }

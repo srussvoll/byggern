@@ -53,7 +53,7 @@ public:
 
     /**
      * Initializes the dac by giving it an address (the one used by I2C to access it)
-     * In our project it is already grounded, so the adress is set as 0x50
+     * In our project it is already grounded, so the address is set as 0x50
      * @param min The minimum value the DAC can output
      * @param max The maximum value the DAC can output
      * @param i2c_address The address of the DAC on the I2C bus

@@ -26,6 +26,7 @@ void InitializeLoop(){
     // Initialize joystick
     Joystick &joystick = Joystick::GetInstance();
     Quantization q(0,0,0,0); //TODO: Enter values for quantization
+    fsm->Transition(STATE_GAME,0);
 }
 
 void MenuLoop() {}

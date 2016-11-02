@@ -11,8 +11,10 @@
 #include "lib/socket/socket.h"
 
 void InitializeNetworkStack(){
+
     // Get instance of all the modules
-    SOCKET &s = SOCKET::GetInstance(0);
+    SOCKET &high = SOCKET::GetInstance(0x00);
+    SOCKET &low = SOCKET::GetInstance(0x01);
     MCP2515 &mcp = MCP2515::GetInstance();
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
 
@@ -23,12 +25,13 @@ void InitializeNetworkStack(){
     spi.SetDevice(ss);
 
     // Initialize MCP
-    mcp.Initialize(&spi, 0);
+    mcp.Initialize(&spi, 0x00);
     //mcp.SetLoopback();
     mcp.SetNormal();
 
     // Initialize the socket
-    s.Initialize(&mcp);
+    high.Initialize(&mcp);
+    low.Initialize(&mcp);
     printf("Initialized \n");
 }
 

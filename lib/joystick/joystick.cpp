@@ -57,23 +57,26 @@ bool Joystick::ButtonIsDown() {
 }
 
 uint8_t Joystick::XValue(){
-    if(this->IsLeft()){
-        return LEFT;
-    } else if(this->IsRight()){
-        return RIGHT;
-    } else{
-        return UNDEFINED;
+    adc_y->request_sample();
+    uint8_t y_value;
+    while(!adc_y->ReadByte((y_value))){
+        ;
     }
+
+    return y_value;
 }
 
 uint8_t Joystick::YValue() {
-    if(this->IsUp()){
-        return UP;
-    } else if(this->IsDown()){
-        return DOWN;
-    } else{
-        return UNDEFINED;
+    adc_y->request_sample();
+    uint8_t y_value;
+    while(!adc_y->ReadByte((y_value))){
+        ;
     }
+    return y_value;
+}
+
+uint8_t Joystick::GetDirection() {
+    
 }
 
 #endif

@@ -45,6 +45,7 @@ void OngoingLoop() {
 
     if(channel->Receive(command, data, length)) {
         if (command == CMD_JOYSTICK_VALUES) {
+            printf("GOT CMD\n");
             x_direction = data[0];
             y_direction = data[1];
         }

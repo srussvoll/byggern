@@ -9,6 +9,7 @@
 #include "lib/scp/scp.h"
 #include "lib/scp/commands.h"
 #include <stdio.h>
+#include "lib/adc/adc.h"
 
 #define STATE_MENU                  1
 #define STATE_GAME                  2
@@ -25,7 +26,10 @@ SOCKET* sockets[] = {
 void InitializeLoop(){
     // Initialize joystick
     Joystick &joystick = Joystick::GetInstance();
-    Quantization q(0,0,0,0); //TODO: Enter values for quantization
+    Quantization q(255,0,255,0); //TODO: Enter values for quantization
+    ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
+    ADC &adc_y = ADC::GetInstance(ADC_ADDRESS2);
+    joystick.Init(q,0.5,&adc_x,&adc_y);
     fsm->Transition(STATE_GAME,0);
 }
 
@@ -34,10 +38,14 @@ void MenuEnter() {}
 void MenuLeave() {}
 
 void PlayGameLoop() {
+
     Joystick &joystick = Joystick::GetInstance();
 
     // Generate command message
+
+    printf("Sent cmd\n");
     uint8_t x[] = {joystick.XValue(), joystick.YValue()};
+
     channel->Send(1, CMD_JOYSTICK_VALUES, x, 2);
 
 }
@@ -58,7 +66,7 @@ void PlayGameLeave() {
 void (*state_functions[][3])(void) = {
 /* 0. Initialize                 */ {nullptr, &InitializeLoop, nullptr},
 /* 1. Menu                       */ {&MenuEnter, &MenuLoop, &MenuLeave},
-/* 2. Play Game                  */ {&PlayGameLoop,&PlayGameEnter, &PlayGameLeave},
+/* 2. Play Game                  */ {PlayGameEnter, &PlayGameLoop, &PlayGameLeave},
 /* 3. Highscore Score            */ {nullptr,nullptr, nullptr},
 };
 

@@ -1,6 +1,6 @@
 #ifdef __AVR_ATmega162__
 #include "joystick.h"
-
+#include "direction.h"
 Joystick::Joystick() {
 }
 
@@ -58,21 +58,21 @@ bool Joystick::ButtonIsDown() {
 
 uint8_t Joystick::XValue(){
     if(this->IsLeft()){
-        return 1;
+        return LEFT;
     } else if(this->IsRight()){
-        return 2;
+        return RIGHT;
     } else{
-        return 0;
+        return UNDEFINED;
     }
 }
 
 uint8_t Joystick::YValue() {
     if(this->IsUp()){
-        return 1;
+        return UP;
     } else if(this->IsDown()){
-        return 2;
+        return DOWN;
     } else{
-        return 0;
+        return UNDEFINED;
     }
 }
 

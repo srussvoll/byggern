@@ -13,7 +13,6 @@
 #include "lib/socket/socket.h"
 #include "lib/uart/uart.h"
 #include "lib/utilities/printf.h"
-#include "lib/motor/motor.h"
 #include "lib/adc_internal/adc_internal.h"
 #include "state_machine.h"
 

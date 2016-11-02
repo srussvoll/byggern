@@ -19,14 +19,9 @@ void init_hardware_drivers() {
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
 
-    printf("--START-- \n\r");
     DAC& dac = DAC::GetInstance();
-    dac.Initialize(0, 0xFF, 0x50);
-    dac.Reset();
+    printf("--START-- \n\r");
 
-
-    dac.SetDAC(4);
-    //dac.WriteAnalogSignalRaw(0xFF);
     DDRH |= (1 << DDH1);
     while(true){
         PORTH |= (1 << PORTH1);

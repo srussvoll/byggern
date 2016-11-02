@@ -22,8 +22,7 @@ private:
     /**
     * The I2C for communication with the DAC
     */
-    /* FIXME: SOOOOOONDREEEEE!!!!!!!!!!!! Dette er ikke greit... */
-    I2C& i2c = I2C::GetInstance();
+    I2C* i2c;
 
     /**
     * The maximum voltage value the DAC can output

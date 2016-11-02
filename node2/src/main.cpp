@@ -101,7 +101,7 @@ void test_oled() {
     controller.AddMenu(sub_main_items, (sizeof(sub_main_items)) / sizeof(sub_main_items[0]));
 
     controller.Render();
-
+/*
     for (uint8_t i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
@@ -119,7 +119,7 @@ void test_oled() {
     for (uint8_t i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
-    }
+    }*/
 }
 
 

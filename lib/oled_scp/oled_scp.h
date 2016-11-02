@@ -40,7 +40,6 @@ protected:
     SCP *channel = nullptr;
     uint8_t command;
 
-    volatile uint8_t *last_address;
     uint8_t *bytes_to_send;
     uint8_t bytes_to_send_index = 0;
 

@@ -207,6 +207,7 @@ LOAD /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr6/crtatmega2560.o
 LOAD /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr6/libprintf_flt.a
 LOAD CMakeFiles/node2.dir/src/main.cpp.obj
 LOAD CMakeFiles/node2.dir/src/state_machine.cpp.obj
+LOAD CMakeFiles/node2.dir/lib/timer/timer.cpp.obj
 LOAD CMakeFiles/node2.dir/lib/adc/adc.cpp.obj
 LOAD CMakeFiles/node2.dir/lib/adc_internal/adc_internal.cpp.obj
 LOAD CMakeFiles/node2.dir/lib/dac/dac.cpp.obj
@@ -446,6 +447,7 @@ END GROUP
                 0x00000000000004fe                __vector_42
  .text          0x0000000000000502        0x0 CMakeFiles/node2.dir/src/main.cpp.obj
  .text          0x0000000000000502        0x0 CMakeFiles/node2.dir/src/state_machine.cpp.obj
+ .text          0x0000000000000502        0x0 CMakeFiles/node2.dir/lib/timer/timer.cpp.obj
  .text          0x0000000000000502        0x0 CMakeFiles/node2.dir/lib/adc/adc.cpp.obj
  .text          0x0000000000000502        0x0 CMakeFiles/node2.dir/lib/adc_internal/adc_internal.cpp.obj
  .text          0x0000000000000502        0x0 CMakeFiles/node2.dir/lib/dac/dac.cpp.obj
@@ -1256,6 +1258,7 @@ END GROUP
  .data          0x0000000000800200        0x0 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr6/crtatmega2560.o
  .data          0x0000000000800200        0x0 CMakeFiles/node2.dir/src/main.cpp.obj
  .data          0x0000000000800200        0x0 CMakeFiles/node2.dir/src/state_machine.cpp.obj
+ .data          0x0000000000800200        0x0 CMakeFiles/node2.dir/lib/timer/timer.cpp.obj
  .data          0x0000000000800200        0x0 CMakeFiles/node2.dir/lib/adc/adc.cpp.obj
  .data          0x0000000000800200        0x0 CMakeFiles/node2.dir/lib/adc_internal/adc_internal.cpp.obj
  .data          0x0000000000800200        0x0 CMakeFiles/node2.dir/lib/dac/dac.cpp.obj
@@ -1389,6 +1392,7 @@ END GROUP
  .bss           0x000000000080046c        0x0 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr6/crtatmega2560.o
  .bss           0x000000000080046c        0x0 CMakeFiles/node2.dir/src/main.cpp.obj
  .bss           0x000000000080046c        0x0 CMakeFiles/node2.dir/src/state_machine.cpp.obj
+ .bss           0x000000000080046c        0x0 CMakeFiles/node2.dir/lib/timer/timer.cpp.obj
  .bss           0x000000000080046c        0x0 CMakeFiles/node2.dir/lib/adc/adc.cpp.obj
  .bss           0x000000000080046c        0x0 CMakeFiles/node2.dir/lib/adc_internal/adc_internal.cpp.obj
  .bss           0x000000000080046c        0x0 CMakeFiles/node2.dir/lib/dac/dac.cpp.obj
@@ -1566,59 +1570,61 @@ END GROUP
 .user_signatures
  *(.user_signatures*)
 
-.stab           0x0000000000000000     0xd6b0
+.stab           0x0000000000000000     0xd9c8
  *(.stab)
  .stab          0x0000000000000000      0xa08 CMakeFiles/node2.dir/src/main.cpp.obj
  .stab          0x0000000000000a08      0xa38 CMakeFiles/node2.dir/src/state_machine.cpp.obj
                                         0xa44 (size before relaxing)
- .stab          0x0000000000001440      0x318 CMakeFiles/node2.dir/lib/adc/adc.cpp.obj
+ .stab          0x0000000000001440      0x318 CMakeFiles/node2.dir/lib/timer/timer.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x0000000000001758      0x6e4 CMakeFiles/node2.dir/lib/adc_internal/adc_internal.cpp.obj
+ .stab          0x0000000000001758      0x318 CMakeFiles/node2.dir/lib/adc/adc.cpp.obj
+                                        0x324 (size before relaxing)
+ .stab          0x0000000000001a70      0x6e4 CMakeFiles/node2.dir/lib/adc_internal/adc_internal.cpp.obj
                                         0x6f0 (size before relaxing)
- .stab          0x0000000000001e3c      0x930 CMakeFiles/node2.dir/lib/dac/dac.cpp.obj
+ .stab          0x0000000000002154      0x930 CMakeFiles/node2.dir/lib/dac/dac.cpp.obj
                                         0x93c (size before relaxing)
- .stab          0x000000000000276c      0xa80 CMakeFiles/node2.dir/lib/i2c/i2c.cpp.obj
+ .stab          0x0000000000002a84      0xa80 CMakeFiles/node2.dir/lib/i2c/i2c.cpp.obj
                                         0xa8c (size before relaxing)
- .stab          0x00000000000031ec      0x5e8 CMakeFiles/node2.dir/lib/ir_detector/ir_detector.cpp.obj
+ .stab          0x0000000000003504      0x5e8 CMakeFiles/node2.dir/lib/ir_detector/ir_detector.cpp.obj
                                         0x5f4 (size before relaxing)
- .stab          0x00000000000037d4      0x318 CMakeFiles/node2.dir/lib/joystick/joystick.cpp.obj
+ .stab          0x0000000000003aec      0x318 CMakeFiles/node2.dir/lib/joystick/joystick.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x0000000000003aec     0x1008 CMakeFiles/node2.dir/lib/mcp2515/mcp2515.cpp.obj
+ .stab          0x0000000000003e04     0x1008 CMakeFiles/node2.dir/lib/mcp2515/mcp2515.cpp.obj
                                        0x1014 (size before relaxing)
- .stab          0x0000000000004af4     0x14f4 CMakeFiles/node2.dir/lib/menu/menu.cpp.obj
+ .stab          0x0000000000004e0c     0x14f4 CMakeFiles/node2.dir/lib/menu/menu.cpp.obj
                                        0x1500 (size before relaxing)
- .stab          0x0000000000005fe8      0x7c8 CMakeFiles/node2.dir/lib/motor/motor.cpp.obj
+ .stab          0x0000000000006300      0x7c8 CMakeFiles/node2.dir/lib/motor/motor.cpp.obj
                                         0x7d4 (size before relaxing)
- .stab          0x00000000000067b0     0x13ec CMakeFiles/node2.dir/lib/oled/oled.cpp.obj
+ .stab          0x0000000000006ac8     0x13ec CMakeFiles/node2.dir/lib/oled/oled.cpp.obj
                                        0x13f8 (size before relaxing)
- .stab          0x0000000000007b9c      0x63c CMakeFiles/node2.dir/lib/oled_scp/oled_scp.cpp.obj
+ .stab          0x0000000000007eb4      0x63c CMakeFiles/node2.dir/lib/oled_scp/oled_scp.cpp.obj
                                         0x648 (size before relaxing)
- .stab          0x00000000000081d8      0x768 CMakeFiles/node2.dir/lib/scp/scp.cpp.obj
+ .stab          0x00000000000084f0      0x768 CMakeFiles/node2.dir/lib/scp/scp.cpp.obj
                                         0x774 (size before relaxing)
- .stab          0x0000000000008940      0x63c CMakeFiles/node2.dir/lib/servo/servo.cpp.obj
+ .stab          0x0000000000008c58      0x63c CMakeFiles/node2.dir/lib/servo/servo.cpp.obj
                                         0x648 (size before relaxing)
- .stab          0x0000000000008f7c      0x774 CMakeFiles/node2.dir/lib/socket/socket.cpp.obj
+ .stab          0x0000000000009294      0x774 CMakeFiles/node2.dir/lib/socket/socket.cpp.obj
                                         0x780 (size before relaxing)
- .stab          0x00000000000096f0      0xb28 CMakeFiles/node2.dir/lib/spi/spi.cpp.obj
+ .stab          0x0000000000009a08      0xb28 CMakeFiles/node2.dir/lib/spi/spi.cpp.obj
                                         0xb34 (size before relaxing)
- .stab          0x000000000000a218      0x7f8 CMakeFiles/node2.dir/lib/state_machine/state_machine.cpp.obj
+ .stab          0x000000000000a530      0x7f8 CMakeFiles/node2.dir/lib/state_machine/state_machine.cpp.obj
                                         0x804 (size before relaxing)
- .stab          0x000000000000aa10     0x13b0 CMakeFiles/node2.dir/lib/stream/stream.cpp.obj
+ .stab          0x000000000000ad28     0x13b0 CMakeFiles/node2.dir/lib/stream/stream.cpp.obj
                                        0x13bc (size before relaxing)
- .stab          0x000000000000bdc0      0x744 CMakeFiles/node2.dir/lib/uart/uart.cpp.obj
+ .stab          0x000000000000c0d8      0x744 CMakeFiles/node2.dir/lib/uart/uart.cpp.obj
                                         0x750 (size before relaxing)
- .stab          0x000000000000c504      0x4e0 CMakeFiles/node2.dir/lib/utilities/fonts.cpp.obj
+ .stab          0x000000000000c81c      0x4e0 CMakeFiles/node2.dir/lib/utilities/fonts.cpp.obj
                                         0x4ec (size before relaxing)
- .stab          0x000000000000c9e4      0x318 CMakeFiles/node2.dir/lib/utilities/memory.cpp.obj
+ .stab          0x000000000000ccfc      0x318 CMakeFiles/node2.dir/lib/utilities/memory.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x000000000000ccfc      0x408 CMakeFiles/node2.dir/lib/utilities/new.cpp.obj
+ .stab          0x000000000000d014      0x408 CMakeFiles/node2.dir/lib/utilities/new.cpp.obj
                                         0x414 (size before relaxing)
- .stab          0x000000000000d104      0x5ac CMakeFiles/node2.dir/lib/utilities/printf.cpp.obj
+ .stab          0x000000000000d41c      0x5ac CMakeFiles/node2.dir/lib/utilities/printf.cpp.obj
                                         0x5b8 (size before relaxing)
 
-.stabstr        0x0000000000000000     0xc6c4
+.stabstr        0x0000000000000000     0xc6fc
  *(.stabstr)
- .stabstr       0x0000000000000000     0xc6c4 CMakeFiles/node2.dir/src/main.cpp.obj
+ .stabstr       0x0000000000000000     0xc6fc CMakeFiles/node2.dir/src/main.cpp.obj
 
 .stab.excl
  *(.stab.excl)
@@ -1637,6 +1643,7 @@ END GROUP
  .comment       0x0000000000000000       0x11 CMakeFiles/node2.dir/src/main.cpp.obj
                                          0x12 (size before relaxing)
  .comment       0x0000000000000011       0x12 CMakeFiles/node2.dir/src/state_machine.cpp.obj
+ .comment       0x0000000000000011       0x12 CMakeFiles/node2.dir/lib/timer/timer.cpp.obj
  .comment       0x0000000000000011       0x12 CMakeFiles/node2.dir/lib/adc/adc.cpp.obj
  .comment       0x0000000000000011       0x12 CMakeFiles/node2.dir/lib/adc_internal/adc_internal.cpp.obj
  .comment       0x0000000000000011       0x12 CMakeFiles/node2.dir/lib/dac/dac.cpp.obj

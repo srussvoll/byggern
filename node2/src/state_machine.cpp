@@ -6,10 +6,11 @@
 #include "../lib/motor/motor.h"
 #include "../lib/dac/dac.h"
 #include <util/delay.h>
-#include "../lib/joystick/direction.h"
+#include "../lib/ir_detector/ir_detector.h"
 
 #define STATE_ONGOING        1
 #define STATE_IDLE           2
+#define STATE_GAME_FINISHED  3
 
 StateMachine *fsm;
 SCP          *channel;
@@ -17,7 +18,6 @@ SOCKET* sockets[] = {
         &SOCKET::GetInstance(0),
         &SOCKET::GetInstance(1)
 };
-uint8_t current_direction;
 
 /* States: enter, loops and leaves */
 void InitializeLoop() {
@@ -31,18 +31,16 @@ void InitializeLoop() {
 }
 
 void OngoingInitialize() {
-    current_direction = LEFT;
     Motor &motor = Motor::GetInstance();
     motor.Start();
 }
 void OngoingLoop() {
+    // Get joystick values
     uint8_t command;
     uint8_t length;
     uint8_t data[2];
-    uint8_t x_direction = 22;
-    uint8_t y_direction = 22;
-    Motor &motor = Motor::GetInstance();
-
+    uint8_t x_direction = 0;
+    uint8_t y_direction = 0;
     if(channel->Receive(command, data, length)) {
         if (command == CMD_JOYSTICK_VALUES) {
             printf("GOT CMD\n");
@@ -51,6 +49,17 @@ void OngoingLoop() {
         }
     }
     printf("X: %d, Y:%d \n", x_direction, y_direction);
+
+    // Check fail state
+    IR_DETECTOR &ir = IR_DETECTOR::GetInstance();
+    if(ir.Sample()){
+        // Fail state
+    }
+}
+
+void OngoingLeave(){
+    Motor &motor = Motor::GetInstance();
+    motor.Stop();
 }
 
 void IdleLoop() {
@@ -67,9 +76,10 @@ void IdleLoop() {
 
 /* State functions table */
 void (*state_functions[][3])(void) = {
-/* 0. Initialize                 */ {nullptr, &InitializeLoop, nullptr},
-/* 1. ONGOING                    */ {&OngoingInitialize, &OngoingLoop,    nullptr},
-/* 2. IDLE                       */ {nullptr, &IdleLoop,       nullptr}
+/* 0. Initialize                 */ {nullptr, InitializeLoop, nullptr},
+/* 1. ONGOING                    */ {OngoingInitialize, OngoingLoop, OngoingLeave},
+/* 2. IDLE                       */ {nullptr, IdleLoop,       nullptr},
+/* 3. Game Finished               */{nullptr, nullptr, nullptr}
 };
 
 /* Initialize and start the state machine */

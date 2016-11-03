@@ -33,7 +33,7 @@ void MenuLeave() {}
 
 void PlayGameLoop() {
 
-    // Generate command message
+    // Send joystick message
     ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
     ADC &adc_y = ADC::GetInstance(ADC_ADDRESS2);
     printf("Sent cmd\n");
@@ -51,6 +51,8 @@ void PlayGameLoop() {
     }
     uint8_t x[] = {x_value, y_value};
     channel->Send(1, CMD_JOYSTICK_VALUES, x, 2);
+
+    //
 
 }
 void PlayGameInitialize() {

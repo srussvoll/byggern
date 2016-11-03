@@ -21,7 +21,7 @@
 int main(void) {
     InitializeStateMachine(); // This will call an endless loop.
 
-    OLED_memory &memory_oled = OLED_memory::GetInstance();
+    /*OLED_memory &memory_oled = OLED_memory::GetInstance();
     memory_oled.Init(128, 64);
     OLED &my_oled = (OLED&) memory_oled;
 
@@ -93,7 +93,7 @@ int main(void) {
     }
 
 
-
+*/
     /*SOCKET &socket = SOCKET::GetInstance(0);
     printf("Starting \n");
 

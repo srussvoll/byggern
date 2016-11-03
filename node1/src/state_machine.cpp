@@ -25,14 +25,15 @@ SOCKET* sockets[] = {
 void InitializeLoop(){
     uint8_t command;
     uint8_t length;
-    uint8_t data[128];
+    uint8_t data[6];
 
     if(channel->Receive(command, data, length)) {
         if (command == WRITE_TO_ADDRESS) {
             volatile uint8_t *address = (volatile uint8_t*)(((uint16_t)data[0] << 8) + data[1]);
-            for (int i = 0; i < length; ++i) {
-                //printf("Address, data: %4x, %2x\n", ((uint16_t)data[0] << 8) + data[1], data[2 + i]);
-                *address = data[2 + i];
+            for (int i = 2; i < length; ++i) {
+                //printf("Address, len, data: %4x, %2d, %2x\n", (uint16_t) address, length - 2, data[i]);
+                //printf("len: %2d\n", length - 2);
+                *address = data[i];
             }
         }
     }

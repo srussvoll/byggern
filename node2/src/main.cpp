@@ -54,9 +54,10 @@ void test_oled() {
     scp_oled.Init(128, 64, channel, WRITE_TO_ADDRESS);
     OLED &my_oled = (OLED&) scp_oled;
 
-    printf("Done.\n");
 
     my_oled.SetFont(Fonts::f8x8, 8, 8);
+    my_oled.Clear();
+    my_oled.Repaint();
 
     Menu::Controller controller(my_oled, 5);
 
@@ -101,7 +102,7 @@ void test_oled() {
     controller.AddMenu(sub_main_items, (sizeof(sub_main_items)) / sizeof(sub_main_items[0]));
 
     controller.Render();
-/*
+
     for (uint8_t i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
@@ -119,7 +120,7 @@ void test_oled() {
     for (uint8_t i = 0; i < 4; ++i) {
         _delay_ms(200);
         controller.SelectNext();
-    }*/
+    }
 }
 
 
@@ -127,7 +128,8 @@ void test_oled() {
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
     test_oled();
-
+    printf("Done.\n");
+    while (true);
     /*SOCKET &s = SOCKET::GetInstance(0);
     char test_string[] = "Small string that ends\n";
     printf("Sending string with size = %d\n", sizeof(test_string));

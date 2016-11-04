@@ -78,29 +78,57 @@ public:
      * Returns true if the joystick controller is to the right
      * @param x The x value of the joystick through the adc
      * @param y The y value of the joystick through the adc
+     * @return A bool indicating the status
      */
     bool IsRight(uint8_t x, uint8_t y);
+
+    /**
+     * Returns if the joystick controller is to the right. Uses the internal x and y values
+     * @return A bool indicating the status
+     */
+    bool IsRight();
 
     /**
      * Returns true if the joystick controller is to the left
      * @param x The x value of the joystick through the adc
      * @param y The y value of the joystick through the adc
+     * @return A bool indicating the status
      */
     bool IsLeft(uint8_t x, uint8_t y);
+
+    /**
+     * Returns if the joystick controller is to the right. Uses the internal x and y values
+     * @return A bool indicating the status
+     */
+    bool IsLeft();
 
     /**
      *Returns true if the joystick controller is down
      * @param x The x value of the joystick through the adc
      * @param y The y value of the joystick through the adc
+     * @return A bool indicating the status
      */
     bool IsDown(uint8_t x, uint8_t y);
+
+    /**
+     * Returns if the joystick controller is to the right. Uses the internal x and y values
+     * @return A bool indicating the status
+     */
+    bool IsDown();
 
     /**
      * Returns true if the joystick controller is up
      * @param x The x value of the joystick through the adc
      * @param y The y value of the joystick through the adc
+     * @return A bool indicating the status
      */
     bool IsUp(uint8_t x, uint8_t y);
+
+    /**
+     * Returns if the joystick controller is to the right. Uses the internal x and y values
+     * @return A bool indicating the status
+     */
+    bool IsUp();
 
     /**
      * Updated the value of the joystick through the dac (and through the can bus)

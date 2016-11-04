@@ -29,6 +29,22 @@ bool Joystick::IsUp(uint8_t x, uint8_t y) {
 
 }
 
+bool Joystick::IsRight() {
+
+}
+
+bool Joystick::IsLeft() {
+
+}
+
+bool Joystick::IsDown() {
+
+}
+
+bool Joystick::IsUp() {
+
+}
+
 void Joystick::Update(uint8_t x, uint8_t y){
     // Update the x and y value of the joystick
     this->x = x;

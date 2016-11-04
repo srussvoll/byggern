@@ -15,6 +15,7 @@
 #include "lib/utilities/printf.h"
 #include "lib/adc_internal/adc_internal.h"
 #include "state_machine.h"
+#include "lib/timer/timer.h"
 
 void init_hardware_drivers() __attribute__((naked)) __attribute((used)) __attribute__((section(".init8")));
 void InitializeNetworkStack();
@@ -52,5 +53,16 @@ void InitializeNetworkStack(){
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
     InitializeStateMachine();
+/*    DDRB |= (1<<PB4);
+    printf("Start \n");
+    Timer &t = Timer::GetInstance();
+    t.Initialize();
+    t.Start();
+    PORTB |= (1<<PORTB4);
+    while(t.timer < 5){
+    }
+    PORTB &= ~(1<<PORTB4);
+    printf("DONE\n");
+    while(1);*/
 }
 #pragma clang diagnostic pop

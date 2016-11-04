@@ -1,6 +1,5 @@
 #ifdef __AVR_ATmega162__
 #include "joystick.h"
-#include "direction.h"
 Joystick::Joystick() {
 }
 

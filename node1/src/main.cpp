@@ -20,7 +20,12 @@
 
 int main(void) {
     InitializeStateMachine(); // This will call an endless loop.
-
+/*    volatile uint8_t *address = (uint8_t *)0x2004;
+    printf("Write start\n");
+    while(1){
+        *address = 0x2004;
+        //printf("wrote \n");
+    }*/
 /*
     DDRB |= (1 << DDB0);
     DDRB |= (1 << DDB3);

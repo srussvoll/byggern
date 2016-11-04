@@ -1,4 +1,5 @@
 #ifdef __AVR_ATmega2560__
+
 #pragma once
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -19,11 +20,6 @@ private:
      * Default constructor - private because of singleton
      */
     Motor();
-
-    /**
-     * The speed of the motor
-     */
-    uint8_t speed;
 
     /**
      * The dac used to output the voltage to the motor
@@ -73,8 +69,9 @@ public:
 
     /**
      * Drive the motor
+     * @param percentage The percentage of the maximum percentage the motor should be driven on
      */
-    void Drive();
+    void Drive(float percentage);
 
     /**
      * Change the motor direction

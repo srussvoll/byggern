@@ -1,12 +1,11 @@
-#ifdef __AVR_ATmega162__
+#ifdef __AVR_ATmega2560__
+
 #include "joystick.h"
 
 Joystick::Joystick() {
 }
 
-void Joystick::Init(Quantization levels, float threshold, ADC* adc_x, ADC* adc_y) {
-    this->adc_x = adc_x;
-    this->adc_x = adc_y;
+void Joystick::Init(Quantization levels, float threshold) {
     this->threshold = threshold;
     this->levels = levels;
 
@@ -14,42 +13,26 @@ void Joystick::Init(Quantization levels, float threshold, ADC* adc_x, ADC* adc_y
     DDRE &= ~(1 << DDE2);
 }
 
-bool Joystick::IsRight() {
-    adc_x->request_sample();
-    uint8_t x_value;
-    while(!adc_x->ReadByte(x_value)){
-        ;
-    }
-    return x_value > (uint8_t) (threshold*(levels.x_max - levels.x_min));
+bool Joystick::IsRight(uint8_t x, uint8_t y) {
+
 }
 
-bool Joystick::IsLeft() {
-    adc_x->request_sample();
-    uint8_t x_value;
-    while(!adc_x->ReadByte(x_value)){
-        ;
-    }
+bool Joystick::IsLeft(uint8_t x, uint8_t y) {
 
-    return x_value < (uint8_t) ((levels.x_max - levels.x_min) * (1.0 - threshold)) ;
 }
 
-bool Joystick::IsDown() {
-    adc_y->request_sample();
-    uint8_t y_value;
-    while(!adc_y->ReadByte((y_value))){
-        ;
-    }
+bool Joystick::IsDown(uint8_t x, uint8_t y) {
 
-    return y_value < (uint8_t) ((levels.y_max - levels.y_min) * (1.0 - threshold)) ;
 }
 
-bool Joystick::IsUp() {
-    adc_y->request_sample();
-    uint8_t y_value;
-    while(!adc_y->ReadByte((y_value))){
-        ;
-    }
-    return y_value < (uint8_t) (threshold*(levels.y_max - levels.y_min));
+bool Joystick::IsUp(uint8_t x, uint8_t y) {
+
+}
+
+void Joystick::Update(uint8_t x, uint8_t y){
+    // Update the x and y value of the joystick
+    this->x = x;
+    this->y = y;
 }
 
 bool Joystick::ButtonIsDown() {

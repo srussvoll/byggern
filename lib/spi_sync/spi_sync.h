@@ -85,6 +85,9 @@ namespace SPI_N_SYNC{
 
         void ReadByte(uint8_t &byte);
 
+        // Hacky variable in order to retain the same interface as async spi
+        uint8_t Stream::GetAvailableReadBytes(){return 1;};
+
     private:
         /**
          * Initializer for SPI. Not used because of singleton

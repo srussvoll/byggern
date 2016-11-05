@@ -172,7 +172,6 @@ void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
     uint8_t buffer_number = 0;
     uint8_t address_sidh = 0b10010000 | (buffer_number << 2);
     uint8_t address_data = 0b10010010 | (buffer_number << 2);
-    uint8_t address_sidl = 0b01100010 | (buffer_number << 4);
     uint8_t address_dlc = 0b01100101 | (buffer_number << 4);
 
     // Read length
@@ -185,12 +184,13 @@ void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
     uint8_t upper_id;
     uint8_t lower_id;
     this->spi_driver->WriteByteAndThrowAwayData(address_sidh, 1);
+    this->spi_driver->WriteByte(MCP_DC, 1);
     this->spi_driver->WriteByte(MCP_DC, 0);
 
     while(spi_driver->GetAvailableReadBytes() == 0);
     this->spi_driver->ReadByte(upper_id);
+    this->spi_driver->ReadByte(lower_id);
 
-    this->ReadFromRegister(address_sidl, lower_id);
     message.id = (upper_id << 3) + (lower_id >> 5);
 
     // Read data

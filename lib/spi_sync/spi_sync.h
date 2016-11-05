@@ -86,7 +86,7 @@ namespace SPI_N_SYNC{
         void ReadByte(uint8_t &byte);
 
         // Hacky variable in order to retain the same interface as async spi
-        uint8_t GetAvailableReadBytes(){return 1;};
+        uint8_t GetAvailableReadBytes();
 
     private:
         /**

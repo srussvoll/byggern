@@ -107,4 +107,8 @@ namespace SPI_N_SYNC{
         byte = this->input_buffer[this->input_buffer_number_of_times_read];
         this->input_buffer_number_of_times_read += 1;
     }
+
+    uint8_t SPI_SYNC::GetAvailableReadBytes() {
+        return (this->input_buffer_index - this->input_buffer_number_of_times_read);
+    }
 }

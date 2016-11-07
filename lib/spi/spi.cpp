@@ -4,16 +4,14 @@
 #include "pins.h"
 namespace SPI_N{
     void SPI_STC_vect(){
-
-        // SPI transfer complete
         SPI& spi = SPI::GetInstance();
 
-        // Put data into the buffer
-        if(spi.throw_away_data_count == 0){
+        if(spi.throw_away_data_count == 0) {
+            // No more junk data, put it into the stream
             uint8_t byte = SPDR;
             spi.WriteByteToInputStream(byte);
-
         } else {
+            // Junk data
             spi.throw_away_data_count -= 1;
         }
 
@@ -22,11 +20,13 @@ namespace SPI_N{
             uint8_t byte;
             if(spi.ReadByteFromOutputStream(byte)){
                 SPDR = byte;
-            }else{
+            }else {
+                // No more data to send
                 spi.ongoing_transmission = false;
 
                 // Turn of SS pin. Active low
                 *spi.current_pin.port |= (1<<spi.current_pin.pin);
+
                 // Disable interrupts
                 SPCR &= ~(1<<SPIE);
             }
@@ -38,14 +38,14 @@ namespace SPI_N{
     }
 
     void SPI::Initialize(PIN *pins, uint8_t number_of_pins, bool clock_polarity_falling = 0, bool clock_phase_trailing = 0) {
-        if(clock_polarity_falling){
+        if(clock_polarity_falling) {
             SPCR |= (1<<CPOL);
-        }else{
+        } else {
             SPCR &= ~(1<<CPOL);
         }
-        if(clock_phase_trailing){
+        if(clock_phase_trailing) {
             SPCR |= (1<<CPHA);
-        }else{
+        } else {
             SPCR &= ~(1<<CPHA);
         }
 
@@ -55,23 +55,18 @@ namespace SPI_N{
         MISO_DDR &= ~(1<<MISO_PIN); // MISO to input
         SS_DDR |= (1<<SS_PIN); // Set SS high
 
-/*        // Set SCK = f_osc/128
-        SPCR |= (1<<SPR1) | (1<<SPR0);
-        SPSR &= ~(1<<SPI2X);
-*/
+        // SCK = f_osc/2
         SPSR |= (1<<SPI2X);
         SPCR &= ~(1<<SPR0);
         SPCR &= ~(1<<SPR1);
 
-
         // Set MSB first
         SPCR &= ~(1<<DORD);
 
-        // Set registers
-        SPCR |= (1<<MSTR); // Set master mode
-        SPCR |= (1<<SPE); // Enable SPI
+        // Set master mode and enable the SPI
+        SPCR |= (1<<MSTR);
+        SPCR |= (1<<SPE);
 
-        // Remember that you need to run SetDevice in order to select a device.
         for(uint8_t i = 0; i < number_of_pins; ++i){
             // Set direction of pin
             *pins[i].ddr |= (1<<pins[i].pin);
@@ -79,7 +74,6 @@ namespace SPI_N{
             *pins[i].port |= (1<<pins[i].pin);
         }
     }
-
 
     void SPI::InitializeTransmission() {
         if(!this->ongoing_transmission){
@@ -91,7 +85,7 @@ namespace SPI_N{
             Stream::ReadByteFromOutputStream(byte);
             SPDR = byte;
 
-            // Enable interrupts
+            // Enable interrupt
             SPCR |= (1<<SPIE);
         }
     }

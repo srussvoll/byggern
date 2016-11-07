@@ -59,8 +59,11 @@ void OngoingLoop() {
             y_direction = data[1];
         }
     }
-    printf("X: %d, Y:%d \n", x_direction, y_direction);|
-
+    printf("X: %d, Y:%d \n", x_direction, y_direction);
+    if(x_direction > 150){
+        fsm->Transition(STATE_IDLE,0);
+        return;
+    }
     // Check fail state
     /*IR_DETECTOR &ir = IR_DETECTOR::GetInstance();
     if(ir.Sample()){

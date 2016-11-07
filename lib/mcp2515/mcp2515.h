@@ -13,6 +13,12 @@ ISR(MCP2515_INT);
  * A singleton class which implements the communication between the AVR and the MCP2515. Throughout the documentation
  * of this class, we will refer to the datasheet of the chip. This can be found at
  * <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf">Microchips site</a>
+ *
+ * The SPI driver you are using must have meet the following criteria
+ * <li>Size of output buffer > 14 bytes </li>
+ * <li>Size of input buffer > 11 bytes </li>
+ *
+ * <b>Please note:</b> This implementation only uses one recieve and transmit buffer. TX0 and RX0
  */
 class MCP2515: public CAN{
 public:
@@ -64,7 +70,7 @@ public:
 private:
 
     /**
-     * Sends a RTS (Request to Send) signal to the MCP2515. This is
+     * Sends a RTS (Request to Send) signal to the MCP2515.
      */
     void RequestToSend();
     /**
@@ -80,7 +86,8 @@ private:
      */
     void ReadFromRegister(uint8_t register_address, uint8_t &byte);
     /**
-     * Sends a reset command to the MCP2515
+     * Sends a reset command to the MCP2515 thorugh the SPI interace (hardware reset not connected).
+     * Will put the MCP2515 in config mode.
      */
     void Reset();
     /**

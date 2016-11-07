@@ -24,8 +24,10 @@ SOCKET* sockets[] = {
 /*-----------------------   INITIALIZE  -------------------------------*/
 
 void InitializeLoop(){
+    printf("STATE INITIALIZE LOOP ENTERED\n");
     // Initialize joystick
     fsm->Transition(STATE_GAME,0);
+    return;
 }
 
 /*-----------------------     MENU    -------------------------------*/
@@ -38,12 +40,14 @@ void MenuLoop() {
     // TODO: Implement menu
 }
 
-void MenuLeave() {}
+void MenuLeave() {
+    printf("STATE MENU LEFT \n");
+}
 
 /*----------------------   PLAY GAME  -------------------------------*/
 
-void PlayGameInitialize() {
-
+void PlaygeGameEnter() {
+    printf("STATE PLAY GAME ENTERED\n");
     // Send start of game command
     channel->Send(0, CMD_GAME_START, nullptr, 0);
     return;
@@ -84,6 +88,7 @@ void PlayGameLoop() {
 }
 
 void PlayGameLeave() {
+    printf("STATE PLAY GAME LEFT\n");
     return;
 }
 
@@ -93,7 +98,7 @@ void PlayGameLeave() {
 void (*state_functions[][3])(void) = {
 /* 0. Initialize                 */ {nullptr,            &InitializeLoop, nullptr},
 /* 1. Menu                       */ {&MenuEnter,    &MenuLoop,       &MenuLeave},
-/* 2. Play Game                  */ {PlayGameInitialize, &PlayGameLoop,   &PlayGameLeave},
+/* 2. Play Game                  */ {PlaygeGameEnter, &PlayGameLoop,   &PlayGameLeave},
 /* 3. Highscore Score            */ {nullptr,            nullptr,         nullptr},
 };
 

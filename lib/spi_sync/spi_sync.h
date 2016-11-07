@@ -1,5 +1,6 @@
 #pragma once
-
+#define USE_SYNC_DRIVER         0
+#if USE_SYNC_DRIVER
 #include "../stream/stream.h"
 #include <avr/io.h>
 /**
@@ -116,3 +117,4 @@ namespace SPI_N_SYNC{
 
     };
 }
+#endif

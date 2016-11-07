@@ -1,3 +1,4 @@
+#if USE_SYNC_DRIVER
 #include "spi_sync.h"
 #include <stdio.h>
 #include <util/delay.h>
@@ -112,3 +113,4 @@ namespace SPI_N_SYNC{
         return (this->input_buffer_index - this->input_buffer_number_of_times_read);
     }
 }
+#endif

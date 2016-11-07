@@ -73,6 +73,4 @@ private:
      * This sockets identifier
      */
     uint8_t id;
-
-
 };

@@ -3,24 +3,29 @@
 #include "../utilities/printf.h"
 
 void SOCKET::Write(uint8_t *string, uint16_t size) {
-    uint16_t data_left = size;
-    while(data_left > 0){
+    uint16_t remaining_data = size;
+    while(remaining_data > 0){
         uint8_t can_size;
         uint8_t data[8];
-        if(data_left >= 8){
+        if(remaining_data >= 8){
+            // More data than one CAN frame allows. Need to split it
             can_size = 8;
-            memcpy(data, &string[size-data_left],can_size);
-            data_left -= 8;
+            memcpy(data, &string[size-remaining_data],can_size);
+            remaining_data -= 8;
         }else{
-            can_size = data_left;
-            memcpy(data, &string[size-data_left], can_size);
+            // Remaining data fits into one CAN frame
+            can_size = remaining_data;
+            memcpy(data, &string[size-remaining_data], can_size);
+
             // Underflow prevention
-            if(data_left < 8){
-                data_left = 0;
+            if(remaining_data < 8){
+                remaining_data = 0;
             }else{
-                data_left -= 8;
+                remaining_data -= 8;
             }
         }
+        // Delay due to slowest receiving node.
+        // This tries to limit messages getting overwritten
         _delay_ms(12);
         CAN_MESSAGE message = CAN_MESSAGE(can_size,data,this->id);
         this->can->SendMessage(message);

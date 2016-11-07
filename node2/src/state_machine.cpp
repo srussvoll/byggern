@@ -22,9 +22,9 @@ SOCKET* sockets[] = {
 uint8_t x_direction = 0;
 uint8_t y_direction = 0;
 
-/* States: enter, loops and leaves */
+/*-----------------------   INITIALIZE  -------------------------------*/
+
 void InitializeLoop() {
-    printf("correct node\n");
     //TODO: Add initialization to everything for node 2.
 
     // Initialize the motor
@@ -38,7 +38,9 @@ void InitializeLoop() {
     fsm->Transition(STATE_IDLE, 0);
 }
 
-void OngoingInitialize() {
+/*-----------------------   ONGOING  -------------------------------*/
+
+void OngoingEnter() {
     Motor &motor = Motor::GetInstance();
     motor.Start();
     Timer &timer = Timer::GetInstance();
@@ -53,12 +55,11 @@ void OngoingLoop() {
     uint8_t data[2];
     if(channel->Receive(command, data, length)) {
         if (command == CMD_JOYSTICK_VALUES) {
-            printf("GOT CMD\n");
             x_direction = data[0];
             y_direction = data[1];
         }
     }
-    printf("X: %d, Y:%d \n", x_direction, y_direction);
+    printf("X: %d, Y:%d \n", x_direction, y_direction);|
 
     // Check fail state
     /*IR_DETECTOR &ir = IR_DETECTOR::GetInstance();
@@ -77,12 +78,18 @@ void OngoingLeave(){
     timer.Stop();
     uint16_t time;
     timer.GetFullSecondsPassed(time);
-    uint8_t data[] = {(uint8_t)((time & 0xFF00)) >> 8, (uint8_t)(time & 0x00FF)};
+    printf("Time passed = %d \n", time);
+    uint8_t data[] = {(uint8_t)(time & 0x00FF), (uint8_t)((time & 0xFF00)) >> 8};
     channel->Send(0, CMD_GAME_STOP, data, 2);
 }
 
+/*-----------------------   IDLE  -------------------------------*/
+
+void IdleEnter(){
+    printf("IDLE STATE ENTERED \n");
+}
+
 void IdleLoop() {
-    printf("Idling\n");
     uint8_t command;
     uint8_t length;
     uint8_t data[1];
@@ -94,11 +101,12 @@ void IdleLoop() {
     }
 }
 
+/* States: enter, loops and leaves */
 /* State functions table */
 void (*state_functions[][3])(void) = {
 /* 0. Initialize                 */ {nullptr, InitializeLoop, nullptr},
-/* 1. ONGOING                    */ {OngoingInitialize, OngoingLoop, OngoingLeave},
-/* 2. IDLE                       */ {nullptr, IdleLoop,       nullptr}
+/* 1. ONGOING                    */ {OngoingEnter, OngoingLoop, OngoingLeave},
+/* 2. IDLE                       */ {IdleEnter, IdleLoop,       nullptr}
 };
 
 /* Initialize and start the state machine */

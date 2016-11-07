@@ -1,6 +1,5 @@
 #include "adc.h"
 #include "lib/uart/uart.h"
-#include <avr/delay.h>
 #ifdef __AVR_ATmega162__
 
 volatile bool ADC::adc_in_use = false;
@@ -33,9 +32,6 @@ void ADC_INT(){
     uint8_t data = *adc.address;
     adc.WriteByteToInputStream(data);
     ADC::adc_in_use = false;
-    UART &u = UART::GetInstance();
-    char msg[] = "INT ADC with data \n";
-    u.Write((uint8_t *) msg, sizeof(msg));
 }
 
 #endif

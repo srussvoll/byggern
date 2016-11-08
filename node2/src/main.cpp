@@ -2,6 +2,7 @@
 #include <util/delay.h>
 
 #include <lib/dac/dac.h>
+#include <lib/ir_detector/ir_detector.h>
 #include "lib/socket/socket.h"
 #include "lib/uart/uart.h"
 #include "lib/utilities/printf.h"
@@ -19,6 +20,17 @@ void init_hardware_drivers() {
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
 
+    UART& uart = UART::GetInstance();
+
+    /*IR_Detector& ir = IR_Detector::GetInstance();
+    ir.Initialize(0x30);
+    while(true){
+        if(ir.Sample()){
+            printf("HIT\r\n");
+        }
+        _delay_ms(50);
+    } */
+
     DAC& dac = DAC::GetInstance();
     printf("--START-- \n\r");
 
@@ -31,7 +43,8 @@ int main(){
         _delay_ms(2000);
         dac.WriteAnalogSignalPercentage(0.3);
     }
-
+    
+    /*
     while(true){
         _delay_ms(2000);
         dac.WriteAnalogSignalRaw(0x00);
@@ -41,7 +54,7 @@ int main(){
         dac.WriteAnalogSignalRaw(0x40);
         _delay_ms(2000);
         dac.WriteAnalogSignalRaw(0xFF);
-    }
+    } */
 }
 
 #pragma clang diagnostic pop

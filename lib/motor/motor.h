@@ -47,10 +47,6 @@ public:
      */
     void Initialize();
 
-    /**
-     * Sets the speed of the motor
-     */
-    void SetSpeed(uint8_t speed);
 
     /**
      * Starts the motor
@@ -62,10 +58,16 @@ public:
      */
     void Stop();
 
+
     /**
-     * Sets the direction of the motor
+     * Sets the motor to the left
      */
-    void SetDirection(uint8_t direction);
+    void GoLeft();
+
+    /**
+     * Sets the motor to the right
+     */
+    void GoRight();
 
     /**
      * Drive the motor

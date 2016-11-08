@@ -51,7 +51,7 @@ public:
     /**
     * Request the ADC to get a sample. This sample can be read from the buffer using ReadByte(uint8_t& byte);
     */
-    bool request_sample();
+    bool RequestSample();
 
 };
 

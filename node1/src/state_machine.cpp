@@ -54,7 +54,6 @@ void PlaygeGameEnter() {
 }
 
 void PlayGameLoop() {
-
     // Send joystick message
     ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
     ADC &adc_y = ADC::GetInstance(ADC_ADDRESS2);
@@ -70,8 +69,9 @@ void PlayGameLoop() {
     }
 
     uint8_t x[] = {x_value, y_value};
-    printf("X: %d, Y:%d \n", x_value, y_value);
+    //printf("X: %d, Y:%d \n", x_value, y_value);
     channel->Send(1, CMD_JOYSTICK_VALUES, x, 2);
+    _delay_ms(100);
     // Check for end of game command
     uint8_t command;
     uint8_t length;

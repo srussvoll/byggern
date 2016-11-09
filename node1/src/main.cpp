@@ -20,30 +20,28 @@
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
 int main(void) {
-    InitializeStateMachine(); // This will call an endless loop.
-
     Highscore::Highscore hs;
     char name1[] = "Sondre";
     char name2[] = "V";
     char name3[] = "Johan";
 
-    Highscore::Score score1(10, name1, sizeof(name1));
+    Highscore::Score score1(40, name1, sizeof(name1));
     Highscore::Score score2(30, name2, sizeof(name2));
     Highscore::Score score3(20, name3, sizeof(name3));
 
-    hs.ClearHighscore();
-    hs.SaveScore(score1);
-//    hs.SaveScore(score2);
-//    hs.SaveScore(score3);
+    //hs.ClearHighscores();
+    /*hs.SaveScore(score1);
+    hs.SaveScore(score2);
+    hs.SaveScore(score3);*/
+    //hs.StoreScores();
+    hs.LoadScores();
 
-
-    Highscore::Score **hss = hs.GetHighscore(0);
+    Highscore::Score **hss = hs.GetHighscores(0);
 
     printf("%4d: %s\n", hss[0]->score, hss[0]->name);
     printf("%4d: %s\n", hss[1]->score, hss[1]->name);
     printf("%4d: %s\n", hss[2]->score, hss[2]->name);
 
-    while(true);
 
 
     /*OLED_memory &memory_oled = OLED_memory::GetInstance();
@@ -128,6 +126,9 @@ int main(void) {
         socket.Read((uint8_t *) s, 40);
         printf("%s",s);
     }*/
+
+    while(true);
+    //InitializeStateMachine(); // This will call an endless loop.
 }
 
 #pragma clang diagnostic pop

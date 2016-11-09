@@ -20,7 +20,7 @@ namespace Highscore {
         void SaveScore(Score &score);
         void StoreScores();
         void LoadScores();
-        Score ** GetHighscores(uint8_t first);
+        uint8_t GetHighscores(uint8_t first, Score ** &scores);
         void ClearHighscores();
     };
 }

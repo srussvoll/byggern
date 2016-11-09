@@ -51,8 +51,7 @@ namespace Highscore {
             this->score[i] = new Score(0, name, MAX_NAME_LENGTH);
         }
 
-        CR = 0;
-        //this->LoadScores();
+        this->LoadScores();
     }
 
     void Highscore::SaveScore(Score &score) {
@@ -110,8 +109,9 @@ namespace Highscore {
         }
     }
 
-    Score ** Highscore::GetHighscores(uint8_t first) {
-        return this->score;
+    uint8_t Highscore::GetHighscores(uint8_t first, Score ** &scores) {
+        scores = this->score;
+        return this->length;
     }
 
     void Highscore::StoreScores() {
@@ -158,7 +158,6 @@ namespace Highscore {
 }
 
 void Highscore::Highscore::ClearHighscores() {
-    EEPROM_write(0, 0);
     this->length = 0;
 }
 

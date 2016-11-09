@@ -25,22 +25,26 @@ int main(void) {
     char name2[] = "V";
     char name3[] = "Johan";
 
-    Highscore::Score score1(40, name1, sizeof(name1));
-    Highscore::Score score2(30, name2, sizeof(name2));
-    Highscore::Score score3(20, name3, sizeof(name3));
+    Highscore::Score score1(3357, name1, sizeof(name1));
+    Highscore::Score score2(10352, name2, sizeof(name2));
+    Highscore::Score score3(8233, name3, sizeof(name3));
 
-    //hs.ClearHighscores();
-    /*hs.SaveScore(score1);
+    // Store new scores if you want. Currently the highscore is loaded from the EEPROM.
+    /*hs.ClearHighscores();
+    hs.SaveScore(score1);
     hs.SaveScore(score2);
-    hs.SaveScore(score3);*/
-    //hs.StoreScores();
-    hs.LoadScores();
+    hs.SaveScore(score3);
+    hs.StoreScores();*/
 
-    Highscore::Score **hss = hs.GetHighscores(0);
+    Highscore::Score **hss;
+    uint8_t length = hs.GetHighscores(0, hss);
 
-    printf("%4d: %s\n", hss[0]->score, hss[0]->name);
-    printf("%4d: %s\n", hss[1]->score, hss[1]->name);
-    printf("%4d: %s\n", hss[2]->score, hss[2]->name);
+    printf("\n --------------------------------------------------- \n\n");
+    printf("Highscore table:\n");
+    for (int i = 0; i < length; ++i) {
+        printf("%5d: %s\n", hss[i]->score, hss[i]->name);
+    }
+    printf("\n --------------------------------------------------- \n\n");
 
 
 
@@ -127,8 +131,7 @@ int main(void) {
         printf("%s",s);
     }*/
 
-    while(true);
-    //InitializeStateMachine(); // This will call an endless loop.
+    InitializeStateMachine(); // This will call an endless loop.
 }
 
 #pragma clang diagnostic pop

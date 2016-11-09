@@ -20,7 +20,7 @@ public:
 
     void Initialize(SPI_N::PIN solenoid_pin);
 
-    void Pulse(uint8_t pulse_width_ms);
+    void Pulse();
 
 private:
     SPI_N::PIN pin;

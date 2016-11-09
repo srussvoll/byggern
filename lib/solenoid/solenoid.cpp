@@ -6,8 +6,8 @@ void Solenoid::Initialize(SPI_N::PIN solenoid_pin) {
     *this->pin.port &= ~(1 << this->pin.pin);
 }
 
-void Solenoid::Pulse(uint8_t pulse_width_ms) {
+void Solenoid::Pulse() {
     *this->pin.port |= (1 << this->pin.pin);
-    _delay_ms(pulse_width_ms);
+    _delay_ms(1);
     *this->pin.port &= ~(1 << this->pin.pin);
 }

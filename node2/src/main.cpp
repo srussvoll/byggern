@@ -20,35 +20,7 @@
 #include "lib/timer/timer.h"
 #include "init.h"
 void init_hardware_drivers() __attribute__((naked)) __attribute((used)) __attribute__((section(".init8")));
-void InitializeNetworkStack();
-void init_hardware_drivers() {
-    UART& uart = UART::GetInstance();
-    uart.Init(9600);
-    Utilities::EnablePrintf(uart);
-    InitializeNetworkStack();
-}
-void InitializeNetworkStack(){
-    // Get instance of all the modules
-    SOCKET &high = SOCKET::GetInstance(0x00);
-    SOCKET &low = SOCKET::GetInstance(0x01);
-    MCP2515 &mcp = MCP2515::GetInstance();
-    SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
 
-    // Initialize SPI
-    SPI_N::PIN ss = SPI_N::PIN(&PORTB, &DDRB, 7);
-    SPI_N::PIN ss_a[] = {ss};
-    spi.Initialize(ss_a, 1, 0, 0);
-    spi.SetDevice(ss);
-
-    // Initialize MCP
-    mcp.Initialize(&spi, 0x00);
-    //mcp.SetLoopback();
-    mcp.SetNormal();
-
-    // Initialize the socket
-    high.Initialize(&mcp);
-    low.Initialize(&mcp);
-}
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"

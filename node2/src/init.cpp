@@ -2,7 +2,7 @@
 #include "lib/mcp2515/mcp2515.h"
 #include "lib/spi/spi.h"
 #include "lib/socket/socket.h"
-
+#include <lib/utilities/printf.h>
 inline void InitializeNetworkStack(){
     // Get instance of all the modules
     SOCKET &high = SOCKET::GetInstance(0x00);

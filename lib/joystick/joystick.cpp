@@ -1,6 +1,7 @@
 #ifdef __AVR_ATmega2560__
 
 #include "joystick.h"
+
 Joystick::Joystick() {
 }
 
@@ -36,24 +37,5 @@ bool Joystick::ButtonIsDown() {
     // To be implemented
 }
 
-uint8_t Joystick::XValue(){
-    adc_y->request_sample();
-    uint8_t y_value;
-    while(!adc_y->ReadByte((y_value))){
-        ;
-    }
-
-    return y_value;
-}
-
-uint8_t Joystick::YValue() {
-    adc_y->request_sample();
-    uint8_t y_value;
-    while(!adc_y->ReadByte((y_value))){
-        ;
-    }
-    return y_value;
-}
-
-
 #endif
+

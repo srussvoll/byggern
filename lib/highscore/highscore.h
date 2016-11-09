@@ -2,15 +2,16 @@
 #include <avr/io.h>
 
 /**
+ * \brief Keeps track of the highscore and stores it to the EEPROM using Score objects.
+ *
  * The Highscore namespace contains a Highscore class for
  * keeping track of the highscores, and saving them to the
  * EEPROM for persistent storage. It also contains a Score
  * struct for representing a score.
  */
 namespace Highscore {
-
     /**
-     * Represents a score.
+     * \brief Represents a score.
      * @param score This is the score, 16 bits wide.
      * @param name_length This is the lenght of the name.
      * @param name This is the name of the person who scored score points.
@@ -25,6 +26,7 @@ namespace Highscore {
 
 
     /**
+     * \brief Keeps track of the highscore and stores it to the EEPROM.
      * The Highscore class keeps track of the highscores,
      * and provides a method for saving them to the EEPROM
      * for persistent storage.
@@ -37,7 +39,7 @@ namespace Highscore {
         Score **score;
 
         /**
-         * Number of scores is score variable.
+         * Length of the score variable.
          */
         uint8_t length = 0;
 

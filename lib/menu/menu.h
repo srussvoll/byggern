@@ -6,6 +6,7 @@
 
 /**
  * \brief This is a namespace containing everything needed to implement a menu.
+ *
  * This namespace contains data types for describing a menu, and a controller class
  * to control it and display it on a OLED (library class).
  * The menu allocates Menu and Item objects on the heap. Thus you should declare
@@ -15,6 +16,7 @@
 namespace Menu {
     /**
      * \brief Struct containing a sigle menu item.
+     * 
      * This struct contains all the necessary information
      * about a menu item.
      */

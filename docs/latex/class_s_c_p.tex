@@ -1,0 +1,37 @@
+\hypertarget{class_s_c_p}{\section{S\-C\-P Class Reference}
+\label{class_s_c_p}\index{S\-C\-P@{S\-C\-P}}
+}
+
+
+{\ttfamily \#include $<$scp.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_s_c_p_a9ab03c4d3f03f25c1953b13120ec7b71}{{\bfseries S\-C\-P} (\hyperlink{class_s_o_c_k_e_t}{S\-O\-C\-K\-E\-T} $\ast$$\ast$sockets, uint8\-\_\-t number\-\_\-of\-\_\-sockets)}\label{class_s_c_p_a9ab03c4d3f03f25c1953b13120ec7b71}
+
+\item 
+\hypertarget{class_s_c_p_a02460c47705c42c2ade1608007d7966a}{void {\bfseries Send} (uint8\-\_\-t priority, uint8\-\_\-t command, uint8\-\_\-t $\ast$data, uint8\-\_\-t length\-\_\-of\-\_\-data)}\label{class_s_c_p_a02460c47705c42c2ade1608007d7966a}
+
+\item 
+\hypertarget{class_s_c_p_ab01a551b8edf803faaea5b0310345498}{bool {\bfseries Receive} (uint8\-\_\-t \&command, uint8\-\_\-t $\ast$data, uint8\-\_\-t \&length\-\_\-of\-\_\-data)}\label{class_s_c_p_ab01a551b8edf803faaea5b0310345498}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_s_c_p_a0b1f95d779a178ee512c260162b5c9d7}{\hyperlink{class_s_o_c_k_e_t}{S\-O\-C\-K\-E\-T} $\ast$$\ast$ {\bfseries sockets}}\label{class_s_c_p_a0b1f95d779a178ee512c260162b5c9d7}
+
+\item 
+\hypertarget{class_s_c_p_a60870833801da77a079ebed8383c91bf}{uint8\-\_\-t {\bfseries number\-\_\-of\-\_\-sockets}}\label{class_s_c_p_a60870833801da77a079ebed8383c91bf}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_s_c_p}{S\-C\-P} (Simple Command Protocol) is an application layer protocol designed to send commands. The frame is built up by first one byte, identifying the command, the second byte identifying the length of the data (n), and the last n bytes is the data. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+lib/scp/scp.\-h\item 
+lib/scp/scp.\-cpp\end{DoxyCompactItemize}

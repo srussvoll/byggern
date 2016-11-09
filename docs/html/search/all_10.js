@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['target_5fid',['target_id',['../class_s_o_c_k_e_t.html#a566ef7ae1ca5366f622bbe805954a031',1,'SOCKET']]],
-  ['transceiverisbusy',['TransceiverIsBusy',['../class_i2_c.html#a3e6747576e7d4abf506296f8675ec3b5',1,'I2C']]],
-  ['twi_5fstatusreg',['TWI_statusReg',['../union_t_w_i__status_reg.html',1,'']]],
-  ['twi_5fvect',['TWI_vect',['../class_i2_c.html#a9d6ec6457f300cca833eb7193feabfbc',1,'I2C']]]
+  ['uart',['UART',['../class_u_a_r_t.html',1,'UART'],['../class_u_a_r_t.html#a97debffc29b178c09b104f4542298a36',1,'UART::UART(const UART &amp;)=delete'],['../class_u_a_r_t.html#a68e7e88d2a13f5da85f0fde1ef98515f',1,'UART::UART()']]],
+  ['uart_2eh',['uart.h',['../uart_8h.html',1,'']]],
+  ['usart0_5fudre_5fvect',['USART0_UDRE_vect',['../class_u_a_r_t.html#accc13d37cd82c841e387e1d5cf4d9a94',1,'UART']]],
+  ['utilities',['Utilities',['../namespace_utilities.html',1,'']]]
 ];

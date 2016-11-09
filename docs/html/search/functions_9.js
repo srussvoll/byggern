@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loadtxframe',['LoadTxFrame',['../class_m_c_p2515.html#a37771e54c401a0d11b16599f4a3b85df',1,'MCP2515']]]
+  ['mcp2515',['MCP2515',['../class_m_c_p2515.html#a8cd4111604b740feb758bd4d077f4fb8',1,'MCP2515']]]
 ];

@@ -1,0 +1,87 @@
+\hypertarget{class_o_l_e_d___s_c_p}{\section{O\-L\-E\-D\-\_\-\-S\-C\-P Class Reference}
+\label{class_o_l_e_d___s_c_p}\index{O\-L\-E\-D\-\_\-\-S\-C\-P@{O\-L\-E\-D\-\_\-\-S\-C\-P}}
+}
+Inheritance diagram for O\-L\-E\-D\-\_\-\-S\-C\-P\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_o_l_e_d___s_c_p}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_o_l_e_d___s_c_p_a7747b903ab94fe91bad520a3f0919e7a}{Init} (uint8\-\_\-t width, uint8\-\_\-t height, \hyperlink{class_s_c_p}{S\-C\-P} \&channel, uint8\-\_\-t command)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_o_l_e_d___s_c_p}{O\-L\-E\-D\-\_\-\-S\-C\-P} \& \hyperlink{class_o_l_e_d___s_c_p_a25644abcadcbb50816128fb31b7af83b}{Get\-Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_o_l_e_d___s_c_p_a8a52dd583b6f4bdf479204c31c99b4b7}{O\-L\-E\-D\-\_\-\-S\-C\-P} ()
+\item 
+\hypertarget{class_o_l_e_d___s_c_p_a5488fa5865fd8c0e83eb3c8ff7a216cf}{virtual void {\bfseries Write\-Byte\-To\-O\-L\-E\-D} (volatile uint8\-\_\-t $\ast$address, uint8\-\_\-t data)}\label{class_o_l_e_d___s_c_p_a5488fa5865fd8c0e83eb3c8ff7a216cf}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_o_l_e_d___s_c_p_aeffe5e3de0c2fd0345c5059334b93b64}{\hyperlink{class_s_c_p}{S\-C\-P} $\ast$ {\bfseries channel} = nullptr}\label{class_o_l_e_d___s_c_p_aeffe5e3de0c2fd0345c5059334b93b64}
+
+\item 
+\hypertarget{class_o_l_e_d___s_c_p_ac3bd64cdb125ee088a59834635c038a3}{uint8\-\_\-t {\bfseries command}}\label{class_o_l_e_d___s_c_p_ac3bd64cdb125ee088a59834635c038a3}
+
+\item 
+\hypertarget{class_o_l_e_d___s_c_p_afa645cae97534763fa5e44f79cb7e03f}{uint8\-\_\-t $\ast$ {\bfseries bytes\-\_\-to\-\_\-send}}\label{class_o_l_e_d___s_c_p_afa645cae97534763fa5e44f79cb7e03f}
+
+\item 
+\hypertarget{class_o_l_e_d___s_c_p_adf0fee62e45244241a53c5b5232f4e5e}{uint8\-\_\-t {\bfseries bytes\-\_\-to\-\_\-send\-\_\-index} = 0}\label{class_o_l_e_d___s_c_p_adf0fee62e45244241a53c5b5232f4e5e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_o_l_e_d___s_c_p_a8a52dd583b6f4bdf479204c31c99b4b7}{\index{O\-L\-E\-D\-\_\-\-S\-C\-P@{O\-L\-E\-D\-\_\-\-S\-C\-P}!O\-L\-E\-D\-\_\-\-S\-C\-P@{O\-L\-E\-D\-\_\-\-S\-C\-P}}
+\index{O\-L\-E\-D\-\_\-\-S\-C\-P@{O\-L\-E\-D\-\_\-\-S\-C\-P}!OLED_SCP@{O\-L\-E\-D\-\_\-\-S\-C\-P}}
+\subsubsection[{O\-L\-E\-D\-\_\-\-S\-C\-P}]{\setlength{\rightskip}{0pt plus 5cm}O\-L\-E\-D\-\_\-\-S\-C\-P\-::\-O\-L\-E\-D\-\_\-\-S\-C\-P (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{class_o_l_e_d___s_c_p_a8a52dd583b6f4bdf479204c31c99b4b7}
+Singleton constructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_o_l_e_d___s_c_p_a25644abcadcbb50816128fb31b7af83b}{\index{O\-L\-E\-D\-\_\-\-S\-C\-P@{O\-L\-E\-D\-\_\-\-S\-C\-P}!Get\-Instance@{Get\-Instance}}
+\index{Get\-Instance@{Get\-Instance}!OLED_SCP@{O\-L\-E\-D\-\_\-\-S\-C\-P}}
+\subsubsection[{Get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf O\-L\-E\-D\-\_\-\-S\-C\-P}\& O\-L\-E\-D\-\_\-\-S\-C\-P\-::\-Get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_o_l_e_d___s_c_p_a25644abcadcbb50816128fb31b7af83b}
+A Singleton implementation of this class \hypertarget{class_o_l_e_d___s_c_p_a7747b903ab94fe91bad520a3f0919e7a}{\index{O\-L\-E\-D\-\_\-\-S\-C\-P@{O\-L\-E\-D\-\_\-\-S\-C\-P}!Init@{Init}}
+\index{Init@{Init}!OLED_SCP@{O\-L\-E\-D\-\_\-\-S\-C\-P}}
+\subsubsection[{Init}]{\setlength{\rightskip}{0pt plus 5cm}void O\-L\-E\-D\-\_\-\-S\-C\-P\-::\-Init (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{width, }
+\item[{uint8\-\_\-t}]{height, }
+\item[{{\bf S\-C\-P} \&}]{channel, }
+\item[{uint8\-\_\-t}]{command}
+\end{DoxyParamCaption}
+)}}\label{class_o_l_e_d___s_c_p_a7747b903ab94fe91bad520a3f0919e7a}
+Initializes the whole screen. 
+\begin{DoxyParams}{Parameters}
+{\em width} & The width of the screen in pixels \\
+\hline
+{\em height} & The height of the screen in pixels \\
+\hline
+{\em socket} & Socket to write through. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+lib/oled\-\_\-scp/\hyperlink{oled__scp_8h}{oled\-\_\-scp.\-h}\item 
+lib/oled\-\_\-scp/oled\-\_\-scp.\-cpp\end{DoxyCompactItemize}

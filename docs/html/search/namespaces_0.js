@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['menu',['Menu',['../namespace_menu.html',1,'']]]
+  ['highscore',['Highscore',['../namespace_highscore.html',1,'']]]
 ];

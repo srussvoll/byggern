@@ -118,8 +118,9 @@ namespace Highscore {
     }
 
     uint8_t Highscore::GetHighscores(uint8_t first, Score ** &scores) {
+        // TODO: Make scores const so it cannot be changed outside of the class.
         scores = this->score;
-        return this->length;
+        return this->length - first;
     }
 
     void Highscore::StoreScores() {

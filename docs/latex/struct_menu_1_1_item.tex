@@ -12,8 +12,8 @@ Struct containing a sigle menu item. This struct contains all the necessary info
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{struct_menu_1_1_item_ad87fb2f4d51e4c095b93af5ea4bd2275}{}\label{struct_menu_1_1_item_ad87fb2f4d51e4c095b93af5ea4bd2275} 
-{\bfseries Item} (char $\ast$\hyperlink{struct_menu_1_1_item_a378723382fc64c752a85ffe6fec9707e}{label}, uint8\+\_\+t \hyperlink{struct_menu_1_1_item_a46749d046bbbde8d5308848d5394c2dc}{label\+\_\+length})
+{\bfseries Item} (char $\ast$\hyperlink{struct_menu_1_1_item_a378723382fc64c752a85ffe6fec9707e}{label}, uint8\+\_\+t \hyperlink{struct_menu_1_1_item_a46749d046bbbde8d5308848d5394c2dc}{label\+\_\+length})\hypertarget{struct_menu_1_1_item_ad87fb2f4d51e4c095b93af5ea4bd2275}{}\label{struct_menu_1_1_item_ad87fb2f4d51e4c095b93af5ea4bd2275}
+
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -34,36 +34,21 @@ bool \hyperlink{struct_menu_1_1_item_a5c9895a137458b9a12dafd447ac7430b}{has\+\_\
 Struct containing a sigle menu item. This struct contains all the necessary information about a menu item. 
 
 \subsection{Member Data Documentation}
-\hypertarget{struct_menu_1_1_item_a247e140fed2addf80986ba5a3506b9dd}{}\label{struct_menu_1_1_item_a247e140fed2addf80986ba5a3506b9dd} 
 \index{Menu\+::\+Item@{Menu\+::\+Item}!action@{action}}
 \index{action@{action}!Menu\+::\+Item@{Menu\+::\+Item}}
-\subsubsection{\texorpdfstring{action}{action}}
-{\footnotesize\ttfamily void$\ast$ Menu\+::\+Item\+::action = nullptr}
-
-The action is a pointer to either the cb (callback) function, or it is a pointer to another menu (for instance a sub menu or the parent menu). \hypertarget{struct_menu_1_1_item_a5c9895a137458b9a12dafd447ac7430b}{}\label{struct_menu_1_1_item_a5c9895a137458b9a12dafd447ac7430b} 
-\index{Menu\+::\+Item@{Menu\+::\+Item}!has\+\_\+sub\+\_\+menu@{has\+\_\+sub\+\_\+menu}}
+\subsubsection[{\texorpdfstring{action}{action}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ Menu\+::\+Item\+::action = nullptr}\hypertarget{struct_menu_1_1_item_a247e140fed2addf80986ba5a3506b9dd}{}\label{struct_menu_1_1_item_a247e140fed2addf80986ba5a3506b9dd}
+The action is a pointer to either the cb (callback) function, or it is a pointer to another menu (for instance a sub menu or the parent menu). \index{Menu\+::\+Item@{Menu\+::\+Item}!has\+\_\+sub\+\_\+menu@{has\+\_\+sub\+\_\+menu}}
 \index{has\+\_\+sub\+\_\+menu@{has\+\_\+sub\+\_\+menu}!Menu\+::\+Item@{Menu\+::\+Item}}
-\subsubsection{\texorpdfstring{has\+\_\+sub\+\_\+menu}{has\_sub\_menu}}
-{\footnotesize\ttfamily bool Menu\+::\+Item\+::has\+\_\+sub\+\_\+menu = false}
-
-Decides wether the action points to a sub menu or a cb. \hypertarget{struct_menu_1_1_item_a378723382fc64c752a85ffe6fec9707e}{}\label{struct_menu_1_1_item_a378723382fc64c752a85ffe6fec9707e} 
-\index{Menu\+::\+Item@{Menu\+::\+Item}!label@{label}}
+\subsubsection[{\texorpdfstring{has\+\_\+sub\+\_\+menu}{has_sub_menu}}]{\setlength{\rightskip}{0pt plus 5cm}bool Menu\+::\+Item\+::has\+\_\+sub\+\_\+menu = false}\hypertarget{struct_menu_1_1_item_a5c9895a137458b9a12dafd447ac7430b}{}\label{struct_menu_1_1_item_a5c9895a137458b9a12dafd447ac7430b}
+Decides wether the action points to a sub menu or a cb. \index{Menu\+::\+Item@{Menu\+::\+Item}!label@{label}}
 \index{label@{label}!Menu\+::\+Item@{Menu\+::\+Item}}
-\subsubsection{\texorpdfstring{label}{label}}
-{\footnotesize\ttfamily char$\ast$ Menu\+::\+Item\+::label = nullptr}
-
-This is the label that will show up in the menu. \hypertarget{struct_menu_1_1_item_a46749d046bbbde8d5308848d5394c2dc}{}\label{struct_menu_1_1_item_a46749d046bbbde8d5308848d5394c2dc} 
-\index{Menu\+::\+Item@{Menu\+::\+Item}!label\+\_\+length@{label\+\_\+length}}
+\subsubsection[{\texorpdfstring{label}{label}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Menu\+::\+Item\+::label = nullptr}\hypertarget{struct_menu_1_1_item_a378723382fc64c752a85ffe6fec9707e}{}\label{struct_menu_1_1_item_a378723382fc64c752a85ffe6fec9707e}
+This is the label that will show up in the menu. \index{Menu\+::\+Item@{Menu\+::\+Item}!label\+\_\+length@{label\+\_\+length}}
 \index{label\+\_\+length@{label\+\_\+length}!Menu\+::\+Item@{Menu\+::\+Item}}
-\subsubsection{\texorpdfstring{label\+\_\+length}{label\_length}}
-{\footnotesize\ttfamily uint8\+\_\+t Menu\+::\+Item\+::label\+\_\+length}
-
-This is the length of the label. \hypertarget{struct_menu_1_1_item_aadcc1e4e824296c6b72ac7d053f06869}{}\label{struct_menu_1_1_item_aadcc1e4e824296c6b72ac7d053f06869} 
-\index{Menu\+::\+Item@{Menu\+::\+Item}!next@{next}}
+\subsubsection[{\texorpdfstring{label\+\_\+length}{label_length}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Menu\+::\+Item\+::label\+\_\+length}\hypertarget{struct_menu_1_1_item_a46749d046bbbde8d5308848d5394c2dc}{}\label{struct_menu_1_1_item_a46749d046bbbde8d5308848d5394c2dc}
+This is the length of the label. \index{Menu\+::\+Item@{Menu\+::\+Item}!next@{next}}
 \index{next@{next}!Menu\+::\+Item@{Menu\+::\+Item}}
-\subsubsection{\texorpdfstring{next}{next}}
-{\footnotesize\ttfamily \hyperlink{struct_menu_1_1_item}{Item}$\ast$ Menu\+::\+Item\+::next = nullptr}
-
+\subsubsection[{\texorpdfstring{next}{next}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Item}$\ast$ Menu\+::\+Item\+::next = nullptr}\hypertarget{struct_menu_1_1_item_aadcc1e4e824296c6b72ac7d053f06869}{}\label{struct_menu_1_1_item_aadcc1e4e824296c6b72ac7d053f06869}
 This is a pointer to the next menu item in the menu (linked list). 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['dac',['DAC',['../class_d_a_c.html#a9908e07a5c096380eeb4c4061d58476d',1,'DAC::DAC()'],['../class_d_a_c.html#af656669246f70c7ccbbd05d0e65088d4',1,'DAC::DAC(const DAC &amp;)=delete']]]
+  ['enableprintf',['EnablePrintf',['../namespace_utilities.html#a7175bc91000cbd130685885c6a24ea9a',1,'Utilities']]],
+  ['executeitem',['ExecuteItem',['../class_menu_1_1_controller.html#a0dda40652b8802a8fe39c1ce61a66f1a',1,'Menu::Controller']]]
 ];

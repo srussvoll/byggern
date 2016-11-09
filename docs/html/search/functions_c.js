@@ -1,17 +1,16 @@
 var searchData=
 [
-  ['read',['Read',['../class_stream.html#a851572e5787cd98383d5118de378724b',1,'Stream']]],
-  ['readbyte',['ReadByte',['../class_stream.html#a6db4180f5834073f992608b856bddca2',1,'Stream']]],
-  ['readbytefrombuffer',['ReadByteFromBuffer',['../class_stream.html#a32e449304f65b5571fe848a503fc9d68',1,'Stream']]],
-  ['readbytefromoutputstream',['ReadByteFromOutputStream',['../class_stream.html#a3f8e3c5513c6b8605c0fed74a3ed22bc',1,'Stream']]],
-  ['readfrombuffer',['ReadFromBuffer',['../class_stream.html#a752930f620aed4a3a80b243ce66e57ca',1,'Stream']]],
-  ['readfromoutputstream',['ReadFromOutputStream',['../class_stream.html#ab458be72cc54330f518f5ab35ab84106',1,'Stream']]],
-  ['readfromregister',['ReadFromRegister',['../class_m_c_p2515.html#a09ef6973daccbf868d89986e727cfa1b',1,'MCP2515']]],
-  ['readrxframe',['ReadRxFrame',['../class_m_c_p2515.html#a2035c6707e66a98d92003a3fc99aa784',1,'MCP2515']]],
-  ['readstatus',['ReadStatus',['../class_m_c_p2515.html#ae466f10eea5ccf0f36439757d4baf6b5',1,'MCP2515']]],
-  ['render',['Render',['../class_menu_1_1_controller.html#af46abb3d242c76822c0e8ea8ab777fa5',1,'Menu::Controller']]],
-  ['repaint',['Repaint',['../class_o_l_e_d.html#a3efa34861b4ae0bc5323f6b7cf1d8a01',1,'OLED']]],
-  ['requesttosend',['RequestToSend',['../class_m_c_p2515.html#a5a218199ca1dfcb25cb95890bc0220fc',1,'MCP2515']]],
-  ['reset',['Reset',['../class_m_c_p2515.html#aa4d4138b984dc87116cf72ae104acb70',1,'MCP2515']]],
-  ['rxstatus',['RxStatus',['../class_m_c_p2515.html#af6853f82074a0be19d5a0516a959515e',1,'MCP2515']]]
+  ['savescore',['SaveScore',['../class_highscore_1_1_highscore.html#ae19e8a6c55b49d6dd874b61ef496dcea',1,'Highscore::Highscore']]],
+  ['selectnext',['SelectNext',['../class_menu_1_1_controller.html#a9aabc6ba652c29efa7a02e12f51ce0b1',1,'Menu::Controller']]],
+  ['selectprevious',['SelectPrevious',['../class_menu_1_1_controller.html#a04e3448cfe4341ad7209a9f16bbcb449',1,'Menu::Controller']]],
+  ['sendmessage',['SendMessage',['../class_m_c_p2515.html#aa8c9fe944f7e6e99feb3f56a1c099a29',1,'MCP2515']]],
+  ['setfont',['SetFont',['../class_o_l_e_d.html#abe6073c961cadc4c9b693eb8dc8198bd',1,'OLED']]],
+  ['setloopback',['SetLoopback',['../class_m_c_p2515.html#a7aac5fdb713b83933391348f1188f2b9',1,'MCP2515']]],
+  ['setnormal',['SetNormal',['../class_m_c_p2515.html#a58601a9d30863ebac441d641ddfac44e',1,'MCP2515']]],
+  ['setnumberoflines',['SetNumberOfLines',['../class_o_l_e_d.html#aa3c88e19f05340036ea5ac9e2d1ea5dc',1,'OLED']]],
+  ['solenoid',['Solenoid',['../class_solenoid.html#a6e9f8ce2b5b09ea3f587b83dc7c7ee36',1,'Solenoid']]],
+  ['spi',['SPI',['../class_s_p_i___n_1_1_s_p_i.html#ab486ba0f0d9ec880520e568762cc6c7d',1,'SPI_N::SPI::SPI(const SPI &amp;)=delete'],['../class_s_p_i___n_1_1_s_p_i.html#a8fec1a6e642a5758acf974b92e28a9e6',1,'SPI_N::SPI::SPI()']]],
+  ['starttransmission',['StartTransmission',['../class_u_a_r_t.html#a0569d0267f8045907cedb527b5082fe0',1,'UART']]],
+  ['storescores',['StoreScores',['../class_highscore_1_1_highscore.html#ad0e1b3277228a38513b5c86059ebcd6d',1,'Highscore::Highscore']]],
+  ['stream',['Stream',['../class_stream.html#a2b738d6f4d3059de2ae3d444d68663bf',1,'Stream']]]
 ];

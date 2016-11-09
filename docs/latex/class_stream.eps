@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 100.000000
+%%BoundingBox: 0 0 500 114.285714
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,12 +19,12 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 5.000000 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 4.375000 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
 /yspacing 0 def
-/rows 2 def
+/rows 3 def
 /cols 5 def
 /scalefactor 0 def
 /boxfont /Times-Roman findfont fontheight scalefont def
@@ -174,11 +174,12 @@
 boxfont setfont
 1 boundaspect scale
 (Stream) cw
-(I2C) cw
 (OLED) cw
 (SOCKET) cw
 (SPI_N::SPI) cw
 (UART) cw
+(OLED_memory) cw
+(OLED_SCP) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
 /yspacing boxheight disty add def
@@ -190,26 +191,33 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- classes -----
 
- (Stream) 2.000000 1.000000 box
- (I2C) 0.000000 0.000000 box
- (OLED) 1.000000 0.000000 box
- (SOCKET) 2.000000 0.000000 box
- (SPI_N::SPI) 3.000000 0.000000 box
- (UART) 4.000000 0.000000 box
+ (Stream) 2.000000 2.000000 box
+ (OLED) 0.500000 1.000000 box
+ (SOCKET) 1.500000 1.000000 box
+ (SPI_N::SPI) 2.500000 1.000000 box
+ (UART) 3.500000 1.000000 box
+ (OLED_memory) 0.000000 0.000000 box
+ (OLED_SCP) 1.000000 0.000000 box
 
 % ----- relations -----
 
 solid
-1 2.000000 0.250000 out
+1 2.000000 1.250000 out
 solid
-0.000000 4.000000 1.000000 conn
-dotted
+0.500000 3.500000 2.000000 conn
+solid
+0 0.500000 1.750000 in
+solid
+1 0.500000 0.250000 out
+solid
+0.000000 1.000000 1.000000 conn
+solid
+0 1.500000 1.750000 in
+solid
+0 2.500000 1.750000 in
+solid
+0 3.500000 1.750000 in
+solid
 0 0.000000 0.750000 in
 solid
 0 1.000000 0.750000 in
-solid
-0 2.000000 0.750000 in
-solid
-0 3.000000 0.750000 in
-solid
-0 4.000000 0.750000 in

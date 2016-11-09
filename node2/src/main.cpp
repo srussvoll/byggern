@@ -18,7 +18,7 @@
 #include "lib/adc_internal/adc_internal.h"
 #include "state_machine.h"
 #include "lib/timer/timer.h"
-
+#include "init.h"
 void init_hardware_drivers() __attribute__((naked)) __attribute((used)) __attribute__((section(".init8")));
 void InitializeNetworkStack();
 void init_hardware_drivers() {
@@ -49,7 +49,6 @@ void InitializeNetworkStack(){
     high.Initialize(&mcp);
     low.Initialize(&mcp);
 }
-
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"

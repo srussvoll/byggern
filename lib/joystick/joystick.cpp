@@ -7,42 +7,10 @@ Joystick::Joystick() {
 void Joystick::Init(Quantization levels, float threshold) {
     this->threshold = threshold;
     this->levels = levels;
-
-    // Init PORTE2 as write for button
-    DDRE &= ~(1 << DDE2);
+    this->x_midpoint = ( (float) levels.x_max - (float )levels.x_min) / 2.0;
+    this->y_midpoint = ( (float) levels.y_max - (float )levels.y_min) / 2.0;
 }
 
-bool Joystick::IsRight(uint8_t x, uint8_t y) {
-
-}
-
-bool Joystick::IsLeft(uint8_t x, uint8_t y) {
-
-}
-
-bool Joystick::IsDown(uint8_t x, uint8_t y) {
-
-}
-
-bool Joystick::IsUp(uint8_t x, uint8_t y) {
-
-}
-
-bool Joystick::IsRight() {
-
-}
-
-bool Joystick::IsLeft() {
-
-}
-
-bool Joystick::IsDown() {
-
-}
-
-bool Joystick::IsUp() {
-
-}
 
 void Joystick::Update(uint8_t x, uint8_t y){
     // Update the x and y value of the joystick
@@ -50,8 +18,22 @@ void Joystick::Update(uint8_t x, uint8_t y){
     this->y = y;
 }
 
+uint8_t Joystick::GetX() {
+    return this->x;
+}
+
+uint8_t Joystick::GetY() {
+    return this->y;
+}
+
+Direction Joystick::GetDirection() {
+    if(this->y > y_midpoint){
+        return North;
+    }
+}
+
 bool Joystick::ButtonIsDown() {
-    return (((PORTE >> PORTE2) & 1) == 0);
+
 }
 
 uint8_t Joystick::XValue(){

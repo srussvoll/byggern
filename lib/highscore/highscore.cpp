@@ -55,6 +55,7 @@ namespace Highscore {
     }
 
     void Highscore::SaveScore(Score &score) {
+        // Make sure the name isn't longer than allowed.
         if (score.name_length > MAX_NAME_LENGTH) score.name_length = MAX_NAME_LENGTH;
 
         // If length == 0, add anyway.
@@ -65,7 +66,7 @@ namespace Highscore {
             // Check if name is already there, and then if new score is better.
             bool insert_score = true;
             for (int i = 0; i < this->length; ++i) {
-                // If name length is different, not equal.
+                // If name length is different, it is not equal anyway.
                 if (this->score[i]->name_length != length) continue;
 
                 // Compare names if length is the same.
@@ -81,8 +82,15 @@ namespace Highscore {
                 // The names are equal, check if new score is better.
                 if (score.score > this->score[i]->score) {
                     // Remove this score from the list.
-                    for (int j = i; j < this->length - 1; ++j) {
+                    // Since all scores are allocated on the heap
+                    // we cannot really forget them. So instead
+                    // we move this element past the end of the
+                    // array.
+                    this->length -= 1;
+                    for (int j = i; j < this->length; ++j) {
+                        Score *temp = this->score[j];
                         this->score[j] = this->score[j + 1];
+                        this->score[j + 1] = temp;
                     }
 
                     break;
@@ -94,7 +102,7 @@ namespace Highscore {
             if (insert_score) {
                 for (int8_t i = this->length; i >= 0; --i) {
                     if (i > 0 && score.score > this->score[i - 1]->score) {
-                        // Swap scores:
+                        // Swap scores as explained above:
                         Score *temp = this->score[i];
                         this->score[i] = this->score[i - 1];
                         this->score[i - 1] = temp;

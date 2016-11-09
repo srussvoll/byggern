@@ -27,6 +27,7 @@ namespace Highscore {
 
     /**
      * \brief Keeps track of the highscore and stores it to the EEPROM.
+     * 
      * The Highscore class keeps track of the highscores,
      * and provides a method for saving them to the EEPROM
      * for persistent storage.

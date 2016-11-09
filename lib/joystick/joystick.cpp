@@ -34,7 +34,7 @@ Direction Joystick::GetDirection() {
 }
 
 bool Joystick::ButtonIsDown() {
-
+    // To be implemented
 }
 
 #endif

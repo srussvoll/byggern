@@ -1,5 +1,7 @@
 #pragma once
-#ifdef __AVR_ATmega162__
+#ifdef __AVR_ATmega2560__
+
+#include <avr/io.h>
 #include "../adc/adc.h"
 
 struct Quantization{
@@ -21,34 +23,34 @@ class Joystick {
 private:
 
     /**
-    * A quantization struct containing the quantization levels.
-    */
+     * A quantization struct containing the quantization levels.
+     */
     Quantization levels;
 
     /**
-    * A threshold used to calculate whether or not the joystick is in a given direction
-    */
+     * A threshold used to calculate whether or not the joystick is in a given direction
+     */
     float threshold;
 
     /**
-    * A reference to the adc channel for the x direction
-    */
-    ADC* adc_x;
-
-    /**
-    * The midpoint for the x value
-    */
+     * The midpoint for the x value
+     */
     uint8_t x_midpoint;
 
     /**
-    * The midpoint for the y value
-    */
+     * The midpoint for the y value
+     */
     uint8_t y_midpoint;
 
     /**
-    * A reference to the adc channel for the y direction
-    */
-    ADC* adc_y;
+     * The x value
+     */
+    uint8_t x;
+
+    /**
+     * The y value
+     */
+    uint8_t y;
 
     /**
     * The constructor. Private because of singleton
@@ -64,39 +66,80 @@ public:
     /**
     * @param levels A quantization struct containing the quantization levels
     * @param threshold_percentage The threshold used to calculate directions
-    * @param adc_x A pointer to the adc object representating the channel for the x direction
-    * @param adc_y A pointer to the adc object representating the channel for the y direction
     */
-    void Init(Quantization levels, float threshold, ADC* adc_x, ADC* adc_y);
+    void Init(Quantization levels, float threshold);
 
     /**
-    * Because of singleton - makes sure its not copied etc.
-    */
+     * Because of singleton - makes sure its not copied etc.
+     */
     Joystick(const Joystick&) = delete;
 
     /**
-    * Returns true if the joystick controller is to the right
-    */
+     * Returns true if the joystick controller is to the right
+     * @param x The x value of the joystick through the adc
+     * @param y The y value of the joystick through the adc
+     * @return A bool indicating the status
+     */
+    bool IsRight(uint8_t x, uint8_t y);
+
+    /**
+     * Returns if the joystick controller is to the right. Uses the internal x and y values
+     * @return A bool indicating the status
+     */
     bool IsRight();
 
     /**
-    * Returns true if the joystick controller is to the left
-    */
+     * Returns true if the joystick controller is to the left
+     * @param x The x value of the joystick through the adc
+     * @param y The y value of the joystick through the adc
+     * @return A bool indicating the status
+     */
+    bool IsLeft(uint8_t x, uint8_t y);
+
+    /**
+     * Returns if the joystick controller is to the right. Uses the internal x and y values
+     * @return A bool indicating the status
+     */
     bool IsLeft();
 
     /**
-    *Returns true if the joystick controller is down
-    */
+     *Returns true if the joystick controller is down
+     * @param x The x value of the joystick through the adc
+     * @param y The y value of the joystick through the adc
+     * @return A bool indicating the status
+     */
+    bool IsDown(uint8_t x, uint8_t y);
+
+    /**
+     * Returns if the joystick controller is to the right. Uses the internal x and y values
+     * @return A bool indicating the status
+     */
     bool IsDown();
 
     /**
-    * Returns true if the joystick controller is up
-    */
+     * Returns true if the joystick controller is up
+     * @param x The x value of the joystick through the adc
+     * @param y The y value of the joystick through the adc
+     * @return A bool indicating the status
+     */
+    bool IsUp(uint8_t x, uint8_t y);
+
+    /**
+     * Returns if the joystick controller is to the right. Uses the internal x and y values
+     * @return A bool indicating the status
+     */
     bool IsUp();
 
     /**
-    * Returns true if the button is pushed down
-    */
+     * Updated the value of the joystick through the dac (and through the can bus)
+     * @param x The x value of the joystick through the adc
+     * @param y The y value of the joystick through the adc
+     */
+    void Update(uint8_t x, uint8_t y);
+
+    /**
+     * Returns true if the button is pushed down
+     */
     bool ButtonIsDown();
 
 };

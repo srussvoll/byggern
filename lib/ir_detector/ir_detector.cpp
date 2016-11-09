@@ -1,26 +1,32 @@
 #ifdef __AVR_ATmega2560__
 
 #include "ir_detector.h"
+#include "lib/utilities/printf.h"
 
-IR_DETECTOR::IR_DETECTOR(uint8_t threshold) : threshold(threshold) {
-    // Do nothing
+IR_Detector::IR_Detector(){
+    this->adc = &ADC_internal::GetInstance();
 }
 
-bool IR_DETECTOR::Sample() {
+void IR_Detector::Initialize(uint16_t threshold) {
+    this->threshold = threshold;
+}
+
+bool IR_Detector::Sample() {
 
     // Return false if ADC is already in use
-    if(!adc.request_sample()){
+    if(!adc->RequestSample()){
         return false;
     }
 
     uint8_t byte;
 
     // Wait until adc is done reading
-    while(!adc.ReadByte(byte)){
+    while(!adc->ReadByte(byte)){
 
     }
+    printf("%2x\r\n");
 
-    if(byte >= threshold){
+    if(byte <= threshold){
         return true;
     } else {
         return false;

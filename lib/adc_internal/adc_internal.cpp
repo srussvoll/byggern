@@ -1,39 +1,46 @@
 #ifdef __AVR_ATmega2560__
 
-#include "adc_internal.h"
+#include <util/delay.h>
 
-ADC_internal::ADC_internal(): Stream(1,1){
+#include "adc_internal.h"
+#include "lib/utilities/printf.h"
+
+ADC_internal::ADC_internal(): Stream(1, 1){
     sei();
 
     // Initialize ADC
     this->adc_in_use = false;
 
+    // Enable the ADC
+    // DDRA &= ~(1 << DDA0);
+    ADCSRA |= ( 1 << ADEN );
+
     // Set reference voltage for ADC to AREF
-    ADMUX &= ~( 1 << REFS0 );
+    ADMUX |= ( 1 << REFS0 );
     ADMUX &= ~( 1 << REFS1 );
+
+    // Set the prescaler
+    ADCSRA |= (1 << ADPS0);
+    ADCSRA |= (1 << ADPS1);
+    ADCSRA |= (1 << ADPS2);
 
     // Select channel for internal adc. Default is ADC0
     ADMUX &= ~( 1 << MUX0 );
     ADMUX &= ~( 1 << MUX1 );
     ADMUX &= ~( 1 << MUX2 );
 
-    // Enable the ADC
-    ADCSRA |= ( 1 << ADEN );
-
     // Enable interrupts
     ADCSRA |= ( 1 << ADIE );
 }
 
-bool ADC_internal::request_sample(){
+bool ADC_internal::RequestSample(){
     if(this->adc_in_use){
         // ADC_internal busy
         return false;
     } else{
         this->adc_in_use = true;
-
         // Start Conversion
         ADCSRA |= ( 1 << ADSC );
-
         return true;
     }
 }
@@ -45,9 +52,9 @@ void ADC_vect(){
 
     //Get the data from the conversion
     uint8_t data = ADCL;
+    uint8_t data2 = ADCH;
 
     adc.WriteByteToInputStream(data);
-    uart.WriteByte(data);
 
     adc.adc_in_use = false;
 }

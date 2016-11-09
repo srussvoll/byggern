@@ -12,31 +12,33 @@
  *
  * An infrared detector to detect if there is an object blocking the path of the sensor
  */
-class IR_DETECTOR {
+class IR_Detector {
 
 private:
 
     /**
      * A constructor that initializes the UART to a certain size
      */
-    IR_DETECTOR(uint8_t threshold);
+    IR_Detector();
 
     /**
      * Threshold for the IR sensor
      */
-    uint8_t threshold;
+    uint16_t threshold;
 
-    ADC_internal& adc = ADC_internal::GetInstance();
+    ADC_internal* adc;
 
 public:
     /**
     * A Singleton implementation of this class
     */
-    static IR_DETECTOR& GetInstance(){
+    static IR_Detector& GetInstance(){
         // Initialize the IR_DETECTOR with a certain threshold
-        static IR_DETECTOR instance(150);
+        static IR_Detector instance;
         return instance;
     }
+
+    void Initialize(uint16_t threshold);
 
     /**
      * Samples the IR Detector
@@ -47,12 +49,12 @@ public:
     /**
      * Because of singleton - makes sure its not copied etc.
      */
-    IR_DETECTOR(const IR_DETECTOR&) = delete;
+    IR_Detector(const IR_Detector&) = delete;
 
     /**
      * Because of singleton - makes sure its not copied etc.
      */
-    void operator=(const IR_DETECTOR&) = delete;
+    void operator=(const IR_Detector&) = delete;
 };
 
 #endif

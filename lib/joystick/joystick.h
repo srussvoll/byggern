@@ -11,6 +11,17 @@ struct Quantization{
     uint8_t y_min;
 };
 
+enum Direction{
+    North = 0;
+    NorthEast = 1;
+    East = 2;
+    SouthEast = 3;
+    South = 4;
+    SouthWest = 5;
+    West = 6;
+    NorthWest = 7;
+};
+
 /**
  * @brief A general joystick controller
  * The joystick controller expects a quantizationlevel struct as input. This is to indicate the max and min y and x direction of the joystick.
@@ -35,12 +46,12 @@ private:
     /**
      * The midpoint for the x value
      */
-    uint8_t x_midpoint;
+    float x_midpoint;
 
     /**
      * The midpoint for the y value
      */
-    uint8_t y_midpoint;
+    float y_midpoint;
 
     /**
      * The x value
@@ -64,9 +75,9 @@ public:
     }
 
     /**
-    * @param levels A quantization struct containing the quantization levels
-    * @param threshold_percentage The threshold used to calculate directions
-    */
+     * @param levels A quantization struct containing the quantization levels
+     * @param threshold_percentage The threshold used to calculate directions
+     */
     void Init(Quantization levels, float threshold);
 
     /**
@@ -75,67 +86,28 @@ public:
     Joystick(const Joystick&) = delete;
 
     /**
-     * Returns true if the joystick controller is to the right
-     * @param x The x value of the joystick through the adc
-     * @param y The y value of the joystick through the adc
-     * @return A bool indicating the status
-     */
-    bool IsRight(uint8_t x, uint8_t y);
-
-    /**
-     * Returns if the joystick controller is to the right. Uses the internal x and y values
-     * @return A bool indicating the status
-     */
-    bool IsRight();
-
-    /**
-     * Returns true if the joystick controller is to the left
-     * @param x The x value of the joystick through the adc
-     * @param y The y value of the joystick through the adc
-     * @return A bool indicating the status
-     */
-    bool IsLeft(uint8_t x, uint8_t y);
-
-    /**
-     * Returns if the joystick controller is to the right. Uses the internal x and y values
-     * @return A bool indicating the status
-     */
-    bool IsLeft();
-
-    /**
-     *Returns true if the joystick controller is down
-     * @param x The x value of the joystick through the adc
-     * @param y The y value of the joystick through the adc
-     * @return A bool indicating the status
-     */
-    bool IsDown(uint8_t x, uint8_t y);
-
-    /**
-     * Returns if the joystick controller is to the right. Uses the internal x and y values
-     * @return A bool indicating the status
-     */
-    bool IsDown();
-
-    /**
-     * Returns true if the joystick controller is up
-     * @param x The x value of the joystick through the adc
-     * @param y The y value of the joystick through the adc
-     * @return A bool indicating the status
-     */
-    bool IsUp(uint8_t x, uint8_t y);
-
-    /**
-     * Returns if the joystick controller is to the right. Uses the internal x and y values
-     * @return A bool indicating the status
-     */
-    bool IsUp();
-
-    /**
      * Updated the value of the joystick through the dac (and through the can bus)
      * @param x The x value of the joystick through the adc
      * @param y The y value of the joystick through the adc
      */
     void Update(uint8_t x, uint8_t y);
+
+    /**
+     * Gives the x value of the joystick
+     * @return The x value of the joystick
+     */
+     uint8_t GetX();
+
+    /**
+     * Gives the x value of the joystick
+     * @return The x value of the joystick
+     */
+    uint8_t GetY();
+
+    /**
+     * Returns the direction of the joystick
+     */
+    Direction GetDirection();
 
     /**
      * Returns true if the button is pushed down

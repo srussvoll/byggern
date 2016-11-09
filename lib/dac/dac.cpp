@@ -3,11 +3,12 @@
 #include <math.h>
 
 #include "dac.h"
+#include "lib/utilities/printf.h"
 
 DAC::DAC(){
     this->i2c = &I2C::GetInstance();
     i2c->Initialize(0x0C);
-    this->dac_number = 1;
+    this->dac_number = 4;
 };
 
 bool DAC::WriteAnalogSignalRaw(uint8_t value) {
@@ -62,10 +63,10 @@ bool DAC::WriteAnalogSignalPercentage(float percentage) {
         return false;
     }
     float value = percentage * (float) this->max;
-
     uint8_t value_uint8 = (uint8_t) floor(value);
     uint8_t message[3];
     message[0] = this->address_and_write_byte;
+    printf("Writing %2x\n\r", this->address_and_write_byte);
     message[1] = this->GetCommandForDAC();
     message[2] = value_uint8;
     i2c->SendData(message,3);

@@ -22,6 +22,21 @@ int main(){
 
     UART& uart = UART::GetInstance();
 
+    DAC& dac = DAC::GetInstance();
+    dac.Initialize(0, 0xFF, 0x50);
+    printf("--START-- \n\r");
+    Motor& motor = Motor::GetInstance();
+    motor.Initialize();
+    motor.Start();
+    while(true){
+        motor.GoLeft();
+        motor.Drive(0.7);
+        _delay_ms(2000);
+        motor.GoRight();
+        motor.Drive(0.7);
+        _delay_ms(2000);
+    }
+
     /*IR_Detector& ir = IR_Detector::GetInstance();
     ir.Initialize(0x30);
     while(true){
@@ -30,19 +45,6 @@ int main(){
         }
         _delay_ms(50);
     } */
-
-    DAC& dac = DAC::GetInstance();
-    printf("--START-- \n\r");
-
-    DDRH |= (1 << DDH1);
-    while(true){
-        PORTH |= (1 << PORTH1);
-        _delay_ms(2000);
-        dac.WriteAnalogSignalPercentage(0.3);
-        PORTH &= ~(1 << PORTH1);
-        _delay_ms(2000);
-        dac.WriteAnalogSignalPercentage(0.3);
-    }
     
     /*
     while(true){

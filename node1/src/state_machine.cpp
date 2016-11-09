@@ -81,10 +81,11 @@ void PlayGameLoop() {
         if (command == CMD_GAME_STOP) {
             printf("Game ended with %d seconds\n", data[0]);
             //TODO: Implement check highscore|
-            fsm->Transition(STATE_MENU,0);
+            fsm->Transition(STATE_MENU, 0);
             return;
         }
     }
+
 }
 
 void PlayGameLeave() {

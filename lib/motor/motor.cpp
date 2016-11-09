@@ -44,16 +44,17 @@ void Motor::Stop(){
     PORTH &= ~(1 << PORTH4);
 }
 
-void Motor::SetSpeed(uint8_t speed) {
-    this->speed = speed;
+void Motor::GoLeft(){
+    PORTH &= ~(1 << PORTH1);
 }
 
-void Motor::Drive(){
+void Motor::GoRight() {
+    PORTH |= (1 << PORTH1);
+}
 
-    //TODO To use speed to generate input voltage
-
+void Motor::Drive(float percentage){
     // Send an voltage to the motor through the dac
-    this->dac->WriteAnalogSignalPercentage(0.5);
+    this->dac->WriteAnalogSignalPercentage(percentage);
 }
 
 #endif

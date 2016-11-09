@@ -24,11 +24,9 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
                 remaining_data -= 8;
             }
         }
-        // Delay due to slowest receiving node.
-        // This tries to limit messages getting overwritten
-        _delay_ms(12);
         CAN_MESSAGE message = CAN_MESSAGE(can_size,data,this->id);
         this->can->SendMessage(message);
+        _delay_ms(11);
     }
 }
 

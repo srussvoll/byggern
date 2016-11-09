@@ -42,7 +42,7 @@ public:
 
     SOCKET(const SOCKET&) = delete;
 
-    SOCKET(uint8_t id) : Stream(128,1), id(id){
+    SOCKET(uint8_t id) : Stream(255, 1), id(id){
     }
 
     /**

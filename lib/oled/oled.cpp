@@ -27,7 +27,7 @@ void OLED::Init(uint8_t width, uint8_t height){
     this->WriteByteToOLED(this->oled_command, 0xd9); //set pre-charge period
     this->WriteByteToOLED(this->oled_command, 0x21);
     this->WriteByteToOLED(this->oled_command, 0x20); //Set Memory Addressing Mode
-    this->WriteByteToOLED(this->oled_command, 0x02); //Page addressing
+    this->WriteByteToOLED(this->oled_command, 0x00); //Horizontal addressing
     this->WriteByteToOLED(this->oled_command, 0xdb); //VCOM deselect level mode
     this->WriteByteToOLED(this->oled_command, 0x30);
     this->WriteByteToOLED(this->oled_command, 0xad); //master configuration
@@ -86,14 +86,14 @@ void OLED::Repaint(){
     uint8_t column_address;
     for(uint8_t i = 0; i < this->number_of_pages; i++){
         page_address = (uint8_t) 0xB0 + i;
-        this->WriteByteToOLED(this->oled_command, page_address);
+        //this->WriteByteToOLED(this->oled_command, page_address);
         for(uint8_t j = 0; j < this->display_width; j++){
             column_address = (uint8_t) 0x00 + j;
             // Set lower nibble
-            this->WriteByteToOLED(this->oled_command, 0x00 + (column_address & 0xF));
+            //this->WriteByteToOLED(this->oled_command, 0x00 + (column_address & 0xF));
 
             // Set higher nibble
-            this->WriteByteToOLED(this->oled_command, 0x10 + (column_address>>4));
+            //this->WriteByteToOLED(this->oled_command, 0x10 + (column_address>>4));
             this->WriteByteToOLED(this->oled_data, this->matrix[i][j]);
             //printf("%x", this->matrix[i][j]);
             //volatile uint8_t u = this->matrix[i][j];

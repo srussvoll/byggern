@@ -15,11 +15,11 @@ namespace Highscore {
         Score **score;
         uint8_t length = 0;
 
-        void StoreScore();
         void LoadScore();
     public:
         Highscore();
         void SaveScore(Score &score);
+        void StoreScore();
         Score ** GetHighscore(uint8_t first);
         void ClearHighscore();
     };

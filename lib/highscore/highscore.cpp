@@ -3,6 +3,7 @@
 #include <avr/interrupt.h>
 #include <stdlib.h>
 #include <string.h>
+#include <lib/utilities/printf.h>
 
 #define MAX_LENGTH 40
 #define MAX_NAME_LENGTH 10
@@ -48,53 +49,60 @@ namespace Highscore {
             this->score[i] = new Score(0, name, MAX_NAME_LENGTH);
         }
 
-        this->LoadScore();
+        //this->LoadScore();
     }
 
     void Highscore::SaveScore(Score &score) {
-        if (length > MAX_NAME_LENGTH) length = MAX_NAME_LENGTH;
+        if (score.name_length > MAX_NAME_LENGTH) score.name_length = MAX_NAME_LENGTH;
 
-        // Check if name is already there, and then if new score is better.
-        bool new_score_better = false;
-        for (int i = 0; i < this->length; ++i) {
-            // If name length is different, not equal.
-            if (this->score[i]->name_length != length) continue;
+        // If
+        if (this->length == 0) {
+            memcpy(this->score[0], &score, sizeof(Score));
+        } else {
+            // Check if name is already there, and then if new score is better.
+            bool new_score_better = true;
+            for (int i = 0; i < this->length; ++i) {
+                // If name length is different, not equal.
+                if (this->score[i]->name_length != length) continue;
 
-            // Compare names if length is the same.
-            bool equal = true;
-            for (int j = 0; j < length; ++j) {
-                if (this->score[i]->name[j] != score.name[j]) {
-                    equal = false;
+                // Compare names if length is the same.
+                bool equal = true;
+                for (int j = 0; j < length; ++j) {
+                    if (this->score[i]->name[j] != score.name[j]) {
+                        equal = false;
+                        break;
+                    }
+                }
+                if (!equal) continue;
+
+                // The names are equal, check if new score is better.
+                if (score.score > this->score[i]->score) {
+                    // Remove this score from the list.
+                    for (int j = i; j < this->length - 1; ++j) {
+                        this->score[j] = this->score[j + 1];
+                    }
+
                     break;
+                } else {
+                    new_score_better = false;
                 }
             }
-            if (!equal) continue;
 
-            // The names are equal, check if new score is better.
-            if (score.score > this->score[i]->score) {
-                new_score_better = true;
+            // If new score is better, insert it.
+            if (new_score_better) {
+                uint8_t i = this->length - 1;
 
-                // Remove this score from the list.
-                for (int j = i; j < this->length - 1; ++j) {
-                    this->score[j] = this->score[j + 1];
+                for (; i > 0; --i) {
+                    if (score.score > this->score[i]->score) {
+                        this->score[i + 1] = this->score[i];
+                    } else {
+                        memcpy(this->score[i + 1], &score, sizeof(Score));
+                    }
                 }
 
-                break;
+                if (this->length < MAX_LENGTH) this->length++;
             }
         }
-
-        // If new score is better, insert it.
-        if (this->length < MAX_LENGTH) this->length++;
-        uint8_t i = this->length - 1;
-        for (; i > 0; --i) {
-            if (score.score > this->score[i]->score) {
-                this->score[i + 1] = this->score[i];
-            } else {
-                memcpy(this->score[i + 1], &score, sizeof(Score));
-            }
-        }
-
-        this->StoreScore();
     }
 
     Score ** Highscore::GetHighscore(uint8_t first) {

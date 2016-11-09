@@ -14,12 +14,34 @@
 #include "lib/socket/socket.h"
 #include "lib/joystick/joystick.h"
 #include "state_machine.h"
+#include "lib/highscore/highscore.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
 int main(void) {
-    InitializeStateMachine(); // This will call an endless loop.
+    //InitializeStateMachine(); // This will call an endless loop.
+
+    Highscore::Highscore hs;
+    char name1[] = "Sondre";
+    char name2[] = "V";
+    char name3[] = "Johan";
+
+    Highscore::Score score1(10, name1, sizeof(name1));
+    Highscore::Score score2(30, name2, sizeof(name2));
+    Highscore::Score score3(20, name3, sizeof(name3));
+
+    hs.SaveScore(score1);
+    hs.SaveScore(score2);
+    hs.SaveScore(score3);
+
+    Highscore::Score **hss = hs.GetHighscore(0);
+
+    printf("%4d: %s\n", hss[0]->score, hss[0]->name);
+    printf("%4d: %s\n", hss[1]->score, hss[1]->name);
+    printf("%4d: %s\n", hss[2]->score, hss[2]->name);
+
+
 
     /*OLED_memory &memory_oled = OLED_memory::GetInstance();
     memory_oled.Init(128, 64);

@@ -67,7 +67,7 @@ namespace Highscore {
             bool insert_score = true;
             for (int i = 0; i < this->length; ++i) {
                 // If name length is different, it is not equal anyway.
-                if (this->score[i]->name_length != length) continue;
+                if (this->score[i]->name_length != score.name_length) continue;
 
                 // Compare names if length is the same.
                 bool equal = true;

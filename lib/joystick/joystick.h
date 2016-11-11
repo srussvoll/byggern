@@ -1,9 +1,8 @@
-
-
 #pragma once
 #ifdef __AVR_ATmega2560__
 
 #include <avr/io.h>
+#include <math.h>
 #include "../adc/adc.h"
 
 struct Quantization{
@@ -110,6 +109,18 @@ public:
      * Returns the direction of the joystick
      */
     Direction GetDirection();
+
+    /**
+     * Gives percentage away from the center in y direction
+     * @return the percentage offset from center
+     */
+    float GetPercentageY();
+
+    /**
+     * Gives percentage away from the center in y direction
+     * @return the percentage offset from center
+     */
+    float GetPercentageX();
 
     /**
      * Returns true if the button is pushed down

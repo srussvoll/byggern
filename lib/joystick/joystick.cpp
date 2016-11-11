@@ -33,6 +33,18 @@ Direction Joystick::GetDirection() {
     }
 }
 
+float Joystick::GetPercentageY() {
+    float value = ((float) this->y - this->y_midpoint)/( this->y_midpoint);
+    float percentage = (float) fabs(value);
+    return percentage;
+}
+
+float Joystick::GetPercentageX() {
+    float value = ((float) this->x - this->x_midpoint)/( this->x_midpoint);
+    float percentage = (float) fabs(value);
+    return percentage;
+}
+
 bool Joystick::ButtonIsDown() {
     // To be implemented
 }

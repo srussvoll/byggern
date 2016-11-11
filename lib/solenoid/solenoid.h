@@ -1,5 +1,6 @@
 #pragma once
-#include "lib/spi/spi.h"
+
+
 class Solenoid{
 public:
     /**
@@ -18,10 +19,9 @@ public:
 
     Solenoid(){};
 
-    void Initialize(SPI_N::PIN solenoid_pin);
+    void Initialize();
 
     void Pulse();
 
 private:
-    SPI_N::PIN pin;
 };

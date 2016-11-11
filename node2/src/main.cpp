@@ -19,12 +19,13 @@
 #include "state_machine.h"
 #include "lib/timer/timer.h"
 #include "init.h"
-void init_hardware_drivers() __attribute__((naked)) __attribute((used)) __attribute__((section(".init8")));
 
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main(){
+    printf("here\n");
+
     InitializeStateMachine();
 }
 #pragma clang diagnostic pop

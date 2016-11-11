@@ -6,10 +6,10 @@
 #include "../adc/adc.h"
 
 struct Quantization{
-    uint8_t x_max;
-    uint8_t x_min;
-    uint8_t y_max;
-    uint8_t y_min;
+    float x_max;
+    float x_min;
+    float y_max;
+    float y_min;
 };
 
 enum Direction{
@@ -20,7 +20,8 @@ enum Direction{
     South = 4,
     SouthWest = 5,
     West = 6,
-    NorthWest = 7
+    NorthWest = 7,
+    None = 8
 };
 
 /**
@@ -65,6 +66,16 @@ private:
     uint8_t y;
 
     /**
+     * Toggled when direction is changed
+     */
+    bool changed_direction;
+
+    /**
+     * The previous direction
+     */
+    Direction previous_direction = None;
+
+    /**
     * The constructor. Private because of singleton
     */
     Joystick();
@@ -79,7 +90,7 @@ public:
      * @param levels A quantization struct containing the quantization levels
      * @param threshold_percentage The threshold used to calculate directions
      */
-    void Init(Quantization levels, float threshold);
+    void Initialize(Quantization levels, float threshold);
 
     /**
      * Because of singleton - makes sure its not copied etc.
@@ -126,6 +137,11 @@ public:
      * Returns true if the button is pushed down
      */
     bool ButtonIsDown();
+
+    /**
+     * Detects if direction was changed from previous sample
+     */
+    bool DirectionChanged();
 
 };
 #endif

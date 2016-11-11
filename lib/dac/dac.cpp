@@ -66,7 +66,6 @@ bool DAC::WriteAnalogSignalPercentage(float percentage) {
     uint8_t value_uint8 = (uint8_t) floor(value);
     uint8_t message[3];
     message[0] = this->address_and_write_byte;
-    printf("Writing %2x\n\r", this->address_and_write_byte);
     message[1] = this->GetCommandForDAC();
     message[2] = value_uint8;
     i2c->SendData(message,3);

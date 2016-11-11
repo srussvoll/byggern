@@ -145,6 +145,7 @@ namespace Menu {
          */
         void GoToItem(uint8_t index);
 
+
         /**
          * This will try to set the next item as the navigate item. It does not update the navigate index.
          * @return Whether there was another menu item.
@@ -156,7 +157,21 @@ namespace Menu {
          * @param oled This is the oled object the menu should use for display.
          * @param num_lines This is the number of lines that the display should use when displaying the menu.
          */
-        Controller(OLED &oled, uint8_t num_lines);
+        Controller(OLED& oled, uint8_t num_lines);
+
+        /**
+         * Singleton for menu
+         */
+        /*static Controller& GetInstance(){
+            static Controller instance;
+            return instance;
+        }*/
+        /**
+         * Sets up the menu.
+         * @param oled This is the oled object the menu should use for display.
+         * @param num_lines This is the number of lines that the display should use when displaying the menu.
+         */
+        void Initialize(OLED &oled, uint8_t num_lines);
 
         /**
          * Sets the menu to be controlled to root. The item selected will be none.

@@ -9,6 +9,8 @@
 #include "lib/scp/commands.h"
 #include <stdio.h>
 #include "lib/adc/adc.h"
+#include "lib/oled_memory/oled_memory.h"
+#include "lib/menu/menu.h"
 
 #define STATE_MENU                  1
 #define STATE_GAME                  2
@@ -20,24 +22,81 @@ SOCKET* sockets[] = {
         &SOCKET::GetInstance(0),
         &SOCKET::GetInstance(1)
 };
-
+Menu::Controller *g_controller;
 /*-----------------------   INITIALIZE  -------------------------------*/
 
 void InitializeLoop(){
     printf("STATE INITIALIZE LOOP ENTERED\n");
-    // Initialize joystick
-    fsm->Transition(STATE_GAME,0);
+
+    // Initialize Oled
+    OLED_memory &memory_oled = OLED_memory::GetInstance();
+    memory_oled.Init(128, 64);
+    OLED &my_oled = (OLED&) memory_oled;
+
+    my_oled.SetFont(Fonts::f8x8, 8, 8);
+    Menu::Controller controller(my_oled, 4);
+    g_controller= &controller;
+
+    char item0[] = "Play Game";
+    char item1[] = "Settings";
+    char item2[] = "Highscore";
+    char item3[] = "About";
+    char item4[] = "Controllers";
+    char item5[] = "Back";
+
+    Menu::Item *i0 = new Menu::Item(item0, sizeof(item0) - 1);
+    Menu::Item *i1 = new Menu::Item(item1, sizeof(item1) - 1);
+    Menu::Item *i2 = new Menu::Item(item2, sizeof(item2) - 1);
+    Menu::Item *i3 = new Menu::Item(item3, sizeof(item3) - 1);
+
+    // Sub-menu
+    Menu::Item *i4 = new Menu::Item(item4, sizeof(item4) - 1);
+    Menu::Item *i5 = new Menu::Item(item5, sizeof(item5) - 1);
+
+    Menu::Item* main_items[] = {i0, i1, i2, i3};
+    Menu::Item* sub_main_items[] = {i4, i5};
+
+    controller.AddMenuItems(main_items, (sizeof(main_items)) / sizeof(main_items[0]));
+
+    controller.ControlGoToItem(1);
+    controller.AddMenu(sub_main_items, (sizeof(sub_main_items)) / sizeof(sub_main_items[0]));
+
+
+
+    fsm->Transition(STATE_MENU,0);
     return;
 }
 
 /*-----------------------     MENU    -------------------------------*/
 
 void MenuEnter() {
-    printf("STATE MENU ENTERED\n");
+    g_controller->Render();
+
 }
 
 void MenuLoop() {
-    // TODO: Implement menu
+    ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
+    ADC &adc_y = ADC::GetInstance(ADC_ADDRESS2);
+    while(!adc_x.request_sample());
+    uint8_t x_value;
+    while(!adc_x.ReadByte(x_value)){
+        ;
+    }
+    while(!adc_y.request_sample());
+    uint8_t y_value;
+    while(!adc_y.ReadByte(y_value)){
+        ;
+    }
+    //TODO G_Controler Leaves scope. Must fix !
+    if(y_value < 80){
+        printf("Moving down\n");
+        g_controller->SelectNext();
+        g_controller->Render();
+    }else if (y_value > 170){
+        printf("Moving up\n");
+        g_controller->SelectPrevious();
+        g_controller->Render();
+    }
 }
 
 void MenuLeave() {
@@ -69,7 +128,7 @@ void PlayGameLoop() {
     }
 
     uint8_t x[] = {x_value, y_value};
-    //printf("X: %d, Y:%d \n", x_value, y_value);
+    printf("X: %d, Y:%d \n", x_value, y_value);
     channel->Send(1, CMD_JOYSTICK_VALUES, x, 2);
 
     // Check for end of game command

@@ -1,3 +1,5 @@
+#ifdef __AVR_ATmega2560__
+
 #include "solenoid.h"
 #include <util/delay.h>
 #include <avr/io.h>
@@ -13,3 +15,4 @@ void Solenoid::Pulse() {
     PORTK &= ~(1 << PORTK0);
     //_delay_ms(30);
 }
+#endif __ATMega2560__

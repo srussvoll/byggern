@@ -8,11 +8,8 @@
 #include <util/delay.h>
 #include "../lib/ir_detector/ir_detector.h"
 #include "../lib/timer/timer.h"
-#include "../lib/joystick/joystick.h"
-<<<<<<< HEAD
-=======
-#include "../lib/solenoid/solenoid.h"
->>>>>>> 6e1197c9a812cea6c6ed50352131b1bc72c6cc4b
+#include "lib/joystick/joystick.h"
+#include "lib/solenoid/solenoid.h"
 
 #define STATE_ONGOING        1
 #define STATE_IDLE           2
@@ -63,7 +60,7 @@ void InitializeLoop() {
 
     //Initialize the solenoid
     Solenoid& solenoid = Solenoid::GetInstance();
-    // TODO Initialize solonoid
+    solenoid.Initialize();
 
     fsm->Transition(STATE_IDLE, 0);
 }
@@ -71,6 +68,7 @@ void InitializeLoop() {
 /*-----------------------   ONGOING  -------------------------------*/
 
 void OngoingEnter() {
+    printf("Ongoing enter \n");
     Motor &motor = Motor::GetInstance();
     motor.Start();
     Timer &timer = Timer::GetInstance();
@@ -95,22 +93,16 @@ void OngoingLoop() {
         }
     }
 
-/*    // Pass data to the joystick -> motor -> dac
-    Joystick &joy = Joystick::GetInstance();
-    joy.Update(x_direction, y_direction);
-
-    Motor &motor = Motor::GetInstance();
-    motor.Drive(joy.GetPercentageX());*/
-
-
-    //printf("X: %d, Y:%d \n", x_direction, y_direction);
+   // printf("X: %d, Y:%d \n", x_direction, y_direction);
 
     Direction direction = joystick.GetDirection();
     if((direction == West) || (direction == NorthWest) | direction == SouthWest){
-        motor.Drive(0.5);
+        printf("Right \n");
+        motor.Drive(joystick.GetPercentageX()*0.5);
         motor.GoRight();
     } else if((direction == East) || (direction == SouthEast) || (direction == NorthEast)){
-        motor.Drive(0.5);
+        printf("Left\n");
+        motor.Drive(joystick.GetPercentageX()*0.5);
         motor.GoLeft();
     } else {
         motor.Drive(0);
@@ -118,24 +110,24 @@ void OngoingLoop() {
 
     if(direction == North){
         if(joystick.DirectionChanged()){
+            printf("Solenoid \n");
             Solenoid& solenoid = Solenoid::GetInstance();
             solenoid.Pulse();
         }
     }
+    //printf("X: %d, Y:%d \n", x_direction, y_direction);
 
-    if(y_direction > 250){
-        //fsm->Transition(STATE_IDLE,0);
-        //return;
-    }
     // Check fail state
     IR_Detector &ir = IR_Detector::GetInstance();
     if(ir.Sample()) {
+        printf("LOST GAME \n");
         fsm->Transition(STATE_IDLE, 0);
         return;
     }
 }
 
 void OngoingLeave(){
+    printf("Ongoing left\n");
     Motor &motor = Motor::GetInstance();
     motor.Stop();
 

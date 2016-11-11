@@ -32,6 +32,16 @@ namespace Menu {
         this->current_item_navigate = this->root->first;
     }
 
+    void Controller::Initialize(OLED &oled, uint8_t num_lines) {
+        this->oled = &oled;
+        this->num_lines = num_lines;
+        oled.Clear();
+        this->root = new Menu;
+        this->current_menu_control = this->root;
+        this->current_menu_navigate = this->root;
+        this->current_item_navigate = this->root->first;
+    }
+
     void Controller::ControlGoToRoot() {
         this->current_menu_control = this->root;
         this->current_item_control = nullptr;

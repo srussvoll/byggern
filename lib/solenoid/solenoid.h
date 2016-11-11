@@ -1,5 +1,6 @@
-#pragma once
+#ifdef __AVR_ATmega2560__
 
+#pragma once
 
 class Solenoid{
 public:
@@ -25,3 +26,4 @@ public:
 
 private:
 };
+#endif

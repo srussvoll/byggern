@@ -24,7 +24,6 @@ bool IR_Detector::Sample() {
     while(!adc->ReadByte(byte)){
 
     }
-    printf("%2x\r\n");
 
     if(byte <= threshold){
         return true;

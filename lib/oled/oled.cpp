@@ -82,13 +82,13 @@ void OLED::WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uin
 }
 
 void OLED::Repaint(){
-    uint8_t page_address;
-    uint8_t column_address;
+//    uint8_t page_address;
+//    uint8_t column_address;
     for(uint8_t i = 0; i < this->number_of_pages; i++){
-        page_address = (uint8_t) 0xB0 + i;
+//        page_address = (uint8_t) 0xB0 + i;
         //this->WriteByteToOLED(this->oled_command, page_address);
         for(uint8_t j = 0; j < this->display_width; j++){
-            column_address = (uint8_t) 0x00 + j;
+//            column_address = (uint8_t) 0x00 + j;
             // Set lower nibble
             //this->WriteByteToOLED(this->oled_command, 0x00 + (column_address & 0xF));
 

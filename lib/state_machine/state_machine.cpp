@@ -6,7 +6,7 @@ StateMachine::StateMachine(void (*(*state_functions))(void), uint8_t initial_sta
 }
 
 bool StateMachine::Transition(uint8_t state, bool reenter = false) {
-    if (state != this->current_state || state == this->current_state && reenter) {
+    if (state != this->current_state || (state == this->current_state && reenter)) {
         uint8_t old_state = this->current_state;
         this->current_state = state;
 

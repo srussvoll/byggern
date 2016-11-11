@@ -70,9 +70,8 @@ void PlayGameLoop() {
     }
 
     uint8_t x[] = {x_value, y_value};
-    //printf("X: %d, Y:%d \n", x_value, y_value);
+    printf("X: %d, Y:%d \n", x_value, y_value);
     channel->Send(1, CMD_JOYSTICK_VALUES, x, 2);
-
     // Check for end of game command
     uint8_t command;
     uint8_t length;

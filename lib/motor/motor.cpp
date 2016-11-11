@@ -45,11 +45,11 @@ void Motor::Stop(){
 }
 
 void Motor::GoLeft(){
-    PORTH &= ~(1 << PORTH1);
+    PORTH |= (1 << PORTH1);
 }
 
 void Motor::GoRight() {
-    PORTH |= (1 << PORTH1);
+    PORTH &= ~(1 << PORTH1);
 }
 
 void Motor::Drive(float percentage){

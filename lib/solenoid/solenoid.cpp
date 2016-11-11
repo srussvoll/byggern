@@ -1,13 +1,15 @@
 #include "solenoid.h"
 #include <util/delay.h>
-void Solenoid::Initialize(SPI_N::PIN solenoid_pin) {
-    this->pin = solenoid_pin;
-    *this->pin.ddr |= (1 << this->pin.pin);
-    *this->pin.port &= ~(1 << this->pin.pin);
+#include <avr/io.h>
+
+void Solenoid::Initialize() {
+    DDRK |= (1 << DDK0);
+    PORTK &= ~(1 << PORTK0);
 }
 
 void Solenoid::Pulse() {
-    *this->pin.port |= (1 << this->pin.pin);
-    _delay_ms(1);
-    *this->pin.port &= ~(1 << this->pin.pin);
+    PORTK |= (1 << PORTK0);
+    _delay_ms(50);
+    PORTK &= ~(1 << PORTK0);
+    //_delay_ms(30);
 }

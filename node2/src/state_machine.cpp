@@ -8,6 +8,8 @@
 #include <util/delay.h>
 #include "../lib/ir_detector/ir_detector.h"
 #include "../lib/timer/timer.h"
+#include "../lib/joystick/joystick.h"
+#include "../lib/solenoid/solenoid.h"
 
 #define STATE_ONGOING        1
 #define STATE_IDLE           2
@@ -26,7 +28,6 @@ uint8_t y_direction = 0;
 
 void InitializeLoop() {
     //TODO: Add initialization to everything for node 2.
-
     // Initialize the motor
     Motor &motor = Motor::GetInstance();
     motor.Initialize();
@@ -34,6 +35,19 @@ void InitializeLoop() {
     // Initialize the timer
     Timer &timer = Timer::GetInstance();
     timer.Initialize();
+
+    // Initialize the joystick
+    Joystick& joystick = Joystick::GetInstance();
+    Quantization levels;
+    levels.x_min = 0;
+    levels.x_max = 255;
+    levels.y_min = 0;
+    levels.y_max = 255;
+    joystick.Initialize(levels, 0.6);
+
+    //Initialize the solenoid
+    Solenoid& solenoid = Solenoid::GetInstance();
+    solenoid.Initialize();
 
     fsm->Transition(STATE_IDLE, 0);
 }
@@ -53,16 +67,40 @@ void OngoingLoop() {
     uint8_t command;
     uint8_t length;
     uint8_t data[2];
+
+    Joystick& joystick = Joystick::GetInstance();
+    Motor& motor = Motor::GetInstance();
+
     if(channel->Receive(command, data, length)) {
         if (command == CMD_JOYSTICK_VALUES) {
             x_direction = data[0];
             y_direction = data[1];
+            joystick.Update(x_direction, y_direction);
         }
     }
-    printf("X: %d, Y:%d \n", x_direction, y_direction);
-    if(x_direction > 150){
-        fsm->Transition(STATE_IDLE,0);
-        return;
+    //printf("X: %d, Y:%d \n\r", x_direction, y_direction);
+
+    Direction direction = joystick.GetDirection();
+    if((direction == West) || (direction == NorthWest) | direction == SouthWest){
+        motor.Drive(0.5);
+        motor.GoRight();
+    } else if((direction == East) || (direction == SouthEast) || (direction == NorthEast)){
+        motor.Drive(0.5);
+        motor.GoLeft();
+    } else {
+        motor.Drive(0);
+    }
+
+    if(direction == North){
+        if(joystick.DirectionChanged()){
+            Solenoid& solenoid = Solenoid::GetInstance();
+            solenoid.Pulse();
+        }
+    }
+
+    if(y_direction > 250){
+        //fsm->Transition(STATE_IDLE,0);
+        //return;
     }
     // Check fail state
     /*IR_DETECTOR &ir = IR_DETECTOR::GetInstance();
@@ -81,7 +119,7 @@ void OngoingLeave(){
     timer.Stop();
     uint16_t time;
     timer.GetFullSecondsPassed(time);
-    printf("Time passed = %d \n", time);
+    printf("Time passed = %d \n\r", time);
     uint8_t data[] = {(uint8_t)(time & 0x00FF), (uint8_t)((time & 0xFF00)) >> 8};
     channel->Send(0, CMD_GAME_STOP, data, 2);
 }
@@ -89,7 +127,7 @@ void OngoingLeave(){
 /*-----------------------   IDLE  -------------------------------*/
 
 void IdleEnter(){
-    printf("IDLE STATE ENTERED \n");
+    printf("IDLE STATE ENTERED \n\r");
 }
 
 void IdleLoop() {

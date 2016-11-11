@@ -8,6 +8,7 @@
 #include <util/delay.h>
 #include "../lib/ir_detector/ir_detector.h"
 #include "../lib/timer/timer.h"
+#include "../lib/joystick/joystick.h"
 
 #define STATE_ONGOING        1
 #define STATE_IDLE           2
@@ -35,6 +36,19 @@ void InitializeLoop() {
     Timer &timer = Timer::GetInstance();
     timer.Initialize();
 
+    // Initialize the IR Sensor
+    IR_Detector::GetInstance().Initialize(0x30);
+
+    // Initialize the joystick
+    // TODO: Correct Quantization levels
+    Joystick &joy = Joystick::GetInstance();
+    Quantization q;
+    q.x_max = 0;
+    q.x_min = 0;
+    q.y_max = 0;
+    q.y_min = 0;
+    joy.Init(q, 0);
+
     fsm->Transition(STATE_IDLE, 0);
 }
 
@@ -59,18 +73,23 @@ void OngoingLoop() {
             y_direction = data[1];
         }
     }
-    printf("X: %d, Y:%d \n", x_direction, y_direction);
-    if(x_direction > 150){
-        fsm->Transition(STATE_IDLE,0);
-        return;
-    }
+
+    // Pass data to the joystick -> motor -> dac
+    Joystick &joy = Joystick::GetInstance();
+    joy.Update(x_direction, y_direction);
+
+    Motor &motor = Motor::GetInstance();
+    motor.Drive(joy.GetPercentageX());
+
+
+    //printf("X: %d, Y:%d \n", x_direction, y_direction);
+
     // Check fail state
-    /*IR_DETECTOR &ir = IR_DETECTOR::GetInstance();
-    if(ir.Sample()){
-        // Fail state
+    IR_Detector &ir = IR_Detector::GetInstance();
+    if(ir.Sample()) {
         fsm->Transition(STATE_IDLE, 0);
         return;
-    }*/
+    }
 }
 
 void OngoingLeave(){

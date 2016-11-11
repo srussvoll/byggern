@@ -68,10 +68,9 @@ namespace Highscore {
             for (int i = 0; i < this->length; ++i) {
                 // If name length is different, it is not equal anyway.
                 if (this->score[i]->name_length != score.name_length) continue;
-
                 // Compare names if length is the same.
                 bool equal = true;
-                for (int j = 0; j < length; ++j) {
+                for (int j = 0; j < score.name_length; ++j) {
                     if (this->score[i]->name[j] != score.name[j]) {
                         equal = false;
                         break;
@@ -92,12 +91,13 @@ namespace Highscore {
                         this->score[j] = this->score[j + 1];
                         this->score[j + 1] = temp;
                     }
-
-                    break;
                 } else {
                     insert_score = false;
                 }
+
+                break;
             }
+
 
             if (insert_score) {
                 for (int8_t i = this->length; i >= 0; --i) {

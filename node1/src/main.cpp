@@ -24,16 +24,19 @@ int main(void) {
     char name1[] = "Sondre";
     char name2[] = "V";
     char name3[] = "Johan";
+    char name4[] = "Baugen";
 
-    Highscore::Score score1(3357, name1, sizeof(name1));
+    Highscore::Score score1(4357, name1, sizeof(name1));
     Highscore::Score score2(10352, name2, sizeof(name2));
-    Highscore::Score score3(8233, name3, sizeof(name3));
+    Highscore::Score score3(11233, name3, sizeof(name3));
+    Highscore::Score score4(1337, name4, sizeof(name4));
 
     // Store new scores if you want. Currently the highscore is loaded from the EEPROM.
-    /*hs.ClearHighscores();
-    hs.SaveScore(score1);
+    //hs.ClearHighscores();
+    /*hs.SaveScore(score1);
     hs.SaveScore(score2);
     hs.SaveScore(score3);
+    hs.SaveScore(score4);
     hs.StoreScores();*/
 
     Highscore::Score **hss;

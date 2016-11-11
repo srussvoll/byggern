@@ -1,5 +1,6 @@
-\hypertarget{namespace_menu}{}\section{Menu Namespace Reference}
+\hypertarget{namespace_menu}{\section{Menu Namespace Reference}
 \label{namespace_menu}\index{Menu@{Menu}}
+}
 
 
 This is a namespace containing everything needed to implement a menu.  
@@ -8,15 +9,13 @@ This is a namespace containing everything needed to implement a menu.
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{class_menu_1_1_controller}{Controller}
-\item 
 struct \hyperlink{struct_menu_1_1_item}{Item}
 \begin{DoxyCompactList}\small\item\em Struct containing a sigle menu item. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_menu_1_1_menu}{Menu}
+\item 
+class \hyperlink{class_menu_1_1_controller}{Controller}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-This is a namespace containing everything needed to implement a menu. 
-
-This namespace contains data types for describing a menu, and a controller class to control it and display it on a \hyperlink{class_o_l_e_d}{O\+L\+ED} (library class). The menu allocates \hyperlink{namespace_menu}{Menu} and \hyperlink{struct_menu_1_1_item}{Item} objects on the heap. Thus you should declare these objects ON T\+HE S\+T\+A\+CK I\+N\+S\+I\+DE A L\+O\+C\+AL S\+C\+O\+PE so the menus and menu items aren\textquotesingle{}t stored both on the heap and in the main (or where the menu is created) stack! 
+This is a namespace containing everything needed to implement a menu. This namespace contains data types for describing a menu, and a controller class to control it and display it on a \hyperlink{class_o_l_e_d}{O\-L\-E\-D} (library class). The menu allocates \hyperlink{namespace_menu}{Menu} and \hyperlink{struct_menu_1_1_item}{Item} objects on the heap. Thus you should declare these objects O\-N T\-H\-E S\-T\-A\-C\-K I\-N\-S\-I\-D\-E A L\-O\-C\-A\-L S\-C\-O\-P\-E so the menus and menu items aren't stored both on the heap and in the main (or where the menu is created) stack! 

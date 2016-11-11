@@ -1,10 +1,11 @@
-\hypertarget{class_stream}{}\section{Stream Class Reference}
+\hypertarget{class_stream}{\section{Stream Class Reference}
 \label{class_stream}\index{Stream@{Stream}}
+}
 
 
-{\ttfamily \#include $<$stream.\+h$>$}
+{\ttfamily \#include $<$stream.\-h$>$}
 
-Inheritance diagram for Stream\+:\begin{figure}[H]
+Inheritance diagram for Stream\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=3.000000cm]{class_stream}
@@ -13,241 +14,241 @@ Inheritance diagram for Stream\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_stream_a2b738d6f4d3059de2ae3d444d68663bf}{Stream} (uint16\+\_\+t input\+\_\+stream\+\_\+size, uint16\+\_\+t output\+\_\+stream\+\_\+size)
+\hyperlink{class_stream_a2b738d6f4d3059de2ae3d444d68663bf}{Stream} (uint16\-\_\-t input\-\_\-stream\-\_\-size, uint16\-\_\-t output\-\_\-stream\-\_\-size)
 \item 
-virtual void \hyperlink{class_stream_a508be3423e4d99ab2757275fb723002a}{Write} (uint8\+\_\+t $\ast$string, uint16\+\_\+t size)
+virtual void \hyperlink{class_stream_a508be3423e4d99ab2757275fb723002a}{Write} (uint8\-\_\-t $\ast$string, uint16\-\_\-t size)
 \item 
-virtual uint16\+\_\+t \hyperlink{class_stream_a851572e5787cd98383d5118de378724b}{Read} (uint8\+\_\+t $\ast$string, uint16\+\_\+t size)
+virtual uint16\-\_\-t \hyperlink{class_stream_a851572e5787cd98383d5118de378724b}{Read} (uint8\-\_\-t $\ast$string, uint16\-\_\-t size)
 \item 
-virtual bool \hyperlink{class_stream_a6db4180f5834073f992608b856bddca2}{Read\+Byte} (uint8\+\_\+t \&byte)
+virtual bool \hyperlink{class_stream_a6db4180f5834073f992608b856bddca2}{Read\-Byte} (uint8\-\_\-t \&byte)
 \item 
-virtual void \hyperlink{class_stream_aeaed767b3a8d946c6f81465fa83ff17f}{Write\+Byte} (uint8\+\_\+t byte)
+virtual void \hyperlink{class_stream_aeaed767b3a8d946c6f81465fa83ff17f}{Write\-Byte} (uint8\-\_\-t byte)
 \item 
-virtual uint8\+\_\+t \hyperlink{class_stream_a6a16ddb03d3360cef4daf4d38245091d}{Get\+Available\+Write\+Bytes} ()
+virtual uint8\-\_\-t \hyperlink{class_stream_a6a16ddb03d3360cef4daf4d38245091d}{Get\-Available\-Write\-Bytes} ()
 \item 
-virtual uint8\+\_\+t \hyperlink{class_stream_a71cec6c46f3d50cc3ab420e93ae434e1}{Get\+Available\+Read\+Bytes} ()
+virtual uint8\-\_\-t \hyperlink{class_stream_a71cec6c46f3d50cc3ab420e93ae434e1}{Get\-Available\-Read\-Bytes} ()
 \item 
-virtual bool \hyperlink{class_stream_a088c4e68d568acfad715c56f408fe9f8}{Check\+Input\+Overflow\+Flag} ()
+virtual bool \hyperlink{class_stream_a088c4e68d568acfad715c56f408fe9f8}{Check\-Input\-Overflow\-Flag} ()
 \item 
-virtual bool \hyperlink{class_stream_aee6c201819b874c5934a270592d9d311}{Check\+Output\+Overflow\+Flag} ()
+virtual bool \hyperlink{class_stream_aee6c201819b874c5934a270592d9d311}{Check\-Output\-Overflow\-Flag} ()
 \item 
-virtual uint16\+\_\+t \hyperlink{class_stream_a4860b9602c68ab437520d321e4e97212}{Get\+Input\+Buffer\+Length} ()
+virtual uint16\-\_\-t \hyperlink{class_stream_a4860b9602c68ab437520d321e4e97212}{Get\-Input\-Buffer\-Length} ()
 \item 
-virtual uint16\+\_\+t \hyperlink{class_stream_ad8aea9131dbc1b422bdba2408d63492a}{Get\+Output\+Buffer\+Length} ()
+virtual uint16\-\_\-t \hyperlink{class_stream_ad8aea9131dbc1b422bdba2408d63492a}{Get\-Output\-Buffer\-Length} ()
 \item 
-virtual void \hyperlink{class_stream_ac7e3629626c1ea4d9cba88db1e048132}{Flush\+Input\+Buffer} ()
+virtual void \hyperlink{class_stream_ac7e3629626c1ea4d9cba88db1e048132}{Flush\-Input\-Buffer} ()
 \item 
-virtual void \hyperlink{class_stream_a0af6193f98fcf7bcd60eef84fce8699c}{Flush\+Output\+Buffer} ()
+virtual void \hyperlink{class_stream_a0af6193f98fcf7bcd60eef84fce8699c}{Flush\-Output\-Buffer} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual uint16\+\_\+t \hyperlink{class_stream_a752930f620aed4a3a80b243ce66e57ca}{Read\+From\+Buffer} (uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, uint8\+\_\+t $\ast$string, uint16\+\_\+t \&string\+\_\+size)
+virtual uint16\-\_\-t \hyperlink{class_stream_a752930f620aed4a3a80b243ce66e57ca}{Read\-From\-Buffer} (uint8\-\_\-t $\ast$buffer, uint16\-\_\-t \&start\-\_\-index, uint16\-\_\-t \&stop\-\_\-index, uint16\-\_\-t \&buffer\-\_\-size, bool \&empty, uint8\-\_\-t $\ast$string, uint16\-\_\-t \&string\-\_\-size)
 \item 
-virtual void \hyperlink{class_stream_a5ba59861c0ab5977d7c92d6dcd72807c}{Write\+To\+Buffer} (uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, bool \&overflow\+\_\+flag, uint8\+\_\+t $\ast$string, uint16\+\_\+t \&string\+\_\+size, void($\ast$cb)(\hyperlink{class_stream}{Stream} $\ast$stream))
+virtual void \hyperlink{class_stream_a5ba59861c0ab5977d7c92d6dcd72807c}{Write\-To\-Buffer} (uint8\-\_\-t $\ast$buffer, uint16\-\_\-t \&start\-\_\-index, uint16\-\_\-t \&stop\-\_\-index, uint16\-\_\-t \&buffer\-\_\-size, bool \&empty, bool \&overflow\-\_\-flag, uint8\-\_\-t $\ast$string, uint16\-\_\-t \&string\-\_\-size, void($\ast$cb)(\hyperlink{class_stream}{Stream} $\ast$stream))
 \item 
-virtual bool \hyperlink{class_stream_a32e449304f65b5571fe848a503fc9d68}{Read\+Byte\+From\+Buffer} (uint8\+\_\+t \&byte, uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty)
+virtual bool \hyperlink{class_stream_a32e449304f65b5571fe848a503fc9d68}{Read\-Byte\-From\-Buffer} (uint8\-\_\-t \&byte, uint8\-\_\-t $\ast$buffer, uint16\-\_\-t \&start\-\_\-index, uint16\-\_\-t \&stop\-\_\-index, uint16\-\_\-t \&buffer\-\_\-size, bool \&empty)
 \item 
-virtual void \hyperlink{class_stream_a7b6a9a1f96e0f524e950863215128911}{Write\+Byte\+To\+Buffer} (uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, bool \&overflow\+\_\+flag, uint8\+\_\+t \&byte, void($\ast$cb)(\hyperlink{class_stream}{Stream} $\ast$stream))
+virtual void \hyperlink{class_stream_a7b6a9a1f96e0f524e950863215128911}{Write\-Byte\-To\-Buffer} (uint8\-\_\-t $\ast$buffer, uint16\-\_\-t \&start\-\_\-index, uint16\-\_\-t \&stop\-\_\-index, uint16\-\_\-t \&buffer\-\_\-size, bool \&empty, bool \&overflow\-\_\-flag, uint8\-\_\-t \&byte, void($\ast$cb)(\hyperlink{class_stream}{Stream} $\ast$stream))
 \item 
-virtual void \hyperlink{class_stream_a0784d377cc92ddde7cc730be17a1a3aa}{Write\+Byte\+To\+Input\+Stream} (uint8\+\_\+t \&byte)
+virtual void \hyperlink{class_stream_a0784d377cc92ddde7cc730be17a1a3aa}{Write\-Byte\-To\-Input\-Stream} (uint8\-\_\-t \&byte)
 \item 
-virtual bool \hyperlink{class_stream_a3f8e3c5513c6b8605c0fed74a3ed22bc}{Read\+Byte\+From\+Output\+Stream} (uint8\+\_\+t \&byte)
+virtual bool \hyperlink{class_stream_a3f8e3c5513c6b8605c0fed74a3ed22bc}{Read\-Byte\-From\-Output\-Stream} (uint8\-\_\-t \&byte)
 \item 
-virtual void \hyperlink{class_stream_aa2f020721d273ce821ccf626e5eb773c}{Write\+To\+Input\+Stream} (uint8\+\_\+t $\ast$string, uint16\+\_\+t size)
+virtual void \hyperlink{class_stream_aa2f020721d273ce821ccf626e5eb773c}{Write\-To\-Input\-Stream} (uint8\-\_\-t $\ast$string, uint16\-\_\-t size)
 \item 
-virtual uint16\+\_\+t \hyperlink{class_stream_ab458be72cc54330f518f5ab35ab84106}{Read\+From\+Output\+Stream} (uint8\+\_\+t $\ast$string, uint16\+\_\+t size)
+virtual uint16\-\_\-t \hyperlink{class_stream_ab458be72cc54330f518f5ab35ab84106}{Read\-From\-Output\-Stream} (uint8\-\_\-t $\ast$string, uint16\-\_\-t size)
 \item 
-virtual uint16\+\_\+t \hyperlink{class_stream_a8047b62e7dcfe0e50210b3e40c7aa6eb}{Calculate\+Length} (uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty)
+virtual uint16\-\_\-t \hyperlink{class_stream_a8047b62e7dcfe0e50210b3e40c7aa6eb}{Calculate\-Length} (uint16\-\_\-t \&start\-\_\-index, uint16\-\_\-t \&stop\-\_\-index, uint16\-\_\-t \&buffer\-\_\-size, bool \&empty)
 \item 
-virtual void \hyperlink{class_stream_a435b1b065846d3b24969cfc6dacabc6b}{Flush\+Stream} (uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty)
+virtual void \hyperlink{class_stream_a435b1b065846d3b24969cfc6dacabc6b}{Flush\-Stream} (uint16\-\_\-t \&start\-\_\-index, uint16\-\_\-t \&stop\-\_\-index, uint16\-\_\-t \&buffer\-\_\-size, bool \&empty)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-uint8\+\_\+t $\ast$ \hyperlink{class_stream_a81139fc126566f9d42470fdb405ed26a}{input\+\_\+buffer}
+uint8\-\_\-t $\ast$ \hyperlink{class_stream_a81139fc126566f9d42470fdb405ed26a}{input\-\_\-buffer}
 \item 
-uint8\+\_\+t $\ast$ \hyperlink{class_stream_a3cd072a10ad5c1b6308dd2da2cdbec71}{output\+\_\+buffer}
+uint8\-\_\-t $\ast$ \hyperlink{class_stream_a3cd072a10ad5c1b6308dd2da2cdbec71}{output\-\_\-buffer}
 \item 
-uint16\+\_\+t \hyperlink{class_stream_a6fc009e9e71fa92cbbf9b407ede82a73}{input\+\_\+buffer\+\_\+start\+\_\+index} = 0
+uint16\-\_\-t \hyperlink{class_stream_a6fc009e9e71fa92cbbf9b407ede82a73}{input\-\_\-buffer\-\_\-start\-\_\-index} = 0
 \item 
-uint16\+\_\+t \hyperlink{class_stream_a1b2d63accede402e5c4c7fd3747d4c33}{output\+\_\+buffer\+\_\+start\+\_\+index} = 0
+uint16\-\_\-t \hyperlink{class_stream_a1b2d63accede402e5c4c7fd3747d4c33}{output\-\_\-buffer\-\_\-start\-\_\-index} = 0
 \item 
-uint16\+\_\+t \hyperlink{class_stream_aaceece6a2defd1f7d9667fcc0be03a7a}{input\+\_\+buffer\+\_\+stop\+\_\+index}
+uint16\-\_\-t \hyperlink{class_stream_aaceece6a2defd1f7d9667fcc0be03a7a}{input\-\_\-buffer\-\_\-stop\-\_\-index}
 \item 
-uint16\+\_\+t \hyperlink{class_stream_a39d177eedd4d5ff28a95cca9131daf4c}{output\+\_\+buffer\+\_\+stop\+\_\+index}
+uint16\-\_\-t \hyperlink{class_stream_a39d177eedd4d5ff28a95cca9131daf4c}{output\-\_\-buffer\-\_\-stop\-\_\-index}
 \item 
-uint16\+\_\+t \hyperlink{class_stream_a7373b1d6580a2d5dc74e788b3bb6a596}{input\+\_\+buffer\+\_\+size}
+uint16\-\_\-t \hyperlink{class_stream_a7373b1d6580a2d5dc74e788b3bb6a596}{input\-\_\-buffer\-\_\-size}
 \item 
-uint16\+\_\+t \hyperlink{class_stream_a0e9fd6570bafb97ab76ebd37158e78ff}{output\+\_\+buffer\+\_\+size}
+uint16\-\_\-t \hyperlink{class_stream_a0e9fd6570bafb97ab76ebd37158e78ff}{output\-\_\-buffer\-\_\-size}
 \item 
-void($\ast$ {\bfseries event\+\_\+input\+\_\+buffer\+\_\+not\+\_\+empty} )(\hyperlink{class_stream}{Stream} $\ast$stream) = nullptr\hypertarget{class_stream_a3d5eca4fc234dfc1d661c203538cb012}{}\label{class_stream_a3d5eca4fc234dfc1d661c203538cb012}
+\hypertarget{class_stream_a64afe78be56687f804c3854758bc93fa}{void($\ast$ {\bfseries event\-\_\-input\-\_\-buffer\-\_\-not\-\_\-empty} )(\hyperlink{class_stream}{Stream} $\ast$stream) = nullptr}\label{class_stream_a64afe78be56687f804c3854758bc93fa}
 
 \item 
-void($\ast$ {\bfseries event\+\_\+output\+\_\+buffer\+\_\+not\+\_\+empty} )(\hyperlink{class_stream}{Stream} $\ast$stream) = nullptr\hypertarget{class_stream_a4221cbf01a69179b34820fb3a4a115a4}{}\label{class_stream_a4221cbf01a69179b34820fb3a4a115a4}
+\hypertarget{class_stream_a554ebe38cc3623e1caad8f9cb6a1906c}{void($\ast$ {\bfseries event\-\_\-output\-\_\-buffer\-\_\-not\-\_\-empty} )(\hyperlink{class_stream}{Stream} $\ast$stream) = nullptr}\label{class_stream_a554ebe38cc3623e1caad8f9cb6a1906c}
 
 \item 
-bool \hyperlink{class_stream_aff1c899af0d2dea35700d5665f378cd8}{input\+\_\+buffer\+\_\+empty} = true
+bool \hyperlink{class_stream_aff1c899af0d2dea35700d5665f378cd8}{input\-\_\-buffer\-\_\-empty} = true
 \item 
-bool \hyperlink{class_stream_a54b21caaee0001e44968fb70d0a591f5}{output\+\_\+buffer\+\_\+empty} = true
+bool \hyperlink{class_stream_a54b21caaee0001e44968fb70d0a591f5}{output\-\_\-buffer\-\_\-empty} = true
 \item 
-bool \hyperlink{class_stream_ae7300cb8941cec142c14e8fc9baab9d3}{input\+\_\+buffer\+\_\+overflowed} = false
+bool \hyperlink{class_stream_ae7300cb8941cec142c14e8fc9baab9d3}{input\-\_\-buffer\-\_\-overflowed} = false
 \item 
-bool \hyperlink{class_stream_a149776fead5c56894699da5bfe489b65}{output\+\_\+buffer\+\_\+overflowed} = false
+bool \hyperlink{class_stream_a149776fead5c56894699da5bfe489b65}{output\-\_\-buffer\-\_\-overflowed} = false
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-This class is an interface for implementing a duplex F\+I\+FO stream.
+This class is an interface for implementing a duplex F\-I\-F\-O stream.
 
-This class implements a duplex F\+I\+FO stream using two circular buffers. For instance both an R\+S232 driver and a \hyperlink{class_c_a_n}{C\+AN} driver would need to implement a stream. Inheriting from this interface makes the communication interface for R\+S232, \hyperlink{class_c_a_n}{C\+AN} and other stream based classes/drivers the same, meaning the end user does not need to know whether the data being sent is being sent over a \hyperlink{class_u_a_r_t}{U\+A\+RT} or a \hyperlink{class_c_a_n}{C\+AN} bus.
+This class implements a duplex F\-I\-F\-O stream using two circular buffers. For instance both an R\-S232 driver and a \hyperlink{class_c_a_n}{C\-A\-N} driver would need to implement a stream. Inheriting from this interface makes the communication interface for R\-S232, \hyperlink{class_c_a_n}{C\-A\-N} and other stream based classes/drivers the same, meaning the end user does not need to know whether the data being sent is being sent over a \hyperlink{class_u_a_r_t}{U\-A\-R\-T} or a \hyperlink{class_c_a_n}{C\-A\-N} bus.
 
-As an example you can set up a \hyperlink{class_c_a_n}{C\+AN} bus using a \hyperlink{class_c_a_n}{C\+AN} driver inheriting from this interface. Then it can be passed to a function expecting to send data to an R\+S232 class also inheriting from this interface, and it will just work. This interface is in other words written to make it easier to write consistent and driver independent code. 
+As an example you can set up a \hyperlink{class_c_a_n}{C\-A\-N} bus using a \hyperlink{class_c_a_n}{C\-A\-N} driver inheriting from this interface. Then it can be passed to a function expecting to send data to an R\-S232 class also inheriting from this interface, and it will just work. This interface is in other words written to make it easier to write consistent and driver independent code. 
 
 \subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_stream_a2b738d6f4d3059de2ae3d444d68663bf}{\index{Stream@{Stream}!Stream@{Stream}}
 \index{Stream@{Stream}!Stream@{Stream}}
-\index{Stream@{Stream}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Stream(uint16\+\_\+t input\+\_\+stream\+\_\+size, uint16\+\_\+t output\+\_\+stream\+\_\+size)}{Stream(uint16_t input_stream_size, uint16_t output_stream_size)}}]{\setlength{\rightskip}{0pt plus 5cm}Stream\+::\+Stream (
+\subsubsection[{Stream}]{\setlength{\rightskip}{0pt plus 5cm}Stream\-::\-Stream (
 \begin{DoxyParamCaption}
-\item[{uint16\+\_\+t}]{input\+\_\+stream\+\_\+size, }
-\item[{uint16\+\_\+t}]{output\+\_\+stream\+\_\+size}
+\item[{uint16\-\_\-t}]{input\-\_\-stream\-\_\-size, }
+\item[{uint16\-\_\-t}]{output\-\_\-stream\-\_\-size}
 \end{DoxyParamCaption}
-)}\hypertarget{class_stream_a2b738d6f4d3059de2ae3d444d68663bf}{}\label{class_stream_a2b738d6f4d3059de2ae3d444d68663bf}
+)}}\label{class_stream_a2b738d6f4d3059de2ae3d444d68663bf}
 Used to initialize the stream sizes and other data members. 
 \begin{DoxyParams}{Parameters}
-{\em input\+\_\+stream\+\_\+size} & The maximum size of the input stream. \\
+{\em input\-\_\-stream\-\_\-size} & The maximum size of the input stream. \\
 \hline
-{\em output\+\_\+stream\+\_\+size} & The maximum size of the output stream. \\
+{\em output\-\_\-stream\-\_\-size} & The maximum size of the output stream. \\
 \hline
 \end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
-\index{Stream@{Stream}!Calculate\+Length@{Calculate\+Length}}
-\index{Calculate\+Length@{Calculate\+Length}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Calculate\+Length(uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty)}{CalculateLength(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty)}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::\+Calculate\+Length (
+\hypertarget{class_stream_a8047b62e7dcfe0e50210b3e40c7aa6eb}{\index{Stream@{Stream}!Calculate\-Length@{Calculate\-Length}}
+\index{Calculate\-Length@{Calculate\-Length}!Stream@{Stream}}
+\subsubsection[{Calculate\-Length}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::\-Calculate\-Length (
 \begin{DoxyParamCaption}
-\item[{uint16\+\_\+t \&}]{start\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{stop\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{buffer\+\_\+size, }
+\item[{uint16\-\_\-t \&}]{start\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{stop\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{buffer\-\_\-size, }
 \item[{bool \&}]{empty}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a8047b62e7dcfe0e50210b3e40c7aa6eb}{}\label{class_stream_a8047b62e7dcfe0e50210b3e40c7aa6eb}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_a8047b62e7dcfe0e50210b3e40c7aa6eb}
 Calculates the length of the valid part of the buffer. 
 \begin{DoxyParams}{Parameters}
-{\em start\+\_\+index} & The start index of the buffer. \\
+{\em start\-\_\-index} & The start index of the buffer. \\
 \hline
-{\em stop\+\_\+index} & The stop index of the buffer. \\
+{\em stop\-\_\-index} & The stop index of the buffer. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Length of valid data. 
 \end{DoxyReturn}
-\index{Stream@{Stream}!Check\+Input\+Overflow\+Flag@{Check\+Input\+Overflow\+Flag}}
-\index{Check\+Input\+Overflow\+Flag@{Check\+Input\+Overflow\+Flag}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Check\+Input\+Overflow\+Flag()}{CheckInputOverflowFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\+::\+Check\+Input\+Overflow\+Flag (
+\hypertarget{class_stream_a088c4e68d568acfad715c56f408fe9f8}{\index{Stream@{Stream}!Check\-Input\-Overflow\-Flag@{Check\-Input\-Overflow\-Flag}}
+\index{Check\-Input\-Overflow\-Flag@{Check\-Input\-Overflow\-Flag}!Stream@{Stream}}
+\subsubsection[{Check\-Input\-Overflow\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\-::\-Check\-Input\-Overflow\-Flag (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_a088c4e68d568acfad715c56f408fe9f8}{}\label{class_stream_a088c4e68d568acfad715c56f408fe9f8}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_a088c4e68d568acfad715c56f408fe9f8}
 Checks whether or not the input overflow flag has been set. This also clears the flag. \begin{DoxyReturn}{Returns}
 Returns flag value. 
 \end{DoxyReturn}
-\index{Stream@{Stream}!Check\+Output\+Overflow\+Flag@{Check\+Output\+Overflow\+Flag}}
-\index{Check\+Output\+Overflow\+Flag@{Check\+Output\+Overflow\+Flag}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Check\+Output\+Overflow\+Flag()}{CheckOutputOverflowFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\+::\+Check\+Output\+Overflow\+Flag (
+\hypertarget{class_stream_aee6c201819b874c5934a270592d9d311}{\index{Stream@{Stream}!Check\-Output\-Overflow\-Flag@{Check\-Output\-Overflow\-Flag}}
+\index{Check\-Output\-Overflow\-Flag@{Check\-Output\-Overflow\-Flag}!Stream@{Stream}}
+\subsubsection[{Check\-Output\-Overflow\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\-::\-Check\-Output\-Overflow\-Flag (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_aee6c201819b874c5934a270592d9d311}{}\label{class_stream_aee6c201819b874c5934a270592d9d311}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_aee6c201819b874c5934a270592d9d311}
 Checks whether or not the output overflow flag has been set. This also clears the flag. \begin{DoxyReturn}{Returns}
 Returns flag value. 
 \end{DoxyReturn}
-\index{Stream@{Stream}!Flush\+Input\+Buffer@{Flush\+Input\+Buffer}}
-\index{Flush\+Input\+Buffer@{Flush\+Input\+Buffer}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Flush\+Input\+Buffer()}{FlushInputBuffer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\+::\+Flush\+Input\+Buffer (
+\hypertarget{class_stream_ac7e3629626c1ea4d9cba88db1e048132}{\index{Stream@{Stream}!Flush\-Input\-Buffer@{Flush\-Input\-Buffer}}
+\index{Flush\-Input\-Buffer@{Flush\-Input\-Buffer}!Stream@{Stream}}
+\subsubsection[{Flush\-Input\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\-::\-Flush\-Input\-Buffer (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_ac7e3629626c1ea4d9cba88db1e048132}{}\label{class_stream_ac7e3629626c1ea4d9cba88db1e048132}
-Flushes the input buffer \index{Stream@{Stream}!Flush\+Output\+Buffer@{Flush\+Output\+Buffer}}
-\index{Flush\+Output\+Buffer@{Flush\+Output\+Buffer}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Flush\+Output\+Buffer()}{FlushOutputBuffer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\+::\+Flush\+Output\+Buffer (
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_ac7e3629626c1ea4d9cba88db1e048132}
+Flushes the input buffer \hypertarget{class_stream_a0af6193f98fcf7bcd60eef84fce8699c}{\index{Stream@{Stream}!Flush\-Output\-Buffer@{Flush\-Output\-Buffer}}
+\index{Flush\-Output\-Buffer@{Flush\-Output\-Buffer}!Stream@{Stream}}
+\subsubsection[{Flush\-Output\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\-::\-Flush\-Output\-Buffer (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_a0af6193f98fcf7bcd60eef84fce8699c}{}\label{class_stream_a0af6193f98fcf7bcd60eef84fce8699c}
-Flushes the output buffer \index{Stream@{Stream}!Flush\+Stream@{Flush\+Stream}}
-\index{Flush\+Stream@{Flush\+Stream}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Flush\+Stream(uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty)}{FlushStream(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty)}}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\+::\+Flush\+Stream (
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_a0af6193f98fcf7bcd60eef84fce8699c}
+Flushes the output buffer \hypertarget{class_stream_a435b1b065846d3b24969cfc6dacabc6b}{\index{Stream@{Stream}!Flush\-Stream@{Flush\-Stream}}
+\index{Flush\-Stream@{Flush\-Stream}!Stream@{Stream}}
+\subsubsection[{Flush\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\-::\-Flush\-Stream (
 \begin{DoxyParamCaption}
-\item[{uint16\+\_\+t \&}]{start\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{stop\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{buffer\+\_\+size, }
+\item[{uint16\-\_\-t \&}]{start\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{stop\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{buffer\-\_\-size, }
 \item[{bool \&}]{empty}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a435b1b065846d3b24969cfc6dacabc6b}{}\label{class_stream_a435b1b065846d3b24969cfc6dacabc6b}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_a435b1b065846d3b24969cfc6dacabc6b}
 Flushes the given buffer 
 \begin{DoxyParams}{Parameters}
 {\em buffer} & Reference to the buffer which is to be flushed \\
 \hline
-{\em start\+\_\+index} & Start index of the buffer which is to be flushed \\
+{\em start\-\_\-index} & Start index of the buffer which is to be flushed \\
 \hline
-{\em stop\+\_\+index} & Stop index of the buffer which is to be flushed \\
+{\em stop\-\_\-index} & Stop index of the buffer which is to be flushed \\
 \hline
-{\em buffer\+\_\+size} & The size of the given buffer \\
+{\em buffer\-\_\-size} & The size of the given buffer \\
 \hline
 {\em empty} & Reference to the empty flag of the given buffer \\
 \hline
 \end{DoxyParams}
-\index{Stream@{Stream}!Get\+Available\+Read\+Bytes@{Get\+Available\+Read\+Bytes}}
-\index{Get\+Available\+Read\+Bytes@{Get\+Available\+Read\+Bytes}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Get\+Available\+Read\+Bytes()}{GetAvailableReadBytes()}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Stream\+::\+Get\+Available\+Read\+Bytes (
+\hypertarget{class_stream_a71cec6c46f3d50cc3ab420e93ae434e1}{\index{Stream@{Stream}!Get\-Available\-Read\-Bytes@{Get\-Available\-Read\-Bytes}}
+\index{Get\-Available\-Read\-Bytes@{Get\-Available\-Read\-Bytes}!Stream@{Stream}}
+\subsubsection[{Get\-Available\-Read\-Bytes}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t Stream\-::\-Get\-Available\-Read\-Bytes (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_a71cec6c46f3d50cc3ab420e93ae434e1}{}\label{class_stream_a71cec6c46f3d50cc3ab420e93ae434e1}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_a71cec6c46f3d50cc3ab420e93ae434e1}
 Returns the number of bytes available for reading. \begin{DoxyReturn}{Returns}
 Returns the length of valid data in the input stream. 
 \end{DoxyReturn}
-\index{Stream@{Stream}!Get\+Available\+Write\+Bytes@{Get\+Available\+Write\+Bytes}}
-\index{Get\+Available\+Write\+Bytes@{Get\+Available\+Write\+Bytes}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Get\+Available\+Write\+Bytes()}{GetAvailableWriteBytes()}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Stream\+::\+Get\+Available\+Write\+Bytes (
+\hypertarget{class_stream_a6a16ddb03d3360cef4daf4d38245091d}{\index{Stream@{Stream}!Get\-Available\-Write\-Bytes@{Get\-Available\-Write\-Bytes}}
+\index{Get\-Available\-Write\-Bytes@{Get\-Available\-Write\-Bytes}!Stream@{Stream}}
+\subsubsection[{Get\-Available\-Write\-Bytes}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t Stream\-::\-Get\-Available\-Write\-Bytes (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_a6a16ddb03d3360cef4daf4d38245091d}{}\label{class_stream_a6a16ddb03d3360cef4daf4d38245091d}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_a6a16ddb03d3360cef4daf4d38245091d}
 Returns number of bytes not being used in the output buffer (size -\/ length) \begin{DoxyReturn}{Returns}
 Returns the length of the free space in the output stream. 
 \end{DoxyReturn}
-\index{Stream@{Stream}!Get\+Input\+Buffer\+Length@{Get\+Input\+Buffer\+Length}}
-\index{Get\+Input\+Buffer\+Length@{Get\+Input\+Buffer\+Length}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Get\+Input\+Buffer\+Length()}{GetInputBufferLength()}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::\+Get\+Input\+Buffer\+Length (
+\hypertarget{class_stream_a4860b9602c68ab437520d321e4e97212}{\index{Stream@{Stream}!Get\-Input\-Buffer\-Length@{Get\-Input\-Buffer\-Length}}
+\index{Get\-Input\-Buffer\-Length@{Get\-Input\-Buffer\-Length}!Stream@{Stream}}
+\subsubsection[{Get\-Input\-Buffer\-Length}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::\-Get\-Input\-Buffer\-Length (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_a4860b9602c68ab437520d321e4e97212}{}\label{class_stream_a4860b9602c68ab437520d321e4e97212}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_a4860b9602c68ab437520d321e4e97212}
 Calculates the length of the readable part of the buffer. \begin{DoxyReturn}{Returns}
 Length of valid data. 
 \end{DoxyReturn}
-\index{Stream@{Stream}!Get\+Output\+Buffer\+Length@{Get\+Output\+Buffer\+Length}}
-\index{Get\+Output\+Buffer\+Length@{Get\+Output\+Buffer\+Length}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Get\+Output\+Buffer\+Length()}{GetOutputBufferLength()}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::\+Get\+Output\+Buffer\+Length (
+\hypertarget{class_stream_ad8aea9131dbc1b422bdba2408d63492a}{\index{Stream@{Stream}!Get\-Output\-Buffer\-Length@{Get\-Output\-Buffer\-Length}}
+\index{Get\-Output\-Buffer\-Length@{Get\-Output\-Buffer\-Length}!Stream@{Stream}}
+\subsubsection[{Get\-Output\-Buffer\-Length}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::\-Get\-Output\-Buffer\-Length (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_ad8aea9131dbc1b422bdba2408d63492a}{}\label{class_stream_ad8aea9131dbc1b422bdba2408d63492a}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_ad8aea9131dbc1b422bdba2408d63492a}
 Calculates the length of the readable part of the buffer. \begin{DoxyReturn}{Returns}
 Length of valid data 
 \end{DoxyReturn}
-\index{Stream@{Stream}!Read@{Read}}
+\hypertarget{class_stream_a851572e5787cd98383d5118de378724b}{\index{Stream@{Stream}!Read@{Read}}
 \index{Read@{Read}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Read(uint8\+\_\+t $\ast$string, uint16\+\_\+t size)}{Read(uint8_t *string, uint16_t size)}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::\+Read (
+\subsubsection[{Read}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::\-Read (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t $\ast$}]{string, }
-\item[{uint16\+\_\+t}]{size}
+\item[{uint8\-\_\-t $\ast$}]{string, }
+\item[{uint16\-\_\-t}]{size}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_a851572e5787cd98383d5118de378724b}{}\label{class_stream_a851572e5787cd98383d5118de378724b}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_a851572e5787cd98383d5118de378724b}
 Reads data from the input stream into the specified string. 
 \begin{DoxyParams}{Parameters}
 {\em string} & String to store read data in. \\
@@ -255,37 +256,37 @@ Reads data from the input stream into the specified string.
 {\em size} & Size of the string. \\
 \hline
 \end{DoxyParams}
-\index{Stream@{Stream}!Read\+Byte@{Read\+Byte}}
-\index{Read\+Byte@{Read\+Byte}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Read\+Byte(uint8\+\_\+t \&byte)}{ReadByte(uint8_t &byte)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\+::\+Read\+Byte (
+\hypertarget{class_stream_a6db4180f5834073f992608b856bddca2}{\index{Stream@{Stream}!Read\-Byte@{Read\-Byte}}
+\index{Read\-Byte@{Read\-Byte}!Stream@{Stream}}
+\subsubsection[{Read\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\-::\-Read\-Byte (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t \&}]{byte}
+\item[{uint8\-\_\-t \&}]{byte}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_a6db4180f5834073f992608b856bddca2}{}\label{class_stream_a6db4180f5834073f992608b856bddca2}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_a6db4180f5834073f992608b856bddca2}
 Reads one byte from the input stream. \begin{DoxyReturn}{Returns}
 Returns the read byte. 
 \end{DoxyReturn}
-\index{Stream@{Stream}!Read\+Byte\+From\+Buffer@{Read\+Byte\+From\+Buffer}}
-\index{Read\+Byte\+From\+Buffer@{Read\+Byte\+From\+Buffer}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Read\+Byte\+From\+Buffer(uint8\+\_\+t \&byte, uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty)}{ReadByteFromBuffer(uint8_t &byte, uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\+::\+Read\+Byte\+From\+Buffer (
+\hypertarget{class_stream_a32e449304f65b5571fe848a503fc9d68}{\index{Stream@{Stream}!Read\-Byte\-From\-Buffer@{Read\-Byte\-From\-Buffer}}
+\index{Read\-Byte\-From\-Buffer@{Read\-Byte\-From\-Buffer}!Stream@{Stream}}
+\subsubsection[{Read\-Byte\-From\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\-::\-Read\-Byte\-From\-Buffer (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t \&}]{byte, }
-\item[{uint8\+\_\+t $\ast$}]{buffer, }
-\item[{uint16\+\_\+t \&}]{start\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{stop\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{buffer\+\_\+size, }
+\item[{uint8\-\_\-t \&}]{byte, }
+\item[{uint8\-\_\-t $\ast$}]{buffer, }
+\item[{uint16\-\_\-t \&}]{start\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{stop\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{buffer\-\_\-size, }
 \item[{bool \&}]{empty}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a32e449304f65b5571fe848a503fc9d68}{}\label{class_stream_a32e449304f65b5571fe848a503fc9d68}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_a32e449304f65b5571fe848a503fc9d68}
 Reads a byte from the given buffer. 
 \begin{DoxyParams}{Parameters}
 {\em buffer} & The buffer to read from. \\
 \hline
-{\em start\+\_\+index} & The first valid bit of the buffer. \\
+{\em start\-\_\-index} & The first valid bit of the buffer. \\
 \hline
-{\em stop\+\_\+index} & The last valid bit of the buffer. \\
+{\em stop\-\_\-index} & The last valid bit of the buffer. \\
 \hline
-{\em buffer\+\_\+size} & The size of the buffer. \\
+{\em buffer\-\_\-size} & The size of the buffer. \\
 \hline
 {\em empty} & Flag indicating whether the buffer is empty or completely full. \\
 \hline
@@ -293,54 +294,54 @@ Reads a byte from the given buffer.
 \begin{DoxyReturn}{Returns}
 The byte that was read. 
 \end{DoxyReturn}
-\index{Stream@{Stream}!Read\+Byte\+From\+Output\+Stream@{Read\+Byte\+From\+Output\+Stream}}
-\index{Read\+Byte\+From\+Output\+Stream@{Read\+Byte\+From\+Output\+Stream}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Read\+Byte\+From\+Output\+Stream(uint8\+\_\+t \&byte)}{ReadByteFromOutputStream(uint8_t &byte)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\+::\+Read\+Byte\+From\+Output\+Stream (
+\hypertarget{class_stream_a3f8e3c5513c6b8605c0fed74a3ed22bc}{\index{Stream@{Stream}!Read\-Byte\-From\-Output\-Stream@{Read\-Byte\-From\-Output\-Stream}}
+\index{Read\-Byte\-From\-Output\-Stream@{Read\-Byte\-From\-Output\-Stream}!Stream@{Stream}}
+\subsubsection[{Read\-Byte\-From\-Output\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\-::\-Read\-Byte\-From\-Output\-Stream (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t \&}]{byte}
+\item[{uint8\-\_\-t \&}]{byte}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a3f8e3c5513c6b8605c0fed74a3ed22bc}{}\label{class_stream_a3f8e3c5513c6b8605c0fed74a3ed22bc}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_a3f8e3c5513c6b8605c0fed74a3ed22bc}
 Reads a byte from the output stream. \begin{DoxyReturn}{Returns}
 Returns true if there are more bytes 
 \end{DoxyReturn}
-\index{Stream@{Stream}!Read\+From\+Buffer@{Read\+From\+Buffer}}
-\index{Read\+From\+Buffer@{Read\+From\+Buffer}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Read\+From\+Buffer(uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, uint8\+\_\+t $\ast$string, uint16\+\_\+t \&string\+\_\+size)}{ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size)}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::\+Read\+From\+Buffer (
+\hypertarget{class_stream_a752930f620aed4a3a80b243ce66e57ca}{\index{Stream@{Stream}!Read\-From\-Buffer@{Read\-From\-Buffer}}
+\index{Read\-From\-Buffer@{Read\-From\-Buffer}!Stream@{Stream}}
+\subsubsection[{Read\-From\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::\-Read\-From\-Buffer (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t $\ast$}]{buffer, }
-\item[{uint16\+\_\+t \&}]{start\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{stop\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{buffer\+\_\+size, }
+\item[{uint8\-\_\-t $\ast$}]{buffer, }
+\item[{uint16\-\_\-t \&}]{start\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{stop\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{buffer\-\_\-size, }
 \item[{bool \&}]{empty, }
-\item[{uint8\+\_\+t $\ast$}]{string, }
-\item[{uint16\+\_\+t \&}]{string\+\_\+size}
+\item[{uint8\-\_\-t $\ast$}]{string, }
+\item[{uint16\-\_\-t \&}]{string\-\_\-size}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a752930f620aed4a3a80b243ce66e57ca}{}\label{class_stream_a752930f620aed4a3a80b243ce66e57ca}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_a752930f620aed4a3a80b243ce66e57ca}
 Reads a string from the given buffer. 
 \begin{DoxyParams}{Parameters}
 {\em buffer} & Buffer to read from. \\
 \hline
-{\em start\+\_\+index} & The first valid byte of the buffer. \\
+{\em start\-\_\-index} & The first valid byte of the buffer. \\
 \hline
-{\em stop\+\_\+index} & The last valid byte of the buffer. \\
+{\em stop\-\_\-index} & The last valid byte of the buffer. \\
 \hline
-{\em buffer\+\_\+size} & The size of the buffer. \\
+{\em buffer\-\_\-size} & The size of the buffer. \\
 \hline
 {\em empty} & Flag indicating whether the buffer is empty or completely full. \\
 \hline
 {\em string} & The string to read into. \\
 \hline
-{\em string\+\_\+size} & The size of the string. \\
+{\em string\-\_\-size} & The size of the string. \\
 \hline
 \end{DoxyParams}
-\index{Stream@{Stream}!Read\+From\+Output\+Stream@{Read\+From\+Output\+Stream}}
-\index{Read\+From\+Output\+Stream@{Read\+From\+Output\+Stream}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Read\+From\+Output\+Stream(uint8\+\_\+t $\ast$string, uint16\+\_\+t size)}{ReadFromOutputStream(uint8_t *string, uint16_t size)}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::\+Read\+From\+Output\+Stream (
+\hypertarget{class_stream_ab458be72cc54330f518f5ab35ab84106}{\index{Stream@{Stream}!Read\-From\-Output\-Stream@{Read\-From\-Output\-Stream}}
+\index{Read\-From\-Output\-Stream@{Read\-From\-Output\-Stream}!Stream@{Stream}}
+\subsubsection[{Read\-From\-Output\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::\-Read\-From\-Output\-Stream (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t $\ast$}]{string, }
-\item[{uint16\+\_\+t}]{size}
+\item[{uint8\-\_\-t $\ast$}]{string, }
+\item[{uint16\-\_\-t}]{size}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_ab458be72cc54330f518f5ab35ab84106}{}\label{class_stream_ab458be72cc54330f518f5ab35ab84106}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_ab458be72cc54330f518f5ab35ab84106}
 Reads data from the input stream into the specified string. 
 \begin{DoxyParams}{Parameters}
 {\em string} & String to store the read data in. \\
@@ -348,14 +349,14 @@ Reads data from the input stream into the specified string.
 {\em size} & Size of the string. \\
 \hline
 \end{DoxyParams}
-\index{Stream@{Stream}!Write@{Write}}
+\hypertarget{class_stream_a508be3423e4d99ab2757275fb723002a}{\index{Stream@{Stream}!Write@{Write}}
 \index{Write@{Write}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Write(uint8\+\_\+t $\ast$string, uint16\+\_\+t size)}{Write(uint8_t *string, uint16_t size)}}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\+::\+Write (
+\subsubsection[{Write}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\-::\-Write (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t $\ast$}]{string, }
-\item[{uint16\+\_\+t}]{size}
+\item[{uint8\-\_\-t $\ast$}]{string, }
+\item[{uint16\-\_\-t}]{size}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_a508be3423e4d99ab2757275fb723002a}{}\label{class_stream_a508be3423e4d99ab2757275fb723002a}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_a508be3423e4d99ab2757275fb723002a}
 Writes the specified data to the output stream. 
 \begin{DoxyParams}{Parameters}
 {\em string} & Input data. \\
@@ -365,15 +366,15 @@ Writes the specified data to the output stream.
 \end{DoxyParams}
 
 
-Reimplemented in \hyperlink{class_s_o_c_k_e_t_ad8ee6b81c9f30267406412a95264abed}{S\+O\+C\+K\+ET}, and \hyperlink{class_u_a_r_t_a8bb77ca27b4e17d608d2743313625ac4}{U\+A\+RT}.
+Reimplemented in \hyperlink{class_s_o_c_k_e_t_ad8ee6b81c9f30267406412a95264abed}{S\-O\-C\-K\-E\-T}, and \hyperlink{class_u_a_r_t_a8bb77ca27b4e17d608d2743313625ac4}{U\-A\-R\-T}.
 
-\index{Stream@{Stream}!Write\+Byte@{Write\+Byte}}
-\index{Write\+Byte@{Write\+Byte}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Write\+Byte(uint8\+\_\+t byte)}{WriteByte(uint8_t byte)}}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\+::\+Write\+Byte (
+\hypertarget{class_stream_aeaed767b3a8d946c6f81465fa83ff17f}{\index{Stream@{Stream}!Write\-Byte@{Write\-Byte}}
+\index{Write\-Byte@{Write\-Byte}!Stream@{Stream}}
+\subsubsection[{Write\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\-::\-Write\-Byte (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t}]{byte}
+\item[{uint8\-\_\-t}]{byte}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_stream_aeaed767b3a8d946c6f81465fa83ff17f}{}\label{class_stream_aeaed767b3a8d946c6f81465fa83ff17f}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_stream_aeaed767b3a8d946c6f81465fa83ff17f}
 Writes one byte to the output stream. 
 \begin{DoxyParams}{Parameters}
 {\em byte} & The byte to be written. \\
@@ -381,101 +382,101 @@ Writes one byte to the output stream.
 \end{DoxyParams}
 
 
-Reimplemented in \hyperlink{class_s_o_c_k_e_t_abcddb460b7adf3595a813f08f3659356}{S\+O\+C\+K\+ET}.
+Reimplemented in \hyperlink{class_s_o_c_k_e_t_abcddb460b7adf3595a813f08f3659356}{S\-O\-C\-K\-E\-T}.
 
-\index{Stream@{Stream}!Write\+Byte\+To\+Buffer@{Write\+Byte\+To\+Buffer}}
-\index{Write\+Byte\+To\+Buffer@{Write\+Byte\+To\+Buffer}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Write\+Byte\+To\+Buffer(uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, bool \&overflow\+\_\+flag, uint8\+\_\+t \&byte, void($\ast$cb)(\+Stream $\ast$stream))}{WriteByteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t &byte, void(*cb)(Stream *stream))}}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\+::\+Write\+Byte\+To\+Buffer (
+\hypertarget{class_stream_a7b6a9a1f96e0f524e950863215128911}{\index{Stream@{Stream}!Write\-Byte\-To\-Buffer@{Write\-Byte\-To\-Buffer}}
+\index{Write\-Byte\-To\-Buffer@{Write\-Byte\-To\-Buffer}!Stream@{Stream}}
+\subsubsection[{Write\-Byte\-To\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\-::\-Write\-Byte\-To\-Buffer (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t $\ast$}]{buffer, }
-\item[{uint16\+\_\+t \&}]{start\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{stop\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{buffer\+\_\+size, }
+\item[{uint8\-\_\-t $\ast$}]{buffer, }
+\item[{uint16\-\_\-t \&}]{start\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{stop\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{buffer\-\_\-size, }
 \item[{bool \&}]{empty, }
-\item[{bool \&}]{overflow\+\_\+flag, }
-\item[{uint8\+\_\+t \&}]{byte, }
+\item[{bool \&}]{overflow\-\_\-flag, }
+\item[{uint8\-\_\-t \&}]{byte, }
 \item[{void($\ast$)({\bf Stream} $\ast$stream)}]{cb}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a7b6a9a1f96e0f524e950863215128911}{}\label{class_stream_a7b6a9a1f96e0f524e950863215128911}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_a7b6a9a1f96e0f524e950863215128911}
 Writes a byte to the buffer. 
 \begin{DoxyParams}{Parameters}
 {\em buffer} & The buffer to write to. \\
 \hline
-{\em start\+\_\+index} & The first valid bit of the buffer. \\
+{\em start\-\_\-index} & The first valid bit of the buffer. \\
 \hline
-{\em stop\+\_\+index} & The last valid bit of the buffer. \\
+{\em stop\-\_\-index} & The last valid bit of the buffer. \\
 \hline
-{\em buffer\+\_\+size} & The size of the buffer. \\
+{\em buffer\-\_\-size} & The size of the buffer. \\
 \hline
 {\em empty} & Flag indicating whether the buffer is empty or completely full. \\
 \hline
-{\em overflow\+\_\+flag} & A flag indicating whether or not the buffer has overflowed. \\
+{\em overflow\-\_\-flag} & A flag indicating whether or not the buffer has overflowed. \\
 \hline
 {\em byte} & The byte to be written. \\
 \hline
-{\em cb\+\_\+flag} & A flag indicating wether or not the cb function should be called \\
+{\em cb\-\_\-flag} & A flag indicating wether or not the cb function should be called \\
 \hline
-{\em cb} & Callback function to be called if cb\+\_\+flag is true \\
+{\em cb} & Callback function to be called if cb\-\_\-flag is true \\
 \hline
 \end{DoxyParams}
-\index{Stream@{Stream}!Write\+Byte\+To\+Input\+Stream@{Write\+Byte\+To\+Input\+Stream}}
-\index{Write\+Byte\+To\+Input\+Stream@{Write\+Byte\+To\+Input\+Stream}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Write\+Byte\+To\+Input\+Stream(uint8\+\_\+t \&byte)}{WriteByteToInputStream(uint8_t &byte)}}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\+::\+Write\+Byte\+To\+Input\+Stream (
+\hypertarget{class_stream_a0784d377cc92ddde7cc730be17a1a3aa}{\index{Stream@{Stream}!Write\-Byte\-To\-Input\-Stream@{Write\-Byte\-To\-Input\-Stream}}
+\index{Write\-Byte\-To\-Input\-Stream@{Write\-Byte\-To\-Input\-Stream}!Stream@{Stream}}
+\subsubsection[{Write\-Byte\-To\-Input\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\-::\-Write\-Byte\-To\-Input\-Stream (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t \&}]{byte}
+\item[{uint8\-\_\-t \&}]{byte}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a0784d377cc92ddde7cc730be17a1a3aa}{}\label{class_stream_a0784d377cc92ddde7cc730be17a1a3aa}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_a0784d377cc92ddde7cc730be17a1a3aa}
 Writes a byte to the input stream. 
 \begin{DoxyParams}{Parameters}
 {\em byte} & The byte to be written. \\
 \hline
 \end{DoxyParams}
-\index{Stream@{Stream}!Write\+To\+Buffer@{Write\+To\+Buffer}}
-\index{Write\+To\+Buffer@{Write\+To\+Buffer}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Write\+To\+Buffer(uint8\+\_\+t $\ast$buffer, uint16\+\_\+t \&start\+\_\+index, uint16\+\_\+t \&stop\+\_\+index, uint16\+\_\+t \&buffer\+\_\+size, bool \&empty, bool \&overflow\+\_\+flag, uint8\+\_\+t $\ast$string, uint16\+\_\+t \&string\+\_\+size, void($\ast$cb)(\+Stream $\ast$stream))}{WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, bool &overflow_flag, uint8_t *string, uint16_t &string_size, void(*cb)(Stream *stream))}}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\+::\+Write\+To\+Buffer (
+\hypertarget{class_stream_a5ba59861c0ab5977d7c92d6dcd72807c}{\index{Stream@{Stream}!Write\-To\-Buffer@{Write\-To\-Buffer}}
+\index{Write\-To\-Buffer@{Write\-To\-Buffer}!Stream@{Stream}}
+\subsubsection[{Write\-To\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\-::\-Write\-To\-Buffer (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t $\ast$}]{buffer, }
-\item[{uint16\+\_\+t \&}]{start\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{stop\+\_\+index, }
-\item[{uint16\+\_\+t \&}]{buffer\+\_\+size, }
+\item[{uint8\-\_\-t $\ast$}]{buffer, }
+\item[{uint16\-\_\-t \&}]{start\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{stop\-\_\-index, }
+\item[{uint16\-\_\-t \&}]{buffer\-\_\-size, }
 \item[{bool \&}]{empty, }
-\item[{bool \&}]{overflow\+\_\+flag, }
-\item[{uint8\+\_\+t $\ast$}]{string, }
-\item[{uint16\+\_\+t \&}]{string\+\_\+size, }
+\item[{bool \&}]{overflow\-\_\-flag, }
+\item[{uint8\-\_\-t $\ast$}]{string, }
+\item[{uint16\-\_\-t \&}]{string\-\_\-size, }
 \item[{void($\ast$)({\bf Stream} $\ast$stream)}]{cb}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_a5ba59861c0ab5977d7c92d6dcd72807c}{}\label{class_stream_a5ba59861c0ab5977d7c92d6dcd72807c}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_a5ba59861c0ab5977d7c92d6dcd72807c}
 Writes a string to the given buffer. 
 \begin{DoxyParams}{Parameters}
 {\em buffer} & Buffer to write to. \\
 \hline
-{\em start\+\_\+index} & The first valid byte of the buffer. \\
+{\em start\-\_\-index} & The first valid byte of the buffer. \\
 \hline
-{\em stop\+\_\+index} & The last valid byte of the buffer. \\
+{\em stop\-\_\-index} & The last valid byte of the buffer. \\
 \hline
-{\em buffer\+\_\+size} & The size of the buffer. \\
+{\em buffer\-\_\-size} & The size of the buffer. \\
 \hline
 {\em empty} & Flag indicating whether the buffer is empty or completely full. \\
 \hline
-{\em overflow\+\_\+flag} & A flag indicating whether or not the buffer has overflowed. \\
+{\em overflow\-\_\-flag} & A flag indicating whether or not the buffer has overflowed. \\
 \hline
 {\em string} & The string to read from. \\
 \hline
-{\em string\+\_\+size} & The size of the string. \\
+{\em string\-\_\-size} & The size of the string. \\
 \hline
-{\em cb\+\_\+flag} & A flag indicating wether or not the cb function should be called \\
+{\em cb\-\_\-flag} & A flag indicating wether or not the cb function should be called \\
 \hline
-{\em cb} & Callback function to be called if cb\+\_\+flag is true \\
+{\em cb} & Callback function to be called if cb\-\_\-flag is true \\
 \hline
 \end{DoxyParams}
-\index{Stream@{Stream}!Write\+To\+Input\+Stream@{Write\+To\+Input\+Stream}}
-\index{Write\+To\+Input\+Stream@{Write\+To\+Input\+Stream}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{Write\+To\+Input\+Stream(uint8\+\_\+t $\ast$string, uint16\+\_\+t size)}{WriteToInputStream(uint8_t *string, uint16_t size)}}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\+::\+Write\+To\+Input\+Stream (
+\hypertarget{class_stream_aa2f020721d273ce821ccf626e5eb773c}{\index{Stream@{Stream}!Write\-To\-Input\-Stream@{Write\-To\-Input\-Stream}}
+\index{Write\-To\-Input\-Stream@{Write\-To\-Input\-Stream}!Stream@{Stream}}
+\subsubsection[{Write\-To\-Input\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}void Stream\-::\-Write\-To\-Input\-Stream (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t $\ast$}]{string, }
-\item[{uint16\+\_\+t}]{size}
+\item[{uint8\-\_\-t $\ast$}]{string, }
+\item[{uint16\-\_\-t}]{size}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_stream_aa2f020721d273ce821ccf626e5eb773c}{}\label{class_stream_aa2f020721d273ce821ccf626e5eb773c}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_stream_aa2f020721d273ce821ccf626e5eb773c}
 Writes the specified data to the output stream. 
 \begin{DoxyParams}{Parameters}
 {\em string} & Input data. \\
@@ -486,45 +487,45 @@ Writes the specified data to the output stream.
 
 
 \subsection{Member Data Documentation}
-\index{Stream@{Stream}!input\+\_\+buffer@{input\+\_\+buffer}}
-\index{input\+\_\+buffer@{input\+\_\+buffer}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{input\+\_\+buffer}{input_buffer}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t$\ast$ Stream\+::input\+\_\+buffer\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_a81139fc126566f9d42470fdb405ed26a}{}\label{class_stream_a81139fc126566f9d42470fdb405ed26a}
-Buffer that stores the input stream data. \index{Stream@{Stream}!input\+\_\+buffer\+\_\+empty@{input\+\_\+buffer\+\_\+empty}}
-\index{input\+\_\+buffer\+\_\+empty@{input\+\_\+buffer\+\_\+empty}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{input\+\_\+buffer\+\_\+empty}{input_buffer_empty}}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\+::input\+\_\+buffer\+\_\+empty = true\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_aff1c899af0d2dea35700d5665f378cd8}{}\label{class_stream_aff1c899af0d2dea35700d5665f378cd8}
-Flag indicating whether the buffer is empty or full. \index{Stream@{Stream}!input\+\_\+buffer\+\_\+overflowed@{input\+\_\+buffer\+\_\+overflowed}}
-\index{input\+\_\+buffer\+\_\+overflowed@{input\+\_\+buffer\+\_\+overflowed}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{input\+\_\+buffer\+\_\+overflowed}{input_buffer_overflowed}}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\+::input\+\_\+buffer\+\_\+overflowed = false\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_ae7300cb8941cec142c14e8fc9baab9d3}{}\label{class_stream_ae7300cb8941cec142c14e8fc9baab9d3}
-Flag indicating whether the input buffer has overflowed or not. This is reset when read by \hyperlink{class_stream_a088c4e68d568acfad715c56f408fe9f8}{Check\+Input\+Overflow\+Flag()}. \index{Stream@{Stream}!input\+\_\+buffer\+\_\+size@{input\+\_\+buffer\+\_\+size}}
-\index{input\+\_\+buffer\+\_\+size@{input\+\_\+buffer\+\_\+size}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{input\+\_\+buffer\+\_\+size}{input_buffer_size}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::input\+\_\+buffer\+\_\+size\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_a7373b1d6580a2d5dc74e788b3bb6a596}{}\label{class_stream_a7373b1d6580a2d5dc74e788b3bb6a596}
-The size of the input buffer. \index{Stream@{Stream}!input\+\_\+buffer\+\_\+start\+\_\+index@{input\+\_\+buffer\+\_\+start\+\_\+index}}
-\index{input\+\_\+buffer\+\_\+start\+\_\+index@{input\+\_\+buffer\+\_\+start\+\_\+index}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{input\+\_\+buffer\+\_\+start\+\_\+index}{input_buffer_start_index}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::input\+\_\+buffer\+\_\+start\+\_\+index = 0\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_a6fc009e9e71fa92cbbf9b407ede82a73}{}\label{class_stream_a6fc009e9e71fa92cbbf9b407ede82a73}
-Indicates the first valid data byte in the buffer. \index{Stream@{Stream}!input\+\_\+buffer\+\_\+stop\+\_\+index@{input\+\_\+buffer\+\_\+stop\+\_\+index}}
-\index{input\+\_\+buffer\+\_\+stop\+\_\+index@{input\+\_\+buffer\+\_\+stop\+\_\+index}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{input\+\_\+buffer\+\_\+stop\+\_\+index}{input_buffer_stop_index}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::input\+\_\+buffer\+\_\+stop\+\_\+index\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_aaceece6a2defd1f7d9667fcc0be03a7a}{}\label{class_stream_aaceece6a2defd1f7d9667fcc0be03a7a}
-Indicates the last valid data byte in the buffer. \index{Stream@{Stream}!output\+\_\+buffer@{output\+\_\+buffer}}
-\index{output\+\_\+buffer@{output\+\_\+buffer}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{output\+\_\+buffer}{output_buffer}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t$\ast$ Stream\+::output\+\_\+buffer\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_a3cd072a10ad5c1b6308dd2da2cdbec71}{}\label{class_stream_a3cd072a10ad5c1b6308dd2da2cdbec71}
-Buffer that stores the output stream data. \index{Stream@{Stream}!output\+\_\+buffer\+\_\+empty@{output\+\_\+buffer\+\_\+empty}}
-\index{output\+\_\+buffer\+\_\+empty@{output\+\_\+buffer\+\_\+empty}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{output\+\_\+buffer\+\_\+empty}{output_buffer_empty}}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\+::output\+\_\+buffer\+\_\+empty = true\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_a54b21caaee0001e44968fb70d0a591f5}{}\label{class_stream_a54b21caaee0001e44968fb70d0a591f5}
-Flag indicating whether the buffer is empty or full. \index{Stream@{Stream}!output\+\_\+buffer\+\_\+overflowed@{output\+\_\+buffer\+\_\+overflowed}}
-\index{output\+\_\+buffer\+\_\+overflowed@{output\+\_\+buffer\+\_\+overflowed}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{output\+\_\+buffer\+\_\+overflowed}{output_buffer_overflowed}}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\+::output\+\_\+buffer\+\_\+overflowed = false\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_a149776fead5c56894699da5bfe489b65}{}\label{class_stream_a149776fead5c56894699da5bfe489b65}
-Flag indicating whether the output buffer has overflowed or not. This is reset when read by \hyperlink{class_stream_aee6c201819b874c5934a270592d9d311}{Check\+Output\+Overflow\+Flag()}. \index{Stream@{Stream}!output\+\_\+buffer\+\_\+size@{output\+\_\+buffer\+\_\+size}}
-\index{output\+\_\+buffer\+\_\+size@{output\+\_\+buffer\+\_\+size}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{output\+\_\+buffer\+\_\+size}{output_buffer_size}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::output\+\_\+buffer\+\_\+size\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_a0e9fd6570bafb97ab76ebd37158e78ff}{}\label{class_stream_a0e9fd6570bafb97ab76ebd37158e78ff}
-The size of the output buffer. \index{Stream@{Stream}!output\+\_\+buffer\+\_\+start\+\_\+index@{output\+\_\+buffer\+\_\+start\+\_\+index}}
-\index{output\+\_\+buffer\+\_\+start\+\_\+index@{output\+\_\+buffer\+\_\+start\+\_\+index}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{output\+\_\+buffer\+\_\+start\+\_\+index}{output_buffer_start_index}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::output\+\_\+buffer\+\_\+start\+\_\+index = 0\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_a1b2d63accede402e5c4c7fd3747d4c33}{}\label{class_stream_a1b2d63accede402e5c4c7fd3747d4c33}
-Indicates the first valid data byte in the buffer. \index{Stream@{Stream}!output\+\_\+buffer\+\_\+stop\+\_\+index@{output\+\_\+buffer\+\_\+stop\+\_\+index}}
-\index{output\+\_\+buffer\+\_\+stop\+\_\+index@{output\+\_\+buffer\+\_\+stop\+\_\+index}!Stream@{Stream}}
-\subsubsection[{\texorpdfstring{output\+\_\+buffer\+\_\+stop\+\_\+index}{output_buffer_stop_index}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Stream\+::output\+\_\+buffer\+\_\+stop\+\_\+index\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_stream_a39d177eedd4d5ff28a95cca9131daf4c}{}\label{class_stream_a39d177eedd4d5ff28a95cca9131daf4c}
+\hypertarget{class_stream_a81139fc126566f9d42470fdb405ed26a}{\index{Stream@{Stream}!input\-\_\-buffer@{input\-\_\-buffer}}
+\index{input\-\_\-buffer@{input\-\_\-buffer}!Stream@{Stream}}
+\subsubsection[{input\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t$\ast$ Stream\-::input\-\_\-buffer\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_a81139fc126566f9d42470fdb405ed26a}
+Buffer that stores the input stream data. \hypertarget{class_stream_aff1c899af0d2dea35700d5665f378cd8}{\index{Stream@{Stream}!input\-\_\-buffer\-\_\-empty@{input\-\_\-buffer\-\_\-empty}}
+\index{input\-\_\-buffer\-\_\-empty@{input\-\_\-buffer\-\_\-empty}!Stream@{Stream}}
+\subsubsection[{input\-\_\-buffer\-\_\-empty}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\-::input\-\_\-buffer\-\_\-empty = true\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_aff1c899af0d2dea35700d5665f378cd8}
+Flag indicating whether the buffer is empty or full. \hypertarget{class_stream_ae7300cb8941cec142c14e8fc9baab9d3}{\index{Stream@{Stream}!input\-\_\-buffer\-\_\-overflowed@{input\-\_\-buffer\-\_\-overflowed}}
+\index{input\-\_\-buffer\-\_\-overflowed@{input\-\_\-buffer\-\_\-overflowed}!Stream@{Stream}}
+\subsubsection[{input\-\_\-buffer\-\_\-overflowed}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\-::input\-\_\-buffer\-\_\-overflowed = false\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_ae7300cb8941cec142c14e8fc9baab9d3}
+Flag indicating whether the input buffer has overflowed or not. This is reset when read by \hyperlink{class_stream_a088c4e68d568acfad715c56f408fe9f8}{Check\-Input\-Overflow\-Flag()}. \hypertarget{class_stream_a7373b1d6580a2d5dc74e788b3bb6a596}{\index{Stream@{Stream}!input\-\_\-buffer\-\_\-size@{input\-\_\-buffer\-\_\-size}}
+\index{input\-\_\-buffer\-\_\-size@{input\-\_\-buffer\-\_\-size}!Stream@{Stream}}
+\subsubsection[{input\-\_\-buffer\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::input\-\_\-buffer\-\_\-size\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_a7373b1d6580a2d5dc74e788b3bb6a596}
+The size of the input buffer. \hypertarget{class_stream_a6fc009e9e71fa92cbbf9b407ede82a73}{\index{Stream@{Stream}!input\-\_\-buffer\-\_\-start\-\_\-index@{input\-\_\-buffer\-\_\-start\-\_\-index}}
+\index{input\-\_\-buffer\-\_\-start\-\_\-index@{input\-\_\-buffer\-\_\-start\-\_\-index}!Stream@{Stream}}
+\subsubsection[{input\-\_\-buffer\-\_\-start\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::input\-\_\-buffer\-\_\-start\-\_\-index = 0\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_a6fc009e9e71fa92cbbf9b407ede82a73}
+Indicates the first valid data byte in the buffer. \hypertarget{class_stream_aaceece6a2defd1f7d9667fcc0be03a7a}{\index{Stream@{Stream}!input\-\_\-buffer\-\_\-stop\-\_\-index@{input\-\_\-buffer\-\_\-stop\-\_\-index}}
+\index{input\-\_\-buffer\-\_\-stop\-\_\-index@{input\-\_\-buffer\-\_\-stop\-\_\-index}!Stream@{Stream}}
+\subsubsection[{input\-\_\-buffer\-\_\-stop\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::input\-\_\-buffer\-\_\-stop\-\_\-index\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_aaceece6a2defd1f7d9667fcc0be03a7a}
+Indicates the last valid data byte in the buffer. \hypertarget{class_stream_a3cd072a10ad5c1b6308dd2da2cdbec71}{\index{Stream@{Stream}!output\-\_\-buffer@{output\-\_\-buffer}}
+\index{output\-\_\-buffer@{output\-\_\-buffer}!Stream@{Stream}}
+\subsubsection[{output\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t$\ast$ Stream\-::output\-\_\-buffer\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_a3cd072a10ad5c1b6308dd2da2cdbec71}
+Buffer that stores the output stream data. \hypertarget{class_stream_a54b21caaee0001e44968fb70d0a591f5}{\index{Stream@{Stream}!output\-\_\-buffer\-\_\-empty@{output\-\_\-buffer\-\_\-empty}}
+\index{output\-\_\-buffer\-\_\-empty@{output\-\_\-buffer\-\_\-empty}!Stream@{Stream}}
+\subsubsection[{output\-\_\-buffer\-\_\-empty}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\-::output\-\_\-buffer\-\_\-empty = true\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_a54b21caaee0001e44968fb70d0a591f5}
+Flag indicating whether the buffer is empty or full. \hypertarget{class_stream_a149776fead5c56894699da5bfe489b65}{\index{Stream@{Stream}!output\-\_\-buffer\-\_\-overflowed@{output\-\_\-buffer\-\_\-overflowed}}
+\index{output\-\_\-buffer\-\_\-overflowed@{output\-\_\-buffer\-\_\-overflowed}!Stream@{Stream}}
+\subsubsection[{output\-\_\-buffer\-\_\-overflowed}]{\setlength{\rightskip}{0pt plus 5cm}bool Stream\-::output\-\_\-buffer\-\_\-overflowed = false\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_a149776fead5c56894699da5bfe489b65}
+Flag indicating whether the output buffer has overflowed or not. This is reset when read by \hyperlink{class_stream_aee6c201819b874c5934a270592d9d311}{Check\-Output\-Overflow\-Flag()}. \hypertarget{class_stream_a0e9fd6570bafb97ab76ebd37158e78ff}{\index{Stream@{Stream}!output\-\_\-buffer\-\_\-size@{output\-\_\-buffer\-\_\-size}}
+\index{output\-\_\-buffer\-\_\-size@{output\-\_\-buffer\-\_\-size}!Stream@{Stream}}
+\subsubsection[{output\-\_\-buffer\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::output\-\_\-buffer\-\_\-size\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_a0e9fd6570bafb97ab76ebd37158e78ff}
+The size of the output buffer. \hypertarget{class_stream_a1b2d63accede402e5c4c7fd3747d4c33}{\index{Stream@{Stream}!output\-\_\-buffer\-\_\-start\-\_\-index@{output\-\_\-buffer\-\_\-start\-\_\-index}}
+\index{output\-\_\-buffer\-\_\-start\-\_\-index@{output\-\_\-buffer\-\_\-start\-\_\-index}!Stream@{Stream}}
+\subsubsection[{output\-\_\-buffer\-\_\-start\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::output\-\_\-buffer\-\_\-start\-\_\-index = 0\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_a1b2d63accede402e5c4c7fd3747d4c33}
+Indicates the first valid data byte in the buffer. \hypertarget{class_stream_a39d177eedd4d5ff28a95cca9131daf4c}{\index{Stream@{Stream}!output\-\_\-buffer\-\_\-stop\-\_\-index@{output\-\_\-buffer\-\_\-stop\-\_\-index}}
+\index{output\-\_\-buffer\-\_\-stop\-\_\-index@{output\-\_\-buffer\-\_\-stop\-\_\-index}!Stream@{Stream}}
+\subsubsection[{output\-\_\-buffer\-\_\-stop\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t Stream\-::output\-\_\-buffer\-\_\-stop\-\_\-index\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_stream_a39d177eedd4d5ff28a95cca9131daf4c}
 Indicates the last valid data byte in the buffer. 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-lib/stream/\hyperlink{stream_8h}{stream.\+h}\item 
-lib/stream/stream.\+cpp\end{DoxyCompactItemize}
+lib/stream/\hyperlink{stream_8h}{stream.\-h}\item 
+lib/stream/stream.\-cpp\end{DoxyCompactItemize}

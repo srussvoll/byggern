@@ -1,4 +1,5 @@
 #include "new.h"
+#include "printf.h"
 
 #include <stdlib.h>
 

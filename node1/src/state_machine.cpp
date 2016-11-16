@@ -11,22 +11,25 @@
 #include "lib/adc/adc.h"
 #include "lib/oled_memory/oled_memory.h"
 #include "lib/menu/menu.h"
+#include "lib/utilities/new.h"
 
 #define STATE_MENU                  1
 #define STATE_GAME                  2
 #define STATE_HIGHSCORE             3
 
-StateMachine *fsm;
-SCP          *channel;
-SOCKET* sockets[] = {
-        &SOCKET::GetInstance(0),
-        &SOCKET::GetInstance(1)
-};
-Menu::Controller *g_controller;
+namespace {
+    StateMachine *fsm;
+    SCP *channel;
+    SOCKET *sockets[] = {
+            &SOCKET::GetInstance(0),
+            &SOCKET::GetInstance(1)
+    };
+    Menu::Controller *controller;
+}
 /*-----------------------   INITIALIZE  -------------------------------*/
 
-void InitializeLoop(){
-    printf("STATE INITIALIZE LOOP ENTERED\n");
+void InitializeFSM(){
+    //printf("STATE INITIALIZE ENTERED\n");
 
     // Initialize Oled
     OLED_memory &memory_oled = OLED_memory::GetInstance();
@@ -34,10 +37,8 @@ void InitializeLoop(){
     OLED &my_oled = (OLED&) memory_oled;
 
     my_oled.SetFont(Fonts::f8x8, 8, 8);
-    Menu::Controller controller(my_oled, 4);
-    g_controller= &controller;
-
-    char item0[] = "Play Game";
+    controller = new Menu::Controller(my_oled, 4);
+    char item0[] = "Play Games";
     char item1[] = "Settings";
     char item2[] = "Highscore";
     char item3[] = "About";
@@ -56,22 +57,20 @@ void InitializeLoop(){
     Menu::Item* main_items[] = {i0, i1, i2, i3};
     Menu::Item* sub_main_items[] = {i4, i5};
 
-    controller.AddMenuItems(main_items, (sizeof(main_items)) / sizeof(main_items[0]));
+    controller->AddMenuItems(main_items, (sizeof(main_items)) / sizeof(main_items[0]));
 
-    controller.ControlGoToItem(1);
-    controller.AddMenu(sub_main_items, (sizeof(sub_main_items)) / sizeof(sub_main_items[0]));
-
-
-
-    fsm->Transition(STATE_MENU,0);
-    return;
+    controller->ControlGoToItem(1);
+    controller->AddMenu(sub_main_items, (sizeof(sub_main_items)) / sizeof(sub_main_items[0]));
+    //controller->Render();
+    //while(1);
+    fsm->Transition(STATE_MENU, false);
 }
 
 /*-----------------------     MENU    -------------------------------*/
 
 void MenuEnter() {
-    g_controller->Render();
-
+    printf("STATE MENU ENTERED \n");
+    controller->Render();
 }
 
 void MenuLoop() {
@@ -90,12 +89,12 @@ void MenuLoop() {
     //TODO G_Controler Leaves scope. Must fix !
     if(y_value < 80){
         printf("Moving down\n");
-        g_controller->SelectNext();
-        g_controller->Render();
+        controller->SelectNext();
+        controller->Render();
     }else if (y_value > 170){
         printf("Moving up\n");
-        g_controller->SelectPrevious();
-        g_controller->Render();
+        controller->SelectPrevious();
+        controller->Render();
     }
 }
 
@@ -105,7 +104,7 @@ void MenuLeave() {
 
 /*----------------------   PLAY GAME  -------------------------------*/
 
-void PlaygeGameEnter() {
+void PlayGameEnter() {
     printf("STATE PLAY GAME ENTERED\n");
     // Send start of game command
     channel->Send(0, CMD_GAME_START, nullptr, 0);
@@ -155,9 +154,9 @@ void PlayGameLeave() {
 /* States: enter, loops and leaves */
 /* State functions table */
 void (*state_functions[][3])(void) = {
-/* 0. Initialize                 */ {nullptr,            &InitializeLoop, nullptr},
-/* 1. Menu                       */ {&MenuEnter,    &MenuLoop,       &MenuLeave},
-/* 2. Play Game                  */ {PlaygeGameEnter, &PlayGameLoop,   &PlayGameLeave},
+/* 0. Initialize                 */ {InitializeFSM, nullptr, nullptr},
+/* 1. Menu                       */ {MenuEnter,    MenuLoop,       MenuLeave},
+/* 2. Play Game                  */ {PlayGameEnter, PlayGameLoop,   PlayGameLeave},
 /* 3. Highscore Score            */ {nullptr,            nullptr,         nullptr},
 };
 

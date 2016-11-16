@@ -19,7 +19,7 @@ namespace {
 
 namespace Menu {
     Item::Item(char *label, uint8_t label_length) : label_length(label_length) {
-        printf("Placing the label on the heap.\n");
+//        printf("Placing the label on the heap.\n");
         this->label = (char *) malloc(label_length * sizeof(char));
         memcpy(this->label, label, label_length);
     }
@@ -133,9 +133,9 @@ namespace Menu {
 
     void Controller::ExecuteItem() {
         this->GoToItem(this->current_index_selected);
-        printf("item to be executed: %s \n", this->current_item_navigate->label);
+        //printf("item to be executed: %s \n", this->current_item_navigate->label);
         if (this->current_item_navigate->has_sub_menu) {
-            printf("I have submeny \n");
+            //printf("I have submeny \n");
             this->GoToMenu((Menu *) this->current_item_navigate->action);
             this->Render();
         }

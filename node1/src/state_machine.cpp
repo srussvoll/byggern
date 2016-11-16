@@ -141,27 +141,29 @@ void PlayGameLoop() {
     // Send joystick message
     ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
     ADC &adc_y = ADC::GetInstance(ADC_ADDRESS2);
+    ADC &adc_p = ADC::GetInstance(ADC_ADDRESS3);
 
     // X-Value
     while(!adc_x.request_sample());
     uint8_t x_value;
-    while(!adc_x.ReadByte(x_value)){
-        ;
-    }
+    while(!adc_x.ReadByte(x_value));
 
     // Y-Value
     while(!adc_y.request_sample());
     uint8_t y_value;
-    while(!adc_y.ReadByte(y_value)){
-        ;
-    }
+    while(!adc_y.ReadByte(y_value));
 
-    bool touchbutton_value;
-    touchbutton_value = PINB & (1 << PB0);
+    // Touch slider
+    while(!adc_p.request_sample());
+    uint8_t p_value;
+    while(!adc_p.ReadByte(p_value));
 
-    uint8_t x[] = {x_value, y_value, touchbutton_value};
+    // Touch button
+    bool touchbutton_value = (bool) (PINB & (1 << PB0));
+
+    uint8_t x[] = {x_value, y_value, p_value, (uint8_t) touchbutton_value};
     //printf("X: %d, Y:%d, T:%d \n", x_value, y_value, touchbutton_value);
-    channel->Send(1, CMD_JOYSTICK_VALUES, x, 3);
+    channel->Send(1, CMD_JOYSTICK_VALUES, x, sizeof(x));
 
     // Check for end of game command
     uint8_t command;
@@ -175,6 +177,8 @@ void PlayGameLoop() {
             return;
         }
     }
+
+    _delay_ms(50);
 
 }
 
@@ -211,6 +215,14 @@ void HighscoreEnter() {
     oled.Repaint();
 }
 
+void HighscoreLoop() {
+    ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
+    while(!adc_x.request_sample());
+    uint8_t x_value;
+    while(!adc_x.ReadByte(x_value));
+    if(x_value < 40) fsm->Transition(STATE_MENU, false);
+}
+
 
 /* States: enter, loops and leaves */
 /* State functions table */
@@ -218,7 +230,7 @@ void (*state_functions[][3])(void) = {
 /* 0. Initialize                 */ {InitializeFSM, nullptr, nullptr},
 /* 1. Menu                       */ {MenuEnter,    MenuLoop,       MenuLeave},
 /* 2. Play Game                  */ {PlayGameEnter, PlayGameLoop,   PlayGameLeave},
-/* 3. Highscore Score            */ {HighscoreEnter,            nullptr,         nullptr},
+/* 3. Highscore Score            */ {HighscoreEnter,            HighscoreLoop,         nullptr},
 };
 
 /* Initialize and start the state machine */

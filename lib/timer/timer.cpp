@@ -8,9 +8,11 @@ void TIMER1_COMPA_vect() {
     t.timer += 1;
 }
 
-void Timer::Initialize() {
-    // Set timer 1 in CTC Mode
-    TCCR1B |= (1<<WGM12);
+void Timer::Initialize(uint8_t ms) {
+    if(this->timer_number == 0){
+        // Set timer 1 in CTC Mode
+        TCCR1B |= (1<<WGM12);
+    }
 
     /* How far are we counting?
      * If t = 1 s, f_clock = 16MHz and prescaler=1024
@@ -18,6 +20,7 @@ void Timer::Initialize() {
      * => f = 1/(16*10^6*1/1024) = 6.4*10^(-5)
      * => C = 1 / (6.4*10^(-5)) = 15625
      */
+    C = ms * 10^3 *
     OCR1A = 15625;
 
     // Enable global interrupts

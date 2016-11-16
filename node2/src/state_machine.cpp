@@ -10,6 +10,8 @@
 #include "../lib/timer/timer.h"
 #include "lib/joystick/joystick.h"
 #include "lib/solenoid/solenoid.h"
+#include "lib/encoder/encoder.h"
+#include <math.h>
 
 #define STATE_ONGOING        1
 #define STATE_IDLE           2
@@ -21,10 +23,19 @@ namespace {
             &SOCKET::GetInstance(1)
     };
 
+    Encoder encoder;
+
     uint8_t x_direction = 0;
     uint8_t y_direction = 0;
+    uint8_t slider_pos  = 0;
     bool touchbutton = false;
     bool touchbutton_last = false;
+
+    float K_p = 0.005;
+    float K_i = 0.0000000000000001;
+    float K_d = 0.0000000000000001;
+    uint16_t e_integral = 0;
+    int16_t y_previous = 0;
 }
 
 /*-----------------------   INITIALIZE  -------------------------------*/
@@ -84,7 +95,7 @@ void OngoingLoop() {
     // Get joystick values
     uint8_t command;
     uint8_t length;
-    uint8_t data[3];
+    uint8_t data[4];
 
     Joystick& joystick = Joystick::GetInstance();
     Motor& motor = Motor::GetInstance();
@@ -93,14 +104,15 @@ void OngoingLoop() {
         if (command == CMD_JOYSTICK_VALUES) {
             x_direction = data[0];
             y_direction = data[1];
-            touchbutton = data[2];
+            slider_pos  = data[2];
+            touchbutton = (bool) data[3];
             joystick.Update(x_direction, y_direction);
         }
     }
 
    // printf("X: %d, Y:%d \n", x_direction, y_direction);
 
-    Direction direction = joystick.GetDirection();
+    /*Direction direction = joystick.GetDirection();
     if((direction == West) || (direction == NorthWest) | direction == SouthWest){
         printf("Right \n");
         motor.Drive(joystick.GetPercentageX()*0.5);
@@ -111,7 +123,7 @@ void OngoingLoop() {
         motor.GoLeft();
     } else {
         motor.Drive(0);
-    }
+    }*/
 
     if(touchbutton){
         if(!touchbutton_last){
@@ -123,7 +135,26 @@ void OngoingLoop() {
     }else{
         touchbutton_last = false;
     }
-    printf("X: %d, Y:%d \n", x_direction, y_direction);
+    //printf("X: %3d, Y: %3d, pos: %3d \n", x_direction, y_direction, slider_pos);
+
+    int16_t r = slider_pos - 127;
+    int16_t y = encoder.ReadByte();
+//printf("hmm\n");
+    int16_t e = r - y;
+    e_integral += e;
+
+    float u = K_p * e;// + K_i * e_integral + K_d * (y - y_previous);
+    y_previous = y;
+
+    //u = 0.5;
+    if (u > 0) motor.GoRight();
+    else       motor.GoLeft();
+    motor.Drive(fabs(u));
+    //motor.Drive(0);
+    //_delay_ms(100);
+
+    printf("%d\n", (int) u * 100);
+    //printf("%d\n", (int) e);
 
     // Check fail state
     IR_Detector &ir = IR_Detector::GetInstance();

@@ -59,9 +59,8 @@ void DAC::Initialize(uint8_t min, uint8_t max, uint8_t i2c_address) {
 }
 
 bool DAC::WriteAnalogSignalPercentage(float percentage) {
-    if((percentage > 1.0) || (percentage < 0.0)){
-        return false;
-    }
+    if      (percentage > 1.0) percentage = 1.0;
+    else if (percentage < 0.0) percentage = 0.0;
     float value = percentage * (float) this->max;
     uint8_t value_uint8 = (uint8_t) floor(value);
     uint8_t message[3];

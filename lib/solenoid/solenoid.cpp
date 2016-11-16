@@ -5,14 +5,14 @@
 #include <avr/io.h>
 
 void Solenoid::Initialize() {
-    DDRK |= (1 << DDK0);
-    PORTK &= ~(1 << PORTK0);
+    DDRF |= (1 << DDF1);
+    PORTF &= ~(1 << PORTF1);
 }
 
 void Solenoid::Pulse() {
-    PORTK |= (1 << PORTK0);
+    PORTF |= (1 << PORTF1);
     _delay_ms(50);
-    PORTK &= ~(1 << PORTK0);
+    PORTF &= ~(1 << PORTF1);
     //_delay_ms(30);
 }
 #endif __ATMega2560__

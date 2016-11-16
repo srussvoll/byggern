@@ -14,9 +14,14 @@ public:
     * A Singleton implementation of this class
     *
     */
-    static Timer& GetInstance(){
-        static Timer instance;
-        return instance;
+    static Timer& GetInstance(uint8_t timer_number){
+        if(timer_number == 0){
+            static Timer instance(0);
+            return instance;
+        }else{
+            static Timer instance(1);
+            return instance;
+        }
     }
 
     /**
@@ -27,7 +32,7 @@ public:
     /**
      * Initializes the timer. You must run this function in order for the timer to work
      */
-    void Initialize();
+    void Initialize(uint8_t ms);
 
     /**
      * Wipes all previous data and starts the timer.
@@ -55,12 +60,14 @@ private:
     /**
      * Initializer. Not used due to singleton
      */
-    Timer(){};
+    Timer(uint8_t timer_number): timer_number(timer_number){};
 
     /**
      * Number of full seconds passed
      */
     volatile uint16_t timer;
+
+    uint8_t timer_number;
 
 };
 #endif

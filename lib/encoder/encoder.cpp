@@ -33,5 +33,5 @@ int16_t Encoder::ReadByte() {
 
     PORTH |= (1 << PH5);
 
-    return byte;
+    return -byte;
 }

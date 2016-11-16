@@ -12,6 +12,7 @@
 #include "lib/solenoid/solenoid.h"
 #include "lib/encoder/encoder.h"
 #include <math.h>
+#include <lib/servo/servo.h>
 
 #define STATE_ONGOING        1
 #define STATE_IDLE           2
@@ -24,19 +25,24 @@ namespace {
     };
 
     Encoder encoder;
+    Servo *servo;
 
     uint8_t x_direction = 0;
     uint8_t y_direction = 0;
-    uint8_t slider_pos  = 0;
+    uint8_t slider_pos  = 127;
+    uint8_t slider_ang  = 127;
     bool touchbutton = false;
     bool touchbutton_last = false;
 
-    float K_p = 0.005;
-    float K_i = 0.0000000000000001;
-    float K_d = 0.0000000000000001;
-    uint16_t e_integral = 0;
-    int16_t y_previous = 0;
+    float K_p = 1.2;
+    float T_i = 100;
+    float K_d = 0.07;
+    float T   = 0.005;
+    double e_integral = 0;
+    double y_previous = 0;
 }
+
+void SetMotorPID();
 
 /*-----------------------   INITIALIZE  -------------------------------*/
 
@@ -47,11 +53,11 @@ void InitializeLoop() {
     motor.Initialize();
 
     // Initialize the timer
-    Timer &timer = Timer::GetInstance();
-    timer.Initialize();
+    Timer &timer = Timer::GetInstance(0);
+    timer.Initialize(1000, nullptr);
 
     // Initialize the IR Sensor
-    IR_Detector::GetInstance().Initialize(0x30);
+    IR_Detector::GetInstance().Initialize(0x05);
 
     // Initialize the joystick
     // TODO: Correct Quantization levels
@@ -76,6 +82,14 @@ void InitializeLoop() {
     Solenoid& solenoid = Solenoid::GetInstance();
     solenoid.Initialize();
 
+    // Initialize controller timer
+    Timer &timer2 = Timer::GetInstance(1);
+    timer2.Initialize((uint16_t) (T * 1000), SetMotorPID);
+
+    // Initialize servo
+    servo = new Servo(900, 2100);
+
+
     fsm->Transition(STATE_IDLE, 0);
 }
 
@@ -85,11 +99,14 @@ void OngoingEnter() {
     printf("Ongoing enter \n");
     Motor &motor = Motor::GetInstance();
     motor.Start();
-    Timer &timer = Timer::GetInstance();
+    Timer &timer = Timer::GetInstance(0);
+    Timer &timer2 = Timer::GetInstance(1);
     timer.Start();
+    timer2.Start();
     x_direction = 0;
     y_direction = 0;
     touchbutton = false;
+    encoder.Reset();
 }
 void OngoingLoop() {
     // Get joystick values
@@ -105,7 +122,8 @@ void OngoingLoop() {
             x_direction = data[0];
             y_direction = data[1];
             slider_pos  = data[2];
-            touchbutton = (bool) data[3];
+            slider_ang  = data[3];
+            touchbutton = (bool) data[4];
             joystick.Update(x_direction, y_direction);
         }
     }
@@ -135,25 +153,15 @@ void OngoingLoop() {
     }else{
         touchbutton_last = false;
     }
+
+    servo->SetAngle(-(slider_ang - 127));
+
     //printf("X: %3d, Y: %3d, pos: %3d \n", x_direction, y_direction, slider_pos);
 
-    int16_t r = slider_pos - 127;
-    int16_t y = encoder.ReadByte();
-//printf("hmm\n");
-    int16_t e = r - y;
-    e_integral += e;
-
-    float u = K_p * e;// + K_i * e_integral + K_d * (y - y_previous);
-    y_previous = y;
-
-    //u = 0.5;
-    if (u > 0) motor.GoRight();
-    else       motor.GoLeft();
-    motor.Drive(fabs(u));
     //motor.Drive(0);
     //_delay_ms(100);
 
-    printf("%d\n", (int) u * 100);
+    //printf("%d\n", (int) u * 100);
     //printf("%d\n", (int) e);
 
     // Check fail state
@@ -165,18 +173,46 @@ void OngoingLoop() {
     }
 }
 
+void SetMotorPID() {
+    if (fsm->current_state != STATE_ONGOING) return;
+
+    Motor& motor = Motor::GetInstance();
+
+    float r = ((float)slider_pos - 127) / 100;
+    double y = (double)encoder.ReadByte() / 4500;
+    double e = r - y;
+    e_integral += e;
+
+    float u = K_p * e + K_p * T / T_i * e_integral + K_p * K_d / T * (y_previous - y);
+    y_previous = y;
+
+    //u = 0.5;
+    if (u > 0) motor.GoRight();
+    else       motor.GoLeft();
+    u = fabs(u);
+    //if (u > 0.8) u = 0.8;
+    motor.Drive(u);
+    //printf("r: %d, y: %d, e: %d, e_int: %d, u: %d\n", (int) (r * 100), (int) (y * 100), (int) (e * 100),
+           //(int) e_integral, (int) (u * 100));
+}
+
 void OngoingLeave(){
     printf("Ongoing left\n");
     Motor &motor = Motor::GetInstance();
     motor.Stop();
 
-    Timer &timer = Timer::GetInstance();
+    Timer &timer = Timer::GetInstance(0);
+    Timer &timer2 = Timer::GetInstance(1);
     timer.Stop();
+    timer2.Stop();
     uint16_t time;
     timer.GetFullSecondsPassed(time);
     printf("Time passed = %d \n\r", time);
     uint8_t data[] = {(uint8_t)(time & 0x00FF), (uint8_t)((time & 0xFF00)) >> 8};
     channel->Send(0, CMD_GAME_STOP, data, 2);
+    _delay_ms(500);
+    sockets[0]->FlushInputBuffer();
+    sockets[1]->FlushInputBuffer();
 }
 
 /*-----------------------   IDLE  -------------------------------*/
@@ -190,6 +226,7 @@ void IdleLoop() {
     uint8_t length;
     uint8_t data[1];
     if(channel->Receive(command, data, length)) {
+        //printf("CMD = %2x", command);
         if (command == CMD_GAME_START) {
             fsm->Transition(STATE_ONGOING, 0);
             return;

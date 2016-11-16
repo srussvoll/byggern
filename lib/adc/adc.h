@@ -8,8 +8,11 @@
 // y direction on the joystick
 #define ADC_ADDRESS2 (uint8_t *)0x2005
 
-// y direction on the joystick
+// position slider
 #define ADC_ADDRESS3 (uint8_t *)0x2006
+
+// angle slider
+#define ADC_ADDRESS4 (uint8_t *)0x2007
 
 
 #define ADC_INT      INT2_vect
@@ -46,8 +49,11 @@ public:
         } else if (address == ADC_ADDRESS2) {
             static ADC instance(ADC_ADDRESS2);
             return instance;
-        } else {
+        } else if (address == ADC_ADDRESS3) {
             static ADC instance(ADC_ADDRESS3);
+            return instance;
+        } else {
+            static ADC instance(ADC_ADDRESS4);
             return instance;
         }
     }

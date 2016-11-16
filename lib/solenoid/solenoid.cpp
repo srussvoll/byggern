@@ -11,7 +11,7 @@ void Solenoid::Initialize() {
 
 void Solenoid::Pulse() {
     PORTF |= (1 << PORTF1);
-    _delay_ms(50);
+    _delay_ms(80);
     PORTF &= ~(1 << PORTF1);
     //_delay_ms(30);
 }

@@ -25,11 +25,9 @@ bool IR_Detector::Sample() {
 
     }
 
-    if(byte <= threshold){
-        return true;
-    } else {
-        return false;
-    }
+    //printf("B = %2x \n", byte);
+
+    return byte <= threshold;
 }
 
 #endif

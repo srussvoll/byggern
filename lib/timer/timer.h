@@ -7,7 +7,8 @@
  * If you are not using a 16MHz clock, you need to change the OCR1A register to match your clock. Please refer to the
  * ATMEGA2560 datasheet, chapter 17
  */
-ISR(TIMER1_COMPA_vect);
+ISR(TIMER4_COMPA_vect);
+ISR(TIMER3_COMPA_vect);
 class Timer{
 public:
     /**
@@ -32,7 +33,7 @@ public:
     /**
      * Initializes the timer. You must run this function in order for the timer to work
      */
-    void Initialize(uint8_t ms);
+    void Initialize(uint16_t ms, void(*fn)(void));
 
     /**
      * Wipes all previous data and starts the timer.
@@ -53,7 +54,9 @@ public:
     /**
      * Interrupt handler for when one second has passed
      */
-    friend void TIMER1_COMPA_vect();
+    friend void TIMER4_COMPA_vect();
+
+    friend void TIMER3_COMPA_vect();
 
 
 private:
@@ -68,6 +71,8 @@ private:
     volatile uint16_t timer;
 
     uint8_t timer_number;
+
+    void (*fn)(void);
 
 };
 #endif

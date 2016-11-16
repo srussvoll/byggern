@@ -142,6 +142,7 @@ void PlayGameLoop() {
     ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
     ADC &adc_y = ADC::GetInstance(ADC_ADDRESS2);
     ADC &adc_p = ADC::GetInstance(ADC_ADDRESS3);
+    ADC &adc_a = ADC::GetInstance(ADC_ADDRESS4);
 
     // X-Value
     while(!adc_x.request_sample());
@@ -153,15 +154,20 @@ void PlayGameLoop() {
     uint8_t y_value;
     while(!adc_y.ReadByte(y_value));
 
-    // Touch slider
+    // Touch slider position
     while(!adc_p.request_sample());
     uint8_t p_value;
     while(!adc_p.ReadByte(p_value));
 
+    // Touch slider angle
+    while(!adc_a.request_sample());
+    uint8_t a_value;
+    while(!adc_a.ReadByte(a_value));
+
     // Touch button
     bool touchbutton_value = (bool) (PINB & (1 << PB0));
 
-    uint8_t x[] = {x_value, y_value, p_value, (uint8_t) touchbutton_value};
+    uint8_t x[] = {x_value, y_value, p_value, a_value, (uint8_t) touchbutton_value};
     //printf("X: %d, Y:%d, T:%d \n", x_value, y_value, touchbutton_value);
     channel->Send(1, CMD_JOYSTICK_VALUES, x, sizeof(x));
 

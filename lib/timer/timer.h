@@ -7,6 +7,7 @@
  * If you are not using a 16MHz clock, you need to change the OCR1A register to match your clock. Please refer to the
  * ATMEGA2560 datasheet, chapter 17
  */
+
 ISR(TIMER4_COMPA_vect);
 ISR(TIMER3_COMPA_vect);
 class Timer{

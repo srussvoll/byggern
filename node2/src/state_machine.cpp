@@ -13,6 +13,7 @@
 #include "lib/encoder/encoder.h"
 #include <math.h>
 #include <lib/servo/servo.h>
+#include "lib/spi/spi.h"
 
 #define STATE_ONGOING        1
 #define STATE_IDLE           2
@@ -40,6 +41,11 @@ namespace {
     float T   = 0.005;
     double e_integral = 0;
     double y_previous = 0;
+
+
+    uint8_t highscore_name[10];
+    uint8_t highscore_name_length;
+    SPI_N::PIN oldsspin;
 }
 
 void SetMotorPID();
@@ -234,12 +240,53 @@ void IdleLoop() {
     }
 }
 
+/*-----------------------   HIGHSCORE  -------------------------------*/
+void HighscoreEnter(){
+    // Select new SS
+    SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
+    SPI_N::PIN nordic_pin = SPI_N::PIN(&DDRG, &PORTG, 1);
+    spi.SetDevice(nordic_pin);
+    spi.FlushInputBuffer();
+    spi.FlushOutputBuffer();
+    highscore_name_length = 0;
+
+    oldsspin = spi.current_pin;
+}
+
+void HighscoreLoop(){
+    SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
+    // Wait while the pin is low
+    while(!(PING & (1 << PG0)));
+    // New message, start transmission
+    spi.WriteByte(0x00, 0);
+    uint8_t read_byte;
+    spi.ReadByte(read_byte);
+    if(read_byte == 0x33){
+        fsm->Transition(STATE_IDLE, 0);
+        return;
+    }
+    highscore_name[highscore_name_length] = read_byte;
+    highscore_name_length += 1;
+    // Wait until the pin is high
+    while(PING & (1 << PG0));
+}
+
+void HighscoreLeave(){
+    // The the SS pin back to the old value
+    SPI_N::SPI::GetInstance().SetDevice(oldsspin);
+    // Transmit the data back to node 1
+    for(int i = 0; i < highscore_name_length; i++){
+        printf("REC BYTE %2x \n", highscore_name[i]);
+    }
+}
+
 /* States: enter, loops and leaves */
 /* State functions table */
 void (*state_functions[][3])(void) = {
 /* 0. Initialize                 */ {nullptr, InitializeLoop, nullptr},
 /* 1. ONGOING                    */ {OngoingEnter, OngoingLoop, OngoingLeave},
-/* 2. IDLE                       */ {IdleEnter, IdleLoop,       nullptr}
+/* 2. IDLE                       */ {IdleEnter, IdleLoop,       nullptr},
+/* 3. GET HIGHSCORE              */ {HighscoreEnter, HighscoreLoop, HighscoreLeave}
 };
 
 /* Initialize and start the state machine */

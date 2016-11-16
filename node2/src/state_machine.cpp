@@ -13,7 +13,7 @@
 
 #define STATE_ONGOING        1
 #define STATE_IDLE           2
-namespace{
+namespace {
     StateMachine *fsm;
     SCP          *channel;
     SOCKET* sockets[] = {
@@ -123,7 +123,7 @@ void OngoingLoop() {
     }else{
         touchbutton_last = false;
     }
-    //printf("X: %d, Y:%d \n", x_direction, y_direction);
+    printf("X: %d, Y:%d \n", x_direction, y_direction);
 
     // Check fail state
     IR_Detector &ir = IR_Detector::GetInstance();

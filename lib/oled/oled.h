@@ -104,6 +104,8 @@ public:
     */
     void GetBitmapForCharacter(char character, uint8_t* &character_bitmap);
 
+    uint8_t GetMaxLineCharacters();
+
 protected:
     /**
     * Singleton constructor

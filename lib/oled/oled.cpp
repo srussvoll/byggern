@@ -45,7 +45,7 @@ void OLED::Init(uint8_t width, uint8_t height){
     this->number_of_pages = pages;
     this->matrix = (uint8_t**) malloc(pages * sizeof(uint8_t*));
     for(uint8_t i = 0; i < pages; i++){
-        if ((this->matrix[i] = (uint8_t *) malloc(width * sizeof(uint8_t))) == NULL){printf("ERROR: Ran out of space on the heap! \n");}
+        this->matrix[i] = (uint8_t *) malloc(width * sizeof(uint8_t));
     }
 
     this->SetNumberOfLines(pages);
@@ -181,4 +181,8 @@ void OLED::WriteLine(char *string, uint8_t length, uint8_t line, uint8_t offset)
 
 uint8_t OLED::GetYCoordinateFromLineNumber(uint8_t line) {
     return line * this->pixels_per_line;
+}
+
+uint8_t OLED::GetMaxLineCharacters() {
+    return this->display_width / this->font_width;
 }

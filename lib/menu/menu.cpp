@@ -24,6 +24,10 @@ namespace Menu {
         memcpy(this->label, label, label_length);
     }
 
+    void Item::AddAction(void (*fn)()) {
+        this->action = (void *) fn;
+    }
+
     Controller::Controller(OLED& oled, uint8_t num_lines) : oled(&oled), num_lines(num_lines) {
         oled.Clear();
         this->root = new Menu;

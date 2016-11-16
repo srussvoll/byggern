@@ -48,6 +48,8 @@ namespace Menu {
         Item *next = nullptr;
 
         Item(char *label, uint8_t label_length);
+
+        void AddAction(void (*fn)());
     };
 
     /**

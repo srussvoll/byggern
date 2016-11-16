@@ -146,7 +146,7 @@ void PlayGameLoop() {
 }
 
 void PlayGameLeave() {
-    printf("STATE PLAY GAME LEFT\n");
+    //printf("STATE PLAY GAME LEFT\n");
     return;
 }
 
@@ -164,5 +164,6 @@ void (*state_functions[][3])(void) = {
 void InitializeStateMachine(){
     channel = new SCP(sockets, 2);
     fsm = new StateMachine((void (**)(void)) state_functions, 0);
+    fsm->Transition(0, true);
     fsm->Start();
 }

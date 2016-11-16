@@ -681,7 +681,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x3d2e
+.text           0x0000000000000000     0x3cb0
  *(.vectors)
  .vectors       0x0000000000000000       0x70 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm162.o
                 0x0000000000000000                __vectors
@@ -784,430 +784,426 @@ END GROUP
  .text.startup.main
                 0x0000000000000592       0x1c CMakeFiles/node1.dir/src/main.cpp.obj
                 0x0000000000000592                main
- .text._Z9MenuLeavev
-                0x00000000000005ae        0x8 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x00000000000005ae                _Z9MenuLeavev
  .text._Z13PlayGameLeavev
-                0x00000000000005b6        0x8 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x00000000000005b6                _Z13PlayGameLeavev
+                0x00000000000005ae        0x2 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x00000000000005ae                _Z13PlayGameLeavev
+ .text._Z9MenuLeavev
+                0x00000000000005b0        0x8 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x00000000000005b0                _Z9MenuLeavev
  .text._Z9MenuEnterv
-                0x00000000000005be       0x14 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x00000000000005be                _Z9MenuEnterv
+                0x00000000000005b8       0x14 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x00000000000005b8                _Z9MenuEnterv
  .text._Z13PlayGameEnterv
-                0x00000000000005d2       0x24 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x00000000000005d2                _Z13PlayGameEnterv
+                0x00000000000005cc       0x24 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x00000000000005cc                _Z13PlayGameEnterv
  .text._Z13InitializeFSMv
-                0x00000000000005f6      0x204 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x00000000000005f6                _Z13InitializeFSMv
+                0x00000000000005f0      0x212 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x00000000000005f0                _Z13InitializeFSMv
  .text._ZN3ADC11GetInstanceEPh
-                0x00000000000007fa       0x4a CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x00000000000007fa                _ZN3ADC11GetInstanceEPh
+                0x0000000000000802       0x4a CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x0000000000000802                _ZN3ADC11GetInstanceEPh
  .text._Z8MenuLoopv
-                0x0000000000000844       0xbe CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x0000000000000844                _Z8MenuLoopv
+                0x000000000000084c       0xc0 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x000000000000084c                _Z8MenuLoopv
  .text._Z12PlayGameLoopv
-                0x0000000000000902      0x124 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x0000000000000902                _Z12PlayGameLoopv
+                0x000000000000090c      0x124 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x000000000000090c                _Z12PlayGameLoopv
  .text._Z22InitializeStateMachinev
-                0x0000000000000a26       0x46 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x0000000000000a26                _Z22InitializeStateMachinev
+                0x0000000000000a30       0x56 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x0000000000000a30                _Z22InitializeStateMachinev
  .text.startup._GLOBAL__sub_I__Z13InitializeFSMv
-                0x0000000000000a6c       0x76 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x0000000000000a86       0x76 CMakeFiles/node1.dir/src/state_machine.cpp.obj
  .text._ZN3ADCC2EPh
-                0x0000000000000ae2       0x3c CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
-                0x0000000000000ae2                _ZN3ADCC1EPh
-                0x0000000000000ae2                _ZN3ADCC2EPh
+                0x0000000000000afc       0x3c CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
+                0x0000000000000afc                _ZN3ADCC1EPh
+                0x0000000000000afc                _ZN3ADCC2EPh
  .text._ZN3ADC14request_sampleEv
-                0x0000000000000b1e       0x2a CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
-                0x0000000000000b1e                _ZN3ADC14request_sampleEv
+                0x0000000000000b38       0x2a CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
+                0x0000000000000b38                _ZN3ADC14request_sampleEv
  .text.__vector_3
-                0x0000000000000b48       0xc8 CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
-                0x0000000000000b48                __vector_3
+                0x0000000000000b62       0xc8 CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
+                0x0000000000000b62                __vector_3
  .text._ZN7MCP251513RequestToSendEv
-                0x0000000000000c10        0xe CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000000c10                _ZN7MCP251513RequestToSendEv
+                0x0000000000000c2a        0xe CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x0000000000000c2a                _ZN7MCP251513RequestToSendEv
  .text._ZN7MCP25155ResetEv
-                0x0000000000000c1e        0xe CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000000c1e                _ZN7MCP25155ResetEv
+                0x0000000000000c38        0xe CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x0000000000000c38                _ZN7MCP25155ResetEv
  .text._ZN7MCP25159BitModifyEhhh
-                0x0000000000000c2c       0x62 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000000c2c                _ZN7MCP25159BitModifyEhhh
+                0x0000000000000c46       0x62 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x0000000000000c46                _ZN7MCP25159BitModifyEhhh
  .text._ZN7MCP251515WriteToRegisterEhh
-                0x0000000000000c8e       0x3a CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000000c8e                _ZN7MCP251515WriteToRegisterEhh
+                0x0000000000000ca8       0x3a CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x0000000000000ca8                _ZN7MCP251515WriteToRegisterEhh
  .text._ZN7MCP251510InitializeEPN5SPI_N3SPIEj
-                0x0000000000000cc8       0x6e CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000000cc8                _ZN7MCP251510InitializeEPN5SPI_N3SPIEj
+                0x0000000000000ce2       0x6e CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x0000000000000ce2                _ZN7MCP251510InitializeEPN5SPI_N3SPIEj
  .text._ZN7MCP251516ReadFromRegisterEhRh
-                0x0000000000000d36       0x68 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000000d36                _ZN7MCP251516ReadFromRegisterEhRh
+                0x0000000000000d50       0x68 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x0000000000000d50                _ZN7MCP251516ReadFromRegisterEhRh
  .text._ZN7MCP25159SetNormalEv
-                0x0000000000000d9e        0xa CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000000d9e                _ZN7MCP25159SetNormalEv
+                0x0000000000000db8        0xa CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x0000000000000db8                _ZN7MCP25159SetNormalEv
  .text._ZN7MCP251511LoadTxFrameER11CAN_MESSAGE
-                0x0000000000000da8       0xc6 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000000da8                _ZN7MCP251511LoadTxFrameER11CAN_MESSAGE
+                0x0000000000000dc2       0xc6 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x0000000000000dc2                _ZN7MCP251511LoadTxFrameER11CAN_MESSAGE
  .text._ZN7MCP251511SendMessageER11CAN_MESSAGE
-                0x0000000000000e6e       0x24 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000000e6e                _ZN7MCP251511SendMessageER11CAN_MESSAGE
+                0x0000000000000e88       0x24 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x0000000000000e88                _ZN7MCP251511SendMessageER11CAN_MESSAGE
  .text._ZN7MCP251511ReadRxFrameER11CAN_MESSAGE
-                0x0000000000000e92      0x182 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000000e92                _ZN7MCP251511ReadRxFrameER11CAN_MESSAGE
+                0x0000000000000eac      0x182 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x0000000000000eac                _ZN7MCP251511ReadRxFrameER11CAN_MESSAGE
  .text.__vector_1
-                0x0000000000001014       0xea CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000001014                __vector_1
+                0x000000000000102e       0xea CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x000000000000102e                __vector_1
  .text._ZN4Menu4ItemC2EPch
-                0x00000000000010fe       0x50 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x00000000000010fe                _ZN4Menu4ItemC1EPch
-                0x00000000000010fe                _ZN4Menu4ItemC2EPch
+                0x0000000000001118       0x50 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x0000000000001118                _ZN4Menu4ItemC1EPch
+                0x0000000000001118                _ZN4Menu4ItemC2EPch
  .text._ZN4Menu10ControllerC2ER4OLEDh
-                0x000000000000114e       0x4e CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x000000000000114e                _ZN4Menu10ControllerC1ER4OLEDh
-                0x000000000000114e                _ZN4Menu10ControllerC2ER4OLEDh
+                0x0000000000001168       0x4e CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x0000000000001168                _ZN4Menu10ControllerC1ER4OLEDh
+                0x0000000000001168                _ZN4Menu10ControllerC2ER4OLEDh
  .text._ZN4Menu10Controller15ControlGoToItemEh
-                0x000000000000119c       0x2e CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x000000000000119c                _ZN4Menu10Controller15ControlGoToItemEh
+                0x00000000000011b6       0x2e CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x00000000000011b6                _ZN4Menu10Controller15ControlGoToItemEh
  .text._ZN4Menu10Controller19ControlEnterSubMenuEv
-                0x00000000000011ca       0x18 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x00000000000011ca                _ZN4Menu10Controller19ControlEnterSubMenuEv
+                0x00000000000011e4       0x18 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x00000000000011e4                _ZN4Menu10Controller19ControlEnterSubMenuEv
  .text._ZN4Menu10Controller11AddMenuItemEPNS_4ItemE
-                0x00000000000011e2       0x3e CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x00000000000011e2                _ZN4Menu10Controller11AddMenuItemEPNS_4ItemE
+                0x00000000000011fc       0x3e CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x00000000000011fc                _ZN4Menu10Controller11AddMenuItemEPNS_4ItemE
  .text._ZN4Menu10Controller7AddMenuEPPNS_4ItemEh
-                0x0000000000001220       0x9c CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x0000000000001220                _ZN4Menu10Controller7AddMenuEPPNS_4ItemEh
+                0x000000000000123a       0x9c CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x000000000000123a                _ZN4Menu10Controller7AddMenuEPPNS_4ItemEh
  .text._ZN4Menu10Controller8GoToItemEh
-                0x00000000000012bc       0x2e CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x00000000000012bc                _ZN4Menu10Controller8GoToItemEh
+                0x00000000000012d6       0x2e CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x00000000000012d6                _ZN4Menu10Controller8GoToItemEh
  .text._ZN4Menu10Controller13GetMenuLengthEPNS_4MenuE
-                0x00000000000012ea       0x24 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x00000000000012ea                _ZN4Menu10Controller13GetMenuLengthEPNS_4MenuE
+                0x0000000000001304       0x24 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x0000000000001304                _ZN4Menu10Controller13GetMenuLengthEPNS_4MenuE
  .text._ZN4Menu10Controller12GoToNextItemEv
-                0x000000000000130e       0x24 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x000000000000130e                _ZN4Menu10Controller12GoToNextItemEv
+                0x0000000000001328       0x24 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x0000000000001328                _ZN4Menu10Controller12GoToNextItemEv
  .text._ZN4Menu10Controller6RenderEv
-                0x0000000000001332      0x172 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x0000000000001332                _ZN4Menu10Controller6RenderEv
+                0x000000000000134c      0x172 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x000000000000134c                _ZN4Menu10Controller6RenderEv
  .text._ZN4Menu10Controller10SelectNextEv
-                0x00000000000014a4       0x38 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x00000000000014a4                _ZN4Menu10Controller10SelectNextEv
+                0x00000000000014be       0x38 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x00000000000014be                _ZN4Menu10Controller10SelectNextEv
  .text._ZN4Menu10Controller14SelectPreviousEv
-                0x00000000000014dc       0x40 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x00000000000014dc                _ZN4Menu10Controller14SelectPreviousEv
+                0x00000000000014f6       0x40 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x00000000000014f6                _ZN4Menu10Controller14SelectPreviousEv
  .text._ZN4Menu10Controller12AddMenuItemsEPPNS_4ItemEh
-                0x000000000000151c       0x62 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
-                0x000000000000151c                _ZN4Menu10Controller12AddMenuItemsEPPNS_4ItemEh
+                0x0000000000001536       0x62 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x0000000000001536                _ZN4Menu10Controller12AddMenuItemsEPPNS_4ItemEh
  .text._ZN4OLED15WriteByteToOLEDEPVhh
-                0x000000000000157e        0x2 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x000000000000157e                _ZN4OLED15WriteByteToOLEDEPVhh
+                0x0000000000001598        0x2 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x0000000000001598                _ZN4OLED15WriteByteToOLEDEPVhh
  .text._ZN4OLEDC2Ev
-                0x0000000000001580       0x3e CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x0000000000001580                _ZN4OLEDC2Ev
-                0x0000000000001580                _ZN4OLEDC1Ev
+                0x000000000000159a       0x3e CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x000000000000159a                _ZN4OLEDC2Ev
+                0x000000000000159a                _ZN4OLEDC1Ev
  .text._ZN4OLED5ClearEv
-                0x00000000000015be       0x38 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x00000000000015be                _ZN4OLED5ClearEv
+                0x00000000000015d8       0x38 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x00000000000015d8                _ZN4OLED5ClearEv
  .text._ZN4OLED4InitEhh
-                0x00000000000015f6      0x264 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x00000000000015f6                _ZN4OLED4InitEhh
+                0x0000000000001610      0x264 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x0000000000001610                _ZN4OLED4InitEhh
  .text._ZN4OLED7RepaintEv
-                0x000000000000185a       0x62 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x000000000000185a                _ZN4OLED7RepaintEv
+                0x0000000000001874       0x62 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x0000000000001874                _ZN4OLED7RepaintEv
  .text._ZN4OLED16SetNumberOfLinesEh
-                0x00000000000018bc        0xe CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x00000000000018bc                _ZN4OLED16SetNumberOfLinesEh
+                0x00000000000018d6        0xe CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x00000000000018d6                _ZN4OLED16SetNumberOfLinesEh
  .text._ZN4OLED21GetBitmapForCharacterEcRPh
-                0x00000000000018ca       0x1a CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x00000000000018ca                _ZN4OLED21GetBitmapForCharacterEcRPh
+                0x00000000000018e4       0x1a CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x00000000000018e4                _ZN4OLED21GetBitmapForCharacterEcRPh
  .text._ZN4OLED11WriteBitmapEPPhhhhhb
-                0x00000000000018e4      0x378 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x00000000000018e4                _ZN4OLED11WriteBitmapEPPhhhhhb
+                0x00000000000018fe      0x378 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x00000000000018fe                _ZN4OLED11WriteBitmapEPPhhhhhb
  .text._ZN4OLED7SetFontEPhhh
-                0x0000000000001c5c        0xc CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x0000000000001c5c                _ZN4OLED7SetFontEPhhh
+                0x0000000000001c76        0xc CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x0000000000001c76                _ZN4OLED7SetFontEPhhh
  .text._ZN4OLED9WriteLineEPchhh
-                0x0000000000001c68       0xcc CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x0000000000001c68                _ZN4OLED9WriteLineEPchhh
+                0x0000000000001c82       0xcc CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x0000000000001c82                _ZN4OLED9WriteLineEPchhh
  .text._ZN4OLED28GetYCoordinateFromLineNumberEh
-                0x0000000000001d34        0xc CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x0000000000001d34                _ZN4OLED28GetYCoordinateFromLineNumberEh
+                0x0000000000001d4e        0xc CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x0000000000001d4e                _ZN4OLED28GetYCoordinateFromLineNumberEh
  .text._ZN11OLED_memory15WriteByteToOLEDEPVhh
-                0x0000000000001d40        0x6 CMakeFiles/node1.dir/lib/oled_memory/oled_memory.cpp.obj
-                0x0000000000001d40                _ZN11OLED_memory15WriteByteToOLEDEPVhh
+                0x0000000000001d5a        0x6 CMakeFiles/node1.dir/lib/oled_memory/oled_memory.cpp.obj
+                0x0000000000001d5a                _ZN11OLED_memory15WriteByteToOLEDEPVhh
  .text._ZN11OLED_memory4InitEhh
-                0x0000000000001d46        0x4 CMakeFiles/node1.dir/lib/oled_memory/oled_memory.cpp.obj
-                0x0000000000001d46                _ZN11OLED_memory4InitEhh
+                0x0000000000001d60        0x4 CMakeFiles/node1.dir/lib/oled_memory/oled_memory.cpp.obj
+                0x0000000000001d60                _ZN11OLED_memory4InitEhh
  .text._ZN3SCPC2EPP6SOCKETh
-                0x0000000000001d4a        0xa CMakeFiles/node1.dir/lib/scp/scp.cpp.obj
-                0x0000000000001d4a                _ZN3SCPC2EPP6SOCKETh
-                0x0000000000001d4a                _ZN3SCPC1EPP6SOCKETh
+                0x0000000000001d64        0xa CMakeFiles/node1.dir/lib/scp/scp.cpp.obj
+                0x0000000000001d64                _ZN3SCPC2EPP6SOCKETh
+                0x0000000000001d64                _ZN3SCPC1EPP6SOCKETh
  .text._ZN3SCP7ReceiveERhPhS0_
-                0x0000000000001d54      0x114 CMakeFiles/node1.dir/lib/scp/scp.cpp.obj
-                0x0000000000001d54                _ZN3SCP7ReceiveERhPhS0_
+                0x0000000000001d6e      0x114 CMakeFiles/node1.dir/lib/scp/scp.cpp.obj
+                0x0000000000001d6e                _ZN3SCP7ReceiveERhPhS0_
  .text._ZN3SCP4SendEhhPhh
-                0x0000000000001e68       0x88 CMakeFiles/node1.dir/lib/scp/scp.cpp.obj
-                0x0000000000001e68                _ZN3SCP4SendEhhPhh
+                0x0000000000001e82       0x88 CMakeFiles/node1.dir/lib/scp/scp.cpp.obj
+                0x0000000000001e82                _ZN3SCP4SendEhhPhh
  .text._ZN6SOCKET9WriteByteEh
-                0x0000000000001ef0       0x5a CMakeFiles/node1.dir/lib/socket/socket.cpp.obj
-                0x0000000000001ef0                _ZN6SOCKET9WriteByteEh
+                0x0000000000001f0a       0x5a CMakeFiles/node1.dir/lib/socket/socket.cpp.obj
+                0x0000000000001f0a                _ZN6SOCKET9WriteByteEh
  .text._ZN6SOCKET5WriteEPhj
-                0x0000000000001f4a       0xe6 CMakeFiles/node1.dir/lib/socket/socket.cpp.obj
-                0x0000000000001f4a                _ZN6SOCKET5WriteEPhj
+                0x0000000000001f64       0xe6 CMakeFiles/node1.dir/lib/socket/socket.cpp.obj
+                0x0000000000001f64                _ZN6SOCKET5WriteEPhj
  .text._ZN5SPI_N3SPIC2Ev
-                0x0000000000002030       0x30 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
-                0x0000000000002030                _ZN5SPI_N3SPIC2Ev
-                0x0000000000002030                _ZN5SPI_N3SPIC1Ev
+                0x000000000000204a       0x30 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
+                0x000000000000204a                _ZN5SPI_N3SPIC2Ev
+                0x000000000000204a                _ZN5SPI_N3SPIC1Ev
  .text.__vector_18
-                0x0000000000002060       0xea CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
-                0x0000000000002060                __vector_18
+                0x000000000000207a       0xea CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
+                0x000000000000207a                __vector_18
  .text._ZN5SPI_N3SPI10InitializeEPNS_3PINEhbb
-                0x000000000000214a       0x70 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
-                0x000000000000214a                _ZN5SPI_N3SPI10InitializeEPNS_3PINEhbb
+                0x0000000000002164       0x70 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
+                0x0000000000002164                _ZN5SPI_N3SPI10InitializeEPNS_3PINEhbb
  .text._ZN5SPI_N3SPI22InitializeTransmissionEv
-                0x00000000000021ba       0x58 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
-                0x00000000000021ba                _ZN5SPI_N3SPI22InitializeTransmissionEv
+                0x00000000000021d4       0x58 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
+                0x00000000000021d4                _ZN5SPI_N3SPI22InitializeTransmissionEv
  .text._ZN5SPI_N3SPI9SetDeviceERNS_3PINE
-                0x0000000000002212       0x36 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
-                0x0000000000002212                _ZN5SPI_N3SPI9SetDeviceERNS_3PINE
+                0x000000000000222c       0x36 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
+                0x000000000000222c                _ZN5SPI_N3SPI9SetDeviceERNS_3PINE
  .text._ZN5SPI_N3SPI9WriteByteEhb
-                0x0000000000002248       0x42 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
-                0x0000000000002248                _ZN5SPI_N3SPI9WriteByteEhb
+                0x0000000000002262       0x42 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
+                0x0000000000002262                _ZN5SPI_N3SPI9WriteByteEhb
  .text._ZN5SPI_N3SPI25WriteByteAndThrowAwayDataEhb
-                0x000000000000228a       0x4a CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
-                0x000000000000228a                _ZN5SPI_N3SPI25WriteByteAndThrowAwayDataEhb
+                0x00000000000022a4       0x4a CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
+                0x00000000000022a4                _ZN5SPI_N3SPI25WriteByteAndThrowAwayDataEhb
  .text._ZN12StateMachine10TransitionEhb
-                0x00000000000022d4       0xbe CMakeFiles/node1.dir/lib/state_machine/state_machine.cpp.obj
-                0x00000000000022d4                _ZN12StateMachine10TransitionEhb
- .text._ZN12StateMachineC2EPPFvvEh
-                0x0000000000002392       0x14 CMakeFiles/node1.dir/lib/state_machine/state_machine.cpp.obj
-                0x0000000000002392                _ZN12StateMachineC2EPPFvvEh
-                0x0000000000002392                _ZN12StateMachineC1EPPFvvEh
+                0x00000000000022ee       0x54 CMakeFiles/node1.dir/lib/state_machine/state_machine.cpp.obj
+                0x00000000000022ee                _ZN12StateMachine10TransitionEhb
  .text._ZN12StateMachine5StartEv
-                0x00000000000023a6       0x4e CMakeFiles/node1.dir/lib/state_machine/state_machine.cpp.obj
-                0x00000000000023a6                _ZN12StateMachine5StartEv
+                0x0000000000002342       0x34 CMakeFiles/node1.dir/lib/state_machine/state_machine.cpp.obj
+                0x0000000000002342                _ZN12StateMachine5StartEv
  .text._ZN6Stream5WriteEPhj
-                0x00000000000023f4       0x94 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x00000000000023f4                _ZN6Stream5WriteEPhj
+                0x0000000000002376       0x94 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x0000000000002376                _ZN6Stream5WriteEPhj
  .text._ZN6Stream18WriteToInputStreamEPhj
-                0x0000000000002488       0x94 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x0000000000002488                _ZN6Stream18WriteToInputStreamEPhj
+                0x000000000000240a       0x94 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x000000000000240a                _ZN6Stream18WriteToInputStreamEPhj
  .text._ZN6Stream4ReadEPhj
-                0x000000000000251c       0x72 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x000000000000251c                _ZN6Stream4ReadEPhj
+                0x000000000000249e       0x72 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x000000000000249e                _ZN6Stream4ReadEPhj
  .text._ZN6Stream22GetAvailableWriteBytesEv
-                0x000000000000258e       0x3e CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x000000000000258e                _ZN6Stream22GetAvailableWriteBytesEv
+                0x0000000000002510       0x3e CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x0000000000002510                _ZN6Stream22GetAvailableWriteBytesEv
  .text._ZN6Stream21GetAvailableReadBytesEv
-                0x00000000000025cc       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x00000000000025cc                _ZN6Stream21GetAvailableReadBytesEv
+                0x000000000000254e       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x000000000000254e                _ZN6Stream21GetAvailableReadBytesEv
  .text._ZN6Stream8ReadByteERh
-                0x00000000000025fc       0x4e CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x00000000000025fc                _ZN6Stream8ReadByteERh
+                0x000000000000257e       0x4e CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x000000000000257e                _ZN6Stream8ReadByteERh
  .text._ZN6Stream9WriteByteEh
-                0x000000000000264a       0x86 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x000000000000264a                _ZN6Stream9WriteByteEh
+                0x00000000000025cc       0x86 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x00000000000025cc                _ZN6Stream9WriteByteEh
  .text._ZN6Stream23CheckOutputOverflowFlagEv
-                0x00000000000026d0        0x8 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x00000000000026d0                _ZN6Stream23CheckOutputOverflowFlagEv
+                0x0000000000002652        0x8 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x0000000000002652                _ZN6Stream23CheckOutputOverflowFlagEv
  .text._ZN6Stream24ReadByteFromOutputStreamERh
-                0x00000000000026d8       0x4e CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x00000000000026d8                _ZN6Stream24ReadByteFromOutputStreamERh
+                0x000000000000265a       0x4e CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x000000000000265a                _ZN6Stream24ReadByteFromOutputStreamERh
  .text._ZN6Stream22WriteByteToInputStreamERh
-                0x0000000000002726       0x70 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x0000000000002726                _ZN6Stream22WriteByteToInputStreamERh
+                0x00000000000026a8       0x70 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x00000000000026a8                _ZN6Stream22WriteByteToInputStreamERh
  .text._ZN6Stream18ReadByteFromBufferERhPhRjS2_S2_Rb
-                0x0000000000002796       0x86 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x0000000000002796                _ZN6Stream18ReadByteFromBufferERhPhRjS2_S2_Rb
+                0x0000000000002718       0x86 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x0000000000002718                _ZN6Stream18ReadByteFromBufferERhPhRjS2_S2_Rb
  .text._ZN6Stream22CheckInputOverflowFlagEv
-                0x000000000000281c        0x8 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x000000000000281c                _ZN6Stream22CheckInputOverflowFlagEv
+                0x000000000000279e        0x8 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x000000000000279e                _ZN6Stream22CheckInputOverflowFlagEv
  .text._ZN6Stream20ReadFromOutputStreamEPhj
-                0x0000000000002824       0x72 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x0000000000002824                _ZN6Stream20ReadFromOutputStreamEPhj
+                0x00000000000027a6       0x72 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x00000000000027a6                _ZN6Stream20ReadFromOutputStreamEPhj
  .text._ZN6Stream20GetInputBufferLengthEv
-                0x0000000000002896       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x0000000000002896                _ZN6Stream20GetInputBufferLengthEv
+                0x0000000000002818       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x0000000000002818                _ZN6Stream20GetInputBufferLengthEv
  .text._ZN6Stream21GetOutputBufferLengthEv
-                0x00000000000028c6       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x00000000000028c6                _ZN6Stream21GetOutputBufferLengthEv
+                0x0000000000002848       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x0000000000002848                _ZN6Stream21GetOutputBufferLengthEv
  .text._ZN6Stream11FlushStreamERjS0_S0_Rb
-                0x00000000000028f6       0x24 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x00000000000028f6                _ZN6Stream11FlushStreamERjS0_S0_Rb
+                0x0000000000002878       0x24 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x0000000000002878                _ZN6Stream11FlushStreamERjS0_S0_Rb
  .text._ZN6Stream16FlushInputBufferEv
-                0x000000000000291a       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x000000000000291a                _ZN6Stream16FlushInputBufferEv
+                0x000000000000289c       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x000000000000289c                _ZN6Stream16FlushInputBufferEv
  .text._ZN6Stream17FlushOutputBufferEv
-                0x000000000000294a       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x000000000000294a                _ZN6Stream17FlushOutputBufferEv
+                0x00000000000028cc       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x00000000000028cc                _ZN6Stream17FlushOutputBufferEv
  .text._ZN6Stream14ReadFromBufferEPhRjS1_S1_RbS0_S1_
-                0x000000000000297a       0xd6 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x000000000000297a                _ZN6Stream14ReadFromBufferEPhRjS1_S1_RbS0_S1_
+                0x00000000000028fc       0xd6 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x00000000000028fc                _ZN6Stream14ReadFromBufferEPhRjS1_S1_RbS0_S1_
  .text._ZN6Stream13WriteToBufferEPhRjS1_S1_RbS2_S0_S1_PFvPS_E
-                0x0000000000002a50      0x1ae CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x0000000000002a50                _ZN6Stream13WriteToBufferEPhRjS1_S1_RbS2_S0_S1_PFvPS_E
+                0x00000000000029d2      0x1ae CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x00000000000029d2                _ZN6Stream13WriteToBufferEPhRjS1_S1_RbS2_S0_S1_PFvPS_E
  .text._ZN6Stream17WriteByteToBufferEPhRjS1_S1_RbS2_RhPFvPS_E
-                0x0000000000002bfe      0x128 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x0000000000002bfe                _ZN6Stream17WriteByteToBufferEPhRjS1_S1_RbS2_RhPFvPS_E
+                0x0000000000002b80      0x128 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x0000000000002b80                _ZN6Stream17WriteByteToBufferEPhRjS1_S1_RbS2_RhPFvPS_E
  .text._ZN6Stream15CalculateLengthERjS0_S0_Rb
-                0x0000000000002d26       0x34 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x0000000000002d26                _ZN6Stream15CalculateLengthERjS0_S0_Rb
+                0x0000000000002ca8       0x34 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x0000000000002ca8                _ZN6Stream15CalculateLengthERjS0_S0_Rb
  .text._ZN6StreamC2Ejj
-                0x0000000000002d5a       0x68 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x0000000000002d5a                _ZN6StreamC1Ejj
-                0x0000000000002d5a                _ZN6StreamC2Ejj
+                0x0000000000002cdc       0x68 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x0000000000002cdc                _ZN6StreamC1Ejj
+                0x0000000000002cdc                _ZN6StreamC2Ejj
  .text._ZN4UART4InitEj
-                0x0000000000002dc2       0x24 CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
-                0x0000000000002dc2                _ZN4UART4InitEj
+                0x0000000000002d44       0x24 CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
+                0x0000000000002d44                _ZN4UART4InitEj
  .text._ZN4UARTC2Ev
-                0x0000000000002de6       0x24 CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
-                0x0000000000002de6                _ZN4UARTC2Ev
-                0x0000000000002de6                _ZN4UARTC1Ev
+                0x0000000000002d68       0x24 CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
+                0x0000000000002d68                _ZN4UARTC2Ev
+                0x0000000000002d68                _ZN4UARTC1Ev
  .text.__vector_21
-                0x0000000000002e0a       0x94 CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
-                0x0000000000002e0a                __vector_21
+                0x0000000000002d8c       0x94 CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
+                0x0000000000002d8c                __vector_21
  .text._ZN4UART5WriteEPhj
-                0x0000000000002e9e       0x3e CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
-                0x0000000000002e9e                _ZN4UART5WriteEPhj
+                0x0000000000002e20       0x3e CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
+                0x0000000000002e20                _ZN4UART5WriteEPhj
  .text._ZN9Utilities16InitializeMemoryEv
-                0x0000000000002edc       0x1a CMakeFiles/node1.dir/lib/utilities/memory.cpp.obj
-                0x0000000000002edc                _ZN9Utilities16InitializeMemoryEv
- .text._Znwj    0x0000000000002ef6        0x4 CMakeFiles/node1.dir/lib/utilities/new.cpp.obj
-                0x0000000000002ef6                _Znwj
+                0x0000000000002e5e       0x1a CMakeFiles/node1.dir/lib/utilities/memory.cpp.obj
+                0x0000000000002e5e                _ZN9Utilities16InitializeMemoryEv
+ .text._Znwj    0x0000000000002e78        0x4 CMakeFiles/node1.dir/lib/utilities/new.cpp.obj
+                0x0000000000002e78                _Znwj
  .text._ZN12_GLOBAL__N_13putEcP6__file
-                0x0000000000002efa       0x52 CMakeFiles/node1.dir/lib/utilities/printf.cpp.obj
+                0x0000000000002e7c       0x52 CMakeFiles/node1.dir/lib/utilities/printf.cpp.obj
  .text._ZN9Utilities12EnablePrintfER6Stream
-                0x0000000000002f4c       0x14 CMakeFiles/node1.dir/lib/utilities/printf.cpp.obj
-                0x0000000000002f4c                _ZN9Utilities12EnablePrintfER6Stream
+                0x0000000000002ece       0x14 CMakeFiles/node1.dir/lib/utilities/printf.cpp.obj
+                0x0000000000002ece                _ZN9Utilities12EnablePrintfER6Stream
  .text.libgcc.div
-                0x0000000000002f60       0x18 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodqi4.o)
-                0x0000000000002f60                __udivmodqi4
+                0x0000000000002ee2       0x18 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodqi4.o)
+                0x0000000000002ee2                __udivmodqi4
  .text.libgcc.div
-                0x0000000000002f78       0x28 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
-                0x0000000000002f78                __udivmodhi4
+                0x0000000000002efa       0x28 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+                0x0000000000002efa                __udivmodhi4
  .text.libgcc.div
-                0x0000000000002fa0       0x28 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
-                0x0000000000002fa0                __divmodhi4
-                0x0000000000002fa0                _div
+                0x0000000000002f22       0x28 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+                0x0000000000002f22                __divmodhi4
+                0x0000000000002f22                _div
  .text.libgcc.div
-                0x0000000000002fc8       0x2e /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
-                0x0000000000002fc8                __divmodsi4
+                0x0000000000002f4a       0x2e /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+                0x0000000000002f4a                __divmodsi4
  .text.libgcc.div
-                0x0000000000002ff6       0x10 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
-                0x0000000000002ff6                __negsi2
+                0x0000000000002f78       0x10 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+                0x0000000000002f78                __negsi2
  .text.libgcc.div
-                0x0000000000003006       0x44 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
-                0x0000000000003006                __udivmodsi4
- .text.libgcc   0x000000000000304a        0xc /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_tablejump.o)
-                0x000000000000304a                __tablejump2__
-                0x000000000000304e                __tablejump__
+                0x0000000000002f88       0x44 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+                0x0000000000002f88                __udivmodsi4
+ .text.libgcc   0x0000000000002fcc        0xc /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_tablejump.o)
+                0x0000000000002fcc                __tablejump2__
+                0x0000000000002fd0                __tablejump__
  .text.avr-libc.fplib
-                0x0000000000003056        0xa /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(addsf3.o)
-                0x0000000000003056                __subsf3
-                0x0000000000003058                __addsf3
+                0x0000000000002fd8        0xa /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(addsf3.o)
+                0x0000000000002fd8                __subsf3
+                0x0000000000002fda                __addsf3
  .text.avr-libc.fplib
-                0x0000000000003060       0xc0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(addsf3x.o)
-                0x000000000000307a                __addsf3x
+                0x0000000000002fe2       0xc0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(addsf3x.o)
+                0x0000000000002ffc                __addsf3x
  .text.avr-libc.fplib
-                0x0000000000003120       0x26 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(ceil.o)
-                0x0000000000003120                ceil
+                0x00000000000030a2       0x26 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(ceil.o)
+                0x00000000000030a2                ceil
  .text.avr-libc.fplib
-                0x0000000000003146       0x58 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fixunssfsi.o)
-                0x0000000000003146                __fixunssfsi
+                0x00000000000030c8       0x58 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fixunssfsi.o)
+                0x00000000000030c8                __fixunssfsi
  .text.avr-libc.fplib
-                0x000000000000319e       0x7a /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(floatsisf.o)
-                0x000000000000319e                __floatunsisf
-                0x00000000000031a2                __floatsisf
+                0x0000000000003120       0x7a /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(floatsisf.o)
+                0x0000000000003120                __floatunsisf
+                0x0000000000003124                __floatsisf
  .text.avr-libc.fplib
-                0x0000000000003218        0xc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_inf.o)
-                0x0000000000003218                __fp_inf
+                0x000000000000319a        0xc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_inf.o)
+                0x000000000000319a                __fp_inf
  .text.avr-libc.fplib
-                0x0000000000003224       0x36 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_mintl.o)
-                0x0000000000003224                __fp_mintl
+                0x00000000000031a6       0x36 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_mintl.o)
+                0x00000000000031a6                __fp_mintl
  .text.avr-libc.fplib
-                0x000000000000325a       0x1c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_mpack.o)
-                0x000000000000325a                __fp_mpack
-                0x000000000000325e                __fp_mpack_finite
+                0x00000000000031dc       0x1c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_mpack.o)
+                0x00000000000031dc                __fp_mpack
+                0x00000000000031e0                __fp_mpack_finite
  .text.avr-libc.fplib
-                0x0000000000003276        0x6 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_nan.o)
-                0x0000000000003276                __fp_nan
+                0x00000000000031f8        0x6 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_nan.o)
+                0x00000000000031f8                __fp_nan
  .text.avr-libc.fplib
-                0x000000000000327c        0xe /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_pscA.o)
-                0x000000000000327c                __fp_pscA
+                0x00000000000031fe        0xe /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_pscA.o)
+                0x00000000000031fe                __fp_pscA
  .text.avr-libc.fplib
-                0x000000000000328a        0xe /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_pscB.o)
-                0x000000000000328a                __fp_pscB
+                0x000000000000320c        0xe /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_pscB.o)
+                0x000000000000320c                __fp_pscB
  .text.avr-libc.fplib
-                0x0000000000003298       0x22 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_round.o)
-                0x0000000000003298                __fp_round
+                0x000000000000321a       0x22 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_round.o)
+                0x000000000000321a                __fp_round
  .text.avr-libc.fplib
-                0x00000000000032ba       0x44 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_split3.o)
-                0x00000000000032ba                __fp_split3
-                0x00000000000032ca                __fp_splitA
+                0x000000000000323c       0x44 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_split3.o)
+                0x000000000000323c                __fp_split3
+                0x000000000000324c                __fp_splitA
  .text.avr-libc.fplib
-                0x00000000000032fe       0x2e /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_trunc.o)
-                0x00000000000032fe                __fp_trunc
+                0x0000000000003280       0x2e /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_trunc.o)
+                0x0000000000003280                __fp_trunc
  .text.avr-libc.fplib
-                0x000000000000332c        0xe /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_zero.o)
-                0x000000000000332c                __fp_zero
-                0x000000000000332e                __fp_szero
+                0x00000000000032ae        0xe /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_zero.o)
+                0x00000000000032ae                __fp_zero
+                0x00000000000032b0                __fp_szero
  .text.avr-libc.fplib
-                0x000000000000333a        0x4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(mulsf3.o)
-                0x000000000000333a                __mulsf3
+                0x00000000000032bc        0x4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(mulsf3.o)
+                0x00000000000032bc                __mulsf3
  .text.avr-libc.fplib
-                0x000000000000333e       0xc2 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(mulsf3x.o)
-                0x0000000000003352                __mulsf3x
-                0x0000000000003356                __mulsf3_pse
+                0x00000000000032c0       0xc2 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(mulsf3x.o)
+                0x00000000000032d4                __mulsf3x
+                0x00000000000032d8                __mulsf3_pse
  .text.avr-libc
-                0x0000000000003400      0x24e /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(malloc.o)
-                0x0000000000003400                malloc
-                0x0000000000003530                free
+                0x0000000000003382      0x24e /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(malloc.o)
+                0x0000000000003382                malloc
+                0x00000000000034b2                free
  .text.avr-libc
-                0x000000000000364e       0x12 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(memcpy.o)
-                0x000000000000364e                memcpy
+                0x00000000000035d0       0x12 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(memcpy.o)
+                0x00000000000035d0                memcpy
  .text.avr-libc
-                0x0000000000003660       0x96 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(fdevopen.o)
-                0x0000000000003660                fdevopen
+                0x00000000000035e2       0x96 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(fdevopen.o)
+                0x00000000000035e2                fdevopen
  .text.avr-libc
-                0x00000000000036f6       0x28 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(printf.o)
-                0x00000000000036f6                printf
+                0x0000000000003678       0x28 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(printf.o)
+                0x0000000000003678                printf
  .text.avr-libc
-                0x000000000000371e        0xe /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(putchar.o)
-                0x000000000000371e                putchar
+                0x00000000000036a0        0xe /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(putchar.o)
+                0x00000000000036a0                putchar
  .text.avr-libc
-                0x000000000000372c       0x5a /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(puts.o)
-                0x000000000000372c                puts
+                0x00000000000036ae       0x5a /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(puts.o)
+                0x00000000000036ae                puts
  .text.avr-libc
-                0x0000000000003786      0x3a4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(vfprintf_std.o)
-                0x0000000000003786                vfprintf
+                0x0000000000003708      0x3a4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(vfprintf_std.o)
+                0x0000000000003708                vfprintf
  .text.avr-libc
-                0x0000000000003b2a       0x38 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(calloc.o)
-                0x0000000000003b2a                calloc
+                0x0000000000003aac       0x38 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(calloc.o)
+                0x0000000000003aac                calloc
  .text.avr-libc
-                0x0000000000003b62       0x16 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strnlen_P.o)
-                0x0000000000003b62                strnlen_P
+                0x0000000000003ae4       0x16 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strnlen_P.o)
+                0x0000000000003ae4                strnlen_P
  .text.avr-libc
-                0x0000000000003b78        0xe /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(memset.o)
-                0x0000000000003b78                memset
+                0x0000000000003afa        0xe /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(memset.o)
+                0x0000000000003afa                memset
  .text.avr-libc
-                0x0000000000003b86       0x16 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strnlen.o)
-                0x0000000000003b86                strnlen
+                0x0000000000003b08       0x16 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strnlen.o)
+                0x0000000000003b08                strnlen
  .text.avr-libc
-                0x0000000000003b9c       0x64 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(fputc.o)
-                0x0000000000003b9c                fputc
+                0x0000000000003b1e       0x64 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(fputc.o)
+                0x0000000000003b1e                fputc
  .text.avr-libc
-                0x0000000000003c00       0xbc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(ultoa_invert.o)
-                0x0000000000003c00                __ultoa_invert
+                0x0000000000003b82       0xbc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(ultoa_invert.o)
+                0x0000000000003b82                __ultoa_invert
  .text.libgcc.prologue
-                0x0000000000003cbc       0x38 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_prologue.o)
-                0x0000000000003cbc                __prologue_saves__
+                0x0000000000003c3e       0x38 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_prologue.o)
+                0x0000000000003c3e                __prologue_saves__
  .text.libgcc.prologue
-                0x0000000000003cf4       0x36 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_epilogue.o)
-                0x0000000000003cf4                __epilogue_restores__
-                0x0000000000003d2a                . = ALIGN (0x2)
+                0x0000000000003c76       0x36 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_epilogue.o)
+                0x0000000000003c76                __epilogue_restores__
+                0x0000000000003cac                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000003d2a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
-                0x0000000000003d2a                exit
-                0x0000000000003d2a                _exit
+ .fini9         0x0000000000003cac        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+                0x0000000000003cac                exit
+                0x0000000000003cac                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1226,11 +1222,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000003d2a        0x4 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ .fini0         0x0000000000003cac        0x4 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
  *(.fini0)
-                0x0000000000003d2e                _etext = .
+                0x0000000000003cb0                _etext = .
 
-.data           0x0000000000804000      0x2ac load address 0x0000000000003d2e
+.data           0x0000000000804000      0x268 load address 0x0000000000003cb0
                 0x0000000000804000                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000804000        0x0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm162.o
@@ -1325,126 +1321,124 @@ END GROUP
  .rodata.str1.1
                 0x0000000000804024        0xd CMakeFiles/node1.dir/src/init.cpp.obj
  .rodata.str1.1
-                0x0000000000804031       0xc7 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x0000000000804031       0xb2 CMakeFiles/node1.dir/src/state_machine.cpp.obj
  .rodata._ZTV3ADC
-                0x00000000008040f8       0x30 CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
-                0x00000000008040f8                _ZTV3ADC
+                0x00000000008040e3       0x30 CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
+                0x00000000008040e3                _ZTV3ADC
  .rodata._ZTV7MCP2515
-                0x0000000000804128        0x6 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
-                0x0000000000804128                _ZTV7MCP2515
+                0x0000000000804113        0x6 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+                0x0000000000804113                _ZTV7MCP2515
  .rodata.str1.1
-                0x000000000080412e        0x5 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+                0x0000000000804119        0x5 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
  .rodata.str1.1
-                0x0000000000804133       0x26 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x000000000080411e       0x26 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
  .rodata._ZTV4OLED
-                0x0000000000804159       0x32 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
-                0x0000000000804159                _ZTV4OLED
+                0x0000000000804144       0x32 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+                0x0000000000804144                _ZTV4OLED
  .rodata._ZTV11OLED_memory
-                0x000000000080418b       0x32 CMakeFiles/node1.dir/lib/oled_memory/oled_memory.cpp.obj
-                0x000000000080418b                _ZTV11OLED_memory
+                0x0000000000804176       0x32 CMakeFiles/node1.dir/lib/oled_memory/oled_memory.cpp.obj
+                0x0000000000804176                _ZTV11OLED_memory
  .rodata._ZTV6SOCKET
-                0x00000000008041bd       0x30 CMakeFiles/node1.dir/lib/socket/socket.cpp.obj
-                0x00000000008041bd                _ZTV6SOCKET
+                0x00000000008041a8       0x30 CMakeFiles/node1.dir/lib/socket/socket.cpp.obj
+                0x00000000008041a8                _ZTV6SOCKET
  .rodata._ZTVN5SPI_N3SPIE
-                0x00000000008041ed       0x30 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
-                0x00000000008041ed                _ZTVN5SPI_N3SPIE
- .rodata.str1.1
-                0x000000000080421d       0x2f CMakeFiles/node1.dir/lib/state_machine/state_machine.cpp.obj
+                0x00000000008041d8       0x30 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
+                0x00000000008041d8                _ZTVN5SPI_N3SPIE
  .rodata._ZTV6Stream
-                0x000000000080424c       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
-                0x000000000080424c                _ZTV6Stream
+                0x0000000000804208       0x30 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+                0x0000000000804208                _ZTV6Stream
  .rodata._ZTV4UART
-                0x000000000080427c       0x30 CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
-                0x000000000080427c                _ZTV4UART
+                0x0000000000804238       0x30 CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
+                0x0000000000804238                _ZTV4UART
  *(.gnu.linkonce.d*)
-                0x00000000008042ac                . = ALIGN (0x2)
-                0x00000000008042ac                _edata = .
-                0x00000000008042ac                PROVIDE (__data_end, .)
+                0x0000000000804268                . = ALIGN (0x2)
+                0x0000000000804268                _edata = .
+                0x0000000000804268                PROVIDE (__data_end, .)
 
-.bss            0x00000000008042ac      0x13b
-                0x00000000008042ac                PROVIDE (__bss_start, .)
+.bss            0x0000000000804268      0x13b
+                0x0000000000804268                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss._ZZN4UART11GetInstanceEvE8instance
-                0x00000000008042ac       0x1b CMakeFiles/node1.dir/src/init.cpp.obj
-                0x00000000008042ac                _ZZN4UART11GetInstanceEvE8instance
+                0x0000000000804268       0x1b CMakeFiles/node1.dir/src/init.cpp.obj
+                0x0000000000804268                _ZZN4UART11GetInstanceEvE8instance
  .bss._ZZN5SPI_N3SPI11GetInstanceEvE8instance
-                0x00000000008042c7       0x21 CMakeFiles/node1.dir/src/init.cpp.obj
-                0x00000000008042c7                _ZZN5SPI_N3SPI11GetInstanceEvE8instance
+                0x0000000000804283       0x21 CMakeFiles/node1.dir/src/init.cpp.obj
+                0x0000000000804283                _ZZN5SPI_N3SPI11GetInstanceEvE8instance
  .bss._ZZN7MCP251511GetInstanceEvE8instance
-                0x00000000008042e8        0x7 CMakeFiles/node1.dir/src/init.cpp.obj
-                0x00000000008042e8                _ZZN7MCP251511GetInstanceEvE8instance
+                0x00000000008042a4        0x7 CMakeFiles/node1.dir/src/init.cpp.obj
+                0x00000000008042a4                _ZZN7MCP251511GetInstanceEvE8instance
  .bss._ZZN6SOCKET11GetInstanceEhE8instance_0
-                0x00000000008042ef       0x1d CMakeFiles/node1.dir/src/init.cpp.obj
-                0x00000000008042ef                _ZZN6SOCKET11GetInstanceEhE8instance_0
+                0x00000000008042ab       0x1d CMakeFiles/node1.dir/src/init.cpp.obj
+                0x00000000008042ab                _ZZN6SOCKET11GetInstanceEhE8instance_0
  .bss._ZZN6SOCKET11GetInstanceEhE8instance
-                0x000000000080430c       0x1d CMakeFiles/node1.dir/src/init.cpp.obj
-                0x000000000080430c                _ZZN6SOCKET11GetInstanceEhE8instance
+                0x00000000008042c8       0x1d CMakeFiles/node1.dir/src/init.cpp.obj
+                0x00000000008042c8                _ZZN6SOCKET11GetInstanceEhE8instance
  .bss._ZGVZN6SOCKET11GetInstanceEhE8instance_0
-                0x0000000000804329        0x8 CMakeFiles/node1.dir/src/init.cpp.obj
-                0x0000000000804329                _ZGVZN6SOCKET11GetInstanceEhE8instance_0
+                0x00000000008042e5        0x8 CMakeFiles/node1.dir/src/init.cpp.obj
+                0x00000000008042e5                _ZGVZN6SOCKET11GetInstanceEhE8instance_0
  .bss._ZGVZN6SOCKET11GetInstanceEhE8instance
-                0x0000000000804331        0x8 CMakeFiles/node1.dir/src/init.cpp.obj
-                0x0000000000804331                _ZGVZN6SOCKET11GetInstanceEhE8instance
+                0x00000000008042ed        0x8 CMakeFiles/node1.dir/src/init.cpp.obj
+                0x00000000008042ed                _ZGVZN6SOCKET11GetInstanceEhE8instance
  .bss._ZGVZN7MCP251511GetInstanceEvE8instance
-                0x0000000000804339        0x8 CMakeFiles/node1.dir/src/init.cpp.obj
-                0x0000000000804339                _ZGVZN7MCP251511GetInstanceEvE8instance
+                0x00000000008042f5        0x8 CMakeFiles/node1.dir/src/init.cpp.obj
+                0x00000000008042f5                _ZGVZN7MCP251511GetInstanceEvE8instance
  .bss._ZGVZN5SPI_N3SPI11GetInstanceEvE8instance
-                0x0000000000804341        0x8 CMakeFiles/node1.dir/src/init.cpp.obj
-                0x0000000000804341                _ZGVZN5SPI_N3SPI11GetInstanceEvE8instance
+                0x00000000008042fd        0x8 CMakeFiles/node1.dir/src/init.cpp.obj
+                0x00000000008042fd                _ZGVZN5SPI_N3SPI11GetInstanceEvE8instance
  .bss._ZGVZN4UART11GetInstanceEvE8instance
-                0x0000000000804349        0x8 CMakeFiles/node1.dir/src/init.cpp.obj
-                0x0000000000804349                _ZGVZN4UART11GetInstanceEvE8instance
+                0x0000000000804305        0x8 CMakeFiles/node1.dir/src/init.cpp.obj
+                0x0000000000804305                _ZGVZN4UART11GetInstanceEvE8instance
  .bss._ZZN3ADC11GetInstanceEPhE8instance_0
-                0x0000000000804351       0x1c CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x0000000000804351                _ZZN3ADC11GetInstanceEPhE8instance_0
+                0x000000000080430d       0x1c CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x000000000080430d                _ZZN3ADC11GetInstanceEPhE8instance_0
  .bss._ZZN3ADC11GetInstanceEPhE8instance
-                0x000000000080436d       0x1c CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x000000000080436d                _ZZN3ADC11GetInstanceEPhE8instance
+                0x0000000000804329       0x1c CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x0000000000804329                _ZZN3ADC11GetInstanceEPhE8instance
  .bss._ZZN11OLED_memory11GetInstanceEvE8instance
-                0x0000000000804389       0x2d CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x0000000000804389                _ZZN11OLED_memory11GetInstanceEvE8instance
+                0x0000000000804345       0x2d CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x0000000000804345                _ZZN11OLED_memory11GetInstanceEvE8instance
  .bss._ZN12_GLOBAL__N_110controllerE
-                0x00000000008043b6        0x2 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x0000000000804372        0x2 CMakeFiles/node1.dir/src/state_machine.cpp.obj
  .bss._ZN12_GLOBAL__N_17socketsE
-                0x00000000008043b8        0x4 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x0000000000804374        0x4 CMakeFiles/node1.dir/src/state_machine.cpp.obj
  .bss._ZN12_GLOBAL__N_17channelE
-                0x00000000008043bc        0x2 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x0000000000804378        0x2 CMakeFiles/node1.dir/src/state_machine.cpp.obj
  .bss._ZN12_GLOBAL__N_13fsmE
-                0x00000000008043be        0x2 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x000000000080437a        0x2 CMakeFiles/node1.dir/src/state_machine.cpp.obj
  .bss._ZGVZN11OLED_memory11GetInstanceEvE8instance
-                0x00000000008043c0        0x8 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x00000000008043c0                _ZGVZN11OLED_memory11GetInstanceEvE8instance
+                0x000000000080437c        0x8 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x000000000080437c                _ZGVZN11OLED_memory11GetInstanceEvE8instance
  .bss._ZGVZN3ADC11GetInstanceEPhE8instance_0
-                0x00000000008043c8        0x8 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x00000000008043c8                _ZGVZN3ADC11GetInstanceEPhE8instance_0
+                0x0000000000804384        0x8 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x0000000000804384                _ZGVZN3ADC11GetInstanceEPhE8instance_0
  .bss._ZGVZN3ADC11GetInstanceEPhE8instance
-                0x00000000008043d0        0x8 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                0x00000000008043d0                _ZGVZN3ADC11GetInstanceEPhE8instance
+                0x000000000080438c        0x8 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                0x000000000080438c                _ZGVZN3ADC11GetInstanceEPhE8instance
  .bss._ZN3ADC11adc_waitingE
-                0x00000000008043d8        0x2 CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
-                0x00000000008043d8                _ZN3ADC11adc_waitingE
+                0x0000000000804394        0x2 CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
+                0x0000000000804394                _ZN3ADC11adc_waitingE
  .bss._ZN3ADC10adc_in_useE
-                0x00000000008043da        0x1 CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
-                0x00000000008043da                _ZN3ADC10adc_in_useE
+                0x0000000000804396        0x1 CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
+                0x0000000000804396                _ZN3ADC10adc_in_useE
  .bss._ZN12_GLOBAL__N_113output_streamE
-                0x00000000008043db        0x2 CMakeFiles/node1.dir/lib/utilities/printf.cpp.obj
+                0x0000000000804397        0x2 CMakeFiles/node1.dir/lib/utilities/printf.cpp.obj
  *(COMMON)
- COMMON         0x00000000008043dd        0x4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(malloc.o)
-                0x00000000008043dd                __brkval
-                0x00000000008043df                __flp
- COMMON         0x00000000008043e1        0x6 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(iob.o)
-                0x00000000008043e1                __iob
-                0x00000000008043e7                PROVIDE (__bss_end, .)
-                0x0000000000003d2e                __data_load_start = LOADADDR (.data)
-                0x0000000000003fda                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0000000000804399        0x4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(malloc.o)
+                0x0000000000804399                __brkval
+                0x000000000080439b                __flp
+ COMMON         0x000000000080439d        0x6 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(iob.o)
+                0x000000000080439d                __iob
+                0x00000000008043a3                PROVIDE (__bss_end, .)
+                0x0000000000003cb0                __data_load_start = LOADADDR (.data)
+                0x0000000000003f18                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00000000008043e7        0x0
-                0x00000000008043e7                PROVIDE (__noinit_start, .)
+.noinit         0x00000000008043a3        0x0
+                0x00000000008043a3                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00000000008043e7                PROVIDE (__noinit_end, .)
-                0x00000000008043e7                _end = .
-                0x00000000008043e7                PROVIDE (__heap_start, .)
+                0x00000000008043a3                PROVIDE (__noinit_end, .)
+                0x00000000008043a3                _end = .
+                0x00000000008043a3                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)
@@ -1465,135 +1459,135 @@ END GROUP
 .user_signatures
  *(.user_signatures*)
 
-.stab           0x0000000000000000    0x12900
+.stab           0x0000000000000000    0x1287c
  *(.stab)
  .stab          0x0000000000000000      0x6cc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm162.o
  .stab          0x00000000000006cc      0x9b4 CMakeFiles/node1.dir/src/init.cpp.obj
                                         0x9f0 (size before relaxing)
  .stab          0x0000000000001080      0x5f4 CMakeFiles/node1.dir/src/main.cpp.obj
                                         0x600 (size before relaxing)
- .stab          0x0000000000001674      0xe34 CMakeFiles/node1.dir/src/state_machine.cpp.obj
-                                        0xe40 (size before relaxing)
- .stab          0x00000000000024a8      0x6d8 CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
+ .stab          0x0000000000001674      0xe58 CMakeFiles/node1.dir/src/state_machine.cpp.obj
+                                        0xe64 (size before relaxing)
+ .stab          0x00000000000024cc      0x6d8 CMakeFiles/node1.dir/lib/adc/adc.cpp.obj
                                         0x6e4 (size before relaxing)
- .stab          0x0000000000002b80      0x318 CMakeFiles/node1.dir/lib/adc_internal/adc_internal.cpp.obj
+ .stab          0x0000000000002ba4      0x318 CMakeFiles/node1.dir/lib/adc_internal/adc_internal.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x0000000000002e98      0x318 CMakeFiles/node1.dir/lib/dac/dac.cpp.obj
+ .stab          0x0000000000002ebc      0x318 CMakeFiles/node1.dir/lib/dac/dac.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x00000000000031b0      0x57c CMakeFiles/node1.dir/lib/highscore/highscore.cpp.obj
+ .stab          0x00000000000031d4      0x57c CMakeFiles/node1.dir/lib/highscore/highscore.cpp.obj
                                         0xd50 (size before relaxing)
- .stab          0x000000000000372c      0x318 CMakeFiles/node1.dir/lib/i2c/i2c.cpp.obj
+ .stab          0x0000000000003750      0x318 CMakeFiles/node1.dir/lib/i2c/i2c.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x0000000000003a44      0x318 CMakeFiles/node1.dir/lib/ir_detector/ir_detector.cpp.obj
+ .stab          0x0000000000003a68      0x318 CMakeFiles/node1.dir/lib/ir_detector/ir_detector.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x0000000000003d5c      0x318 CMakeFiles/node1.dir/lib/joystick/joystick.cpp.obj
+ .stab          0x0000000000003d80      0x318 CMakeFiles/node1.dir/lib/joystick/joystick.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x0000000000004074      0xe40 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
+ .stab          0x0000000000004098      0xe40 CMakeFiles/node1.dir/lib/mcp2515/mcp2515.cpp.obj
                                         0xfcc (size before relaxing)
- .stab          0x0000000000004eb4     0x10f8 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
+ .stab          0x0000000000004ed8     0x10f8 CMakeFiles/node1.dir/lib/menu/menu.cpp.obj
                                        0x15a8 (size before relaxing)
- .stab          0x0000000000005fac      0x318 CMakeFiles/node1.dir/lib/motor/motor.cpp.obj
+ .stab          0x0000000000005fd0      0x318 CMakeFiles/node1.dir/lib/motor/motor.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x00000000000062c4     0x11e8 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
+ .stab          0x00000000000062e8     0x11e8 CMakeFiles/node1.dir/lib/oled/oled.cpp.obj
                                        0x13c8 (size before relaxing)
- .stab          0x00000000000074ac      0x5d0 CMakeFiles/node1.dir/lib/oled_memory/oled_memory.cpp.obj
+ .stab          0x00000000000074d0      0x5d0 CMakeFiles/node1.dir/lib/oled_memory/oled_memory.cpp.obj
                                         0x5dc (size before relaxing)
- .stab          0x0000000000007a7c      0x54c CMakeFiles/node1.dir/lib/oled_scp/oled_scp.cpp.obj
+ .stab          0x0000000000007aa0      0x54c CMakeFiles/node1.dir/lib/oled_scp/oled_scp.cpp.obj
                                         0x6f0 (size before relaxing)
- .stab          0x0000000000007fc8      0x768 CMakeFiles/node1.dir/lib/scp/scp.cpp.obj
+ .stab          0x0000000000007fec      0x768 CMakeFiles/node1.dir/lib/scp/scp.cpp.obj
                                         0x774 (size before relaxing)
- .stab          0x0000000000008730      0x318 CMakeFiles/node1.dir/lib/servo/servo.cpp.obj
+ .stab          0x0000000000008754      0x318 CMakeFiles/node1.dir/lib/servo/servo.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x0000000000008a48      0x774 CMakeFiles/node1.dir/lib/socket/socket.cpp.obj
+ .stab          0x0000000000008a6c      0x774 CMakeFiles/node1.dir/lib/socket/socket.cpp.obj
                                         0x780 (size before relaxing)
- .stab          0x00000000000091bc      0x318 CMakeFiles/node1.dir/lib/solenoid/solenoid.cpp.obj
+ .stab          0x00000000000091e0      0x318 CMakeFiles/node1.dir/lib/solenoid/solenoid.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x00000000000094d4      0xb10 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
+ .stab          0x00000000000094f8      0xb10 CMakeFiles/node1.dir/lib/spi/spi.cpp.obj
                                         0xb1c (size before relaxing)
- .stab          0x0000000000009fe4      0x318 CMakeFiles/node1.dir/lib/spi_sync/spi_sync.cpp.obj
+ .stab          0x000000000000a008      0x318 CMakeFiles/node1.dir/lib/spi_sync/spi_sync.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x000000000000a2fc      0x798 CMakeFiles/node1.dir/lib/state_machine/state_machine.cpp.obj
-                                        0x834 (size before relaxing)
- .stab          0x000000000000aa94     0x13b0 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
+ .stab          0x000000000000a320      0x6f0 CMakeFiles/node1.dir/lib/state_machine/state_machine.cpp.obj
+                                        0x78c (size before relaxing)
+ .stab          0x000000000000aa10     0x13b0 CMakeFiles/node1.dir/lib/stream/stream.cpp.obj
                                        0x13bc (size before relaxing)
- .stab          0x000000000000be44      0x318 CMakeFiles/node1.dir/lib/timer/timer.cpp.obj
+ .stab          0x000000000000bdc0      0x318 CMakeFiles/node1.dir/lib/timer/timer.cpp.obj
                                         0x324 (size before relaxing)
- .stab          0x000000000000c15c      0x744 CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
+ .stab          0x000000000000c0d8      0x744 CMakeFiles/node1.dir/lib/uart/uart.cpp.obj
                                         0x750 (size before relaxing)
- .stab          0x000000000000c8a0      0x4e0 CMakeFiles/node1.dir/lib/utilities/fonts.cpp.obj
+ .stab          0x000000000000c81c      0x4e0 CMakeFiles/node1.dir/lib/utilities/fonts.cpp.obj
                                         0x4ec (size before relaxing)
- .stab          0x000000000000cd80      0x504 CMakeFiles/node1.dir/lib/utilities/memory.cpp.obj
+ .stab          0x000000000000ccfc      0x504 CMakeFiles/node1.dir/lib/utilities/memory.cpp.obj
                                         0x510 (size before relaxing)
- .stab          0x000000000000d284      0x564 CMakeFiles/node1.dir/lib/utilities/new.cpp.obj
+ .stab          0x000000000000d200      0x564 CMakeFiles/node1.dir/lib/utilities/new.cpp.obj
                                         0x5b8 (size before relaxing)
- .stab          0x000000000000d7e8      0x5ac CMakeFiles/node1.dir/lib/utilities/printf.cpp.obj
+ .stab          0x000000000000d764      0x5ac CMakeFiles/node1.dir/lib/utilities/printf.cpp.obj
                                         0x5b8 (size before relaxing)
- .stab          0x000000000000dd94       0x78 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(addsf3.o)
+ .stab          0x000000000000dd10       0x78 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(addsf3.o)
                                          0x84 (size before relaxing)
- .stab          0x000000000000de0c      0x4bc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(addsf3x.o)
+ .stab          0x000000000000dd88      0x4bc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(addsf3x.o)
                                         0x4c8 (size before relaxing)
- .stab          0x000000000000e2c8      0x114 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(ceil.o)
+ .stab          0x000000000000e244      0x114 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(ceil.o)
                                         0x120 (size before relaxing)
- .stab          0x000000000000e3dc      0x240 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fixunssfsi.o)
+ .stab          0x000000000000e358      0x240 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fixunssfsi.o)
                                         0x24c (size before relaxing)
- .stab          0x000000000000e61c      0x318 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(floatsisf.o)
+ .stab          0x000000000000e598      0x318 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(floatsisf.o)
                                         0x324 (size before relaxing)
- .stab          0x000000000000e934       0x78 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_inf.o)
+ .stab          0x000000000000e8b0       0x78 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_inf.o)
                                          0x84 (size before relaxing)
- .stab          0x000000000000e9ac      0x174 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_mintl.o)
+ .stab          0x000000000000e928      0x174 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_mintl.o)
                                         0x180 (size before relaxing)
- .stab          0x000000000000eb20       0xe4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_mpack.o)
+ .stab          0x000000000000ea9c       0xe4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_mpack.o)
                                          0xf0 (size before relaxing)
- .stab          0x000000000000ec04       0x54 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_nan.o)
+ .stab          0x000000000000eb80       0x54 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_nan.o)
                                          0x60 (size before relaxing)
- .stab          0x000000000000ec58       0x84 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_pscA.o)
+ .stab          0x000000000000ebd4       0x84 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_pscA.o)
                                          0x90 (size before relaxing)
- .stab          0x000000000000ecdc       0x84 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_pscB.o)
+ .stab          0x000000000000ec58       0x84 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_pscB.o)
                                          0x90 (size before relaxing)
- .stab          0x000000000000ed60       0xfc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_round.o)
+ .stab          0x000000000000ecdc       0xfc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_round.o)
                                         0x108 (size before relaxing)
- .stab          0x000000000000ee5c      0x1d4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_split3.o)
+ .stab          0x000000000000edd8      0x1d4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_split3.o)
                                         0x1e0 (size before relaxing)
- .stab          0x000000000000f030      0x144 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_trunc.o)
+ .stab          0x000000000000efac      0x144 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_trunc.o)
                                         0x150 (size before relaxing)
- .stab          0x000000000000f174       0x90 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_zero.o)
+ .stab          0x000000000000f0f0       0x90 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(fp_zero.o)
                                          0x9c (size before relaxing)
- .stab          0x000000000000f204       0x48 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(mulsf3.o)
+ .stab          0x000000000000f180       0x48 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(mulsf3.o)
                                          0x54 (size before relaxing)
- .stab          0x000000000000f24c      0x4d4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(mulsf3x.o)
+ .stab          0x000000000000f1c8      0x4d4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a(mulsf3x.o)
                                         0x4e0 (size before relaxing)
- .stab          0x000000000000f720      0x8dc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(malloc.o)
+ .stab          0x000000000000f69c      0x8dc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(malloc.o)
                                         0x8e8 (size before relaxing)
- .stab          0x000000000000fffc       0x84 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(memcpy.o)
+ .stab          0x000000000000ff78       0x84 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(memcpy.o)
                                          0x90 (size before relaxing)
- .stab          0x0000000000010080      0x474 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(fdevopen.o)
+ .stab          0x000000000000fffc      0x474 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(fdevopen.o)
                                         0x630 (size before relaxing)
- .stab          0x00000000000104f4      0x2ac /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(iob.o)
+ .stab          0x0000000000010470      0x2ac /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(iob.o)
                                         0x48c (size before relaxing)
- .stab          0x00000000000107a0      0x30c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(printf.o)
+ .stab          0x000000000001071c      0x30c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(printf.o)
                                         0x4ec (size before relaxing)
- .stab          0x0000000000010aac      0x300 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(putchar.o)
+ .stab          0x0000000000010a28      0x300 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(putchar.o)
                                         0x4e0 (size before relaxing)
- .stab          0x0000000000010dac      0x36c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(puts.o)
+ .stab          0x0000000000010d28      0x36c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(puts.o)
                                         0x54c (size before relaxing)
- .stab          0x0000000000011118      0xb58 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(vfprintf_std.o)
+ .stab          0x0000000000011094      0xb58 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(vfprintf_std.o)
                                         0xd80 (size before relaxing)
- .stab          0x0000000000011c70      0x318 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(calloc.o)
+ .stab          0x0000000000011bec      0x318 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(calloc.o)
                                         0x378 (size before relaxing)
- .stab          0x0000000000011f88       0x9c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strnlen_P.o)
+ .stab          0x0000000000011f04       0x9c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strnlen_P.o)
                                          0xa8 (size before relaxing)
- .stab          0x0000000000012024       0x6c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(memset.o)
+ .stab          0x0000000000011fa0       0x6c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(memset.o)
                                          0x78 (size before relaxing)
- .stab          0x0000000000012090       0x9c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strnlen.o)
+ .stab          0x000000000001200c       0x9c /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strnlen.o)
                                          0xa8 (size before relaxing)
- .stab          0x000000000001212c      0x354 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(fputc.o)
+ .stab          0x00000000000120a8      0x354 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(fputc.o)
                                         0x534 (size before relaxing)
- .stab          0x0000000000012480      0x480 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(ultoa_invert.o)
+ .stab          0x00000000000123fc      0x480 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(ultoa_invert.o)
                                         0x48c (size before relaxing)
 
-.stabstr        0x0000000000000000     0xf131
+.stabstr        0x0000000000000000     0xf120
  *(.stabstr)
- .stabstr       0x0000000000000000     0xf131 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm162.o
+ .stabstr       0x0000000000000000     0xf120 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm162.o
 
 .stab.excl
  *(.stab.excl)

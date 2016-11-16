@@ -84,6 +84,10 @@ namespace SPI_N{
          * @param wait If set, the SPI driver will not start the transmission of the output buffer
          */
         void WriteByteAndThrowAwayData(uint8_t byte, bool wait);
+        /**
+  * A struct of the type PIN which indicates which pin is currently selected.
+  */
+        PIN current_pin;
 
     private:
         /**
@@ -98,10 +102,7 @@ namespace SPI_N{
          * A bool indicating wether or not an outgoing transmission is ongoing
          */
         volatile bool ongoing_transmission = false;
-        /**
-         * A struct of the type PIN which indicates which pin is currently selected.
-         */
-        PIN current_pin;
+
 
         uint8_t throw_away_data_count = 0;
 

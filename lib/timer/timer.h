@@ -8,6 +8,8 @@
  * ATMEGA2560 datasheet, chapter 17
  */
 ISR(TIMER1_COMPA_vect);
+
+
 class Timer{
 public:
     /**

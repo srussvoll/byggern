@@ -192,7 +192,7 @@ void HighscoreLoop(){
     spi.WriteByte(0x00, 0);
     uint8_t read_byte;
     spi.ReadByte(read_byte);
-    if(read_byte == 0xaa){
+    if(read_byte == 0x33){
         fsm->Transition(STATE_IDLE, 0);
         return;
     }

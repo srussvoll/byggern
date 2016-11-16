@@ -61,9 +61,8 @@ void InitializeFSM(){
 
     controller->ControlGoToItem(1);
     controller->AddMenu(sub_main_items, (sizeof(sub_main_items)) / sizeof(sub_main_items[0]));
-    //controller->Render();
-    //while(1);
-    fsm->Transition(STATE_MENU, false);
+
+    fsm->Transition(STATE_GAME, false);
 }
 
 /*-----------------------     MENU    -------------------------------*/
@@ -86,14 +85,20 @@ void MenuLoop() {
     while(!adc_y.ReadByte(y_value)){
         ;
     }
-    //TODO G_Controler Leaves scope. Must fix !
-    if(y_value < 80){
-        printf("Moving down\n");
+
+    if(y_value < 40){
         controller->SelectNext();
         controller->Render();
-    }else if (y_value > 170){
-        printf("Moving up\n");
+        _delay_ms(400);
+    }else if (y_value > 220){
         controller->SelectPrevious();
+        controller->Render();
+        _delay_ms(400);
+    }else if(x_value > 170){
+        controller->ExecuteItem();
+        _delay_ms(400);
+    }else if(x_value < 40){
+        controller->GoToParent();
         controller->Render();
     }
 }
@@ -115,20 +120,27 @@ void PlayGameLoop() {
     // Send joystick message
     ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
     ADC &adc_y = ADC::GetInstance(ADC_ADDRESS2);
+
+    // X-Value
     while(!adc_x.request_sample());
     uint8_t x_value;
     while(!adc_x.ReadByte(x_value)){
         ;
     }
+
+    // Y-Value
     while(!adc_y.request_sample());
     uint8_t y_value;
     while(!adc_y.ReadByte(y_value)){
         ;
     }
 
-    uint8_t x[] = {x_value, y_value};
-    printf("X: %d, Y:%d \n", x_value, y_value);
-    channel->Send(1, CMD_JOYSTICK_VALUES, x, 2);
+    bool touchbutton_value;
+    touchbutton_value = PINB & (1 << PB0);
+
+    uint8_t x[] = {x_value, y_value, touchbutton_value};
+    printf("X: %d, Y:%d, T:%d \n", x_value, y_value, touchbutton_value);
+    channel->Send(1, CMD_JOYSTICK_VALUES, x, 3);
 
     // Check for end of game command
     uint8_t command;
@@ -146,7 +158,7 @@ void PlayGameLoop() {
 }
 
 void PlayGameLeave() {
-    //printf("STATE PLAY GAME LEFT\n");
+    printf("STATE PLAY GAME LEFT\n");
     return;
 }
 

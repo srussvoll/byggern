@@ -13,16 +13,19 @@
 
 #define STATE_ONGOING        1
 #define STATE_IDLE           2
+namespace{
+    StateMachine *fsm;
+    SCP          *channel;
+    SOCKET* sockets[] = {
+            &SOCKET::GetInstance(0),
+            &SOCKET::GetInstance(1)
+    };
 
-StateMachine *fsm;
-SCP          *channel;
-SOCKET* sockets[] = {
-        &SOCKET::GetInstance(0),
-        &SOCKET::GetInstance(1)
-};
-
-uint8_t x_direction = 0;
-uint8_t y_direction = 0;
+    uint8_t x_direction = 0;
+    uint8_t y_direction = 0;
+    bool touchbutton = false;
+    bool touchbutton_last = false;
+}
 
 /*-----------------------   INITIALIZE  -------------------------------*/
 
@@ -75,12 +78,13 @@ void OngoingEnter() {
     timer.Start();
     x_direction = 0;
     y_direction = 0;
+    touchbutton = false;
 }
 void OngoingLoop() {
     // Get joystick values
     uint8_t command;
     uint8_t length;
-    uint8_t data[2];
+    uint8_t data[3];
 
     Joystick& joystick = Joystick::GetInstance();
     Motor& motor = Motor::GetInstance();
@@ -89,6 +93,7 @@ void OngoingLoop() {
         if (command == CMD_JOYSTICK_VALUES) {
             x_direction = data[0];
             y_direction = data[1];
+            touchbutton = data[2];
             joystick.Update(x_direction, y_direction);
         }
     }
@@ -108,12 +113,15 @@ void OngoingLoop() {
         motor.Drive(0);
     }
 
-    if(direction == North){
-        if(joystick.DirectionChanged()){
+    if(touchbutton){
+        if(!touchbutton_last){
             printf("Solenoid \n");
             Solenoid& solenoid = Solenoid::GetInstance();
             solenoid.Pulse();
+            touchbutton_last = true;
         }
+    }else{
+        touchbutton_last = false;
     }
     //printf("X: %d, Y:%d \n", x_direction, y_direction);
 

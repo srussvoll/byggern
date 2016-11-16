@@ -7,6 +7,11 @@
 
 // y direction on the joystick
 #define ADC_ADDRESS2 (uint8_t *)0x2005
+
+// y direction on the joystick
+#define ADC_ADDRESS3 (uint8_t *)0x2006
+
+
 #define ADC_INT      INT2_vect
 
 #include "../stream/stream.h"
@@ -38,8 +43,11 @@ public:
         if(address == ADC_ADDRESS1) {
             static ADC instance(ADC_ADDRESS1);
             return instance;
-        } else {
+        } else if (address == ADC_ADDRESS2) {
             static ADC instance(ADC_ADDRESS2);
+            return instance;
+        } else {
+            static ADC instance(ADC_ADDRESS3);
             return instance;
         }
     }

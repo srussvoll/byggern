@@ -139,27 +139,29 @@ namespace Menu {
             this->GoToMenu((Menu *) this->current_item_navigate->action);
             this->Render();
         }
-        else (*((void (*)()) this->current_item_navigate->action))();
+        else if (this->current_item_navigate->action != nullptr) {
+            (*((void (*)()) this->current_item_navigate->action))();
+        }
     }
 
     void Controller::GoToRoot() {
         this->current_menu_navigate = this->root;
         this->current_index_navigate = 0;
         this->current_index_selected = 0;
-        this->Render();
     }
 
     void Controller::GoToParent() {
-        this->current_menu_navigate = this->current_menu_navigate->parent;
-        this->current_index_navigate = 0;
-        this->current_index_selected = 0;
-        this->Render();
+        if (this->current_menu_navigate->parent != nullptr) {
+            this->current_menu_navigate = this->current_menu_navigate->parent;
+            this->current_index_navigate = 0;
+            this->current_index_selected = 0;
+        }
     }
 
     void Controller::Render() {
         oled->SetNumberOfLines(this->num_lines);
         oled->Clear();
-        _delay_ms(500);
+        //_delay_ms(500);
 
         // Make sure that, if possible, the selected item is not the top or bottom one.
         if (this->current_index_selected <= this->current_index_navigate) {
@@ -176,9 +178,9 @@ namespace Menu {
             oled->WriteLine(this->current_item_navigate->label, this->current_item_navigate->label_length, i, 2);
 
             for(uint8_t j = 0; j < current_item_navigate->label_length; j++){
-                printf("%c", this->current_item_navigate->label[j]);
+                //printf("%c", this->current_item_navigate->label[j]);
             }
-            printf("\n");
+            //printf("\n");
 
             if (i == selected_index_relative) {
 
@@ -192,7 +194,7 @@ namespace Menu {
             }
             i++;
         } while (this->GoToNextItem());
-        printf("--- \n");
+        //printf("--- \n");
         oled->Repaint();
     }
 
@@ -222,7 +224,7 @@ namespace Menu {
         } else {
             this->current_index_selected = this->current_index_selected + 1;
         }
-        this->Render();
+        //this->Render();
         //printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
     }
 
@@ -233,7 +235,7 @@ namespace Menu {
         } else {
             this->current_index_selected = this->current_index_selected - 1;
         }
-        this->Render();
+        //this->Render();
     }
 
     void Controller::AddMenuItems(Item **items, uint8_t length) {

@@ -1,6 +1,8 @@
 #pragma once
 #include <avr/io.h>
 
+#define MAX_NAME_LENGTH 10
+
 /**
  * \brief Keeps track of the highscore and stores it to the EEPROM using Score objects.
  *

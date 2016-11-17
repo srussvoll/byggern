@@ -17,6 +17,7 @@
 #define STATE_MENU                  1
 #define STATE_GAME                  2
 #define STATE_HIGHSCORE             3
+#define STATE_WAITING_FOR_HIGHSCORE 4
 
 #define NUMBER_OF_HIGHSCORES        6
 
@@ -174,12 +175,11 @@ void PlayGameLoop() {
     // Check for end of game command
     uint8_t command;
     uint8_t length;
-    uint8_t data[2];
-    if(channel->Receive(command, data, length)) {
-        if (command == CMD_GAME_STOP) {
+    if(channel->Receive(command, nullptr, length)) {
+        if (command == CMD_WAIT_FOR_HIGHSCORE) {
             //printf("Game ended with %d seconds\n", data[0]);
             //TODO: Implement check highscore|
-            fsm->Transition(STATE_MENU, 0);
+            fsm->Transition(STATE_WAITING_FOR_HIGHSCORE, 0);
             return;
         }
     }
@@ -192,6 +192,9 @@ void PlayGameLeave() {
     //printf("STATE PLAY GAME LEFT\n");
     return;
 }
+
+/*----------------------   HIGGSCORE  -------------------------------*/
+
 
 void HighscoreEnter() {
     Highscore::Score **scores;
@@ -229,6 +232,35 @@ void HighscoreLoop() {
     if(x_value < 40) fsm->Transition(STATE_MENU, false);
 }
 
+/*----------------------   WaitForHighscore  -------------------------------*/
+void WaitForHighscoreLoop(){
+    uint8_t command;
+    uint8_t length;
+    uint8_t data[13];
+    if(channel->Receive(command, data, length)) {
+        if (command == CMD_SAVE_HIGHSCORE) {
+            OLED &oled = OLED_memory::GetInstance();
+            oled.SetNumberOfLines(3);
+            char message[] = "Saving score...";
+            oled.WriteLine(message, sizeof(message) - 1, 1, 0);
+
+            Highscore::Score score((data[0] << 8) | data[1], (char *) &data[3], data[2]);
+            highscore->SaveScore(score);
+            //highscore->StoreScores();
+            fsm->Transition(STATE_MENU, 0);
+            return;
+        }
+    }
+}
+
+void WaitForHighscoreEnter() {
+    OLED &oled = OLED_memory::GetInstance();
+    oled.SetNumberOfLines(4);
+    char message[] = "Waiting for highscore...";
+    char message2[] = "Please enter your name.";
+    oled.WriteLine(message, sizeof(message) - 1, 1, 0);
+    oled.WriteLine(message2, sizeof(message2) - 1, 2, 0);
+}
 
 /* States: enter, loops and leaves */
 /* State functions table */
@@ -237,6 +269,7 @@ void (*state_functions[][3])(void) = {
 /* 1. Menu                       */ {MenuEnter,    MenuLoop,       MenuLeave},
 /* 2. Play Game                  */ {PlayGameEnter, PlayGameLoop,   PlayGameLeave},
 /* 3. Highscore Score            */ {HighscoreEnter,            HighscoreLoop,         nullptr},
+/* 4. Waiting for Highscore Data */ {WaitForHighscoreEnter, WaitForHighscoreLoop, nullptr}
 };
 
 /* Initialize and start the state machine */

@@ -14,9 +14,11 @@
 #include <math.h>
 #include <lib/servo/servo.h>
 #include "lib/spi/spi.h"
+#include "lib/highscore/highscore.h"
 
 #define STATE_ONGOING        1
 #define STATE_IDLE           2
+#define STATE_HIGHSCORE      3
 namespace {
     StateMachine *fsm;
     SCP          *channel;
@@ -45,6 +47,7 @@ namespace {
 
     uint8_t highscore_name[10];
     uint8_t highscore_name_length;
+    uint16_t highscore_score = 0;
     SPI_N::PIN oldsspin;
 }
 
@@ -60,7 +63,7 @@ void InitializeLoop() {
 
     // Initialize the timer
     Timer &timer = Timer::GetInstance(0);
-    timer.Initialize(1000, nullptr);
+    timer.Initialize(100, nullptr);
 
     // Initialize the IR Sensor
     IR_Detector::GetInstance().Initialize(0x05);
@@ -174,7 +177,7 @@ void OngoingLoop() {
     IR_Detector &ir = IR_Detector::GetInstance();
     if(ir.Sample()) {
         printf("LOST GAME \n");
-        fsm->Transition(STATE_IDLE, 0);
+        fsm->Transition(STATE_HIGHSCORE, 0);
         return;
     }
 }
@@ -210,12 +213,9 @@ void OngoingLeave(){
     Timer &timer = Timer::GetInstance(0);
     Timer &timer2 = Timer::GetInstance(1);
     timer.Stop();
-    timer2.Stop();
-    uint16_t time;
-    timer.GetFullSecondsPassed(time);
-    printf("Time passed = %d \n\r", time);
-    uint8_t data[] = {(uint8_t)(time & 0x00FF), (uint8_t)((time & 0xFF00)) >> 8};
-    channel->Send(0, CMD_GAME_STOP, data, 2);
+    timer2.Stop();;
+    timer.GetFullSecondsPassed(highscore_score);
+    channel->Send(0, CMD_WAIT_FOR_HIGHSCORE, nullptr, 0);
     _delay_ms(500);
     sockets[0]->FlushInputBuffer();
     sockets[1]->FlushInputBuffer();
@@ -242,15 +242,13 @@ void IdleLoop() {
 
 /*-----------------------   HIGHSCORE  -------------------------------*/
 void HighscoreEnter(){
+
     // Select new SS
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
+    oldsspin = spi.current_pin;
     SPI_N::PIN nordic_pin = SPI_N::PIN(&DDRG, &PORTG, 1);
     spi.SetDevice(nordic_pin);
-    spi.FlushInputBuffer();
-    spi.FlushOutputBuffer();
     highscore_name_length = 0;
-
-    oldsspin = spi.current_pin;
 }
 
 void HighscoreLoop(){
@@ -259,6 +257,7 @@ void HighscoreLoop(){
     while(!(PING & (1 << PG0)));
     // New message, start transmission
     spi.WriteByte(0x00, 0);
+    while(spi.GetAvailableReadBytes() == 0);
     uint8_t read_byte;
     spi.ReadByte(read_byte);
     if(read_byte == 0x33){
@@ -267,7 +266,7 @@ void HighscoreLoop(){
     }
     highscore_name[highscore_name_length] = read_byte;
     highscore_name_length += 1;
-    // Wait until the pin is high
+    // Wait while the pin is high
     while(PING & (1 << PG0));
 }
 
@@ -278,6 +277,11 @@ void HighscoreLeave(){
     for(int i = 0; i < highscore_name_length; i++){
         printf("REC BYTE %2x \n", highscore_name[i]);
     }
+
+    uint8_t data[3 + MAX_NAME_LENGTH] = {highscore_score >> 8, highscore_score & 0xFF, highscore_name_length};
+    memcpy(data, highscore_name, highscore_name_length);
+
+    channel->Send(0, CMD_SAVE_HIGHSCORE, data, sizeof(data));
 }
 
 /* States: enter, loops and leaves */

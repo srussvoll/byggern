@@ -1,7 +1,8 @@
+#ifdef __AVR_ATmega2560__
+#include "encoder.h"
 #include <stdint.h>
 #include <avr/io.h>
 #include <util/delay.h>
-#include "encoder.h"
 
 Encoder::Encoder() {
     DDRH |= (1 << DDH5);
@@ -35,3 +36,4 @@ int16_t Encoder::ReadByte() {
 
     return -byte;
 }
+#endif

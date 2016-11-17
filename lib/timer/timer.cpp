@@ -37,7 +37,7 @@ void Timer::Initialize(uint16_t ms, void(*fn)(void)) {
      * => C = 1 / (6.4*10^(-5)) = 15625
      */
     uint16_t C = (uint16_t) (ms * 0.001 *  (16 * 1000000) / (1024));
-    printf("\nC = %d, MS = %d\n", C, ms);
+    //printf("\nC = %d, MS = %d\n", C, ms);
     if(this->timer_number == 0){
         OCR4A = C;
     }else if(this->timer_number == 1){

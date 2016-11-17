@@ -32,7 +32,7 @@ void InitializeNetworkStack(){
     // Initialize the socket
     high.Initialize(&mcp);
     low.Initialize(&mcp);
-    printf("Initialized \n");
+    //printf("Initialized \n");
 }
 
 void init_memory() {
@@ -43,7 +43,7 @@ extern "C" void __cxa_pure_virtual() {  }
 void init_hardware_drivers() {
     UART& uart = UART::GetInstance();
     uart.Init(9600);
-    Utilities::EnablePrintf(uart);
+    //Utilities::EnablePrintf(uart);
     InitializeNetworkStack();
 }
 

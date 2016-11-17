@@ -45,7 +45,7 @@ namespace {
     double y_previous = 0;
 
 
-    uint8_t highscore_name[10];
+    char highscore_name[10] = "Default";
     uint8_t highscore_name_length;
     uint16_t highscore_score = 0;
     SPI_N::PIN oldsspin;
@@ -242,7 +242,7 @@ void IdleLoop() {
 
 /*-----------------------   HIGHSCORE  -------------------------------*/
 void HighscoreEnter(){
-
+    printf("Enter highscore \n");
     // Select new SS
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
     oldsspin = spi.current_pin;
@@ -252,22 +252,27 @@ void HighscoreEnter(){
 }
 
 void HighscoreLoop(){
+    printf("new loop for highscore \n");
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
     // Wait while the pin is low
-    while(!(PING & (1 << PG0)));
+    while(!(PING & (1 << PING0)));
+    printf("Got new spi message\n");
     // New message, start transmission
-    spi.WriteByte(0x00, 0);
+    spi.WriteByte(0xaf, 0);
     while(spi.GetAvailableReadBytes() == 0);
     uint8_t read_byte;
     spi.ReadByte(read_byte);
+    printf("Got new message %2x\n", read_byte);
     if(read_byte == 0x33){
+        printf("Got 0x33\n");
         fsm->Transition(STATE_IDLE, 0);
         return;
     }
-    highscore_name[highscore_name_length] = read_byte;
+    highscore_name[highscore_name_length] = (char) read_byte;
     highscore_name_length += 1;
     // Wait while the pin is high
-    while(PING & (1 << PG0));
+    while(PING & (1 << PING0));
+
 }
 
 void HighscoreLeave(){
@@ -278,10 +283,9 @@ void HighscoreLeave(){
         printf("REC BYTE %2x \n", highscore_name[i]);
     }
 
-    uint8_t data[3 + MAX_NAME_LENGTH] = {highscore_score >> 8, highscore_score & 0xFF, highscore_name_length};
-    memcpy(data, highscore_name, highscore_name_length);
-
-    channel->Send(0, CMD_SAVE_HIGHSCORE, data, sizeof(data));
+    uint8_t data[3 + MAX_NAME_LENGTH] = {(uint8_t)(highscore_score >> 8), (uint8_t)(highscore_score & 0xFF), highscore_name_length};
+    memcpy(&data[3], highscore_name, highscore_name_length);
+    //channel->Send(0, CMD_SAVE_HIGHSCORE, data, sizeof(data));
 }
 
 /* States: enter, loops and leaves */

@@ -91,7 +91,7 @@ namespace SPI_N{
         }
     }
 
-    void SPI::SetDevice(PIN &pin){
+    void SPI::SetDevice(PIN pin){
         this->current_pin = pin;
 
         // Flush output and input buffer

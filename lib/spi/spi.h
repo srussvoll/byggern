@@ -55,13 +55,13 @@ namespace SPI_N{
          */
         SPI(const SPI&) = delete;
 
-        void SetDevice(PIN &pin);
+        void SetDevice(PIN pin);
 
         /**
         * Because of singleton - makes sure its not copied etc.
         */
-
         void operator=(const SPI&) = delete;
+
         /**
          * Initializes the ISP.
          * @param pins An array with PIN structs, where each struct is a pin that is used by the SPI

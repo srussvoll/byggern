@@ -266,15 +266,15 @@ void HighscoreLoop(){
     spi.ReadByte(read_byte);
     printf("Got new message %2x\n", read_byte);
 
-    /*
+
     if(read_byte == 0x33){
         printf("Got 0x33\n");
         fsm->Transition(STATE_IDLE, 0);
         return;
     }
-    */
-    //highscore_name[highscore_name_length] = (char) read_byte;
-    //highscore_name_length += 1;
+
+    highscore_name[highscore_name_length] = (char) read_byte;
+    highscore_name_length += 1;
     // Wait while the pin is high
     while(PING & (1 << PING0));
 
@@ -294,7 +294,7 @@ void HighscoreLeave(){
 
     uint8_t data[3 + MAX_NAME_LENGTH] = {(uint8_t)(highscore_score >> 8), (uint8_t)(highscore_score & 0xFF), highscore_name_length};
     memcpy(&data[3], highscore_name, highscore_name_length);
-    //channel->Send(0, CMD_SAVE_HIGHSCORE, data, sizeof(data));
+    channel->Send(0, CMD_SAVE_HIGHSCORE, data, sizeof(data));
 }
 
 /* States: enter, loops and leaves */

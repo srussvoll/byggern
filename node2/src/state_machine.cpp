@@ -40,8 +40,7 @@ namespace {
     float K_p = 1.2;
     float T_i = 100;
     float K_d = 0.07;
-    //float T   = 0.005;
-    float T = 0.05;
+    float T   = 0.005;
     double e_integral = 0;
     double y_previous = 0;
 
@@ -140,7 +139,6 @@ void OngoingLoop() {
 
     if(touchbutton){
         if(!touchbutton_last){
-            printf("Solenoid \n");
             Solenoid & solenoid = Solenoid::GetInstance();
             solenoid.Pulse();
             touchbutton_last = true;
@@ -167,7 +165,6 @@ void SetMotorPID() {
 
     float r = ((float)slider_pos - 127) / 100;
     double y = (double)encoder.ReadByte() / 4500;
-    printf("Encoder value: %6d\n", encoder.ReadByte());
     double e = r - y;
     e_integral += e;
 

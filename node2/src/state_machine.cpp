@@ -40,7 +40,8 @@ namespace {
     float K_p = 1.2;
     float T_i = 100;
     float K_d = 0.07;
-    float T   = 0.005;
+    //float T   = 0.005;
+    float T = 0.05;
     double e_integral = 0;
     double y_previous = 0;
 
@@ -99,7 +100,7 @@ void InitializeLoop() {
     servo = new Servo(900, 2100);
 
 
-    fsm->Transition(STATE_IDLE, 0);
+    fsm->Transition(STATE_HIGHSCORE, 0);
 }
 
 /*-----------------------   ONGOING  -------------------------------*/
@@ -251,10 +252,12 @@ void HighscoreEnter(){
     spi.SetDevice(nordic_pin);
     // Reduce clock speed
     SPCR |= (1 << SPR0) | (1 << SPR1);
-    highscore_name_length = 0;
+    highscore_name_length = 7;
 }
 
 void HighscoreLoop(){
+    fsm->Transition(STATE_IDLE, 0);
+    return;
     printf("new loop for highscore \n");
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
     // Wait while the pin is low
@@ -265,7 +268,7 @@ void HighscoreLoop(){
     while(spi.GetAvailableReadBytes() == 0);
     uint8_t read_byte;
     spi.ReadByte(read_byte);
-    printf("Got new message %2x\n", read_byte);
+    printf("Got new message %c\n", read_byte);
 
 
     if(read_byte == 0x33){

@@ -30,9 +30,8 @@ void SCP::Send(uint8_t priority, uint8_t command, uint8_t *data, uint8_t length_
         payload[2 + i] = data[i];
     }
 
-    /*for (int j = 0; j < length_of_data - 2; ++j) {
+    for (int j = 0; j < length_of_data - 2; ++j) {
         printf("Address, len, data: %4x, %2d, %2x\n", (((uint16_t)payload[2] << 8) + payload[3]), payload[1] - 2, payload[j + 4]);
-    }*/
-
+    }
     current_socket->Write(payload, 2 + length_of_data);
 }

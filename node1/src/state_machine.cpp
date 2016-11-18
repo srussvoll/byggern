@@ -193,7 +193,7 @@ void PlayGameLeave() {
     return;
 }
 
-/*----------------------   HIGGSCORE  -------------------------------*/
+/*----------------------   HIGHSCORE  -------------------------------*/
 
 
 void HighscoreEnter() {
@@ -240,9 +240,13 @@ void WaitForHighscoreLoop(){
     if(channel->Receive(command, data, length)) {
         if (command == CMD_SAVE_HIGHSCORE) {
             OLED &oled = OLED_memory::GetInstance();
+            oled.Clear();
             oled.SetNumberOfLines(3);
-            char message[] = "Saving score...";
-            oled.WriteLine(message, sizeof(message) - 1, 1, 0);
+            char message1[] = "Saving";
+            char message2[] = "score...";
+            oled.WriteLine(message1, sizeof(message1) - 1, 1, 4);
+            oled.WriteLine(message2, sizeof(message2) - 1, 1, 4);
+            oled.Repaint();
 
             Highscore::Score score((data[0] << 8) | data[1], (char *) &data[3], data[2]);
             highscore->SaveScore(score);
@@ -255,11 +259,17 @@ void WaitForHighscoreLoop(){
 
 void WaitForHighscoreEnter() {
     OLED &oled = OLED_memory::GetInstance();
-    oled.SetNumberOfLines(4);
-    char message[] = "Waiting for highscore...";
-    char message2[] = "Please enter your name.";
-    oled.WriteLine(message, sizeof(message) - 1, 1, 0);
-    oled.WriteLine(message2, sizeof(message2) - 1, 2, 0);
+    oled.Clear();
+    oled.SetNumberOfLines(7);
+    char message1[] = "Waiting for";
+    char message2[] = "highscore...";
+    char message3[] = "Please enter";
+    char message4[] = "your name.";
+    oled.WriteLine(message1, sizeof(message1) - 1, 1, 2);
+    oled.WriteLine(message2, sizeof(message2) - 1, 2, 2);
+    oled.WriteLine(message3, sizeof(message3) - 1, 4, 2);
+    oled.WriteLine(message4, sizeof(message4) - 1, 5, 2);
+    oled.Repaint();
 }
 
 /* States: enter, loops and leaves */

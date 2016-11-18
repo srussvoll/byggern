@@ -100,7 +100,7 @@ void InitializeLoop() {
     servo = new Servo(900, 2100);
 
 
-    fsm->Transition(STATE_HIGHSCORE, 0);
+    fsm->Transition(STATE_IDLE, 0);
 }
 
 /*-----------------------   ONGOING  -------------------------------*/
@@ -298,7 +298,7 @@ void HighscoreLeave(){
 
     uint8_t data[3 + MAX_NAME_LENGTH] = {(uint8_t)(highscore_score >> 8), (uint8_t)(highscore_score & 0xFF), highscore_name_length};
     memcpy(&data[3], highscore_name, highscore_name_length);
-    channel->Send(0, CMD_SAVE_HIGHSCORE, data, sizeof(data));
+    channel->Send(0, CMD_SAVE_HIGHSCORE, data, 3 + highscore_name_length);
 }
 
 /* States: enter, loops and leaves */

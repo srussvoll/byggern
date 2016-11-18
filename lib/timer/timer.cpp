@@ -37,9 +37,9 @@ void Timer::Initialize(uint16_t ms, void(*fn)(void)) {
     uint16_t C = (uint16_t) (ms * 0.001 *  (16 * 1000000) / (1024));
 
     // Set how far we are counting
-    if(this->timer_number == 0){
+    if(this->timer_number == 0) {
         OCR4A = C;
-    }else if(this->timer_number == 1){
+    } else if (this->timer_number == 1) {
         OCR3A = C;
     }
 
@@ -48,9 +48,9 @@ void Timer::Initialize(uint16_t ms, void(*fn)(void)) {
     sei();
 
     // Enable CTC interrupt
-    if(this->timer_number == 0){
+    if(this->timer_number == 0) {
         TIMSK4 |= (1<<OCIE4A);
-    }else if(this->timer_number == 1){
+    } else if (this->timer_number == 1) {
         TIMSK3 |= (1<<OCIE3A);
     }
 
@@ -60,14 +60,14 @@ void Timer::Initialize(uint16_t ms, void(*fn)(void)) {
 }
 
 void Timer::Start(){
-    if(this->timer_number == 0){
+    if(this->timer_number == 0) {
         TCNT4H = 0x00;
         TCNT4L = 0x00;
         this->timer = 0;
 
         // Prescaler at 1024
         TCCR4B |= ((1 << CS40) | (1 << CS42));
-    }else if(this->timer_number == 1){
+    }else if(this->timer_number == 1) {
         TCNT3H = 0x00;
         TCNT3L = 0x00;
         this->timer = 0;
@@ -79,7 +79,7 @@ void Timer::Start(){
 
 void Timer::Stop() {
     // Remove prescaler -> turns of the timer
-    if(this->timer_number == 0){
+    if(this->timer_number == 0) {
         TCCR4B &= ~((1<<CS40) | (1 << CS41) | (1 << CS42));
     }else if(this->timer_number == 1){
         TCCR3B &= ~((1<<CS30) | (1 << CS31) | (1 << CS32));

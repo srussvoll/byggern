@@ -4,15 +4,20 @@
 
 void SOCKET::Write(uint8_t *string, uint16_t size) {
     uint16_t remaining_data = size;
-    while(remaining_data > 0){
+    while(remaining_data > 0) {
+
         uint8_t can_size;
         uint8_t data[8];
-        if(remaining_data >= 8){
+
+        if(remaining_data >= 8) {
+
             // More data than one CAN frame allows. Need to split it
             can_size = 8;
             memcpy(data, &string[size-remaining_data],can_size);
             remaining_data -= 8;
-        }else{
+
+        }else {
+
             // Remaining data fits into one CAN frame
             can_size = remaining_data;
             memcpy(data, &string[size-remaining_data], can_size);
@@ -26,6 +31,7 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
         }
         CAN_MESSAGE message = CAN_MESSAGE(can_size,data,this->id);
         this->can->SendMessage(message);
+
         _delay_ms(11);
     }
 }

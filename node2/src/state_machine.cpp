@@ -189,6 +189,7 @@ void SetMotorPID() {
 
     float r = ((float)slider_pos - 127) / 100;
     double y = (double)encoder.ReadByte() / 4500;
+    printf("Encoder value: %6d\n", encoder.ReadByte());
     double e = r - y;
     e_integral += e;
 

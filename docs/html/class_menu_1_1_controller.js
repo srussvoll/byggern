@@ -17,6 +17,7 @@ var class_menu_1_1_controller =
     [ "GoToNextItem", "class_menu_1_1_controller.html#ad93989bb6a9ed55f67ad5c15e666cf39", null ],
     [ "GoToParent", "class_menu_1_1_controller.html#ab30a038c4e4e3cb102d419c11a6813f6", null ],
     [ "GoToRoot", "class_menu_1_1_controller.html#a787911ef46ca1968c2fd667af1f9ac27", null ],
+    [ "Initialize", "class_menu_1_1_controller.html#a9cf59f4581c2f1943bde424060476c40", null ],
     [ "Render", "class_menu_1_1_controller.html#af46abb3d242c76822c0e8ea8ab777fa5", null ],
     [ "SelectNext", "class_menu_1_1_controller.html#a9aabc6ba652c29efa7a02e12f51ce0b1", null ],
     [ "SelectPrevious", "class_menu_1_1_controller.html#a04e3448cfe4341ad7209a9f16bbcb449", null ],

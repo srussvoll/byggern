@@ -6,7 +6,7 @@ var class_s_p_i___n_1_1_s_p_i =
     [ "Initialize", "class_s_p_i___n_1_1_s_p_i.html#ab0517cd53e32d224a0171e6eeb200870", null ],
     [ "InitializeTransmission", "class_s_p_i___n_1_1_s_p_i.html#af973a5b4a970c3c01430037d578151ef", null ],
     [ "operator=", "class_s_p_i___n_1_1_s_p_i.html#aabc66612d396c2b70e5cbdba405dbfe5", null ],
-    [ "SetDevice", "class_s_p_i___n_1_1_s_p_i.html#ad04a79c8e9139545a96af71245ce8d18", null ],
+    [ "SetDevice", "class_s_p_i___n_1_1_s_p_i.html#a23f01675382512e51095ef1d6e257956", null ],
     [ "WriteByte", "class_s_p_i___n_1_1_s_p_i.html#a542dc8e88203de7040ce9926d06b9463", null ],
     [ "WriteByteAndThrowAwayData", "class_s_p_i___n_1_1_s_p_i.html#a05bcca2e033422b2e6ad570320d03fcb", null ],
     [ "SPI_STC_vect", "class_s_p_i___n_1_1_s_p_i.html#a96543550133e0b0c6ae83faad5c0d68d", null ],

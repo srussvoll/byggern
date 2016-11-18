@@ -5,9 +5,11 @@
 #include <stdio.h>
 
 /**
- * A socket which defines the communcation between two nodes. It uses an ID to identifiy itself, and a target_id to
- * identify the target node. Please note that this is not in coherence with the CAN standard, which implements ID as
- * an identifier of the type of message, and not the target node.
+ * \brief A socket which defines the communication in a CAN channel.
+ *
+ * It uses an ID to identify which channel it is listening and sending on. This interface consists of two sockets
+ * , although it is flexible to increase the amount of sockets. See GetInstance() for more information regarding extending the
+ * number of sockets. The lower the socket identifier, the higher the priority.
  */
 class SOCKET : public Stream {
 public:
@@ -17,7 +19,8 @@ public:
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wreturn-type"
     /**
-     * A Singleton implementation of this class
+     * A Singleton implementation of this class. In order to have support for more than two sockets, this if else statement
+     * has to bee extended to the amount of sockets you wish to support.
      * @param id The socket ID
      */
     static SOCKET& GetInstance(uint8_t id = 0){
@@ -33,15 +36,22 @@ public:
 
     /**
      * Called when a new CAN_MESSAGE from the can controller has arrived. Puts the message into the stream
-     * @param message The recieved CAN_MESSAGE
+     * @param message The received CAN_MESSAGE
      */
     static void HandleDataFromLowerLevel(CAN_MESSAGE &message) {
         SOCKET &socket = SOCKET::GetInstance(message.id);
         socket.WriteToInputStream(message.data, message.size);
     }
 
+    /**
+     * Because of singleton, make sure it is not deleted
+     */
     SOCKET(const SOCKET&) = delete;
 
+    /**
+     * The initializer. Not used by end user due to singleton
+     * @param id The socket ID
+     */
     SOCKET(uint8_t id) : Stream(255, 1), id(id){
     }
 

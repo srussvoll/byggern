@@ -1,51 +1,71 @@
-\hypertarget{class_solenoid}{\section{Solenoid Class Reference}
+\hypertarget{class_solenoid}{}\section{Solenoid Class Reference}
 \label{class_solenoid}\index{Solenoid@{Solenoid}}
-}
+
+
+Interface for handling a \hyperlink{class_solenoid}{Solenoid} circuit.  
+
+
+
+
+{\ttfamily \#include $<$Solenoid.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_solenoid_a6e9f8ce2b5b09ea3f587b83dc7c7ee36}{Solenoid} (const \hyperlink{class_solenoid}{Solenoid} \&)=delete
 \item 
-\hypertarget{class_solenoid_ac1b0c6024b8120b8d1dfc446f454ce3b}{void {\bfseries Initialize} (\hyperlink{struct_s_p_i___n_1_1_p_i_n}{S\-P\-I\-\_\-\-N\-::\-P\-I\-N} solenoid\-\_\-pin)}\label{class_solenoid_ac1b0c6024b8120b8d1dfc446f454ce3b}
-
+\hyperlink{class_solenoid_a786f920a2fdb2136f19ea02cbdc53555}{Solenoid} ()
 \item 
-\hypertarget{class_solenoid_a50bc0121679bd1ff11323f1c88fe2ec6}{void {\bfseries Pulse} ()}\label{class_solenoid_a50bc0121679bd1ff11323f1c88fe2ec6}
-
+void \hyperlink{class_solenoid_a6093fb381f87eee3e22c6dfc97f3fdc0}{Initialize} ()
+\item 
+void \hyperlink{class_solenoid_a50bc0121679bd1ff11323f1c88fe2ec6}{Pulse} ()
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{class_solenoid}{Solenoid} \& \hyperlink{class_solenoid_adc5bf799e0eb382eb6a5e4d471308f20}{Get\-Instance} ()
-\end{DoxyCompactItemize}
-\subsection*{Private Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{class_solenoid_a1a6fef2de8c051a885472b6302cc5f7c}{\hyperlink{struct_s_p_i___n_1_1_p_i_n}{S\-P\-I\-\_\-\-N\-::\-P\-I\-N} {\bfseries pin}}\label{class_solenoid_a1a6fef2de8c051a885472b6302cc5f7c}
-
+static \hyperlink{class_solenoid}{Solenoid} \& \hyperlink{class_solenoid_adc5bf799e0eb382eb6a5e4d471308f20}{Get\+Instance} ()
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Interface for handling a \hyperlink{class_solenoid}{Solenoid} circuit. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_solenoid_a6e9f8ce2b5b09ea3f587b83dc7c7ee36}{\index{Solenoid@{Solenoid}!Solenoid@{Solenoid}}
+\hypertarget{class_solenoid_a6e9f8ce2b5b09ea3f587b83dc7c7ee36}{}\label{class_solenoid_a6e9f8ce2b5b09ea3f587b83dc7c7ee36} 
 \index{Solenoid@{Solenoid}!Solenoid@{Solenoid}}
-\subsubsection[{Solenoid}]{\setlength{\rightskip}{0pt plus 5cm}Solenoid\-::\-Solenoid (
-\begin{DoxyParamCaption}
-\item[{const {\bf Solenoid} \&}]{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [delete]}}}\label{class_solenoid_a6e9f8ce2b5b09ea3f587b83dc7c7ee36}
-Because of singleton -\/ makes sure its not copied etc. 
+\index{Solenoid@{Solenoid}!Solenoid@{Solenoid}}
+\subsubsection{\texorpdfstring{Solenoid()}{Solenoid()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Solenoid\+::\+Solenoid (\begin{DoxyParamCaption}\item[{const \hyperlink{class_solenoid}{Solenoid} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. \hypertarget{class_solenoid_a786f920a2fdb2136f19ea02cbdc53555}{}\label{class_solenoid_a786f920a2fdb2136f19ea02cbdc53555} 
+\index{Solenoid@{Solenoid}!Solenoid@{Solenoid}}
+\index{Solenoid@{Solenoid}!Solenoid@{Solenoid}}
+\subsubsection{\texorpdfstring{Solenoid()}{Solenoid()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Solenoid\+::\+Solenoid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Initializer. Not used because of singleton 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_solenoid_adc5bf799e0eb382eb6a5e4d471308f20}{\index{Solenoid@{Solenoid}!Get\-Instance@{Get\-Instance}}
-\index{Get\-Instance@{Get\-Instance}!Solenoid@{Solenoid}}
-\subsubsection[{Get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Solenoid}\& Solenoid\-::\-Get\-Instance (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_solenoid_adc5bf799e0eb382eb6a5e4d471308f20}
-A Singleton implementation of this class 
+\hypertarget{class_solenoid_adc5bf799e0eb382eb6a5e4d471308f20}{}\label{class_solenoid_adc5bf799e0eb382eb6a5e4d471308f20} 
+\index{Solenoid@{Solenoid}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Solenoid@{Solenoid}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily static \hyperlink{class_solenoid}{Solenoid}\& Solenoid\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+A Singleton implementation of this class \hypertarget{class_solenoid_a6093fb381f87eee3e22c6dfc97f3fdc0}{}\label{class_solenoid_a6093fb381f87eee3e22c6dfc97f3fdc0} 
+\index{Solenoid@{Solenoid}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Solenoid@{Solenoid}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Solenoid\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initializes the \hyperlink{class_solenoid}{Solenoid}. Must be called in order for it to function. \hypertarget{class_solenoid_a50bc0121679bd1ff11323f1c88fe2ec6}{}\label{class_solenoid_a50bc0121679bd1ff11323f1c88fe2ec6} 
+\index{Solenoid@{Solenoid}!Pulse@{Pulse}}
+\index{Pulse@{Pulse}!Solenoid@{Solenoid}}
+\subsubsection{\texorpdfstring{Pulse()}{Pulse()}}
+{\footnotesize\ttfamily void Solenoid\+::\+Pulse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sends a pulse to the \hyperlink{class_solenoid}{Solenoid}. Aka triggers it. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-lib/solenoid/solenoid.\-h\item 
-lib/solenoid/solenoid.\-cpp\end{DoxyCompactItemize}
+lib/solenoid/Solenoid.\+h\end{DoxyCompactItemize}

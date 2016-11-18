@@ -5,6 +5,7 @@ var hierarchy =
     ] ],
     [ "CAN_MESSAGE", "struct_c_a_n___m_e_s_s_a_g_e.html", null ],
     [ "Menu::Controller", "class_menu_1_1_controller.html", null ],
+    [ "Encoder", "class_encoder.html", null ],
     [ "Highscore::Highscore", "class_highscore_1_1_highscore.html", null ],
     [ "Menu::Item", "struct_menu_1_1_item.html", null ],
     [ "Menu::Menu", "struct_menu_1_1_menu.html", null ],
@@ -22,5 +23,6 @@ var hierarchy =
       [ "SOCKET", "class_s_o_c_k_e_t.html", null ],
       [ "SPI_N::SPI", "class_s_p_i___n_1_1_s_p_i.html", null ],
       [ "UART", "class_u_a_r_t.html", null ]
-    ] ]
+    ] ],
+    [ "Timer", "class_timer.html", null ]
 ];

@@ -4,6 +4,7 @@ var class_o_l_e_d =
     [ "Clear", "class_o_l_e_d.html#a6c7bb1fc91b3e574a275f90643da140a", null ],
     [ "ClearLine", "class_o_l_e_d.html#a3a571f5ea7a183fa14932cd5b2c423eb", null ],
     [ "GetBitmapForCharacter", "class_o_l_e_d.html#a3bd2f2f05568441e1e0533eaf0db58f8", null ],
+    [ "GetMaxLineCharacters", "class_o_l_e_d.html#a7bb08915b685741c60bdccdd47781560", null ],
     [ "GetYCoordinateFromLineNumber", "class_o_l_e_d.html#a5b6d41d5d699998f54ea6e3b6562ac5b", null ],
     [ "GoToLine", "class_o_l_e_d.html#a8d314130676b104ed959b92ab4bac25e", null ],
     [ "Init", "class_o_l_e_d.html#a2c8205c8eac9d7a2b181657561e9b4d2", null ],

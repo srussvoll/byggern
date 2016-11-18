@@ -4,6 +4,7 @@ var dir_97aefd0d527b934f1d99a682da8fe6a9 =
     [ "adc_internal", "dir_3cc4d89cbb969bbca88f1ef184f1adad.html", "dir_3cc4d89cbb969bbca88f1ef184f1adad" ],
     [ "can", "dir_c926ccd25fde7939feebe163e20903e5.html", "dir_c926ccd25fde7939feebe163e20903e5" ],
     [ "dac", "dir_941a4331ff30ad8c2334400926407dba.html", "dir_941a4331ff30ad8c2334400926407dba" ],
+    [ "encoder", "dir_346d63a2cfbaa01f6a009f32f6baf3e8.html", "dir_346d63a2cfbaa01f6a009f32f6baf3e8" ],
     [ "highscore", "dir_d2ae7f282200aca47c20cb66fd3b006f.html", "dir_d2ae7f282200aca47c20cb66fd3b006f" ],
     [ "i2c", "dir_048b5c8740c2855c7721552ee93efcec.html", "dir_048b5c8740c2855c7721552ee93efcec" ],
     [ "ir_detector", "dir_270d3afab55e5679f1762d54a9d06cd9.html", "dir_270d3afab55e5679f1762d54a9d06cd9" ],

@@ -1,20 +1,29 @@
-#ifdef __AVR_ATmega2560__
 #pragma once
 #include <avr/io.h>
 #include <avr/interrupt.h>
-/**
- * Simple 16 bit timer controller for AVR. Uses CTC mode. Assumes a 16MHz clock, and only counts whole seconds passed.
- * If you are not using a 16MHz clock, you need to change the OCR1A register to match your clock. Please refer to the
- * ATMEGA2560 datasheet, chapter 17
- */
 
 ISR(TIMER4_COMPA_vect);
 ISR(TIMER3_COMPA_vect);
+
+/**
+ * \brief A simple 16 bit timer controller for AVR
+ *
+ * Simple 16 bit timer controller for AVR that counts how many times the counter has triggered,
+ * and can call a callback function each time the timer triggers.
+ *
+ * Provides two timers, timer 3 and timer 4. When using GetInstance, the parameter pass determines which
+ * timer it returns.
+ *
+ * 0 -> timer 4
+ * 1 -> timer 5
+ *
+ * Uses CTC mode. Assumes a 16MHz clock.
+ */
 class Timer{
 public:
     /**
     * A Singleton implementation of this class
-    *
+    * @param timer_number Which timer you want to use. timer_number = 0 -> timer4, timer_number = 1 -> timer5
     */
     static Timer& GetInstance(uint8_t timer_number){
         if(timer_number == 0){
@@ -33,6 +42,8 @@ public:
 
     /**
      * Initializes the timer. You must run this function in order for the timer to work
+     * @param ms How many milliseconds before the timer triggers
+     * @param fn The callback function to be called when the timer triggers. Pass nullptr if you do not want a callback function
      */
     void Initialize(uint16_t ms, void(*fn)(void));
 
@@ -47,33 +58,42 @@ public:
     void Stop();
 
     /**
-     * Sets time to the number of full seconds passed since Start() was called.
-     * @param time
+     * Returns how many times the timer has triggered
+     * @param time Variable to contain the data
      */
     void GetFullSecondsPassed(uint16_t &time);
 
     /**
-     * Interrupt handler for when one second has passed
+     * Interrupt handler for timer 4
      */
     friend void TIMER4_COMPA_vect();
 
+    /**
+     * Interrupt handler for timer 3
+     */
     friend void TIMER3_COMPA_vect();
 
 
 private:
     /**
-     * Initializer. Not used due to singleton
+     * Initializer. Not used by enduser
+     * @param timer_number Which timer number you want to get. Please see GetInstance()
      */
     Timer(uint8_t timer_number): timer_number(timer_number){};
 
     /**
-     * Number of full seconds passed
+     * Number of times the timer has triggered
      */
     volatile uint16_t timer;
 
+    /**
+     * Which timer is this instance for. See GetInstance()
+     */
     uint8_t timer_number;
 
+    /**
+     * Callback function to be called when the timer triggers.
+     */
     void (*fn)(void);
 
 };
-#endif

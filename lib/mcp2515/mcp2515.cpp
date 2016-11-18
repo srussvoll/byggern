@@ -60,8 +60,8 @@ void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
     EIMSK |= (1<<INT4);
 
 #endif
-    // Assuming the SPI is already initialized
 
+    // Assuming the SPI is already initialized
     this->Reset();
 
     // Set interrupts in the MCP2515

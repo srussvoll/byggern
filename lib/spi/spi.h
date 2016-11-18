@@ -3,16 +3,9 @@
 #include "../stream/stream.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
-/**
- * @file
- * @author  Johan Lofstad, Sondre Baugstø, Sondre Russvoll
- * @version 1.0
- *
- * An SPI driver
- */
 namespace SPI_N{
     /**
-     * A struct which holds the information about a pin. Used in order to pass pin information
+     * \brief A struct which holds the information about a pin. Used in order to pass pin information
      */
     struct PIN{
         /**
@@ -37,7 +30,10 @@ namespace SPI_N{
 
     ISR(SPI_STC_vect);
     /**
-     * This class is an SPI driver which uses the STREAM class as an input and output buffer.
+     * \brief An SPI driver which implements the AVR SPI interface
+     *
+     * An SPI driver which implements the AVR SPI interface. Uses the STREAM class as both input and output buffer.
+     * Supports all four modes of SPI (please see the Initialize function). Uses interrupt for when a transfer is complete
      */
     class SPI: public Stream {
     public:
@@ -45,7 +41,7 @@ namespace SPI_N{
         * A Singleton implementation of this class
         *
         */
-        static SPI& GetInstance(){
+        static SPI& GetInstance() {
             static SPI instance;
             return instance;
         }
@@ -55,15 +51,21 @@ namespace SPI_N{
          */
         SPI(const SPI&) = delete;
 
-        void SetDevice(PIN pin);
-
         /**
         * Because of singleton - makes sure its not copied etc.
         */
         void operator=(const SPI&) = delete;
 
         /**
-         * Initializes the ISP.
+        * Sets the device the SPI driver is going to use. This must be called in order for it to function.
+        * The device passed into set device must also have been initialized in the Initialize function when
+        * initializing the SPI driver
+        * @param pin The PIN the SPI is going to use
+        */
+        void SetDevice(PIN pin);
+
+        /**
+         * Initializes the SPI.
          * @param pins An array with PIN structs, where each struct is a pin that is used by the SPI
          * @param number_of_pins Number of PIN structs in the pins array
          * @param clock_polarity_falling If enabled, SCK is high when idle. Defaults to disabled (SCK low when idle)
@@ -84,9 +86,10 @@ namespace SPI_N{
          * @param wait If set, the SPI driver will not start the transmission of the output buffer
          */
         void WriteByteAndThrowAwayData(uint8_t byte, bool wait);
+
         /**
-  * A struct of the type PIN which indicates which pin is currently selected.
-  */
+         * A struct of the type PIN which indicates which pin is currently selected.
+         */
         PIN current_pin;
 
     private:
@@ -94,16 +97,20 @@ namespace SPI_N{
          * Initializer for SPI. Not used because of singleton
          */
         SPI();
+
         /**
          * Send the data in the output buffer onto the SPI.
          */
         void InitializeTransmission();
+
         /**
          * A bool indicating wether or not an outgoing transmission is ongoing
          */
         volatile bool ongoing_transmission = false;
 
-
+        /**
+         * A flag indicating how many transfer we are going to not care about the data received
+         */
         uint8_t throw_away_data_count = 0;
 
         /**

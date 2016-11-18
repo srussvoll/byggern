@@ -9,7 +9,7 @@
 #include "../lib/ir_detector/ir_detector.h"
 #include "../lib/timer/timer.h"
 #include "lib/joystick/joystick.h"
-#include "lib/solenoid/solenoid.h"
+#include "lib/solenoid/Solenoid.h"
 #include "lib/encoder/encoder.h"
 #include <math.h>
 #include <lib/servo/servo.h>
@@ -46,8 +46,8 @@ namespace {
     double y_previous = 0;
 
 
-    char highscore_name[10] = "Default";
-    uint8_t highscore_name_length;
+    char highscore_name[10];
+    uint8_t highscore_name_length = 0;
     uint16_t highscore_score = 0;
     SPI_N::PIN oldsspin;
 }
@@ -88,8 +88,8 @@ void InitializeLoop() {
     levels.y_max = 255;
     joystick.Initialize(levels, 0.6);
 
-    //Initialize the solenoid
-    Solenoid& solenoid = Solenoid::GetInstance();
+    //Initialize the Solenoid
+    Solenoid & solenoid = Solenoid::GetInstance();
     solenoid.Initialize();
 
     // Initialize controller timer
@@ -156,7 +156,7 @@ void OngoingLoop() {
     if(touchbutton){
         if(!touchbutton_last){
             printf("Solenoid \n");
-            Solenoid& solenoid = Solenoid::GetInstance();
+            Solenoid & solenoid = Solenoid::GetInstance();
             solenoid.Pulse();
             touchbutton_last = true;
         }
@@ -252,12 +252,10 @@ void HighscoreEnter(){
     spi.SetDevice(nordic_pin);
     // Reduce clock speed
     SPCR |= (1 << SPR0) | (1 << SPR1);
-    highscore_name_length = 7;
+    highscore_name_length = 0;
 }
 
 void HighscoreLoop(){
-    fsm->Transition(STATE_IDLE, 0);
-    return;
     printf("new loop for highscore \n");
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
     // Wait while the pin is low

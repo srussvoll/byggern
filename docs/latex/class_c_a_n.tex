@@ -1,7 +1,15 @@
-\hypertarget{class_c_a_n}{\section{C\-A\-N Class Reference}
-\label{class_c_a_n}\index{C\-A\-N@{C\-A\-N}}
-}
-Inheritance diagram for C\-A\-N\-:\begin{figure}[H]
+\hypertarget{class_c_a_n}{}\section{C\+AN Class Reference}
+\label{class_c_a_n}\index{C\+AN@{C\+AN}}
+
+
+Purely virtual class defining a \hyperlink{class_c_a_n}{C\+AN} interface.  
+
+
+
+
+{\ttfamily \#include $<$can.\+h$>$}
+
+Inheritance diagram for C\+AN\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_c_a_n}
@@ -10,20 +18,50 @@ Inheritance diagram for C\-A\-N\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_c_a_n_a9149d0118ae9de4a8dc0b807f7c34b1a}{virtual void {\bfseries Send\-Message} (\hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\-A\-N\-\_\-\-M\-E\-S\-S\-A\-G\-E} \&message)=0}\label{class_c_a_n_a9149d0118ae9de4a8dc0b807f7c34b1a}
-
+virtual void \hyperlink{class_c_a_n_a9149d0118ae9de4a8dc0b807f7c34b1a}{Send\+Message} (\hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE} \&message)=0
 \item 
-\hypertarget{class_c_a_n_ac68e0152514d39c43e9406b19031af89}{void {\bfseries Set\-Upper\-Level} (void($\ast$handler)(\hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\-A\-N\-\_\-\-M\-E\-S\-S\-A\-G\-E} \&data))}\label{class_c_a_n_ac68e0152514d39c43e9406b19031af89}
-
+void \hyperlink{class_c_a_n_ac68e0152514d39c43e9406b19031af89}{Set\+Upper\+Level} (void($\ast$handler)(\hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE} \&data))
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_c_a_n_adcc6669e9bbaf8609352b878268dc9d1}{void($\ast$ {\bfseries upper\-\_\-level} )(\hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\-A\-N\-\_\-\-M\-E\-S\-S\-A\-G\-E} \&data)}\label{class_c_a_n_adcc6669e9bbaf8609352b878268dc9d1}
-
+\hypertarget{class_c_a_n_aef38b61b368e80233ef211473ac51035}{}\label{class_c_a_n_aef38b61b368e80233ef211473ac51035} 
+void($\ast$ {\bfseries upper\+\_\+level} )(\hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE} \&data)
 \end{DoxyCompactItemize}
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\subsection{Detailed Description}
+Purely virtual class defining a \hyperlink{class_c_a_n}{C\+AN} interface. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_a_n_a9149d0118ae9de4a8dc0b807f7c34b1a}{}\label{class_c_a_n_a9149d0118ae9de4a8dc0b807f7c34b1a} 
+\index{C\+AN@{C\+AN}!Send\+Message@{Send\+Message}}
+\index{Send\+Message@{Send\+Message}!C\+AN@{C\+AN}}
+\subsubsection{\texorpdfstring{Send\+Message()}{SendMessage()}}
+{\footnotesize\ttfamily virtual void C\+A\+N\+::\+Send\+Message (\begin{DoxyParamCaption}\item[{\hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Sends a can message 
+\begin{DoxyParams}{Parameters}
+{\em message} & The \hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE} which you are sending \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_m_c_p2515_aa8c9fe944f7e6e99feb3f56a1c099a29}{M\+C\+P2515}.
+
+\hypertarget{class_c_a_n_ac68e0152514d39c43e9406b19031af89}{}\label{class_c_a_n_ac68e0152514d39c43e9406b19031af89} 
+\index{C\+AN@{C\+AN}!Set\+Upper\+Level@{Set\+Upper\+Level}}
+\index{Set\+Upper\+Level@{Set\+Upper\+Level}!C\+AN@{C\+AN}}
+\subsubsection{\texorpdfstring{Set\+Upper\+Level()}{SetUpperLevel()}}
+{\footnotesize\ttfamily void C\+A\+N\+::\+Set\+Upper\+Level (\begin{DoxyParamCaption}\item[{void($\ast$)(\hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE} \&data)}]{handler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets where to send the received can data. 
+\begin{DoxyParams}{Parameters}
+{\em data} & The \hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE} which should contain the data. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-lib/can/can.\-h\end{DoxyCompactItemize}
+lib/can/can.\+h\end{DoxyCompactItemize}

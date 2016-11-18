@@ -1,0 +1,172 @@
+\hypertarget{class_timer}{}\section{Timer Class Reference}
+\label{class_timer}\index{Timer@{Timer}}
+
+
+A simple 16 bit timer controller for A\+VR.  
+
+
+
+
+{\ttfamily \#include $<$timer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_timer_ae6b73141ad1d5029d3782d14d2fd5ff0}{Timer} (const \hyperlink{class_timer}{Timer} \&)=delete
+\item 
+void \hyperlink{class_timer_a04ed0eb1468656c271645c2165bbe147}{Initialize} (uint16\+\_\+t ms, void($\ast$\hyperlink{class_timer_af44fd5c977c119c25af6aeee6f7cdc7a}{fn})(void))
+\item 
+void \hyperlink{class_timer_a4e607b129b392c11adddd9641a320436}{Start} ()
+\item 
+void \hyperlink{class_timer_a6379e797f968aaee6ac3bb12dc6b81c5}{Stop} ()
+\item 
+void \hyperlink{class_timer_ad45285aacc47697bea2bd0dce06a3e4d}{Get\+Full\+Seconds\+Passed} (uint16\+\_\+t \&time)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_timer}{Timer} \& \hyperlink{class_timer_a5a9960ef2a5394a76b4b024cae1a86a3}{Get\+Instance} (uint8\+\_\+t \hyperlink{class_timer_a3c813be60ee224a8d6b252a83dfe16d3}{timer\+\_\+number})
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_timer_a609e586dbc0fdc159fc6fd490fcc1ae3}{Timer} (uint8\+\_\+t \hyperlink{class_timer_a3c813be60ee224a8d6b252a83dfe16d3}{timer\+\_\+number})
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint16\+\_\+t \hyperlink{class_timer_abd1196c7069c046e192e936bfc264693}{timer}
+\item 
+uint8\+\_\+t \hyperlink{class_timer_a3c813be60ee224a8d6b252a83dfe16d3}{timer\+\_\+number}
+\item 
+void($\ast$ \hyperlink{class_timer_af44fd5c977c119c25af6aeee6f7cdc7a}{fn} )(void)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_timer_a53c4be4b5bb54690ef9012fde8d97b9c}{T\+I\+M\+E\+R4\+\_\+\+C\+O\+M\+P\+A\+\_\+vect} ()
+\item 
+void \hyperlink{class_timer_a7aadba5fdadb4c3e5483845e75cdf5a1}{T\+I\+M\+E\+R3\+\_\+\+C\+O\+M\+P\+A\+\_\+vect} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A simple 16 bit timer controller for A\+VR. 
+
+Simple 16 bit timer controller for A\+VR that counts how many times the counter has triggered, and can call a callback function each time the timer triggers.
+
+Provides two timers, timer 3 and timer 4. When using Get\+Instance, the parameter pass determines which timer it returns.
+
+0 -\/$>$ timer 4 1 -\/$>$ timer 5
+
+Uses C\+TC mode. Assumes a 16\+M\+Hz clock. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_timer_ae6b73141ad1d5029d3782d14d2fd5ff0}{}\label{class_timer_ae6b73141ad1d5029d3782d14d2fd5ff0} 
+\index{Timer@{Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{Timer()}{Timer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Timer\+::\+Timer (\begin{DoxyParamCaption}\item[{const \hyperlink{class_timer}{Timer} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. \hypertarget{class_timer_a609e586dbc0fdc159fc6fd490fcc1ae3}{}\label{class_timer_a609e586dbc0fdc159fc6fd490fcc1ae3} 
+\index{Timer@{Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{Timer()}{Timer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Timer\+::\+Timer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{timer\+\_\+number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Initializer. Not used by enduser 
+\begin{DoxyParams}{Parameters}
+{\em timer\+\_\+number} & Which timer number you want to get. Please see \hyperlink{class_timer_a5a9960ef2a5394a76b4b024cae1a86a3}{Get\+Instance()} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_timer_ad45285aacc47697bea2bd0dce06a3e4d}{}\label{class_timer_ad45285aacc47697bea2bd0dce06a3e4d} 
+\index{Timer@{Timer}!Get\+Full\+Seconds\+Passed@{Get\+Full\+Seconds\+Passed}}
+\index{Get\+Full\+Seconds\+Passed@{Get\+Full\+Seconds\+Passed}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{Get\+Full\+Seconds\+Passed()}{GetFullSecondsPassed()}}
+{\footnotesize\ttfamily void Timer\+::\+Get\+Full\+Seconds\+Passed (\begin{DoxyParamCaption}\item[{uint16\+\_\+t \&}]{time }\end{DoxyParamCaption})}
+
+Returns how many times the timer has triggered 
+\begin{DoxyParams}{Parameters}
+{\em time} & Variable to contain the data \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_timer_a5a9960ef2a5394a76b4b024cae1a86a3}{}\label{class_timer_a5a9960ef2a5394a76b4b024cae1a86a3} 
+\index{Timer@{Timer}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily static \hyperlink{class_timer}{Timer}\& Timer\+::\+Get\+Instance (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{timer\+\_\+number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+A Singleton implementation of this class 
+\begin{DoxyParams}{Parameters}
+{\em timer\+\_\+number} & Which timer you want to use. timer\+\_\+number = 0 -\/$>$ timer4, timer\+\_\+number = 1 -\/$>$ timer5 \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_timer_a04ed0eb1468656c271645c2165bbe147}{}\label{class_timer_a04ed0eb1468656c271645c2165bbe147} 
+\index{Timer@{Timer}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Timer\+::\+Initialize (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{ms,  }\item[{void($\ast$)(void)}]{fn }\end{DoxyParamCaption})}
+
+Initializes the timer. You must run this function in order for the timer to work 
+\begin{DoxyParams}{Parameters}
+{\em ms} & How many milliseconds before the timer triggers \\
+\hline
+{\em fn} & The callback function to be called when the timer triggers. Pass nullptr if you do not want a callback function \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_timer_a4e607b129b392c11adddd9641a320436}{}\label{class_timer_a4e607b129b392c11adddd9641a320436} 
+\index{Timer@{Timer}!Start@{Start}}
+\index{Start@{Start}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Timer\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Wipes all previous data and starts the timer. \hypertarget{class_timer_a6379e797f968aaee6ac3bb12dc6b81c5}{}\label{class_timer_a6379e797f968aaee6ac3bb12dc6b81c5} 
+\index{Timer@{Timer}!Stop@{Stop}}
+\index{Stop@{Stop}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Timer\+::\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Stops the timer but retains the data 
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_timer_a7aadba5fdadb4c3e5483845e75cdf5a1}{}\label{class_timer_a7aadba5fdadb4c3e5483845e75cdf5a1} 
+\index{Timer@{Timer}!T\+I\+M\+E\+R3\+\_\+\+C\+O\+M\+P\+A\+\_\+vect@{T\+I\+M\+E\+R3\+\_\+\+C\+O\+M\+P\+A\+\_\+vect}}
+\index{T\+I\+M\+E\+R3\+\_\+\+C\+O\+M\+P\+A\+\_\+vect@{T\+I\+M\+E\+R3\+\_\+\+C\+O\+M\+P\+A\+\_\+vect}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{T\+I\+M\+E\+R3\+\_\+\+C\+O\+M\+P\+A\+\_\+vect}{TIMER3\_COMPA\_vect}}
+{\footnotesize\ttfamily void T\+I\+M\+E\+R3\+\_\+\+C\+O\+M\+P\+A\+\_\+vect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+Interrupt handler for timer 3 \hypertarget{class_timer_a53c4be4b5bb54690ef9012fde8d97b9c}{}\label{class_timer_a53c4be4b5bb54690ef9012fde8d97b9c} 
+\index{Timer@{Timer}!T\+I\+M\+E\+R4\+\_\+\+C\+O\+M\+P\+A\+\_\+vect@{T\+I\+M\+E\+R4\+\_\+\+C\+O\+M\+P\+A\+\_\+vect}}
+\index{T\+I\+M\+E\+R4\+\_\+\+C\+O\+M\+P\+A\+\_\+vect@{T\+I\+M\+E\+R4\+\_\+\+C\+O\+M\+P\+A\+\_\+vect}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{T\+I\+M\+E\+R4\+\_\+\+C\+O\+M\+P\+A\+\_\+vect}{TIMER4\_COMPA\_vect}}
+{\footnotesize\ttfamily void T\+I\+M\+E\+R4\+\_\+\+C\+O\+M\+P\+A\+\_\+vect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+Interrupt handler for timer 4 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_timer_af44fd5c977c119c25af6aeee6f7cdc7a}{}\label{class_timer_af44fd5c977c119c25af6aeee6f7cdc7a} 
+\index{Timer@{Timer}!fn@{fn}}
+\index{fn@{fn}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{fn}{fn}}
+{\footnotesize\ttfamily void($\ast$ Timer\+::fn) (void)\hspace{0.3cm}{\ttfamily [private]}}
+
+Callback function to be called when the timer triggers. \hypertarget{class_timer_abd1196c7069c046e192e936bfc264693}{}\label{class_timer_abd1196c7069c046e192e936bfc264693} 
+\index{Timer@{Timer}!timer@{timer}}
+\index{timer@{timer}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{timer}{timer}}
+{\footnotesize\ttfamily volatile uint16\+\_\+t Timer\+::timer\hspace{0.3cm}{\ttfamily [private]}}
+
+Number of times the timer has triggered \hypertarget{class_timer_a3c813be60ee224a8d6b252a83dfe16d3}{}\label{class_timer_a3c813be60ee224a8d6b252a83dfe16d3} 
+\index{Timer@{Timer}!timer\+\_\+number@{timer\+\_\+number}}
+\index{timer\+\_\+number@{timer\+\_\+number}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{timer\+\_\+number}{timer\_number}}
+{\footnotesize\ttfamily uint8\+\_\+t Timer\+::timer\+\_\+number\hspace{0.3cm}{\ttfamily [private]}}
+
+Which timer is this instance for. See \hyperlink{class_timer_a5a9960ef2a5394a76b4b024cae1a86a3}{Get\+Instance()} 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/timer/timer.\+h\end{DoxyCompactItemize}

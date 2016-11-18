@@ -5,7 +5,6 @@
 #include "../lib/utilities/printf.h"
 
 void TIMER4_COMPA_vect() {
-    // One second has passed
     Timer &t = Timer::GetInstance(0);
     t.timer += 1;
     if(t.fn != nullptr){
@@ -14,7 +13,6 @@ void TIMER4_COMPA_vect() {
 }
 
 void TIMER3_COMPA_vect() {
-    // One second has passed
     Timer &t = Timer::GetInstance(1);
     t.timer += 1;
     if(t.fn != nullptr){
@@ -23,8 +21,8 @@ void TIMER3_COMPA_vect() {
 }
 
 void Timer::Initialize(uint16_t ms, void(*fn)(void)) {
+    // Set the timer in CTC mode
     if(this->timer_number == 0){
-        // Set timer 1 in CTC Mode
         TCCR4B |= (1<<WGM42);
     }else if(this->timer_number == 1){
         TCCR3B |= (1<<WGM32);
@@ -37,7 +35,8 @@ void Timer::Initialize(uint16_t ms, void(*fn)(void)) {
      * => C = 1 / (6.4*10^(-5)) = 15625
      */
     uint16_t C = (uint16_t) (ms * 0.001 *  (16 * 1000000) / (1024));
-    //printf("\nC = %d, MS = %d\n", C, ms);
+
+    // Set how far we are counting
     if(this->timer_number == 0){
         OCR4A = C;
     }else if(this->timer_number == 1){
@@ -48,13 +47,14 @@ void Timer::Initialize(uint16_t ms, void(*fn)(void)) {
     // Enable global interrupts
     sei();
 
-    // Enable CTC Compare A interrupt
+    // Enable CTC interrupt
     if(this->timer_number == 0){
         TIMSK4 |= (1<<OCIE4A);
     }else if(this->timer_number == 1){
         TIMSK3 |= (1<<OCIE3A);
     }
 
+    // Set callback
     this->fn = fn;
 
 }
@@ -64,18 +64,21 @@ void Timer::Start(){
         TCNT4H = 0x00;
         TCNT4L = 0x00;
         this->timer = 0;
+
         // Prescaler at 1024
         TCCR4B |= ((1 << CS40) | (1 << CS42));
     }else if(this->timer_number == 1){
         TCNT3H = 0x00;
         TCNT3L = 0x00;
         this->timer = 0;
+
         // Prescaler at 1024
         TCCR3B |= ((1 << CS30) | (1 << CS32));
     }
 }
 
 void Timer::Stop() {
+    // Remove prescaler -> turns of the timer
     if(this->timer_number == 0){
         TCCR4B &= ~((1<<CS40) | (1 << CS41) | (1 << CS42));
     }else if(this->timer_number == 1){

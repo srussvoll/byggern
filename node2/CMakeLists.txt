@@ -12,7 +12,7 @@ set(BAUD 9600)
 
 # Programmer options
 set(PROG_TYPE wiring)
-set(USBPORT /dev/tty.usbmodem1411)
+set(USBPORT /dev/ttyACM0)
 set(BITCLOCK 115200)
 
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.

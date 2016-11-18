@@ -24,6 +24,7 @@ namespace Highscore {
         char *name;
 
         Score(uint16_t score, char *name, uint8_t name_length) : score(score), name_length(name_length), name(name) {};
+        void operator=(const Score &score);
     };
 
 

@@ -178,7 +178,7 @@ void PlayGameLoop() {
     if(channel->Receive(command, nullptr, length)) {
         if (command == CMD_WAIT_FOR_HIGHSCORE) {
             //printf("Game ended with %d seconds\n", data[0]);
-            //TODO: Implement check highscore|
+            //TODO: Implement check highscore
             fsm->Transition(STATE_WAITING_FOR_HIGHSCORE, 0);
             return;
         }
@@ -208,7 +208,7 @@ void HighscoreEnter() {
     oled.WriteLine(title, sizeof(title) - 1, 0, 0);
 
     for (uint8_t i = 0; i < score_length; ++i) {
-        oled.WriteLine(scores[i]->name, scores[i]->name_length - 1, i + 1, 0);
+        oled.WriteLine(scores[i]->name, scores[i]->name_length, i + 1, 0);
         //printf("\nScore: ");
         //UART::GetInstance().Write((uint8_t *) scores[i]->name, scores[i]->name_length - 1);
         char score[6];
@@ -241,16 +241,18 @@ void WaitForHighscoreLoop(){
         if (command == CMD_SAVE_HIGHSCORE) {
             OLED &oled = OLED_memory::GetInstance();
             oled.Clear();
-            oled.SetNumberOfLines(3);
+            oled.SetNumberOfLines(4);
             char message1[] = "Saving";
             char message2[] = "score...";
-            oled.WriteLine(message1, sizeof(message1) - 1, 1, 4);
-            oled.WriteLine(message2, sizeof(message2) - 1, 1, 4);
+            oled.WriteLine(message1, sizeof(message1) - 1, 1, 3);
+            oled.WriteLine(message2, sizeof(message2) - 1, 2, 3);
             oled.Repaint();
 
             Highscore::Score score((data[0] << 8) | data[1], (char *) &data[3], data[2]);
+
             highscore->SaveScore(score);
-            //highscore->StoreScores();
+            highscore->StoreScores();
+
             fsm->Transition(STATE_MENU, 0);
             return;
         }

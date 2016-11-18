@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.6)
 
-# Debug flag
+# Flags
 set(DEBUG "1")
+set(SAVE_SPACE "1")
 
 # Options
 set(MCU atmega162)
@@ -67,6 +68,7 @@ set(COPT      "-Os -lm -lprintf_flt")
 set(ENABLE_SINGLETON "-fno-threadsafe-statics") # This isn't implemented in avr-g++ anyway, and without this singletons don't work...
 set(DISABLE_EXCEPTIONS "-fno-exceptions") # This isn't implemented in avr-g++. Turn it off so the code doesn't try to cast an exception.
 set(DEBUG_FLAG "-DDEBUG=${DEBUG}")
+set(SAVE_SPACE_FLAG "-DSAVE_SPACE=${SAVE_SPACE}")
 set(ADD_MAP "-Wl,-Map=${BUILD_PATH}/${PROJECT_NAME}.map")
 
 set(CMCU      "-mmcu=${MCU}")
@@ -80,8 +82,8 @@ set(HEAP_LOCATION "-Wl,--section-start,.data=0x804000,--defsym=__heap_end=0x805F
 # Does nothing...
 #set(HEAP_LOCATION "")
 
-set(CFLAGS   "${CDEBUG} ${ADD_MAP} ${CMCU} ${COPT} ${CLINKER} ${HEAP_LOCATION} ${CWARN} ${CSTANDARD} ${CTUNING} ${CONLYWARN}")
-set(CXXFLAGS "${CDEBUG} ${ADD_MAP} ${CMCU} ${COPT} ${CLINKER} ${HEAP_LOCATION} ${CWARN} ${CXXSTANDARD} ${CTUNING} ${ENABLE_SINGLETON} ${DISABLE_EXCEPTIONS}")
+set(CFLAGS   "${CDEBUG} ${SAVE_SPACE_FLAG} ${ADD_MAP} ${CMCU} ${COPT} ${CLINKER} ${HEAP_LOCATION} ${CWARN} ${CSTANDARD} ${CTUNING} ${CONLYWARN}")
+set(CXXFLAGS "${CDEBUG} ${SAVE_SPACE_FLAG} ${ADD_MAP} ${CMCU} ${COPT} ${CLINKER} ${HEAP_LOCATION} ${CWARN} ${CXXSTANDARD} ${CTUNING} ${ENABLE_SINGLETON} ${DISABLE_EXCEPTIONS}")
 
 set(CMAKE_C_FLAGS   "${CFLAGS}")
 set(CMAKE_CXX_FLAGS "${CXXFLAGS}")

@@ -14,10 +14,11 @@
 #include "lib/menu/menu.h"
 #include "lib/utilities/new.h"
 
-#define STATE_MENU                  1
-#define STATE_GAME                  2
-#define STATE_HIGHSCORE             3
-#define STATE_WAITING_FOR_HIGHSCORE 4
+#define STATE_MENU                   1
+#define STATE_GAME                   2
+#define STATE_HIGHSCORE              3
+#define STATE_WAITING_FOR_HIGHSCORE  4
+#define STATE_RENDER_OLED_FROM_NODE2 5
 
 #define NUMBER_OF_HIGHSCORES        6
 
@@ -32,6 +33,14 @@ namespace {
     Highscore::Highscore *highscore;
 }
 
+bool JoystickIsLeft() {
+    ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
+    while(!adc_x.request_sample());
+    uint8_t x_value;
+    while(!adc_x.ReadByte(x_value));
+    return (x_value < 40);
+}
+
 void TransitionToGame(){
     fsm->Transition(STATE_GAME, false);
 }
@@ -43,6 +52,11 @@ void TransitionToHighscore() {
 void ClearHighscores() {
     highscore->ClearHighscores();
     highscore->StoreScores();
+}
+
+void RequestNode2Render() {
+    channel->Send(0, CMD_RENDER_OLED, nullptr, 0);
+    fsm->Transition(STATE_RENDER_OLED_FROM_NODE2, false);
 }
 
 /*-----------------------   INITIALIZE  -------------------------------*/
@@ -61,17 +75,19 @@ void InitializeFSM(){
     controller = new Menu::Controller(my_oled, 4);
     char item0[] = "Play Game";
     char item1[] = "Highscore";
+    char item2[] = "OLED node 2";
     char item1_0[] = "Show";
     char item1_1[] = "Clear";
 
     Menu::Item *i0 = new Menu::Item(item0, sizeof(item0) - 1);
     Menu::Item *i1 = new Menu::Item(item1, sizeof(item1) - 1);
+    Menu::Item *i2 = new Menu::Item(item2, sizeof(item2) - 1);
 
     // Sub-menu
     Menu::Item *i1_0 = new Menu::Item(item1_0, sizeof(item1_0) - 1);
     Menu::Item *i1_1 = new Menu::Item(item1_1, sizeof(item1_1) - 1);
 
-    Menu::Item* main_items[] = {i0, i1};
+    Menu::Item* main_items[] = {i0, i1, i2};
     Menu::Item* sub_main_items[] = {i1_0, i1_1};
 
     controller->AddMenuItems(main_items, (sizeof(main_items)) / sizeof(main_items[0]));
@@ -82,6 +98,7 @@ void InitializeFSM(){
     controller->ControlGoToItem(0);
 
     i0->AddAction(TransitionToGame);
+    i2->AddAction(RequestNode2Render);
     i1_0->AddAction(TransitionToHighscore);
     i1_1->AddAction(ClearHighscores);
 
@@ -104,26 +121,19 @@ void MenuLoop() {
     ADC &adc_y = ADC::GetInstance(ADC_ADDRESS2);
     while(!adc_x.request_sample());
     uint8_t x_value;
-    while(!adc_x.ReadByte(x_value)){
-        ;
-    }
+    while(!adc_x.ReadByte(x_value));
     while(!adc_y.request_sample());
     uint8_t y_value;
-    while(!adc_y.ReadByte(y_value)){
-        ;
-    }
+    while(!adc_y.ReadByte(y_value));
 
     if(y_value < 40){
         controller->SelectNext();
-        controller->Render();
     } else if (y_value > 220){
         controller->SelectPrevious();
-        controller->Render();
     } else if(x_value > 170){
         controller->ExecuteItem();
     } else if(x_value < 40){
         controller->GoToParent();
-        controller->Render();
     } else {
         return;
     }
@@ -132,6 +142,30 @@ void MenuLoop() {
 
 void MenuLeave() {
     //printf("STATE MENU LEFT \n");
+}
+
+void RenderOLEDFromNode2Leave() {
+    OLED_memory &memory_oled = OLED_memory::GetInstance();
+    memory_oled.Init(128, 64);
+}
+
+void RenderOLEDFromNode2Loop(){
+    uint8_t command;
+    uint8_t length;
+    uint8_t data[6];
+
+    if(channel->Receive(command, data, length)) {
+        if (command == WRITE_TO_ADDRESS) {
+            volatile uint8_t *address = (volatile uint8_t*)(((uint16_t)data[0] << 8) + data[1]);
+            for (int i = 2; i < length; ++i) {
+                //printf("Address, len, data: %4x, %2d, %2x\n", (uint16_t) address, length - 2, data[i]);
+                //printf("len: %2d\n", length - 2);
+                *address = data[i];
+            }
+        } else if (command == CMD_GOTO_MAIN_MENU) {
+            fsm->Transition(STATE_MENU, false);
+        }
+    }
 }
 
 /*----------------------   PLAY GAME  -------------------------------*/
@@ -230,11 +264,9 @@ void HighscoreEnter() {
 }
 
 void HighscoreLoop() {
-    ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
-    while(!adc_x.request_sample());
-    uint8_t x_value;
-    while(!adc_x.ReadByte(x_value));
-    if(x_value < 40) fsm->Transition(STATE_MENU, false);
+    if (JoystickIsLeft()) {
+        fsm->Transition(STATE_MENU, false);
+    }
 }
 
 /*----------------------   WaitForHighscore  -------------------------------*/
@@ -280,7 +312,8 @@ void (*state_functions[][3])(void) = {
 /* 1. Menu                       */ {MenuEnter,    MenuLoop,       MenuLeave},
 /* 2. Play Game                  */ {PlayGameEnter, PlayGameLoop,   PlayGameLeave},
 /* 3. Highscore Score            */ {HighscoreEnter,            HighscoreLoop,         nullptr},
-/* 4. Waiting for Highscore Data */ {WaitForHighscoreEnter, WaitForHighscoreLoop, nullptr}
+/* 4. Waiting for Highscore Data */ {WaitForHighscoreEnter, WaitForHighscoreLoop, nullptr},
+                                    {nullptr, RenderOLEDFromNode2Loop, RenderOLEDFromNode2Leave},
 };
 
 /* Initialize and start the state machine */

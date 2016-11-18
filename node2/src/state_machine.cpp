@@ -13,12 +13,17 @@
 #include "lib/encoder/encoder.h"
 #include <math.h>
 #include <lib/servo/servo.h>
+#include <lib/oled_scp/oled_scp.h>
+#include <lib/utilities/fonts.h>
+#include <lib/menu/menu.h>
 #include "lib/spi/spi.h"
 #include "lib/highscore/highscore.h"
 
 #define STATE_ONGOING        1
 #define STATE_IDLE           2
 #define STATE_HIGHSCORE      3
+#define STATE_RENDER_OLED    4
+
 namespace {
     StateMachine *fsm;
     SCP          *channel;
@@ -238,8 +243,68 @@ void IdleLoop() {
         if (command == CMD_GAME_START) {
             fsm->Transition(STATE_ONGOING, 0);
             return;
+        } else if (command == CMD_RENDER_OLED) {
+            fsm->Transition(STATE_RENDER_OLED, false);
         }
     }
+}
+
+void RenderOLEDToNode1() {
+    OLED_SCP &scp_oled = OLED_SCP::GetInstance();
+    scp_oled.Init(128, 64, *channel, WRITE_TO_ADDRESS);
+    OLED &my_oled = (OLED&) scp_oled;
+
+    my_oled.SetFont(Fonts::f8x8, 8, 8);
+
+    Menu::Controller controller(my_oled, 5);
+
+    char item0[] = "Menylinje 0";
+    char item1[] = "Menylinje 1";
+    char item2[] = "Menylinje 2";
+    char item3[] = "Menylinje 3";
+    char item4[] = "Menylinje 4";
+    char item5[] = "Menylinje 5";
+    char item6[] = "Menylinje 6";
+    char item7[] = "Menylinje 7";
+    char item8[] = "Submeny 1";
+    char item9[] = "Submeny 2";
+
+    Menu::Item *i0 = new Menu::Item(item0, sizeof(item0) - 1);
+    Menu::Item *i1 = new Menu::Item(item1, sizeof(item1) - 1);
+    Menu::Item *i2 = new Menu::Item(item2, sizeof(item2) - 1);
+    Menu::Item *i3 = new Menu::Item(item3, sizeof(item3) - 1);
+    Menu::Item *i4 = new Menu::Item(item4, sizeof(item4) - 1);
+    Menu::Item *i5 = new Menu::Item(item5, sizeof(item5) - 1);
+    Menu::Item *i6 = new Menu::Item(item6, sizeof(item6) - 1);
+    Menu::Item *i7 = new Menu::Item(item7, sizeof(item7) - 1);
+
+    Menu::Item *i8 = new Menu::Item(item8, sizeof(item8) - 1);
+    Menu::Item *i9 = new Menu::Item(item9, sizeof(item9) - 1);
+
+
+    Menu::Item* main_items[] = {i0, i1, i2, i3, i4, i5, i6, i7};
+    Menu::Item* sub_main_items[] = {i8,i9};
+
+    controller.AddMenuItems(main_items, (sizeof(main_items)) / sizeof(main_items[0]));
+
+    controller.ControlGoToItem(1);
+    controller.AddMenu(sub_main_items, (sizeof(sub_main_items)) / sizeof(sub_main_items[0]));
+
+    controller.Render();
+
+    for (uint8_t i = 0; i < 1; ++i) {
+        controller.SelectNext();
+    }
+
+    controller.ExecuteItem();
+
+    controller.GoToParent();
+    for (uint8_t i = 0; i < 4; ++i) {
+        controller.SelectNext();
+    }
+
+    channel->Send(0, CMD_GOTO_MAIN_MENU, nullptr, 0);
+    fsm->Transition(STATE_IDLE, false);
 }
 
 /*-----------------------   HIGHSCORE  -------------------------------*/
@@ -307,7 +372,8 @@ void (*state_functions[][3])(void) = {
 /* 0. Initialize                 */ {nullptr, InitializeLoop, nullptr},
 /* 1. ONGOING                    */ {OngoingEnter, OngoingLoop, OngoingLeave},
 /* 2. IDLE                       */ {IdleEnter, IdleLoop,       nullptr},
-/* 3. GET HIGHSCORE              */ {HighscoreEnter, HighscoreLoop, HighscoreLeave}
+/* 3. GET HIGHSCORE              */ {HighscoreEnter, HighscoreLoop, HighscoreLeave},
+                                    {RenderOLEDToNode1, nullptr, nullptr},
 };
 
 /* Initialize and start the state machine */

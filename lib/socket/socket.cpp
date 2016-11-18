@@ -26,7 +26,11 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
         }
         CAN_MESSAGE message = CAN_MESSAGE(can_size,data,this->id);
         this->can->SendMessage(message);
+#ifdef __AVR_ATmega162__
         _delay_ms(11);
+#elif __AVR_ATmega2560__
+        _delay_ms(25);
+#endif
     }
 }
 

@@ -56,6 +56,7 @@ namespace SPI_N{
         SS_DDR |= (1<<SS_PIN); // Set SS high
 
         // SCK = f_osc/2
+
         SPSR |= (1<<SPI2X);
         SPCR &= ~(1<<SPR0);
         SPCR &= ~(1<<SPR1);

@@ -14,8 +14,9 @@ inline void InitializeNetworkStack(){
 
     // Initialize SPI
     SPI_N::PIN ss = SPI_N::PIN(&PORTB, &DDRB, 7);
-    SPI_N::PIN ss_a[] = {ss};
-    spi.Initialize(ss_a, 1, 0, 0);
+    SPI_N::PIN nordic_pin = SPI_N::PIN(&PORTG, &DDRG, 1);
+    SPI_N::PIN ss_a[] = {ss, nordic_pin};
+    spi.Initialize(ss_a, 2, 0, 0);
     spi.SetDevice(ss);
 
     // Initialize MCP

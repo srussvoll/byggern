@@ -99,7 +99,7 @@ void InitializeLoop() {
     servo = new Servo(900, 2100);
 
 
-    fsm->Transition(STATE_IDLE, 0);
+    fsm->Transition(STATE_HIGHSCORE, 0);
 }
 
 /*-----------------------   ONGOING  -------------------------------*/
@@ -246,8 +246,10 @@ void HighscoreEnter(){
     // Select new SS
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
     oldsspin = spi.current_pin;
-    SPI_N::PIN nordic_pin = SPI_N::PIN(&DDRG, &PORTG, 1);
+    SPI_N::PIN nordic_pin = SPI_N::PIN(&PORTG, &DDRG, 1);
     spi.SetDevice(nordic_pin);
+    // Reduce clock speed
+    SPCR |= (1 << SPR0) | (1 << SPR1);
     highscore_name_length = 0;
 }
 
@@ -258,18 +260,21 @@ void HighscoreLoop(){
     while(!(PING & (1 << PING0)));
     printf("Got new spi message\n");
     // New message, start transmission
-    spi.WriteByte(0xaf, 0);
+    spi.WriteByte(0x00, 0);
     while(spi.GetAvailableReadBytes() == 0);
     uint8_t read_byte;
     spi.ReadByte(read_byte);
     printf("Got new message %2x\n", read_byte);
+
+    /*
     if(read_byte == 0x33){
         printf("Got 0x33\n");
         fsm->Transition(STATE_IDLE, 0);
         return;
     }
-    highscore_name[highscore_name_length] = (char) read_byte;
-    highscore_name_length += 1;
+    */
+    //highscore_name[highscore_name_length] = (char) read_byte;
+    //highscore_name_length += 1;
     // Wait while the pin is high
     while(PING & (1 << PING0));
 
@@ -278,6 +283,10 @@ void HighscoreLoop(){
 void HighscoreLeave(){
     // The the SS pin back to the old value
     SPI_N::SPI::GetInstance().SetDevice(oldsspin);
+    // Increase clock speed
+    SPSR |= (1<<SPI2X);
+    SPCR &= ~(1<<SPR0);
+    SPCR &= ~(1<<SPR1);
     // Transmit the data back to node 1
     for(int i = 0; i < highscore_name_length; i++){
         printf("REC BYTE %2x \n", highscore_name[i]);

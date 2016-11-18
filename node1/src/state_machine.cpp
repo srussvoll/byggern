@@ -241,11 +241,9 @@ void WaitForHighscoreLoop(){
         if (command == CMD_SAVE_HIGHSCORE) {
             OLED &oled = OLED_memory::GetInstance();
             oled.Clear();
-            oled.SetNumberOfLines(4);
-            char message1[] = "Saving";
-            char message2[] = "score...";
+            oled.SetNumberOfLines(3);
+            char message1[] = "Saving...";
             oled.WriteLine(message1, sizeof(message1) - 1, 1, 3);
-            oled.WriteLine(message2, sizeof(message2) - 1, 2, 3);
             oled.Repaint();
 
             Highscore::Score score((data[0] << 8) | data[1], (char *) &data[3], data[2]);
@@ -262,15 +260,11 @@ void WaitForHighscoreLoop(){
 void WaitForHighscoreEnter() {
     OLED &oled = OLED_memory::GetInstance();
     oled.Clear();
-    oled.SetNumberOfLines(7);
-    char message1[] = "Waiting for";
-    char message2[] = "highscore...";
-    char message3[] = "Please enter";
-    char message4[] = "your name.";
+    oled.SetNumberOfLines(4);
+    char message1[] = "Please enter";
+    char message2[] = "your name.";
     oled.WriteLine(message1, sizeof(message1) - 1, 1, 2);
     oled.WriteLine(message2, sizeof(message2) - 1, 2, 2);
-    oled.WriteLine(message3, sizeof(message3) - 1, 4, 2);
-    oled.WriteLine(message4, sizeof(message4) - 1, 5, 2);
     oled.Repaint();
 }
 

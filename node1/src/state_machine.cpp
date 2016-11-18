@@ -40,6 +40,11 @@ void TransitionToHighscore() {
     fsm->Transition(STATE_HIGHSCORE, false);
 }
 
+void ClearHighscores() {
+    highscore->ClearHighscores();
+    highscore->StoreScores();
+}
+
 /*-----------------------   INITIALIZE  -------------------------------*/
 
 void InitializeFSM(){
@@ -55,21 +60,19 @@ void InitializeFSM(){
     // Initialize menu
     controller = new Menu::Controller(my_oled, 4);
     char item0[] = "Play Game";
-    char item1[] = "Settings";
-    char item2[] = "Highscore";
-    char item3[] = "About";
-    char item1_0[] = "Controllers";
+    char item1[] = "Highscore";
+    char item1_0[] = "Show";
+    char item1_1[] = "Clear";
 
     Menu::Item *i0 = new Menu::Item(item0, sizeof(item0) - 1);
     Menu::Item *i1 = new Menu::Item(item1, sizeof(item1) - 1);
-    Menu::Item *i2 = new Menu::Item(item2, sizeof(item2) - 1);
-    Menu::Item *i3 = new Menu::Item(item3, sizeof(item3) - 1);
 
     // Sub-menu
     Menu::Item *i1_0 = new Menu::Item(item1_0, sizeof(item1_0) - 1);
+    Menu::Item *i1_1 = new Menu::Item(item1_1, sizeof(item1_1) - 1);
 
-    Menu::Item* main_items[] = {i0, i1, i2, i3};
-    Menu::Item* sub_main_items[] = {i1_0};
+    Menu::Item* main_items[] = {i0, i1};
+    Menu::Item* sub_main_items[] = {i1_0, i1_1};
 
     controller->AddMenuItems(main_items, (sizeof(main_items)) / sizeof(main_items[0]));
 
@@ -79,7 +82,8 @@ void InitializeFSM(){
     controller->ControlGoToItem(0);
 
     i0->AddAction(TransitionToGame);
-    i2->AddAction(TransitionToHighscore);
+    i1_0->AddAction(TransitionToHighscore);
+    i1_1->AddAction(ClearHighscores);
 
     // Initialize highscores
     highscore = new Highscore::Highscore;
@@ -92,6 +96,7 @@ void InitializeFSM(){
 void MenuEnter() {
     //printf("STATE MENU ENTERED \n");
     controller->Render();
+    _delay_ms(400);
 }
 
 void MenuLoop() {
@@ -111,18 +116,18 @@ void MenuLoop() {
     if(y_value < 40){
         controller->SelectNext();
         controller->Render();
-        _delay_ms(400);
-    }else if (y_value > 220){
+    } else if (y_value > 220){
         controller->SelectPrevious();
         controller->Render();
-        _delay_ms(400);
-    }else if(x_value > 170){
+    } else if(x_value > 170){
         controller->ExecuteItem();
-        _delay_ms(400);
-    }else if(x_value < 40){
+    } else if(x_value < 40){
         controller->GoToParent();
         controller->Render();
+    } else {
+        return;
     }
+    _delay_ms(400);
 }
 
 void MenuLeave() {

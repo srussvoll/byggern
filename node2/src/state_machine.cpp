@@ -99,7 +99,7 @@ void InitializeLoop() {
     servo = new Servo(900, 2100);
 
 
-    fsm->Transition(STATE_HIGHSCORE, 0);
+    fsm->Transition(STATE_IDLE, 0);
 }
 
 /*-----------------------   ONGOING  -------------------------------*/

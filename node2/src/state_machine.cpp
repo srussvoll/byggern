@@ -138,21 +138,6 @@ void OngoingLoop() {
         }
     }
 
-   // printf("X: %d, Y:%d \n", x_direction, y_direction);
-
-    /*Direction direction = joystick.GetDirection();
-    if((direction == West) || (direction == NorthWest) | direction == SouthWest){
-        printf("Right \n");
-        motor.Drive(joystick.GetPercentageX()*0.5);
-        motor.GoRight();
-    } else if((direction == East) || (direction == SouthEast) || (direction == NorthEast)){
-        printf("Left\n");
-        motor.Drive(joystick.GetPercentageX()*0.5);
-        motor.GoLeft();
-    } else {
-        motor.Drive(0);
-    }*/
-
     if(touchbutton){
         if(!touchbutton_last){
             printf("Solenoid \n");
@@ -165,14 +150,6 @@ void OngoingLoop() {
     }
 
     servo->SetAngle(-(slider_ang - 127));
-
-    //printf("X: %3d, Y: %3d, pos: %3d \n", x_direction, y_direction, slider_pos);
-
-    //motor.Drive(0);
-    //_delay_ms(100);
-
-    //printf("%d\n", (int) u * 100);
-    //printf("%d\n", (int) e);
 
     // Check fail state
     IR_Detector &ir = IR_Detector::GetInstance();
@@ -197,14 +174,10 @@ void SetMotorPID() {
     float u = K_p * e + K_p * T / T_i * e_integral + K_p * K_d / T * (y_previous - y);
     y_previous = y;
 
-    //u = 0.5;
     if (u > 0) motor.GoRight();
     else       motor.GoLeft();
     u = fabs(u);
-    //if (u > 0.8) u = 0.8;
     motor.Drive(u);
-    //printf("r: %d, y: %d, e: %d, e_int: %d, u: %d\n", (int) (r * 100), (int) (y * 100), (int) (e * 100),
-           //(int) e_integral, (int) (u * 100));
 }
 
 void OngoingLeave(){
@@ -234,7 +207,6 @@ void IdleLoop() {
     uint8_t length;
     uint8_t data[1];
     if(channel->Receive(command, data, length)) {
-        //printf("CMD = %2x", command);
         if (command == CMD_GAME_START) {
             fsm->Transition(STATE_ONGOING, 0);
             return;
@@ -245,55 +217,54 @@ void IdleLoop() {
 /*-----------------------   HIGHSCORE  -------------------------------*/
 void HighscoreEnter(){
     printf("Enter highscore \n");
+
     // Select new SS
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
     oldsspin = spi.current_pin;
+
     SPI_N::PIN nordic_pin = SPI_N::PIN(&PORTG, &DDRG, 1);
     spi.SetDevice(nordic_pin);
-    // Reduce clock speed
+
+    // Reduce SCK speed
     SPCR |= (1 << SPR0) | (1 << SPR1);
     highscore_name_length = 0;
 }
 
 void HighscoreLoop(){
-    printf("new loop for highscore \n");
     SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
+
     // Wait while the pin is low
     while(!(PING & (1 << PING0)));
-    printf("Got new spi message\n");
+
     // New message, start transmission
     spi.WriteByte(0x00, 0);
     while(spi.GetAvailableReadBytes() == 0);
     uint8_t read_byte;
     spi.ReadByte(read_byte);
-    printf("Got new message %c\n", read_byte);
 
-
+    // End character. Exit state
     if(read_byte == 0x33){
-        printf("Got 0x33\n");
         fsm->Transition(STATE_IDLE, 0);
         return;
     }
 
     highscore_name[highscore_name_length] = (char) read_byte;
     highscore_name_length += 1;
+
     // Wait while the pin is high
     while(PING & (1 << PING0));
-
 }
 
 void HighscoreLeave(){
     // The the SS pin back to the old value
     SPI_N::SPI::GetInstance().SetDevice(oldsspin);
+
     // Increase clock speed
     SPSR |= (1<<SPI2X);
     SPCR &= ~(1<<SPR0);
     SPCR &= ~(1<<SPR1);
-    // Transmit the data back to node 1
-    for(int i = 0; i < highscore_name_length; i++){
-        printf("REC BYTE %2x \n", highscore_name[i]);
-    }
 
+    // Transmit the data back to node 1
     uint8_t data[3 + MAX_NAME_LENGTH] = {(uint8_t)(highscore_score >> 8), (uint8_t)(highscore_score & 0xFF), highscore_name_length};
     memcpy(&data[3], highscore_name, highscore_name_length);
     channel->Send(0, CMD_SAVE_HIGHSCORE, data, 3 + highscore_name_length);

@@ -29,13 +29,25 @@ uint8_t Stream::GetAvailableReadBytes(){
     return this->CalculateLength(this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty);
 }
 
+#ifdef SAVE_SPACE
+inline bool Stream::ReadByte(uint8_t& byte){
+    return (bool) this->Read(&byte, 1);
+}
+#else
 bool Stream::ReadByte(uint8_t& byte){
     return this->ReadByteFromBuffer(byte, this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty);
 }
+#endif
 
+#ifdef SAVE_SPACE
+inline void Stream::WriteByte(uint8_t byte){
+    return this->Write(&byte, 1);
+}
+#else
 void Stream::WriteByte(uint8_t byte){
     this->WriteByteToBuffer(this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty, this->output_buffer_overflowed, byte, this->event_output_buffer_not_empty);
 }
+#endif
 
 bool Stream::CheckOutputOverflowFlag(){
     bool flag = this->output_buffer_overflowed;
@@ -94,13 +106,26 @@ void Stream::WriteToBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &sto
     }
 }
 
+#ifdef SAVE_SPACE
+inline bool Stream::ReadByteFromOutputStream(uint8_t &byte) {
+    return (bool) this->ReadFromOutputStream(&byte, 1);
+}
+#else
 bool Stream::ReadByteFromOutputStream(uint8_t &byte) {
 	return this->ReadByteFromBuffer(byte, this->output_buffer, this->output_buffer_start_index, this->output_buffer_stop_index, this->output_buffer_size, this->output_buffer_empty);
 }
+#endif
 
+#ifdef SAVE_SPACE
+inline void Stream::WriteByteToInputStream(uint8_t &byte) {
+    return this->WriteToInputStream(&byte, 1);
+}
+#else
 void Stream::WriteByteToInputStream(uint8_t &byte) {
     this->WriteByteToBuffer(this->input_buffer, this->input_buffer_start_index, this->input_buffer_stop_index, this->input_buffer_size, this->input_buffer_empty, this->input_buffer_overflowed, byte, this->event_input_buffer_not_empty);
 }
+#endif
+
 bool Stream::ReadByteFromBuffer(uint8_t& byte,uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty) {
     uint16_t buffer_length = this->CalculateLength(start_index, stop_index, buffer_size, empty);
     if (buffer_length) {

@@ -14,10 +14,11 @@
 #include "lib/menu/menu.h"
 #include "lib/utilities/new.h"
 
-#define STATE_MENU                  1
-#define STATE_GAME                  2
-#define STATE_HIGHSCORE             3
-#define STATE_WAITING_FOR_HIGHSCORE 4
+#define STATE_MENU                   1
+#define STATE_GAME                   2
+#define STATE_HIGHSCORE              3
+#define STATE_WAITING_FOR_HIGHSCORE  4
+#define STATE_RENDER_OLED_FROM_NODE2 5
 
 #define NUMBER_OF_HIGHSCORES        6
 
@@ -32,12 +33,30 @@ namespace {
     Highscore::Highscore *highscore;
 }
 
+bool JoystickIsLeft() {
+    ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
+    while(!adc_x.request_sample());
+    uint8_t x_value;
+    while(!adc_x.ReadByte(x_value));
+    return (x_value < 40);
+}
+
 void TransitionToGame(){
     fsm->Transition(STATE_GAME, false);
 }
 
 void TransitionToHighscore() {
     fsm->Transition(STATE_HIGHSCORE, false);
+}
+
+void ClearHighscores() {
+    highscore->ClearHighscores();
+    highscore->StoreScores();
+}
+
+void RequestNode2Render() {
+    channel->Send(0, CMD_RENDER_OLED, nullptr, 0);
+    fsm->Transition(STATE_RENDER_OLED_FROM_NODE2, false);
 }
 
 /*-----------------------   INITIALIZE  -------------------------------*/
@@ -55,21 +74,21 @@ void InitializeFSM(){
     // Initialize menu
     controller = new Menu::Controller(my_oled, 4);
     char item0[] = "Play Game";
-    char item1[] = "Settings";
-    char item2[] = "Highscore";
-    char item3[] = "About";
-    char item1_0[] = "Controllers";
+    char item1[] = "Highscore";
+    char item2[] = "OLED node 2";
+    char item1_0[] = "Show";
+    char item1_1[] = "Clear";
 
     Menu::Item *i0 = new Menu::Item(item0, sizeof(item0) - 1);
     Menu::Item *i1 = new Menu::Item(item1, sizeof(item1) - 1);
     Menu::Item *i2 = new Menu::Item(item2, sizeof(item2) - 1);
-    Menu::Item *i3 = new Menu::Item(item3, sizeof(item3) - 1);
 
     // Sub-menu
     Menu::Item *i1_0 = new Menu::Item(item1_0, sizeof(item1_0) - 1);
+    Menu::Item *i1_1 = new Menu::Item(item1_1, sizeof(item1_1) - 1);
 
-    Menu::Item* main_items[] = {i0, i1, i2, i3};
-    Menu::Item* sub_main_items[] = {i1_0};
+    Menu::Item* main_items[] = {i0, i1, i2};
+    Menu::Item* sub_main_items[] = {i1_0, i1_1};
 
     controller->AddMenuItems(main_items, (sizeof(main_items)) / sizeof(main_items[0]));
 
@@ -79,7 +98,9 @@ void InitializeFSM(){
     controller->ControlGoToItem(0);
 
     i0->AddAction(TransitionToGame);
-    i2->AddAction(TransitionToHighscore);
+    i2->AddAction(RequestNode2Render);
+    i1_0->AddAction(TransitionToHighscore);
+    i1_1->AddAction(ClearHighscores);
 
     // Initialize highscores
     highscore = new Highscore::Highscore;
@@ -92,6 +113,7 @@ void InitializeFSM(){
 void MenuEnter() {
     //printf("STATE MENU ENTERED \n");
     controller->Render();
+    _delay_ms(400);
 }
 
 void MenuLoop() {
@@ -99,34 +121,51 @@ void MenuLoop() {
     ADC &adc_y = ADC::GetInstance(ADC_ADDRESS2);
     while(!adc_x.request_sample());
     uint8_t x_value;
-    while(!adc_x.ReadByte(x_value)){
-        ;
-    }
+    while(!adc_x.ReadByte(x_value));
     while(!adc_y.request_sample());
     uint8_t y_value;
-    while(!adc_y.ReadByte(y_value)){
-        ;
-    }
+    while(!adc_y.ReadByte(y_value));
 
     if(y_value < 40){
         controller->SelectNext();
-        controller->Render();
-        _delay_ms(400);
-    }else if (y_value > 220){
+    } else if (y_value > 220){
         controller->SelectPrevious();
-        controller->Render();
-        _delay_ms(400);
-    }else if(x_value > 170){
+    } else if(x_value > 170){
         controller->ExecuteItem();
-        _delay_ms(400);
-    }else if(x_value < 40){
+    } else if(x_value < 40){
         controller->GoToParent();
-        controller->Render();
+    } else {
+        return;
     }
+    _delay_ms(400);
 }
 
 void MenuLeave() {
     //printf("STATE MENU LEFT \n");
+}
+
+void RenderOLEDFromNode2Leave() {
+    OLED_memory &memory_oled = OLED_memory::GetInstance();
+    memory_oled.Init(128, 64);
+}
+
+void RenderOLEDFromNode2Loop(){
+    uint8_t command;
+    uint8_t length;
+    uint8_t data[6];
+
+    if(channel->Receive(command, data, length)) {
+        if (command == WRITE_TO_ADDRESS) {
+            volatile uint8_t *address = (volatile uint8_t*)(((uint16_t)data[0] << 8) + data[1]);
+            for (int i = 2; i < length; ++i) {
+                //printf("Address, len, data: %4x, %2d, %2x\n", (uint16_t) address, length - 2, data[i]);
+                //printf("len: %2d\n", length - 2);
+                *address = data[i];
+            }
+        } else if (command == CMD_GOTO_MAIN_MENU) {
+            fsm->Transition(STATE_MENU, false);
+        }
+    }
 }
 
 /*----------------------   PLAY GAME  -------------------------------*/
@@ -178,7 +217,7 @@ void PlayGameLoop() {
     if(channel->Receive(command, nullptr, length)) {
         if (command == CMD_WAIT_FOR_HIGHSCORE) {
             //printf("Game ended with %d seconds\n", data[0]);
-            //TODO: Implement check highscore|
+            //TODO: Implement check highscore
             fsm->Transition(STATE_WAITING_FOR_HIGHSCORE, 0);
             return;
         }
@@ -208,7 +247,7 @@ void HighscoreEnter() {
     oled.WriteLine(title, sizeof(title) - 1, 0, 0);
 
     for (uint8_t i = 0; i < score_length; ++i) {
-        oled.WriteLine(scores[i]->name, scores[i]->name_length - 1, i + 1, 0);
+        oled.WriteLine(scores[i]->name, scores[i]->name_length, i + 1, 0);
         //printf("\nScore: ");
         //UART::GetInstance().Write((uint8_t *) scores[i]->name, scores[i]->name_length - 1);
         char score[6];
@@ -225,11 +264,9 @@ void HighscoreEnter() {
 }
 
 void HighscoreLoop() {
-    ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
-    while(!adc_x.request_sample());
-    uint8_t x_value;
-    while(!adc_x.ReadByte(x_value));
-    if(x_value < 40) fsm->Transition(STATE_MENU, false);
+    if (JoystickIsLeft()) {
+        fsm->Transition(STATE_MENU, false);
+    }
 }
 
 /*----------------------   WaitForHighscore  -------------------------------*/
@@ -242,15 +279,15 @@ void WaitForHighscoreLoop(){
             OLED &oled = OLED_memory::GetInstance();
             oled.Clear();
             oled.SetNumberOfLines(3);
-            char message1[] = "Saving";
-            char message2[] = "score...";
-            oled.WriteLine(message1, sizeof(message1) - 1, 1, 4);
-            oled.WriteLine(message2, sizeof(message2) - 1, 1, 4);
+            char message1[] = "Saving...";
+            oled.WriteLine(message1, sizeof(message1) - 1, 1, 3);
             oled.Repaint();
 
             Highscore::Score score((data[0] << 8) | data[1], (char *) &data[3], data[2]);
+
             highscore->SaveScore(score);
-            //highscore->StoreScores();
+            highscore->StoreScores();
+
             fsm->Transition(STATE_MENU, 0);
             return;
         }
@@ -260,15 +297,11 @@ void WaitForHighscoreLoop(){
 void WaitForHighscoreEnter() {
     OLED &oled = OLED_memory::GetInstance();
     oled.Clear();
-    oled.SetNumberOfLines(7);
-    char message1[] = "Waiting for";
-    char message2[] = "highscore...";
-    char message3[] = "Please enter";
-    char message4[] = "your name.";
+    oled.SetNumberOfLines(4);
+    char message1[] = "Please enter";
+    char message2[] = "your name.";
     oled.WriteLine(message1, sizeof(message1) - 1, 1, 2);
     oled.WriteLine(message2, sizeof(message2) - 1, 2, 2);
-    oled.WriteLine(message3, sizeof(message3) - 1, 4, 2);
-    oled.WriteLine(message4, sizeof(message4) - 1, 5, 2);
     oled.Repaint();
 }
 
@@ -279,7 +312,8 @@ void (*state_functions[][3])(void) = {
 /* 1. Menu                       */ {MenuEnter,    MenuLoop,       MenuLeave},
 /* 2. Play Game                  */ {PlayGameEnter, PlayGameLoop,   PlayGameLeave},
 /* 3. Highscore Score            */ {HighscoreEnter,            HighscoreLoop,         nullptr},
-/* 4. Waiting for Highscore Data */ {WaitForHighscoreEnter, WaitForHighscoreLoop, nullptr}
+/* 4. Waiting for Highscore Data */ {WaitForHighscoreEnter, WaitForHighscoreLoop, nullptr},
+                                    {nullptr, RenderOLEDFromNode2Loop, RenderOLEDFromNode2Leave},
 };
 
 /* Initialize and start the state machine */

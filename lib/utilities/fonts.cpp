@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 namespace {
-/*    const unsigned char f4x6[95][4] PROGMEM = {
+    const unsigned char f4x6[95][4] PROGMEM = {
             {0b00000000,0b00000000,0b00000000,0b00000000}, //
             {0b00000000,0b01011100,0b00000000,0b00000000}, // !
             {0b00001100,0b00000000,0b00001100,0b00000000}, // "
@@ -296,7 +296,7 @@ namespace {
             {0b00000000,0b00000000,0b01111111,0b00000000,0b00000000}, // |
             {0b00000000,0b01000001,0b00110110,0b00001000,0b00000000}, // }
             {0b00000010,0b00000001,0b00000011,0b00000010,0b00000001}, // ~
-    };*/
+    };
 
     const unsigned char f8x8[95][8] PROGMEM = {
             {0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000}, //
@@ -398,9 +398,8 @@ namespace {
 }
 
 namespace Fonts{
-/*    uint8_t *f4x6 = (uint8_t*) ::f4x6;
+    uint8_t *f4x6 = (uint8_t*) ::f4x6;
     uint8_t *f5x7 = (uint8_t*) ::f5x7;
-    uint8_t *f5x7w = (uint8_t*) ::f5x7w;*/
+    uint8_t *f5x7w = (uint8_t*) ::f5x7w;
     uint8_t *f8x8 = (uint8_t*) ::f8x8;
-
 }

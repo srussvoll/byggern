@@ -5,7 +5,10 @@
 #include <string.h>
 #include <stdio.h>
 #include <lib/uart/uart.h>
+#include <lib/oled/oled.h>
+#include <lib/oled_memory/oled_memory.h>
 #include "lib/utilities/new.h"
+#include <util/delay.h>
 
 #define MAX_LENGTH 40
 #define MAX_NAME_LENGTH 10
@@ -37,6 +40,12 @@ inline uint8_t EEPROM_read(uint16_t address) {
 }
 
 namespace Highscore {
+    void Score::operator=(const Score &score) {
+        this->score = score.score;
+        this->name_length = score.name_length;
+        memcpy(this->name, score.name, score.name_length);
+    }
+
     Highscore::Highscore() {
         /*
          * Score:
@@ -58,13 +67,10 @@ namespace Highscore {
         // Make sure the name isn't longer than allowed.
         if (score.name_length > MAX_NAME_LENGTH) score.name_length = MAX_NAME_LENGTH;
 
+        bool insert_score = true;
         // If length == 0, add anyway.
-        if (this->length == 0) {
-            memcpy(this->score[0], &score, sizeof(Score));
-            this->length += 1;
-        } else {
+        if (this->length > 0) {
             // Check if name is already there, and then if new score is better.
-            bool insert_score = true;
             for (int i = 0; i < this->length; ++i) {
                 // If name length is different, it is not equal anyway.
                 if (this->score[i]->name_length != score.name_length) continue;
@@ -97,23 +103,22 @@ namespace Highscore {
 
                 break;
             }
+        }
 
-
-            if (insert_score) {
-                for (int8_t i = this->length; i >= 0; --i) {
-                    if (i > 0 && score.score > this->score[i - 1]->score) {
-                        // Swap scores as explained above:
-                        Score *temp = this->score[i];
-                        this->score[i] = this->score[i - 1];
-                        this->score[i - 1] = temp;
-                    } else {
-                        memcpy(this->score[i], &score, sizeof(Score));
-                        break;
-                    }
+        if (insert_score) {
+            for (int8_t i = this->length; i >= 0; --i) {
+                if (i > 0 && score.score > this->score[i - 1]->score) {
+                    // Swap scores as explained above:
+                    Score *temp = this->score[i];
+                    this->score[i] = this->score[i - 1];
+                    this->score[i - 1] = temp;
+                } else {
+                    *(this->score[i]) = score;
+                    break;
                 }
-
-                if (this->length < MAX_LENGTH) this->length++;
             }
+
+            if (this->length < MAX_LENGTH) this->length++;
         }
     }
 

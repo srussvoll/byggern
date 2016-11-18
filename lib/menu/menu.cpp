@@ -160,6 +160,7 @@ namespace Menu {
             this->current_index_navigate = 0;
             this->current_index_selected = 0;
         }
+        this->Render();
     }
 
     void Controller::Render() {
@@ -228,7 +229,7 @@ namespace Menu {
         } else {
             this->current_index_selected = this->current_index_selected + 1;
         }
-        //this->Render();
+        this->Render();
         //printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
     }
 
@@ -239,7 +240,7 @@ namespace Menu {
         } else {
             this->current_index_selected = this->current_index_selected - 1;
         }
-        //this->Render();
+        this->Render();
     }
 
     void Controller::AddMenuItems(Item **items, uint8_t length) {

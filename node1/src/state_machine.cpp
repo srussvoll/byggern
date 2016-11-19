@@ -31,14 +31,8 @@ namespace {
     };
     Menu::Controller *controller;
     Highscore::Highscore *highscore;
-}
 
-bool JoystickIsLeft() {
-    ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
-    while(!adc_x.request_sample());
-    uint8_t x_value;
-    while(!adc_x.ReadByte(x_value));
-    return (x_value < 40);
+    uint8_t OLEDNumber = 0;
 }
 
 void TransitionToGame(){
@@ -60,10 +54,11 @@ void RequestNode2Render() {
 }
 
 void SendUART() {
-    uint8_t number = 125;
-    char number_string[8 + 4] = "Number: ";
-    itoa(number, &number_string[8], 10);
-    UART::GetInstance().Write((uint8_t *) number_string, sizeof(number_string));
+    char number_string[] = "No.    \n";
+    itoa(OLEDNumber, &number_string[3], 10);
+
+    UART::GetInstance().Write((uint8_t *) number_string, sizeof(number_string) - 1);
+    OLEDNumber += 1;
 }
 
 /*-----------------------   INITIALIZE  -------------------------------*/
@@ -235,7 +230,6 @@ void HighscoreEnter() {
     if (score_length > NUMBER_OF_HIGHSCORES) score_length = NUMBER_OF_HIGHSCORES;
     OLED &oled = OLED_memory::GetInstance();
     oled.SetNumberOfLines(NUMBER_OF_HIGHSCORES + 1);
-    oled.Clear();
 
     char title[] = "Highscores";
     oled.WriteLine(title, sizeof(title) - 1, 0, 0);
@@ -256,9 +250,11 @@ void HighscoreEnter() {
 }
 
 void HighscoreLoop() {
-    if (JoystickIsLeft()) {
-        fsm->Transition(STATE_MENU, false);
-    }
+    ADC &adc_x = ADC::GetInstance(ADC_ADDRESS1);
+    while(!adc_x.request_sample());
+    uint8_t x_value;
+    while(!adc_x.ReadByte(x_value));
+    if (x_value < 40) fsm->Transition(STATE_MENU, false);
 }
 
 /*----------------------   WaitForHighscore  -------------------------------*/
@@ -269,7 +265,6 @@ void WaitForHighscoreLoop(){
     if(channel->Receive(command, data, length)) {
         if (command == CMD_SAVE_HIGHSCORE) {
             OLED &oled = OLED_memory::GetInstance();
-            oled.Clear();
             oled.SetNumberOfLines(3);
             char message1[] = "Saving...";
             oled.WriteLine(message1, sizeof(message1) - 1, 1, 3);
@@ -288,7 +283,6 @@ void WaitForHighscoreLoop(){
 
 void WaitForHighscoreEnter() {
     OLED &oled = OLED_memory::GetInstance();
-    oled.Clear();
     oled.SetNumberOfLines(4);
     char message1[] = "Please enter";
     char message2[] = "your name.";

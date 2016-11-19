@@ -132,7 +132,7 @@ void OngoingEnter() {
 
     // Start timer for game start
     Timer &timer1 = Timer::GetInstance(0);
-    timer1.Initialize(10000, StartGame);
+    timer1.Initialize(4000, StartGame);
     timer1.Start();
 }
 
@@ -196,6 +196,7 @@ void SetMotorPID() {
 }
 
 void OngoingLeave() {
+    game_started = false;
     Motor &motor = Motor::GetInstance();
     motor.Stop();
 

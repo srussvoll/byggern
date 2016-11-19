@@ -109,16 +109,14 @@ void MCP2515::ReadFromRegister(uint8_t register_address, uint8_t &byte) {
     this->spi_driver->WriteByteAndThrowAwayData(MCP_READ, 1);
     this->spi_driver->WriteByteAndThrowAwayData(register_address, 1);
     this->spi_driver->WriteByte(MCP_DC, 0);
-    while(spi_driver->GetAvailableReadBytes() == 0);
-    this->spi_driver->ReadByte(byte);
+    while(!this->spi_driver->ReadByte(byte));
 }
 
 void MCP2515::ReadStatus(uint8_t &byte) {
     this->spi_driver->WriteByteAndThrowAwayData(MCP_READ_STATUS, 1);
     this->spi_driver->WriteByteAndThrowAwayData(MCP_DC,1);
     this->spi_driver->WriteByte(MCP_DC, 0);
-    while(spi_driver->GetAvailableReadBytes() == 0);
-    this->spi_driver->ReadByte(byte);
+    while(!this->spi_driver->ReadByte(byte));
 }
 
 void MCP2515::SetNormal() {
@@ -166,8 +164,7 @@ void MCP2515::RxStatus(uint8_t &byte) {
     this->spi_driver->WriteByteAndThrowAwayData(MCP_RX_STATUS,1);
     this->spi_driver->WriteByteAndThrowAwayData(MCP_DC, 1);
     this->spi_driver->WriteByte(MCP_DC, 0);
-    while(spi_driver->GetAvailableReadBytes() == 0);
-    this->spi_driver->ReadByte(byte);
+    while(!this->spi_driver->ReadByte(byte));
 }
 
 void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
@@ -188,9 +185,8 @@ void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
     this->spi_driver->WriteByte(MCP_DC, 1);
     this->spi_driver->WriteByte(MCP_DC, 0);
 
-    while(spi_driver->GetAvailableReadBytes() == 0);
-    this->spi_driver->ReadByte(upper_id);
-    this->spi_driver->ReadByte(lower_id);
+    while(!this->spi_driver->ReadByte(upper_id));
+    while(!this->spi_driver->ReadByte(lower_id));
 
     message.id = (upper_id << 3) + (lower_id >> 5);
 

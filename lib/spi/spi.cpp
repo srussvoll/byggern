@@ -108,7 +108,7 @@ namespace SPI_N{
     }
 
     void SPI::WriteByteAndThrowAwayData(uint8_t byte, bool wait) {
-        while(this->ongoing_transmission){}
+        while(this->ongoing_transmission);
         Stream::WriteByte(byte);
         this->throw_away_data_count += 1;
         if(!wait){

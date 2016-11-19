@@ -165,7 +165,6 @@ namespace Menu {
 
     void Controller::Render() {
         oled->SetNumberOfLines(this->num_lines);
-        oled->Clear();
         //_delay_ms(500);
 
         // Make sure that, if possible, the selected item is not the top or bottom one.

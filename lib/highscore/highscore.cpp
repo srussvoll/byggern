@@ -20,7 +20,7 @@
 #define DR  EEDR
 #define MWE EEMWE
 
-inline void EEPROM_write(uint16_t address, uint8_t data) {
+void EEPROM_write(uint16_t address, uint8_t data) {
     while(CR & (1 << WE));
     cli();
     AR = address;
@@ -30,7 +30,7 @@ inline void EEPROM_write(uint16_t address, uint8_t data) {
     sei();
 }
 
-inline uint8_t EEPROM_read(uint16_t address) {
+uint8_t EEPROM_read(uint16_t address) {
     while(CR & (1 << WE));
     cli();
     AR = address;

@@ -20,7 +20,7 @@
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
 int main(void) {
-    _delay_ms(100);
+    //_delay_ms(100);
     InitializeStateMachine(); // This will call an endless loop.
 }
 

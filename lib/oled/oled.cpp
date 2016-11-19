@@ -49,8 +49,6 @@ void OLED::Init(uint8_t width, uint8_t height){
     }
 
     this->SetNumberOfLines(pages);
-
-    this->Clear();
 }
 
 void OLED::GoToLine(uint8_t line){
@@ -66,7 +64,7 @@ void OLED::Clear(){
 }
 
 void OLED::ClearLine(){
-    for(uint8_t j = 0; j < 128; j++){
+    for(uint8_t j = 0; j < this->display_width; j++){
         this->matrix[this->current_line][j] = 0x00;
     }
 }
@@ -108,6 +106,7 @@ void OLED::Repaint(){
 void OLED::SetNumberOfLines(uint8_t number_of_lines){
     this->number_of_lines = number_of_lines;
     this->pixels_per_line = this->display_height/number_of_lines;
+    this->Clear();
 }
 
 void OLED::GetBitmapForCharacter(char character, uint8_t* &character_bitmap){

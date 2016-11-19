@@ -1,5 +1,3 @@
-#ifdef __AVR_ATmega162__
-
 #include "init.h"
 
 #include <avr/io.h>
@@ -10,8 +8,7 @@
 #include "lib/spi/spi.h"
 #include "lib/socket/socket.h"
 
-void InitializeNetworkStack(){
-
+inline void InitializeNetworkStack(){
     // Get instance of all the modules
     SOCKET &high = SOCKET::GetInstance(0x00);
     SOCKET &low = SOCKET::GetInstance(0x01);
@@ -38,17 +35,10 @@ void InitializeNetworkStack(){
 void init_memory() {
     Utilities::InitializeMemory();
 }
-// FIXME: REMOVE THIS!
-extern "C" void __cxa_pure_virtual() {  }
+
 void init_hardware_drivers() {
     UART& uart = UART::GetInstance();
     uart.Init(9600);
     //Utilities::EnablePrintf(uart);
     InitializeNetworkStack();
 }
-
-#elif __AVR_ATmega2560__
-
-// Add the init for  node2
-
-#endif

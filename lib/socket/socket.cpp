@@ -4,8 +4,7 @@
 
 void SOCKET::Write(uint8_t *string, uint16_t size) {
     uint16_t remaining_data = size;
-    while(remaining_data > 0) {
-
+    do {
         uint8_t can_size;
         uint8_t data[8];
 
@@ -33,11 +32,11 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
         this->can->SendMessage(message);
 
 #ifdef __AVR_ATmega162__
-        _delay_ms(11);
+        //_delay_ms(11);
 #elif __AVR_ATmega2560__
         _delay_ms(25);
 #endif
-    }
+    } while (remaining_data);
 }
 
 void SOCKET::WriteByte(uint8_t byte) {

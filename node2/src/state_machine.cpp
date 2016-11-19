@@ -113,13 +113,16 @@ void OngoingEnter() {
     printf("Ongoing enter \n");
     Motor &motor = Motor::GetInstance();
     motor.Start();
+
     Timer &timer = Timer::GetInstance(0);
     Timer &timer2 = Timer::GetInstance(1);
     timer.Start();
     timer2.Start();
+
     x_direction = 0;
     y_direction = 0;
     touchbutton = false;
+
     encoder.Reset();
 }
 void OngoingLoop() {

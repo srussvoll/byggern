@@ -54,9 +54,23 @@ namespace {
     uint8_t highscore_name_length = 0;
     uint16_t highscore_score = 0;
     SPI_N::PIN oldsspin;
+
+    bool game_started = false;
 }
 
 void SetMotorPID();
+
+void StartGame() {
+    Timer &timer1 = Timer::GetInstance(0);
+    timer1.Stop();
+    timer1.Initialize(100, nullptr);
+    timer1.Start();
+
+    Solenoid &solenoid = Solenoid::GetInstance();
+    solenoid.Pulse();
+
+    game_started = true;
+}
 
 /*-----------------------   INITIALIZE  -------------------------------*/
 
@@ -65,10 +79,6 @@ void InitializeLoop() {
     // Initialize the motor
     Motor &motor = Motor::GetInstance();
     motor.Initialize();
-
-    // Initialize the timer
-    Timer &timer = Timer::GetInstance(0);
-    timer.Initialize(100, nullptr);
 
     // Initialize the IR Sensor
     IR_Detector::GetInstance().Initialize(0x05);
@@ -103,8 +113,6 @@ void InitializeLoop() {
     // Initialize servo
     servo = new Servo(900, 2100);
 
-    encoder.Reset();
-
 
     fsm->Transition(STATE_IDLE, 0);
 }
@@ -115,14 +123,19 @@ void OngoingEnter() {
     printf("Ongoing enter \n");
     Motor &motor = Motor::GetInstance();
     motor.Start();
-    Timer &timer = Timer::GetInstance(0);
-    Timer &timer2 = Timer::GetInstance(1);
-    timer.Start();
-    timer2.Start();
     x_direction = 0;
     y_direction = 0;
     touchbutton = false;
+    encoder.Reset();
+    Timer &timer2 = Timer::GetInstance(0);
+    timer2.Start();
+
+    // Start timer for game start
+    Timer &timer1 = Timer::GetInstance(0);
+    timer1.Initialize(10000, StartGame);
+    timer1.Start();
 }
+
 void OngoingLoop() {
     // Get joystick values
     uint8_t command;
@@ -143,7 +156,7 @@ void OngoingLoop() {
         }
     }
 
-    if(touchbutton){
+    if(game_started && touchbutton){
         if(!touchbutton_last){
             Solenoid & solenoid = Solenoid::GetInstance();
             solenoid.Pulse();
@@ -157,7 +170,7 @@ void OngoingLoop() {
 
     // Check fail state
     IR_Detector &ir = IR_Detector::GetInstance();
-    if(ir.Sample()) {
+    if(game_started && ir.Sample()) {
         fsm->Transition(STATE_HIGHSCORE, 0);
         return;
     }
@@ -186,11 +199,11 @@ void OngoingLeave() {
     Motor &motor = Motor::GetInstance();
     motor.Stop();
 
-    Timer &timer = Timer::GetInstance(0);
+    Timer &timer1 = Timer::GetInstance(0);
     Timer &timer2 = Timer::GetInstance(1);
-    timer.Stop();
-    timer2.Stop();;
-    timer.GetFullSecondsPassed(highscore_score);
+    timer1.Stop();
+    timer2.Stop();
+    timer1.GetFullSecondsPassed(highscore_score);
     channel->Send(0, CMD_WAIT_FOR_HIGHSCORE, nullptr, 0);
     _delay_ms(500);
     sockets[0]->FlushInputBuffer();

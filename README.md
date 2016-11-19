@@ -1,6 +1,8 @@
 # TTK4155 gruppe 20 2016
 
-The term project for TTK4155 (byggern) for group 20 2016.
+The term project for TTK4155 Industrielle og innbygde datasystemers konstruksjon for group 20 2016.
+
+Sondre Wangenstein Baugstø, Johan Lofstad and Sondre Vincent Russvoll.
 
 ## File structure
 

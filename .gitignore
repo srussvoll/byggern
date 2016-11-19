@@ -16,9 +16,9 @@
 /captures
 .externalNativeBuild
 
-!/extra/nordic/Phonescore/score_service.cpp
-!/extra/nordic/Phonescore/main.cpp
-/extra/nordic/*
+extra/nordic/Phonescore/*
+!extra/nordic/Phonescore/score_service.cpp
+!extra/nordic/Phonescore/main.cpp
 
 *.DS_Store
 

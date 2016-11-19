@@ -17,7 +17,7 @@
 .externalNativeBuild
 
 extra/nordic/Phonescore/*
-!extra/nordic/Phonescore/score_service.cpp
+!extra/nordic/Phonescore/score_service.h
 !extra/nordic/Phonescore/main.cpp
 
 *.DS_Store

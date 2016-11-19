@@ -1,4 +1,4 @@
-# TTK4155 gruppe 20 2016
+# TTK4155 2016
 
 The term project for TTK4155 Industrielle og innbygde datasystemers konstruksjon for group 20 2016.
 

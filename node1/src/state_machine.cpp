@@ -75,8 +75,8 @@ void InitializeFSM(){
     controller = new Menu::Controller(my_oled, 4);
     char item0[] = "Play";
     char item1[] = "Highscore";
-    char item2[] = "OLED node 2";
-    char item3[] = "Test UART";
+    char item2[] = "OLEDtest";
+    char item3[] = "UARTtest";
     char item1_0[] = "Show";
     char item1_1[] = "Clear";
 
@@ -231,7 +231,7 @@ void HighscoreEnter() {
     OLED &oled = OLED_memory::GetInstance();
     oled.SetNumberOfLines(NUMBER_OF_HIGHSCORES + 1);
 
-    char title[] = "Highscores";
+    char title[] = "Highscore";
     oled.WriteLine(title, sizeof(title) - 1, 0, 0);
 
     for (uint8_t i = 0; i < score_length; ++i) {

@@ -2,7 +2,7 @@
 
 The term project for TTK4155 Industrielle og innbygde datasystemers konstruksjon for group 20 2016.
 
-Sondre Wangenstein Baugstø, Johan Lofstad and Sondre Vincent Russvoll.
+Created by Sondre Wangenstein Baugstø, Johan Lofstad and Sondre Vincent Russvoll.
 
 ## File structure
 

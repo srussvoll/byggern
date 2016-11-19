@@ -6,6 +6,21 @@
 *.hex
 *.gch
 
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
+/extra/nordic/*
+/extra/nordic/*
+!/extra/nordic/Phonescore/score_service.cpp
+!/extra/nordic/Phonescore/main.cpp
+
 *.DS_Store
 
 */.idea/*

@@ -127,7 +127,7 @@ void OngoingEnter() {
     y_direction = 0;
     touchbutton = false;
     encoder.Reset();
-    Timer &timer2 = Timer::GetInstance(0);
+    Timer &timer2 = Timer::GetInstance(1);
     timer2.Start();
 
     // Start timer for game start

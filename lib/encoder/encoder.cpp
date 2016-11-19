@@ -17,6 +17,7 @@ void Encoder::Reset() {
     PORTH &= ~(1 << PH6);
     _delay_us(20);
     PORTH |=  (1 << PH6);
+    _delay_us(20);
 }
 
 int16_t Encoder::ReadByte() {

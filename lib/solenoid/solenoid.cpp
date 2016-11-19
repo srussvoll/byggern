@@ -1,6 +1,6 @@
 #ifdef __AVR_ATmega2560__
 
-#include "Solenoid.h"
+#include "solenoid.h"
 #include <util/delay.h>
 #include <avr/io.h>
 
@@ -12,7 +12,7 @@ void Solenoid::Initialize() {
 void Solenoid::Pulse() {
     PORTF |= (1 << PORTF1);
     // Wait 80ms before turning it of again.
-    _delay_ms(80);
+    _delay_ms(100);
     PORTF &= ~(1 << PORTF1);
 }
 #endif __ATMega2560__

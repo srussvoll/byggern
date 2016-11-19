@@ -9,7 +9,7 @@
 #include "../lib/ir_detector/ir_detector.h"
 #include "../lib/timer/timer.h"
 #include "lib/joystick/joystick.h"
-#include "lib/solenoid/Solenoid.h"
+#include "lib/solenoid/solenoid.h"
 #include "lib/encoder/encoder.h"
 #include <math.h>
 #include <lib/servo/servo.h>
@@ -103,6 +103,8 @@ void InitializeLoop() {
     // Initialize servo
     servo = new Servo(900, 2100);
 
+    encoder.Reset();
+
 
     fsm->Transition(STATE_IDLE, 0);
 }
@@ -120,7 +122,6 @@ void OngoingEnter() {
     x_direction = 0;
     y_direction = 0;
     touchbutton = false;
-    encoder.Reset();
 }
 void OngoingLoop() {
     // Get joystick values
@@ -152,12 +153,11 @@ void OngoingLoop() {
         touchbutton_last = false;
     }
 
-    servo->SetAngle(-(slider_ang - 127));
+    servo->SetAngle(slider_ang - 127);
 
     // Check fail state
     IR_Detector &ir = IR_Detector::GetInstance();
     if(ir.Sample()) {
-        printf("LOST GAME \n");
         fsm->Transition(STATE_HIGHSCORE, 0);
         return;
     }
@@ -182,8 +182,7 @@ void SetMotorPID() {
     motor.Drive(u);
 }
 
-void OngoingLeave(){
-    printf("Ongoing left\n");
+void OngoingLeave() {
     Motor &motor = Motor::GetInstance();
     motor.Stop();
 

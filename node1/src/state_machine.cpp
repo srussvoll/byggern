@@ -59,11 +59,16 @@ void RequestNode2Render() {
     fsm->Transition(STATE_RENDER_OLED_FROM_NODE2, false);
 }
 
+void SendUART() {
+    uint8_t number = 125;
+    char number_string[8 + 4] = "Number: ";
+    itoa(number, &number_string[8], 10);
+    UART::GetInstance().Write((uint8_t *) number_string, sizeof(number_string));
+}
+
 /*-----------------------   INITIALIZE  -------------------------------*/
 
 void InitializeFSM(){
-    //printf("STATE INITIALIZE ENTERED\n");
-
     // Initialize Oled
     OLED_memory &memory_oled = OLED_memory::GetInstance();
     memory_oled.Init(128, 64);
@@ -73,21 +78,23 @@ void InitializeFSM(){
 
     // Initialize menu
     controller = new Menu::Controller(my_oled, 4);
-    char item0[] = "Play Game";
+    char item0[] = "Play";
     char item1[] = "Highscore";
     char item2[] = "OLED node 2";
+    char item3[] = "Test UART";
     char item1_0[] = "Show";
     char item1_1[] = "Clear";
 
     Menu::Item *i0 = new Menu::Item(item0, sizeof(item0) - 1);
     Menu::Item *i1 = new Menu::Item(item1, sizeof(item1) - 1);
     Menu::Item *i2 = new Menu::Item(item2, sizeof(item2) - 1);
+    Menu::Item *i3 = new Menu::Item(item3, sizeof(item3) - 1);
 
     // Sub-menu
     Menu::Item *i1_0 = new Menu::Item(item1_0, sizeof(item1_0) - 1);
     Menu::Item *i1_1 = new Menu::Item(item1_1, sizeof(item1_1) - 1);
 
-    Menu::Item* main_items[] = {i0, i1, i2};
+    Menu::Item* main_items[] = {i0, i1, i2, i3};
     Menu::Item* sub_main_items[] = {i1_0, i1_1};
 
     controller->AddMenuItems(main_items, (sizeof(main_items)) / sizeof(main_items[0]));
@@ -99,6 +106,7 @@ void InitializeFSM(){
 
     i0->AddAction(TransitionToGame);
     i2->AddAction(RequestNode2Render);
+    i3->AddAction(SendUART);
     i1_0->AddAction(TransitionToHighscore);
     i1_1->AddAction(ClearHighscores);
 
@@ -111,7 +119,6 @@ void InitializeFSM(){
 /*-----------------------     MENU    -------------------------------*/
 
 void MenuEnter() {
-    //printf("STATE MENU ENTERED \n");
     controller->Render();
     _delay_ms(400);
 }
@@ -140,10 +147,6 @@ void MenuLoop() {
     _delay_ms(400);
 }
 
-void MenuLeave() {
-    //printf("STATE MENU LEFT \n");
-}
-
 void RenderOLEDFromNode2Leave() {
     OLED_memory &memory_oled = OLED_memory::GetInstance();
     memory_oled.Init(128, 64);
@@ -158,8 +161,6 @@ void RenderOLEDFromNode2Loop(){
         if (command == WRITE_TO_ADDRESS) {
             volatile uint8_t *address = (volatile uint8_t*)(((uint16_t)data[0] << 8) + data[1]);
             for (int i = 2; i < length; ++i) {
-                //printf("Address, len, data: %4x, %2d, %2x\n", (uint16_t) address, length - 2, data[i]);
-                //printf("len: %2d\n", length - 2);
                 *address = data[i];
             }
         } else if (command == CMD_GOTO_MAIN_MENU) {
@@ -171,7 +172,6 @@ void RenderOLEDFromNode2Loop(){
 /*----------------------   PLAY GAME  -------------------------------*/
 
 void PlayGameEnter() {
-    //printf("STATE PLAY GAME ENTERED\n");
     // Send start of game command
     channel->Send(0, CMD_GAME_START, nullptr, 0);
     return;
@@ -208,7 +208,6 @@ void PlayGameLoop() {
     bool touchbutton_value = (bool) (PINB & (1 << PB0));
 
     uint8_t x[] = {x_value, y_value, p_value, a_value, (uint8_t) touchbutton_value};
-    //printf("X: %d, Y:%d, T:%d \n", x_value, y_value, touchbutton_value);
     channel->Send(1, CMD_JOYSTICK_VALUES, x, sizeof(x));
 
     // Check for end of game command
@@ -227,11 +226,6 @@ void PlayGameLoop() {
 
 }
 
-void PlayGameLeave() {
-    //printf("STATE PLAY GAME LEFT\n");
-    return;
-}
-
 /*----------------------   HIGHSCORE  -------------------------------*/
 
 
@@ -248,8 +242,6 @@ void HighscoreEnter() {
 
     for (uint8_t i = 0; i < score_length; ++i) {
         oled.WriteLine(scores[i]->name, scores[i]->name_length, i + 1, 0);
-        //printf("\nScore: ");
-        //UART::GetInstance().Write((uint8_t *) scores[i]->name, scores[i]->name_length - 1);
         char score[6];
         itoa(scores[i]->score, score, 10);
         uint8_t length = 1;
@@ -309,8 +301,8 @@ void WaitForHighscoreEnter() {
 /* State functions table */
 void (*state_functions[][3])(void) = {
 /* 0. Initialize                 */ {InitializeFSM, nullptr, nullptr},
-/* 1. Menu                       */ {MenuEnter,    MenuLoop,       MenuLeave},
-/* 2. Play Game                  */ {PlayGameEnter, PlayGameLoop,   PlayGameLeave},
+/* 1. Menu                       */ {MenuEnter,    MenuLoop,       nullptr},
+/* 2. Play Game                  */ {PlayGameEnter, PlayGameLoop,   nullptr},
 /* 3. Highscore Score            */ {HighscoreEnter,            HighscoreLoop,         nullptr},
 /* 4. Waiting for Highscore Data */ {WaitForHighscoreEnter, WaitForHighscoreLoop, nullptr},
                                     {nullptr, RenderOLEDFromNode2Loop, RenderOLEDFromNode2Leave},

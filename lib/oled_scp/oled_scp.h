@@ -8,11 +8,7 @@
 #include "lib/scp/scp.h"
 
 /**
- * @file
- * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
- * @version 1.0
- *
- * An interface to communicate with the oled display
+ * \brief A class to communicate with the OLED display through the SCP.
  */
 class OLED_SCP : public OLED {
 

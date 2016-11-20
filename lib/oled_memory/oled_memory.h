@@ -8,23 +8,19 @@
 #include "lib/scp/scp.h"
 
 /**
- * @file
- * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
- * @version 1.0
- *
- * An interface to communicate with the oled display
+ * \brief A class to communicate with the OLED display using the external memory interface.
  */
 class OLED_memory : public OLED {
 
 protected:
     /**
-    * Singleton constructor
-    */
+     * Singleton constructor.
+     */
     OLED_memory() : OLED() {}
 
-    SCP *channel = nullptr;
-    uint8_t command;
-
+    /**
+     * See the OLED.WriteByteToOLED() for more information.
+     */
     virtual void WriteByteToOLED(volatile uint8_t *address, uint8_t data);
 
 
@@ -40,9 +36,8 @@ public:
 
     /**
      * Initializes the whole screen.
-     * @param width The width of the screen in pixels
-     * @param height The height of the screen in pixels
-     * @param socket Socket to write through.
-    */
+     * @param width The width of the screen in pixels.
+     * @param height The height of the screen in pixels.
+     */
     void Init(uint8_t width, uint8_t height);
 };

@@ -10,10 +10,8 @@ ISR(ADC_vect);
 
 /**
  * \brief For using the internal ADC.
- * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
- * @version 1.0
  *
- * A class for using the internal analog-to-digital converter on the AVR
+ * A class for using the internal analog-to-digital converter on the AVR.
  */
 class ADC_internal : public Stream {
 
@@ -22,7 +20,7 @@ private:
     /**
      * A flag indicating if the ADC is currently used
      */
-    volatile bool adc_in_use;
+    volatile bool adc_in_use = false;
 
     /**
      * Constructor for ADC class. It is private due to singleton implementation

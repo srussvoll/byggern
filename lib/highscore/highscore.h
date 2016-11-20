@@ -26,6 +26,11 @@ namespace Highscore {
         char *name;
 
         Score(uint16_t score, char *name, uint8_t name_length) : score(score), name_length(name_length), name(name) {};
+
+        /**
+         * Setting a score equal to another score copies the name contents byte for byte.
+         * @param score The score to copy.
+         */
         void operator=(const Score &score);
     };
 

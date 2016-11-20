@@ -2,14 +2,6 @@
 
 #include <string.h>
 #include <avr/io.h>
-/**
- * @file
- * @author  Johan Lofstad, Sondre Baugstø, Sondre Russvoll
- * @version 1.0
- *
- * An interface for handling streams.
- */
-
 
 /**
  * This class is an interface for implementing a duplex FIFO stream.

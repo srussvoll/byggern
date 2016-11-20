@@ -2,6 +2,7 @@
 
 #include <avr/io.h>
 #include <stdio.h>
+
 #include "../oled/oled.h"
 
 /**
@@ -14,6 +15,7 @@
  * stored both on the heap and in the main (or where the menu is created) stack!
  */
 namespace Menu {
+
     /**
      * \brief Struct containing a sigle menu item.
      * 
@@ -21,6 +23,7 @@ namespace Menu {
      * about a menu item.
      */
     struct Item {
+
         /**
          * This is the label that will show up in the menu.
          */
@@ -52,6 +55,7 @@ namespace Menu {
         void AddAction(void (*fn)());
     };
 
+
     /**
      * Contains all necessary information about a menu (which could be a sub menu).
      */
@@ -72,7 +76,9 @@ namespace Menu {
      * This class contains everything needed to create and manage a menu and display it on an OLED.
      */
     class Controller {
+
     private:
+
         /**
          * Pointer to the oled object.
          */
@@ -153,7 +159,10 @@ namespace Menu {
          * @return Whether there was another menu item.
          */
         bool GoToNextItem();
+
+
     public:
+
         /**
          * Sets up the menu.
          * @param oled This is the oled object the menu should use for display.
@@ -161,13 +170,6 @@ namespace Menu {
          */
         Controller(OLED& oled, uint8_t num_lines);
 
-        /**
-         * Singleton for menu
-         */
-        /*static Controller& GetInstance(){
-            static Controller instance;
-            return instance;
-        }*/
         /**
          * Sets up the menu.
          * @param oled This is the oled object the menu should use for display.

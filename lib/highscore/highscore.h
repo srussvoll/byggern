@@ -1,4 +1,5 @@
 #pragma once
+
 #include <avr/io.h>
 
 #define MAX_NAME_LENGTH 10
@@ -12,6 +13,7 @@
  * struct for representing a score.
  */
 namespace Highscore {
+
     /**
      * \brief Represents a score.
      * @param score This is the score, 16 bits wide.
@@ -36,7 +38,9 @@ namespace Highscore {
      * for persistent storage.
      */
     class Highscore {
+
     private:
+
         /**
          * Contains a sorted list of scores.
          */
@@ -47,7 +51,9 @@ namespace Highscore {
          */
         uint8_t length = 0;
 
+
     public:
+
         /**
          * Automatically loads highscores from EEPROM.
          */

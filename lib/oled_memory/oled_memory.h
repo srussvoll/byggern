@@ -1,6 +1,8 @@
 #pragma once
-#include "../stream/stream.h"
+
 #include <avr/io.h>
+
+#include "../stream/stream.h"
 #include "lib/oled/oled.h"
 #include "lib/socket/socket.h"
 #include "lib/scp/scp.h"
@@ -14,7 +16,20 @@
  */
 class OLED_memory : public OLED {
 
+protected:
+    /**
+    * Singleton constructor
+    */
+    OLED_memory() : OLED() {}
+
+    SCP *channel = nullptr;
+    uint8_t command;
+
+    virtual void WriteByteToOLED(volatile uint8_t *address, uint8_t data);
+
+
 public:
+
     /**
      * A Singleton implementation of this class
      */
@@ -30,15 +45,4 @@ public:
      * @param socket Socket to write through.
     */
     void Init(uint8_t width, uint8_t height);
-
-protected:
-    /**
-    * Singleton constructor
-    */
-    OLED_memory() : OLED() {}
-
-    SCP *channel = nullptr;
-    uint8_t command;
-
-    virtual void WriteByteToOLED(volatile uint8_t *address, uint8_t data);
 };

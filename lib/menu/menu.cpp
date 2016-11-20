@@ -1,9 +1,10 @@
+#include "menu.h"
+
 #include <avr/io.h>
 #include <math.h>
 #include <stdio.h>
 #include <util/delay.h>
 
-#include "menu.h"
 #include "../utilities/new.h"
 #include "../oled/oled.h"
 
@@ -19,7 +20,6 @@ namespace {
 
 namespace Menu {
     Item::Item(char *label, uint8_t label_length) : label_length(label_length) {
-//        printf("Placing the label on the heap.\n");
         this->label = (char *) malloc(label_length * sizeof(char));
         memcpy(this->label, label, label_length);
     }
@@ -165,7 +165,6 @@ namespace Menu {
 
     void Controller::Render() {
         oled->SetNumberOfLines(this->num_lines);
-        //_delay_ms(500);
 
         // Make sure that, if possible, the selected item is not the top or bottom one.
         if (this->current_index_selected <= this->current_index_navigate) {
@@ -181,13 +180,7 @@ namespace Menu {
         do {
             oled->WriteLine(this->current_item_navigate->label, this->current_item_navigate->label_length, i, 2);
 
-            for(uint8_t j = 0; j < current_item_navigate->label_length; j++){
-                //printf("%c", this->current_item_navigate->label[j]);
-            }
-            //printf("\n");
-
             if (i == selected_index_relative) {
-
                 // Paints an arrow on the currently selected line
                 static uint8_t arrow[1][4] = {{0b00011000, 0b00011000, 0b00111100, 0b00011000}};
                 uint8_t *dummy[1] = { arrow[0] };
@@ -196,9 +189,10 @@ namespace Menu {
                 uint8_t y = oled->GetYCoordinateFromLineNumber(i);
                 oled->WriteBitmap(arrow_ptr, 4, 8, x, y, false);
             }
+
             i++;
         } while (this->GoToNextItem());
-        //printf("--- \n");
+
         oled->Repaint();
     }
 
@@ -221,15 +215,14 @@ namespace Menu {
     }
 
     void Controller::SelectNext() {
-        //printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
         if(this->current_index_selected == (this->GetMenuLength(this->current_menu_navigate) - 1)){
             this->current_index_selected = 0;
             this->current_item_navigate = 0;
         } else {
             this->current_index_selected = this->current_index_selected + 1;
         }
+
         this->Render();
-        //printf("Index selected: %d, Index item: %d\n", this->current_index_selected, this->current_index_navigate);
     }
 
     void Controller::SelectPrevious() {
@@ -239,13 +232,13 @@ namespace Menu {
         } else {
             this->current_index_selected = this->current_index_selected - 1;
         }
+
         this->Render();
     }
 
     void Controller::AddMenuItems(Item **items, uint8_t length) {
         Item *current_item = this->current_item_control;
 
-        //printf("len: %d", length);
         for (uint8_t i = 0; i < length; ++i) {
             this->AddMenuItem(items[i]);
             this->ControlGoToItem(i);

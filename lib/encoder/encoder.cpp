@@ -1,8 +1,10 @@
 #ifdef __AVR_ATmega2560__
-#include "encoder.h"
+
 #include <stdint.h>
 #include <avr/io.h>
 #include <util/delay.h>
+
+#include "encoder.h"
 
 Encoder::Encoder() {
     DDRH |= (1 << DDH5);

@@ -1,5 +1,7 @@
 #pragma once
+
 #include "../socket/socket.h"
+
 /**
  * \brief SCP (Simple Command Protocol) is an application layer protocol designed to send commands
  *
@@ -8,8 +10,23 @@
  *
  * This class is using SOCKET as its link layer implementation.
  */
-class SCP{
+class SCP {
+
+private:
+
+    /**
+     * An array with sockets
+     */
+    SOCKET* *sockets;
+
+    /**
+     * The number of sockets
+     */
+    uint8_t number_of_sockets;
+
+
 public:
+
     /**
      * Initializer
      * @param sockets An array of sockets that you want to use
@@ -32,16 +49,4 @@ public:
      * @param The length of the data will be put into this variable
      */
     bool Receive(uint8_t &command, uint8_t *data, uint8_t &length_of_data);
-
-private:
-
-    /**
-     * An array with sockets
-     */
-    SOCKET* *sockets;
-
-    /**
-     * The number of sockets
-     */
-    uint8_t number_of_sockets;
 };

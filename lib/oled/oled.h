@@ -1,6 +1,8 @@
 #pragma once
-#include "../stream/stream.h"
+
 #include <avr/io.h>
+
+#include "../stream/stream.h"
 
 /**
  * @file
@@ -10,24 +12,93 @@
  * An interface to communicate with the oled display
  */
 class OLED : public Stream {
+protected:
+    /**
+    * Singleton constructor
+    */
+    OLED();
+
+    virtual void WriteByteToOLED(volatile uint8_t *address, uint8_t data) {};
+
+    /**
+    * The current line used by the driver
+    */
+    uint8_t current_line = 0;
+
+    /**
+    * Width of display
+    */
+    uint8_t display_width = 0;
+
+    /**
+    * Height of display
+    */
+    uint8_t display_height = 0;
+
+    /**
+    * Number of pages
+    */
+    uint8_t number_of_pages = 0;
+
+    /**
+    * Number of lines. Not to be confused with number of pages
+    */
+    uint8_t number_of_lines = 0;
+
+    /**
+    * A pointer to where the OLED_COMMAND address space starts
+    */
+    volatile uint8_t *oled_command = (volatile uint8_t*)0x8000;
+
+    /**
+    * A pointer to where the OLED_DATA address space starts
+    */
+    volatile uint8_t *oled_data = (volatile uint8_t*)0x8100;
+
+    /**
+    * A matrix for the display
+    */
+    uint8_t **matrix;
+
+    /**
+    * The amount of pixels per line
+    */
+    uint8_t pixels_per_line;
+
+    /**
+    * The font
+    */
+    uint8_t *font = nullptr;
+
+    /**
+    * Width of the font
+    */
+    uint8_t font_width;
+
+    /**
+    * Height of the font
+    */
+    uint8_t font_height;
+
 
 public:
+
     /**
-    * Initializes the whole screen.
-     * @param width The width of the screen in pixels
-     * @param height The height of the screen in pixels
-    */
+      * Initializes the whole screen.
+      * @param width The width of the screen in pixels
+      * @param height The height of the screen in pixels
+      */
     void Init(uint8_t width, uint8_t height);
 
     /**
-    * Sets the line pointer. This line pointer is used by functions such as WriteLine() to determine which line to write to.
-    * @param line Which line to be set.
-    */
+      * Sets the line pointer. This line pointer is used by functions such as WriteLine() to determine which line to write to.
+      * @param line Which line to be set.
+      */
     void GoToLine(uint8_t line);
 
     /**
-    * Clears the whole screen
-    */
+      * Clears the whole screen
+      */
     void Clear();
 
     /**
@@ -105,72 +176,4 @@ public:
     void GetBitmapForCharacter(char character, uint8_t* &character_bitmap);
 
     uint8_t GetMaxLineCharacters();
-
-protected:
-    /**
-    * Singleton constructor
-    */
-    OLED();
-
-    virtual void WriteByteToOLED(volatile uint8_t *address, uint8_t data) {};
-
-    /**
-    * The current line used by the driver
-    */
-    uint8_t current_line = 0;
-
-    /**
-    * Width of display
-    */
-    uint8_t display_width = 0;
-
-    /**
-    * Height of display
-    */
-    uint8_t display_height = 0;
-
-    /**
-    * Number of pages
-    */
-    uint8_t number_of_pages = 0;
-
-    /**
-    * Number of lines. Not to be confused with number of pages
-    */
-    uint8_t number_of_lines = 0;
-
-    /**
-    * A pointer to where the OLED_COMMAND address space starts
-    */
-    volatile uint8_t *oled_command = (volatile uint8_t*)0x8000;
-
-    /**
-    * A pointer to where the OLED_DATA address space starts
-    */
-    volatile uint8_t *oled_data = (volatile uint8_t*)0x8100;
-
-    /**
-    * A matrix for the display
-    */
-    uint8_t **matrix;
-
-    /**
-    * The amount of pixels per line
-    */
-    uint8_t pixels_per_line;
-
-    /**
-    * The font
-    */
-    uint8_t *font = nullptr;
-
-    /**
-    * Width of the font
-    */
-    uint8_t font_width;
-
-    /**
-    * Height of the font
-    */
-    uint8_t font_height;
 };

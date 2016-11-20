@@ -1,7 +1,7 @@
 var NAVTREE =
 [
   [ "Byggern", "index.html", [
-    [ "TTK4155 2016", "index.html", null ],
+    [ "TTK4155 2016, Group 20", "index.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [

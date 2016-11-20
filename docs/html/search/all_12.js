@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['ttk4155_202016',['TTK4155 2016',['../index.html',1,'']]],
+  ['ttk4155_202016_2c_20group_2020',['TTK4155 2016, Group 20',['../index.html',1,'']]],
   ['threshold',['threshold',['../class_i_r_detector.html#a81b7870332a3ca41a391c95d5c3f60e4',1,'IRDetector::threshold()'],['../class_joystick.html#a30b68bce5589674148d43b4854b25cef',1,'Joystick::threshold()']]],
   ['throw_5faway_5fdata_5fcount',['throw_away_data_count',['../class_s_p_i_1_1_s_p_i.html#a997d2f4abbb126ec00ba3a4abe2940ac',1,'SPI::SPI']]],
   ['timer',['Timer',['../class_timer.html',1,'Timer'],['../class_timer.html#a609e586dbc0fdc159fc6fd490fcc1ae3',1,'Timer::Timer(uint8_t timer_number)'],['../class_timer.html#ae6b73141ad1d5029d3782d14d2fd5ff0',1,'Timer::Timer(const Timer &amp;)=delete'],['../class_timer.html#abd1196c7069c046e192e936bfc264693',1,'Timer::timer()']]],

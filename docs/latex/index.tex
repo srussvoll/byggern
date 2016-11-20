@@ -6,13 +6,15 @@ Created by Sondre Wangenstein Baugstø, Johan Lofstad and Sondre Vincent Russvol
 
 We wanted to modularize our project as much as possible. In doing this, we made the device drivers more general, and thus easily extendable and reusable for other projects. We kept this philosophy in the back of our minds throughout the entire project.
 
+The main downside is a little bigger and slower codebase.
+
 \subsection*{File structure}
 
 The library is shared between the two nodes, and can be found in the lib folder. Every class has its own folder, with its own .h and .cpp file.
 
-If a module is specific to one chip, for example the A\+Tmega162, we have included a {\ttfamily \#ifdef \+\_\+\+\_\+\+A\+V\+R\+\_\+\+A\+Tmega162\+\_\+\+\_\+} in the header file. This define is set by the compiler during the build process.
+If a module is specific to one chip, for example the A\+Tmega162, we have included a {\ttfamily \#ifdef \+\_\+\+\_\+\+A\+V\+R\+\_\+\+A\+Tmega162\+\_\+\+\_\+} in the implementation file. This define is set by the compiler during the build process.
 
-The node specific code is located in the node(1/2) / src. The {\itshape init.\+cpp} file is ran each time the M\+CU starts, and {\itshape main.\+cpp} is the main file. The {\itshape state\+\_\+machine.\+cpp} is the state machine implementation.
+The node specific code is located in the node(1/2) / src. The {\itshape init.\+cpp} file is run each time the M\+CU starts, and {\itshape main.\+cpp} is the main file. The {\itshape state\+\_\+machine.\+cpp} is the state machine implementation.
 
 \subsubsection*{State machine}
 
@@ -24,31 +26,27 @@ There is one function that runs when a state is entered, one that loops until th
 
 There are several advantages of using this kind of F\+SM. Adding and removing states is very easy, and only requires you to add/remove a function from an array. The system is always in a defined state, giving less room for unexpected behavior. The code is also very easy to read, making it easy to identify every state and what it does.
 
-{\bfseries Shared resources}
-
-Since enter, loop and leave are different functions, they all have their own separate scope. This causes us to have a few global variables. This is not a big problem, since putting those variable in a namespace makes them local to the file.
-
 \subsection*{\hyperlink{class_stream}{Stream}}
 
-We chose to implement a full duplex stream class, because it gave us a lot of overhead when implementing other modules such as \hyperlink{class_u_a_r_t}{U\+A\+RT}, \hyperlink{namespace_s_p_i}{S\+PI} and \hyperlink{class_c_a_n}{C\+AN}. It utilizes a ring buffer for both input and output. All classes that uses \hyperlink{class_stream}{Stream} inherit from it.
+We chose to implement an asynchronous full duplex stream, because many of the other classes works by manipulating input and output data, such as \hyperlink{class_u_a_r_t}{U\+A\+RT}, \hyperlink{namespace_s_p_i}{S\+PI} and \hyperlink{class_c_a_n}{C\+AN}. It utilizes a ring buffer for both input and output. All classes that uses \hyperlink{class_stream}{Stream} inherit from it.
 
-The figure underneath shows which classes that uses the stream.
+The figure underneath shows which classes use the stream.
 
 
 
 \subsection*{Network}
 
-In addition to \hyperlink{class_c_a_n}{C\+AN}, which is the physical and link layer, we have also made a transport layer and application protocol.
+In addition to \hyperlink{class_c_a_n}{C\+AN}, which is the physical and link layer, we have also made a transport layer and an application protocol.
 
-{\bfseries Transport layer -\/ S\+O\+C\+K\+ET}
+{\bfseries Transport layer -\/ \hyperlink{class_socket}{Socket}}
 
-The transport layer is implemented as a S\+O\+C\+K\+ET (not to be confused with a T\+CP socket). It handles communication between the node and a specified \hyperlink{class_c_a_n}{C\+AN} channel. It uses the stream in order to buffer incoming and outgoing messages.
+The transport layer is implemented as a \hyperlink{class_socket}{Socket} (not to be confused with a T\+CP socket). It handles communication between the node and a specified \hyperlink{class_c_a_n}{C\+AN} channel. It uses the \hyperlink{class_stream}{Stream} in order to buffer incoming and outgoing messages (\hyperlink{struct_can_message}{Can\+Message}).
 
-{\itshape Please see the socket class in the docs for a more detailed description}
+{\itshape Please see the \hyperlink{class_socket}{Socket} class in the docs for a more detailed description}
 
 {\bfseries Application layer -\/ \hyperlink{class_s_c_p}{S\+CP}}
 
-Our application layer protocol is called \hyperlink{class_s_c_p}{S\+CP} (Simple Command Protocol). It uses a socket to send commands between nodes. The \hyperlink{class_s_c_p}{S\+CP} frame consists of the following\+:
+Our application layer protocol is called \hyperlink{class_s_c_p}{S\+CP} (Simple Command Protocol). It uses multiple \hyperlink{class_socket}{Socket} objects to send commands between nodes. The \hyperlink{class_s_c_p}{S\+CP} frame consists of the following\+:
 
 
 \begin{DoxyItemize}
@@ -65,15 +63,15 @@ We have implemented a few extra features, listed underneath.
 
 \subsubsection*{Toolchain and C++}
 
-We decided to create our own toolchain, and not use the supplied toolchain in A\+T\+M\+EL Studio. All of our development is done in Linux (except for the G\+AL), and we used \href{http://www.nongnu.org/avrdude/}{\tt A\+V\+R\+D\+U\+DE}, \href{http://www.nongnu.org/avr-libc/}{\tt A\+V\+R-\/\+G++} and \href{https://cmake.org/}{\tt C\+Make} to build and flash the code onto the A\+T\+Mega.
+We decided to create our own toolchain. All of our development is done in Linux and Mac, and we used \href{http://www.nongnu.org/avrdude/}{\tt A\+V\+R\+D\+U\+DE}, \href{http://www.nongnu.org/avr-libc/}{\tt A\+V\+R-\/\+G++} and \href{https://cmake.org/}{\tt C\+Make} to build and flash the code onto the A\+T\+Mega. Creating our own toolchain gave us a lot of freedom and gave us a better insight into the process.
 
-We decided to go for C++ because it makes the code more readable due to modularization.
+We decided to go for C++ because it makes the code more readable due to modularization. We used the \href{https://help.ubuntu.com/community/Minicom}{\tt minicom} software to read \hyperlink{class_u_a_r_t}{U\+A\+RT} messages.
 
-We used the \href{https://help.ubuntu.com/community/Minicom}{\tt minicom} software to read \hyperlink{class_u_a_r_t}{U\+A\+RT} messages.
+Our toolchain works on Windows, Linux and OS X.
 
 \subsubsection*{Extended memory map}
 
-The memory map has been extended from 2\+KB of S\+R\+AM to 8\+KB of S\+R\+AM. We achieved this by not using the J\+T\+AG interface that occupied the remaining address and data pins. This gave us an updated memory map as seen below.
+The memory map has been extended from 2\+KB to 8\+KB of S\+R\+AM. We achieved this by not using the J\+T\+AG interface that occupied the remaining address and data pins. This gave us an updated memory map as seen below. The internal R\+AM contains only the stack, while the external S\+R\+AM contains the .data section, .bss section and the heap. This is done through the linker flag {\ttfamily -\/\+Wl,-\/-\/section-\/start,.data=0x804000,-\/-\/defsym=\+\_\+\+\_\+heap\+\_\+end=0x805\+F\+FF}.
 
 
 
@@ -81,7 +79,7 @@ The memory map has been extended from 2\+KB of S\+R\+AM to 8\+KB of S\+R\+AM. We
 
 We have implemented a highscore system that stores the highscore in the E\+E\+P\+R\+OM at the A\+Tmega162. The highscore system is based on time, and the longer you play, the higher score you get. This is realized through a timer module in the A\+Tmega2560.
 
-When a game ends, you are prompted to enter your name. We have developed an android app, which communicates with a n\+R\+F51 (from now on node 3) dev board through B\+LE (Bluetooth Low Energy). The name is entered on this app and sent to node 3.
+When a game ends, you are prompted to enter your name. We have developed an Android app, which communicates with a n\+R\+F51 dev board by Nordic Semiconductor (from now on node 3) through B\+LE (Bluetooth Low Energy). The name is entered on this app and sent to node 3.
 
 When node 3 receives the name, it is sent to node 2 through \hyperlink{namespace_s_p_i}{S\+PI}. Node 2 then sends the name to node 1 through \hyperlink{class_c_a_n}{C\+AN}, which stores the name in the E\+E\+P\+R\+OM (if the highscore is good enough).
 
@@ -93,4 +91,4 @@ This highscore can later be found by the menu entry \char`\"{}\+Highscore\char`\
 
 It is possible to render the \hyperlink{class_o_l_e_d}{O\+L\+ED} from node 2 through the \hyperlink{class_c_a_n}{C\+AN} network. However, currently, it does not render fast enough for it to be a viable option, but we have included a menu entry which illustrates that it is possible.
 
-This is done through the \hyperlink{class_s_c_p}{S\+CP} protocol that we developed for this project. Please see the documentation and the \hyperlink{class_s_c_p}{S\+CP} class. We send a \hyperlink{class_c_a_n}{C\+AN} message with \hyperlink{class_s_c_p}{S\+CP} instruction node 1 to write to a specific memory address. The \hyperlink{class_o_l_e_d}{O\+L\+ED} addresses and data is calculated at node 2. 
+This is done through the \hyperlink{class_s_c_p}{S\+CP} protocol that we developed for this project. Please see the documentation of the \hyperlink{class_s_c_p}{S\+CP} class. We send a \hyperlink{struct_can_message}{Can\+Message} with \hyperlink{class_s_c_p}{S\+CP}, instructing node 1 to write to a specific memory address. The \hyperlink{class_o_l_e_d}{O\+L\+ED} addresses and data is calculated at node 2. 

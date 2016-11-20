@@ -2,6 +2,11 @@
 
 #ifdef __AVR_ATmega162__
 
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+#include "../stream/stream.h"
+
 // x direction on the joystick
 #define ADC_ADDRESS1 (uint8_t *)0x2004
 
@@ -16,15 +21,11 @@
 
 
 #define ADC_INT      INT2_vect
-
-#include "../stream/stream.h"
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
-
 ISR(ADC_INT);
 
+
 class ADC : public Stream {
+
 private:
 
     volatile uint8_t *address;
@@ -72,14 +73,12 @@ public:
     * The interrupt vector for ADC done
     */
 
-    friend void INT2_vect();
+    friend void ADC_INT();
 
     /**
     * Request the ADC to get a sample. This sample can be read from the buffer using ReadByte(uint8_t& byte);
     */
-
     bool request_sample();
-
 
     /**
     * A flag indicating if the ADC is currently used
@@ -89,5 +88,4 @@ public:
     volatile static uint8_t *adc_waiting;
 
 };
-
 #endif

@@ -1,4 +1,5 @@
 #include "oled.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -80,26 +81,10 @@ void OLED::WriteByteArray(uint8_t page, uint8_t column, uint8_t *byte_array, uin
 }
 
 void OLED::Repaint(){
-//    uint8_t page_address;
-//    uint8_t column_address;
     for(uint8_t i = 0; i < this->number_of_pages; i++){
-//        page_address = (uint8_t) 0xB0 + i;
-        //this->WriteByteToOLED(this->oled_command, page_address);
         for(uint8_t j = 0; j < this->display_width; j++){
-//            column_address = (uint8_t) 0x00 + j;
-            // Set lower nibble
-            //this->WriteByteToOLED(this->oled_command, 0x00 + (column_address & 0xF));
-
-            // Set higher nibble
-            //this->WriteByteToOLED(this->oled_command, 0x10 + (column_address>>4));
             this->WriteByteToOLED(this->oled_data, this->matrix[i][j]);
-            //printf("%x", this->matrix[i][j]);
-            //volatile uint8_t u = this->matrix[i][j];
         }
-        /*volatile uint8_t *volatile e = this->matrix[i];
-        volatile uint8_t *volatile *volatile o = this->matrix;
-        volatile uint8_t u = this->matrix[0][0];*/
-        //printf("\n");
     }
 }
 
@@ -122,12 +107,10 @@ void OLED::WriteBitmap(uint8_t **pixels, uint8_t bitmap_width, uint8_t bitmap_he
         // Assume that bitmap_height <= line_height
         uint8_t page_x_starts_at = y/8;
         uint8_t page_x_ends_at = (uint8_t)ceil(((float)y + bitmap_height)/8 - 1);
-        // Case 1 : The entire line is on the same page
 
+        // Case 1 : The entire line is on the same page
         uint8_t upper_offset = y - page_x_starts_at*8;
         uint8_t lower_offset = (page_x_ends_at + 1)*8 - (bitmap_height + y);
-        //printf("UO: %2X, LO: %2x\n", upper_offset, lower_offset);
-        //printf("PLSA : %d, PLEA : %d \n", page_x_starts_at, page_x_ends_at);
 
         if(page_x_starts_at == page_x_ends_at){
             uint8_t bitmask = (0xFF << upper_offset) & (0xFF >> lower_offset);

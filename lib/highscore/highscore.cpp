@@ -1,14 +1,17 @@
 #ifdef __AVR_ATmega162__
+
 #include "highscore.h"
-#include <avr/interrupt.h>
+
 #include <stdlib.h>
+#include <avr/interrupt.h>
 #include <string.h>
-#include <stdio.h>
-#include <lib/uart/uart.h>
-#include <lib/oled/oled.h>
-#include <lib/oled_memory/oled_memory.h>
-#include "lib/utilities/new.h"
 #include <util/delay.h>
+#include <stdio.h>
+
+#include "lib/uart/uart.h"
+#include "lib/oled/oled.h"
+#include "lib/oled_memory/oled_memory.h"
+#include "lib/utilities/new.h"
 
 #define MAX_LENGTH 40
 #define MAX_NAME_LENGTH 10

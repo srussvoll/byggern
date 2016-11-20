@@ -1,6 +1,7 @@
+#include "oled_scp.h"
+
 #include <stdlib.h>
 #include <util/delay.h>
-#include "oled_scp.h"
 
 
 void OLED_SCP::Init(uint8_t width, uint8_t height, SCP &channel, uint8_t command) {
@@ -24,4 +25,3 @@ void OLED_SCP::WriteByteToOLED(volatile uint8_t *address, uint8_t data) {
         this->bytes_to_send_index = 0;
     }
 }
-

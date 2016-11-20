@@ -14,11 +14,14 @@ namespace {
 Servo::Servo(uint16_t min, uint16_t max) : min(min), max(max) {
     // Set pin to output
     DDRB |= (1 << DDB5);
+
     // Set non inverting mode
     TCCR1A |= (2 << COM1A0);
+
     // Set fast PWM
     TCCR1B |= (1 << WGM13) | (1 << WGM12);
     TCCR1A |= (1 << WGM11) | (0 << WGM10);
+
     // Set frequency
     TCCR1B |= (3 << CS10);
     ICR1 |= 5000;

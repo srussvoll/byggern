@@ -3,6 +3,12 @@
 #include "servo.h"
 
 namespace {
+    /**
+     * Returns the lowest positive a mod b.
+     * @param a a
+     * @param b mod b
+     * @return The lowest positive a mod b.
+     */
     uint16_t mod(int16_t a, int16_t b) {
         if (b < 0) return mod(a, -b);
         int16_t ret = a % b;

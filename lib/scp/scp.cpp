@@ -21,7 +21,7 @@ bool SCP::Receive(uint8_t &command, uint8_t *data, uint8_t &length_of_data) {
     return false;
 }
 
-void SCP::Send(uint8_t priority, uint8_t command, uint8_t *data, uint8_t length_of_data){
+void SCP::Send(uint8_t priority, uint8_t command, uint8_t *data, uint8_t length_of_data) {
     Socket *current_socket = this->sockets[priority];
 
     uint8_t payload[64] = {command, length_of_data};

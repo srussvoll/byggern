@@ -5,6 +5,11 @@
 
 #include "../adc/adc.h"
 
+/**
+ * \brief The quantization levels for the Joystick
+ *
+ * The max and min in all directions. Assumes a circular joystick.
+ */
 struct Quantization{
     float x_max;
     float x_min;
@@ -26,6 +31,7 @@ enum Direction{
 
 /**
  * \brief A general joystick controller
+ *
  * The joystick controller expects a quantizationlevel struct as input. This is to indicate the max and min y and x direction of the joystick.
  * Example: If x goes from 0 to 255, it expects input struct with x_max = 255, x_min = 0. If y goes from 0 to 255, it expects the same for y.
  * It also expect a uint8_t threshold, given in decimal. This threshold is used for detecting direction

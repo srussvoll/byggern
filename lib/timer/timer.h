@@ -20,6 +20,30 @@ ISR(TIMER3_COMPA_vect);
  * Uses CTC mode. Assumes a 16MHz clock.
  */
 class Timer{
+
+private:
+    /**
+     * Initializer. Not used by end user
+     * @param timer_number Which timer number you want to get. Please see GetInstance()
+     */
+    Timer(uint8_t timer_number): timer_number(timer_number){};
+
+    /**
+     * Number of times the timer has triggered
+     */
+    volatile uint16_t timer;
+
+    /**
+     * Which timer is this instance for. See GetInstance()
+     */
+    uint8_t timer_number;
+
+    /**
+     * Callback function to be called when the timer triggers.
+     */
+    void (*fn)(void);
+
+
 public:
     /**
     * A Singleton implementation of this class
@@ -72,28 +96,4 @@ public:
      * Interrupt handler for timer 3
      */
     friend void TIMER3_COMPA_vect();
-
-
-private:
-    /**
-     * Initializer. Not used by end user
-     * @param timer_number Which timer number you want to get. Please see GetInstance()
-     */
-    Timer(uint8_t timer_number): timer_number(timer_number){};
-
-    /**
-     * Number of times the timer has triggered
-     */
-    volatile uint16_t timer;
-
-    /**
-     * Which timer is this instance for. See GetInstance()
-     */
-    uint8_t timer_number;
-
-    /**
-     * Callback function to be called when the timer triggers.
-     */
-    void (*fn)(void);
-
 };

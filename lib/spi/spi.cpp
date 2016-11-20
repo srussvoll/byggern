@@ -1,8 +1,8 @@
 #include "spi.h"
-#include <stdio.h>
-#include <util/delay.h>
 #include "pins.h"
-namespace SPI_N{
+
+namespace SPI {
+
     void SPI_STC_vect(){
         SPI& spi = SPI::GetInstance();
 
@@ -68,7 +68,7 @@ namespace SPI_N{
         SPCR |= (1<<MSTR);
         SPCR |= (1<<SPE);
 
-        for(uint8_t i = 0; i < number_of_pins; ++i){
+        for(uint8_t i = 0; i < number_of_pins; ++i) {
             // Set direction of pin
             *pins[i].ddr |= (1<<pins[i].pin);
             // Set the pin default to high
@@ -91,7 +91,7 @@ namespace SPI_N{
         }
     }
 
-    void SPI::SetDevice(PIN pin){
+    void SPI::SetDevice(PIN pin) {
         this->current_pin = pin;
 
         // Flush output and input buffer

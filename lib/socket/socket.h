@@ -12,6 +12,13 @@
  * number of sockets. The lower the socket identifier, the higher the priority.
  */
 class SOCKET : public Stream {
+
+private:
+    /**
+     * This sockets identifier
+     */
+    uint8_t id;
+
 public:
 
     CAN *can;
@@ -38,7 +45,7 @@ public:
      * Called when a new CAN_MESSAGE from the can controller has arrived. Puts the message into the stream
      * @param message The received CAN_MESSAGE
      */
-    static void HandleDataFromLowerLevel(CAN_MESSAGE &message) {
+    static void HandleDataFromLowerLevel(CanMessage &message) {
         SOCKET &socket = SOCKET::GetInstance(message.id);
         socket.WriteToInputStream(message.data, message.size);
     }
@@ -77,10 +84,4 @@ public:
      * @param byte
      */
     void WriteByte(uint8_t byte);
-
-private:
-    /**
-     * This sockets identifier
-     */
-    uint8_t id;
 };

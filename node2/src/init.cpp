@@ -10,12 +10,12 @@ inline void InitializeNetworkStack(){
     SOCKET &high = SOCKET::GetInstance(0x00);
     SOCKET &low = SOCKET::GetInstance(0x01);
     MCP2515 &mcp = MCP2515::GetInstance();
-    SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
+    SPI::SPI &spi = SPI::SPI::GetInstance();
 
     // Initialize SPI
-    SPI_N::PIN ss = SPI_N::PIN(&PORTB, &DDRB, 7);
-    SPI_N::PIN nordic_pin = SPI_N::PIN(&PORTG, &DDRG, 1);
-    SPI_N::PIN ss_a[] = {ss, nordic_pin};
+    SPI::PIN ss = SPI::PIN(&PORTB, &DDRB, 7);
+    SPI::PIN nordic_pin = SPI::PIN(&PORTG, &DDRG, 1);
+    SPI::PIN ss_a[] = {ss, nordic_pin};
     spi.Initialize(ss_a, 2, 0, 0);
     spi.SetDevice(ss);
 

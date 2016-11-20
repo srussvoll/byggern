@@ -1,8 +1,6 @@
 #ifdef __AVR_ATmega2560__
 
-#include <math.h>
 #include "timer.h"
-#include "../lib/utilities/printf.h"
 
 void TIMER4_COMPA_vect() {
     Timer &t = Timer::GetInstance(0);
@@ -59,7 +57,7 @@ void Timer::Initialize(uint16_t ms, void(*fn)(void)) {
 
 }
 
-void Timer::Start(){
+void Timer::Start() {
     if(this->timer_number == 0) {
         TCNT4H = 0x00;
         TCNT4L = 0x00;

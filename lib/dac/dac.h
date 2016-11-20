@@ -6,8 +6,6 @@
 
 /**
  * \brief Using an extern DAC
- * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
- * @version 1.0
  *
  * A digital-to-analog converter. This one is extern, that is not on the mcu, so it needs to be interfaced (i.e. through I2C)
  */

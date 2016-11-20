@@ -23,51 +23,6 @@ ISR(MCP2515_INT);
  * <b>Please note:</b> This implementation only uses one recieve and transmit buffer. TX0 and RX0
  */
 class MCP2515: public CAN{
-public:
-
-    /**
-     * A Singleton implementation of this class
-     *
-     */
-    static MCP2515& GetInstance(){
-        static MCP2515 instance;
-        return instance;
-    }
-
-    /**
-     * Because of singleton - makes sure its not copied etc.
-     */
-    MCP2515(const MCP2515&) = delete;
-
-    /**
-     * The MCP2515 interrupt handler
-     */
-    friend void MCP2515_INT();
-
-    /**
-     * Sends a CAN message
-     * @param message The CAN message to be sent
-     */
-    void SendMessage(CAN_MESSAGE &message);
-
-    /**
-     * Initiates the loopback mode of the MCP2515. Please consult the
-     * <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf">MCP2515 datasheet</a>
-     */
-    void SetLoopback();
-
-    /**
-     * Initiates the normal mode of the MCP2515. Please consult the
-     * <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf">MCP2515 datasheet</a>
-     */
-    void SetNormal();
-
-    /**
-    * Initializes the MCP2515 driver.
-    * @param spi The singleton instance of the SPI driver
-    * @param identifier The CAN identifier for this node
-    */
-    void Initialize(SPI_N::SPI *spi, uint16_t identifier);
 
 private:
 
@@ -116,7 +71,7 @@ private:
      * Loads the transmit frame, i.e. sends the CAN data to the MCP2515
      * @param message The CAN_MESSAGE to be loaded into the TX frame
      */
-    void LoadTxFrame(CAN_MESSAGE &message);
+    void LoadTxFrame(CanMessage &message);
 
     /**
      * Gets the RxStatus byte from the MCP2515. Please see <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf">MCP2515 datasheet</a>
@@ -129,17 +84,63 @@ private:
      * Reads the RxFrame, i.e. retrieves the recieved data
      * @param message The message to be written into
      */
-    void ReadRxFrame(CAN_MESSAGE &message);
+    void ReadRxFrame(CanMessage &message);
 
     MCP2515(){};
 
     /**
      * The SPI Driver the MCP2515 uses.
      */
-    SPI_N::SPI *spi_driver;
+    SPI::SPI *spi_driver;
 
     /**
      * Flag indicating if we can load the TX frame.
      */
     volatile bool clear_to_send = true;
+
+public:
+
+    /**
+     * A Singleton implementation of this class
+     *
+     */
+    static MCP2515& GetInstance(){
+        static MCP2515 instance;
+        return instance;
+    }
+
+    /**
+     * Because of singleton - makes sure its not copied etc.
+     */
+    MCP2515(const MCP2515&) = delete;
+
+    /**
+     * The MCP2515 interrupt handler
+     */
+    friend void MCP2515_INT();
+
+    /**
+     * Sends a CAN message
+     * @param message The CAN message to be sent
+     */
+    void SendMessage(CanMessage &message);
+
+    /**
+     * Initiates the loopback mode of the MCP2515. Please consult the
+     * <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf">MCP2515 datasheet</a>
+     */
+    void SetLoopback();
+
+    /**
+     * Initiates the normal mode of the MCP2515. Please consult the
+     * <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21801G.pdf">MCP2515 datasheet</a>
+     */
+    void SetNormal();
+
+    /**
+    * Initializes the MCP2515 driver.
+    * @param spi The singleton instance of the SPI driver
+    * @param identifier The CAN identifier for this node
+    */
+    void Initialize(SPI::SPI *spi, uint16_t identifier);
 };

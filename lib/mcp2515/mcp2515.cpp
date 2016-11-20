@@ -25,7 +25,7 @@ void MCP2515_INT(){
     // If interrupt is recieve
     if(interrupt_flags & (MCP_RX0IF)) {
         uint8_t data_to_rec[8];
-        CAN_MESSAGE rec_mess = CAN_MESSAGE(0,data_to_rec,0);
+        CanMessage rec_mess = CanMessage(0,data_to_rec,0);
 
         // Read the data from the MCP2515
         mcp.ReadRxFrame(rec_mess);
@@ -39,7 +39,7 @@ void MCP2515_INT(){
     }
 }
 
-void MCP2515::Initialize(SPI_N::SPI *spi, uint16_t identifier) {
+void MCP2515::Initialize(SPI::SPI *spi, uint16_t identifier) {
     this->spi_driver = spi;
 
     // Initialize the interrupt
@@ -125,7 +125,7 @@ void MCP2515::SetNormal() {
     this->BitModify(MCP_CANCTRL, bitmask, data);
 }
 
-void MCP2515::LoadTxFrame(CAN_MESSAGE &message) {
+void MCP2515::LoadTxFrame(CanMessage &message) {
     /*
      * We cannot load another TX buffer if we are not clear to send, since we only use one buffer. We therefor need to
      * wait in order to send a new one.
@@ -167,7 +167,7 @@ void MCP2515::RxStatus(uint8_t &byte) {
     while(!this->spi_driver->ReadByte(byte));
 }
 
-void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
+void MCP2515::ReadRxFrame(CanMessage &message) {
     uint8_t buffer_number = 0;
     uint8_t address_sidh = 0b10010000 | (buffer_number << 2);
     uint8_t address_data = 0b10010010 | (buffer_number << 2);
@@ -211,7 +211,7 @@ void MCP2515::ReadRxFrame(CAN_MESSAGE &message) {
     }
 }
 
-void MCP2515::SendMessage(CAN_MESSAGE &message) {
+void MCP2515::SendMessage(CanMessage &message) {
 // Turn of interrupt during transmission. This is due to using sei() in the interrupt handler
 #ifdef __AVR_ATmega162__
     GICR &= ~(1 << INT0);

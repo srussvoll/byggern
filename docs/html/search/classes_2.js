@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['highscore',['Highscore',['../class_highscore_1_1_highscore.html',1,'Highscore']]]
+  ['frontpage',['frontpage',['../classbaugen_1_1scoreboard_1_1frontpage.html',1,'baugen::scoreboard']]]
 ];

@@ -20,7 +20,6 @@ var dir_97aefd0d527b934f1d99a682da8fe6a9 =
     [ "socket", "dir_e17dec1d132ad7ed461be9444000b405.html", "dir_e17dec1d132ad7ed461be9444000b405" ],
     [ "solenoid", "dir_c84dffaf6bc89599ac8776510ef66801.html", "dir_c84dffaf6bc89599ac8776510ef66801" ],
     [ "spi", "dir_54039fda600ac562dd03ed75913a326a.html", "dir_54039fda600ac562dd03ed75913a326a" ],
-    [ "spi_sync", "dir_0359d806c51f0492dea4e6caefa15535.html", "dir_0359d806c51f0492dea4e6caefa15535" ],
     [ "state_machine", "dir_d2e57318d5adef90542a8df15206bbb9.html", "dir_d2e57318d5adef90542a8df15206bbb9" ],
     [ "stream", "dir_47f8fe28d1a6fab217e2996b53d6dd11.html", "dir_47f8fe28d1a6fab217e2996b53d6dd11" ],
     [ "timer", "dir_8cca61d62425cdde8ca9e991c6e9c615.html", "dir_8cca61d62425cdde8ca9e991c6e9c615" ],

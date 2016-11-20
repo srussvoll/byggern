@@ -15,7 +15,7 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
             memcpy(data, &string[size-remaining_data],can_size);
             remaining_data -= 8;
 
-        }else {
+        } else {
 
             // Remaining data fits into one CAN frame
             can_size = remaining_data;
@@ -28,7 +28,7 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
                 remaining_data -= 8;
             }
         }
-        CAN_MESSAGE message = CAN_MESSAGE(can_size,data,this->id);
+        CanMessage message = CanMessage(can_size,data,this->id);
         this->can->SendMessage(message);
 
 #ifdef __AVR_ATmega162__
@@ -41,6 +41,6 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
 
 void SOCKET::WriteByte(uint8_t byte) {
     uint8_t data[] = {byte};
-    CAN_MESSAGE message = CAN_MESSAGE(8,data,this->id);
+    CanMessage message = CanMessage(8,data,this->id);
     this->can->SendMessage(message);
 }

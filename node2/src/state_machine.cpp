@@ -53,7 +53,7 @@ namespace {
     char highscore_name[10];
     uint8_t highscore_name_length = 0;
     uint16_t highscore_score = 0;
-    SPI_N::PIN oldsspin;
+    SPI::PIN oldsspin;
 
     bool game_started = false;
 }
@@ -204,7 +204,7 @@ void OngoingLeave() {
     Timer &timer2 = Timer::GetInstance(1);
     timer1.Stop();
     timer2.Stop();
-    timer1.GetFullSecondsPassed(highscore_score);
+    timer1.GetNumberOfTimesTriggered(highscore_score);
     channel->Send(0, CMD_WAIT_FOR_HIGHSCORE, nullptr, 0);
     _delay_ms(500);
     sockets[0]->FlushInputBuffer();
@@ -294,10 +294,10 @@ void HighscoreEnter(){
     printf("Enter highscore \n");
 
     // Select new SS
-    SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
+    SPI::SPI &spi = SPI::SPI::GetInstance();
     oldsspin = spi.current_pin;
 
-    SPI_N::PIN nordic_pin = SPI_N::PIN(&PORTG, &DDRG, 1);
+    SPI::PIN nordic_pin = SPI::PIN(&PORTG, &DDRG, 1);
     spi.SetDevice(nordic_pin);
 
     // Reduce SCK speed
@@ -306,7 +306,7 @@ void HighscoreEnter(){
 }
 
 void HighscoreLoop(){
-    SPI_N::SPI &spi = SPI_N::SPI::GetInstance();
+    SPI::SPI &spi = SPI::SPI::GetInstance();
 
     // Wait while the pin is low
     while(!(PING & (1 << PING0)));
@@ -332,7 +332,7 @@ void HighscoreLoop(){
 
 void HighscoreLeave(){
     // The the SS pin back to the old value
-    SPI_N::SPI::GetInstance().SetDevice(oldsspin);
+    SPI::SPI::GetInstance().SetDevice(oldsspin);
 
     // Increase clock speed
     SPSR |= (1<<SPI2X);

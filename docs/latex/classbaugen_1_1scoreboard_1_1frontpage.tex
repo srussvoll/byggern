@@ -1,0 +1,87 @@
+\hypertarget{classbaugen_1_1scoreboard_1_1frontpage}{}\section{baugen.\+scoreboard.\+frontpage Class Reference}
+\label{classbaugen_1_1scoreboard_1_1frontpage}\index{baugen.\+scoreboard.\+frontpage@{baugen.\+scoreboard.\+frontpage}}
+Inheritance diagram for baugen.\+scoreboard.\+frontpage\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbaugen_1_1scoreboard_1_1frontpage}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classbaugen_1_1scoreboard_1_1frontpage_a48598abf3d67a58fe05f0ee3cf31dfab}{}\label{classbaugen_1_1scoreboard_1_1frontpage_a48598abf3d67a58fe05f0ee3cf31dfab} 
+void {\bfseries Scan\+For\+Devices} (View view)
+\item 
+\hypertarget{classbaugen_1_1scoreboard_1_1frontpage_ae7525e866aa5946bec7e1440864c00f7}{}\label{classbaugen_1_1scoreboard_1_1frontpage_ae7525e866aa5946bec7e1440864c00f7} 
+void {\bfseries Get\+Name\+From\+B\+LE} (View view)
+\item 
+\hypertarget{classbaugen_1_1scoreboard_1_1frontpage_abbb81a88e481fd4f4488252270c8450a}{}\label{classbaugen_1_1scoreboard_1_1frontpage_abbb81a88e481fd4f4488252270c8450a} 
+void {\bfseries Send\+Name} (View view)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classbaugen_1_1scoreboard_1_1frontpage_a22f57438438c0fb3bcb1e5d04b999388}{}\label{classbaugen_1_1scoreboard_1_1frontpage_a22f57438438c0fb3bcb1e5d04b999388} 
+void {\bfseries on\+Create} (Bundle saved\+Instance\+State)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classbaugen_1_1scoreboard_1_1frontpage_a60e83ffadfeaa895f9a35c81b2cb3717}{}\label{classbaugen_1_1scoreboard_1_1frontpage_a60e83ffadfeaa895f9a35c81b2cb3717} 
+void {\bfseries scan\+Le\+Device} (final boolean enable)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classbaugen_1_1scoreboard_1_1frontpage_a8a25466ea5fcaaf03aa6f3de5e5405ec}{}\label{classbaugen_1_1scoreboard_1_1frontpage_a8a25466ea5fcaaf03aa6f3de5e5405ec} 
+Bluetooth\+Adapter {\bfseries bluetooth\+Adapter}
+\item 
+\hypertarget{classbaugen_1_1scoreboard_1_1frontpage_ab64ac5bd2598b8778810f4e1af544a1d}{}\label{classbaugen_1_1scoreboard_1_1frontpage_ab64ac5bd2598b8778810f4e1af544a1d} 
+boolean {\bfseries is\+Scanning\+For\+B\+L\+E\+Device}
+\item 
+\hypertarget{classbaugen_1_1scoreboard_1_1frontpage_a1d9dc0b9537be5fd7e57585507418048}{}\label{classbaugen_1_1scoreboard_1_1frontpage_a1d9dc0b9537be5fd7e57585507418048} 
+Bluetooth\+Le\+Scanner {\bfseries B\+L\+E\+Scanner}
+\item 
+Scan\+Callback {\bfseries m\+Le\+Scan\+Callback}
+\item 
+\hypertarget{classbaugen_1_1scoreboard_1_1frontpage_a7a3c692738750172951f2ece5561a75f}{}\label{classbaugen_1_1scoreboard_1_1frontpage_a7a3c692738750172951f2ece5561a75f} 
+Bluetooth\+Gatt\+Callback {\bfseries join\+Gatt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classbaugen_1_1scoreboard_1_1frontpage_af2743634355793d2d6d268a8e1126b03}{}\label{classbaugen_1_1scoreboard_1_1frontpage_af2743634355793d2d6d268a8e1126b03} 
+\index{baugen\+::scoreboard\+::frontpage@{baugen\+::scoreboard\+::frontpage}!m\+Le\+Scan\+Callback@{m\+Le\+Scan\+Callback}}
+\index{m\+Le\+Scan\+Callback@{m\+Le\+Scan\+Callback}!baugen\+::scoreboard\+::frontpage@{baugen\+::scoreboard\+::frontpage}}
+\subsubsection{\texorpdfstring{m\+Le\+Scan\+Callback}{mLeScanCallback}}
+{\footnotesize\ttfamily Scan\+Callback baugen.\+scoreboard.\+frontpage.\+m\+Le\+Scan\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{keyword}{new} ScanCallback() \{
+
+        @Override
+        \textcolor{keyword}{public} \textcolor{keywordtype}{void} onScanResult(\textcolor{keywordtype}{int} callbackType, ScanResult result) \{
+
+            super.onScanResult(callbackType, result);
+            BLESlave = result.getDevice();
+
+            \textcolor{keywordflow}{if}(BLESlave.getName() == null)\{
+                \textcolor{keywordflow}{return};
+            \}
+
+            
+            
+            \textcolor{keywordflow}{if}(BLESlave.getName().startsWith(\textcolor{stringliteral}{"Ba"}))\{
+                subscription = BLESlave.connectGatt(getApplicationContext(), \textcolor{keyword}{true}, joinGatt);
+                statusLabel.setText(BLESlave.getName());
+                scanLeDevice(\textcolor{keyword}{false});
+            \}
+        \}
+    \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+extra/android/\+Scoreboard/app/src/main/java/baugen/scoreboard/frontpage.\+java\end{DoxyCompactItemize}

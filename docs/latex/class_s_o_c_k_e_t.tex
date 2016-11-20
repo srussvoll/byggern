@@ -33,7 +33,7 @@ void \hyperlink{class_s_o_c_k_e_t_abcddb460b7adf3595a813f08f3659356}{Write\+Byte
 \item 
 static \hyperlink{class_s_o_c_k_e_t}{S\+O\+C\+K\+ET} \& \hyperlink{class_s_o_c_k_e_t_acd81e49443c51d84f7bfe5d616d1b750}{Get\+Instance} (uint8\+\_\+t \hyperlink{class_s_o_c_k_e_t_a0755fe74751c2d94d3d1679cad9e6544}{id}=0)
 \item 
-static void \hyperlink{class_s_o_c_k_e_t_ab1345aded87c899fd525616b6f2cca4a}{Handle\+Data\+From\+Lower\+Level} (\hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE} \&message)
+static void \hyperlink{class_s_o_c_k_e_t_a7c3771b6f958ea3566fab32ea094d0ff}{Handle\+Data\+From\+Lower\+Level} (\hyperlink{struct_can_message}{Can\+Message} \&message)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -86,15 +86,15 @@ A Singleton implementation of this class. In order to have support for more than
 {\em id} & The socket ID \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_s_o_c_k_e_t_ab1345aded87c899fd525616b6f2cca4a}{}\label{class_s_o_c_k_e_t_ab1345aded87c899fd525616b6f2cca4a} 
+\hypertarget{class_s_o_c_k_e_t_a7c3771b6f958ea3566fab32ea094d0ff}{}\label{class_s_o_c_k_e_t_a7c3771b6f958ea3566fab32ea094d0ff} 
 \index{S\+O\+C\+K\+ET@{S\+O\+C\+K\+ET}!Handle\+Data\+From\+Lower\+Level@{Handle\+Data\+From\+Lower\+Level}}
 \index{Handle\+Data\+From\+Lower\+Level@{Handle\+Data\+From\+Lower\+Level}!S\+O\+C\+K\+ET@{S\+O\+C\+K\+ET}}
 \subsubsection{\texorpdfstring{Handle\+Data\+From\+Lower\+Level()}{HandleDataFromLowerLevel()}}
-{\footnotesize\ttfamily static void S\+O\+C\+K\+E\+T\+::\+Handle\+Data\+From\+Lower\+Level (\begin{DoxyParamCaption}\item[{\hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+{\footnotesize\ttfamily static void S\+O\+C\+K\+E\+T\+::\+Handle\+Data\+From\+Lower\+Level (\begin{DoxyParamCaption}\item[{\hyperlink{struct_can_message}{Can\+Message} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
-Called when a new \hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE} from the can controller has arrived. Puts the message into the stream 
+Called when a new C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE from the can controller has arrived. Puts the message into the stream 
 \begin{DoxyParams}{Parameters}
-{\em message} & The received \hyperlink{struct_c_a_n___m_e_s_s_a_g_e}{C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE} \\
+{\em message} & The received C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_s_o_c_k_e_t_a69219c6c89e78afcd46df2e0af34a341}{}\label{class_s_o_c_k_e_t_a69219c6c89e78afcd46df2e0af34a341} 

@@ -3,11 +3,16 @@
 #include "../stream/stream.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
-namespace SPI_N{
+/**
+ * \brief A namespace containing everything related to the SPI driver
+ */
+namespace SPI {
+
     /**
      * \brief A struct which holds the information about a pin. Used in order to pass pin information
      */
     struct PIN{
+
         /**
          * A pointer to the port register for the pin
          */
@@ -20,8 +25,25 @@ namespace SPI_N{
          * The pin number
          */
         uint8_t pin;
+
+        /**
+         * Constructor with 3 parameters
+         * @param port A pointer to the port register for the pin
+         * @param ddr A pointer to the data direction register for the pin
+         * @param The pin number
+         */
         PIN(volatile uint8_t *port, volatile uint8_t *ddr, uint8_t pin): port(port), ddr(ddr), pin(pin){}
+
+        /**
+         * Constructor with 2 parameters
+         * @param port A pointer to the port register for the pin
+         * @param ddr A pointer to the data direction register for the pin
+         */
         PIN(): port(nullptr), ddr(nullptr), pin(0){}
+
+        /**
+         * Overloading the "=" operator for PIN.
+         */
         PIN operator=(PIN *original_pin){
             PIN newPin(original_pin->port, original_pin->ddr, original_pin->pin);
             return newPin;
@@ -36,6 +58,34 @@ namespace SPI_N{
      * Supports all four modes of SPI (please see the Initialize function). Uses interrupt for when a transfer is complete
      */
     class SPI: public Stream {
+
+    private:
+        /**
+         * Initializer for SPI. Not used because of singleton
+         */
+        SPI();
+
+        /**
+         * Send the data in the output buffer onto the SPI.
+         */
+        void InitializeTransmission();
+
+        /**
+         * A bool indicating wether or not an outgoing transmission is ongoing
+         */
+        volatile bool ongoing_transmission = false;
+
+        /**
+         * A flag indicating how many transfer we are going to not care about the data received
+         */
+        uint8_t throw_away_data_count = 0;
+
+        /**
+         * The interrupt vector for when a transmission is complete.
+         */
+        friend void SPI_STC_vect();
+
+
     public:
         /**
         * A Singleton implementation of this class
@@ -91,31 +141,5 @@ namespace SPI_N{
          * A struct of the type PIN which indicates which pin is currently selected.
          */
         PIN current_pin;
-
-    private:
-        /**
-         * Initializer for SPI. Not used because of singleton
-         */
-        SPI();
-
-        /**
-         * Send the data in the output buffer onto the SPI.
-         */
-        void InitializeTransmission();
-
-        /**
-         * A bool indicating wether or not an outgoing transmission is ongoing
-         */
-        volatile bool ongoing_transmission = false;
-
-        /**
-         * A flag indicating how many transfer we are going to not care about the data received
-         */
-        uint8_t throw_away_data_count = 0;
-
-        /**
-         * The interrupt vector for when a transmission is complete.
-         */
-        friend void SPI_STC_vect();
     };
 }

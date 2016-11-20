@@ -1,37 +1,38 @@
-#ifdef __AVR_ATmega2560__
-
 #pragma once
+
 #include <avr/io.h>
+
 #include "lib/i2c/i2c.h"
 
 /**
-* @file
-* @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
-* @version 1.0
-*
-* A digital-to-analog converter
-*/
+ * @file
+ * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
+ * @version 1.0
+ *
+ * A digital-to-analog converter
+ */
 class DAC{
+
 private:
 
     /**
-    * A constructor that initializes the DAC. Private because of singleton
-    */
+     * A constructor that initializes the DAC. Private because of singleton
+     */
     DAC();
 
     /**
-    * The I2C for communication with the DAC
-    */
+     * The I2C for communication with the DAC
+     */
     I2C* i2c;
 
     /**
-    * The maximum voltage value the DAC can output
-    */
+     * The maximum voltage value the DAC can output
+     */
     uint8_t max;
 
     /**
-    * The minimum voltage value the DAC can output
-    */
+     * The minimum voltage value the DAC can output
+     */
     uint8_t min;
 
     /**
@@ -43,6 +44,7 @@ private:
      * The DAC to be written to. In range 1-4. Default value is 1
      */
     uint8_t dac_number;
+
 
 public:
 
@@ -101,5 +103,3 @@ public:
      */
     bool WriteAnalogSignalPercentage(float percentage);
 };
-
-#endif

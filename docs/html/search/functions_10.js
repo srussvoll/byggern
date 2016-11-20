@@ -2,8 +2,8 @@ var searchData=
 [
   ['write',['Write',['../class_s_o_c_k_e_t.html#ad8ee6b81c9f30267406412a95264abed',1,'SOCKET::Write()'],['../class_stream.html#a508be3423e4d99ab2757275fb723002a',1,'Stream::Write()'],['../class_u_a_r_t.html#a8bb77ca27b4e17d608d2743313625ac4',1,'UART::Write()']]],
   ['writebitmap',['WriteBitmap',['../class_o_l_e_d.html#a3cb468f16387343f6db387a86cded8af',1,'OLED']]],
-  ['writebyte',['WriteByte',['../class_o_l_e_d.html#a7fa307269dbd2e80a6e48a1442df83d2',1,'OLED::WriteByte()'],['../class_s_o_c_k_e_t.html#abcddb460b7adf3595a813f08f3659356',1,'SOCKET::WriteByte()'],['../class_s_p_i___n_1_1_s_p_i.html#a542dc8e88203de7040ce9926d06b9463',1,'SPI_N::SPI::WriteByte()'],['../class_stream.html#aeaed767b3a8d946c6f81465fa83ff17f',1,'Stream::WriteByte()']]],
-  ['writebyteandthrowawaydata',['WriteByteAndThrowAwayData',['../class_s_p_i___n_1_1_s_p_i.html#a05bcca2e033422b2e6ad570320d03fcb',1,'SPI_N::SPI']]],
+  ['writebyte',['WriteByte',['../class_o_l_e_d.html#a7fa307269dbd2e80a6e48a1442df83d2',1,'OLED::WriteByte()'],['../class_s_o_c_k_e_t.html#abcddb460b7adf3595a813f08f3659356',1,'SOCKET::WriteByte()'],['../class_s_p_i_1_1_s_p_i.html#a29a9a80b0e7a32f25b7571205344a84d',1,'SPI::SPI::WriteByte()'],['../class_stream.html#aeaed767b3a8d946c6f81465fa83ff17f',1,'Stream::WriteByte()']]],
+  ['writebyteandthrowawaydata',['WriteByteAndThrowAwayData',['../class_s_p_i_1_1_s_p_i.html#a2cd0f0612198d4e6a793ce794c016b9d',1,'SPI::SPI']]],
   ['writebytearray',['WriteByteArray',['../class_o_l_e_d.html#a7fffc17a5439300d361414c15a7a2dbe',1,'OLED']]],
   ['writebytetobuffer',['WriteByteToBuffer',['../class_stream.html#a7b6a9a1f96e0f524e950863215128911',1,'Stream']]],
   ['writebytetoinputstream',['WriteByteToInputStream',['../class_stream.html#a0784d377cc92ddde7cc730be17a1a3aa',1,'Stream']]],

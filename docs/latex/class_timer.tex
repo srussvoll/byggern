@@ -20,7 +20,7 @@ void \hyperlink{class_timer_a4e607b129b392c11adddd9641a320436}{Start} ()
 \item 
 void \hyperlink{class_timer_a6379e797f968aaee6ac3bb12dc6b81c5}{Stop} ()
 \item 
-void \hyperlink{class_timer_ad45285aacc47697bea2bd0dce06a3e4d}{Get\+Full\+Seconds\+Passed} (uint16\+\_\+t \&time)
+void \hyperlink{class_timer_a4f536c9539a977acc3e262f8767694fa}{Get\+Number\+Of\+Times\+Triggered} (uint16\+\_\+t \&time)
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -62,37 +62,26 @@ Provides two timers, timer 3 and timer 4. When using Get\+Instance, the paramete
 Uses C\+TC mode. Assumes a 16\+M\+Hz clock. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_timer_ae6b73141ad1d5029d3782d14d2fd5ff0}{}\label{class_timer_ae6b73141ad1d5029d3782d14d2fd5ff0} 
+\hypertarget{class_timer_a609e586dbc0fdc159fc6fd490fcc1ae3}{}\label{class_timer_a609e586dbc0fdc159fc6fd490fcc1ae3} 
 \index{Timer@{Timer}!Timer@{Timer}}
 \index{Timer@{Timer}!Timer@{Timer}}
 \subsubsection{\texorpdfstring{Timer()}{Timer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Timer\+::\+Timer (\begin{DoxyParamCaption}\item[{const \hyperlink{class_timer}{Timer} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
-
-Because of singleton -\/ makes sure its not copied etc. \hypertarget{class_timer_a609e586dbc0fdc159fc6fd490fcc1ae3}{}\label{class_timer_a609e586dbc0fdc159fc6fd490fcc1ae3} 
-\index{Timer@{Timer}!Timer@{Timer}}
-\index{Timer@{Timer}!Timer@{Timer}}
-\subsubsection{\texorpdfstring{Timer()}{Timer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Timer\+::\+Timer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{timer\+\_\+number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
 
-Initializer. Not used by enduser 
+Initializer. Not used by end user 
 \begin{DoxyParams}{Parameters}
 {\em timer\+\_\+number} & Which timer number you want to get. Please see \hyperlink{class_timer_a5a9960ef2a5394a76b4b024cae1a86a3}{Get\+Instance()} \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_timer_ae6b73141ad1d5029d3782d14d2fd5ff0}{}\label{class_timer_ae6b73141ad1d5029d3782d14d2fd5ff0} 
+\index{Timer@{Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{Timer()}{Timer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Timer\+::\+Timer (\begin{DoxyParamCaption}\item[{const \hyperlink{class_timer}{Timer} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
+Because of singleton -\/ makes sure its not copied etc. 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_timer_ad45285aacc47697bea2bd0dce06a3e4d}{}\label{class_timer_ad45285aacc47697bea2bd0dce06a3e4d} 
-\index{Timer@{Timer}!Get\+Full\+Seconds\+Passed@{Get\+Full\+Seconds\+Passed}}
-\index{Get\+Full\+Seconds\+Passed@{Get\+Full\+Seconds\+Passed}!Timer@{Timer}}
-\subsubsection{\texorpdfstring{Get\+Full\+Seconds\+Passed()}{GetFullSecondsPassed()}}
-{\footnotesize\ttfamily void Timer\+::\+Get\+Full\+Seconds\+Passed (\begin{DoxyParamCaption}\item[{uint16\+\_\+t \&}]{time }\end{DoxyParamCaption})}
-
-Returns how many times the timer has triggered 
-\begin{DoxyParams}{Parameters}
-{\em time} & Variable to contain the data \\
-\hline
-\end{DoxyParams}
 \hypertarget{class_timer_a5a9960ef2a5394a76b4b024cae1a86a3}{}\label{class_timer_a5a9960ef2a5394a76b4b024cae1a86a3} 
 \index{Timer@{Timer}!Get\+Instance@{Get\+Instance}}
 \index{Get\+Instance@{Get\+Instance}!Timer@{Timer}}
@@ -102,6 +91,17 @@ Returns how many times the timer has triggered
 A Singleton implementation of this class 
 \begin{DoxyParams}{Parameters}
 {\em timer\+\_\+number} & Which timer you want to use. timer\+\_\+number = 0 -\/$>$ timer4, timer\+\_\+number = 1 -\/$>$ timer5 \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_timer_a4f536c9539a977acc3e262f8767694fa}{}\label{class_timer_a4f536c9539a977acc3e262f8767694fa} 
+\index{Timer@{Timer}!Get\+Number\+Of\+Times\+Triggered@{Get\+Number\+Of\+Times\+Triggered}}
+\index{Get\+Number\+Of\+Times\+Triggered@{Get\+Number\+Of\+Times\+Triggered}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{Get\+Number\+Of\+Times\+Triggered()}{GetNumberOfTimesTriggered()}}
+{\footnotesize\ttfamily void Timer\+::\+Get\+Number\+Of\+Times\+Triggered (\begin{DoxyParamCaption}\item[{uint16\+\_\+t \&}]{time }\end{DoxyParamCaption})}
+
+Returns how many times the timer has triggered 
+\begin{DoxyParams}{Parameters}
+{\em time} & Variable to contain the data \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_timer_a04ed0eb1468656c271645c2165bbe147}{}\label{class_timer_a04ed0eb1468656c271645c2165bbe147} 

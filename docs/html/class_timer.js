@@ -1,9 +1,9 @@
 var class_timer =
 [
-    [ "Timer", "class_timer.html#ae6b73141ad1d5029d3782d14d2fd5ff0", null ],
     [ "Timer", "class_timer.html#a609e586dbc0fdc159fc6fd490fcc1ae3", null ],
-    [ "GetFullSecondsPassed", "class_timer.html#ad45285aacc47697bea2bd0dce06a3e4d", null ],
+    [ "Timer", "class_timer.html#ae6b73141ad1d5029d3782d14d2fd5ff0", null ],
     [ "GetInstance", "class_timer.html#a5a9960ef2a5394a76b4b024cae1a86a3", null ],
+    [ "GetNumberOfTimesTriggered", "class_timer.html#a4f536c9539a977acc3e262f8767694fa", null ],
     [ "Initialize", "class_timer.html#a04ed0eb1468656c271645c2165bbe147", null ],
     [ "Start", "class_timer.html#a4e607b129b392c11adddd9641a320436", null ],
     [ "Stop", "class_timer.html#a6379e797f968aaee6ac3bb12dc6b81c5", null ],

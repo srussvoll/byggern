@@ -14,18 +14,23 @@ The node specific code is located in the node(1/2) / src. The *init.cpp* file is
 
 ### State machine
 
-We have made a state machine for each of the nodes, and it is implemented in lib/state_machine. Under *node(1/2) / src / state_machine.cpp* we have specified and implemented the states of the node.
+We have made a state machine for each of the nodes, and is implemented in lib/state_machine. Under *node(1/2) / src / state_machine.cpp* we have specified and implemented the states of the node.
 
 There is one function that runs when a state is entered, one that loops until the state is left, and one that runs when we leave the state. You transition between states by calling
  `fsm->Transition(STATE_NEXT, 0)`
 
 **Advantages of using this FSM**
 
-There are several advantages of using this kind of FSM. Adding and removing states is very easy, and only requires you to add/remove a function from an array.
+There are several advantages of using this kind of FSM. Adding and removing states is very easy, and only requires you to add/remove a function from an array. The system is always in a defined state, giving less room for unexpected behavior. The code is also very easy to read, making it easy to identify every state and what it does.
 
-**Disadvantages of using this FSM**
+**Shared resources**
 
-Since enter, loop and leave are different functions, they all have their own separate scope. 
+Since enter, loop and leave are different functions, they all have their own separate scope. This causes us to have a few global variables. This is not a big problem due to putting those variable in a namespace, making them local to the file.
+
+## Stream
+
+We chose to implement a full duplex stream class, because it gave us a lot of overhead when implementing other modules such as UART, SPI and CAN. It utilizes a ring buffer for both input and output.
+
 ## Extras
 
 We have implemented a few extra features, listed underneath.

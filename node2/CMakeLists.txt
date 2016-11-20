@@ -15,9 +15,6 @@ set(PROG_TYPE wiring)
 set(USBPORT /dev/ttyACM0)
 set(BITCLOCK 115200)
 
-# extra arguments to avrdude: baud rate, chip type, -F flag, etc.
-# set(PROG_ARGS -P ${USBPORT} -B 1)
-
 # program names
 set(AVRC     avr-gcc)
 set(AVRCPP   avr-g++)
@@ -69,6 +66,7 @@ set(DISABLE_EXCEPTIONS "-fno-exceptions") # This isn't implemented in avr-g++. T
 set(DEBUG_FLAG "-DDEBUG=${DEBUG}")
 set(ADD_MAP "-Wl,-Map=${BUILD_PATH}/${PROJECT_NAME}.map")
 
+# Select MCU and set baudrate
 set(CMCU      "-mmcu=${MCU}")
 set(CDEFS     "-DF_CPU=${F_CPU} -DBAUD=${BAUD}")
 
@@ -76,13 +74,12 @@ set(CDEFS     "-DF_CPU=${F_CPU} -DBAUD=${BAUD}")
 # Moves everything except the stack into external RAM
 # The Harvard architecture separates the .text and .data etc. sections offsetting the beginning of .data by 0x800000 in the linker.
 # Thus the heap is in this case located from 0x8000 to 0x9FFF.
-#set(HEAP_LOCATION "-Wl,--section-start,.data=0x808000,--defsym=__heap_end=0x809FFF")
+# set(HEAP_LOCATION "-Wl,--section-start,.data=0x808000,--defsym=__heap_end=0x809FFF")
 # Does nothing...
 set(HEAP_LOCATION "")
 
 set(CFLAGS   "${CDEBUG} ${DEBUG_FLAG} ${ADD_MAP} ${CMCU} ${COPT} ${CLINKER} ${HEAP_LOCATION} ${CWARN} ${CSTANDARD} ${CTUNING} ${CONLYWARN}")
 set(CXXFLAGS "${CDEBUG} ${DEBUG_FLAG} ${ADD_MAP} ${CMCU} ${COPT} ${CLINKER} ${HEAP_LOCATION} ${CWARN} ${CXXSTANDARD} ${CTUNING} ${ENABLE_SINGLETON} ${DISABLE_EXCEPTIONS}")
-
 set(CMAKE_C_FLAGS   "${CFLAGS}")
 set(CMAKE_CXX_FLAGS "${CXXFLAGS}")
 set(CMAKE_ASM_FLAGS   "${CFLAGS}")
@@ -112,6 +109,7 @@ add_custom_command(TARGET flash POST_BUILD COMMAND ${MINICOM})
 add_custom_target(minicom ${MINICOM})
 add_custom_target(flash_eeprom  ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -P ${USBPORT} -b ${BITCLOCK} -D -U eeprom:w:${BUILD_PATH}/${PROJECT_NAME}.hex DEPENDS eeprom)
 add_custom_target(size          ${AVRSIZE} -C --mcu=${MCU} ${BUILD_PATH}/${PROJECT_NAME}.elf DEPENDS ${PROJECT_NAME})
+
 # Fuses
 #add_custom_target(fuses_16mhz   ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} ${PROG_ARGS} -U lfuse:w:0xFF:m)
 # Utilities targets

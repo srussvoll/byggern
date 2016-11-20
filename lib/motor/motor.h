@@ -7,8 +7,6 @@
 
 /**
  * \brief A motor controller for driving a motor through a motor box
- * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
- * @version 1.0
  *
  * A motor controller for driving a motor through a motor box.
  * It has the basic functionally expected of a motor (go left, go right, drive, change direction etc.).

@@ -42,7 +42,7 @@ protected:
 
     /**
      * Indicates the last valid data byte in the buffer.
-    */
+     */
     uint16_t input_buffer_stop_index;
 
     /**
@@ -173,16 +173,16 @@ protected:
      * @param stop_index The stop index of the buffer.
      * @return Length of valid data.
      */
-    // TODO: Try this with inline
+
     virtual uint16_t CalculateLength(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
     /**
-    * Flushes the given buffer
-    * @param buffer Reference to the buffer which is to be flushed
-    * @param start_index Start index of the buffer which is to be flushed
-    * @param stop_index Stop index of the buffer which is to be flushed
-    * @param buffer_size The size of the given buffer
-    * @param empty Reference to the empty flag of the given buffer
-    */
+     * Flushes the given buffer
+     * @param buffer Reference to the buffer which is to be flushed
+     * @param start_index Start index of the buffer which is to be flushed
+     * @param stop_index Stop index of the buffer which is to be flushed
+     * @param buffer_size The size of the given buffer
+     * @param empty Reference to the empty flag of the given buffer
+     */
     virtual void FlushStream(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
 
 
@@ -246,24 +246,24 @@ public:
     virtual bool CheckOutputOverflowFlag();
 
     /**
-    * Calculates the length of the readable part of the buffer.
-    * @return Length of valid data.
-    */
+     * Calculates the length of the readable part of the buffer.
+     * @return Length of valid data.
+     */
     virtual uint16_t GetInputBufferLength();
 
     /**
-    * Calculates the length of the readable part of the buffer.
-    * @return Length of valid data
-    */
+     * Calculates the length of the readable part of the buffer.
+     * @return Length of valid data
+     */
     virtual uint16_t GetOutputBufferLength();
 
     /**
-    * Flushes the input buffer
-    */
+     * Flushes the input buffer
+     */
     virtual void FlushInputBuffer();
 
     /**
-    * Flushes the output buffer
-    */
+     * Flushes the output buffer
+     */
     virtual void FlushOutputBuffer();
 };

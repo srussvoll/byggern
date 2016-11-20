@@ -1,0 +1,157 @@
+\hypertarget{class_motor}{}\section{Motor Class Reference}
+\label{class_motor}\index{Motor@{Motor}}
+
+
+A motor controller for driving a motor through a motor box.  
+
+
+
+
+{\ttfamily \#include $<$motor.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_motor_afa5bb4104353e750563252099b6261ca}{Initialize} ()
+\item 
+void \hyperlink{class_motor_a4c449b886767bb6f76c3197fd7d072c3}{Start} ()
+\item 
+void \hyperlink{class_motor_a8f0fdb6c977ea11e89281c51534850ca}{Stop} ()
+\item 
+void \hyperlink{class_motor_accc1f6815534eb7e7d694dce8d7be3a9}{Go\+Left} ()
+\item 
+void \hyperlink{class_motor_aa7fc3ff7511fb88f3dff67587003ca2d}{Go\+Right} ()
+\item 
+void \hyperlink{class_motor_a653f0e6158ce2d44a1b1704c1787d74b}{Drive} (float percentage)
+\item 
+void \hyperlink{class_motor_a4b1fb35dcf10c3e17a1614877b9b6a7d}{Change\+Direction} ()
+\item 
+\hyperlink{class_motor_a52b11cfa6ffdd07dcb26c71a017142a1}{Motor} (const \hyperlink{class_motor}{Motor} \&)=delete
+\item 
+void \hyperlink{class_motor_afd01e338a159f04706f6a0b95e8e2bd9}{operator=} (const \hyperlink{class_motor}{Motor} \&)=delete
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_motor}{Motor} \& \hyperlink{class_motor_a20fcd40b6fd58d4894310fb3b0df9b7a}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_motor_af6106b4c506411265c5face762b6c004}{Motor} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_d_a_c}{D\+AC} $\ast$ \hyperlink{class_motor_ab8662062a02d2177b7694d5ab6ac6851}{dac}
+\item 
+uint8\+\_\+t \hyperlink{class_motor_a717a5684a774d01f46c8ae7145158279}{direction}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A motor controller for driving a motor through a motor box. 
+
+\begin{DoxyAuthor}{Author}
+Johan Lofstad, Sondre Baugstø and Sondre Russvoll 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+A motor controller for driving a motor through a motor box. It has the basic functionally expected of a motor (go left, go right, drive, change direction etc.). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_motor_af6106b4c506411265c5face762b6c004}{}\label{class_motor_af6106b4c506411265c5face762b6c004} 
+\index{Motor@{Motor}!Motor@{Motor}}
+\index{Motor@{Motor}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{Motor()}{Motor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Motor\+::\+Motor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Default constructor -\/ private because of singleton \hypertarget{class_motor_a52b11cfa6ffdd07dcb26c71a017142a1}{}\label{class_motor_a52b11cfa6ffdd07dcb26c71a017142a1} 
+\index{Motor@{Motor}!Motor@{Motor}}
+\index{Motor@{Motor}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{Motor()}{Motor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Motor\+::\+Motor (\begin{DoxyParamCaption}\item[{const \hyperlink{class_motor}{Motor} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_motor_a4b1fb35dcf10c3e17a1614877b9b6a7d}{}\label{class_motor_a4b1fb35dcf10c3e17a1614877b9b6a7d} 
+\index{Motor@{Motor}!Change\+Direction@{Change\+Direction}}
+\index{Change\+Direction@{Change\+Direction}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{Change\+Direction()}{ChangeDirection()}}
+{\footnotesize\ttfamily void Motor\+::\+Change\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Change the motor direction \hypertarget{class_motor_a653f0e6158ce2d44a1b1704c1787d74b}{}\label{class_motor_a653f0e6158ce2d44a1b1704c1787d74b} 
+\index{Motor@{Motor}!Drive@{Drive}}
+\index{Drive@{Drive}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{Drive()}{Drive()}}
+{\footnotesize\ttfamily void Motor\+::\+Drive (\begin{DoxyParamCaption}\item[{float}]{percentage }\end{DoxyParamCaption})}
+
+Drive the motor 
+\begin{DoxyParams}{Parameters}
+{\em percentage} & The percentage of the maximum percentage the motor should be driven on \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_motor_a20fcd40b6fd58d4894310fb3b0df9b7a}{}\label{class_motor_a20fcd40b6fd58d4894310fb3b0df9b7a} 
+\index{Motor@{Motor}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily static \hyperlink{class_motor}{Motor}\& Motor\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+A Singleton implementation of this class \hypertarget{class_motor_accc1f6815534eb7e7d694dce8d7be3a9}{}\label{class_motor_accc1f6815534eb7e7d694dce8d7be3a9} 
+\index{Motor@{Motor}!Go\+Left@{Go\+Left}}
+\index{Go\+Left@{Go\+Left}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{Go\+Left()}{GoLeft()}}
+{\footnotesize\ttfamily void Motor\+::\+Go\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets the motor to the left \hypertarget{class_motor_aa7fc3ff7511fb88f3dff67587003ca2d}{}\label{class_motor_aa7fc3ff7511fb88f3dff67587003ca2d} 
+\index{Motor@{Motor}!Go\+Right@{Go\+Right}}
+\index{Go\+Right@{Go\+Right}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{Go\+Right()}{GoRight()}}
+{\footnotesize\ttfamily void Motor\+::\+Go\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets the motor to the right \hypertarget{class_motor_afa5bb4104353e750563252099b6261ca}{}\label{class_motor_afa5bb4104353e750563252099b6261ca} 
+\index{Motor@{Motor}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Motor\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initialize the motor \hypertarget{class_motor_afd01e338a159f04706f6a0b95e8e2bd9}{}\label{class_motor_afd01e338a159f04706f6a0b95e8e2bd9} 
+\index{Motor@{Motor}!operator=@{operator=}}
+\index{operator=@{operator=}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void Motor\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_motor}{Motor} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. \hypertarget{class_motor_a4c449b886767bb6f76c3197fd7d072c3}{}\label{class_motor_a4c449b886767bb6f76c3197fd7d072c3} 
+\index{Motor@{Motor}!Start@{Start}}
+\index{Start@{Start}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Motor\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Starts the motor \hypertarget{class_motor_a8f0fdb6c977ea11e89281c51534850ca}{}\label{class_motor_a8f0fdb6c977ea11e89281c51534850ca} 
+\index{Motor@{Motor}!Stop@{Stop}}
+\index{Stop@{Stop}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Motor\+::\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Stops the motor 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_motor_ab8662062a02d2177b7694d5ab6ac6851}{}\label{class_motor_ab8662062a02d2177b7694d5ab6ac6851} 
+\index{Motor@{Motor}!dac@{dac}}
+\index{dac@{dac}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{dac}{dac}}
+{\footnotesize\ttfamily \hyperlink{class_d_a_c}{D\+AC}$\ast$ Motor\+::dac\hspace{0.3cm}{\ttfamily [private]}}
+
+The dac used to output the voltage to the motor \hypertarget{class_motor_a717a5684a774d01f46c8ae7145158279}{}\label{class_motor_a717a5684a774d01f46c8ae7145158279} 
+\index{Motor@{Motor}!direction@{direction}}
+\index{direction@{direction}!Motor@{Motor}}
+\subsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily uint8\+\_\+t Motor\+::direction\hspace{0.3cm}{\ttfamily [private]}}
+
+The direction of the motor 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/motor/motor.\+h\end{DoxyCompactItemize}

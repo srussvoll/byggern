@@ -1,0 +1,117 @@
+\hypertarget{class_a_d_c__internal}{}\section{A\+D\+C\+\_\+internal Class Reference}
+\label{class_a_d_c__internal}\index{A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}}
+
+
+For using the internal A\+DC.  
+
+
+
+
+{\ttfamily \#include $<$adc\+\_\+internal.\+h$>$}
+
+Inheritance diagram for A\+D\+C\+\_\+internal\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_d_c__internal}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_d_c__internal_a7ae0c6415d603f8e4b86c735d4d235f5}{A\+D\+C\+\_\+internal} (const \hyperlink{class_a_d_c__internal}{A\+D\+C\+\_\+internal} \&)=delete
+\item 
+void \hyperlink{class_a_d_c__internal_a07f6b3f9703f2a5f6815904e371bb124}{operator=} (const \hyperlink{class_a_d_c__internal}{A\+D\+C\+\_\+internal} \&)=delete
+\item 
+bool \hyperlink{class_a_d_c__internal_accd9d981273a75e739f16232196f0d5e}{Request\+Sample} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_a_d_c__internal}{A\+D\+C\+\_\+internal} \& \hyperlink{class_a_d_c__internal_aebcca86ecf84a34cbbb0994b4defc692}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_d_c__internal_a4a34ce3ab980b7ab37672153c86d229a}{A\+D\+C\+\_\+internal} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile bool \hyperlink{class_a_d_c__internal_a7313da9fa620eae7be708a58d35dbe71}{adc\+\_\+in\+\_\+use}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_a_d_c__internal_a7fd45f1c13cbbf59c3e1ce84deca2e01}{A\+D\+C\+\_\+vect} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+For using the internal A\+DC. 
+
+\begin{DoxyAuthor}{Author}
+Johan Lofstad, Sondre Baugstø and Sondre Russvoll 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+A class for using the internal analog-\/to-\/digital converter on the A\+VR 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_a_d_c__internal_a4a34ce3ab980b7ab37672153c86d229a}{}\label{class_a_d_c__internal_a4a34ce3ab980b7ab37672153c86d229a} 
+\index{A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}!A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}}
+\index{A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}!A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}}
+\subsubsection{\texorpdfstring{A\+D\+C\+\_\+internal()}{ADC\_internal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily A\+D\+C\+\_\+internal\+::\+A\+D\+C\+\_\+internal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Constructor for A\+DC class. It is private due to singleton implementation \hypertarget{class_a_d_c__internal_a7ae0c6415d603f8e4b86c735d4d235f5}{}\label{class_a_d_c__internal_a7ae0c6415d603f8e4b86c735d4d235f5} 
+\index{A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}!A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}}
+\index{A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}!A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}}
+\subsubsection{\texorpdfstring{A\+D\+C\+\_\+internal()}{ADC\_internal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily A\+D\+C\+\_\+internal\+::\+A\+D\+C\+\_\+internal (\begin{DoxyParamCaption}\item[{const \hyperlink{class_a_d_c__internal}{A\+D\+C\+\_\+internal} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_a_d_c__internal_aebcca86ecf84a34cbbb0994b4defc692}{}\label{class_a_d_c__internal_aebcca86ecf84a34cbbb0994b4defc692} 
+\index{A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily static \hyperlink{class_a_d_c__internal}{A\+D\+C\+\_\+internal}\& A\+D\+C\+\_\+internal\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+A Singleton implementation of this class. See A\+D\+C(uint16\+\_\+t address) for more information. \hypertarget{class_a_d_c__internal_a07f6b3f9703f2a5f6815904e371bb124}{}\label{class_a_d_c__internal_a07f6b3f9703f2a5f6815904e371bb124} 
+\index{A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}!operator=@{operator=}}
+\index{operator=@{operator=}!A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void A\+D\+C\+\_\+internal\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_a_d_c__internal}{A\+D\+C\+\_\+internal} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. \hypertarget{class_a_d_c__internal_accd9d981273a75e739f16232196f0d5e}{}\label{class_a_d_c__internal_accd9d981273a75e739f16232196f0d5e} 
+\index{A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}!Request\+Sample@{Request\+Sample}}
+\index{Request\+Sample@{Request\+Sample}!A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}}
+\subsubsection{\texorpdfstring{Request\+Sample()}{RequestSample()}}
+{\footnotesize\ttfamily bool A\+D\+C\+\_\+internal\+::\+Request\+Sample (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Request the A\+DC to get a sample. This sample can be read from the buffer using \hyperlink{class_stream_a6db4180f5834073f992608b856bddca2}{Read\+Byte(uint8\+\_\+t\& byte)}; 
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_a_d_c__internal_a7fd45f1c13cbbf59c3e1ce84deca2e01}{}\label{class_a_d_c__internal_a7fd45f1c13cbbf59c3e1ce84deca2e01} 
+\index{A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}!A\+D\+C\+\_\+vect@{A\+D\+C\+\_\+vect}}
+\index{A\+D\+C\+\_\+vect@{A\+D\+C\+\_\+vect}!A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}}
+\subsubsection{\texorpdfstring{A\+D\+C\+\_\+vect}{ADC\_vect}}
+{\footnotesize\ttfamily void A\+D\+C\+\_\+vect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+The interrupt vector for A\+DC done. Friend function because it needs access to the private members 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_a_d_c__internal_a7313da9fa620eae7be708a58d35dbe71}{}\label{class_a_d_c__internal_a7313da9fa620eae7be708a58d35dbe71} 
+\index{A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}!adc\+\_\+in\+\_\+use@{adc\+\_\+in\+\_\+use}}
+\index{adc\+\_\+in\+\_\+use@{adc\+\_\+in\+\_\+use}!A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}}
+\subsubsection{\texorpdfstring{adc\+\_\+in\+\_\+use}{adc\_in\_use}}
+{\footnotesize\ttfamily volatile bool A\+D\+C\+\_\+internal\+::adc\+\_\+in\+\_\+use\hspace{0.3cm}{\ttfamily [private]}}
+
+A flag indicating if the A\+DC is currently used 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/adc\+\_\+internal/adc\+\_\+internal.\+h\end{DoxyCompactItemize}

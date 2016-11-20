@@ -8,5 +8,6 @@ var searchData=
   ['current_5fline',['current_line',['../class_o_l_e_d.html#aebd62601be5e2ceef6295721f17fc013',1,'OLED']]],
   ['current_5fmenu_5fcontrol',['current_menu_control',['../class_menu_1_1_controller.html#a912ad4ad6b2c30e7cddf44547585a909',1,'Menu::Controller']]],
   ['current_5fmenu_5fnavigate',['current_menu_navigate',['../class_menu_1_1_controller.html#a66ffabf19a4423ccca536762f0b9df88',1,'Menu::Controller']]],
-  ['current_5fpin',['current_pin',['../class_s_p_i_1_1_s_p_i.html#a3dc3f87f8ee3f3b5776e21fc4b72efbc',1,'SPI::SPI']]]
+  ['current_5fpin',['current_pin',['../class_s_p_i_1_1_s_p_i.html#a3dc3f87f8ee3f3b5776e21fc4b72efbc',1,'SPI::SPI']]],
+  ['current_5fstate',['current_state',['../class_state_machine.html#abdcd9426d9a2ec9e2d703c74cd3299df',1,'StateMachine']]]
 ];

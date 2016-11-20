@@ -1,0 +1,100 @@
+\hypertarget{class_i_r___detector}{}\section{I\+R\+\_\+\+Detector Class Reference}
+\label{class_i_r___detector}\index{I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_i_r___detector_ae42dc3f8e68efc44e95b3931347b3a2c}{Initialize} (uint16\+\_\+t \hyperlink{class_i_r___detector_a8979f7f20da68ca44d7ea1fe43b2f986}{threshold})
+\item 
+bool \hyperlink{class_i_r___detector_aca18cc0350105dfa2395cd2da6e8d05f}{Sample} ()
+\item 
+\hyperlink{class_i_r___detector_aee7ffc5bae132f38a647a91fc2803b96}{I\+R\+\_\+\+Detector} (const \hyperlink{class_i_r___detector}{I\+R\+\_\+\+Detector} \&)=delete
+\item 
+void \hyperlink{class_i_r___detector_a8359f3a2fdc9cee0e1bc8da50b5de4e0}{operator=} (const \hyperlink{class_i_r___detector}{I\+R\+\_\+\+Detector} \&)=delete
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_i_r___detector}{I\+R\+\_\+\+Detector} \& \hyperlink{class_i_r___detector_a5d7d49b666f9ec72f997c804774e4013}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_i_r___detector_a6c051938cb1521fff4038e81957967e5}{I\+R\+\_\+\+Detector} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \hyperlink{class_i_r___detector_a8979f7f20da68ca44d7ea1fe43b2f986}{threshold}
+\item 
+\hyperlink{class_a_d_c__internal}{A\+D\+C\+\_\+internal} $\ast$ \hyperlink{class_i_r___detector_a33883224e6f643d3ece54a3c603b92e4}{adc}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_i_r___detector_a6c051938cb1521fff4038e81957967e5}{}\label{class_i_r___detector_a6c051938cb1521fff4038e81957967e5} 
+\index{I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}!I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}}
+\index{I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}!I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}}
+\subsubsection{\texorpdfstring{I\+R\+\_\+\+Detector()}{IR\_Detector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily I\+R\+\_\+\+Detector\+::\+I\+R\+\_\+\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+A constructor that initializes the \hyperlink{class_u_a_r_t}{U\+A\+RT} to a certain size \hypertarget{class_i_r___detector_aee7ffc5bae132f38a647a91fc2803b96}{}\label{class_i_r___detector_aee7ffc5bae132f38a647a91fc2803b96} 
+\index{I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}!I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}}
+\index{I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}!I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}}
+\subsubsection{\texorpdfstring{I\+R\+\_\+\+Detector()}{IR\_Detector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily I\+R\+\_\+\+Detector\+::\+I\+R\+\_\+\+Detector (\begin{DoxyParamCaption}\item[{const \hyperlink{class_i_r___detector}{I\+R\+\_\+\+Detector} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_i_r___detector_a5d7d49b666f9ec72f997c804774e4013}{}\label{class_i_r___detector_a5d7d49b666f9ec72f997c804774e4013} 
+\index{I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily static \hyperlink{class_i_r___detector}{I\+R\+\_\+\+Detector}\& I\+R\+\_\+\+Detector\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+A Singleton implementation of this class \hypertarget{class_i_r___detector_ae42dc3f8e68efc44e95b3931347b3a2c}{}\label{class_i_r___detector_ae42dc3f8e68efc44e95b3931347b3a2c} 
+\index{I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void I\+R\+\_\+\+Detector\+::\+Initialize (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{threshold }\end{DoxyParamCaption})}
+
+Used to initialize the singleton object 
+\begin{DoxyParams}{Parameters}
+{\em threshold} & The wanted threshold value for the sensor \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_i_r___detector_a8359f3a2fdc9cee0e1bc8da50b5de4e0}{}\label{class_i_r___detector_a8359f3a2fdc9cee0e1bc8da50b5de4e0} 
+\index{I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}!operator=@{operator=}}
+\index{operator=@{operator=}!I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void I\+R\+\_\+\+Detector\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_i_r___detector}{I\+R\+\_\+\+Detector} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. \hypertarget{class_i_r___detector_aca18cc0350105dfa2395cd2da6e8d05f}{}\label{class_i_r___detector_aca18cc0350105dfa2395cd2da6e8d05f} 
+\index{I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}!Sample@{Sample}}
+\index{Sample@{Sample}!I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}}
+\subsubsection{\texorpdfstring{Sample()}{Sample()}}
+{\footnotesize\ttfamily bool I\+R\+\_\+\+Detector\+::\+Sample (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Samples the IR Detector \begin{DoxyReturn}{Returns}
+bool Returns whether or not there is an object blocking the IR sensor 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_i_r___detector_a33883224e6f643d3ece54a3c603b92e4}{}\label{class_i_r___detector_a33883224e6f643d3ece54a3c603b92e4} 
+\index{I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}!adc@{adc}}
+\index{adc@{adc}!I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}}
+\subsubsection{\texorpdfstring{adc}{adc}}
+{\footnotesize\ttfamily \hyperlink{class_a_d_c__internal}{A\+D\+C\+\_\+internal}$\ast$ I\+R\+\_\+\+Detector\+::adc\hspace{0.3cm}{\ttfamily [private]}}
+
+The A\+DC used to sample the voltage. \hypertarget{class_i_r___detector_a8979f7f20da68ca44d7ea1fe43b2f986}{}\label{class_i_r___detector_a8979f7f20da68ca44d7ea1fe43b2f986} 
+\index{I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}!threshold@{threshold}}
+\index{threshold@{threshold}!I\+R\+\_\+\+Detector@{I\+R\+\_\+\+Detector}}
+\subsubsection{\texorpdfstring{threshold}{threshold}}
+{\footnotesize\ttfamily uint16\+\_\+t I\+R\+\_\+\+Detector\+::threshold\hspace{0.3cm}{\ttfamily [private]}}
+
+Threshold for the IR sensor 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/ir\+\_\+detector/\hyperlink{ir__detector_8h}{ir\+\_\+detector.\+h}\end{DoxyCompactItemize}

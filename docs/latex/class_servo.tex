@@ -1,27 +1,85 @@
 \hypertarget{class_servo}{}\section{Servo Class Reference}
 \label{class_servo}\index{Servo@{Servo}}
+
+
+A servo driver.  
+
+
+
+
+{\ttfamily \#include $<$servo.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_servo_aa09c5cfcc57872c96f6d377343e174cf}{}\label{class_servo_aa09c5cfcc57872c96f6d377343e174cf} 
-{\bfseries Servo} (uint16\+\_\+t min, uint16\+\_\+t max)
+\hyperlink{class_servo_aa09c5cfcc57872c96f6d377343e174cf}{Servo} (uint16\+\_\+t \hyperlink{class_servo_ad04fdb646ea971c3a1395d92a64a2a1a}{min}, uint16\+\_\+t \hyperlink{class_servo_a685a44f23a5f1a58577bbf88bba3997e}{max})
 \item 
-\hypertarget{class_servo_ae5ebb4d5baa92a4427e51d7667b41fbf}{}\label{class_servo_ae5ebb4d5baa92a4427e51d7667b41fbf} 
-void {\bfseries Set\+Angle} (int16\+\_\+t angle)
+void \hyperlink{class_servo_ae5ebb4d5baa92a4427e51d7667b41fbf}{Set\+Angle} (int16\+\_\+t angle)
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_servo_a11962573ddd272b426724e62c250990e}{}\label{class_servo_a11962573ddd272b426724e62c250990e} 
-uint8\+\_\+t {\bfseries pin}
+uint8\+\_\+t \hyperlink{class_servo_a11962573ddd272b426724e62c250990e}{pin}
 \item 
-\hypertarget{class_servo_ad04fdb646ea971c3a1395d92a64a2a1a}{}\label{class_servo_ad04fdb646ea971c3a1395d92a64a2a1a} 
-uint16\+\_\+t {\bfseries min}
+uint16\+\_\+t \hyperlink{class_servo_ad04fdb646ea971c3a1395d92a64a2a1a}{min}
 \item 
-\hypertarget{class_servo_a685a44f23a5f1a58577bbf88bba3997e}{}\label{class_servo_a685a44f23a5f1a58577bbf88bba3997e} 
-uint16\+\_\+t {\bfseries max}
+uint16\+\_\+t \hyperlink{class_servo_a685a44f23a5f1a58577bbf88bba3997e}{max}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+A servo driver. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_servo_aa09c5cfcc57872c96f6d377343e174cf}{}\label{class_servo_aa09c5cfcc57872c96f6d377343e174cf} 
+\index{Servo@{Servo}!Servo@{Servo}}
+\index{Servo@{Servo}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{Servo()}{Servo()}}
+{\footnotesize\ttfamily Servo\+::\+Servo (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{min,  }\item[{uint16\+\_\+t}]{max }\end{DoxyParamCaption})}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em min} & Minimum value \\
+\hline
+{\em max} & Maximum value \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_servo_ae5ebb4d5baa92a4427e51d7667b41fbf}{}\label{class_servo_ae5ebb4d5baa92a4427e51d7667b41fbf} 
+\index{Servo@{Servo}!Set\+Angle@{Set\+Angle}}
+\index{Set\+Angle@{Set\+Angle}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{Set\+Angle()}{SetAngle()}}
+{\footnotesize\ttfamily void Servo\+::\+Set\+Angle (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{angle }\end{DoxyParamCaption})}
+
+Sets the desired angle 
+\begin{DoxyParams}{Parameters}
+{\em angle} & Desired angle \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_servo_a685a44f23a5f1a58577bbf88bba3997e}{}\label{class_servo_a685a44f23a5f1a58577bbf88bba3997e} 
+\index{Servo@{Servo}!max@{max}}
+\index{max@{max}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{max}{max}}
+{\footnotesize\ttfamily uint16\+\_\+t Servo\+::max\hspace{0.3cm}{\ttfamily [private]}}
+
+Maximum value \hypertarget{class_servo_ad04fdb646ea971c3a1395d92a64a2a1a}{}\label{class_servo_ad04fdb646ea971c3a1395d92a64a2a1a} 
+\index{Servo@{Servo}!min@{min}}
+\index{min@{min}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{min}{min}}
+{\footnotesize\ttfamily uint16\+\_\+t Servo\+::min\hspace{0.3cm}{\ttfamily [private]}}
+
+Minimum value \hypertarget{class_servo_a11962573ddd272b426724e62c250990e}{}\label{class_servo_a11962573ddd272b426724e62c250990e} 
+\index{Servo@{Servo}!pin@{pin}}
+\index{pin@{pin}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{pin}{pin}}
+{\footnotesize\ttfamily uint8\+\_\+t Servo\+::pin\hspace{0.3cm}{\ttfamily [private]}}
+
+Which pin the servo is located at 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

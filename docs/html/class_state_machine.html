@@ -89,11 +89,15 @@ $(document).ready(function(){initNavTree('class_state_machine.html','');});
 <div class="title">StateMachine Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A C Style state machine implementation.  
+ <a href="class_state_machine.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="lib_2state__machine_2state__machine_8h_source.html">state_machine.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad9c6bdaca444710f77fc12d7e1af8fdc"><td class="memItemLeft" align="right" valign="top"><a id="ad9c6bdaca444710f77fc12d7e1af8fdc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>StateMachine</b> (void(*(*state_functions))(void), uint8_t initial_state=0)</td></tr>
+<tr class="memitem:ad9c6bdaca444710f77fc12d7e1af8fdc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_machine.html#ad9c6bdaca444710f77fc12d7e1af8fdc">StateMachine</a> (void(*(*<a class="el" href="class_state_machine.html#acc87359cd98c436f5b891ffe6cb67160">state_functions</a>))(void), uint8_t initial_state=0)</td></tr>
 <tr class="separator:ad9c6bdaca444710f77fc12d7e1af8fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1597799edc5a89006f164e52fd72d02b"><td class="memItemLeft" align="right" valign="top"><a id="a1597799edc5a89006f164e52fd72d02b"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>Transition</b> (uint8_t state, bool reenter)</td></tr>
@@ -110,22 +114,133 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:abdcd9426d9a2ec9e2d703c74cd3299df"><td class="memItemLeft" align="right" valign="top"><a id="abdcd9426d9a2ec9e2d703c74cd3299df"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_state</b></td></tr>
+<tr class="memitem:abdcd9426d9a2ec9e2d703c74cd3299df"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_machine.html#abdcd9426d9a2ec9e2d703c74cd3299df">current_state</a></td></tr>
 <tr class="separator:abdcd9426d9a2ec9e2d703c74cd3299df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:acc87359cd98c436f5b891ffe6cb67160"><td class="memItemLeft" align="right" valign="top"><a id="acc87359cd98c436f5b891ffe6cb67160"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>state_functions</b> ()</td></tr>
+<tr class="memitem:acc87359cd98c436f5b891ffe6cb67160"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_machine.html#acc87359cd98c436f5b891ffe6cb67160">state_functions</a> ()</td></tr>
 <tr class="separator:acc87359cd98c436f5b891ffe6cb67160"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:adc6939485a12a6250df3cc65aa172d2a"><td class="memItemLeft" align="right" valign="top"><a id="adc6939485a12a6250df3cc65aa172d2a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>running</b> = false</td></tr>
+<tr class="memitem:adc6939485a12a6250df3cc65aa172d2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_machine.html#adc6939485a12a6250df3cc65aa172d2a">running</a> = false</td></tr>
 <tr class="separator:adc6939485a12a6250df3cc65aa172d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A C Style state machine implementation. </p>
+<p>The states are realized by three functions for each state. One that runs when you enter the state, one that loops during the state and one that runs when leaving the state. If you do not want to have a function that runs when you enter or leave the state, a nullptr can be put there in stead.</p>
+<p>In the state matrix each row is tied to the state, and row 0 - 3 is tied to the state functions.</p>
+<p>Column 0 is the enter function   Column 1 is the loop function   Column 2 is the leave function </p>
+<p><b>Example</b> </p><div class="fragment"><div class="line"> void (*<a class="code" href="class_state_machine.html#acc87359cd98c436f5b891ffe6cb67160">state_functions</a>[][3])(void) = {</div><div class="line">{<span class="keyword">nullptr</span>, InitializeLoop, <span class="keyword">nullptr</span>},</div><div class="line">{OngoingEnter, OngoingLoop, OngoingLeave},</div><div class="line">{IdleEnter, IdleLoop,       <span class="keyword">nullptr</span>}</div><div class="line">};</div></div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad9c6bdaca444710f77fc12d7e1af8fdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9c6bdaca444710f77fc12d7e1af8fdc">&sect;&nbsp;</a></span>StateMachine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StateMachine::StateMachine </td>
+          <td>(</td>
+          <td class="paramtype">void(*(*<a class="el" href="class_state_machine.html#acc87359cd98c436f5b891ffe6cb67160">state_functions</a>))(void)&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>initial_state</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Initializer. For the state_functions parameter, it expects a matrix where each row is the state, and column 0 - 2 is the state functions. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state_functions</td><td>A matrix containing the states. Please read above </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="acc87359cd98c436f5b891ffe6cb67160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc87359cd98c436f5b891ffe6cb67160">&sect;&nbsp;</a></span>state_functions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StateMachine::state_functions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>A matrix containing the states and their state functions </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="abdcd9426d9a2ec9e2d703c74cd3299df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdcd9426d9a2ec9e2d703c74cd3299df">&sect;&nbsp;</a></span>current_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t StateMachine::current_state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The current state of the state machine </p>
+
+</div>
+</div>
+<a id="adc6939485a12a6250df3cc65aa172d2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc6939485a12a6250df3cc65aa172d2a">&sect;&nbsp;</a></span>running</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StateMachine::running = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>A flag indicating if the state machine is running </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>lib/state_machine/<a class="el" href="lib_2state__machine_2state__machine_8h_source.html">state_machine.h</a></li>
 <li>lib/state_machine/state_machine.cpp</li>
@@ -136,7 +251,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>running</b> = false</
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_state_machine.html">StateMachine</a></li>
-    <li class="footer">Generated on Sun Nov 20 2016 19:57:04 for Byggern by
+    <li class="footer">Generated on Sun Nov 20 2016 21:20:19 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

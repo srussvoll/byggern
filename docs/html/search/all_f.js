@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['sample',['Sample',['../class_i_r___detector.html#aca18cc0350105dfa2395cd2da6e8d05f',1,'IR_Detector']]],
   ['savescore',['SaveScore',['../class_highscore_1_1_highscore.html#ae19e8a6c55b49d6dd874b61ef496dcea',1,'Highscore::Highscore']]],
   ['score',['Score',['../struct_highscore_1_1_score.html',1,'Highscore']]],
   ['score',['score',['../class_highscore_1_1_highscore.html#a569a403dc24a8fa67efd7065148f4c9d',1,'Highscore::Highscore']]],
@@ -9,7 +10,9 @@ var searchData=
   ['selectprevious',['SelectPrevious',['../class_menu_1_1_controller.html#a04e3448cfe4341ad7209a9f16bbcb449',1,'Menu::Controller']]],
   ['send',['Send',['../class_s_c_p.html#a02460c47705c42c2ade1608007d7966a',1,'SCP']]],
   ['sendmessage',['SendMessage',['../class_c_a_n.html#a6d9cf7beee73adaaa0be93426a078612',1,'CAN::SendMessage()'],['../class_m_c_p2515.html#ade69da887eb514530ef5f73c0c3b0130',1,'MCP2515::SendMessage()']]],
-  ['servo',['Servo',['../class_servo.html',1,'']]],
+  ['servo',['Servo',['../class_servo.html',1,'Servo'],['../class_servo.html#aa09c5cfcc57872c96f6d377343e174cf',1,'Servo::Servo()']]],
+  ['setangle',['SetAngle',['../class_servo.html#ae5ebb4d5baa92a4427e51d7667b41fbf',1,'Servo']]],
+  ['setdac',['SetDAC',['../class_d_a_c.html#ac2fc281ed24a4bb8478519a5cc2e1177',1,'DAC']]],
   ['setdevice',['SetDevice',['../class_s_p_i_1_1_s_p_i.html#a4c48f641a89d5b72428979f39c9fa96f',1,'SPI::SPI']]],
   ['setfont',['SetFont',['../class_o_l_e_d.html#abe6073c961cadc4c9b693eb8dc8198bd',1,'OLED']]],
   ['setloopback',['SetLoopback',['../class_m_c_p2515.html#a7aac5fdb713b83933391348f1188f2b9',1,'MCP2515']]],
@@ -24,11 +27,11 @@ var searchData=
   ['spi',['SPI',['../class_s_p_i_1_1_s_p_i.html',1,'SPI']]],
   ['spi_5fdriver',['spi_driver',['../class_m_c_p2515.html#a7c70cb397f4d2881a1878e40b9278ad0',1,'MCP2515']]],
   ['spi_5fstc_5fvect',['SPI_STC_vect',['../class_s_p_i_1_1_s_p_i.html#a96543550133e0b0c6ae83faad5c0d68d',1,'SPI::SPI::SPI_STC_vect()'],['../namespace_s_p_i.html#ae2f79145ecdd9d5f82d31283a4fcf80f',1,'SPI::SPI_STC_vect()']]],
-  ['start',['Start',['../class_timer.html#a4e607b129b392c11adddd9641a320436',1,'Timer']]],
+  ['start',['Start',['../class_motor.html#a4c449b886767bb6f76c3197fd7d072c3',1,'Motor::Start()'],['../class_timer.html#a4e607b129b392c11adddd9641a320436',1,'Timer::Start()']]],
   ['starttransmission',['StartTransmission',['../class_u_a_r_t.html#a0569d0267f8045907cedb527b5082fe0',1,'UART']]],
-  ['statemachine',['StateMachine',['../class_state_machine.html',1,'']]],
-  ['stop',['Stop',['../class_timer.html#a6379e797f968aaee6ac3bb12dc6b81c5',1,'Timer']]],
+  ['state_5ffunctions',['state_functions',['../class_state_machine.html#acc87359cd98c436f5b891ffe6cb67160',1,'StateMachine']]],
+  ['statemachine',['StateMachine',['../class_state_machine.html',1,'StateMachine'],['../class_state_machine.html#ad9c6bdaca444710f77fc12d7e1af8fdc',1,'StateMachine::StateMachine()']]],
+  ['stop',['Stop',['../class_motor.html#a8f0fdb6c977ea11e89281c51534850ca',1,'Motor::Stop()'],['../class_timer.html#a6379e797f968aaee6ac3bb12dc6b81c5',1,'Timer::Stop()']]],
   ['storescores',['StoreScores',['../class_highscore_1_1_highscore.html#ad0e1b3277228a38513b5c86059ebcd6d',1,'Highscore::Highscore']]],
-  ['stream',['Stream',['../class_stream.html',1,'Stream'],['../class_stream.html#a2b738d6f4d3059de2ae3d444d68663bf',1,'Stream::Stream()']]],
-  ['stream_2eh',['stream.h',['../stream_8h.html',1,'']]]
+  ['stream',['Stream',['../class_stream.html',1,'Stream'],['../class_stream.html#a2b738d6f4d3059de2ae3d444d68663bf',1,'Stream::Stream()']]]
 ];

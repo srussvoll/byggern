@@ -3,6 +3,7 @@ var searchData=
   ['calculatelength',['CalculateLength',['../class_stream.html#a8047b62e7dcfe0e50210b3e40c7aa6eb',1,'Stream']]],
   ['can',['CAN',['../class_c_a_n.html',1,'']]],
   ['canmessage',['CanMessage',['../struct_can_message.html',1,'CanMessage'],['../struct_can_message.html#ae51e016fc886677c95e933db98ad79bc',1,'CanMessage::CanMessage()']]],
+  ['changedirection',['ChangeDirection',['../class_motor.html#a4b1fb35dcf10c3e17a1614877b9b6a7d',1,'Motor']]],
   ['checkinputoverflowflag',['CheckInputOverflowFlag',['../class_stream.html#a088c4e68d568acfad715c56f408fe9f8',1,'Stream']]],
   ['checkoutputoverflowflag',['CheckOutputOverflowFlag',['../class_stream.html#aee6c201819b874c5934a270592d9d311',1,'Stream']]],
   ['clear',['Clear',['../class_o_l_e_d.html#a6c7bb1fc91b3e574a275f90643da140a',1,'OLED']]],
@@ -22,5 +23,6 @@ var searchData=
   ['current_5fline',['current_line',['../class_o_l_e_d.html#aebd62601be5e2ceef6295721f17fc013',1,'OLED']]],
   ['current_5fmenu_5fcontrol',['current_menu_control',['../class_menu_1_1_controller.html#a912ad4ad6b2c30e7cddf44547585a909',1,'Menu::Controller']]],
   ['current_5fmenu_5fnavigate',['current_menu_navigate',['../class_menu_1_1_controller.html#a66ffabf19a4423ccca536762f0b9df88',1,'Menu::Controller']]],
-  ['current_5fpin',['current_pin',['../class_s_p_i_1_1_s_p_i.html#a3dc3f87f8ee3f3b5776e21fc4b72efbc',1,'SPI::SPI']]]
+  ['current_5fpin',['current_pin',['../class_s_p_i_1_1_s_p_i.html#a3dc3f87f8ee3f3b5776e21fc4b72efbc',1,'SPI::SPI']]],
+  ['current_5fstate',['current_state',['../class_state_machine.html#abdcd9426d9a2ec9e2d703c74cd3299df',1,'StateMachine']]]
 ];

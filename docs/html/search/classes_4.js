@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['item',['Item',['../struct_menu_1_1_item.html',1,'Menu']]]
+  ['frontpage',['frontpage',['../classbaugen_1_1scoreboard_1_1frontpage.html',1,'baugen::scoreboard']]]
 ];

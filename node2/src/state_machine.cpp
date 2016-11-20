@@ -74,7 +74,6 @@ void StartGame() {
 /*-----------------------   INITIALIZE  -------------------------------*/
 
 void InitializeLoop() {
-    //TODO: Add initialization to everything for node 2.
     // Initialize the motor
     Motor &motor = Motor::GetInstance();
     motor.Initialize();
@@ -83,7 +82,6 @@ void InitializeLoop() {
     IRDetector::GetInstance().Initialize(0x05);
 
     // Initialize the joystick
-    // TODO: Correct Quantization levels
     Joystick &joy = Joystick::GetInstance();
     Quantization q;
     q.x_max = 0;

@@ -1,7 +1,6 @@
 #ifdef __AVR_ATmega2560__
 
 #include "ir_detector.h"
-#include "lib/utilities/printf.h"
 
 IR_Detector::IR_Detector(){
     this->adc = &ADC_internal::GetInstance();
@@ -22,10 +21,7 @@ bool IR_Detector::Sample() {
 
     // Wait until adc is done reading
     while(!adc->ReadByte(byte)){
-
     }
-
-    //printf("B = %2x \n", byte);
 
     return byte <= threshold;
 }

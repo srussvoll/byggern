@@ -2,10 +2,6 @@
 
 #include "adc_internal.h"
 
-#include <util/delay.h>
-
-#include "lib/utilities/printf.h"
-
 ADC_internal::ADC_internal(): Stream(1, 1) {
     sei();
 

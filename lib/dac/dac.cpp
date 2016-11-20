@@ -3,21 +3,24 @@
 #include <math.h>
 
 #include "dac.h"
-#include "lib/utilities/printf.h"
 
 DAC::DAC(){
     this->i2c = &I2C::GetInstance();
+
+    // Initialize the TWI with the right address and the dac to be ued
     i2c->Initialize(0x0C);
     this->dac_number = 4;
 };
 
 bool DAC::WriteAnalogSignalRaw(uint8_t value) {
     if((value <= this->max) && (value >= this->min)){
+
         // The second byte is used for commands.
         uint8_t message[3];
         message[0] = this->address_and_write_byte;
         message[1] = this->GetCommandForDAC();
         message[2] = value;
+
         i2c->SendData(message, 3);
         return true;
     } else {
@@ -61,12 +64,15 @@ void DAC::Initialize(uint8_t min, uint8_t max, uint8_t i2c_address) {
 bool DAC::WriteAnalogSignalPercentage(float percentage) {
     if      (percentage > 1.0) percentage = 1.0;
     else if (percentage < 0.0) percentage = 0.0;
+
     float value = percentage * (float) this->max;
     uint8_t value_uint8 = (uint8_t) floor(value);
     uint8_t message[3];
+
     message[0] = this->address_and_write_byte;
     message[1] = this->GetCommandForDAC();
     message[2] = value_uint8;
+
     i2c->SendData(message,3);
     return true;
 }

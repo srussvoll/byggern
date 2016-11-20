@@ -1,6 +1,5 @@
-#ifdef __AVR_ATmega2560__
-
 #pragma once
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <lib/adc_internal/adc_internal.h>
@@ -10,7 +9,8 @@
  * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
  * @version 1.0
  *
- * An infrared detector to detect if there is an object blocking the path of the sensor
+ * An infrared detector to detect if there is an object blocking the path of the sensor.
+ * The main function of interest is the sample function
  */
 class IR_Detector {
 
@@ -26,18 +26,25 @@ private:
      */
     uint16_t threshold;
 
+    /**
+     * The ADC used to sample the voltage.
+     */
     ADC_internal* adc;
 
 public:
     /**
-    * A Singleton implementation of this class
-    */
+     * A Singleton implementation of this class
+     */
     static IR_Detector& GetInstance(){
         // Initialize the IR_DETECTOR with a certain threshold
         static IR_Detector instance;
         return instance;
     }
 
+    /**
+     * Used to initialize the singleton object
+     * @param threshold The wanted threshold value for the sensor
+     */
     void Initialize(uint16_t threshold);
 
     /**
@@ -56,6 +63,3 @@ public:
      */
     void operator=(const IR_Detector&) = delete;
 };
-
-#endif
-

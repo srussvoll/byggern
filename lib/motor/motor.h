@@ -1,19 +1,20 @@
-#ifdef __AVR_ATmega2560__
-
 #pragma once
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
 #include "lib/dac/dac.h"
 
 /**
- * @file
+ * \brief A motor controller for driving a motor through a motor box
  * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
  * @version 1.0
  *
- * A motor controller
+ * A motor controller for driving a motor through a motor box.
+ * It has the basic functionally expected of a motor (go left, go right, drive, change direction etc.).
  */
 class Motor{
+
 private:
 
     /**
@@ -47,7 +48,6 @@ public:
      */
     void Initialize();
 
-
     /**
      * Starts the motor
      */
@@ -57,7 +57,6 @@ public:
      * Stops the motor
      */
     void Stop();
-
 
     /**
      * Sets the motor to the left
@@ -90,5 +89,3 @@ public:
      */
     void operator=(const Motor&) = delete;
 };
-
-#endif

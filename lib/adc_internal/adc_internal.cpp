@@ -35,10 +35,12 @@ ADC_internal::ADC_internal(): Stream(1, 1){
 
 bool ADC_internal::RequestSample(){
     if(this->adc_in_use){
+
         // ADC_internal busy
         return false;
-    } else{
+    } else {
         this->adc_in_use = true;
+
         // Start Conversion
         ADCSRA |= ( 1 << ADSC );
         return true;
@@ -50,7 +52,7 @@ void ADC_vect(){
     ADC_internal &adc = ADC_internal::GetInstance();
     UART& uart = UART::GetInstance();
 
-    //Get the data from the conversion
+    //Get the data from the conversion and write it to the stream
     uint8_t data = ADCL;
     uint8_t data2 = ADCH;
 

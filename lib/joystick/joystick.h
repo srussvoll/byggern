@@ -5,6 +5,10 @@
 
 #include "../adc/adc.h"
 
+/**
+ * \brief The quantization levels for the Joystick
+ * The max and min in all directions. Assumes a circular joystick.
+ */
 struct Quantization{
     float x_max;
     float x_min;

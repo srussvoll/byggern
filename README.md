@@ -1,6 +1,6 @@
 # TTK4155 2016
 
-The term project for TTK4155 Industrielle og innbygde datasystemers konstruksjon for group 20 2016.
+The term project for TTK4155 Embedded and Industrial Computer Systems Design for group 20 2016.
 
 Created by Sondre Wangenstein Baugstø, Johan Lofstad and Sondre Vincent Russvoll.
 
@@ -30,6 +30,26 @@ Since enter, loop and leave are different functions, they all have their own sep
 ## Stream
 
 We chose to implement a full duplex stream class, because it gave us a lot of overhead when implementing other modules such as UART, SPI and CAN. It utilizes a ring buffer for both input and output.
+
+## Network
+
+In addition to CAN, which is the physical and link layer, we have also made a transport layer and application protocol.
+
+**Transport layer - SOCKET**
+
+The transport layer is implemented as a SOCKET (not to be confused with a TCP socket). It handles communication between the node and a specified CAN channel. It uses the stream in order to buffer incoming and outgoing messages.
+
+*Please see the socket class in the docs for a more detailed description*
+
+**Application layer - SCP**
+
+Our application layer protocol is called SCP (Simple Command Protocol). It uses a socket to send commands between nodes. The SCP frame consists of the following:
+
+* Command, 1 byte.
+* Amount of data, 1 byte
+* Data, 0-256 bytes
+
+*Please see the SCP class in the docs for a more detailed description*
 
 ## Extras
 

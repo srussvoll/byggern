@@ -1,14 +1,21 @@
 #pragma once
+
 #include "../spi/spi.h"
 #include "avr/interrupt.h"
 #include "../can/can.h"
 
 #ifdef __AVR_ATmega162__
+
 #define MCP2515_INT INT0_vect
+
 #else
+
 #define MCP2515_INT INT4_vect
+
 #endif
+
 ISR(MCP2515_INT);
+
 /**
  * \brief A singleton class which implements the communication between the AVR and the MCP2515.
  *
@@ -86,6 +93,9 @@ private:
      */
     void ReadRxFrame(CanMessage &message);
 
+    /**
+     * Initializer not used due to singleton
+     */
     MCP2515(){};
 
     /**

@@ -1,9 +1,7 @@
 #include <stdint.h>
 #include "mcp2515.h"
-#include "mcp2515_regisers.h"
-#include "../utilities/printf.h"
-#include "../uart/uart.h"
-#include <util/delay.h>
+#include "mcp2515_register.h"
+
 void MCP2515_INT(){
     sei();
     MCP2515 &mcp = MCP2515::GetInstance();

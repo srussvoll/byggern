@@ -9,7 +9,7 @@
 ISR(ADC_vect);
 
 /**
- * @file
+ * \brief For using the internal ADC.
  * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
  * @version 1.0
  *

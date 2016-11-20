@@ -1,6 +1,7 @@
 #ifdef __AVR_ATmega162__
 
 #include "memory.h"
+
 #include <avr/io.h>
 
 namespace Utilities {
@@ -11,8 +12,6 @@ namespace Utilities {
         EMCUCR |= (2 << SRL0);
         // Enable wait state for sector 1. Wait one cycle during read/write strobe
         EMCUCR |= (1 << SRW01);
-        // MCUCR |= (1 << SRW10);
-        // EMCUCR |= (1 << SRW11);
 
         // Disable A15
         SFIOR |= (1 << XMM0);

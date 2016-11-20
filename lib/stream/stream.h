@@ -17,6 +17,7 @@
  * just work. This interface is in other words written to make it easier to write consistent and driver independent code.
  */
 class Stream {
+
 protected:
 
     /**
@@ -99,6 +100,7 @@ protected:
      * @param string_size The size of the string.
      */
     virtual uint16_t ReadFromBuffer(uint8_t *buffer, uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty, uint8_t *string, uint16_t &string_size);
+
     /**
      * Writes a string to the given buffer.
      * @param buffer Buffer to write to.
@@ -183,7 +185,9 @@ protected:
     */
     virtual void FlushStream(uint16_t &start_index, uint16_t &stop_index, uint16_t &buffer_size, bool &empty);
 
+
 public:
+
     /**
      * Used to initialize the stream sizes and other data members.
      * @param input_stream_size The maximum size of the input stream.

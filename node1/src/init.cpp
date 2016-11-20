@@ -1,6 +1,7 @@
 #include "init.h"
 
 #include <avr/io.h>
+
 #include "lib/utilities/memory.h"
 #include "lib/utilities/printf.h"
 #include "lib/uart/uart.h"
@@ -23,13 +24,11 @@ inline void InitializeNetworkStack(){
 
     // Initialize MCP
     mcp.Initialize(&spi, 0x00);
-    //mcp.SetLoopback();
     mcp.SetNormal();
 
     // Initialize the socket
     high.Initialize(&mcp);
     low.Initialize(&mcp);
-    //printf("Initialized \n");
 }
 
 void init_memory() {

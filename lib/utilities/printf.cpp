@@ -1,10 +1,12 @@
 #include "printf.h"
+
 #include <avr/interrupt.h>
 
 namespace {
     Stream *output_stream;
     int put(char c, FILE* f) {
-        // Enforce printf when debugging!
+        // Enforce printf when debugging.
+        // Be aware of potential complications with nested interrupts.
         #ifdef DEBUG
         sei();
         #endif

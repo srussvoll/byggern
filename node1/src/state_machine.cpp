@@ -1,13 +1,15 @@
 #include "state_machine.h"
-#include "../lib/state_machine/state_machine.h"
-#include "../lib/uart/uart.h"
+
 #include <util/delay.h>
-#include <lib/utilities/printf.h>
-#include "../lib/menu/menu.h"
-#include "../lib/utilities/fonts.h"
+#include <stdio.h>
+
+#include "lib/state_machine/state_machine.h"
+#include "lib/uart/uart.h"
+#include "lib/utilities/printf.h"
+#include "lib/menu/menu.h"
+#include "lib/utilities/fonts.h"
 #include "lib/scp/scp.h"
 #include "lib/scp/commands.h"
-#include <stdio.h>
 #include "lib/highscore/highscore.h"
 #include "lib/adc/adc.h"
 #include "lib/oled_memory/oled_memory.h"

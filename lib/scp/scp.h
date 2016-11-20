@@ -3,12 +3,12 @@
 #include "../socket/socket.h"
 
 /**
- * \brief SCP (Simple Command Protocol) is an application layer protocol designed to send commands
+ * \brief SCP (Simple Command Protocol) is an application layer protocol designed to send commands.
  *
- * The frame is built up by first one byte, identifying the command, the second byte identifying the length of the data (n),
+ * The frame is built up by first one byte identifying the command, the second byte identifying the length of the data (n),
  * and the last n bytes is the data.
  *
- * This class is using SOCKET as its link layer implementation.
+ * This class is using Socket as its link layer implementation.
  */
 class SCP {
 

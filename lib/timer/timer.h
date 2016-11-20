@@ -61,7 +61,7 @@ public:
      * Returns how many times the timer has triggered
      * @param time Variable to contain the data
      */
-    void GetFullSecondsPassed(uint16_t &time);
+    void GetNumberOfTimesTriggered(uint16_t &time);
 
     /**
      * Interrupt handler for timer 4
@@ -76,7 +76,7 @@ public:
 
 private:
     /**
-     * Initializer. Not used by enduser
+     * Initializer. Not used by end user
      * @param timer_number Which timer number you want to get. Please see GetInstance()
      */
     Timer(uint8_t timer_number): timer_number(timer_number){};

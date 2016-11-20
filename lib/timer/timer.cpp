@@ -86,7 +86,7 @@ void Timer::Stop() {
     }
 }
 
-void Timer::GetFullSecondsPassed(uint16_t &time) {
+void Timer::GetNumberOfTimesTriggered(uint16_t &time) {
     time = this->timer;
 }
 

@@ -204,7 +204,7 @@ void OngoingLeave() {
     Timer &timer2 = Timer::GetInstance(1);
     timer1.Stop();
     timer2.Stop();
-    timer1.GetFullSecondsPassed(highscore_score);
+    timer1.GetNumberOfTimesTriggered(highscore_score);
     channel->Send(0, CMD_WAIT_FOR_HIGHSCORE, nullptr, 0);
     _delay_ms(500);
     sockets[0]->FlushInputBuffer();

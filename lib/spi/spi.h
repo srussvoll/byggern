@@ -20,8 +20,25 @@ namespace SPI_N{
          * The pin number
          */
         uint8_t pin;
+
+        /**
+         * Constructor with 3 parameters
+         * @param port A pointer to the port register for the pin
+         * @param ddr A pointer to the data direction register for the pin
+         * @param The pin number
+         */
         PIN(volatile uint8_t *port, volatile uint8_t *ddr, uint8_t pin): port(port), ddr(ddr), pin(pin){}
+
+        /**
+         * Constructor with 2 parameters
+         * @param port A pointer to the port register for the pin
+         * @param ddr A pointer to the data direction register for the pin
+         */
         PIN(): port(nullptr), ddr(nullptr), pin(0){}
+
+        /**
+         * 
+         */
         PIN operator=(PIN *original_pin){
             PIN newPin(original_pin->port, original_pin->ddr, original_pin->pin);
             return newPin;

@@ -1,4 +1,3 @@
-#include <lib/utilities/printf.h>
 #include "state_machine.h"
 
 bool StateMachine::Transition(uint8_t state, bool reenter = false) {

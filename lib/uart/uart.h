@@ -5,6 +5,8 @@
 
 #include "../stream/stream.h"
 
+ISR(USART0_UDRE_vect);
+
 /**
  * @file
  * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
@@ -12,11 +14,32 @@
  *
  * An interface for communicating through UART
  */
-
-ISR(USART0_UDRE_vect);
-
 class UART : public Stream {
+
+private:
+
+    /**
+     * A constructor that initializes the UART to a certain size
+     */
+    UART();
+
+    /**
+     * A bool to indicate whether or not a transmission is going on
+     */
+    bool ongoing_transmission = false;
+
+    /**
+     * Starts the transmission. Just a void-void function to modulize
+     */
+    inline void StartTransmission();
+
+    /**
+     * The interrupt handler vector. To be run on each DRE interrupt
+     */
+    friend void USART0_UDRE_vect();
+
 public:
+
     /**
      * A Singleton implementation of this class
      */
@@ -47,27 +70,5 @@ public:
      * Beacause of singleton - makes sure its not copied etc.
      */
     void operator=(const UART&) = delete;
-
-private:
-
-    /**
-     * A constructor that initializes the UART to a certain size
-     */
-    UART();
-
-    /**
-     * A bool to indicate whether or not a transmission is going on
-     */
-    bool ongoing_transmission = false;
-
-    /**
-     * Starts the transmission. Just a void-void function to modulize
-     */
-    inline void StartTransmission();
-
-    /**
-     * The interrupt handler vector. To be run on each DRE interrupt
-     */
-    friend void USART0_UDRE_vect();
 
 };

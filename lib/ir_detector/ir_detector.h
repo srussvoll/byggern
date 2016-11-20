@@ -5,21 +5,20 @@
 #include <lib/adc_internal/adc_internal.h>
 
 /**
- * @file
- * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
- * @version 1.0
+ * \brief A IR detector for detecting game over
  *
  * An infrared detector to detect if there is an object blocking the path of the sensor.
- * The main function of interest is the sample function
+ * The main function of interest is the sample function.
+ * As usual, the implementation of the IRDetector is chip and system dependent
  */
-class IR_Detector {
+class IRDetector {
 
 private:
 
     /**
      * A constructor that initializes the UART to a certain size
      */
-    IR_Detector();
+    IRDetector();
 
     /**
      * Threshold for the IR sensor
@@ -32,12 +31,13 @@ private:
     ADC_internal* adc;
 
 public:
+
     /**
      * A Singleton implementation of this class
      */
-    static IR_Detector& GetInstance(){
+    static IRDetector& GetInstance(){
         // Initialize the IR_DETECTOR with a certain threshold
-        static IR_Detector instance;
+        static IRDetector instance;
         return instance;
     }
 
@@ -56,10 +56,10 @@ public:
     /**
      * Because of singleton - makes sure its not copied etc.
      */
-    IR_Detector(const IR_Detector&) = delete;
+    IRDetector(const IRDetector&) = delete;
 
     /**
      * Because of singleton - makes sure its not copied etc.
      */
-    void operator=(const IR_Detector&) = delete;
+    void operator=(const IRDetector&) = delete;
 };

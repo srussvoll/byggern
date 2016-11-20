@@ -78,7 +78,7 @@ bool Joystick::DirectionChanged() {
 }
 
 bool Joystick::ButtonIsDown() {
-    // To be implemented
+    // Not used so not implemented
 }
 
 #endif

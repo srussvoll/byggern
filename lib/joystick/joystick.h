@@ -3,8 +3,6 @@
 #include <avr/io.h>
 #include <math.h>
 
-#include "../adc/adc.h"
-
 /**
  * \brief The quantization levels for the Joystick
  *

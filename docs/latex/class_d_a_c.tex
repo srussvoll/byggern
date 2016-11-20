@@ -42,7 +42,7 @@ static \hyperlink{class_d_a_c}{D\+AC} \& {\bfseries Get\+Instance} ()
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-I2C $\ast$ \hyperlink{class_d_a_c_a70a9fd9603ee9fd9303628bd23338bf5}{i2c}
+\hyperlink{class_i2_c}{I2C} $\ast$ \hyperlink{class_d_a_c_a70a9fd9603ee9fd9303628bd23338bf5}{i2c}
 \item 
 uint8\+\_\+t \hyperlink{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425}{max}
 \item 
@@ -57,7 +57,7 @@ uint8\+\_\+t \hyperlink{class_d_a_c_afb39aacc3401c892403c477f857504f8}{dac\+\_\+
 \subsection{Detailed Description}
 Using an extern \hyperlink{class_d_a_c}{D\+AC}. 
 
-A digital-\/to-\/analog converter. This one is extern, that is not on the mcu, so it needs to be interfaced (i.\+e. through I2C) 
+A digital-\/to-\/analog converter. This one is extern, that is not on the mcu, so it needs to be interfaced (i.\+e. through \hyperlink{class_i2_c}{I2C}) 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_d_a_c_a9908e07a5c096380eeb4c4061d58476d}{}\label{class_d_a_c_a9908e07a5c096380eeb4c4061d58476d} 
@@ -87,13 +87,13 @@ Selects the command corresponding to the dac\+\_\+number \hypertarget{class_d_a_
 \subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
 {\footnotesize\ttfamily void D\+A\+C\+::\+Initialize (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{min,  }\item[{uint8\+\_\+t}]{max,  }\item[{uint8\+\_\+t}]{i2c\+\_\+address }\end{DoxyParamCaption})}
 
-Initializes the dac by giving it an address (the one used by I2C to access it) In our project it is already grounded, so the address is set as 0x50 
+Initializes the dac by giving it an address (the one used by \hyperlink{class_i2_c}{I2C} to access it) In our project it is already grounded, so the address is set as 0x50 
 \begin{DoxyParams}{Parameters}
 {\em min} & The minimum value the \hyperlink{class_d_a_c}{D\+AC} can output \\
 \hline
 {\em max} & The maximum value the \hyperlink{class_d_a_c}{D\+AC} can output \\
 \hline
-{\em i2c\+\_\+address} & The address of the \hyperlink{class_d_a_c}{D\+AC} on the I2C bus \\
+{\em i2c\+\_\+address} & The address of the \hyperlink{class_d_a_c}{D\+AC} on the \hyperlink{class_i2_c}{I2C} bus \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_d_a_c_a9e16a3d53b57588cba0ff2f9ade78e6b}{}\label{class_d_a_c_a9e16a3d53b57588cba0ff2f9ade78e6b} 
@@ -156,7 +156,7 @@ A boolean indicating if the output is valid
 \subsubsection{\texorpdfstring{address\+\_\+and\+\_\+write\+\_\+byte}{address\_and\_write\_byte}}
 {\footnotesize\ttfamily uint8\+\_\+t D\+A\+C\+::address\+\_\+and\+\_\+write\+\_\+byte\hspace{0.3cm}{\ttfamily [private]}}
 
-The address of the \hyperlink{class_d_a_c}{D\+AC} on the I2C bus \hypertarget{class_d_a_c_afb39aacc3401c892403c477f857504f8}{}\label{class_d_a_c_afb39aacc3401c892403c477f857504f8} 
+The address of the \hyperlink{class_d_a_c}{D\+AC} on the \hyperlink{class_i2_c}{I2C} bus \hypertarget{class_d_a_c_afb39aacc3401c892403c477f857504f8}{}\label{class_d_a_c_afb39aacc3401c892403c477f857504f8} 
 \index{D\+AC@{D\+AC}!dac\+\_\+number@{dac\+\_\+number}}
 \index{dac\+\_\+number@{dac\+\_\+number}!D\+AC@{D\+AC}}
 \subsubsection{\texorpdfstring{dac\+\_\+number}{dac\_number}}
@@ -166,9 +166,9 @@ The \hyperlink{class_d_a_c}{D\+AC} to be written to. In range 1-\/4. Default val
 \index{D\+AC@{D\+AC}!i2c@{i2c}}
 \index{i2c@{i2c}!D\+AC@{D\+AC}}
 \subsubsection{\texorpdfstring{i2c}{i2c}}
-{\footnotesize\ttfamily I2C$\ast$ D\+A\+C\+::i2c\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \hyperlink{class_i2_c}{I2C}$\ast$ D\+A\+C\+::i2c\hspace{0.3cm}{\ttfamily [private]}}
 
-The I2C for communication with the \hyperlink{class_d_a_c}{D\+AC} \hypertarget{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425}{}\label{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425} 
+The \hyperlink{class_i2_c}{I2C} for communication with the \hyperlink{class_d_a_c}{D\+AC} \hypertarget{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425}{}\label{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425} 
 \index{D\+AC@{D\+AC}!max@{max}}
 \index{max@{max}!D\+AC@{D\+AC}}
 \subsubsection{\texorpdfstring{max}{max}}

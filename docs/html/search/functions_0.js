@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['adc',['ADC',['../class_a_d_c.html#ab20b8e5645442615d875d2cef89bc488',1,'ADC::ADC(uint8_t *address)'],['../class_a_d_c.html#a50cb1d4e5bb8e3812732d9efdde4af67',1,'ADC::ADC(const ADC &amp;)=delete']]],
   ['adc_5finternal',['ADC_internal',['../class_a_d_c__internal.html#a4a34ce3ab980b7ab37672153c86d229a',1,'ADC_internal::ADC_internal()'],['../class_a_d_c__internal.html#a7ae0c6415d603f8e4b86c735d4d235f5',1,'ADC_internal::ADC_internal(const ADC_internal &amp;)=delete']]],
   ['addaction',['AddAction',['../struct_menu_1_1_item.html#a9ae75532a76e0fdf4e9c22727280f029',1,'Menu::Item']]],
   ['addmenu',['AddMenu',['../class_menu_1_1_controller.html#ab530ec11f04b96254b93961d26152d3c',1,'Menu::Controller']]],

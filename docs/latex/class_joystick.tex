@@ -2,7 +2,7 @@
 \label{class_joystick}\index{Joystick@{Joystick}}
 
 
-A general joystick controller The joystick controller expects a quantizationlevel struct as input. This is to indicate the max and min y and x direction of the joystick. Example\+: If x goes from 0 to 255, it expects input struct with x\+\_\+max = 255, x\+\_\+min = 0. If y goes from 0 to 255, it expects the same for y. It also expect a uint8\+\_\+t threshold, given in decimal. This threshold is used for detecting direction This must be initialized through the Initialize function, due to singleton.  
+A general joystick controller.  
 
 
 
@@ -65,7 +65,9 @@ Direction \hyperlink{class_joystick_abf9509216c86d03fb76abc7ff4507f90}{previous\
 
 
 \subsection{Detailed Description}
-A general joystick controller The joystick controller expects a quantizationlevel struct as input. This is to indicate the max and min y and x direction of the joystick. Example\+: If x goes from 0 to 255, it expects input struct with x\+\_\+max = 255, x\+\_\+min = 0. If y goes from 0 to 255, it expects the same for y. It also expect a uint8\+\_\+t threshold, given in decimal. This threshold is used for detecting direction This must be initialized through the Initialize function, due to singleton. 
+A general joystick controller. 
+
+The joystick controller expects a quantizationlevel struct as input. This is to indicate the max and min y and x direction of the joystick. Example\+: If x goes from 0 to 255, it expects input struct with x\+\_\+max = 255, x\+\_\+min = 0. If y goes from 0 to 255, it expects the same for y. It also expect a uint8\+\_\+t threshold, given in decimal. This threshold is used for detecting direction This must be initialized through the Initialize function, due to singleton 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_joystick_a158b1f77b78717efbf1b8fac43b1fcef}{}\label{class_joystick_a158b1f77b78717efbf1b8fac43b1fcef} 

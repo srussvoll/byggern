@@ -1,7 +1,6 @@
 #ifdef __AVR_ATmega2560__
 
 #include "joystick.h"
-#include "lib/utilities/printf.h"
 
 Joystick::Joystick() {
 }

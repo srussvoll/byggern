@@ -3,11 +3,13 @@ var annotated_dup =
     [ "Highscore", "namespace_highscore.html", "namespace_highscore" ],
     [ "Menu", "namespace_menu.html", "namespace_menu" ],
     [ "SPI", "namespace_s_p_i.html", "namespace_s_p_i" ],
+    [ "ADC", "class_a_d_c.html", "class_a_d_c" ],
     [ "ADC_internal", "class_a_d_c__internal.html", "class_a_d_c__internal" ],
     [ "CAN", "class_c_a_n.html", "class_c_a_n" ],
     [ "CanMessage", "struct_can_message.html", "struct_can_message" ],
     [ "DAC", "class_d_a_c.html", "class_d_a_c" ],
     [ "Encoder", "class_encoder.html", "class_encoder" ],
+    [ "I2C", "class_i2_c.html", "class_i2_c" ],
     [ "IRDetector", "class_i_r_detector.html", "class_i_r_detector" ],
     [ "Joystick", "class_joystick.html", "class_joystick" ],
     [ "MCP2515", "class_m_c_p2515.html", "class_m_c_p2515" ],
@@ -23,5 +25,6 @@ var annotated_dup =
     [ "StateMachine", "class_state_machine.html", "class_state_machine" ],
     [ "Stream", "class_stream.html", "class_stream" ],
     [ "Timer", "class_timer.html", "class_timer" ],
+    [ "TWI_statusReg", "union_t_w_i__status_reg.html", "union_t_w_i__status_reg" ],
     [ "UART", "class_u_a_r_t.html", "class_u_a_r_t" ]
 ];

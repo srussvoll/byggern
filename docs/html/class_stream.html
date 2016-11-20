@@ -99,13 +99,15 @@ Inheritance diagram for Stream:</div>
  <div class="center">
   <img src="class_stream.png" usemap="#Stream_map" alt=""/>
   <map id="Stream_map" name="Stream_map">
-<area href="class_a_d_c__internal.html" title="For using the internal ADC. " alt="ADC_internal" shape="rect" coords="0,56,97,80"/>
-<area href="class_o_l_e_d.html" title="An interface to communicate with the OLED display. " alt="OLED" shape="rect" coords="107,56,204,80"/>
-<area href="class_socket.html" title="A socket which defines the communication in a CAN channel. " alt="Socket" shape="rect" coords="214,56,311,80"/>
-<area href="class_s_p_i_1_1_s_p_i.html" title="An SPI driver which implements the AVR SPI interface. " alt="SPI::SPI" shape="rect" coords="321,56,418,80"/>
-<area href="class_u_a_r_t.html" alt="UART" shape="rect" coords="428,56,525,80"/>
-<area href="class_o_l_e_d__memory.html" title="A class to communicate with the OLED display using the external memory interface. ..." alt="OLED_memory" shape="rect" coords="53,112,150,136"/>
-<area href="class_o_l_e_d___s_c_p.html" title="A class to communicate with the OLED display through the SCP. " alt="OLED_SCP" shape="rect" coords="160,112,257,136"/>
+<area href="class_a_d_c.html" title="ADC library for the ADC0844. " alt="ADC" shape="rect" coords="0,56,97,80"/>
+<area href="class_a_d_c__internal.html" title="For using the internal ADC. " alt="ADC_internal" shape="rect" coords="107,56,204,80"/>
+<area href="class_i2_c.html" title="I2C (TWI) for communicating for peripherals. " alt="I2C" shape="rect" coords="214,56,311,80"/>
+<area href="class_o_l_e_d.html" title="An interface to communicate with the OLED display. " alt="OLED" shape="rect" coords="321,56,418,80"/>
+<area href="class_socket.html" title="A socket which defines the communication in a CAN channel. " alt="Socket" shape="rect" coords="428,56,525,80"/>
+<area href="class_s_p_i_1_1_s_p_i.html" title="An SPI driver which implements the AVR SPI interface. " alt="SPI::SPI" shape="rect" coords="535,56,632,80"/>
+<area href="class_u_a_r_t.html" title="An interface for communicating through UART. " alt="UART" shape="rect" coords="642,56,739,80"/>
+<area href="class_o_l_e_d__memory.html" title="A class to communicate with the OLED display using the external memory interface. ..." alt="OLED_memory" shape="rect" coords="267,112,364,136"/>
+<area href="class_o_l_e_d___s_c_p.html" title="A class to communicate with the OLED display through the SCP. " alt="OLED_SCP" shape="rect" coords="374,112,471,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -196,7 +198,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class is an interface for implementing a duplex FIFO stream. </p>
-<p>This class implements a duplex FIFO stream using two circular buffers. For instance both an RS232 driver and a <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> driver would need to implement a stream. Inheriting from this interface makes the communication interface for RS232, <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> and other stream based classes/drivers the same, meaning the end user does not need to know whether the data being sent is being sent over a <a class="el" href="class_u_a_r_t.html">UART</a> or a <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> bus.</p>
+<p>This class implements a duplex FIFO stream using two circular buffers. For instance both an RS232 driver and a <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> driver would need to implement a stream. Inheriting from this interface makes the communication interface for RS232, <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> and other stream based classes/drivers the same, meaning the end user does not need to know whether the data being sent is being sent over a <a class="el" href="class_u_a_r_t.html" title="An interface for communicating through UART. ">UART</a> or a <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> bus.</p>
 <p>As an example you can set up a <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> bus using a <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> driver inheriting from this interface. Then it can be passed to a function expecting to send data to an RS232 class also inheriting from this interface, and it will just work. This interface is in other words written to make it easier to write consistent and driver independent code. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2b738d6f4d3059de2ae3d444d68663bf"></a>
@@ -1466,7 +1468,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_stream.html">Stream</a></li>
-    <li class="footer">Generated on Sun Nov 20 2016 21:59:11 for Byggern by
+    <li class="footer">Generated on Sun Nov 20 2016 22:20:03 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

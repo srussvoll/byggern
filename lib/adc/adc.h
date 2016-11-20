@@ -1,7 +1,5 @@
 #pragma once
 
-#ifdef __AVR_ATmega162__
-
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
@@ -98,4 +96,3 @@ public:
      */
     bool request_sample();
 };
-#endif

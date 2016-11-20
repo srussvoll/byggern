@@ -1,7 +1,5 @@
 #pragma once
 
-#ifdef __AVR_ATmega162__
-
 namespace Utilities {
 
     /**
@@ -9,4 +7,3 @@ namespace Utilities {
     */
     void InitializeMemory();
 }
-#endif

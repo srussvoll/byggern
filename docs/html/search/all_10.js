@@ -12,6 +12,7 @@ var searchData=
   ['receive',['Receive',['../class_s_c_p.html#ab01a551b8edf803faaea5b0310345498',1,'SCP']]],
   ['render',['Render',['../class_menu_1_1_controller.html#af46abb3d242c76822c0e8ea8ab777fa5',1,'Menu::Controller']]],
   ['repaint',['Repaint',['../class_o_l_e_d.html#a3efa34861b4ae0bc5323f6b7cf1d8a01',1,'OLED']]],
+  ['request_5fsample',['request_sample',['../class_a_d_c.html#a8264cbf9141f229f5117718e78f01173',1,'ADC']]],
   ['requestsample',['RequestSample',['../class_a_d_c__internal.html#accd9d981273a75e739f16232196f0d5e',1,'ADC_internal']]],
   ['requesttosend',['RequestToSend',['../class_m_c_p2515.html#a5a218199ca1dfcb25cb95890bc0220fc',1,'MCP2515']]],
   ['reset',['Reset',['../class_d_a_c.html#a28b77e33c40384e1308168e2945d99b5',1,'DAC::Reset()'],['../class_encoder.html#a4375bf4d88d56f5f5d09860f9062d691',1,'Encoder::Reset()'],['../class_m_c_p2515.html#aa4d4138b984dc87116cf72ae104acb70',1,'MCP2515::Reset()']]],

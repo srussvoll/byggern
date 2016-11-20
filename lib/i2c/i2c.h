@@ -1,21 +1,10 @@
-#ifdef __AVR_ATmega2560__
-
 #pragma once
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
 #include "lib/stream/stream.h"
 #include "lib/i2c/pins.h"
-
-/**
- * \brief I2C (TWI) for communicating for peripherals
- *
- * This implementation is based on the http://www.atmel.com/Images/Atmel-2564-Using-the-TWI-Module-as-I2C-Master_ApplicationNote_AVR315.pdf device driver example
- * Most of the implementation is ported from ATMEL/AVRs C IAR example code found in the link.
- * However, we had to port it to C++ and the avrgcc compiler.
- * Note that we were not asked to create this driver, so the implementation is due to ATMEL
- * © ATMEL / Microship
- */
 
 // Status byte holding flags.
 union TWI_statusReg
@@ -32,6 +21,16 @@ extern union TWI_statusReg TWI_statusReg;
 
 ISR(TWI_vect);
 
+
+/**
+ * \brief I2C (TWI) for communicating for peripherals
+ *
+ * This implementation is based on the http://www.atmel.com/Images/Atmel-2564-Using-the-TWI-Module-as-I2C-Master_ApplicationNote_AVR315.pdf device driver example
+ * Most of the implementation is ported from ATMEL/AVRs C IAR example code found in the link.
+ * However, we had to port it to C++ and the avrgcc compiler.
+ * Note that we were not asked to create this driver, so the implementation is due to ATMEL
+ * © ATMEL / Microship
+ */
 class I2C : Stream {
 
 private:
@@ -127,6 +126,3 @@ public:
     uint8_t GetDataFromTransceiver(uint8_t *message, uint8_t message_size);
 
 };
-
-#endif
-

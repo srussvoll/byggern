@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Byggern: Main Page</title>
+<title>Byggern: TTK4155 2016</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,15 +80,67 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Byggern Documentation</div>  </div>
+<div class="title">TTK4155 2016 </div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><p>The term project for TTK4155 Embedded and Industrial Computer Systems Design for group 20 2016.</p>
+<p>Created by Sondre Wangenstein Baugstø, Johan Lofstad and Sondre Vincent Russvoll.</p>
+<h2>File structure</h2>
+<p>The library is shared between the two nodes, and can be found in the lib folder. Every class has its own folder, with its own .h and .cpp file.</p>
+<p>If a module is specific to one chip, for example the ATmega162, we have included a <code>#ifdef __AVR_ATmega162__</code> in the header file. This define is set by the compiler during the build process.</p>
+<p>The node specific code is located in the node(1/2) / src. The <em>init.cpp</em> file is ran each time the MCU starts, and <em>main.cpp</em> is the main file. The <em>state_machine.cpp</em> is the state machine implementation.</p>
+<h3>State machine</h3>
+<p>Each of the nodes runs on a state machine. The implementation of said state machine can be found in <em>lib/state_machine</em>. Under <em>node(1/2) / src / state_machine.cpp</em> we have specified and implemented the states of the node.</p>
+<p>There is one function that runs when a state is entered, one that loops until the state is left, and one that runs when we leave the state. Transitions between states is done with <code>fsm-&gt;Transition(STATE_NEXT, 0)</code></p>
+<p><b>Advantages of using this FSM</b></p>
+<p>There are several advantages of using this kind of FSM. Adding and removing states is very easy, and only requires you to add/remove a function from an array. The system is always in a defined state, giving less room for unexpected behavior. The code is also very easy to read, making it easy to identify every state and what it does.</p>
+<p><b>Shared resources</b></p>
+<p>Since enter, loop and leave are different functions, they all have their own separate scope. This causes us to have a few global variables. This is not a big problem, since putting those variable in a namespace makes them local to the file.</p>
+<h2><a class="el" href="class_stream.html" title="This class is an interface for implementing a duplex FIFO stream. ">Stream</a></h2>
+<p>We chose to implement a full duplex stream class, because it gave us a lot of overhead when implementing other modules such as <a class="el" href="class_u_a_r_t.html" title="An interface for communicating through UART. ">UART</a>, <a class="el" href="namespace_s_p_i.html" title="A namespace containing everything related to the SPI driver. ">SPI</a> and <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a>. It utilizes a ring buffer for both input and output. All classes that uses <a class="el" href="class_stream.html" title="This class is an interface for implementing a duplex FIFO stream. ">Stream</a> inherit from it.</p>
+<p>The figure underneath shows which classes that uses the stream.</p>
+<div class="image">
+<img src="../images/stream_map.png" style="width:70%;"/>
+</div>
+<h2>Network</h2>
+<p>In addition to <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a>, which is the physical and link layer, we have also made a transport layer and application protocol.</p>
+<p><b>Transport layer - SOCKET</b></p>
+<p>The transport layer is implemented as a SOCKET (not to be confused with a TCP socket). It handles communication between the node and a specified <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> channel. It uses the stream in order to buffer incoming and outgoing messages.</p>
+<p><em>Please see the socket class in the docs for a more detailed description</em></p>
+<p><b>Application layer - <a class="el" href="class_s_c_p.html" title="SCP (Simple Command Protocol) is an application layer protocol designed to send commands. ">SCP</a></b></p>
+<p>Our application layer protocol is called <a class="el" href="class_s_c_p.html" title="SCP (Simple Command Protocol) is an application layer protocol designed to send commands. ">SCP</a> (Simple Command Protocol). It uses a socket to send commands between nodes. The <a class="el" href="class_s_c_p.html" title="SCP (Simple Command Protocol) is an application layer protocol designed to send commands. ">SCP</a> frame consists of the following:</p>
+<ul>
+<li>Command, 1 byte.</li>
+<li>Amount of data, 1 byte</li>
+<li>Data, 0-256 bytes</li>
+</ul>
+<p><em>Please see the <a class="el" href="class_s_c_p.html" title="SCP (Simple Command Protocol) is an application layer protocol designed to send commands. ">SCP</a> class in the docs for a more detailed description</em></p>
+<h2>Extras</h2>
+<p>We have implemented a few extra features, listed underneath.</p>
+<h3>Toolchain and C++</h3>
+<p>We decided to create our own toolchain, and not use the supplied toolchain in ATMEL Studio. All of our development is done in Linux (except for the GAL), and we used <a href="http://www.nongnu.org/avrdude/">AVRDUDE</a>, <a href="http://www.nongnu.org/avr-libc/">AVR-G++</a> and <a href="https://cmake.org/">CMake</a> to build and flash the code onto the ATMega.</p>
+<p>We decided to go for C++ because it makes the code more readable due to modularization.</p>
+<p>We used the <a href="https://help.ubuntu.com/community/Minicom">minicom</a> software to read <a class="el" href="class_u_a_r_t.html" title="An interface for communicating through UART. ">UART</a> messages.</p>
+<h3>Extended memory map</h3>
+<p>The memory map has been extended from 2KB of SRAM to 8KB of SRAM. We achieved this by not using the JTAG interface that occupied the remaining address and data pins. This gave us an updated memory map as seen below.</p>
+<div class="image">
+<img src="../images/memory_map.png" style="width:40%;"/>
+</div>
+<h3><a class="el" href="namespace_highscore.html" title="Keeps track of the highscore and stores it to the EEPROM using Score objects. ">Highscore</a>, nRF51 chip and Bluetooth</h3>
+<p>We have implemented a highscore system that stores the highscore in the EEPROM at the ATmega162. The highscore system is based on time, and the longer you play, the higher score you get. This is realized through a timer module in the ATmega2560.</p>
+<p>When a game ends, you are prompted to enter your name. We have developed an android app, which communicates with a nRF51 (from now on node 3) dev board through BLE (Bluetooth Low Energy). The name is entered on this app and sent to node 3.</p>
+<p>When node 3 receives the name, it is sent to node 2 through <a class="el" href="namespace_s_p_i.html" title="A namespace containing everything related to the SPI driver. ">SPI</a>. Node 2 then sends the name to node 1 through <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a>, which stores the name in the EEPROM (if the highscore is good enough).</p>
+<p>This highscore can later be found by the menu entry "Highscore". You can also clear the highscore here through the menu entry clear.</p>
+<p><b>You can find the code for the nRF51 chip and the android code in the extra folder.</b></p>
+<h3>Render <a class="el" href="class_o_l_e_d.html" title="An interface to communicate with the OLED display. ">OLED</a> from Node 2 over <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a></h3>
+<p>It is possible to render the <a class="el" href="class_o_l_e_d.html" title="An interface to communicate with the OLED display. ">OLED</a> from node 2 through the <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> network. However, currently, it does not render fast enough for it to be a viable option, but we have included a menu entry which illustrates that it is possible.</p>
+<p>This is done through the <a class="el" href="class_s_c_p.html" title="SCP (Simple Command Protocol) is an application layer protocol designed to send commands. ">SCP</a> protocol that we developed for this project. Please see the documentation and the <a class="el" href="class_s_c_p.html" title="SCP (Simple Command Protocol) is an application layer protocol designed to send commands. ">SCP</a> class. We send a <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> message with <a class="el" href="class_s_c_p.html" title="SCP (Simple Command Protocol) is an application layer protocol designed to send commands. ">SCP</a> instruction node 1 to write to a specific memory address. The <a class="el" href="class_o_l_e_d.html" title="An interface to communicate with the OLED display. ">OLED</a> addresses and data is calculated at node 2. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Nov 20 2016 21:59:11 for Byggern by
+    <li class="footer">Generated on Sun Nov 20 2016 22:20:04 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

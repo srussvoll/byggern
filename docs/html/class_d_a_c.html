@@ -127,7 +127,7 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a70a9fd9603ee9fd9303628bd23338bf5"><td class="memItemLeft" align="right" valign="top">I2C *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_a_c.html#a70a9fd9603ee9fd9303628bd23338bf5">i2c</a></td></tr>
+<tr class="memitem:a70a9fd9603ee9fd9303628bd23338bf5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_i2_c.html">I2C</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_a_c.html#a70a9fd9603ee9fd9303628bd23338bf5">i2c</a></td></tr>
 <tr class="separator:a70a9fd9603ee9fd9303628bd23338bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a229a81d8ebf43511dfb6815c5cd8f425"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_a_c.html#a229a81d8ebf43511dfb6815c5cd8f425">max</a></td></tr>
 <tr class="separator:a229a81d8ebf43511dfb6815c5cd8f425"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,7 +140,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Using an extern <a class="el" href="class_d_a_c.html" title="Using an extern DAC. ">DAC</a>. </p>
-<p>A digital-to-analog converter. This one is extern, that is not on the mcu, so it needs to be interfaced (i.e. through I2C) </p>
+<p>A digital-to-analog converter. This one is extern, that is not on the mcu, so it needs to be interfaced (i.e. through <a class="el" href="class_i2_c.html" title="I2C (TWI) for communicating for peripherals. ">I2C</a>) </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9908e07a5c096380eeb4c4061d58476d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9908e07a5c096380eeb4c4061d58476d">&sect;&nbsp;</a></span>DAC() <span class="overload">[1/2]</span></h2>
@@ -245,11 +245,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes the dac by giving it an address (the one used by I2C to access it) In our project it is already grounded, so the address is set as 0x50 </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Initializes the dac by giving it an address (the one used by <a class="el" href="class_i2_c.html" title="I2C (TWI) for communicating for peripherals. ">I2C</a> to access it) In our project it is already grounded, so the address is set as 0x50 </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">min</td><td>The minimum value the <a class="el" href="class_d_a_c.html" title="Using an extern DAC. ">DAC</a> can output </td></tr>
     <tr><td class="paramname">max</td><td>The maximum value the <a class="el" href="class_d_a_c.html" title="Using an extern DAC. ">DAC</a> can output </td></tr>
-    <tr><td class="paramname">i2c_address</td><td>The address of the <a class="el" href="class_d_a_c.html" title="Using an extern DAC. ">DAC</a> on the I2C bus </td></tr>
+    <tr><td class="paramname">i2c_address</td><td>The address of the <a class="el" href="class_d_a_c.html" title="Using an extern DAC. ">DAC</a> on the <a class="el" href="class_i2_c.html" title="I2C (TWI) for communicating for peripherals. ">I2C</a> bus </td></tr>
   </table>
   </dd>
 </dl>
@@ -395,7 +395,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The address of the <a class="el" href="class_d_a_c.html" title="Using an extern DAC. ">DAC</a> on the I2C bus </p>
+<p>The address of the <a class="el" href="class_d_a_c.html" title="Using an extern DAC. ">DAC</a> on the <a class="el" href="class_i2_c.html" title="I2C (TWI) for communicating for peripherals. ">I2C</a> bus </p>
 
 </div>
 </div>
@@ -432,7 +432,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">I2C* DAC::i2c</td>
+          <td class="memname"><a class="el" href="class_i2_c.html">I2C</a>* DAC::i2c</td>
         </tr>
       </table>
   </td>
@@ -441,7 +441,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The I2C for communication with the <a class="el" href="class_d_a_c.html" title="Using an extern DAC. ">DAC</a> </p>
+<p>The <a class="el" href="class_i2_c.html" title="I2C (TWI) for communicating for peripherals. ">I2C</a> for communication with the <a class="el" href="class_d_a_c.html" title="Using an extern DAC. ">DAC</a> </p>
 
 </div>
 </div>
@@ -500,7 +500,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_d_a_c.html">DAC</a></li>
-    <li class="footer">Generated on Sun Nov 20 2016 21:59:09 for Byggern by
+    <li class="footer">Generated on Sun Nov 20 2016 22:20:02 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

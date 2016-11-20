@@ -21,7 +21,9 @@ var hierarchy =
     [ "Solenoid", "class_solenoid.html", null ],
     [ "StateMachine", "class_state_machine.html", null ],
     [ "Stream", "class_stream.html", [
+      [ "ADC", "class_a_d_c.html", null ],
       [ "ADC_internal", "class_a_d_c__internal.html", null ],
+      [ "I2C", "class_i2_c.html", null ],
       [ "OLED", "class_o_l_e_d.html", [
         [ "OLED_memory", "class_o_l_e_d__memory.html", null ],
         [ "OLED_SCP", "class_o_l_e_d___s_c_p.html", null ]
@@ -30,5 +32,6 @@ var hierarchy =
       [ "SPI::SPI", "class_s_p_i_1_1_s_p_i.html", null ],
       [ "UART", "class_u_a_r_t.html", null ]
     ] ],
-    [ "Timer", "class_timer.html", null ]
+    [ "Timer", "class_timer.html", null ],
+    [ "TWI_statusReg", "union_t_w_i__status_reg.html", null ]
 ];

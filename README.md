@@ -31,6 +31,10 @@ Since enter, loop and leave are different functions, they all have their own sep
 
 We chose to implement a full duplex stream class, because it gave us a lot of overhead when implementing other modules such as UART, SPI and CAN. It utilizes a ring buffer for both input and output. All classes that uses Stream inherit from it.
 
+The figure underneath shows which classes that uses the stream.
+
+<img src="../images/stream_map.png" style="width:70%;">
+
 ## Network
 
 In addition to CAN, which is the physical and link layer, we have also made a transport layer and application protocol.
@@ -67,7 +71,7 @@ We used the [minicom](https://help.ubuntu.com/community/Minicom) software to rea
 
 The memory map has been extended from 2KB of SRAM to 8KB of SRAM. We achieved this by not using the JTAG interface that occupied the remaining address and data pins. This gave us an updated memory map as seen below.
 
-![Memory map](../images/memory_map.png)
+<img src="../images/memory_map.png" style="width:40%;">
 
 
 ### Highscore, nRF51 chip and Bluetooth

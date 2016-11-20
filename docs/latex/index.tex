@@ -2,6 +2,10 @@ The term project for T\+T\+K4155 Embedded and Industrial Computer Systems Design
 
 Created by Sondre Wangenstein Baugstø, Johan Lofstad and Sondre Vincent Russvoll.
 
+\subsection*{Design philosophy}
+
+We wanted to modularize our project as much as possible. In doing this, we made the device drivers more general, and thus easily extendable and reusable for other projects. We kept this philosophy in the back of our minds throughout the entire project.
+
 \subsection*{File structure}
 
 The library is shared between the two nodes, and can be found in the lib folder. Every class has its own folder, with its own .h and .cpp file.
@@ -50,7 +54,7 @@ Our application layer protocol is called \hyperlink{class_s_c_p}{S\+CP} (Simple 
 \begin{DoxyItemize}
 \item Command, 1 byte.
 \item Amount of data, 1 byte
-\item Data, 0-\/256 bytes
+\item Data, 0-\/255 bytes
 \end{DoxyItemize}
 
 {\itshape Please see the \hyperlink{class_s_c_p}{S\+CP} class in the docs for a more detailed description}

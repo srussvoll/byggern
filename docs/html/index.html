@@ -85,6 +85,8 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p>The term project for TTK4155 Embedded and Industrial Computer Systems Design for group 20 2016.</p>
 <p>Created by Sondre Wangenstein Baugstø, Johan Lofstad and Sondre Vincent Russvoll.</p>
+<h2>Design philosophy</h2>
+<p>We wanted to modularize our project as much as possible. In doing this, we made the device drivers more general, and thus easily extendable and reusable for other projects. We kept this philosophy in the back of our minds throughout the entire project.</p>
 <h2>File structure</h2>
 <p>The library is shared between the two nodes, and can be found in the lib folder. Every class has its own folder, with its own .h and .cpp file.</p>
 <p>If a module is specific to one chip, for example the ATmega162, we have included a <code>#ifdef __AVR_ATmega162__</code> in the header file. This define is set by the compiler during the build process.</p>
@@ -112,7 +114,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <ul>
 <li>Command, 1 byte.</li>
 <li>Amount of data, 1 byte</li>
-<li>Data, 0-256 bytes</li>
+<li>Data, 0-255 bytes</li>
 </ul>
 <p><em>Please see the <a class="el" href="class_s_c_p.html" title="SCP (Simple Command Protocol) is an application layer protocol designed to send commands. ">SCP</a> class in the docs for a more detailed description</em></p>
 <h2>Extras</h2>
@@ -140,7 +142,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Nov 20 2016 22:22:23 for Byggern by
+    <li class="footer">Generated on Sun Nov 20 2016 22:34:42 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

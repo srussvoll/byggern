@@ -4,6 +4,10 @@ The term project for TTK4155 Embedded and Industrial Computer Systems Design for
 
 Created by Sondre Wangenstein Baugstø, Johan Lofstad and Sondre Vincent Russvoll.
 
+## Design philosophy
+
+We wanted to modularize our project as much as possible. In doing this, we made the device drivers more general, and thus easily extendable and reusable for other projects. We kept this philosophy in the back of our minds throughout the entire project.
+
 ## File structure
 
 The library is shared between the two nodes, and can be found in the lib folder. Every class has its own folder, with its own .h and .cpp file.
@@ -51,7 +55,7 @@ Our application layer protocol is called SCP (Simple Command Protocol). It uses 
 
 * Command, 1 byte.
 * Amount of data, 1 byte
-* Data, 0-256 bytes
+* Data, 0-255 bytes
 
 *Please see the SCP class in the docs for a more detailed description*
 
@@ -61,11 +65,11 @@ We have implemented a few extra features, listed underneath.
 
 ### Toolchain and C++
 
-We decided to create our own toolchain, and not use the supplied toolchain in ATMEL Studio. All of our development is done in Linux (except for the GAL), and we used [AVRDUDE](http://www.nongnu.org/avrdude/), [AVR-G++](http://www.nongnu.org/avr-libc/) and [CMake](https://cmake.org/) to build and flash the code onto the ATMega.
+We decided to create our own toolchain. All of our development is done in Linux and Mac, and we used [AVRDUDE](http://www.nongnu.org/avrdude/), [AVR-G++](http://www.nongnu.org/avr-libc/) and [CMake](https://cmake.org/) to build and flash the code onto the ATMega. Creating our own toolchain gave us a lot of freedom and gave us a better insight into the process.
 
-We decided to go for C++ because it makes the code more readable due to modularization.
+We decided to go for C++ because it makes the code more readable due to modularization. We used the [minicom](https://help.ubuntu.com/community/Minicom) software to read UART messages.
 
-We used the [minicom](https://help.ubuntu.com/community/Minicom) software to read UART messages.
+Our toolchain works on Windows, Linux and OS X. 
 
 ### Extended memory map
 

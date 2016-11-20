@@ -14,17 +14,13 @@ A C Style state machine implementation.
 \item 
 \hyperlink{class_state_machine_ad9c6bdaca444710f77fc12d7e1af8fdc}{State\+Machine} (void($\ast$($\ast$\hyperlink{class_state_machine_acc87359cd98c436f5b891ffe6cb67160}{state\+\_\+functions}))(void), uint8\+\_\+t initial\+\_\+state=0)
 \item 
-\hypertarget{class_state_machine_a1597799edc5a89006f164e52fd72d02b}{}\label{class_state_machine_a1597799edc5a89006f164e52fd72d02b} 
-bool {\bfseries Transition} (uint8\+\_\+t state, bool reenter)
+bool \hyperlink{class_state_machine_a1597799edc5a89006f164e52fd72d02b}{Transition} (uint8\+\_\+t state, bool reenter)
 \item 
-\hypertarget{class_state_machine_a62fd24666d16a2425c8397ce2d326dae}{}\label{class_state_machine_a62fd24666d16a2425c8397ce2d326dae} 
-uint8\+\_\+t {\bfseries Get\+Current\+State} ()
+uint8\+\_\+t \hyperlink{class_state_machine_a62fd24666d16a2425c8397ce2d326dae}{Get\+Current\+State} ()
 \item 
-\hypertarget{class_state_machine_a94c93f8203bab4f5a3784eba7445b582}{}\label{class_state_machine_a94c93f8203bab4f5a3784eba7445b582} 
-void {\bfseries Start} ()
+void \hyperlink{class_state_machine_a94c93f8203bab4f5a3784eba7445b582}{Start} ()
 \item 
-\hypertarget{class_state_machine_a2eb142249e4c483c8a329b1a18b4383f}{}\label{class_state_machine_a2eb142249e4c483c8a329b1a18b4383f} 
-void {\bfseries Stop} ()
+void \hyperlink{class_state_machine_a2eb142249e4c483c8a329b1a18b4383f}{Stop} ()
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -50,9 +46,14 @@ The states are realized by three functions for each state. One that runs when yo
 
 In the state matrix each row is tied to the state, and row 0 -\/ 3 is tied to the state functions.
 
-Column 0 is the enter function   Column 1 is the loop function   Column 2 is the leave function 
 
-{\bfseries Example} 
+\begin{DoxyItemize}
+\item Column 0 is the enter function  
+\item Column 1 is the loop function  
+\item Column 2 is the leave function  
+\end{DoxyItemize}
+
+{\bfseries Example of the state\+\_\+function paramter in the initializer} 
 \begin{DoxyCode}
  void (*\hyperlink{class_state_machine_acc87359cd98c436f5b891ffe6cb67160}{state\_functions}[][3])(void) = \{
 \{\textcolor{keyword}{nullptr}, InitializeLoop, \textcolor{keyword}{nullptr}\},
@@ -77,13 +78,47 @@ Initializer. For the state\+\_\+functions parameter, it expects a matrix where e
 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_state_machine_acc87359cd98c436f5b891ffe6cb67160}{}\label{class_state_machine_acc87359cd98c436f5b891ffe6cb67160} 
+\hypertarget{class_state_machine_a62fd24666d16a2425c8397ce2d326dae}{}\label{class_state_machine_a62fd24666d16a2425c8397ce2d326dae} 
+\index{State\+Machine@{State\+Machine}!Get\+Current\+State@{Get\+Current\+State}}
+\index{Get\+Current\+State@{Get\+Current\+State}!State\+Machine@{State\+Machine}}
+\subsubsection{\texorpdfstring{Get\+Current\+State()}{GetCurrentState()}}
+{\footnotesize\ttfamily uint8\+\_\+t State\+Machine\+::\+Get\+Current\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the current state \begin{DoxyReturn}{Returns}
+The current state 
+\end{DoxyReturn}
+\hypertarget{class_state_machine_a94c93f8203bab4f5a3784eba7445b582}{}\label{class_state_machine_a94c93f8203bab4f5a3784eba7445b582} 
+\index{State\+Machine@{State\+Machine}!Start@{Start}}
+\index{Start@{Start}!State\+Machine@{State\+Machine}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void State\+Machine\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Starts the F\+SM \hypertarget{class_state_machine_acc87359cd98c436f5b891ffe6cb67160}{}\label{class_state_machine_acc87359cd98c436f5b891ffe6cb67160} 
 \index{State\+Machine@{State\+Machine}!state\+\_\+functions@{state\+\_\+functions}}
 \index{state\+\_\+functions@{state\+\_\+functions}!State\+Machine@{State\+Machine}}
 \subsubsection{\texorpdfstring{state\+\_\+functions()}{state\_functions()}}
 {\footnotesize\ttfamily void State\+Machine\+::state\+\_\+functions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-A matrix containing the states and their state functions 
+A matrix containing the states and their state functions \hypertarget{class_state_machine_a2eb142249e4c483c8a329b1a18b4383f}{}\label{class_state_machine_a2eb142249e4c483c8a329b1a18b4383f} 
+\index{State\+Machine@{State\+Machine}!Stop@{Stop}}
+\index{Stop@{Stop}!State\+Machine@{State\+Machine}}
+\subsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void State\+Machine\+::\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Stops the F\+SM \hypertarget{class_state_machine_a1597799edc5a89006f164e52fd72d02b}{}\label{class_state_machine_a1597799edc5a89006f164e52fd72d02b} 
+\index{State\+Machine@{State\+Machine}!Transition@{Transition}}
+\index{Transition@{Transition}!State\+Machine@{State\+Machine}}
+\subsubsection{\texorpdfstring{Transition()}{Transition()}}
+{\footnotesize\ttfamily bool State\+Machine\+::\+Transition (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{state,  }\item[{bool}]{reenter = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Transition to a state. 
+\begin{DoxyParams}{Parameters}
+{\em state} & The state to transition to \\
+\hline
+{\em reenter} & If you try to reenter the state you are currently in, this must be true. \\
+\hline
+\end{DoxyParams}
+
 
 \subsection{Member Data Documentation}
 \hypertarget{class_state_machine_abdcd9426d9a2ec9e2d703c74cd3299df}{}\label{class_state_machine_abdcd9426d9a2ec9e2d703c74cd3299df} 

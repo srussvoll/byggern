@@ -1,5 +1,14 @@
 \hypertarget{class_o_l_e_d___s_c_p}{}\section{O\+L\+E\+D\+\_\+\+S\+CP Class Reference}
 \label{class_o_l_e_d___s_c_p}\index{O\+L\+E\+D\+\_\+\+S\+CP@{O\+L\+E\+D\+\_\+\+S\+CP}}
+
+
+A class to communicate with the \hyperlink{class_o_l_e_d}{O\+L\+ED} display through the \hyperlink{class_s_c_p}{S\+CP}.  
+
+
+
+
+{\ttfamily \#include $<$oled\+\_\+scp.\+h$>$}
+
 Inheritance diagram for O\+L\+E\+D\+\_\+\+S\+CP\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +30,7 @@ static \hyperlink{class_o_l_e_d___s_c_p}{O\+L\+E\+D\+\_\+\+S\+CP} \& \hyperlink{
 \item 
 \hyperlink{class_o_l_e_d___s_c_p_a8a52dd583b6f4bdf479204c31c99b4b7}{O\+L\+E\+D\+\_\+\+S\+CP} ()
 \item 
-\hypertarget{class_o_l_e_d___s_c_p_a5488fa5865fd8c0e83eb3c8ff7a216cf}{}\label{class_o_l_e_d___s_c_p_a5488fa5865fd8c0e83eb3c8ff7a216cf} 
-virtual void {\bfseries Write\+Byte\+To\+O\+L\+ED} (volatile uint8\+\_\+t $\ast$address, uint8\+\_\+t data)
+virtual void \hyperlink{class_o_l_e_d___s_c_p_a5488fa5865fd8c0e83eb3c8ff7a216cf}{Write\+Byte\+To\+O\+L\+ED} (volatile uint8\+\_\+t $\ast$address, uint8\+\_\+t data)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -40,6 +48,9 @@ uint8\+\_\+t $\ast$ {\bfseries bytes\+\_\+to\+\_\+send}
 uint8\+\_\+t {\bfseries bytes\+\_\+to\+\_\+send\+\_\+index} = 0
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+A class to communicate with the \hyperlink{class_o_l_e_d}{O\+L\+ED} display through the \hyperlink{class_s_c_p}{S\+CP}. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_o_l_e_d___s_c_p_a8a52dd583b6f4bdf479204c31c99b4b7}{}\label{class_o_l_e_d___s_c_p_a8a52dd583b6f4bdf479204c31c99b4b7} 
@@ -69,12 +80,29 @@ Initializes the whole screen.
 \hline
 {\em height} & The height of the screen in pixels \\
 \hline
-{\em socket} & Socket to write through. \\
+{\em socket} & \hyperlink{class_socket}{Socket} to write through. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_o_l_e_d___s_c_p_a5488fa5865fd8c0e83eb3c8ff7a216cf}{}\label{class_o_l_e_d___s_c_p_a5488fa5865fd8c0e83eb3c8ff7a216cf} 
+\index{O\+L\+E\+D\+\_\+\+S\+CP@{O\+L\+E\+D\+\_\+\+S\+CP}!Write\+Byte\+To\+O\+L\+ED@{Write\+Byte\+To\+O\+L\+ED}}
+\index{Write\+Byte\+To\+O\+L\+ED@{Write\+Byte\+To\+O\+L\+ED}!O\+L\+E\+D\+\_\+\+S\+CP@{O\+L\+E\+D\+\_\+\+S\+CP}}
+\subsubsection{\texorpdfstring{Write\+Byte\+To\+O\+L\+E\+D()}{WriteByteToOLED()}}
+{\footnotesize\ttfamily void O\+L\+E\+D\+\_\+\+S\+C\+P\+::\+Write\+Byte\+To\+O\+L\+ED (\begin{DoxyParamCaption}\item[{volatile uint8\+\_\+t $\ast$}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+Writes a single byte to the \hyperlink{class_o_l_e_d}{O\+L\+ED}. This can be implemented using the external memory interface or using whatever other technology like for instance the \hyperlink{class_s_c_p}{S\+CP}. 
+\begin{DoxyParams}{Parameters}
+{\em address} & The address to write to. \\
+\hline
+{\em data} & The data to write. \\
 \hline
 \end{DoxyParams}
 
 
+Reimplemented from \hyperlink{class_o_l_e_d_a044fdff65656804114d1d39d766099a2}{O\+L\+ED}.
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-lib/oled\+\_\+scp/\hyperlink{oled__scp_8h}{oled\+\_\+scp.\+h}\item 
+lib/oled\+\_\+scp/oled\+\_\+scp.\+h\item 
 lib/oled\+\_\+scp/oled\+\_\+scp.\+cpp\end{DoxyCompactItemize}

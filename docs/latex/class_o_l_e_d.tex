@@ -1,5 +1,14 @@
 \hypertarget{class_o_l_e_d}{}\section{O\+L\+ED Class Reference}
 \label{class_o_l_e_d}\index{O\+L\+ED@{O\+L\+ED}}
+
+
+An interface to communicate with the \hyperlink{class_o_l_e_d}{O\+L\+ED} display.  
+
+
+
+
+{\ttfamily \#include $<$oled.\+h$>$}
+
 Inheritance diagram for O\+L\+ED\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -33,18 +42,16 @@ void \hyperlink{class_o_l_e_d_a0ffccb4fd874b997c869c5d511f76df8}{Write\+Line} (c
 \item 
 uint8\+\_\+t \hyperlink{class_o_l_e_d_a5b6d41d5d699998f54ea6e3b6562ac5b}{Get\+Y\+Coordinate\+From\+Line\+Number} (uint8\+\_\+t line)
 \item 
-void \hyperlink{class_o_l_e_d_a3bd2f2f05568441e1e0533eaf0db58f8}{Get\+Bitmap\+For\+Character} (char character, uint8\+\_\+t $\ast$\&character\+\_\+bitmap)
-\item 
-\hypertarget{class_o_l_e_d_a7bb08915b685741c60bdccdd47781560}{}\label{class_o_l_e_d_a7bb08915b685741c60bdccdd47781560} 
-uint8\+\_\+t {\bfseries Get\+Max\+Line\+Characters} ()
+uint8\+\_\+t \hyperlink{class_o_l_e_d_a7bb08915b685741c60bdccdd47781560}{Get\+Max\+Line\+Characters} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_o_l_e_d_a8eabf371b5642d99800adb759dab27fd}{O\+L\+ED} ()
 \item 
-\hypertarget{class_o_l_e_d_a044fdff65656804114d1d39d766099a2}{}\label{class_o_l_e_d_a044fdff65656804114d1d39d766099a2} 
-virtual void {\bfseries Write\+Byte\+To\+O\+L\+ED} (volatile uint8\+\_\+t $\ast$address, uint8\+\_\+t data)
+virtual void \hyperlink{class_o_l_e_d_a044fdff65656804114d1d39d766099a2}{Write\+Byte\+To\+O\+L\+ED} (volatile uint8\+\_\+t $\ast$address, uint8\+\_\+t data)
+\item 
+void \hyperlink{class_o_l_e_d_a3bd2f2f05568441e1e0533eaf0db58f8}{Get\+Bitmap\+For\+Character} (char character, uint8\+\_\+t $\ast$\&character\+\_\+bitmap)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -75,6 +82,9 @@ uint8\+\_\+t \hyperlink{class_o_l_e_d_a85b91421932866dea031921799ba83a3}{font\+\
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+An interface to communicate with the \hyperlink{class_o_l_e_d}{O\+L\+ED} display. 
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_o_l_e_d_a8eabf371b5642d99800adb759dab27fd}{}\label{class_o_l_e_d_a8eabf371b5642d99800adb759dab27fd} 
 \index{O\+L\+ED@{O\+L\+ED}!O\+L\+ED@{O\+L\+ED}}
@@ -82,7 +92,7 @@ uint8\+\_\+t \hyperlink{class_o_l_e_d_a85b91421932866dea031921799ba83a3}{font\+\
 \subsubsection{\texorpdfstring{O\+L\+E\+D()}{OLED()}}
 {\footnotesize\ttfamily O\+L\+E\+D\+::\+O\+L\+ED (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
-Singleton constructor 
+Singleton constructor. 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_o_l_e_d_a6c7bb1fc91b3e574a275f90643da140a}{}\label{class_o_l_e_d_a6c7bb1fc91b3e574a275f90643da140a} 
@@ -91,31 +101,40 @@ Singleton constructor
 \subsubsection{\texorpdfstring{Clear()}{Clear()}}
 {\footnotesize\ttfamily void O\+L\+E\+D\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Clears the whole screen \hypertarget{class_o_l_e_d_a3a571f5ea7a183fa14932cd5b2c423eb}{}\label{class_o_l_e_d_a3a571f5ea7a183fa14932cd5b2c423eb} 
+Clears the whole screen. \hypertarget{class_o_l_e_d_a3a571f5ea7a183fa14932cd5b2c423eb}{}\label{class_o_l_e_d_a3a571f5ea7a183fa14932cd5b2c423eb} 
 \index{O\+L\+ED@{O\+L\+ED}!Clear\+Line@{Clear\+Line}}
 \index{Clear\+Line@{Clear\+Line}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{Clear\+Line()}{ClearLine()}}
 {\footnotesize\ttfamily void O\+L\+E\+D\+::\+Clear\+Line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Clears the current line selected \hypertarget{class_o_l_e_d_a3bd2f2f05568441e1e0533eaf0db58f8}{}\label{class_o_l_e_d_a3bd2f2f05568441e1e0533eaf0db58f8} 
+Clears the current line. \hypertarget{class_o_l_e_d_a3bd2f2f05568441e1e0533eaf0db58f8}{}\label{class_o_l_e_d_a3bd2f2f05568441e1e0533eaf0db58f8} 
 \index{O\+L\+ED@{O\+L\+ED}!Get\+Bitmap\+For\+Character@{Get\+Bitmap\+For\+Character}}
 \index{Get\+Bitmap\+For\+Character@{Get\+Bitmap\+For\+Character}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{Get\+Bitmap\+For\+Character()}{GetBitmapForCharacter()}}
-{\footnotesize\ttfamily void O\+L\+E\+D\+::\+Get\+Bitmap\+For\+Character (\begin{DoxyParamCaption}\item[{char}]{character,  }\item[{uint8\+\_\+t $\ast$\&}]{character\+\_\+bitmap }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void O\+L\+E\+D\+::\+Get\+Bitmap\+For\+Character (\begin{DoxyParamCaption}\item[{char}]{character,  }\item[{uint8\+\_\+t $\ast$\&}]{character\+\_\+bitmap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
-Returns a pointer to P\+R\+O\+G\+M\+EM for the bitmap for the given font and character. Emphasis on that it points to P\+R\+O\+G\+M\+EM. \href{http://www.nongnu.org/avr-libc/user-manual/pgmspace.html}{\tt http\+://www.\+nongnu.\+org/avr-\/libc/user-\/manual/pgmspace.\+html} \hypertarget{class_o_l_e_d_a5b6d41d5d699998f54ea6e3b6562ac5b}{}\label{class_o_l_e_d_a5b6d41d5d699998f54ea6e3b6562ac5b} 
+Fetches a pointer to P\+R\+O\+G\+M\+EM for the bitmap for the given font and character. Emphasis on that it points to P\+R\+O\+G\+M\+EM. \hypertarget{class_o_l_e_d_a7bb08915b685741c60bdccdd47781560}{}\label{class_o_l_e_d_a7bb08915b685741c60bdccdd47781560} 
+\index{O\+L\+ED@{O\+L\+ED}!Get\+Max\+Line\+Characters@{Get\+Max\+Line\+Characters}}
+\index{Get\+Max\+Line\+Characters@{Get\+Max\+Line\+Characters}!O\+L\+ED@{O\+L\+ED}}
+\subsubsection{\texorpdfstring{Get\+Max\+Line\+Characters()}{GetMaxLineCharacters()}}
+{\footnotesize\ttfamily uint8\+\_\+t O\+L\+E\+D\+::\+Get\+Max\+Line\+Characters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns how wide a line is in characters. \begin{DoxyReturn}{Returns}
+How wide a line is in characters. 
+\end{DoxyReturn}
+\hypertarget{class_o_l_e_d_a5b6d41d5d699998f54ea6e3b6562ac5b}{}\label{class_o_l_e_d_a5b6d41d5d699998f54ea6e3b6562ac5b} 
 \index{O\+L\+ED@{O\+L\+ED}!Get\+Y\+Coordinate\+From\+Line\+Number@{Get\+Y\+Coordinate\+From\+Line\+Number}}
 \index{Get\+Y\+Coordinate\+From\+Line\+Number@{Get\+Y\+Coordinate\+From\+Line\+Number}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{Get\+Y\+Coordinate\+From\+Line\+Number()}{GetYCoordinateFromLineNumber()}}
 {\footnotesize\ttfamily uint8\+\_\+t O\+L\+E\+D\+::\+Get\+Y\+Coordinate\+From\+Line\+Number (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{line }\end{DoxyParamCaption})}
 
-
+Returns the y coordinate of the line. 
 \begin{DoxyParams}{Parameters}
-{\em line} & \\
+{\em line} & The line to find the y coordinate of. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+The y coordinate of the line. 
 \end{DoxyReturn}
 \hypertarget{class_o_l_e_d_a8d314130676b104ed959b92ab4bac25e}{}\label{class_o_l_e_d_a8d314130676b104ed959b92ab4bac25e} 
 \index{O\+L\+ED@{O\+L\+ED}!Go\+To\+Line@{Go\+To\+Line}}
@@ -123,9 +142,9 @@ Returns a pointer to P\+R\+O\+G\+M\+EM for the bitmap for the given font and cha
 \subsubsection{\texorpdfstring{Go\+To\+Line()}{GoToLine()}}
 {\footnotesize\ttfamily void O\+L\+E\+D\+::\+Go\+To\+Line (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{line }\end{DoxyParamCaption})}
 
-Sets the line pointer. This line pointer is used by functions such as \hyperlink{class_o_l_e_d_a0ffccb4fd874b997c869c5d511f76df8}{Write\+Line()} to determine which line to write to. 
+Sets the line pointer. 
 \begin{DoxyParams}{Parameters}
-{\em line} & Which line to be set. \\
+{\em line} & Which line to go to. \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_o_l_e_d_a2c8205c8eac9d7a2b181657561e9b4d2}{}\label{class_o_l_e_d_a2c8205c8eac9d7a2b181657561e9b4d2} 
@@ -136,9 +155,9 @@ Sets the line pointer. This line pointer is used by functions such as \hyperlink
 
 Initializes the whole screen. 
 \begin{DoxyParams}{Parameters}
-{\em width} & The width of the screen in pixels \\
+{\em width} & The width of the screen in pixels. \\
 \hline
-{\em height} & The height of the screen in pixels \\
+{\em height} & The height of the screen in pixels. \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_o_l_e_d_a3efa34861b4ae0bc5323f6b7cf1d8a01}{}\label{class_o_l_e_d_a3efa34861b4ae0bc5323f6b7cf1d8a01} 
@@ -153,13 +172,15 @@ Repaints the \hyperlink{class_o_l_e_d}{O\+L\+ED} \hypertarget{class_o_l_e_d_abe6
 \subsubsection{\texorpdfstring{Set\+Font()}{SetFont()}}
 {\footnotesize\ttfamily void O\+L\+E\+D\+::\+Set\+Font (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{font,  }\item[{uint8\+\_\+t}]{width,  }\item[{uint8\+\_\+t}]{height }\end{DoxyParamCaption})}
 
+Sets the font to be used when writing to the screen.
+
 
 \begin{DoxyParams}{Parameters}
-{\em font} & A pointer to the font, usually in progmem \\
+{\em font} & A pointer to the font. Put this on the P\+R\+O\+G\+M\+EM only if possible to save R\+AM space. \\
 \hline
-{\em width} & The width of the font in pixels \\
+{\em width} & The width of the font in pixels. \\
 \hline
-{\em height} & The height of the font in pixels \\
+{\em height} & The height of the font in pixels. \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_o_l_e_d_aa3c88e19f05340036ea5ac9e2d1ea5dc}{}\label{class_o_l_e_d_aa3c88e19f05340036ea5ac9e2d1ea5dc} 
@@ -168,7 +189,7 @@ Repaints the \hyperlink{class_o_l_e_d}{O\+L\+ED} \hypertarget{class_o_l_e_d_abe6
 \subsubsection{\texorpdfstring{Set\+Number\+Of\+Lines()}{SetNumberOfLines()}}
 {\footnotesize\ttfamily void O\+L\+E\+D\+::\+Set\+Number\+Of\+Lines (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{number\+\_\+of\+\_\+lines }\end{DoxyParamCaption})}
 
-Sets the number of lines. Not to be confused with number of pages 
+Sets the number of lines. Not to be confused with number of pages. 
 \begin{DoxyParams}{Parameters}
 {\em number\+\_\+of\+\_\+lines} & The number of lines. \\
 \hline
@@ -179,19 +200,21 @@ Sets the number of lines. Not to be confused with number of pages
 \subsubsection{\texorpdfstring{Write\+Bitmap()}{WriteBitmap()}}
 {\footnotesize\ttfamily void O\+L\+E\+D\+::\+Write\+Bitmap (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$$\ast$}]{pixels,  }\item[{uint8\+\_\+t}]{bitmap\+\_\+width,  }\item[{uint8\+\_\+t}]{bitmap\+\_\+height,  }\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y,  }\item[{bool}]{is\+\_\+progmem }\end{DoxyParamCaption})}
 
-Writes a pixel-\/matrix to the given x and y position on the display 
+Writes a pixel matrix to the given x and y position on the display.
+
+
 \begin{DoxyParams}{Parameters}
-{\em pixels} & A double pointer to the matrix \\
+{\em pixels} & A double pointer to the matrix. \\
 \hline
-{\em bitmap\+\_\+width} & The width of the bitmap, in pixels \\
+{\em bitmap\+\_\+width} & The width of the bitmap in pixels. \\
 \hline
-{\em bitmap\+\_\+height} & The height of the bitmap, in pixels \\
+{\em bitmap\+\_\+height} & The height of the bitmap in pixels. \\
 \hline
-{\em x} & The starting position, x direction \\
+{\em x} & The starting position, x direction. \\
 \hline
-{\em y} & The starting position, y direction \\
+{\em y} & The starting position, y direction. \\
 \hline
-{\em is\+\_\+progmem} & A bool that indicates where the pixel array is located \\
+{\em is\+\_\+progmem} & A bool that indicates where the pixel array is located. \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_o_l_e_d_a7fa307269dbd2e80a6e48a1442df83d2}{}\label{class_o_l_e_d_a7fa307269dbd2e80a6e48a1442df83d2} 
@@ -200,13 +223,13 @@ Writes a pixel-\/matrix to the given x and y position on the display
 \subsubsection{\texorpdfstring{Write\+Byte()}{WriteByte()}}
 {\footnotesize\ttfamily void O\+L\+E\+D\+::\+Write\+Byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{page,  }\item[{uint8\+\_\+t}]{column,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
 
-Writes a byte to the given page and column. This is a helper function mainly used for debugging 
+Writes a byte to the given page and column. This is a helper function mainly used for debugging. 
 \begin{DoxyParams}{Parameters}
-{\em page} & Which page to be written to \\
+{\em page} & Which page to be written to. \\
 \hline
-{\em page} & Which column to be written to \\
+{\em page} & Which column to be written to. \\
 \hline
-{\em byte} & Which byte to be written \\
+{\em byte} & The byte to be written. \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_o_l_e_d_a7fffc17a5439300d361414c15a7a2dbe}{}\label{class_o_l_e_d_a7fffc17a5439300d361414c15a7a2dbe} 
@@ -215,32 +238,51 @@ Writes a byte to the given page and column. This is a helper function mainly use
 \subsubsection{\texorpdfstring{Write\+Byte\+Array()}{WriteByteArray()}}
 {\footnotesize\ttfamily void O\+L\+E\+D\+::\+Write\+Byte\+Array (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{page,  }\item[{uint8\+\_\+t}]{column,  }\item[{uint8\+\_\+t $\ast$}]{byte\+\_\+array,  }\item[{uint8\+\_\+t}]{length }\end{DoxyParamCaption})}
 
-Writes a bytearray starting at the given page and column. This is a helper function mainly used for debugging 
+Writes a byte array starting at the given page and column. This is a helper function mainly used for debugging. 
 \begin{DoxyParams}{Parameters}
-{\em page} & Which page to be written to \\
+{\em page} & Which page to be written to. \\
 \hline
-{\em page} & Which column to be written to first \\
+{\em page} & Which column to be written to first. \\
 \hline
-{\em byte\+\_\+array} & Which byte to be written \\
+{\em byte\+\_\+array} & Bytes to be written. \\
 \hline
-{\em length} & The length of the byte array (number of columns) \\
+{\em length} & The length of the byte array (number of columns). \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_o_l_e_d_a044fdff65656804114d1d39d766099a2}{}\label{class_o_l_e_d_a044fdff65656804114d1d39d766099a2} 
+\index{O\+L\+ED@{O\+L\+ED}!Write\+Byte\+To\+O\+L\+ED@{Write\+Byte\+To\+O\+L\+ED}}
+\index{Write\+Byte\+To\+O\+L\+ED@{Write\+Byte\+To\+O\+L\+ED}!O\+L\+ED@{O\+L\+ED}}
+\subsubsection{\texorpdfstring{Write\+Byte\+To\+O\+L\+E\+D()}{WriteByteToOLED()}}
+{\footnotesize\ttfamily virtual void O\+L\+E\+D\+::\+Write\+Byte\+To\+O\+L\+ED (\begin{DoxyParamCaption}\item[{volatile uint8\+\_\+t $\ast$}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+Writes a single byte to the \hyperlink{class_o_l_e_d}{O\+L\+ED}. This can be implemented using the external memory interface or using whatever other technology like for instance the \hyperlink{class_s_c_p}{S\+CP}. 
+\begin{DoxyParams}{Parameters}
+{\em address} & The address to write to. \\
+\hline
+{\em data} & The data to write. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_o_l_e_d___s_c_p_a5488fa5865fd8c0e83eb3c8ff7a216cf}{O\+L\+E\+D\+\_\+\+S\+CP}, and \hyperlink{class_o_l_e_d__memory_a8859cddd8c5639d43ae89bb750984291}{O\+L\+E\+D\+\_\+memory}.
+
 \hypertarget{class_o_l_e_d_a0ffccb4fd874b997c869c5d511f76df8}{}\label{class_o_l_e_d_a0ffccb4fd874b997c869c5d511f76df8} 
 \index{O\+L\+ED@{O\+L\+ED}!Write\+Line@{Write\+Line}}
 \index{Write\+Line@{Write\+Line}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{Write\+Line()}{WriteLine()}}
 {\footnotesize\ttfamily void O\+L\+E\+D\+::\+Write\+Line (\begin{DoxyParamCaption}\item[{char $\ast$}]{string,  }\item[{uint8\+\_\+t}]{length,  }\item[{uint8\+\_\+t}]{line,  }\item[{uint8\+\_\+t}]{offset }\end{DoxyParamCaption})}
 
-Writes the string to the given line. Erases everything on the line 
+Writes a string to the given line.
+
+
 \begin{DoxyParams}{Parameters}
-{\em string} & The string \\
+{\em string} & The string to be written. \\
 \hline
-{\em length} & Length of the string. No newline of course. \\
+{\em length} & Length of the string. \\
 \hline
-{\em line} & The line to be written to \\
+{\em line} & The line to write to. \\
 \hline
-{\em offset} & The offset from the left, in characters \\
+{\em offset} & The offset from the left, in characters. \\
 \hline
 \end{DoxyParams}
 
@@ -252,49 +294,49 @@ Writes the string to the given line. Erases everything on the line
 \subsubsection{\texorpdfstring{current\+\_\+line}{current\_line}}
 {\footnotesize\ttfamily uint8\+\_\+t O\+L\+E\+D\+::current\+\_\+line = 0\hspace{0.3cm}{\ttfamily [protected]}}
 
-The current line used by the driver \hypertarget{class_o_l_e_d_add08b51dec0ffeebcba7902c3bd4aeea}{}\label{class_o_l_e_d_add08b51dec0ffeebcba7902c3bd4aeea} 
+The current line to write to. \hypertarget{class_o_l_e_d_add08b51dec0ffeebcba7902c3bd4aeea}{}\label{class_o_l_e_d_add08b51dec0ffeebcba7902c3bd4aeea} 
 \index{O\+L\+ED@{O\+L\+ED}!display\+\_\+height@{display\+\_\+height}}
 \index{display\+\_\+height@{display\+\_\+height}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{display\+\_\+height}{display\_height}}
 {\footnotesize\ttfamily uint8\+\_\+t O\+L\+E\+D\+::display\+\_\+height = 0\hspace{0.3cm}{\ttfamily [protected]}}
 
-Height of display \hypertarget{class_o_l_e_d_a2e9305cb3341509bb62d61f33cae76fd}{}\label{class_o_l_e_d_a2e9305cb3341509bb62d61f33cae76fd} 
+Height of display in pixels. \hypertarget{class_o_l_e_d_a2e9305cb3341509bb62d61f33cae76fd}{}\label{class_o_l_e_d_a2e9305cb3341509bb62d61f33cae76fd} 
 \index{O\+L\+ED@{O\+L\+ED}!display\+\_\+width@{display\+\_\+width}}
 \index{display\+\_\+width@{display\+\_\+width}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{display\+\_\+width}{display\_width}}
 {\footnotesize\ttfamily uint8\+\_\+t O\+L\+E\+D\+::display\+\_\+width = 0\hspace{0.3cm}{\ttfamily [protected]}}
 
-Width of display \hypertarget{class_o_l_e_d_a29ab86a4a73f4d343bf1810927f0911d}{}\label{class_o_l_e_d_a29ab86a4a73f4d343bf1810927f0911d} 
+Width of the display in pixels. \hypertarget{class_o_l_e_d_a29ab86a4a73f4d343bf1810927f0911d}{}\label{class_o_l_e_d_a29ab86a4a73f4d343bf1810927f0911d} 
 \index{O\+L\+ED@{O\+L\+ED}!font@{font}}
 \index{font@{font}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{font}{font}}
 {\footnotesize\ttfamily uint8\+\_\+t$\ast$ O\+L\+E\+D\+::font = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
 
-The font \hypertarget{class_o_l_e_d_a85b91421932866dea031921799ba83a3}{}\label{class_o_l_e_d_a85b91421932866dea031921799ba83a3} 
+The font to use for writing. \hypertarget{class_o_l_e_d_a85b91421932866dea031921799ba83a3}{}\label{class_o_l_e_d_a85b91421932866dea031921799ba83a3} 
 \index{O\+L\+ED@{O\+L\+ED}!font\+\_\+height@{font\+\_\+height}}
 \index{font\+\_\+height@{font\+\_\+height}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{font\+\_\+height}{font\_height}}
 {\footnotesize\ttfamily uint8\+\_\+t O\+L\+E\+D\+::font\+\_\+height\hspace{0.3cm}{\ttfamily [protected]}}
 
-Height of the font \hypertarget{class_o_l_e_d_a3c9ea103adf6c860a2534135e9a25ba8}{}\label{class_o_l_e_d_a3c9ea103adf6c860a2534135e9a25ba8} 
+Height of the font in pixels. \hypertarget{class_o_l_e_d_a3c9ea103adf6c860a2534135e9a25ba8}{}\label{class_o_l_e_d_a3c9ea103adf6c860a2534135e9a25ba8} 
 \index{O\+L\+ED@{O\+L\+ED}!font\+\_\+width@{font\+\_\+width}}
 \index{font\+\_\+width@{font\+\_\+width}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{font\+\_\+width}{font\_width}}
 {\footnotesize\ttfamily uint8\+\_\+t O\+L\+E\+D\+::font\+\_\+width\hspace{0.3cm}{\ttfamily [protected]}}
 
-Width of the font \hypertarget{class_o_l_e_d_a9d32e21189940afba24deab0a2bc0126}{}\label{class_o_l_e_d_a9d32e21189940afba24deab0a2bc0126} 
+Width of the font in pixels. \hypertarget{class_o_l_e_d_a9d32e21189940afba24deab0a2bc0126}{}\label{class_o_l_e_d_a9d32e21189940afba24deab0a2bc0126} 
 \index{O\+L\+ED@{O\+L\+ED}!matrix@{matrix}}
 \index{matrix@{matrix}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{matrix}{matrix}}
 {\footnotesize\ttfamily uint8\+\_\+t$\ast$$\ast$ O\+L\+E\+D\+::matrix\hspace{0.3cm}{\ttfamily [protected]}}
 
-A matrix for the display \hypertarget{class_o_l_e_d_a9ea1c55112deede1a61142af276a6bc9}{}\label{class_o_l_e_d_a9ea1c55112deede1a61142af276a6bc9} 
+The display buffer. There is also a buffer on the \hyperlink{class_o_l_e_d}{O\+L\+ED} controller, such that this implements a dual buffer. \hypertarget{class_o_l_e_d_a9ea1c55112deede1a61142af276a6bc9}{}\label{class_o_l_e_d_a9ea1c55112deede1a61142af276a6bc9} 
 \index{O\+L\+ED@{O\+L\+ED}!number\+\_\+of\+\_\+lines@{number\+\_\+of\+\_\+lines}}
 \index{number\+\_\+of\+\_\+lines@{number\+\_\+of\+\_\+lines}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{number\+\_\+of\+\_\+lines}{number\_of\_lines}}
 {\footnotesize\ttfamily uint8\+\_\+t O\+L\+E\+D\+::number\+\_\+of\+\_\+lines = 0\hspace{0.3cm}{\ttfamily [protected]}}
 
-Number of lines. Not to be confused with number of pages \hypertarget{class_o_l_e_d_aaac99b0eb4e9dfe92b8571488dc89288}{}\label{class_o_l_e_d_aaac99b0eb4e9dfe92b8571488dc89288} 
+Number of lines. Not to be confused with number of pages. \hypertarget{class_o_l_e_d_aaac99b0eb4e9dfe92b8571488dc89288}{}\label{class_o_l_e_d_aaac99b0eb4e9dfe92b8571488dc89288} 
 \index{O\+L\+ED@{O\+L\+ED}!number\+\_\+of\+\_\+pages@{number\+\_\+of\+\_\+pages}}
 \index{number\+\_\+of\+\_\+pages@{number\+\_\+of\+\_\+pages}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{number\+\_\+of\+\_\+pages}{number\_of\_pages}}
@@ -306,21 +348,21 @@ Number of pages \hypertarget{class_o_l_e_d_af0a85ccd0274347b8c1ac77d298a14cf}{}\
 \subsubsection{\texorpdfstring{oled\+\_\+command}{oled\_command}}
 {\footnotesize\ttfamily volatile uint8\+\_\+t$\ast$ O\+L\+E\+D\+::oled\+\_\+command = (volatile uint8\+\_\+t$\ast$)0x8000\hspace{0.3cm}{\ttfamily [protected]}}
 
-A pointer to where the O\+L\+E\+D\+\_\+\+C\+O\+M\+M\+A\+ND address space starts \hypertarget{class_o_l_e_d_a1bc54d49808f92ddfc354511b692df6f}{}\label{class_o_l_e_d_a1bc54d49808f92ddfc354511b692df6f} 
+A pointer to where the O\+L\+E\+D\+\_\+\+C\+O\+M\+M\+A\+ND address space starts. \hypertarget{class_o_l_e_d_a1bc54d49808f92ddfc354511b692df6f}{}\label{class_o_l_e_d_a1bc54d49808f92ddfc354511b692df6f} 
 \index{O\+L\+ED@{O\+L\+ED}!oled\+\_\+data@{oled\+\_\+data}}
 \index{oled\+\_\+data@{oled\+\_\+data}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{oled\+\_\+data}{oled\_data}}
 {\footnotesize\ttfamily volatile uint8\+\_\+t$\ast$ O\+L\+E\+D\+::oled\+\_\+data = (volatile uint8\+\_\+t$\ast$)0x8100\hspace{0.3cm}{\ttfamily [protected]}}
 
-A pointer to where the O\+L\+E\+D\+\_\+\+D\+A\+TA address space starts \hypertarget{class_o_l_e_d_a6ddac7b826eccac8c682c5246ef52b29}{}\label{class_o_l_e_d_a6ddac7b826eccac8c682c5246ef52b29} 
+A pointer to where the O\+L\+E\+D\+\_\+\+D\+A\+TA address space starts. \hypertarget{class_o_l_e_d_a6ddac7b826eccac8c682c5246ef52b29}{}\label{class_o_l_e_d_a6ddac7b826eccac8c682c5246ef52b29} 
 \index{O\+L\+ED@{O\+L\+ED}!pixels\+\_\+per\+\_\+line@{pixels\+\_\+per\+\_\+line}}
 \index{pixels\+\_\+per\+\_\+line@{pixels\+\_\+per\+\_\+line}!O\+L\+ED@{O\+L\+ED}}
 \subsubsection{\texorpdfstring{pixels\+\_\+per\+\_\+line}{pixels\_per\_line}}
 {\footnotesize\ttfamily uint8\+\_\+t O\+L\+E\+D\+::pixels\+\_\+per\+\_\+line\hspace{0.3cm}{\ttfamily [protected]}}
 
-The amount of pixels per line 
+The number of pixels per line. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-lib/oled/\hyperlink{oled_8h}{oled.\+h}\item 
+lib/oled/oled.\+h\item 
 lib/oled/oled.\+cpp\end{DoxyCompactItemize}

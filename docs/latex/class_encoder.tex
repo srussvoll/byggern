@@ -1,15 +1,54 @@
 \hypertarget{class_encoder}{}\section{Encoder Class Reference}
 \label{class_encoder}\index{Encoder@{Encoder}}
+
+
+Reads the encoder values from the Sanntidslab motor box.  
+
+
+
+
+{\ttfamily \#include $<$encoder.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_encoder_a197bd59521ad491bb5c0a9e6d473433c}{}\label{class_encoder_a197bd59521ad491bb5c0a9e6d473433c} 
-int16\+\_\+t {\bfseries Read\+Byte} ()
+\hyperlink{class_encoder_ab5d9324930644abeb150da7a7747ffe3}{Encoder} ()
 \item 
-\hypertarget{class_encoder_a4375bf4d88d56f5f5d09860f9062d691}{}\label{class_encoder_a4375bf4d88d56f5f5d09860f9062d691} 
-void {\bfseries Reset} ()
+int16\+\_\+t \hyperlink{class_encoder_a197bd59521ad491bb5c0a9e6d473433c}{Read\+Byte} ()
+\item 
+void \hyperlink{class_encoder_a4375bf4d88d56f5f5d09860f9062d691}{Reset} ()
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Reads the encoder values from the Sanntidslab motor box. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_encoder_ab5d9324930644abeb150da7a7747ffe3}{}\label{class_encoder_ab5d9324930644abeb150da7a7747ffe3} 
+\index{Encoder@{Encoder}!Encoder@{Encoder}}
+\index{Encoder@{Encoder}!Encoder@{Encoder}}
+\subsubsection{\texorpdfstring{Encoder()}{Encoder()}}
+{\footnotesize\ttfamily Encoder\+::\+Encoder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor setting up the encoder. This resets the encoder counter. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_encoder_a197bd59521ad491bb5c0a9e6d473433c}{}\label{class_encoder_a197bd59521ad491bb5c0a9e6d473433c} 
+\index{Encoder@{Encoder}!Read\+Byte@{Read\+Byte}}
+\index{Read\+Byte@{Read\+Byte}!Encoder@{Encoder}}
+\subsubsection{\texorpdfstring{Read\+Byte()}{ReadByte()}}
+{\footnotesize\ttfamily int16\+\_\+t Encoder\+::\+Read\+Byte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reads the value of the encoder. \begin{DoxyReturn}{Returns}
+The value. 
+\end{DoxyReturn}
+\hypertarget{class_encoder_a4375bf4d88d56f5f5d09860f9062d691}{}\label{class_encoder_a4375bf4d88d56f5f5d09860f9062d691} 
+\index{Encoder@{Encoder}!Reset@{Reset}}
+\index{Reset@{Reset}!Encoder@{Encoder}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Encoder\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Resets the encoder counter to 0. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

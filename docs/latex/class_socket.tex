@@ -1,0 +1,159 @@
+\hypertarget{class_socket}{}\section{Socket Class Reference}
+\label{class_socket}\index{Socket@{Socket}}
+
+
+A socket which defines the communication in a \hyperlink{class_c_a_n}{C\+AN} channel.  
+
+
+
+
+{\ttfamily \#include $<$socket.\+h$>$}
+
+Inheritance diagram for Socket\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_socket}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_socket_aae1f09b930bb7118172baa0abb15543e}{Socket} (const \hyperlink{class_socket}{Socket} \&)=delete
+\item 
+\hyperlink{class_socket_a19d60fe2466026642fcb0ccabe298dc2}{Socket} (uint8\+\_\+t \hyperlink{class_socket_a1cbe7e5484756b0852a3e2a201341dca}{id})
+\item 
+void \hyperlink{class_socket_a2039f4408295019f309d7cdffa36c744}{Initialize} (\hyperlink{class_c_a_n}{C\+AN} $\ast$can)
+\item 
+void \hyperlink{class_socket_a356ea1b27dbcb15324a4c8aaf85e5ed9}{Write} (uint8\+\_\+t $\ast$string, uint16\+\_\+t size)
+\item 
+void \hyperlink{class_socket_a548abd20eea1430230a77829e99c818a}{Write\+Byte} (uint8\+\_\+t byte)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_socket}{Socket} \& \hyperlink{class_socket_abd7d51c20995473a9c9bd6c4e0e5d7c0}{Get\+Instance} (uint8\+\_\+t \hyperlink{class_socket_a1cbe7e5484756b0852a3e2a201341dca}{id}=0)
+\item 
+static void \hyperlink{class_socket_a2ed22a72d5b79a2b82cff935cd508e01}{Handle\+Data\+From\+Lower\+Level} (\hyperlink{struct_can_message}{Can\+Message} \&message)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_socket_ae1c71566dec012f489971541e66646cf}{}\label{class_socket_ae1c71566dec012f489971541e66646cf} 
+\hyperlink{class_c_a_n}{C\+AN} $\ast$ {\bfseries can}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{class_socket_a1cbe7e5484756b0852a3e2a201341dca}{id}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A socket which defines the communication in a \hyperlink{class_c_a_n}{C\+AN} channel. 
+
+It uses an ID to identify which channel it is listening and sending on. This interface consists of two sockets , although it is flexible to increase the amount of sockets. See \hyperlink{class_socket_abd7d51c20995473a9c9bd6c4e0e5d7c0}{Get\+Instance()} for more information regarding extending the number of sockets. The lower the socket identifier, the higher the priority. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_socket_aae1f09b930bb7118172baa0abb15543e}{}\label{class_socket_aae1f09b930bb7118172baa0abb15543e} 
+\index{Socket@{Socket}!Socket@{Socket}}
+\index{Socket@{Socket}!Socket@{Socket}}
+\subsubsection{\texorpdfstring{Socket()}{Socket()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Socket\+::\+Socket (\begin{DoxyParamCaption}\item[{const \hyperlink{class_socket}{Socket} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton, make sure it is not deleted \hypertarget{class_socket_a19d60fe2466026642fcb0ccabe298dc2}{}\label{class_socket_a19d60fe2466026642fcb0ccabe298dc2} 
+\index{Socket@{Socket}!Socket@{Socket}}
+\index{Socket@{Socket}!Socket@{Socket}}
+\subsubsection{\texorpdfstring{Socket()}{Socket()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Socket\+::\+Socket (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The initializer. Not used by end user due to singleton 
+\begin{DoxyParams}{Parameters}
+{\em id} & The socket ID \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_socket_abd7d51c20995473a9c9bd6c4e0e5d7c0}{}\label{class_socket_abd7d51c20995473a9c9bd6c4e0e5d7c0} 
+\index{Socket@{Socket}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Socket@{Socket}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily static \hyperlink{class_socket}{Socket}\& Socket\+::\+Get\+Instance (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{id = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+A Singleton implementation of this class. In order to have support for more than two sockets, this if else statement has to bee extended to the amount of sockets you wish to support. 
+\begin{DoxyParams}{Parameters}
+{\em id} & The socket ID \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_socket_a2ed22a72d5b79a2b82cff935cd508e01}{}\label{class_socket_a2ed22a72d5b79a2b82cff935cd508e01} 
+\index{Socket@{Socket}!Handle\+Data\+From\+Lower\+Level@{Handle\+Data\+From\+Lower\+Level}}
+\index{Handle\+Data\+From\+Lower\+Level@{Handle\+Data\+From\+Lower\+Level}!Socket@{Socket}}
+\subsubsection{\texorpdfstring{Handle\+Data\+From\+Lower\+Level()}{HandleDataFromLowerLevel()}}
+{\footnotesize\ttfamily static void Socket\+::\+Handle\+Data\+From\+Lower\+Level (\begin{DoxyParamCaption}\item[{\hyperlink{struct_can_message}{Can\+Message} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Called when a new C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE from the can controller has arrived. Puts the message into the stream 
+\begin{DoxyParams}{Parameters}
+{\em message} & The received C\+A\+N\+\_\+\+M\+E\+S\+S\+A\+GE \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_socket_a2039f4408295019f309d7cdffa36c744}{}\label{class_socket_a2039f4408295019f309d7cdffa36c744} 
+\index{Socket@{Socket}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Socket@{Socket}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Socket\+::\+Initialize (\begin{DoxyParamCaption}\item[{\hyperlink{class_c_a_n}{C\+AN} $\ast$}]{can }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Initializes the socket. 
+\begin{DoxyParams}{Parameters}
+{\em can} & A can controller which implements the interface defined in the can class in this project \\
+\hline
+{\em target\+\_\+id} & The target node id \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_socket_a356ea1b27dbcb15324a4c8aaf85e5ed9}{}\label{class_socket_a356ea1b27dbcb15324a4c8aaf85e5ed9} 
+\index{Socket@{Socket}!Write@{Write}}
+\index{Write@{Write}!Socket@{Socket}}
+\subsubsection{\texorpdfstring{Write()}{Write()}}
+{\footnotesize\ttfamily void Socket\+::\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{string,  }\item[{uint16\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Creates the required number of can messages and sends the data to the targeted id 
+\begin{DoxyParams}{Parameters}
+{\em string} & Data to be sent \\
+\hline
+{\em size} & Size of the data \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_stream_a508be3423e4d99ab2757275fb723002a}{Stream}.
+
+\hypertarget{class_socket_a548abd20eea1430230a77829e99c818a}{}\label{class_socket_a548abd20eea1430230a77829e99c818a} 
+\index{Socket@{Socket}!Write\+Byte@{Write\+Byte}}
+\index{Write\+Byte@{Write\+Byte}!Socket@{Socket}}
+\subsubsection{\texorpdfstring{Write\+Byte()}{WriteByte()}}
+{\footnotesize\ttfamily void Socket\+::\+Write\+Byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Creates a can message and sends the byte to the targeted id 
+\begin{DoxyParams}{Parameters}
+{\em byte} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_stream_aeaed767b3a8d946c6f81465fa83ff17f}{Stream}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_socket_a1cbe7e5484756b0852a3e2a201341dca}{}\label{class_socket_a1cbe7e5484756b0852a3e2a201341dca} 
+\index{Socket@{Socket}!id@{id}}
+\index{id@{id}!Socket@{Socket}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily uint8\+\_\+t Socket\+::id\hspace{0.3cm}{\ttfamily [private]}}
+
+This sockets identifier 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/socket/socket.\+h\item 
+lib/socket/socket.\+cpp\end{DoxyCompactItemize}

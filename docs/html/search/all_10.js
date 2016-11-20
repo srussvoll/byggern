@@ -1,10 +1,21 @@
 var searchData=
 [
-  ['ttk4155_202016',['TTK4155 2016',['../md__r_e_a_d_m_e.html',1,'']]],
-  ['threshold',['threshold',['../class_i_r___detector.html#a8979f7f20da68ca44d7ea1fe43b2f986',1,'IR_Detector']]],
-  ['throw_5faway_5fdata_5fcount',['throw_away_data_count',['../class_s_p_i_1_1_s_p_i.html#a997d2f4abbb126ec00ba3a4abe2940ac',1,'SPI::SPI']]],
-  ['timer',['Timer',['../class_timer.html',1,'Timer'],['../class_timer.html#a609e586dbc0fdc159fc6fd490fcc1ae3',1,'Timer::Timer(uint8_t timer_number)'],['../class_timer.html#ae6b73141ad1d5029d3782d14d2fd5ff0',1,'Timer::Timer(const Timer &amp;)=delete'],['../class_timer.html#abd1196c7069c046e192e936bfc264693',1,'Timer::timer()']]],
-  ['timer3_5fcompa_5fvect',['TIMER3_COMPA_vect',['../class_timer.html#a7aadba5fdadb4c3e5483845e75cdf5a1',1,'Timer']]],
-  ['timer4_5fcompa_5fvect',['TIMER4_COMPA_vect',['../class_timer.html#a53c4be4b5bb54690ef9012fde8d97b9c',1,'Timer']]],
-  ['timer_5fnumber',['timer_number',['../class_timer.html#a3c813be60ee224a8d6b252a83dfe16d3',1,'Timer']]]
+  ['read',['Read',['../class_stream.html#a851572e5787cd98383d5118de378724b',1,'Stream']]],
+  ['readbyte',['ReadByte',['../class_encoder.html#a197bd59521ad491bb5c0a9e6d473433c',1,'Encoder::ReadByte()'],['../class_stream.html#a6db4180f5834073f992608b856bddca2',1,'Stream::ReadByte()']]],
+  ['readbytefrombuffer',['ReadByteFromBuffer',['../class_stream.html#a32e449304f65b5571fe848a503fc9d68',1,'Stream']]],
+  ['readbytefromoutputstream',['ReadByteFromOutputStream',['../class_stream.html#a3f8e3c5513c6b8605c0fed74a3ed22bc',1,'Stream']]],
+  ['readfrombuffer',['ReadFromBuffer',['../class_stream.html#a752930f620aed4a3a80b243ce66e57ca',1,'Stream']]],
+  ['readfromoutputstream',['ReadFromOutputStream',['../class_stream.html#ab458be72cc54330f518f5ab35ab84106',1,'Stream']]],
+  ['readfromregister',['ReadFromRegister',['../class_m_c_p2515.html#a09ef6973daccbf868d89986e727cfa1b',1,'MCP2515']]],
+  ['readrxframe',['ReadRxFrame',['../class_m_c_p2515.html#ae9c114f9fd7248d78fe5617648f7571b',1,'MCP2515']]],
+  ['readstatus',['ReadStatus',['../class_m_c_p2515.html#ae466f10eea5ccf0f36439757d4baf6b5',1,'MCP2515']]],
+  ['receive',['Receive',['../class_s_c_p.html#ab01a551b8edf803faaea5b0310345498',1,'SCP']]],
+  ['render',['Render',['../class_menu_1_1_controller.html#af46abb3d242c76822c0e8ea8ab777fa5',1,'Menu::Controller']]],
+  ['repaint',['Repaint',['../class_o_l_e_d.html#a3efa34861b4ae0bc5323f6b7cf1d8a01',1,'OLED']]],
+  ['requestsample',['RequestSample',['../class_a_d_c__internal.html#accd9d981273a75e739f16232196f0d5e',1,'ADC_internal']]],
+  ['requesttosend',['RequestToSend',['../class_m_c_p2515.html#a5a218199ca1dfcb25cb95890bc0220fc',1,'MCP2515']]],
+  ['reset',['Reset',['../class_d_a_c.html#a28b77e33c40384e1308168e2945d99b5',1,'DAC::Reset()'],['../class_encoder.html#a4375bf4d88d56f5f5d09860f9062d691',1,'Encoder::Reset()'],['../class_m_c_p2515.html#aa4d4138b984dc87116cf72ae104acb70',1,'MCP2515::Reset()']]],
+  ['root',['root',['../class_menu_1_1_controller.html#a211b6de05f7eed25f3a7f504c42316e0',1,'Menu::Controller']]],
+  ['running',['running',['../class_state_machine.html#adc6939485a12a6250df3cc65aa172d2a',1,'StateMachine']]],
+  ['rxstatus',['RxStatus',['../class_m_c_p2515.html#af6853f82074a0be19d5a0516a959515e',1,'MCP2515']]]
 ];

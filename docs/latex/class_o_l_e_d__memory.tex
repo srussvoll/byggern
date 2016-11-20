@@ -1,5 +1,14 @@
 \hypertarget{class_o_l_e_d__memory}{}\section{O\+L\+E\+D\+\_\+memory Class Reference}
 \label{class_o_l_e_d__memory}\index{O\+L\+E\+D\+\_\+memory@{O\+L\+E\+D\+\_\+memory}}
+
+
+A class to communicate with the \hyperlink{class_o_l_e_d}{O\+L\+ED} display using the external memory interface.  
+
+
+
+
+{\ttfamily \#include $<$oled\+\_\+memory.\+h$>$}
+
 Inheritance diagram for O\+L\+E\+D\+\_\+memory\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,19 +30,13 @@ static \hyperlink{class_o_l_e_d__memory}{O\+L\+E\+D\+\_\+memory} \& \hyperlink{c
 \item 
 \hyperlink{class_o_l_e_d__memory_a237da57c485eed1ba23a9752035f3973}{O\+L\+E\+D\+\_\+memory} ()
 \item 
-\hypertarget{class_o_l_e_d__memory_a8859cddd8c5639d43ae89bb750984291}{}\label{class_o_l_e_d__memory_a8859cddd8c5639d43ae89bb750984291} 
-virtual void {\bfseries Write\+Byte\+To\+O\+L\+ED} (volatile uint8\+\_\+t $\ast$address, uint8\+\_\+t data)
+virtual void \hyperlink{class_o_l_e_d__memory_a8859cddd8c5639d43ae89bb750984291}{Write\+Byte\+To\+O\+L\+ED} (volatile uint8\+\_\+t $\ast$address, uint8\+\_\+t data)
 \end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{class_o_l_e_d__memory_afa9e07e6d56995ba0f2c38205e848cd9}{}\label{class_o_l_e_d__memory_afa9e07e6d56995ba0f2c38205e848cd9} 
-\hyperlink{class_s_c_p}{S\+CP} $\ast$ {\bfseries channel} = nullptr
-\item 
-\hypertarget{class_o_l_e_d__memory_ae6b8672f7cb275a40219a2f0834fb4f9}{}\label{class_o_l_e_d__memory_ae6b8672f7cb275a40219a2f0834fb4f9} 
-uint8\+\_\+t {\bfseries command}
-\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
+
+\subsection{Detailed Description}
+A class to communicate with the \hyperlink{class_o_l_e_d}{O\+L\+ED} display using the external memory interface. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_o_l_e_d__memory_a237da57c485eed1ba23a9752035f3973}{}\label{class_o_l_e_d__memory_a237da57c485eed1ba23a9752035f3973} 
@@ -42,7 +45,7 @@ uint8\+\_\+t {\bfseries command}
 \subsubsection{\texorpdfstring{O\+L\+E\+D\+\_\+memory()}{OLED\_memory()}}
 {\footnotesize\ttfamily O\+L\+E\+D\+\_\+memory\+::\+O\+L\+E\+D\+\_\+memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
 
-Singleton constructor 
+Singleton constructor. 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_o_l_e_d__memory_a8d20efdd852c066b46950bc7b98ff368}{}\label{class_o_l_e_d__memory_a8d20efdd852c066b46950bc7b98ff368} 
@@ -59,16 +62,24 @@ A Singleton implementation of this class \hypertarget{class_o_l_e_d__memory_a5ad
 
 Initializes the whole screen. 
 \begin{DoxyParams}{Parameters}
-{\em width} & The width of the screen in pixels \\
+{\em width} & The width of the screen in pixels. \\
 \hline
-{\em height} & The height of the screen in pixels \\
-\hline
-{\em socket} & Socket to write through. \\
+{\em height} & The height of the screen in pixels. \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_o_l_e_d__memory_a8859cddd8c5639d43ae89bb750984291}{}\label{class_o_l_e_d__memory_a8859cddd8c5639d43ae89bb750984291} 
+\index{O\+L\+E\+D\+\_\+memory@{O\+L\+E\+D\+\_\+memory}!Write\+Byte\+To\+O\+L\+ED@{Write\+Byte\+To\+O\+L\+ED}}
+\index{Write\+Byte\+To\+O\+L\+ED@{Write\+Byte\+To\+O\+L\+ED}!O\+L\+E\+D\+\_\+memory@{O\+L\+E\+D\+\_\+memory}}
+\subsubsection{\texorpdfstring{Write\+Byte\+To\+O\+L\+E\+D()}{WriteByteToOLED()}}
+{\footnotesize\ttfamily void O\+L\+E\+D\+\_\+memory\+::\+Write\+Byte\+To\+O\+L\+ED (\begin{DoxyParamCaption}\item[{volatile uint8\+\_\+t $\ast$}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+See the \hyperlink{class_o_l_e_d_a044fdff65656804114d1d39d766099a2}{O\+L\+E\+D.\+Write\+Byte\+To\+O\+L\+E\+D()} for more information. 
+
+Reimplemented from \hyperlink{class_o_l_e_d_a044fdff65656804114d1d39d766099a2}{O\+L\+ED}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-lib/oled\+\_\+memory/\hyperlink{oled__memory_8h}{oled\+\_\+memory.\+h}\item 
+lib/oled\+\_\+memory/oled\+\_\+memory.\+h\item 
 lib/oled\+\_\+memory/oled\+\_\+memory.\+cpp\end{DoxyCompactItemize}

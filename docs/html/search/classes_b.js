@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timer',['Timer',['../class_timer.html',1,'']]]
+  ['quantization',['Quantization',['../struct_quantization.html',1,'']]]
 ];

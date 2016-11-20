@@ -37,7 +37,7 @@ static \hyperlink{class_a_d_c__internal}{A\+D\+C\+\_\+internal} \& \hyperlink{cl
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-volatile bool \hyperlink{class_a_d_c__internal_a7313da9fa620eae7be708a58d35dbe71}{adc\+\_\+in\+\_\+use}
+volatile bool \hyperlink{class_a_d_c__internal_a7313da9fa620eae7be708a58d35dbe71}{adc\+\_\+in\+\_\+use} = false
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -50,13 +50,7 @@ void \hyperlink{class_a_d_c__internal_a7fd45f1c13cbbf59c3e1ce84deca2e01}{A\+D\+C
 \subsection{Detailed Description}
 For using the internal A\+DC. 
 
-\begin{DoxyAuthor}{Author}
-Johan Lofstad, Sondre Baugstø and Sondre Russvoll 
-\end{DoxyAuthor}
-\begin{DoxyVersion}{Version}
-1.\+0
-\end{DoxyVersion}
-A class for using the internal analog-\/to-\/digital converter on the A\+VR 
+A class for using the internal analog-\/to-\/digital converter on the A\+VR. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_a_d_c__internal_a4a34ce3ab980b7ab37672153c86d229a}{}\label{class_a_d_c__internal_a4a34ce3ab980b7ab37672153c86d229a} 
@@ -108,7 +102,7 @@ The interrupt vector for A\+DC done. Friend function because it needs access to 
 \index{A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}!adc\+\_\+in\+\_\+use@{adc\+\_\+in\+\_\+use}}
 \index{adc\+\_\+in\+\_\+use@{adc\+\_\+in\+\_\+use}!A\+D\+C\+\_\+internal@{A\+D\+C\+\_\+internal}}
 \subsubsection{\texorpdfstring{adc\+\_\+in\+\_\+use}{adc\_in\_use}}
-{\footnotesize\ttfamily volatile bool A\+D\+C\+\_\+internal\+::adc\+\_\+in\+\_\+use\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily volatile bool A\+D\+C\+\_\+internal\+::adc\+\_\+in\+\_\+use = false\hspace{0.3cm}{\ttfamily [private]}}
 
 A flag indicating if the A\+DC is currently used 
 

@@ -1,21 +1,21 @@
-#include "state_machine.h"
-#include "../lib/state_machine/state_machine.h"
-#include "../lib/scp/scp.h"
-#include "../lib/socket/socket.h"
-#include "../lib/scp/commands.h"
-#include "../lib/motor/motor.h"
-#include "../lib/dac/dac.h"
-#include <util/delay.h>
-#include "../lib/ir_detector/ir_detector.h"
-#include "../lib/timer/timer.h"
-#include "lib/joystick/joystick.h"
-#include "lib/solenoid/solenoid.h"
-#include "lib/encoder/encoder.h"
 #include <math.h>
 #include <lib/servo/servo.h>
 #include <lib/oled_scp/oled_scp.h>
 #include <lib/utilities/fonts.h>
-#include <lib/menu/menu.h>
+#include <util/delay.h>
+#include "state_machine.h"
+#include "lib/state_machine/state_machine.h"
+#include "lib/scp/scp.h"
+#include "lib/socket/socket.h"
+#include "lib/scp/commands.h"
+#include "lib/motor/motor.h"
+#include "lib/dac/dac.h"
+#include "lib/ir_detector/ir_detector.h"
+#include "lib/timer/timer.h"
+#include "lib/joystick/joystick.h"
+#include "lib/solenoid/solenoid.h"
+#include "lib/encoder/encoder.h"
+#include "lib/menu/menu.h"
 #include "lib/spi/spi.h"
 #include "lib/highscore/highscore.h"
 
@@ -48,7 +48,6 @@ namespace {
     float T   = 0.005;
     double e_integral = 0;
     double y_previous = 0;
-
 
     char highscore_name[10];
     uint8_t highscore_name_length = 0;
@@ -120,7 +119,6 @@ void InitializeLoop() {
 /*-----------------------   ONGOING  -------------------------------*/
 
 void OngoingEnter() {
-    printf("Ongoing enter \n");
     Motor &motor = Motor::GetInstance();
     motor.Start();
     x_direction = 0;
@@ -213,10 +211,6 @@ void OngoingLeave() {
 
 /*-----------------------   IDLE  -------------------------------*/
 
-void IdleEnter(){
-    printf("IDLE STATE ENTERED \n\r");
-}
-
 void IdleLoop() {
     uint8_t command;
     uint8_t length;
@@ -291,8 +285,6 @@ void RenderOLEDToNode1() {
 
 /*-----------------------   HIGHSCORE  -------------------------------*/
 void HighscoreEnter(){
-    printf("Enter highscore \n");
-
     // Select new SS
     SPI::SPI &spi = SPI::SPI::GetInstance();
     oldsspin = spi.current_pin;
@@ -350,7 +342,7 @@ void HighscoreLeave(){
 void (*state_functions[][3])(void) = {
 /* 0. Initialize                 */ {nullptr, InitializeLoop, nullptr},
 /* 1. ONGOING                    */ {OngoingEnter, OngoingLoop, OngoingLeave},
-/* 2. IDLE                       */ {IdleEnter, IdleLoop,       nullptr},
+/* 2. IDLE                       */ {nullptr , IdleLoop,       nullptr},
 /* 3. GET HIGHSCORE              */ {HighscoreEnter, HighscoreLoop, HighscoreLeave},
                                     {RenderOLEDToNode1, nullptr, nullptr},
 };

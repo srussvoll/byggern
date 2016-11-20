@@ -11,11 +11,13 @@
  *
  * In the state matrix each row is tied to the state, and row 0 - 3 is tied to the state functions.
  *
+ * <ul>
  * <li> Column 0 is the enter function </li>
  * <li> Column 1 is the loop function </li>
  * <li> Column 2 is the leave function </li>
+ * </ul>
  *
- * <b>Example</b>
+ * <b>Example of the state_function paramter in the initializer</b>
  * \code{.cpp}
  * void (*state_functions[][3])(void) = {
 * {nullptr, InitializeLoop, nullptr},
@@ -47,7 +49,8 @@ public:
 
     /**
      * Initializer. For the state_functions parameter, it expects a matrix where each row is the state,
-     * and column 0 - 2 is the state functions.
+     * and column 0 - 2 is the state functions. Please see detailed description for more information and
+     * an example. Automaticly enters the state machine after this function runs.
      * @param state_functions A matrix containing the states. Please read above
      */
     StateMachine(void (*(*state_functions))(void), uint8_t initial_state = 0) : state_functions(state_functions), current_state(initial_state) {};
@@ -55,10 +58,23 @@ public:
     /**
      * Transition to a state.
      * @param state The state to transition to
-     * @param reenter If you try to reenter the state you are currently in, this must be true. 
+     * @param reenter If you try to reenter the state you are currently in, this must be true.
      */
     bool Transition(uint8_t state, bool reenter);
+
+    /**
+     * Returns the current state
+     * @return The current state
+     */
     uint8_t GetCurrentState();
+
+    /**
+     * Starts the FSM
+     */
     void Start();
+
+    /**
+     * Stops the FSM
+     */
     void Stop();
 };

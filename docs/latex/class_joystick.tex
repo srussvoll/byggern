@@ -1,0 +1,227 @@
+\hypertarget{class_joystick}{}\section{Joystick Class Reference}
+\label{class_joystick}\index{Joystick@{Joystick}}
+
+
+A general joystick controller The joystick controller expects a quantizationlevel struct as input. This is to indicate the max and min y and x direction of the joystick. Example\+: If x goes from 0 to 255, it expects input struct with x\+\_\+max = 255, x\+\_\+min = 0. If y goes from 0 to 255, it expects the same for y. It also expect a uint8\+\_\+t threshold, given in decimal. This threshold is used for detecting direction This must be initialized through the Initialize function, due to singleton.  
+
+
+
+
+{\ttfamily \#include $<$joystick.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_joystick_a81ab2867d039ed9c974ee56c10063d8e}{Initialize} (\hyperlink{struct_quantization}{Quantization} \hyperlink{class_joystick_ae60f2daf5c456900e821b2fde565ef38}{levels}, float \hyperlink{class_joystick_a30b68bce5589674148d43b4854b25cef}{threshold})
+\item 
+\hyperlink{class_joystick_a93a3cb5bc4d4ea7c94709b8730257f13}{Joystick} (const \hyperlink{class_joystick}{Joystick} \&)=delete
+\item 
+void \hyperlink{class_joystick_a07571eca717b70b094f9aa42d90bced7}{Update} (uint8\+\_\+t \hyperlink{class_joystick_abeb4f1563a57266700a48ba5aa49b4cd}{x}, uint8\+\_\+t \hyperlink{class_joystick_a691b70ed215adf414e0ab4edba5407a2}{y})
+\item 
+uint8\+\_\+t \hyperlink{class_joystick_ae578e9c06313f37a53c3b0c4e0ca014d}{GetX} ()
+\item 
+uint8\+\_\+t \hyperlink{class_joystick_a849ffb99289dcb3186e532fd1115cf46}{GetY} ()
+\item 
+Direction \hyperlink{class_joystick_a8a8ad3f735c9e3e3a0bbd9ac0e73f4cc}{Get\+Direction} ()
+\item 
+float \hyperlink{class_joystick_af774eede094927838113b9ff3a8252bb}{Get\+PercentageY} ()
+\item 
+float \hyperlink{class_joystick_a661653de4d298a9dccf316b1768206ea}{Get\+PercentageX} ()
+\item 
+bool \hyperlink{class_joystick_a35c4969f04f76a83860d9adf6ca3adba}{Button\+Is\+Down} ()
+\item 
+bool \hyperlink{class_joystick_ac905c75bcfe0701d3f2005d0c424cef3}{Direction\+Changed} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_joystick_a960c53cb9f02733747314f00b2e23b24}{}\label{class_joystick_a960c53cb9f02733747314f00b2e23b24} 
+static \hyperlink{class_joystick}{Joystick} \& {\bfseries Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_joystick_a158b1f77b78717efbf1b8fac43b1fcef}{Joystick} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_quantization}{Quantization} \hyperlink{class_joystick_ae60f2daf5c456900e821b2fde565ef38}{levels}
+\item 
+float \hyperlink{class_joystick_a30b68bce5589674148d43b4854b25cef}{threshold}
+\item 
+float \hyperlink{class_joystick_ace9fd47e90cc88de622f1b8ba7650156}{x\+\_\+midpoint}
+\item 
+float \hyperlink{class_joystick_a06e00f03f6dd0859663a7a01ada1d3c1}{y\+\_\+midpoint}
+\item 
+uint8\+\_\+t \hyperlink{class_joystick_abeb4f1563a57266700a48ba5aa49b4cd}{x}
+\item 
+uint8\+\_\+t \hyperlink{class_joystick_a691b70ed215adf414e0ab4edba5407a2}{y}
+\item 
+bool \hyperlink{class_joystick_a3e9a785b0764f3b0666e87e77b373b74}{changed\+\_\+direction}
+\item 
+Direction \hyperlink{class_joystick_abf9509216c86d03fb76abc7ff4507f90}{previous\+\_\+direction} = None
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A general joystick controller The joystick controller expects a quantizationlevel struct as input. This is to indicate the max and min y and x direction of the joystick. Example\+: If x goes from 0 to 255, it expects input struct with x\+\_\+max = 255, x\+\_\+min = 0. If y goes from 0 to 255, it expects the same for y. It also expect a uint8\+\_\+t threshold, given in decimal. This threshold is used for detecting direction This must be initialized through the Initialize function, due to singleton. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_joystick_a158b1f77b78717efbf1b8fac43b1fcef}{}\label{class_joystick_a158b1f77b78717efbf1b8fac43b1fcef} 
+\index{Joystick@{Joystick}!Joystick@{Joystick}}
+\index{Joystick@{Joystick}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{Joystick()}{Joystick()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Joystick\+::\+Joystick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+The constructor. Private because of singleton \hypertarget{class_joystick_a93a3cb5bc4d4ea7c94709b8730257f13}{}\label{class_joystick_a93a3cb5bc4d4ea7c94709b8730257f13} 
+\index{Joystick@{Joystick}!Joystick@{Joystick}}
+\index{Joystick@{Joystick}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{Joystick()}{Joystick()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Joystick\+::\+Joystick (\begin{DoxyParamCaption}\item[{const \hyperlink{class_joystick}{Joystick} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_joystick_a35c4969f04f76a83860d9adf6ca3adba}{}\label{class_joystick_a35c4969f04f76a83860d9adf6ca3adba} 
+\index{Joystick@{Joystick}!Button\+Is\+Down@{Button\+Is\+Down}}
+\index{Button\+Is\+Down@{Button\+Is\+Down}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{Button\+Is\+Down()}{ButtonIsDown()}}
+{\footnotesize\ttfamily bool Joystick\+::\+Button\+Is\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns true if the button is pushed down \begin{DoxyReturn}{Returns}
+The status of the button 
+\end{DoxyReturn}
+\hypertarget{class_joystick_ac905c75bcfe0701d3f2005d0c424cef3}{}\label{class_joystick_ac905c75bcfe0701d3f2005d0c424cef3} 
+\index{Joystick@{Joystick}!Direction\+Changed@{Direction\+Changed}}
+\index{Direction\+Changed@{Direction\+Changed}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{Direction\+Changed()}{DirectionChanged()}}
+{\footnotesize\ttfamily bool Joystick\+::\+Direction\+Changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Detects if direction was changed from previous sample \begin{DoxyReturn}{Returns}
+If it worked changing directions 
+\end{DoxyReturn}
+\hypertarget{class_joystick_a8a8ad3f735c9e3e3a0bbd9ac0e73f4cc}{}\label{class_joystick_a8a8ad3f735c9e3e3a0bbd9ac0e73f4cc} 
+\index{Joystick@{Joystick}!Get\+Direction@{Get\+Direction}}
+\index{Get\+Direction@{Get\+Direction}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{Get\+Direction()}{GetDirection()}}
+{\footnotesize\ttfamily Direction Joystick\+::\+Get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the direction of the joystick \hypertarget{class_joystick_a661653de4d298a9dccf316b1768206ea}{}\label{class_joystick_a661653de4d298a9dccf316b1768206ea} 
+\index{Joystick@{Joystick}!Get\+PercentageX@{Get\+PercentageX}}
+\index{Get\+PercentageX@{Get\+PercentageX}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{Get\+Percentage\+X()}{GetPercentageX()}}
+{\footnotesize\ttfamily float Joystick\+::\+Get\+PercentageX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gives percentage away from the center in y direction \begin{DoxyReturn}{Returns}
+the percentage offset from center 
+\end{DoxyReturn}
+\hypertarget{class_joystick_af774eede094927838113b9ff3a8252bb}{}\label{class_joystick_af774eede094927838113b9ff3a8252bb} 
+\index{Joystick@{Joystick}!Get\+PercentageY@{Get\+PercentageY}}
+\index{Get\+PercentageY@{Get\+PercentageY}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{Get\+Percentage\+Y()}{GetPercentageY()}}
+{\footnotesize\ttfamily float Joystick\+::\+Get\+PercentageY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gives percentage away from the center in y direction \begin{DoxyReturn}{Returns}
+the percentage offset from center 
+\end{DoxyReturn}
+\hypertarget{class_joystick_ae578e9c06313f37a53c3b0c4e0ca014d}{}\label{class_joystick_ae578e9c06313f37a53c3b0c4e0ca014d} 
+\index{Joystick@{Joystick}!GetX@{GetX}}
+\index{GetX@{GetX}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{Get\+X()}{GetX()}}
+{\footnotesize\ttfamily uint8\+\_\+t Joystick\+::\+GetX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gives the x value of the joystick \begin{DoxyReturn}{Returns}
+The x value of the joystick 
+\end{DoxyReturn}
+\hypertarget{class_joystick_a849ffb99289dcb3186e532fd1115cf46}{}\label{class_joystick_a849ffb99289dcb3186e532fd1115cf46} 
+\index{Joystick@{Joystick}!GetY@{GetY}}
+\index{GetY@{GetY}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{Get\+Y()}{GetY()}}
+{\footnotesize\ttfamily uint8\+\_\+t Joystick\+::\+GetY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gives the x value of the joystick \begin{DoxyReturn}{Returns}
+The x value of the joystick 
+\end{DoxyReturn}
+\hypertarget{class_joystick_a81ab2867d039ed9c974ee56c10063d8e}{}\label{class_joystick_a81ab2867d039ed9c974ee56c10063d8e} 
+\index{Joystick@{Joystick}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Joystick\+::\+Initialize (\begin{DoxyParamCaption}\item[{\hyperlink{struct_quantization}{Quantization}}]{levels,  }\item[{float}]{threshold }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em levels} & A quantization struct containing the quantization levels \\
+\hline
+{\em threshold\+\_\+percentage} & The threshold used to calculate directions \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_joystick_a07571eca717b70b094f9aa42d90bced7}{}\label{class_joystick_a07571eca717b70b094f9aa42d90bced7} 
+\index{Joystick@{Joystick}!Update@{Update}}
+\index{Update@{Update}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Joystick\+::\+Update (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+Updated the value of the joystick through the dac (and through the can bus) 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x value of the joystick through the adc \\
+\hline
+{\em y} & The y value of the joystick through the adc \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_joystick_a3e9a785b0764f3b0666e87e77b373b74}{}\label{class_joystick_a3e9a785b0764f3b0666e87e77b373b74} 
+\index{Joystick@{Joystick}!changed\+\_\+direction@{changed\+\_\+direction}}
+\index{changed\+\_\+direction@{changed\+\_\+direction}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{changed\+\_\+direction}{changed\_direction}}
+{\footnotesize\ttfamily bool Joystick\+::changed\+\_\+direction\hspace{0.3cm}{\ttfamily [private]}}
+
+Toggled when direction is changed \hypertarget{class_joystick_ae60f2daf5c456900e821b2fde565ef38}{}\label{class_joystick_ae60f2daf5c456900e821b2fde565ef38} 
+\index{Joystick@{Joystick}!levels@{levels}}
+\index{levels@{levels}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{levels}{levels}}
+{\footnotesize\ttfamily \hyperlink{struct_quantization}{Quantization} Joystick\+::levels\hspace{0.3cm}{\ttfamily [private]}}
+
+A quantization struct containing the quantization levels. \hypertarget{class_joystick_abf9509216c86d03fb76abc7ff4507f90}{}\label{class_joystick_abf9509216c86d03fb76abc7ff4507f90} 
+\index{Joystick@{Joystick}!previous\+\_\+direction@{previous\+\_\+direction}}
+\index{previous\+\_\+direction@{previous\+\_\+direction}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{previous\+\_\+direction}{previous\_direction}}
+{\footnotesize\ttfamily Direction Joystick\+::previous\+\_\+direction = None\hspace{0.3cm}{\ttfamily [private]}}
+
+The previous direction \hypertarget{class_joystick_a30b68bce5589674148d43b4854b25cef}{}\label{class_joystick_a30b68bce5589674148d43b4854b25cef} 
+\index{Joystick@{Joystick}!threshold@{threshold}}
+\index{threshold@{threshold}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{threshold}{threshold}}
+{\footnotesize\ttfamily float Joystick\+::threshold\hspace{0.3cm}{\ttfamily [private]}}
+
+A threshold used to calculate whether or not the joystick is in a given direction \hypertarget{class_joystick_abeb4f1563a57266700a48ba5aa49b4cd}{}\label{class_joystick_abeb4f1563a57266700a48ba5aa49b4cd} 
+\index{Joystick@{Joystick}!x@{x}}
+\index{x@{x}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily uint8\+\_\+t Joystick\+::x\hspace{0.3cm}{\ttfamily [private]}}
+
+The x value \hypertarget{class_joystick_ace9fd47e90cc88de622f1b8ba7650156}{}\label{class_joystick_ace9fd47e90cc88de622f1b8ba7650156} 
+\index{Joystick@{Joystick}!x\+\_\+midpoint@{x\+\_\+midpoint}}
+\index{x\+\_\+midpoint@{x\+\_\+midpoint}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{x\+\_\+midpoint}{x\_midpoint}}
+{\footnotesize\ttfamily float Joystick\+::x\+\_\+midpoint\hspace{0.3cm}{\ttfamily [private]}}
+
+The midpoint for the x value \hypertarget{class_joystick_a691b70ed215adf414e0ab4edba5407a2}{}\label{class_joystick_a691b70ed215adf414e0ab4edba5407a2} 
+\index{Joystick@{Joystick}!y@{y}}
+\index{y@{y}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily uint8\+\_\+t Joystick\+::y\hspace{0.3cm}{\ttfamily [private]}}
+
+The y value \hypertarget{class_joystick_a06e00f03f6dd0859663a7a01ada1d3c1}{}\label{class_joystick_a06e00f03f6dd0859663a7a01ada1d3c1} 
+\index{Joystick@{Joystick}!y\+\_\+midpoint@{y\+\_\+midpoint}}
+\index{y\+\_\+midpoint@{y\+\_\+midpoint}!Joystick@{Joystick}}
+\subsubsection{\texorpdfstring{y\+\_\+midpoint}{y\_midpoint}}
+{\footnotesize\ttfamily float Joystick\+::y\+\_\+midpoint\hspace{0.3cm}{\ttfamily [private]}}
+
+The midpoint for the y value 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/joystick/joystick.\+h\end{DoxyCompactItemize}

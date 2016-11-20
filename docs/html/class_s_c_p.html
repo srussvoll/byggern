@@ -95,8 +95,8 @@ $(document).ready(function(){initNavTree('class_s_c_p.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9ab03c4d3f03f25c1953b13120ec7b71"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_c_p.html#a9ab03c4d3f03f25c1953b13120ec7b71">SCP</a> (<a class="el" href="class_s_o_c_k_e_t.html">SOCKET</a> **<a class="el" href="class_s_c_p.html#a0b1f95d779a178ee512c260162b5c9d7">sockets</a>, uint8_t <a class="el" href="class_s_c_p.html#a60870833801da77a079ebed8383c91bf">number_of_sockets</a>)</td></tr>
-<tr class="separator:a9ab03c4d3f03f25c1953b13120ec7b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee0663a84b05a63993f1c3ff3a952319"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_c_p.html#aee0663a84b05a63993f1c3ff3a952319">SCP</a> (<a class="el" href="class_socket.html">Socket</a> **<a class="el" href="class_s_c_p.html#a47df7b56ee4f566f9a59198eaf8e52e7">sockets</a>, uint8_t <a class="el" href="class_s_c_p.html#a60870833801da77a079ebed8383c91bf">number_of_sockets</a>)</td></tr>
+<tr class="separator:aee0663a84b05a63993f1c3ff3a952319"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02460c47705c42c2ade1608007d7966a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_c_p.html#a02460c47705c42c2ade1608007d7966a">Send</a> (uint8_t priority, uint8_t command, uint8_t *data, uint8_t length_of_data)</td></tr>
 <tr class="separator:a02460c47705c42c2ade1608007d7966a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab01a551b8edf803faaea5b0310345498"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_c_p.html#ab01a551b8edf803faaea5b0310345498">Receive</a> (uint8_t &amp;command, uint8_t *data, uint8_t &amp;length_of_data)</td></tr>
@@ -104,18 +104,18 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a0b1f95d779a178ee512c260162b5c9d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_o_c_k_e_t.html">SOCKET</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_c_p.html#a0b1f95d779a178ee512c260162b5c9d7">sockets</a></td></tr>
-<tr class="separator:a0b1f95d779a178ee512c260162b5c9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47df7b56ee4f566f9a59198eaf8e52e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_socket.html">Socket</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_c_p.html#a47df7b56ee4f566f9a59198eaf8e52e7">sockets</a></td></tr>
+<tr class="separator:a47df7b56ee4f566f9a59198eaf8e52e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60870833801da77a079ebed8383c91bf"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_c_p.html#a60870833801da77a079ebed8383c91bf">number_of_sockets</a></td></tr>
 <tr class="separator:a60870833801da77a079ebed8383c91bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_s_c_p.html" title="SCP (Simple Command Protocol) is an application layer protocol designed to send commands. ">SCP</a> (Simple Command Protocol) is an application layer protocol designed to send commands. </p>
-<p>The frame is built up by first one byte, identifying the command, the second byte identifying the length of the data (n), and the last n bytes is the data.</p>
-<p>This class is using <a class="el" href="class_s_o_c_k_e_t.html" title="A socket which defines the communication in a CAN channel. ">SOCKET</a> as its link layer implementation. </p>
+<p>The frame is built up by first one byte identifying the command, the second byte identifying the length of the data (n), and the last n bytes is the data.</p>
+<p>This class is using <a class="el" href="class_socket.html" title="A socket which defines the communication in a CAN channel. ">Socket</a> as its link layer implementation. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9ab03c4d3f03f25c1953b13120ec7b71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ab03c4d3f03f25c1953b13120ec7b71">&sect;&nbsp;</a></span>SCP()</h2>
+<a id="aee0663a84b05a63993f1c3ff3a952319"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee0663a84b05a63993f1c3ff3a952319">&sect;&nbsp;</a></span>SCP()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -123,7 +123,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">SCP::SCP </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_s_o_c_k_e_t.html">SOCKET</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="class_socket.html">Socket</a> **&#160;</td>
           <td class="paramname"><em>sockets</em>, </td>
         </tr>
         <tr>
@@ -264,8 +264,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a0b1f95d779a178ee512c260162b5c9d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b1f95d779a178ee512c260162b5c9d7">&sect;&nbsp;</a></span>sockets</h2>
+<a id="a47df7b56ee4f566f9a59198eaf8e52e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47df7b56ee4f566f9a59198eaf8e52e7">&sect;&nbsp;</a></span>sockets</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -274,7 +274,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_s_o_c_k_e_t.html">SOCKET</a>* * SCP::sockets</td>
+          <td class="memname"><a class="el" href="class_socket.html">Socket</a>* * SCP::sockets</td>
         </tr>
       </table>
   </td>
@@ -297,7 +297,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_s_c_p.html">SCP</a></li>
-    <li class="footer">Generated on Sun Nov 20 2016 21:20:18 for Byggern by
+    <li class="footer">Generated on Sun Nov 20 2016 21:32:51 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

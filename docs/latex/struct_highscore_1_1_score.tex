@@ -15,8 +15,7 @@ Represents a score.
 \hypertarget{struct_highscore_1_1_score_a12b53d0585857767f7b672a7ca6d6bcd}{}\label{struct_highscore_1_1_score_a12b53d0585857767f7b672a7ca6d6bcd} 
 {\bfseries Score} (uint16\+\_\+t score, char $\ast$name, uint8\+\_\+t name\+\_\+length)
 \item 
-\hypertarget{struct_highscore_1_1_score_a61c93cb0e15d80f574200d210daa02ab}{}\label{struct_highscore_1_1_score_a61c93cb0e15d80f574200d210daa02ab} 
-void {\bfseries operator=} (const \hyperlink{struct_highscore_1_1_score}{Score} \&score)
+void \hyperlink{struct_highscore_1_1_score_a61c93cb0e15d80f574200d210daa02ab}{operator=} (const \hyperlink{struct_highscore_1_1_score}{Score} \&score)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -42,6 +41,20 @@ Represents a score.
 {\em name\+\_\+length} & This is the lenght of the name. \\
 \hline
 {\em name} & This is the name of the person who scored score points. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{struct_highscore_1_1_score_a61c93cb0e15d80f574200d210daa02ab}{}\label{struct_highscore_1_1_score_a61c93cb0e15d80f574200d210daa02ab} 
+\index{Highscore\+::\+Score@{Highscore\+::\+Score}!operator=@{operator=}}
+\index{operator=@{operator=}!Highscore\+::\+Score@{Highscore\+::\+Score}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void Highscore\+::\+Score\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{struct_highscore_1_1_score}{Score} \&}]{score }\end{DoxyParamCaption})}
+
+Setting a score equal to another score copies the name contents byte for byte. 
+\begin{DoxyParams}{Parameters}
+{\em score} & The score to copy. \\
 \hline
 \end{DoxyParams}
 

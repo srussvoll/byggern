@@ -10,11 +10,13 @@ var hierarchy =
     [ "baugen.scoreboard.ExampleInstrumentedTest", "classbaugen_1_1scoreboard_1_1_example_instrumented_test.html", null ],
     [ "baugen.scoreboard.ExampleUnitTest", "classbaugen_1_1scoreboard_1_1_example_unit_test.html", null ],
     [ "Highscore::Highscore", "class_highscore_1_1_highscore.html", null ],
-    [ "IR_Detector", "class_i_r___detector.html", null ],
+    [ "IRDetector", "class_i_r_detector.html", null ],
     [ "Menu::Item", "struct_menu_1_1_item.html", null ],
+    [ "Joystick", "class_joystick.html", null ],
     [ "Menu::Menu", "struct_menu_1_1_menu.html", null ],
     [ "Motor", "class_motor.html", null ],
     [ "SPI::PIN", "struct_s_p_i_1_1_p_i_n.html", null ],
+    [ "Quantization", "struct_quantization.html", null ],
     [ "Highscore::Score", "struct_highscore_1_1_score.html", null ],
     [ "ScoreService", "class_score_service.html", null ],
     [ "SCP", "class_s_c_p.html", null ],
@@ -27,7 +29,7 @@ var hierarchy =
         [ "OLED_memory", "class_o_l_e_d__memory.html", null ],
         [ "OLED_SCP", "class_o_l_e_d___s_c_p.html", null ]
       ] ],
-      [ "SOCKET", "class_s_o_c_k_e_t.html", null ],
+      [ "Socket", "class_socket.html", null ],
       [ "SPI::SPI", "class_s_p_i_1_1_s_p_i.html", null ],
       [ "UART", "class_u_a_r_t.html", null ]
     ] ],

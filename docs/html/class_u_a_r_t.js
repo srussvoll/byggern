@@ -1,7 +1,7 @@
 var class_u_a_r_t =
 [
-    [ "UART", "class_u_a_r_t.html#a97debffc29b178c09b104f4542298a36", null ],
     [ "UART", "class_u_a_r_t.html#a68e7e88d2a13f5da85f0fde1ef98515f", null ],
+    [ "UART", "class_u_a_r_t.html#a97debffc29b178c09b104f4542298a36", null ],
     [ "GetInstance", "class_u_a_r_t.html#a745c8f35f3ca3ab6359cedda3e640777", null ],
     [ "Init", "class_u_a_r_t.html#aed659ee8bc31ba966144d1a522506a7b", null ],
     [ "operator=", "class_u_a_r_t.html#a843ab7fc20f5ce5f030d2ca5ee98d6b6", null ],

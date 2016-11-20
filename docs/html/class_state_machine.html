@@ -99,17 +99,13 @@ $(document).ready(function(){initNavTree('class_state_machine.html','');});
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad9c6bdaca444710f77fc12d7e1af8fdc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_machine.html#ad9c6bdaca444710f77fc12d7e1af8fdc">StateMachine</a> (void(*(*<a class="el" href="class_state_machine.html#acc87359cd98c436f5b891ffe6cb67160">state_functions</a>))(void), uint8_t initial_state=0)</td></tr>
 <tr class="separator:ad9c6bdaca444710f77fc12d7e1af8fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1597799edc5a89006f164e52fd72d02b"><td class="memItemLeft" align="right" valign="top"><a id="a1597799edc5a89006f164e52fd72d02b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Transition</b> (uint8_t state, bool reenter)</td></tr>
+<tr class="memitem:a1597799edc5a89006f164e52fd72d02b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_machine.html#a1597799edc5a89006f164e52fd72d02b">Transition</a> (uint8_t state, bool reenter)</td></tr>
 <tr class="separator:a1597799edc5a89006f164e52fd72d02b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62fd24666d16a2425c8397ce2d326dae"><td class="memItemLeft" align="right" valign="top"><a id="a62fd24666d16a2425c8397ce2d326dae"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetCurrentState</b> ()</td></tr>
+<tr class="memitem:a62fd24666d16a2425c8397ce2d326dae"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_machine.html#a62fd24666d16a2425c8397ce2d326dae">GetCurrentState</a> ()</td></tr>
 <tr class="separator:a62fd24666d16a2425c8397ce2d326dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94c93f8203bab4f5a3784eba7445b582"><td class="memItemLeft" align="right" valign="top"><a id="a94c93f8203bab4f5a3784eba7445b582"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()</td></tr>
+<tr class="memitem:a94c93f8203bab4f5a3784eba7445b582"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_machine.html#a94c93f8203bab4f5a3784eba7445b582">Start</a> ()</td></tr>
 <tr class="separator:a94c93f8203bab4f5a3784eba7445b582"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2eb142249e4c483c8a329b1a18b4383f"><td class="memItemLeft" align="right" valign="top"><a id="a2eb142249e4c483c8a329b1a18b4383f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
+<tr class="memitem:a2eb142249e4c483c8a329b1a18b4383f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_machine.html#a2eb142249e4c483c8a329b1a18b4383f">Stop</a> ()</td></tr>
 <tr class="separator:a2eb142249e4c483c8a329b1a18b4383f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -131,8 +127,15 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>A C Style state machine implementation. </p>
 <p>The states are realized by three functions for each state. One that runs when you enter the state, one that loops during the state and one that runs when leaving the state. If you do not want to have a function that runs when you enter or leave the state, a nullptr can be put there in stead.</p>
 <p>In the state matrix each row is tied to the state, and row 0 - 3 is tied to the state functions.</p>
-<p>Column 0 is the enter function   Column 1 is the loop function   Column 2 is the leave function </p>
-<p><b>Example</b> </p><div class="fragment"><div class="line"> void (*<a class="code" href="class_state_machine.html#acc87359cd98c436f5b891ffe6cb67160">state_functions</a>[][3])(void) = {</div><div class="line">{<span class="keyword">nullptr</span>, InitializeLoop, <span class="keyword">nullptr</span>},</div><div class="line">{OngoingEnter, OngoingLoop, OngoingLeave},</div><div class="line">{IdleEnter, IdleLoop,       <span class="keyword">nullptr</span>}</div><div class="line">};</div></div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<ul>
+<li>
+Column 0 is the enter function  </li>
+<li>
+Column 1 is the loop function  </li>
+<li>
+Column 2 is the leave function  </li>
+</ul>
+<p><b>Example of the state_function paramter in the initializer</b> </p><div class="fragment"><div class="line"> void (*<a class="code" href="class_state_machine.html#acc87359cd98c436f5b891ffe6cb67160">state_functions</a>[][3])(void) = {</div><div class="line">{<span class="keyword">nullptr</span>, InitializeLoop, <span class="keyword">nullptr</span>},</div><div class="line">{OngoingEnter, OngoingLoop, OngoingLeave},</div><div class="line">{IdleEnter, IdleLoop,       <span class="keyword">nullptr</span>}</div><div class="line">};</div></div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad9c6bdaca444710f77fc12d7e1af8fdc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad9c6bdaca444710f77fc12d7e1af8fdc">&sect;&nbsp;</a></span>StateMachine()</h2>
 
@@ -176,6 +179,42 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a62fd24666d16a2425c8397ce2d326dae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62fd24666d16a2425c8397ce2d326dae">&sect;&nbsp;</a></span>GetCurrentState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t StateMachine::GetCurrentState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the current state </p><dl class="section return"><dt>Returns</dt><dd>The current state </dd></dl>
+
+</div>
+</div>
+<a id="a94c93f8203bab4f5a3784eba7445b582"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94c93f8203bab4f5a3784eba7445b582">&sect;&nbsp;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StateMachine::Start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Starts the FSM </p>
+
+</div>
+</div>
 <a id="acc87359cd98c436f5b891ffe6cb67160"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc87359cd98c436f5b891ffe6cb67160">&sect;&nbsp;</a></span>state_functions()</h2>
 
@@ -199,6 +238,59 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>A matrix containing the states and their state functions </p>
+
+</div>
+</div>
+<a id="a2eb142249e4c483c8a329b1a18b4383f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eb142249e4c483c8a329b1a18b4383f">&sect;&nbsp;</a></span>Stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StateMachine::Stop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stops the FSM </p>
+
+</div>
+</div>
+<a id="a1597799edc5a89006f164e52fd72d02b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1597799edc5a89006f164e52fd72d02b">&sect;&nbsp;</a></span>Transition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StateMachine::Transition </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>reenter</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Transition to a state. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>The state to transition to </td></tr>
+    <tr><td class="paramname">reenter</td><td>If you try to reenter the state you are currently in, this must be true. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -251,7 +343,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_state_machine.html">StateMachine</a></li>
-    <li class="footer">Generated on Sun Nov 20 2016 21:20:19 for Byggern by
+    <li class="footer">Generated on Sun Nov 20 2016 21:32:51 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

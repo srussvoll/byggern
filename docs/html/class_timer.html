@@ -106,8 +106,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4e607b129b392c11adddd9641a320436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6379e797f968aaee6ac3bb12dc6b81c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_timer.html#a6379e797f968aaee6ac3bb12dc6b81c5">Stop</a> ()</td></tr>
 <tr class="separator:a6379e797f968aaee6ac3bb12dc6b81c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad45285aacc47697bea2bd0dce06a3e4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_timer.html#ad45285aacc47697bea2bd0dce06a3e4d">GetFullSecondsPassed</a> (uint16_t &amp;time)</td></tr>
-<tr class="separator:ad45285aacc47697bea2bd0dce06a3e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f536c9539a977acc3e262f8767694fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_timer.html#a4f536c9539a977acc3e262f8767694fa">GetNumberOfTimesTriggered</a> (uint16_t &amp;time)</td></tr>
+<tr class="separator:a4f536c9539a977acc3e262f8767694fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -142,8 +142,40 @@ Friends</h2></td></tr>
 <p>0 -&gt; timer 4 1 -&gt; timer 5</p>
 <p>Uses CTC mode. Assumes a 16MHz clock. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a609e586dbc0fdc159fc6fd490fcc1ae3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a609e586dbc0fdc159fc6fd490fcc1ae3">&sect;&nbsp;</a></span>Timer() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timer::Timer </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>timer_number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Initializer. Not used by end user </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timer_number</td><td>Which timer number you want to get. Please see <a class="el" href="class_timer.html#a5a9960ef2a5394a76b4b024cae1a86a3">GetInstance()</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ae6b73141ad1d5029d3782d14d2fd5ff0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6b73141ad1d5029d3782d14d2fd5ff0">&sect;&nbsp;</a></span>Timer() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6b73141ad1d5029d3782d14d2fd5ff0">&sect;&nbsp;</a></span>Timer() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,63 +201,7 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a609e586dbc0fdc159fc6fd490fcc1ae3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a609e586dbc0fdc159fc6fd490fcc1ae3">&sect;&nbsp;</a></span>Timer() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Timer::Timer </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>timer_number</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Initializer. Not used by enduser </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">timer_number</td><td>Which timer number you want to get. Please see <a class="el" href="class_timer.html#a5a9960ef2a5394a76b4b024cae1a86a3">GetInstance()</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad45285aacc47697bea2bd0dce06a3e4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad45285aacc47697bea2bd0dce06a3e4d">&sect;&nbsp;</a></span>GetFullSecondsPassed()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Timer::GetFullSecondsPassed </td>
-          <td>(</td>
-          <td class="paramtype">uint16_t &amp;&#160;</td>
-          <td class="paramname"><em>time</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Returns how many times the timer has triggered </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">time</td><td>Variable to contain the data </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a5a9960ef2a5394a76b4b024cae1a86a3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5a9960ef2a5394a76b4b024cae1a86a3">&sect;&nbsp;</a></span>GetInstance()</h2>
 
@@ -252,6 +228,30 @@ Friends</h2></td></tr>
 <p>A Singleton implementation of this class </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timer_number</td><td>Which timer you want to use. timer_number = 0 -&gt; timer4, timer_number = 1 -&gt; timer5 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4f536c9539a977acc3e262f8767694fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f536c9539a977acc3e262f8767694fa">&sect;&nbsp;</a></span>GetNumberOfTimesTriggered()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Timer::GetNumberOfTimesTriggered </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t &amp;&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns how many times the timer has triggered </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>Variable to contain the data </td></tr>
   </table>
   </dd>
 </dl>
@@ -461,7 +461,7 @@ Friends</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_timer.html">Timer</a></li>
-    <li class="footer">Generated on Sat Nov 19 2016 10:25:42 for Byggern by
+    <li class="footer">Generated on Sun Nov 20 2016 19:57:04 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

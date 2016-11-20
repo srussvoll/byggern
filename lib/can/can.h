@@ -2,16 +2,29 @@
 
 /**
  * \brief Struct defining a CAN Message
- *
- * Defines the CAN_MESSAGE.
- * @param size The size of the can message
- * @param The can data
- * @param The can message id
  */
 struct CanMessage {
+    /**
+     * The size of the can message
+     */
     uint8_t size;
+
+    /**
+     * Array containing the data
+     */
     uint8_t *data;
+
+    /**
+     * Can message id
+     */
     uint16_t id;
+
+    /**
+     * Constructor
+     * @param size The size of the can message
+     * @param data Array containing the data
+     * @param id Can message id
+     */
     CanMessage(uint8_t size, uint8_t *data, uint16_t id): size(size), data(data), id(id){}
 };
 

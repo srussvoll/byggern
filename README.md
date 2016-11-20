@@ -26,6 +26,11 @@ There are several advantages of using this kind of FSM. Adding and removing stat
 **Shared resources**
 
 Since enter, loop and leave are different functions, they all have their own separate scope. This causes us to have a few global variables. This is not a big problem due to putting those variable in a namespace, making them local to the file.
+
+## Stream
+
+We chose to implement a full duplex stream class, because it gave us a lot of overhead when implementing other modules such as UART, SPI and CAN. It utilizes a ring buffer for both input and output.
+
 ## Extras
 
 We have implemented a few extra features, listed underneath.

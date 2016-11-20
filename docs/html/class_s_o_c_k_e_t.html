@@ -144,8 +144,8 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:acd81e49443c51d84f7bfe5d616d1b750"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_s_o_c_k_e_t.html">SOCKET</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_o_c_k_e_t.html#acd81e49443c51d84f7bfe5d616d1b750">GetInstance</a> (uint8_t <a class="el" href="class_s_o_c_k_e_t.html#a0755fe74751c2d94d3d1679cad9e6544">id</a>=0)</td></tr>
 <tr class="separator:acd81e49443c51d84f7bfe5d616d1b750"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1345aded87c899fd525616b6f2cca4a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_o_c_k_e_t.html#ab1345aded87c899fd525616b6f2cca4a">HandleDataFromLowerLevel</a> (<a class="el" href="struct_c_a_n___m_e_s_s_a_g_e.html">CAN_MESSAGE</a> &amp;message)</td></tr>
-<tr class="separator:ab1345aded87c899fd525616b6f2cca4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c3771b6f958ea3566fab32ea094d0ff"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_o_c_k_e_t.html#a7c3771b6f958ea3566fab32ea094d0ff">HandleDataFromLowerLevel</a> (<a class="el" href="struct_can_message.html">CanMessage</a> &amp;message)</td></tr>
+<tr class="separator:a7c3771b6f958ea3566fab32ea094d0ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -309,8 +309,8 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 
 </div>
 </div>
-<a id="ab1345aded87c899fd525616b6f2cca4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1345aded87c899fd525616b6f2cca4a">&sect;&nbsp;</a></span>HandleDataFromLowerLevel()</h2>
+<a id="a7c3771b6f958ea3566fab32ea094d0ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c3771b6f958ea3566fab32ea094d0ff">&sect;&nbsp;</a></span>HandleDataFromLowerLevel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -321,7 +321,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
         <tr>
           <td class="memname">static void SOCKET::HandleDataFromLowerLevel </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_c_a_n___m_e_s_s_a_g_e.html">CAN_MESSAGE</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_can_message.html">CanMessage</a> &amp;&#160;</td>
           <td class="paramname"><em>message</em></td><td>)</td>
           <td></td>
         </tr>
@@ -332,9 +332,9 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Called when a new <a class="el" href="struct_c_a_n___m_e_s_s_a_g_e.html" title="Struct defining a CAN Message. ">CAN_MESSAGE</a> from the can controller has arrived. Puts the message into the stream </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Called when a new CAN_MESSAGE from the can controller has arrived. Puts the message into the stream </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>The received <a class="el" href="struct_c_a_n___m_e_s_s_a_g_e.html" title="Struct defining a CAN Message. ">CAN_MESSAGE</a> </td></tr>
+    <tr><td class="paramname">message</td><td>The received CAN_MESSAGE </td></tr>
   </table>
   </dd>
 </dl>
@@ -487,7 +487,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_s_o_c_k_e_t.html">SOCKET</a></li>
-    <li class="footer">Generated on Sat Nov 19 2016 10:25:41 for Byggern by
+    <li class="footer">Generated on Sun Nov 20 2016 19:57:04 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

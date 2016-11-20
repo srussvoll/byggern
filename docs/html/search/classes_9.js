@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uart',['UART',['../class_u_a_r_t.html',1,'']]]
+  ['timer',['Timer',['../class_timer.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['utilities',['Utilities',['../namespace_utilities.html',1,'']]]
+  ['spi',['SPI',['../namespace_s_p_i.html',1,'']]]
 ];

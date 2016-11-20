@@ -3,7 +3,7 @@
 
 namespace SPI {
 
-    void SPI_STC_vect(){
+    void SPI_STC_vect() {
         SPI& spi = SPI::GetInstance();
 
         if(spi.throw_away_data_count == 0) {
@@ -18,7 +18,7 @@ namespace SPI {
         if(spi.ongoing_transmission){
             // Sending data. More to send?
             uint8_t byte;
-            if(spi.ReadByteFromOutputStream(byte)){
+            if(spi.ReadByteFromOutputStream(byte)) {
                 SPDR = byte;
             }else {
                 // No more data to send
@@ -33,7 +33,7 @@ namespace SPI {
         }
     }
 
-    SPI::SPI(): Stream(128,128){
+    SPI::SPI(): Stream(128,128) {
         sei();
     }
 

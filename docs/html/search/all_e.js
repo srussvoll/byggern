@@ -12,8 +12,10 @@ var searchData=
   ['receive',['Receive',['../class_s_c_p.html#ab01a551b8edf803faaea5b0310345498',1,'SCP']]],
   ['render',['Render',['../class_menu_1_1_controller.html#af46abb3d242c76822c0e8ea8ab777fa5',1,'Menu::Controller']]],
   ['repaint',['Repaint',['../class_o_l_e_d.html#a3efa34861b4ae0bc5323f6b7cf1d8a01',1,'OLED']]],
+  ['requestsample',['RequestSample',['../class_a_d_c__internal.html#accd9d981273a75e739f16232196f0d5e',1,'ADC_internal']]],
   ['requesttosend',['RequestToSend',['../class_m_c_p2515.html#a5a218199ca1dfcb25cb95890bc0220fc',1,'MCP2515']]],
-  ['reset',['Reset',['../class_m_c_p2515.html#aa4d4138b984dc87116cf72ae104acb70',1,'MCP2515']]],
+  ['reset',['Reset',['../class_d_a_c.html#a28b77e33c40384e1308168e2945d99b5',1,'DAC::Reset()'],['../class_m_c_p2515.html#aa4d4138b984dc87116cf72ae104acb70',1,'MCP2515::Reset()']]],
   ['root',['root',['../class_menu_1_1_controller.html#a211b6de05f7eed25f3a7f504c42316e0',1,'Menu::Controller']]],
+  ['running',['running',['../class_state_machine.html#adc6939485a12a6250df3cc65aa172d2a',1,'StateMachine']]],
   ['rxstatus',['RxStatus',['../class_m_c_p2515.html#af6853f82074a0be19d5a0516a959515e',1,'MCP2515']]]
 ];

@@ -1,0 +1,193 @@
+\hypertarget{class_d_a_c}{}\section{D\+AC Class Reference}
+\label{class_d_a_c}\index{D\+AC@{D\+AC}}
+
+
+Using an extern \hyperlink{class_d_a_c}{D\+AC}.  
+
+
+
+
+{\ttfamily \#include $<$dac.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_d_a_c_a6584c17f9f941589a78e806c10386789}{Initialize} (uint8\+\_\+t \hyperlink{class_d_a_c_aa4f21cf166374cfc6edcd412f4d2072b}{min}, uint8\+\_\+t \hyperlink{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425}{max}, uint8\+\_\+t i2c\+\_\+address)
+\item 
+\hyperlink{class_d_a_c_af656669246f70c7ccbbd05d0e65088d4}{D\+AC} (const \hyperlink{class_d_a_c}{D\+AC} \&)=delete
+\item 
+void \hyperlink{class_d_a_c_a9e16a3d53b57588cba0ff2f9ade78e6b}{operator=} (const \hyperlink{class_d_a_c}{D\+AC} \&)=delete
+\item 
+void \hyperlink{class_d_a_c_a28b77e33c40384e1308168e2945d99b5}{Reset} ()
+\item 
+void \hyperlink{class_d_a_c_ac2fc281ed24a4bb8478519a5cc2e1177}{Set\+D\+AC} (uint8\+\_\+t \hyperlink{class_d_a_c_afb39aacc3401c892403c477f857504f8}{dac\+\_\+number})
+\item 
+uint8\+\_\+t \hyperlink{class_d_a_c_a535a7552ff0b9a68af94893a9c17dbed}{Get\+Command\+For\+D\+AC} ()
+\item 
+bool \hyperlink{class_d_a_c_a5bbcde98ffe84c740e562427a14def74}{Write\+Analog\+Signal\+Raw} (uint8\+\_\+t value)
+\item 
+bool \hyperlink{class_d_a_c_ab1e74700e0e44e3641e2265380c25347}{Write\+Analog\+Signal\+Percentage} (float percentage)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_d_a_c_aa97df751677eb0db87b3e3a5a1cb6049}{}\label{class_d_a_c_aa97df751677eb0db87b3e3a5a1cb6049} 
+static \hyperlink{class_d_a_c}{D\+AC} \& {\bfseries Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_d_a_c_a9908e07a5c096380eeb4c4061d58476d}{D\+AC} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+I2C $\ast$ \hyperlink{class_d_a_c_a70a9fd9603ee9fd9303628bd23338bf5}{i2c}
+\item 
+uint8\+\_\+t \hyperlink{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425}{max}
+\item 
+uint8\+\_\+t \hyperlink{class_d_a_c_aa4f21cf166374cfc6edcd412f4d2072b}{min}
+\item 
+uint8\+\_\+t \hyperlink{class_d_a_c_a1dd1e9c4a63f493da44d7208e59cc83e}{address\+\_\+and\+\_\+write\+\_\+byte}
+\item 
+uint8\+\_\+t \hyperlink{class_d_a_c_afb39aacc3401c892403c477f857504f8}{dac\+\_\+number}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Using an extern \hyperlink{class_d_a_c}{D\+AC}. 
+
+\begin{DoxyAuthor}{Author}
+Johan Lofstad, Sondre Baugstø and Sondre Russvoll 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+A digital-\/to-\/analog converter. This one is extern, that is not on the mcu, so it needs to be interfaced (i.\+e. through I2C) 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_d_a_c_a9908e07a5c096380eeb4c4061d58476d}{}\label{class_d_a_c_a9908e07a5c096380eeb4c4061d58476d} 
+\index{D\+AC@{D\+AC}!D\+AC@{D\+AC}}
+\index{D\+AC@{D\+AC}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{D\+A\+C()}{DAC()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily D\+A\+C\+::\+D\+AC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+A constructor that initializes the \hyperlink{class_d_a_c}{D\+AC}. Private because of singleton \hypertarget{class_d_a_c_af656669246f70c7ccbbd05d0e65088d4}{}\label{class_d_a_c_af656669246f70c7ccbbd05d0e65088d4} 
+\index{D\+AC@{D\+AC}!D\+AC@{D\+AC}}
+\index{D\+AC@{D\+AC}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{D\+A\+C()}{DAC()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily D\+A\+C\+::\+D\+AC (\begin{DoxyParamCaption}\item[{const \hyperlink{class_d_a_c}{D\+AC} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_d_a_c_a535a7552ff0b9a68af94893a9c17dbed}{}\label{class_d_a_c_a535a7552ff0b9a68af94893a9c17dbed} 
+\index{D\+AC@{D\+AC}!Get\+Command\+For\+D\+AC@{Get\+Command\+For\+D\+AC}}
+\index{Get\+Command\+For\+D\+AC@{Get\+Command\+For\+D\+AC}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{Get\+Command\+For\+D\+A\+C()}{GetCommandForDAC()}}
+{\footnotesize\ttfamily uint8\+\_\+t D\+A\+C\+::\+Get\+Command\+For\+D\+AC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Selects the command corresponding to the dac\+\_\+number \hypertarget{class_d_a_c_a6584c17f9f941589a78e806c10386789}{}\label{class_d_a_c_a6584c17f9f941589a78e806c10386789} 
+\index{D\+AC@{D\+AC}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void D\+A\+C\+::\+Initialize (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{min,  }\item[{uint8\+\_\+t}]{max,  }\item[{uint8\+\_\+t}]{i2c\+\_\+address }\end{DoxyParamCaption})}
+
+Initializes the dac by giving it an address (the one used by I2C to access it) In our project it is already grounded, so the address is set as 0x50 
+\begin{DoxyParams}{Parameters}
+{\em min} & The minimum value the \hyperlink{class_d_a_c}{D\+AC} can output \\
+\hline
+{\em max} & The maximum value the \hyperlink{class_d_a_c}{D\+AC} can output \\
+\hline
+{\em i2c\+\_\+address} & The address of the \hyperlink{class_d_a_c}{D\+AC} on the I2C bus \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_d_a_c_a9e16a3d53b57588cba0ff2f9ade78e6b}{}\label{class_d_a_c_a9e16a3d53b57588cba0ff2f9ade78e6b} 
+\index{D\+AC@{D\+AC}!operator=@{operator=}}
+\index{operator=@{operator=}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void D\+A\+C\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_d_a_c}{D\+AC} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Because of singleton -\/ makes sure its not copied etc. \hypertarget{class_d_a_c_a28b77e33c40384e1308168e2945d99b5}{}\label{class_d_a_c_a28b77e33c40384e1308168e2945d99b5} 
+\index{D\+AC@{D\+AC}!Reset@{Reset}}
+\index{Reset@{Reset}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void D\+A\+C\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Resets the \hyperlink{class_d_a_c}{D\+AC}. Sets all the voltage outputs to zero. \hypertarget{class_d_a_c_ac2fc281ed24a4bb8478519a5cc2e1177}{}\label{class_d_a_c_ac2fc281ed24a4bb8478519a5cc2e1177} 
+\index{D\+AC@{D\+AC}!Set\+D\+AC@{Set\+D\+AC}}
+\index{Set\+D\+AC@{Set\+D\+AC}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{Set\+D\+A\+C()}{SetDAC()}}
+{\footnotesize\ttfamily void D\+A\+C\+::\+Set\+D\+AC (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{dac\+\_\+number }\end{DoxyParamCaption})}
+
+Sets the \hyperlink{class_d_a_c}{D\+AC} number to output the voltage signal 
+\begin{DoxyParams}{Parameters}
+{\em The} & \hyperlink{class_d_a_c}{D\+AC} output pin to be put a signal on \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_d_a_c_ab1e74700e0e44e3641e2265380c25347}{}\label{class_d_a_c_ab1e74700e0e44e3641e2265380c25347} 
+\index{D\+AC@{D\+AC}!Write\+Analog\+Signal\+Percentage@{Write\+Analog\+Signal\+Percentage}}
+\index{Write\+Analog\+Signal\+Percentage@{Write\+Analog\+Signal\+Percentage}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{Write\+Analog\+Signal\+Percentage()}{WriteAnalogSignalPercentage()}}
+{\footnotesize\ttfamily bool D\+A\+C\+::\+Write\+Analog\+Signal\+Percentage (\begin{DoxyParamCaption}\item[{float}]{percentage }\end{DoxyParamCaption})}
+
+Writes a voltage to the output in a certain percentage of the maximum output 
+\begin{DoxyParams}{Parameters}
+{\em percentage} & The percentage of the maximum output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A boolean indicating if the output is valid 
+\end{DoxyReturn}
+\hypertarget{class_d_a_c_a5bbcde98ffe84c740e562427a14def74}{}\label{class_d_a_c_a5bbcde98ffe84c740e562427a14def74} 
+\index{D\+AC@{D\+AC}!Write\+Analog\+Signal\+Raw@{Write\+Analog\+Signal\+Raw}}
+\index{Write\+Analog\+Signal\+Raw@{Write\+Analog\+Signal\+Raw}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{Write\+Analog\+Signal\+Raw()}{WriteAnalogSignalRaw()}}
+{\footnotesize\ttfamily bool D\+A\+C\+::\+Write\+Analog\+Signal\+Raw (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Returns a bool indicating whether or not the value is valid. Writes the value to the \hyperlink{class_d_a_c}{D\+AC} 
+\begin{DoxyParams}{Parameters}
+{\em value} & The voltage value to be output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A boolean indicating if the output is valid 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_d_a_c_a1dd1e9c4a63f493da44d7208e59cc83e}{}\label{class_d_a_c_a1dd1e9c4a63f493da44d7208e59cc83e} 
+\index{D\+AC@{D\+AC}!address\+\_\+and\+\_\+write\+\_\+byte@{address\+\_\+and\+\_\+write\+\_\+byte}}
+\index{address\+\_\+and\+\_\+write\+\_\+byte@{address\+\_\+and\+\_\+write\+\_\+byte}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{address\+\_\+and\+\_\+write\+\_\+byte}{address\_and\_write\_byte}}
+{\footnotesize\ttfamily uint8\+\_\+t D\+A\+C\+::address\+\_\+and\+\_\+write\+\_\+byte\hspace{0.3cm}{\ttfamily [private]}}
+
+The address of the \hyperlink{class_d_a_c}{D\+AC} on the I2C bus \hypertarget{class_d_a_c_afb39aacc3401c892403c477f857504f8}{}\label{class_d_a_c_afb39aacc3401c892403c477f857504f8} 
+\index{D\+AC@{D\+AC}!dac\+\_\+number@{dac\+\_\+number}}
+\index{dac\+\_\+number@{dac\+\_\+number}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{dac\+\_\+number}{dac\_number}}
+{\footnotesize\ttfamily uint8\+\_\+t D\+A\+C\+::dac\+\_\+number\hspace{0.3cm}{\ttfamily [private]}}
+
+The \hyperlink{class_d_a_c}{D\+AC} to be written to. In range 1-\/4. Default value is 1 \hypertarget{class_d_a_c_a70a9fd9603ee9fd9303628bd23338bf5}{}\label{class_d_a_c_a70a9fd9603ee9fd9303628bd23338bf5} 
+\index{D\+AC@{D\+AC}!i2c@{i2c}}
+\index{i2c@{i2c}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{i2c}{i2c}}
+{\footnotesize\ttfamily I2C$\ast$ D\+A\+C\+::i2c\hspace{0.3cm}{\ttfamily [private]}}
+
+The I2C for communication with the \hyperlink{class_d_a_c}{D\+AC} \hypertarget{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425}{}\label{class_d_a_c_a229a81d8ebf43511dfb6815c5cd8f425} 
+\index{D\+AC@{D\+AC}!max@{max}}
+\index{max@{max}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{max}{max}}
+{\footnotesize\ttfamily uint8\+\_\+t D\+A\+C\+::max\hspace{0.3cm}{\ttfamily [private]}}
+
+The maximum voltage value the \hyperlink{class_d_a_c}{D\+AC} can output \hypertarget{class_d_a_c_aa4f21cf166374cfc6edcd412f4d2072b}{}\label{class_d_a_c_aa4f21cf166374cfc6edcd412f4d2072b} 
+\index{D\+AC@{D\+AC}!min@{min}}
+\index{min@{min}!D\+AC@{D\+AC}}
+\subsubsection{\texorpdfstring{min}{min}}
+{\footnotesize\ttfamily uint8\+\_\+t D\+A\+C\+::min\hspace{0.3cm}{\ttfamily [private]}}
+
+The minimum voltage value the \hyperlink{class_d_a_c}{D\+AC} can output 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/dac/dac.\+h\end{DoxyCompactItemize}

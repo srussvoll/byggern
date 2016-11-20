@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['mcp2515',['MCP2515',['../class_m_c_p2515.html',1,'']]],
-  ['menu',['Menu',['../struct_menu_1_1_menu.html',1,'Menu']]]
+  ['highscore',['Highscore',['../class_highscore_1_1_highscore.html',1,'Highscore']]]
 ];

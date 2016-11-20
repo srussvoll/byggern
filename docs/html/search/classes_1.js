@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['encoder',['Encoder',['../class_encoder.html',1,'']]],
-  ['exampleinstrumentedtest',['ExampleInstrumentedTest',['../classbaugen_1_1scoreboard_1_1_example_instrumented_test.html',1,'baugen::scoreboard']]],
-  ['exampleunittest',['ExampleUnitTest',['../classbaugen_1_1scoreboard_1_1_example_unit_test.html',1,'baugen::scoreboard']]]
+  ['can',['CAN',['../class_c_a_n.html',1,'']]],
+  ['canmessage',['CanMessage',['../struct_can_message.html',1,'']]],
+  ['controller',['Controller',['../class_menu_1_1_controller.html',1,'Menu']]]
 ];

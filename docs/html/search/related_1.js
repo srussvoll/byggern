@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spi_5fstc_5fvect',['SPI_STC_vect',['../class_s_p_i_1_1_s_p_i.html#a96543550133e0b0c6ae83faad5c0d68d',1,'SPI::SPI']]]
+  ['mcp2515_5fint',['MCP2515_INT',['../class_m_c_p2515.html#a3e97befdad3bb95f1da9cf6ff507febe',1,'MCP2515']]]
 ];

@@ -19,6 +19,13 @@ We have made a state machine for each of the nodes, and it is implemented in lib
 There is one function that runs when a state is entered, one that loops until the state is left, and one that runs when we leave the state. You transition between states by calling
  `fsm->Transition(STATE_NEXT, 0)`
 
+**Advantages of using this FSM**
+
+There are several advantages of using this kind of FSM. Adding and removing states is very easy, and only requires you to add/remove a function from an array.
+
+**Disadvantages of using this FSM**
+
+Since enter, loop and leave are different functions, they all have their own separate scope. 
 ## Extras
 
 We have implemented a few extra features, listed underneath.

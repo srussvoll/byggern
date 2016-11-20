@@ -2,7 +2,7 @@
 #include "socket.h"
 #include "../utilities/printf.h"
 
-void SOCKET::Write(uint8_t *string, uint16_t size) {
+void Socket::Write(uint8_t *string, uint16_t size) {
     uint16_t remaining_data = size;
     do {
         uint8_t can_size;
@@ -39,7 +39,7 @@ void SOCKET::Write(uint8_t *string, uint16_t size) {
     } while (remaining_data);
 }
 
-void SOCKET::WriteByte(uint8_t byte) {
+void Socket::WriteByte(uint8_t byte) {
     uint8_t data[] = {byte};
     CanMessage message = CanMessage(8,data,this->id);
     this->can->SendMessage(message);

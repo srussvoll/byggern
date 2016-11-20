@@ -2,7 +2,7 @@
 #include "scp.h"
 #include <stdio.h>
 
-SCP::SCP(SOCKET* *sockets, uint8_t number_of_sockets) : sockets(sockets), number_of_sockets(number_of_sockets) {}
+SCP::SCP(Socket* *sockets, uint8_t number_of_sockets) : sockets(sockets), number_of_sockets(number_of_sockets) {}
 
 bool SCP::Receive(uint8_t &command, uint8_t *data, uint8_t &length_of_data) {
     // Return the highest priority command.
@@ -22,7 +22,7 @@ bool SCP::Receive(uint8_t &command, uint8_t *data, uint8_t &length_of_data) {
 }
 
 void SCP::Send(uint8_t priority, uint8_t command, uint8_t *data, uint8_t length_of_data){
-    SOCKET *current_socket = this->sockets[priority];
+    Socket *current_socket = this->sockets[priority];
 
     uint8_t payload[64] = {command, length_of_data};
 

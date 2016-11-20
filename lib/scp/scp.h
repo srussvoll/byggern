@@ -17,7 +17,7 @@ private:
     /**
      * An array with sockets
      */
-    SOCKET* *sockets;
+    Socket* *sockets;
 
     /**
      * The number of sockets
@@ -32,7 +32,7 @@ public:
      * @param sockets An array of sockets that you want to use
      * @param number_of_sockets Number of sockets in the sockets array
      */
-    SCP(SOCKET* *sockets, uint8_t number_of_sockets);
+    SCP(Socket* *sockets, uint8_t number_of_sockets);
 
     /**
      * Sends some data with priority and command

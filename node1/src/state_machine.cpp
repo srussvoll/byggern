@@ -27,9 +27,9 @@
 namespace {
     StateMachine *fsm;
     SCP *channel;
-    SOCKET *sockets[] = {
-            &SOCKET::GetInstance(0),
-            &SOCKET::GetInstance(1)
+    Socket *sockets[] = {
+            &Socket::GetInstance(0),
+            &Socket::GetInstance(1)
     };
     Menu::Controller *controller;
     Highscore::Highscore *highscore;

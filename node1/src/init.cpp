@@ -11,8 +11,8 @@
 
 inline void InitializeNetworkStack(){
     // Get instance of all the modules
-    SOCKET &high = SOCKET::GetInstance(0x00);
-    SOCKET &low = SOCKET::GetInstance(0x01);
+    Socket &high = Socket::GetInstance(0x00);
+    Socket &low = Socket::GetInstance(0x01);
     MCP2515 &mcp = MCP2515::GetInstance();
     SPI::SPI &spi = SPI::SPI::GetInstance();
 

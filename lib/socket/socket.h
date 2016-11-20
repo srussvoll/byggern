@@ -11,7 +11,7 @@
  * , although it is flexible to increase the amount of sockets. See GetInstance() for more information regarding extending the
  * number of sockets. The lower the socket identifier, the higher the priority.
  */
-class SOCKET : public Stream {
+class Socket : public Stream {
 
 private:
     /**
@@ -30,12 +30,12 @@ public:
      * has to bee extended to the amount of sockets you wish to support.
      * @param id The socket ID
      */
-    static SOCKET& GetInstance(uint8_t id = 0){
+    static Socket& GetInstance(uint8_t id = 0){
         if(id == 0){
-            static SOCKET instance(0);
+            static Socket instance(0);
             return instance;
         }else if (id == 1){
-            static SOCKET instance(1);
+            static Socket instance(1);
             return instance;
         }
     }
@@ -46,20 +46,20 @@ public:
      * @param message The received CAN_MESSAGE
      */
     static void HandleDataFromLowerLevel(CanMessage &message) {
-        SOCKET &socket = SOCKET::GetInstance(message.id);
+        Socket &socket = Socket::GetInstance(message.id);
         socket.WriteToInputStream(message.data, message.size);
     }
 
     /**
      * Because of singleton, make sure it is not deleted
      */
-    SOCKET(const SOCKET&) = delete;
+    Socket(const Socket&) = delete;
 
     /**
      * The initializer. Not used by end user due to singleton
      * @param id The socket ID
      */
-    SOCKET(uint8_t id) : Stream(255, 1), id(id){
+    Socket(uint8_t id) : Stream(255, 1), id(id){
     }
 
     /**
@@ -68,8 +68,8 @@ public:
      * @param target_id The target node id
      */
     void Initialize(CAN *can){
-        SOCKET::can = can;
-        SOCKET::can->SetUpperLevel(&SOCKET::HandleDataFromLowerLevel);
+        Socket::can = can;
+        Socket::can->SetUpperLevel(&Socket::HandleDataFromLowerLevel);
     }
 
     /**

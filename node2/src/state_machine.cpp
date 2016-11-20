@@ -81,7 +81,7 @@ void InitializeLoop() {
     motor.Initialize();
 
     // Initialize the IR Sensor
-    IR_Detector::GetInstance().Initialize(0x05);
+    IRDetector::GetInstance().Initialize(0x05);
 
     // Initialize the joystick
     // TODO: Correct Quantization levels
@@ -169,7 +169,7 @@ void OngoingLoop() {
     servo->SetAngle(slider_ang - 127);
 
     // Check fail state
-    IR_Detector &ir = IR_Detector::GetInstance();
+    IRDetector &ir = IRDetector::GetInstance();
     if(game_started && ir.Sample()) {
         fsm->Transition(STATE_HIGHSCORE, 0);
         return;

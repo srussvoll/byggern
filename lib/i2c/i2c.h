@@ -8,11 +8,13 @@
 #include "lib/i2c/pins.h"
 
 /**
- * @file
- * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
- * @version 1.0
+ * \brief I2C (TWI) for communicating for peripherals
  *
- * An interface for handling streams with default methods.
+ * This implementation is based on the http://www.atmel.com/Images/Atmel-2564-Using-the-TWI-Module-as-I2C-Master_ApplicationNote_AVR315.pdf device driver example
+ * Most of the implementation is ported from ATMEL/AVRs C IAR example code found in the link.
+ * However, we had to port it to C++ and the avrgcc compiler.
+ * Note that we were not asked to create this driver, so the implementation is due to ATMEL
+ * © ATMEL / Microship
  */
 
 // Status byte holding flags.
@@ -46,12 +48,24 @@ private:
 
 public:
 
+    /**
+     * The size, in bytes, of the message to be sent
+     */
     uint8_t message_size;
 
+    /**
+     * A status flag for the TWI - from ATMELS implementation
+     */
     uint8_t TWI_state;
 
+    /**
+     * A temporarily output buffer
+     */
     uint8_t I2C_output_buffer[4];
 
+    /**
+     * A general status union (of more statuses)
+     */
     union TWI_statusReg TWI_statusReg;
 
     /**

@@ -2,15 +2,15 @@
 
 #include "ir_detector.h"
 
-IR_Detector::IR_Detector(){
+IRDetector::IRDetector(){
     this->adc = &ADC_internal::GetInstance();
 }
 
-void IR_Detector::Initialize(uint16_t threshold) {
+void IRDetector::Initialize(uint16_t threshold) {
     this->threshold = threshold;
 }
 
-bool IR_Detector::Sample() {
+bool IRDetector::Sample() {
 
     // Return false if ADC is already in use
     if(!adc->RequestSample()){

@@ -1,8 +1,8 @@
 #pragma once
-#ifdef __AVR_ATmega2560__
 
 #include <avr/io.h>
 #include <math.h>
+
 #include "../adc/adc.h"
 
 struct Quantization{
@@ -25,11 +25,11 @@ enum Direction{
 };
 
 /**
- * @brief A general joystick controller
+ * \brief A general joystick controller
  * The joystick controller expects a quantizationlevel struct as input. This is to indicate the max and min y and x direction of the joystick.
  * Example: If x goes from 0 to 255, it expects input struct with x_max = 255, x_min = 0. If y goes from 0 to 255, it expects the same for y.
  * It also expect a uint8_t threshold, given in decimal. This threshold is used for detecting direction
- * This must be initialized through the Init function
+ * This must be initialized through the Initialize function, due to singleton
  */
 class Joystick {
 
@@ -76,8 +76,8 @@ private:
     Direction previous_direction = None;
 
     /**
-    * The constructor. Private because of singleton
-    */
+     * The constructor. Private because of singleton
+     */
     Joystick();
 
 public:
@@ -135,13 +135,14 @@ public:
 
     /**
      * Returns true if the button is pushed down
+     * @return The status of the button
      */
     bool ButtonIsDown();
 
     /**
      * Detects if direction was changed from previous sample
+     * @return If it worked changing directions
      */
     bool DirectionChanged();
 
 };
-#endif

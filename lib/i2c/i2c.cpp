@@ -2,18 +2,12 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
 #include <lib/uart/uart.h>
 
 #include "i2c.h"
-#include "lib/utilities/printf.h"
 
 I2C::I2C() : Stream(64, 64){
     sei();
-
-    for(int i = 0; i < 3;i++){
-        printf("Value for init is:... %d \n\r", this->output_buffer[i]);
-    }
 
     this->TWI_state = TWI_NO_STATE;
     this->TWI_statusReg = {0};
@@ -127,12 +121,6 @@ uint8_t I2C::GetStateInfo() {
 
 void I2C::SendData(uint8_t *message, uint8_t message_size) {
 
-    /* for(int i = 0; i < 4;i++){
-        printf("Value for data is:... %d \n\r", this->I2C_output_buffer[i]);
-    } */
-
-    uint8_t temp;
-
     // Wait until TWI is ready for next transmission.
     while ( TransceiverIsBusy() );
 
@@ -143,12 +131,6 @@ void I2C::SendData(uint8_t *message, uint8_t message_size) {
     this->I2C_output_buffer[0]  = message[0];
     this->Write(message,3);
 
-    /*if (!( message[0] & (TRUE<<TWI_READ_BIT) ))       // If it is a write operation, then also copy data.
-    {
-        for ( temp = 1; temp < message_size; temp++ )
-            printf("Sending message %d \n\r", message[temp]);
-    } */
-
     TWI_statusReg.all = 0;
     TWI_state         = TWI_NO_STATE ;
 
@@ -157,10 +139,6 @@ void I2C::SendData(uint8_t *message, uint8_t message_size) {
            (0<<TWEA)|(1<<TWSTA)|(0<<TWSTO)|       // Initiate a START condition.
            (0<<TWWC);                             //
 
-    /*while(!(TWCR & (1<<TWINT))){
-        printf("Venter \r\n");
-        _delay_ms(1000);
-    } */
 }
 
 void I2C::StartTransceiver() {

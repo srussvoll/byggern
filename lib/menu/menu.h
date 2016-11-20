@@ -13,6 +13,8 @@
  * The menu allocates Menu and Item objects on the heap. Thus you should declare
  * these objects ON THE STACK INSIDE A LOCAL SCOPE so the menus and menu items aren't
  * stored both on the heap and in the main (or where the menu is created) stack!
+ *
+ * The whole menu is implemented as a one way linked list.
  */
 namespace Menu {
 
@@ -52,6 +54,10 @@ namespace Menu {
 
         Item(char *label, uint8_t label_length);
 
+        /**
+         * This adds the action (callback) to be called when the menu element is accessed.
+         * @param fn Pointer to the callback function.
+         */
         void AddAction(void (*fn)());
     };
 
@@ -93,7 +99,6 @@ namespace Menu {
          * This is the root menu, in other words the first/main menu.
          */
         Menu *root;
-
 
         /**
          * When administrating the menu (control), you use methods to navigate
@@ -152,7 +157,6 @@ namespace Menu {
          * @param index The index of the item to be selected.
          */
         void GoToItem(uint8_t index);
-
 
         /**
          * This will try to set the next item as the navigate item. It does not update the navigate index.

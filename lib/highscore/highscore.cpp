@@ -57,6 +57,7 @@ namespace Highscore {
          * x byte name
          */
 
+        // Initialize the local copy of the scores.
         this->score = (Score **) malloc((MAX_LENGTH + 1) * sizeof(Score*));
         for (int i = 0; i < MAX_LENGTH + 1; ++i) {
             char *name = (char *) malloc(MAX_NAME_LENGTH * sizeof(char));
@@ -77,6 +78,7 @@ namespace Highscore {
             for (int i = 0; i < this->length; ++i) {
                 // If name length is different, it is not equal anyway.
                 if (this->score[i]->name_length != score.name_length) continue;
+
                 // Compare names if length is the same.
                 bool equal = true;
                 for (int j = 0; j < score.name_length; ++j) {
@@ -100,9 +102,7 @@ namespace Highscore {
                         this->score[j] = this->score[j + 1];
                         this->score[j + 1] = temp;
                     }
-                } else {
-                    insert_score = false;
-                }
+                } else insert_score = false;
 
                 break;
             }
@@ -126,7 +126,6 @@ namespace Highscore {
     }
 
     uint8_t Highscore::GetHighscores(uint8_t first, Score ** &scores) {
-        // TODO: Make scores const so it cannot be changed outside of the class.
         scores = this->score;
         return this->length - first;
     }

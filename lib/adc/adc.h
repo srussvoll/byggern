@@ -24,17 +24,36 @@
 ISR(ADC_INT);
 
 
+/**
+ * \brief ADC library for the ADC0844.
+ *
+ * This library implements several of the ADC channels through the external memory interface.
+ */
 class ADC : public Stream {
 
 private:
 
+    /**
+     * This is the address of the ADC.
+     * This detemines which ADC mode is used (LSB).
+     */
     volatile uint8_t *address;
 
     /**
-    * Constructor for ADC class. Singleton implementation
-    * @param address The address the ADC is located at. Channel on the adc is determined by the LSB.
-    * We use 0x2004 for channel 1 and 0x2005 for channel 2
-    */
+     * A flag indicating if the ADC is currently in use.
+     */
+    volatile static bool adc_in_use;
+
+    /**
+     * A flag indicating which ADC is currently in use.
+     */
+    volatile static uint8_t *adc_waiting;
+
+    /**
+     * Constructor for ADC class. Singleton implementation.
+     *
+     * @param address The address the ADC is located at.
+     */
     ADC(uint8_t *address);
 
 
@@ -60,32 +79,23 @@ public:
     }
 
     /**
-     * Because of singleton - makes sure its not copied etc.
+     * Singleton specifics.
      */
     ADC(const ADC&) = delete;
 
     /**
-    * Because of singleton - makes sure its not copied etc.
-    */
+     * Singleton specifics.
+     */
     void operator=(const ADC&) = delete;
 
     /**
-    * The interrupt vector for ADC done
-    */
-
+     * The interrupt vector for ADC done
+     */
     friend void ADC_INT();
 
     /**
-    * Request the ADC to get a sample. This sample can be read from the buffer using ReadByte(uint8_t& byte);
-    */
+     * Request the ADC to get a sample. This sample can be read from the buffer using ReadByte(uint8_t& byte);
+     */
     bool request_sample();
-
-    /**
-    * A flag indicating if the ADC is currently used
-    */
-    volatile static bool adc_in_use;
-
-    volatile static uint8_t *adc_waiting;
-
 };
 #endif

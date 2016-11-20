@@ -137,9 +137,8 @@ namespace Menu {
 
     void Controller::ExecuteItem() {
         this->GoToItem(this->current_index_selected);
-        //printf("item to be executed: %s \n", this->current_item_navigate->label);
+
         if (this->current_item_navigate->has_sub_menu) {
-            //printf("I have submeny \n");
             this->GoToMenu((Menu *) this->current_item_navigate->action);
             this->Render();
         }
@@ -177,6 +176,9 @@ namespace Menu {
 
         uint8_t i = 0;
         uint8_t selected_index_relative = this->current_index_selected - this->current_index_navigate;
+        // Assumes the menu is at least length 1.
+        // do {...} while (var) saves 0.1 % program space as opposed to while(var) {...} because we
+        // only need to check the Z (zero) flag at the end of each iterator.
         do {
             oled->WriteLine(this->current_item_navigate->label, this->current_item_navigate->label_length, i, 2);
 

@@ -89,6 +89,9 @@ $(document).ready(function(){initNavTree('class_stream.html','');});
 </div><!--header-->
 <div class="contents">
 
+<p>This class is an interface for implementing a duplex FIFO stream.  
+ <a href="class_stream.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="stream_8h_source.html">stream.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Stream:</div>
@@ -192,7 +195,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 <tr class="separator:a149776fead5c56894699da5bfe489b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class is an interface for implementing a duplex FIFO stream.</p>
+<div class="textblock"><p>This class is an interface for implementing a duplex FIFO stream. </p>
 <p>This class implements a duplex FIFO stream using two circular buffers. For instance both an RS232 driver and a <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> driver would need to implement a stream. Inheriting from this interface makes the communication interface for RS232, <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> and other stream based classes/drivers the same, meaning the end user does not need to know whether the data being sent is being sent over a <a class="el" href="class_u_a_r_t.html">UART</a> or a <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> bus.</p>
 <p>As an example you can set up a <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> bus using a <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a> driver inheriting from this interface. Then it can be passed to a function expecting to send data to an RS232 class also inheriting from this interface, and it will just work. This interface is in other words written to make it easier to write consistent and driver independent code. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -1463,7 +1466,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>event_output_buffer
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_stream.html">Stream</a></li>
-    <li class="footer">Generated on Sun Nov 20 2016 21:32:51 for Byggern by
+    <li class="footer">Generated on Sun Nov 20 2016 21:59:11 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

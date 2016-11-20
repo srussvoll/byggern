@@ -67,7 +67,7 @@ We used the [minicom](https://help.ubuntu.com/community/Minicom) software to rea
 
 The memory map has been extended from 2KB of SRAM to 8KB of SRAM. We achieved this by not using the JTAG interface that occupied the remaining address and data pins. This gave us an updated memory map as seen below.
 
-![Memory map](./docs/images/memory_map.png)
+![Memory map](../images/memory_map.png)
 
 
 ### Highscore, nRF51 chip and Bluetooth

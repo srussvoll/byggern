@@ -41,11 +41,11 @@ This class is using \hyperlink{class_socket}{Socket} as its link layer implement
 \subsubsection{\texorpdfstring{S\+C\+P()}{SCP()}}
 {\footnotesize\ttfamily S\+C\+P\+::\+S\+CP (\begin{DoxyParamCaption}\item[{\hyperlink{class_socket}{Socket} $\ast$$\ast$}]{sockets,  }\item[{uint8\+\_\+t}]{number\+\_\+of\+\_\+sockets }\end{DoxyParamCaption})}
 
-Initializer 
+Initializes the \hyperlink{class_s_c_p}{S\+CP}. 
 \begin{DoxyParams}{Parameters}
-{\em sockets} & An array of sockets that you want to use \\
+{\em sockets} & An array of sockets that you want to use. \\
 \hline
-{\em number\+\_\+of\+\_\+sockets} & Number of sockets in the sockets array \\
+{\em number\+\_\+of\+\_\+sockets} & Number of sockets in the sockets array. \\
 \hline
 \end{DoxyParams}
 
@@ -57,20 +57,23 @@ Initializer
 \subsubsection{\texorpdfstring{Receive()}{Receive()}}
 {\footnotesize\ttfamily bool S\+C\+P\+::\+Receive (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \&}]{command,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t \&}]{length\+\_\+of\+\_\+data }\end{DoxyParamCaption})}
 
-Polls if any new messages have been received 
+Check if any new messages have been received. 
 \begin{DoxyParams}{Parameters}
-{\em data} & An array you want the data to be put into \\
+{\em data} & An array you want the data to be inserted into. \\
 \hline
-{\em The} & length of the data will be put into this variable \\
+{\em length\+\_\+of\+\_\+data} & The maximum data length. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether a command was available for reading. 
+\end{DoxyReturn}
 \hypertarget{class_s_c_p_a02460c47705c42c2ade1608007d7966a}{}\label{class_s_c_p_a02460c47705c42c2ade1608007d7966a} 
 \index{S\+CP@{S\+CP}!Send@{Send}}
 \index{Send@{Send}!S\+CP@{S\+CP}}
 \subsubsection{\texorpdfstring{Send()}{Send()}}
 {\footnotesize\ttfamily void S\+C\+P\+::\+Send (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{priority,  }\item[{uint8\+\_\+t}]{command,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{length\+\_\+of\+\_\+data }\end{DoxyParamCaption})}
 
-Sends some data with priority and command 
+Sends some data with priority and command. 
 \begin{DoxyParams}{Parameters}
 {\em priority} & The socket you want to send this data into. This number refers to the array you passed in the initializer \\
 \hline
@@ -90,13 +93,13 @@ Sends some data with priority and command
 \subsubsection{\texorpdfstring{number\+\_\+of\+\_\+sockets}{number\_of\_sockets}}
 {\footnotesize\ttfamily uint8\+\_\+t S\+C\+P\+::number\+\_\+of\+\_\+sockets\hspace{0.3cm}{\ttfamily [private]}}
 
-The number of sockets \hypertarget{class_s_c_p_a47df7b56ee4f566f9a59198eaf8e52e7}{}\label{class_s_c_p_a47df7b56ee4f566f9a59198eaf8e52e7} 
+The number of sockets in the sockets array. \hypertarget{class_s_c_p_a47df7b56ee4f566f9a59198eaf8e52e7}{}\label{class_s_c_p_a47df7b56ee4f566f9a59198eaf8e52e7} 
 \index{S\+CP@{S\+CP}!sockets@{sockets}}
 \index{sockets@{sockets}!S\+CP@{S\+CP}}
 \subsubsection{\texorpdfstring{sockets}{sockets}}
 {\footnotesize\ttfamily \hyperlink{class_socket}{Socket}$\ast$ $\ast$ S\+C\+P\+::sockets\hspace{0.3cm}{\ttfamily [private]}}
 
-An array with sockets 
+An array with sockets. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,12 +1,5 @@
 var annotated_dup =
 [
-    [ "baugen", null, [
-      [ "scoreboard", null, [
-        [ "ExampleInstrumentedTest", "classbaugen_1_1scoreboard_1_1_example_instrumented_test.html", "classbaugen_1_1scoreboard_1_1_example_instrumented_test" ],
-        [ "ExampleUnitTest", "classbaugen_1_1scoreboard_1_1_example_unit_test.html", "classbaugen_1_1scoreboard_1_1_example_unit_test" ],
-        [ "frontpage", "classbaugen_1_1scoreboard_1_1frontpage.html", "classbaugen_1_1scoreboard_1_1frontpage" ]
-      ] ]
-    ] ],
     [ "Highscore", "namespace_highscore.html", "namespace_highscore" ],
     [ "Menu", "namespace_menu.html", "namespace_menu" ],
     [ "SPI", "namespace_s_p_i.html", "namespace_s_p_i" ],
@@ -23,7 +16,6 @@ var annotated_dup =
     [ "OLED_memory", "class_o_l_e_d__memory.html", "class_o_l_e_d__memory" ],
     [ "OLED_SCP", "class_o_l_e_d___s_c_p.html", "class_o_l_e_d___s_c_p" ],
     [ "Quantization", "struct_quantization.html", "struct_quantization" ],
-    [ "ScoreService", "class_score_service.html", "class_score_service" ],
     [ "SCP", "class_s_c_p.html", "class_s_c_p" ],
     [ "Servo", "class_servo.html", "class_servo" ],
     [ "Socket", "class_socket.html", "class_socket" ],

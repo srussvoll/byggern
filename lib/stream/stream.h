@@ -4,7 +4,7 @@
 #include <avr/io.h>
 
 /**
- * This class is an interface for implementing a duplex FIFO stream.
+ * \brief This class is an interface for implementing a duplex FIFO stream.
  *
  * This class implements a duplex FIFO stream using two circular buffers.
  * For instance both an RS232 driver and a CAN driver would need to implement a stream.

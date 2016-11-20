@@ -96,8 +96,8 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html','');});
 <p>There are several advantages of using this kind of FSM. Adding and removing states is very easy, and only requires you to add/remove a function from an array. The system is always in a defined state, giving less room for unexpected behavior. The code is also very easy to read, making it easy to identify every state and what it does.</p>
 <p><b>Shared resources</b></p>
 <p>Since enter, loop and leave are different functions, they all have their own separate scope. This causes us to have a few global variables. This is not a big problem, since putting those variable in a namespace makes them local to the file.</p>
-<h2><a class="el" href="class_stream.html">Stream</a></h2>
-<p>We chose to implement a full duplex stream class, because it gave us a lot of overhead when implementing other modules such as <a class="el" href="class_u_a_r_t.html">UART</a>, <a class="el" href="namespace_s_p_i.html" title="A namespace containing everything related to the SPI driver. ">SPI</a> and <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a>. It utilizes a ring buffer for both input and output. All classes that uses <a class="el" href="class_stream.html">Stream</a> inherit from it.</p>
+<h2><a class="el" href="class_stream.html" title="This class is an interface for implementing a duplex FIFO stream. ">Stream</a></h2>
+<p>We chose to implement a full duplex stream class, because it gave us a lot of overhead when implementing other modules such as <a class="el" href="class_u_a_r_t.html">UART</a>, <a class="el" href="namespace_s_p_i.html" title="A namespace containing everything related to the SPI driver. ">SPI</a> and <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a>. It utilizes a ring buffer for both input and output. All classes that uses <a class="el" href="class_stream.html" title="This class is an interface for implementing a duplex FIFO stream. ">Stream</a> inherit from it.</p>
 <h2>Network</h2>
 <p>In addition to <a class="el" href="class_c_a_n.html" title="Purely virtual class defining a CAN interface. ">CAN</a>, which is the physical and link layer, we have also made a transport layer and application protocol.</p>
 <p><b>Transport layer - SOCKET</b></p>
@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html','');});
 <h3>Extended memory map</h3>
 <p>The memory map has been extended from 2KB of SRAM to 8KB of SRAM. We achieved this by not using the JTAG interface that occupied the remaining address and data pins. This gave us an updated memory map as seen below.</p>
 <div class="image">
-<img src="./docs/images/memory_map.png" alt="Memory map"/>
+<img src="../images/memory_map.png" alt="Memory map"/>
 </div>
 <h3><a class="el" href="namespace_highscore.html" title="Keeps track of the highscore and stores it to the EEPROM using Score objects. ">Highscore</a>, nRF51 chip and Bluetooth</h3>
 <p>We have implemented a highscore system that stores the highscore in the EEPROM at the ATmega162. The highscore system is based on time, and the longer you play, the higher score you get. This is realized through a timer module in the ATmega2560.</p>
@@ -136,7 +136,7 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Nov 20 2016 21:32:49 for Byggern by
+    <li class="footer">Generated on Sun Nov 20 2016 21:59:09 for Byggern by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

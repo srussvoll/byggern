@@ -7,8 +7,6 @@ var hierarchy =
     [ "Menu::Controller", "class_menu_1_1_controller.html", null ],
     [ "DAC", "class_d_a_c.html", null ],
     [ "Encoder", "class_encoder.html", null ],
-    [ "baugen.scoreboard.ExampleInstrumentedTest", "classbaugen_1_1scoreboard_1_1_example_instrumented_test.html", null ],
-    [ "baugen.scoreboard.ExampleUnitTest", "classbaugen_1_1scoreboard_1_1_example_unit_test.html", null ],
     [ "Highscore::Highscore", "class_highscore_1_1_highscore.html", null ],
     [ "IRDetector", "class_i_r_detector.html", null ],
     [ "Menu::Item", "struct_menu_1_1_item.html", null ],
@@ -18,7 +16,6 @@ var hierarchy =
     [ "SPI::PIN", "struct_s_p_i_1_1_p_i_n.html", null ],
     [ "Quantization", "struct_quantization.html", null ],
     [ "Highscore::Score", "struct_highscore_1_1_score.html", null ],
-    [ "ScoreService", "class_score_service.html", null ],
     [ "SCP", "class_s_c_p.html", null ],
     [ "Servo", "class_servo.html", null ],
     [ "Solenoid", "class_solenoid.html", null ],
@@ -33,8 +30,5 @@ var hierarchy =
       [ "SPI::SPI", "class_s_p_i_1_1_s_p_i.html", null ],
       [ "UART", "class_u_a_r_t.html", null ]
     ] ],
-    [ "Timer", "class_timer.html", null ],
-    [ "AppCompatActivity", null, [
-      [ "baugen.scoreboard.frontpage", "classbaugen_1_1scoreboard_1_1frontpage.html", null ]
-    ] ]
+    [ "Timer", "class_timer.html", null ]
 ];

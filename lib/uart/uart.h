@@ -8,11 +8,7 @@
 ISR(USART0_UDRE_vect);
 
 /**
- * @file
- * @author  Johan Lofstad, Sondre Baugstø and Sondre Russvoll
- * @version 1.1
- *
- * An interface for communicating through UART
+ * \brief An interface for communicating through UART
  */
 class UART : public Stream {
 

@@ -2,6 +2,11 @@
 \label{class_stream}\index{Stream@{Stream}}
 
 
+This class is an interface for implementing a duplex F\+I\+FO stream.  
+
+
+
+
 {\ttfamily \#include $<$stream.\+h$>$}
 
 Inheritance diagram for Stream\+:\begin{figure}[H]
@@ -98,7 +103,7 @@ bool \hyperlink{class_stream_a149776fead5c56894699da5bfe489b65}{output\+\_\+buff
 
 
 \subsection{Detailed Description}
-This class is an interface for implementing a duplex F\+I\+FO stream.
+This class is an interface for implementing a duplex F\+I\+FO stream. 
 
 This class implements a duplex F\+I\+FO stream using two circular buffers. For instance both an R\+S232 driver and a \hyperlink{class_c_a_n}{C\+AN} driver would need to implement a stream. Inheriting from this interface makes the communication interface for R\+S232, \hyperlink{class_c_a_n}{C\+AN} and other stream based classes/drivers the same, meaning the end user does not need to know whether the data being sent is being sent over a \hyperlink{class_u_a_r_t}{U\+A\+RT} or a \hyperlink{class_c_a_n}{C\+AN} bus.
 

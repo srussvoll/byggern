@@ -63,7 +63,7 @@ namespace Menu {
 
 
     /**
-     * Contains all necessary information about a menu (which could be a sub menu).
+     * \brief Contains all necessary information about a menu (which could be a sub menu).
      */
     struct Menu {
 
@@ -79,7 +79,7 @@ namespace Menu {
     };
 
     /**
-     * This class contains everything needed to create and manage a menu and display it on an OLED.
+     * \brief This class contains everything needed to create and manage a menu and display it on an OLED.
      */
     class Controller {
 

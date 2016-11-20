@@ -4,7 +4,6 @@ var searchData=
   ['savescore',['SaveScore',['../class_highscore_1_1_highscore.html#ae19e8a6c55b49d6dd874b61ef496dcea',1,'Highscore::Highscore']]],
   ['score',['Score',['../struct_highscore_1_1_score.html',1,'Highscore']]],
   ['score',['score',['../class_highscore_1_1_highscore.html#a569a403dc24a8fa67efd7065148f4c9d',1,'Highscore::Highscore']]],
-  ['scoreservice',['ScoreService',['../class_score_service.html',1,'']]],
   ['scp',['SCP',['../class_s_c_p.html',1,'SCP'],['../class_s_c_p.html#aee0663a84b05a63993f1c3ff3a952319',1,'SCP::SCP()']]],
   ['selectnext',['SelectNext',['../class_menu_1_1_controller.html#a9aabc6ba652c29efa7a02e12f51ce0b1',1,'Menu::Controller']]],
   ['selectprevious',['SelectPrevious',['../class_menu_1_1_controller.html#a04e3448cfe4341ad7209a9f16bbcb449',1,'Menu::Controller']]],

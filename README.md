@@ -1,3 +1,5 @@
+Open this page with proper formatting on https://srussvoll.github.io/byggern/html/.
+
 # TTK4155 2016, Group 20
 
 The term project for TTK4155 Embedded and Industrial Computer Systems Design for group 20 2016.
